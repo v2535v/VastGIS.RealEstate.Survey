@@ -1,0 +1,25 @@
+﻿using VastGIS.Api.Enums;
+using VastGIS.Menu;
+using VastGIS.Plugins.Concrete;
+using VastGIS.Plugins.Interfaces;
+using VastGIS.Properties;
+
+namespace VastGIS.Commands.View
+{
+    public class CmdZoomIn : BaseCommand
+    {
+        private IAppContext _context;
+        public CmdZoomIn(IAppContext context)
+        {
+            base._text = "放大";
+            base._key = MenuKeys.ZoomIn;
+            base._icon = Resources.icon_zoom_in;
+            _context = context;
+        }
+
+        public override void OnClick()
+        {
+            _context.Map.MapCursor = MapCursor.ZoomIn;
+        }
+    }
+}

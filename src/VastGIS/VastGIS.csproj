@@ -129,8 +129,44 @@
     <Compile Include="..\SolutionItems\SolutionInfoCore.cs">
       <Link>Properties\SolutionInfoCore.cs</Link>
     </Compile>
+    <Compile Include="Commands\File\CmdAddDatabaseLayer.cs" />
+    <Compile Include="Commands\File\CmdAddLayer.cs" />
+    <Compile Include="Commands\File\CmdAddRasterLayer.cs" />
+    <Compile Include="Commands\File\CmdAddVectorLayer.cs" />
+    <Compile Include="Commands\File\CmdAddWmsLayer.cs" />
+    <Compile Include="Commands\File\CmdCreateNewMap.cs" />
+    <Compile Include="Commands\File\CmdOpenProject.cs" />
+    <Compile Include="Commands\File\CmdQuit.cs" />
+    <Compile Include="Commands\File\CmdRemoveLayer.cs" />
+    <Compile Include="Commands\File\CmdSaveProject.cs" />
+    <Compile Include="Commands\File\CmdSaveProjectAs.cs" />
+    <Compile Include="Commands\File\CmdSettings.cs" />
     <Compile Include="Commands\File\CmdShowRepository.cs" />
-    <Compile Include="Commands\View\CmdRemoveLayer.cs" />
+    <Compile Include="Commands\File\CmdShowToolbox.cs" />
+    <Compile Include="Commands\View\CmdAttributesTool.cs" />
+    <Compile Include="Commands\View\CmdClearLayers.cs" />
+    <Compile Include="Commands\View\CmdClearSelection.cs" />
+    <Compile Include="Commands\View\CmdFindLocation.cs" />
+    <Compile Include="Commands\View\CmdLayerClearSelection.cs" />
+    <Compile Include="Commands\View\CmdMeasureArea.cs" />
+    <Compile Include="Commands\View\CmdMeasureDistance.cs" />
+    <Compile Include="Commands\View\CmdPan.cs" />
+    <Compile Include="Commands\View\CmdZoomToBaseLayer.cs" />
+    <Compile Include="Commands\View\CmdSelectByPolygon.cs" />
+    <Compile Include="Commands\View\CmdSelectByRectangle.cs" />
+    <Compile Include="Commands\View\CmdSetProjection.cs" />
+    <Compile Include="Commands\View\CmdSetScale.cs" />
+    <Compile Include="Commands\View\CmdShowCoordinates.cs" />
+    <Compile Include="Commands\View\CmdShowRedrawTime.cs" />
+    <Compile Include="Commands\View\CmdShowScalebar.cs" />
+    <Compile Include="Commands\View\CmdShowZoombar.cs" />
+    <Compile Include="Commands\View\CmdZoomIn.cs" />
+    <Compile Include="Commands\View\CmdZoomMax.cs" />
+    <Compile Include="Commands\View\CmdZoomNext.cs" />
+    <Compile Include="Commands\View\CmdZoomOut.cs" />
+    <Compile Include="Commands\View\CmdZoomPrev.cs" />
+    <Compile Include="Commands\View\CmdZoomToLayer.cs" />
+    <Compile Include="Commands\View\CmdZoomToSelected.cs" />
     <Compile Include="Configuration\ToolsConfigPage.cs">
       <SubType>UserControl</SubType>
     </Compile>

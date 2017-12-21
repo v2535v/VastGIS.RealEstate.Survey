@@ -31,6 +31,7 @@ namespace VastGIS.Projections.Views
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            VastGIS.Api.Concrete.Envelope envelope1 = new VastGIS.Api.Concrete.Envelope();
             VastGIS.Api.Concrete.SpatialReference spatialReference1 = new VastGIS.Api.Concrete.SpatialReference();
             this.btnCancel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnOk = new Syncfusion.Windows.Forms.ButtonAdv();
@@ -91,39 +92,43 @@ namespace VastGIS.Projections.Views
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.btnCancel.BeforeTouchSize = new System.Drawing.Size(85, 26);
+            this.btnCancel.BeforeTouchSize = new System.Drawing.Size(85, 24);
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.IsBackStageButton = false;
-            this.btnCancel.Location = new System.Drawing.Point(377, 511);
+            this.btnCancel.Location = new System.Drawing.Point(377, 472);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(85, 26);
+            this.btnCancel.Size = new System.Drawing.Size(85, 24);
             this.btnCancel.TabIndex = 37;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "取消";
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
             this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.btnOk.BeforeTouchSize = new System.Drawing.Size(85, 26);
+            this.btnOk.BeforeTouchSize = new System.Drawing.Size(85, 24);
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.ForeColor = System.Drawing.Color.White;
             this.btnOk.IsBackStageButton = false;
-            this.btnOk.Location = new System.Drawing.Point(287, 511);
+            this.btnOk.Location = new System.Drawing.Point(287, 472);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(85, 26);
+            this.btnOk.Size = new System.Drawing.Size(85, 24);
             this.btnOk.TabIndex = 36;
-            this.btnOk.Text = "Ok";
+            this.btnOk.Text = "确认";
             this.btnOk.UseVisualStyle = false;
             // 
             // tabControl1
             // 
+            this.tabControl1.ActiveTabForeColor = System.Drawing.Color.Empty;
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.BeforeTouchSize = new System.Drawing.Size(450, 493);
+            this.tabControl1.BeforeTouchSize = new System.Drawing.Size(450, 455);
             this.tabControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabControl1.CloseButtonForeColor = System.Drawing.Color.Empty;
+            this.tabControl1.CloseButtonHoverForeColor = System.Drawing.Color.Empty;
+            this.tabControl1.CloseButtonPressedForeColor = System.Drawing.Color.Empty;
             this.tabControl1.Controls.Add(this.tabDescription);
             this.tabControl1.Controls.Add(this.tabMap);
             this.tabControl1.Controls.Add(this.tabWkt);
@@ -131,9 +136,12 @@ namespace VastGIS.Projections.Views
             this.tabControl1.Controls.Add(this.tabDialects);
             this.tabControl1.FixedSingleBorderColor = System.Drawing.Color.LightGray;
             this.tabControl1.FocusOnTabClick = false;
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.InActiveTabForeColor = System.Drawing.Color.Empty;
+            this.tabControl1.Location = new System.Drawing.Point(12, 11);
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Size = new System.Drawing.Size(450, 493);
+            this.tabControl1.SeparatorColor = System.Drawing.SystemColors.ControlDark;
+            this.tabControl1.ShowSeparator = false;
+            this.tabControl1.Size = new System.Drawing.Size(450, 455);
             this.tabControl1.TabIndex = 35;
             this.tabControl1.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererMetro);
             // 
@@ -152,12 +160,12 @@ namespace VastGIS.Projections.Views
             this.tabDescription.Controls.Add(this.txtScope);
             this.tabDescription.Image = null;
             this.tabDescription.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabDescription.Location = new System.Drawing.Point(1, 22);
+            this.tabDescription.Location = new System.Drawing.Point(1, 21);
             this.tabDescription.Name = "tabDescription";
             this.tabDescription.ShowCloseButton = true;
-            this.tabDescription.Size = new System.Drawing.Size(448, 470);
+            this.tabDescription.Size = new System.Drawing.Size(448, 433);
             this.tabDescription.TabIndex = 1;
-            this.tabDescription.Text = "Description";
+            this.tabDescription.Text = "说明";
             this.tabDescription.ThemesEnabled = false;
             // 
             // label8
@@ -165,9 +173,9 @@ namespace VastGIS.Projections.Views
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 205);
+            this.label8.Location = new System.Drawing.Point(27, 189);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 13);
+            this.label8.Size = new System.Drawing.Size(47, 12);
             this.label8.TabIndex = 22;
             this.label8.Text = "Proj 4:";
             // 
@@ -175,13 +183,13 @@ namespace VastGIS.Projections.Views
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.BeforeTouchSize = new System.Drawing.Size(409, 186);
+            this.txtName.BeforeTouchSize = new System.Drawing.Size(409, 172);
             this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtName.Location = new System.Drawing.Point(77, 29);
+            this.txtName.Location = new System.Drawing.Point(77, 27);
             this.txtName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtName.Name = "txtName";
             this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(353, 20);
+            this.txtName.Size = new System.Drawing.Size(353, 21);
             this.txtName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtName.TabIndex = 1;
             // 
@@ -189,47 +197,47 @@ namespace VastGIS.Projections.Views
             // 
             this.txtProj4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProj4.BeforeTouchSize = new System.Drawing.Size(409, 186);
+            this.txtProj4.BeforeTouchSize = new System.Drawing.Size(409, 172);
             this.txtProj4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtProj4.Location = new System.Drawing.Point(27, 221);
+            this.txtProj4.Location = new System.Drawing.Point(27, 204);
             this.txtProj4.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtProj4.Multiline = true;
             this.txtProj4.Name = "txtProj4";
             this.txtProj4.ReadOnly = true;
-            this.txtProj4.Size = new System.Drawing.Size(403, 70);
+            this.txtProj4.Size = new System.Drawing.Size(403, 65);
             this.txtProj4.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtProj4.TabIndex = 15;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 32);
+            this.label1.Location = new System.Drawing.Point(24, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Name";
+            this.label1.Text = "名称";
             // 
             // txtRemarks
             // 
             this.txtRemarks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRemarks.BeforeTouchSize = new System.Drawing.Size(409, 186);
+            this.txtRemarks.BeforeTouchSize = new System.Drawing.Size(409, 172);
             this.txtRemarks.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRemarks.Location = new System.Drawing.Point(27, 323);
+            this.txtRemarks.Location = new System.Drawing.Point(27, 298);
             this.txtRemarks.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.ReadOnly = true;
-            this.txtRemarks.Size = new System.Drawing.Size(403, 107);
+            this.txtRemarks.Size = new System.Drawing.Size(403, 99);
             this.txtRemarks.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtRemarks.TabIndex = 16;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 73);
+            this.label3.Location = new System.Drawing.Point(24, 67);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 3;
             this.label3.Text = "EPSG";
             // 
@@ -238,21 +246,21 @@ namespace VastGIS.Projections.Views
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 307);
+            this.label4.Location = new System.Drawing.Point(24, 283);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.Size = new System.Drawing.Size(35, 12);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Remarks:";
+            this.label4.Text = "备注:";
             // 
             // txtCode
             // 
-            this.txtCode.BeforeTouchSize = new System.Drawing.Size(409, 186);
+            this.txtCode.BeforeTouchSize = new System.Drawing.Size(409, 172);
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCode.Location = new System.Drawing.Point(77, 70);
+            this.txtCode.Location = new System.Drawing.Point(77, 65);
             this.txtCode.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtCode.Name = "txtCode";
             this.txtCode.ReadOnly = true;
-            this.txtCode.Size = new System.Drawing.Size(73, 20);
+            this.txtCode.Size = new System.Drawing.Size(73, 21);
             this.txtCode.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtCode.TabIndex = 23;
             // 
@@ -261,18 +269,18 @@ namespace VastGIS.Projections.Views
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 115);
+            this.label2.Location = new System.Drawing.Point(24, 106);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 14;
             this.label2.Text = "Scope:";
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(156, 73);
+            this.linkLabel1.Location = new System.Drawing.Point(156, 67);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(66, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(83, 12);
             this.linkLabel1.TabIndex = 5;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "See online...";
@@ -282,14 +290,14 @@ namespace VastGIS.Projections.Views
             // 
             this.txtScope.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtScope.BeforeTouchSize = new System.Drawing.Size(409, 186);
+            this.txtScope.BeforeTouchSize = new System.Drawing.Size(409, 172);
             this.txtScope.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtScope.Location = new System.Drawing.Point(27, 131);
+            this.txtScope.Location = new System.Drawing.Point(27, 121);
             this.txtScope.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtScope.Multiline = true;
             this.txtScope.Name = "txtScope";
             this.txtScope.ReadOnly = true;
-            this.txtScope.Size = new System.Drawing.Size(403, 59);
+            this.txtScope.Size = new System.Drawing.Size(403, 55);
             this.txtScope.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtScope.TabIndex = 13;
             // 
@@ -300,12 +308,12 @@ namespace VastGIS.Projections.Views
             this.tabMap.Controls.Add(this.txtAreaName);
             this.tabMap.Image = null;
             this.tabMap.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabMap.Location = new System.Drawing.Point(1, 22);
+            this.tabMap.Location = new System.Drawing.Point(1, 21);
             this.tabMap.Name = "tabMap";
             this.tabMap.ShowCloseButton = true;
-            this.tabMap.Size = new System.Drawing.Size(448, 470);
+            this.tabMap.Size = new System.Drawing.Size(448, 433);
             this.tabMap.TabIndex = 2;
-            this.tabMap.Text = "Area of use";
+            this.tabMap.Text = "使用区域";
             this.tabMap.ThemesEnabled = false;
             // 
             // _projectionMap1
@@ -316,15 +324,18 @@ namespace VastGIS.Projections.Views
             | System.Windows.Forms.AnchorStyles.Right)));
             this._projectionMap1.AnimationOnZooming = VastGIS.Api.Enums.AutoToggle.Auto;
             this._projectionMap1.BackgroundColor = System.Drawing.Color.White;
-            this._projectionMap1.CurrentScale = 21.24436183764016D;
+            this._projectionMap1.CurrentScale = 19.771980324140344D;
             this._projectionMap1.CurrentZoom = -1;
+            this._projectionMap1.ExpandLayersOnAdding = true;
             this._projectionMap1.ExtentHistory = 20;
             this._projectionMap1.ExtentPad = 0.02D;
+            envelope1.Tag = "";
+            this._projectionMap1.Extents = envelope1;
             this._projectionMap1.GrabProjectionFromData = true;
             this._projectionMap1.InertiaOnPanning = VastGIS.Api.Enums.AutoToggle.Auto;
             this._projectionMap1.KnownExtents = VastGIS.Api.Enums.KnownExtents.None;
             this._projectionMap1.Latitude = 0F;
-            this._projectionMap1.Location = new System.Drawing.Point(20, 12);
+            this._projectionMap1.Location = new System.Drawing.Point(20, 11);
             this._projectionMap1.Longitude = 0F;
             this._projectionMap1.MapCursor = VastGIS.Api.Enums.MapCursor.ZoomIn;
             this._projectionMap1.MapProjection = VastGIS.Api.Enums.MapProjection.None;
@@ -341,7 +352,7 @@ namespace VastGIS.Projections.Views
             this._projectionMap1.ShowCoordinatesFormat = VastGIS.Api.Enums.AngleFormat.Degrees;
             this._projectionMap1.ShowRedrawTime = false;
             this._projectionMap1.ShowVersionNumber = false;
-            this._projectionMap1.Size = new System.Drawing.Size(409, 219);
+            this._projectionMap1.Size = new System.Drawing.Size(409, 202);
             this._projectionMap1.SystemCursor = VastGIS.Api.Enums.SystemCursor.MapDefault;
             this._projectionMap1.TabIndex = 20;
             this._projectionMap1.Tag = "";
@@ -356,24 +367,24 @@ namespace VastGIS.Projections.Views
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 243);
+            this.label5.Location = new System.Drawing.Point(17, 224);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 13);
+            this.label5.Size = new System.Drawing.Size(59, 12);
             this.label5.TabIndex = 18;
-            this.label5.Text = "Area description:";
+            this.label5.Text = "区域说明:";
             // 
             // txtAreaName
             // 
             this.txtAreaName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAreaName.BeforeTouchSize = new System.Drawing.Size(409, 186);
+            this.txtAreaName.BeforeTouchSize = new System.Drawing.Size(409, 172);
             this.txtAreaName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAreaName.Location = new System.Drawing.Point(20, 259);
+            this.txtAreaName.Location = new System.Drawing.Point(20, 239);
             this.txtAreaName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtAreaName.Multiline = true;
             this.txtAreaName.Name = "txtAreaName";
             this.txtAreaName.ReadOnly = true;
-            this.txtAreaName.Size = new System.Drawing.Size(409, 186);
+            this.txtAreaName.Size = new System.Drawing.Size(409, 172);
             this.txtAreaName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtAreaName.TabIndex = 17;
             // 
@@ -383,10 +394,10 @@ namespace VastGIS.Projections.Views
             this.tabWkt.Controls.Add(this.gradientPanel1);
             this.tabWkt.Image = null;
             this.tabWkt.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabWkt.Location = new System.Drawing.Point(1, 22);
+            this.tabWkt.Location = new System.Drawing.Point(1, 21);
             this.tabWkt.Name = "tabWkt";
             this.tabWkt.ShowCloseButton = true;
-            this.tabWkt.Size = new System.Drawing.Size(448, 470);
+            this.tabWkt.Size = new System.Drawing.Size(448, 433);
             this.tabWkt.TabIndex = 3;
             this.tabWkt.Text = "WKT";
             this.tabWkt.ThemesEnabled = false;
@@ -394,11 +405,11 @@ namespace VastGIS.Projections.Views
             // btnCopyClipboard
             // 
             this.btnCopyClipboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyClipboard.BeforeTouchSize = new System.Drawing.Size(110, 23);
+            this.btnCopyClipboard.BeforeTouchSize = new System.Drawing.Size(110, 21);
             this.btnCopyClipboard.IsBackStageButton = false;
-            this.btnCopyClipboard.Location = new System.Drawing.Point(323, 432);
+            this.btnCopyClipboard.Location = new System.Drawing.Point(323, 399);
             this.btnCopyClipboard.Name = "btnCopyClipboard";
-            this.btnCopyClipboard.Size = new System.Drawing.Size(110, 23);
+            this.btnCopyClipboard.Size = new System.Drawing.Size(110, 21);
             this.btnCopyClipboard.TabIndex = 4;
             this.btnCopyClipboard.Text = "Copy to clipboard";
             this.btnCopyClipboard.Click += new System.EventHandler(this.OnCopyClipboardClick);
@@ -412,10 +423,10 @@ namespace VastGIS.Projections.Views
             this.gradientPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.gradientPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gradientPanel1.Controls.Add(this.projectionTextBox1);
-            this.gradientPanel1.Location = new System.Drawing.Point(18, 13);
+            this.gradientPanel1.Location = new System.Drawing.Point(18, 12);
             this.gradientPanel1.Name = "gradientPanel1";
             this.gradientPanel1.Padding = new System.Windows.Forms.Padding(5);
-            this.gradientPanel1.Size = new System.Drawing.Size(415, 413);
+            this.gradientPanel1.Size = new System.Drawing.Size(415, 381);
             this.gradientPanel1.TabIndex = 6;
             // 
             // projectionTextBox1
@@ -425,7 +436,7 @@ namespace VastGIS.Projections.Views
             this.projectionTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.projectionTextBox1.Location = new System.Drawing.Point(5, 5);
             this.projectionTextBox1.Name = "projectionTextBox1";
-            this.projectionTextBox1.Size = new System.Drawing.Size(403, 401);
+            this.projectionTextBox1.Size = new System.Drawing.Size(403, 369);
             this.projectionTextBox1.TabIndex = 0;
             this.projectionTextBox1.Text = "";
             // 
@@ -435,10 +446,10 @@ namespace VastGIS.Projections.Views
             this.tabEsriWkt.Controls.Add(this.gradientPanel2);
             this.tabEsriWkt.Image = null;
             this.tabEsriWkt.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabEsriWkt.Location = new System.Drawing.Point(1, 22);
+            this.tabEsriWkt.Location = new System.Drawing.Point(1, 21);
             this.tabEsriWkt.Name = "tabEsriWkt";
             this.tabEsriWkt.ShowCloseButton = true;
-            this.tabEsriWkt.Size = new System.Drawing.Size(448, 470);
+            this.tabEsriWkt.Size = new System.Drawing.Size(448, 433);
             this.tabEsriWkt.TabIndex = 5;
             this.tabEsriWkt.Text = "ESRI WKT";
             this.tabEsriWkt.ThemesEnabled = false;
@@ -446,11 +457,11 @@ namespace VastGIS.Projections.Views
             // btnCopyClipboardEsri
             // 
             this.btnCopyClipboardEsri.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCopyClipboardEsri.BeforeTouchSize = new System.Drawing.Size(110, 23);
+            this.btnCopyClipboardEsri.BeforeTouchSize = new System.Drawing.Size(110, 21);
             this.btnCopyClipboardEsri.IsBackStageButton = false;
-            this.btnCopyClipboardEsri.Location = new System.Drawing.Point(322, 433);
+            this.btnCopyClipboardEsri.Location = new System.Drawing.Point(322, 400);
             this.btnCopyClipboardEsri.Name = "btnCopyClipboardEsri";
-            this.btnCopyClipboardEsri.Size = new System.Drawing.Size(110, 23);
+            this.btnCopyClipboardEsri.Size = new System.Drawing.Size(110, 21);
             this.btnCopyClipboardEsri.TabIndex = 7;
             this.btnCopyClipboardEsri.Text = "Copy to clipboard";
             this.btnCopyClipboardEsri.Click += new System.EventHandler(this.btnCopyClipboardEsri_Click);
@@ -464,10 +475,10 @@ namespace VastGIS.Projections.Views
             this.gradientPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.gradientPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gradientPanel2.Controls.Add(this.projectionTextBoxEsri);
-            this.gradientPanel2.Location = new System.Drawing.Point(17, 14);
+            this.gradientPanel2.Location = new System.Drawing.Point(17, 13);
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.Padding = new System.Windows.Forms.Padding(5);
-            this.gradientPanel2.Size = new System.Drawing.Size(415, 413);
+            this.gradientPanel2.Size = new System.Drawing.Size(415, 381);
             this.gradientPanel2.TabIndex = 8;
             // 
             // projectionTextBoxEsri
@@ -477,7 +488,7 @@ namespace VastGIS.Projections.Views
             this.projectionTextBoxEsri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.projectionTextBoxEsri.Location = new System.Drawing.Point(5, 5);
             this.projectionTextBoxEsri.Name = "projectionTextBoxEsri";
-            this.projectionTextBoxEsri.Size = new System.Drawing.Size(403, 401);
+            this.projectionTextBoxEsri.Size = new System.Drawing.Size(403, 369);
             this.projectionTextBoxEsri.TabIndex = 0;
             this.projectionTextBoxEsri.Text = "";
             // 
@@ -491,16 +502,18 @@ namespace VastGIS.Projections.Views
             this.tabDialects.Controls.Add(this.label6);
             this.tabDialects.Image = null;
             this.tabDialects.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabDialects.Location = new System.Drawing.Point(1, 22);
+            this.tabDialects.Location = new System.Drawing.Point(1, 21);
             this.tabDialects.Name = "tabDialects";
             this.tabDialects.ShowCloseButton = true;
-            this.tabDialects.Size = new System.Drawing.Size(448, 470);
+            this.tabDialects.Size = new System.Drawing.Size(448, 433);
             this.tabDialects.TabIndex = 4;
             this.tabDialects.Text = "Dialects";
             this.tabDialects.ThemesEnabled = false;
             // 
             // dialectGrid1
             // 
+            this.dialectGrid1.ActivateCurrentCellBehavior = Syncfusion.Windows.Forms.Grid.GridCellActivateAction.None;
+            this.dialectGrid1.AlphaBlendSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
             this.dialectGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -510,10 +523,13 @@ namespace VastGIS.Projections.Views
             this.dialectGrid1.Appearance.AnyCell.Borders.Top = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
             this.dialectGrid1.Appearance.AnyCell.VerticalAlignment = Syncfusion.Windows.Forms.Grid.GridVerticalAlignment.Middle;
             this.dialectGrid1.BackColor = System.Drawing.SystemColors.Window;
-            this.dialectGrid1.FreezeCaption = false;
-            this.dialectGrid1.Location = new System.Drawing.Point(14, 42);
+            this.dialectGrid1.BrowseOnly = true;
+            this.dialectGrid1.GridLineColor = System.Drawing.Color.White;
+            this.dialectGrid1.Location = new System.Drawing.Point(14, 39);
             this.dialectGrid1.Name = "dialectGrid1";
-            this.dialectGrid1.Size = new System.Drawing.Size(419, 386);
+            this.dialectGrid1.ShowCurrentCellBorderBehavior = Syncfusion.Windows.Forms.Grid.GridShowCurrentCellBorder.HideAlways;
+            this.dialectGrid1.ShowRowHeaders = false;
+            this.dialectGrid1.Size = new System.Drawing.Size(419, 356);
             this.dialectGrid1.TabIndex = 38;
             this.dialectGrid1.TableDescriptor.AllowEdit = false;
             this.dialectGrid1.TableDescriptor.TableOptions.ListBoxSelectionCurrentCellOptions = Syncfusion.Windows.Forms.Grid.Grouping.GridListBoxSelectionCurrentCellOptions.None;
@@ -527,6 +543,7 @@ namespace VastGIS.Projections.Views
             this.dialectGrid1.TopLevelGroupOptions.ShowAddNewRecordBeforeDetails = false;
             this.dialectGrid1.TopLevelGroupOptions.ShowCaption = false;
             this.dialectGrid1.TopLevelGroupOptions.ShowColumnHeaders = true;
+            this.dialectGrid1.UseRightToLeftCompatibleTextBox = true;
             this.dialectGrid1.VersionInfo = "5.0.1.0";
             this.dialectGrid1.WrapWithPanel = true;
             // 
@@ -535,12 +552,12 @@ namespace VastGIS.Projections.Views
             this.btnClearDialects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClearDialects.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
             this.btnClearDialects.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.btnClearDialects.BeforeTouchSize = new System.Drawing.Size(69, 23);
+            this.btnClearDialects.BeforeTouchSize = new System.Drawing.Size(69, 21);
             this.btnClearDialects.ForeColor = System.Drawing.Color.White;
             this.btnClearDialects.IsBackStageButton = false;
-            this.btnClearDialects.Location = new System.Drawing.Point(364, 434);
+            this.btnClearDialects.Location = new System.Drawing.Point(364, 401);
             this.btnClearDialects.Name = "btnClearDialects";
-            this.btnClearDialects.Size = new System.Drawing.Size(69, 23);
+            this.btnClearDialects.Size = new System.Drawing.Size(69, 21);
             this.btnClearDialects.TabIndex = 38;
             this.btnClearDialects.Text = "Clear";
             this.btnClearDialects.UseVisualStyle = false;
@@ -550,12 +567,12 @@ namespace VastGIS.Projections.Views
             this.btnEditDialect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditDialect.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
             this.btnEditDialect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.btnEditDialect.BeforeTouchSize = new System.Drawing.Size(69, 23);
+            this.btnEditDialect.BeforeTouchSize = new System.Drawing.Size(69, 21);
             this.btnEditDialect.ForeColor = System.Drawing.Color.White;
             this.btnEditDialect.IsBackStageButton = false;
-            this.btnEditDialect.Location = new System.Drawing.Point(213, 434);
+            this.btnEditDialect.Location = new System.Drawing.Point(213, 401);
             this.btnEditDialect.Name = "btnEditDialect";
-            this.btnEditDialect.Size = new System.Drawing.Size(69, 23);
+            this.btnEditDialect.Size = new System.Drawing.Size(69, 21);
             this.btnEditDialect.TabIndex = 36;
             this.btnEditDialect.Text = "Edit";
             this.btnEditDialect.UseVisualStyle = false;
@@ -565,12 +582,12 @@ namespace VastGIS.Projections.Views
             this.btnRemoveDialect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemoveDialect.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
             this.btnRemoveDialect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.btnRemoveDialect.BeforeTouchSize = new System.Drawing.Size(69, 23);
+            this.btnRemoveDialect.BeforeTouchSize = new System.Drawing.Size(69, 21);
             this.btnRemoveDialect.ForeColor = System.Drawing.Color.White;
             this.btnRemoveDialect.IsBackStageButton = false;
-            this.btnRemoveDialect.Location = new System.Drawing.Point(288, 434);
+            this.btnRemoveDialect.Location = new System.Drawing.Point(288, 401);
             this.btnRemoveDialect.Name = "btnRemoveDialect";
-            this.btnRemoveDialect.Size = new System.Drawing.Size(69, 23);
+            this.btnRemoveDialect.Size = new System.Drawing.Size(69, 21);
             this.btnRemoveDialect.TabIndex = 35;
             this.btnRemoveDialect.Text = "Remove";
             this.btnRemoveDialect.UseVisualStyle = false;
@@ -580,12 +597,12 @@ namespace VastGIS.Projections.Views
             this.btnAddDialect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddDialect.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
             this.btnAddDialect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.btnAddDialect.BeforeTouchSize = new System.Drawing.Size(69, 23);
+            this.btnAddDialect.BeforeTouchSize = new System.Drawing.Size(69, 21);
             this.btnAddDialect.ForeColor = System.Drawing.Color.White;
             this.btnAddDialect.IsBackStageButton = false;
-            this.btnAddDialect.Location = new System.Drawing.Point(138, 434);
+            this.btnAddDialect.Location = new System.Drawing.Point(138, 401);
             this.btnAddDialect.Name = "btnAddDialect";
-            this.btnAddDialect.Size = new System.Drawing.Size(69, 23);
+            this.btnAddDialect.Size = new System.Drawing.Size(69, 21);
             this.btnAddDialect.TabIndex = 34;
             this.btnAddDialect.Text = "Add";
             this.btnAddDialect.UseVisualStyle = false;
@@ -594,23 +611,23 @@ namespace VastGIS.Projections.Views
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.Location = new System.Drawing.Point(19, 9);
+            this.label6.Location = new System.Drawing.Point(19, 8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(379, 30);
+            this.label6.Size = new System.Drawing.Size(379, 28);
             this.label6.TabIndex = 4;
             this.label6.Text = "Dialects are alternative formulations of the projection. Add to this list any WKT" +
     " or proj4 strings that should be bound to the current EPSG code:\r\n";
             // 
             // ProjectionInfoView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 548);
+            this.ClientSize = new System.Drawing.Size(474, 506);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.tabControl1);
             this.Name = "ProjectionInfoView";
-            this.Text = "Projection Properties";
+            this.Text = "投影参数";
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabDescription.ResumeLayout(false);

@@ -1,16 +1,23 @@
-Ôªønamespace VastGIS.QuickDB
+#region Copyright Syncfusion Inc. 2001 - 2017
+// Copyright Syncfusion Inc. 2001 - 2017. All rights reserved.
+// Use of this code is subject to the terms of our license.
+// A copy of the current license can be obtained at any time by e-mailing
+// licensing@syncfusion.com. Any infringement will be prosecuted under
+// applicable laws. 
+#endregion
+namespace VastGIS.QuickDB
 {
     partial class frmMain
     {
         /// <summary>
-        /// ÂøÖÈúÄÁöÑËÆæËÆ°Âô®ÂèòÈáè„ÄÇ
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Ê∏ÖÁêÜÊâÄÊúâÊ≠£Âú®‰ΩøÁî®ÁöÑËµÑÊ∫ê„ÄÇ
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">Â¶ÇÊûúÂ∫îÈáäÊîæÊâòÁÆ°ËµÑÊ∫êÔºå‰∏∫ trueÔºõÂê¶Âàô‰∏∫ false„ÄÇ</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,128 +27,399 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Á™ó‰ΩìËÆæËÆ°Âô®ÁîüÊàêÁöÑ‰ª£Á†Å
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// ËÆæËÆ°Âô®ÊîØÊåÅÊâÄÈúÄÁöÑÊñπÊ≥ï - ‰∏çË¶Å‰øÆÊîπ
-        /// ‰ΩøÁî®‰ª£Á†ÅÁºñËæëÂô®‰øÆÊîπÊ≠§ÊñπÊ≥ïÁöÑÂÜÖÂÆπ„ÄÇ
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtDB = new System.Windows.Forms.TextBox();
-            this.btnDB = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSR = new System.Windows.Forms.Button();
-            this.txtSR = new System.Windows.Forms.TextBox();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo treeNodeAdvStyleInfo2 = new Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle13 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle14 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle15 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle16 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            this.ribbonControlAdv1 = new Syncfusion.Windows.Forms.Tools.RibbonControlAdv();
+            this.toolStripTabItem1 = new Syncfusion.Windows.Forms.Tools.ToolStripTabItem();
+            this.toolStripEx1 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
+            this.toolStripTabItem2 = new Syncfusion.Windows.Forms.Tools.ToolStripTabItem();
+            this.toolStripEx2 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
+            this.splitContainerAdv1 = new Syncfusion.Windows.Forms.Tools.SplitContainerAdv();
+            this.trvDatabase = new Syncfusion.Windows.Forms.Tools.TreeViewAdv();
+            this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
+            this.tabPageBase = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.tabPageData = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.gridDataBoundGrid1 = new Syncfusion.Windows.Forms.Grid.GridDataBoundGrid();
+            this.btnNewDatabase = new System.Windows.Forms.ToolStripButton();
+            this.btnOpenDatabase = new System.Windows.Forms.ToolStripButton();
+            this.btnCloseDatabase = new System.Windows.Forms.ToolStripButton();
+            this.btnCheckDatabase = new System.Windows.Forms.ToolStripButton();
+            this.btnImportDXF = new System.Windows.Forms.ToolStripButton();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControlAdv1)).BeginInit();
+            this.ribbonControlAdv1.SuspendLayout();
+            this.toolStripTabItem1.Panel.SuspendLayout();
+            this.toolStripEx1.SuspendLayout();
+            this.toolStripTabItem2.Panel.SuspendLayout();
+            this.toolStripEx2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAdv1)).BeginInit();
+            this.splitContainerAdv1.Panel1.SuspendLayout();
+            this.splitContainerAdv1.Panel2.SuspendLayout();
+            this.splitContainerAdv1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trvDatabase)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
+            this.tabControlAdv1.SuspendLayout();
+            this.tabPageBase.SuspendLayout();
+            this.tabPageData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDataBoundGrid1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // ribbonControlAdv1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Êï∞ÊçÆÂ∫ìÔºö";
+            this.ribbonControlAdv1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.ribbonControlAdv1.Header.AddMainItem(toolStripTabItem1);
+            this.ribbonControlAdv1.Header.AddMainItem(toolStripTabItem2);
+            this.ribbonControlAdv1.Location = new System.Drawing.Point(1, 0);
+            this.ribbonControlAdv1.MenuButtonFont = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.ribbonControlAdv1.MenuButtonText = "";
+            this.ribbonControlAdv1.MenuColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(114)))), ((int)(((byte)(198)))));
+            this.ribbonControlAdv1.Name = "ribbonControlAdv1";
+            this.ribbonControlAdv1.OfficeColorScheme = Syncfusion.Windows.Forms.Tools.ToolStripEx.ColorScheme.Managed;
             // 
-            // txtDB
+            // ribbonControlAdv1.OfficeMenu
             // 
-            this.txtDB.Location = new System.Drawing.Point(60, 10);
-            this.txtDB.Name = "txtDB";
-            this.txtDB.Size = new System.Drawing.Size(304, 21);
-            this.txtDB.TabIndex = 1;
+            this.ribbonControlAdv1.OfficeMenu.Name = "OfficeMenu";
+            this.ribbonControlAdv1.OfficeMenu.ShowItemToolTips = true;
+            this.ribbonControlAdv1.OfficeMenu.Size = new System.Drawing.Size(12, 65);
+            this.ribbonControlAdv1.QuickPanelImageLayout = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ribbonControlAdv1.RibbonHeaderImage = Syncfusion.Windows.Forms.Tools.RibbonHeaderImage.None;
+            this.ribbonControlAdv1.SelectedTab = this.toolStripTabItem2;
+            this.ribbonControlAdv1.ShowRibbonDisplayOptionButton = true;
+            this.ribbonControlAdv1.Size = new System.Drawing.Size(958, 158);
+            this.ribbonControlAdv1.SystemText.QuickAccessDialogDropDownName = "Start menu";
+            this.ribbonControlAdv1.SystemText.RenameDisplayLabelText = "&Display Name:";
+            this.ribbonControlAdv1.TabIndex = 0;
+            this.ribbonControlAdv1.Text = "≤ª∂Ø≤˙ ˝æ›ø‚π‹¿Ìπ§æﬂ";
+            this.ribbonControlAdv1.TitleColor = System.Drawing.Color.Black;
             // 
-            // btnDB
+            // toolStripTabItem1
             // 
-            this.btnDB.Location = new System.Drawing.Point(369, 8);
-            this.btnDB.Name = "btnDB";
-            this.btnDB.Size = new System.Drawing.Size(75, 23);
-            this.btnDB.TabIndex = 2;
-            this.btnDB.Text = "ÈÄâÊã©...";
-            this.btnDB.UseVisualStyleBackColor = true;
-            this.btnDB.Click += new System.EventHandler(this.btnDB_Click);
+            this.toolStripTabItem1.Name = "toolStripTabItem1";
             // 
-            // label2
+            // ribbonControlAdv1.ribbonPanel1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "ÂùêÊ†áÁ≥ªÔºö";
+            this.toolStripTabItem1.Panel.Controls.Add(this.toolStripEx1);
+            this.toolStripTabItem1.Panel.Name = "ribbonPanel1";
+            this.toolStripTabItem1.Panel.ScrollPosition = 0;
+            this.toolStripTabItem1.Panel.TabIndex = 2;
+            this.toolStripTabItem1.Panel.Text = " ˝æ›ø‚";
+            this.toolStripTabItem1.Position = 0;
+            this.toolStripTabItem1.Size = new System.Drawing.Size(52, 19);
+            this.toolStripTabItem1.Text = " ˝æ›ø‚";
             // 
-            // btnSR
+            // toolStripEx1
             // 
-            this.btnSR.Location = new System.Drawing.Point(369, 39);
-            this.btnSR.Name = "btnSR";
-            this.btnSR.Size = new System.Drawing.Size(75, 23);
-            this.btnSR.TabIndex = 5;
-            this.btnSR.Text = "ÈÄâÊã©...";
-            this.btnSR.UseVisualStyleBackColor = true;
-            this.btnSR.Click += new System.EventHandler(this.btnSR_Click);
+            this.toolStripEx1.AutoSize = false;
+            this.toolStripEx1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripEx1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.toolStripEx1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.toolStripEx1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripEx1.Image = null;
+            this.toolStripEx1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnNewDatabase,
+            this.btnOpenDatabase,
+            this.btnCloseDatabase,
+            this.btnCheckDatabase});
+            this.toolStripEx1.Location = new System.Drawing.Point(0, 1);
+            this.toolStripEx1.Name = "toolStripEx1";
+            this.toolStripEx1.Size = new System.Drawing.Size(341, 96);
+            this.toolStripEx1.TabIndex = 0;
+            this.toolStripEx1.Text = " ˝æ›ø‚";
             // 
-            // txtSR
+            // toolStripTabItem2
             // 
-            this.txtSR.Location = new System.Drawing.Point(60, 41);
-            this.txtSR.Name = "txtSR";
-            this.txtSR.Size = new System.Drawing.Size(304, 21);
-            this.txtSR.TabIndex = 4;
+            this.toolStripTabItem2.Name = "toolStripTabItem2";
             // 
-            // btnCreate
+            // ribbonControlAdv1.ribbonPanel2
             // 
-            this.btnCreate.Location = new System.Drawing.Point(267, 69);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
-            this.btnCreate.TabIndex = 6;
-            this.btnCreate.Text = "ÂàõÂª∫";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.toolStripTabItem2.Panel.Controls.Add(this.toolStripEx2);
+            this.toolStripTabItem2.Panel.Name = "ribbonPanel2";
+            this.toolStripTabItem2.Panel.ScrollPosition = 0;
+            this.toolStripTabItem2.Panel.TabIndex = 3;
+            this.toolStripTabItem2.Panel.Text = " ˝æ›Ωªªª";
+            this.toolStripTabItem2.Position = 1;
+            this.toolStripTabItem2.Size = new System.Drawing.Size(65, 19);
+            this.toolStripTabItem2.Text = " ˝æ›Ωªªª";
             // 
-            // btnCancel
+            // toolStripEx2
             // 
-            this.btnCancel.Location = new System.Drawing.Point(369, 69);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "ÂèñÊ∂à";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.toolStripEx2.AutoSize = false;
+            this.toolStripEx2.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripEx2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.toolStripEx2.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.toolStripEx2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripEx2.Image = null;
+            this.toolStripEx2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnImportDXF});
+            this.toolStripEx2.Location = new System.Drawing.Point(0, 1);
+            this.toolStripEx2.Name = "toolStripEx2";
+            this.toolStripEx2.Size = new System.Drawing.Size(288, 96);
+            this.toolStripEx2.TabIndex = 0;
+            this.toolStripEx2.Text = "Ωªªªπ§æﬂ";
+            // 
+            // splitContainerAdv1
+            // 
+            this.splitContainerAdv1.BeforeTouchSize = 7;
+            this.splitContainerAdv1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerAdv1.Location = new System.Drawing.Point(6, 159);
+            this.splitContainerAdv1.Name = "splitContainerAdv1";
+            // 
+            // splitContainerAdv1.Panel1
+            // 
+            this.splitContainerAdv1.Panel1.Controls.Add(this.trvDatabase);
+            // 
+            // splitContainerAdv1.Panel2
+            // 
+            this.splitContainerAdv1.Panel2.Controls.Add(this.tabControlAdv1);
+            this.splitContainerAdv1.Size = new System.Drawing.Size(948, 419);
+            this.splitContainerAdv1.SplitterDistance = 235;
+            this.splitContainerAdv1.TabIndex = 1;
+            this.splitContainerAdv1.Text = "splitContainerAdv1";
+            // 
+            // trvDatabase
+            // 
+            treeNodeAdvStyleInfo2.EnsureDefaultOptionedChild = true;
+            this.trvDatabase.BaseStylePairs.AddRange(new Syncfusion.Windows.Forms.Tools.StyleNamePair[] {
+            new Syncfusion.Windows.Forms.Tools.StyleNamePair("Standard", treeNodeAdvStyleInfo2)});
+            this.trvDatabase.BeforeTouchSize = new System.Drawing.Size(235, 419);
+            this.trvDatabase.Dock = System.Windows.Forms.DockStyle.Fill;
+            // 
+            // 
+            // 
+            this.trvDatabase.HelpTextControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.trvDatabase.HelpTextControl.Location = new System.Drawing.Point(0, 0);
+            this.trvDatabase.HelpTextControl.Name = "helpText";
+            this.trvDatabase.HelpTextControl.Size = new System.Drawing.Size(61, 14);
+            this.trvDatabase.HelpTextControl.TabIndex = 0;
+            this.trvDatabase.HelpTextControl.Text = "help text";
+            this.trvDatabase.InactiveSelectedNodeForeColor = System.Drawing.SystemColors.ControlText;
+            this.trvDatabase.Location = new System.Drawing.Point(0, 0);
+            this.trvDatabase.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.trvDatabase.Name = "trvDatabase";
+            this.trvDatabase.SelectedNodeForeColor = System.Drawing.SystemColors.HighlightText;
+            this.trvDatabase.Size = new System.Drawing.Size(235, 419);
+            this.trvDatabase.TabIndex = 0;
+            this.trvDatabase.Text = "treeViewAdv1";
+            // 
+            // 
+            // 
+            this.trvDatabase.ToolTipControl.BackColor = System.Drawing.SystemColors.Info;
+            this.trvDatabase.ToolTipControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.trvDatabase.ToolTipControl.Location = new System.Drawing.Point(0, 0);
+            this.trvDatabase.ToolTipControl.Name = "toolTip";
+            this.trvDatabase.ToolTipControl.Size = new System.Drawing.Size(49, 14);
+            this.trvDatabase.ToolTipControl.TabIndex = 1;
+            this.trvDatabase.ToolTipControl.Text = "toolTip";
+            // 
+            // tabControlAdv1
+            // 
+            this.tabControlAdv1.ActiveTabForeColor = System.Drawing.Color.Empty;
+            this.tabControlAdv1.BeforeTouchSize = new System.Drawing.Size(706, 419);
+            this.tabControlAdv1.CloseButtonForeColor = System.Drawing.Color.Empty;
+            this.tabControlAdv1.CloseButtonHoverForeColor = System.Drawing.Color.Empty;
+            this.tabControlAdv1.CloseButtonPressedForeColor = System.Drawing.Color.Empty;
+            this.tabControlAdv1.Controls.Add(this.tabPageBase);
+            this.tabControlAdv1.Controls.Add(this.tabPageData);
+            this.tabControlAdv1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlAdv1.InActiveTabForeColor = System.Drawing.Color.Empty;
+            this.tabControlAdv1.Location = new System.Drawing.Point(0, 0);
+            this.tabControlAdv1.Name = "tabControlAdv1";
+            this.tabControlAdv1.SeparatorColor = System.Drawing.SystemColors.ControlDark;
+            this.tabControlAdv1.ShowSeparator = false;
+            this.tabControlAdv1.Size = new System.Drawing.Size(706, 419);
+            this.tabControlAdv1.TabIndex = 0;
+            // 
+            // tabPageBase
+            // 
+            this.tabPageBase.Controls.Add(this.richTextBox1);
+            this.tabPageBase.Image = null;
+            this.tabPageBase.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabPageBase.Location = new System.Drawing.Point(1, 24);
+            this.tabPageBase.Name = "tabPageBase";
+            this.tabPageBase.ShowCloseButton = true;
+            this.tabPageBase.Size = new System.Drawing.Size(703, 393);
+            this.tabPageBase.TabIndex = 1;
+            this.tabPageBase.Text = "Àµ√˜";
+            this.tabPageBase.ThemesEnabled = false;
+            // 
+            // tabPageData
+            // 
+            this.tabPageData.Controls.Add(this.gridDataBoundGrid1);
+            this.tabPageData.Image = null;
+            this.tabPageData.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabPageData.Location = new System.Drawing.Point(1, 24);
+            this.tabPageData.Name = "tabPageData";
+            this.tabPageData.ShowCloseButton = true;
+            this.tabPageData.Size = new System.Drawing.Size(703, 393);
+            this.tabPageData.TabIndex = 2;
+            this.tabPageData.Text = " ˝æ›";
+            this.tabPageData.ThemesEnabled = false;
+            // 
+            // gridDataBoundGrid1
+            // 
+            this.gridDataBoundGrid1.AllowDragSelectedCols = true;
+            gridBaseStyle13.Name = "Column Header";
+            gridBaseStyle13.StyleInfo.BaseStyle = "Header";
+            gridBaseStyle13.StyleInfo.CellType = "ColumnHeaderCell";
+            gridBaseStyle13.StyleInfo.Enabled = false;
+            gridBaseStyle13.StyleInfo.Font.Bold = false;
+            gridBaseStyle13.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Center;
+            gridBaseStyle14.Name = "Header";
+            gridBaseStyle14.StyleInfo.Borders.Bottom = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle14.StyleInfo.Borders.Left = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle14.StyleInfo.Borders.Right = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle14.StyleInfo.Borders.Top = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle14.StyleInfo.CellType = "Header";
+            gridBaseStyle14.StyleInfo.Font.Bold = true;
+            gridBaseStyle14.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(System.Drawing.SystemColors.Control);
+            gridBaseStyle14.StyleInfo.VerticalAlignment = Syncfusion.Windows.Forms.Grid.GridVerticalAlignment.Middle;
+            gridBaseStyle15.Name = "Standard";
+            gridBaseStyle15.StyleInfo.CheckBoxOptions.CheckedValue = "True";
+            gridBaseStyle15.StyleInfo.CheckBoxOptions.UncheckedValue = "False";
+            gridBaseStyle15.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(System.Drawing.SystemColors.Window);
+            gridBaseStyle16.Name = "Row Header";
+            gridBaseStyle16.StyleInfo.BaseStyle = "Header";
+            gridBaseStyle16.StyleInfo.CellType = "RowHeaderCell";
+            gridBaseStyle16.StyleInfo.Enabled = true;
+            gridBaseStyle16.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Left;
+            this.gridDataBoundGrid1.BaseStylesMap.AddRange(new Syncfusion.Windows.Forms.Grid.GridBaseStyle[] {
+            gridBaseStyle13,
+            gridBaseStyle14,
+            gridBaseStyle15,
+            gridBaseStyle16});
+            this.gridDataBoundGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridDataBoundGrid1.Location = new System.Drawing.Point(0, 0);
+            this.gridDataBoundGrid1.Name = "gridDataBoundGrid1";
+            this.gridDataBoundGrid1.OptimizeInsertRemoveCells = true;
+            this.gridDataBoundGrid1.ShowCurrentCellBorderBehavior = Syncfusion.Windows.Forms.Grid.GridShowCurrentCellBorder.GrayWhenLostFocus;
+            this.gridDataBoundGrid1.Size = new System.Drawing.Size(703, 393);
+            this.gridDataBoundGrid1.SmartSizeBox = false;
+            this.gridDataBoundGrid1.SortBehavior = Syncfusion.Windows.Forms.Grid.GridSortBehavior.DoubleClick;
+            this.gridDataBoundGrid1.TabIndex = 0;
+            this.gridDataBoundGrid1.Text = "gridDataBoundGrid1";
+            this.gridDataBoundGrid1.UseListChangedEvent = true;
+            this.gridDataBoundGrid1.UseRightToLeftCompatibleTextBox = true;
+            // 
+            // btnNewDatabase
+            // 
+            this.btnNewDatabase.Image = global::VastGIS.QuickDB.Properties.Resources.newdatabase;
+            this.btnNewDatabase.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnNewDatabase.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNewDatabase.Name = "btnNewDatabase";
+            this.btnNewDatabase.Size = new System.Drawing.Size(76, 75);
+            this.btnNewDatabase.Text = "–¬Ω® ˝æ›ø‚";
+            this.btnNewDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // btnOpenDatabase
+            // 
+            this.btnOpenDatabase.Image = global::VastGIS.QuickDB.Properties.Resources.opendatabase;
+            this.btnOpenDatabase.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnOpenDatabase.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnOpenDatabase.Name = "btnOpenDatabase";
+            this.btnOpenDatabase.Size = new System.Drawing.Size(76, 75);
+            this.btnOpenDatabase.Text = "¥Úø™ ˝æ›ø‚";
+            this.btnOpenDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // btnCloseDatabase
+            // 
+            this.btnCloseDatabase.Image = global::VastGIS.QuickDB.Properties.Resources.closedatabase;
+            this.btnCloseDatabase.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCloseDatabase.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCloseDatabase.Name = "btnCloseDatabase";
+            this.btnCloseDatabase.Size = new System.Drawing.Size(76, 75);
+            this.btnCloseDatabase.Text = "πÿ±’ ˝æ›ø‚";
+            this.btnCloseDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // btnCheckDatabase
+            // 
+            this.btnCheckDatabase.Image = global::VastGIS.QuickDB.Properties.Resources.checkdatabase;
+            this.btnCheckDatabase.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCheckDatabase.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCheckDatabase.Name = "btnCheckDatabase";
+            this.btnCheckDatabase.Size = new System.Drawing.Size(76, 75);
+            this.btnCheckDatabase.Text = "ºÏ≤È ˝æ›ø‚";
+            this.btnCheckDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // btnImportDXF
+            // 
+            this.btnImportDXF.Image = global::VastGIS.QuickDB.Properties.Resources.importdxf;
+            this.btnImportDXF.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnImportDXF.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImportDXF.Name = "btnImportDXF";
+            this.btnImportDXF.Size = new System.Drawing.Size(57, 75);
+            this.btnImportDXF.Text = "µº»ÎDXF";
+            this.btnImportDXF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(703, 393);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 104);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.btnSR);
-            this.Controls.Add(this.txtSR);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnDB);
-            this.Controls.Add(this.txtDB);
-            this.Controls.Add(this.label1);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.ClientSize = new System.Drawing.Size(960, 584);
+            this.Controls.Add(this.splitContainerAdv1);
+            this.Controls.Add(this.ribbonControlAdv1);
             this.Name = "frmMain";
-            this.Text = "ÂàõÂª∫Êï∞ÊçÆÂ∫ì";
+            this.Text = "≤ª∂Ø≤˙ ˝æ›ø‚π‹¿Ìπ§æﬂ";
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControlAdv1)).EndInit();
+            this.ribbonControlAdv1.ResumeLayout(false);
+            this.ribbonControlAdv1.PerformLayout();
+            this.toolStripTabItem1.Panel.ResumeLayout(false);
+            this.toolStripEx1.ResumeLayout(false);
+            this.toolStripEx1.PerformLayout();
+            this.toolStripTabItem2.Panel.ResumeLayout(false);
+            this.toolStripEx2.ResumeLayout(false);
+            this.toolStripEx2.PerformLayout();
+            this.splitContainerAdv1.Panel1.ResumeLayout(false);
+            this.splitContainerAdv1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerAdv1)).EndInit();
+            this.splitContainerAdv1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trvDatabase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).EndInit();
+            this.tabControlAdv1.ResumeLayout(false);
+            this.tabPageBase.ResumeLayout(false);
+            this.tabPageData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridDataBoundGrid1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDB;
-        private System.Windows.Forms.Button btnDB;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnSR;
-        private System.Windows.Forms.TextBox txtSR;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.Button btnCancel;
+        private Syncfusion.Windows.Forms.Tools.RibbonControlAdv ribbonControlAdv1;
+        private Syncfusion.Windows.Forms.Tools.ToolStripTabItem toolStripTabItem1;
+        private Syncfusion.Windows.Forms.Tools.ToolStripEx toolStripEx1;
+        private System.Windows.Forms.ToolStripButton btnNewDatabase;
+        private Syncfusion.Windows.Forms.Tools.ToolStripTabItem toolStripTabItem2;
+        private Syncfusion.Windows.Forms.Tools.ToolStripEx toolStripEx2;
+        private System.Windows.Forms.ToolStripButton btnOpenDatabase;
+        private System.Windows.Forms.ToolStripButton btnCloseDatabase;
+        private System.Windows.Forms.ToolStripButton btnCheckDatabase;
+        private Syncfusion.Windows.Forms.Tools.SplitContainerAdv splitContainerAdv1;
+        private Syncfusion.Windows.Forms.Tools.TreeViewAdv trvDatabase;
+        private Syncfusion.Windows.Forms.Tools.TabControlAdv tabControlAdv1;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageBase;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageData;
+        private Syncfusion.Windows.Forms.Grid.GridDataBoundGrid gridDataBoundGrid1;
+        private System.Windows.Forms.ToolStripButton btnImportDXF;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
-

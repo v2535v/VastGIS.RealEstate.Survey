@@ -1,4 +1,4 @@
-﻿namespace VastGIS.QuickDB
+﻿namespace VastGIS.QuickDB.Concrete
 {
     public class ZDSqlHelper
     {
