@@ -35,11 +35,11 @@ namespace VastGIS.QuickDB
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo treeNodeAdvStyleInfo2 = new Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo();
-            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle13 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
-            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle14 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
-            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle15 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
-            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle16 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo treeNodeAdvStyleInfo1 = new Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle17 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle18 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle19 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
+            Syncfusion.Windows.Forms.Grid.GridBaseStyle gridBaseStyle20 = new Syncfusion.Windows.Forms.Grid.GridBaseStyle();
             this.ribbonControlAdv1 = new Syncfusion.Windows.Forms.Tools.RibbonControlAdv();
             this.toolStripTabItem1 = new Syncfusion.Windows.Forms.Tools.ToolStripTabItem();
             this.toolStripEx1 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
@@ -94,7 +94,7 @@ namespace VastGIS.QuickDB
             this.ribbonControlAdv1.OfficeMenu.Size = new System.Drawing.Size(12, 65);
             this.ribbonControlAdv1.QuickPanelImageLayout = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ribbonControlAdv1.RibbonHeaderImage = Syncfusion.Windows.Forms.Tools.RibbonHeaderImage.None;
-            this.ribbonControlAdv1.SelectedTab = this.toolStripTabItem2;
+            this.ribbonControlAdv1.SelectedTab = this.toolStripTabItem1;
             this.ribbonControlAdv1.ShowRibbonDisplayOptionButton = true;
             this.ribbonControlAdv1.Size = new System.Drawing.Size(958, 158);
             this.ribbonControlAdv1.SystemText.QuickAccessDialogDropDownName = "Start menu";
@@ -189,9 +189,9 @@ namespace VastGIS.QuickDB
             // 
             // trvDatabase
             // 
-            treeNodeAdvStyleInfo2.EnsureDefaultOptionedChild = true;
+            treeNodeAdvStyleInfo1.EnsureDefaultOptionedChild = true;
             this.trvDatabase.BaseStylePairs.AddRange(new Syncfusion.Windows.Forms.Tools.StyleNamePair[] {
-            new Syncfusion.Windows.Forms.Tools.StyleNamePair("Standard", treeNodeAdvStyleInfo2)});
+            new Syncfusion.Windows.Forms.Tools.StyleNamePair("Standard", treeNodeAdvStyleInfo1)});
             this.trvDatabase.BeforeTouchSize = new System.Drawing.Size(235, 419);
             this.trvDatabase.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
@@ -269,35 +269,35 @@ namespace VastGIS.QuickDB
             // gridDataBoundGrid1
             // 
             this.gridDataBoundGrid1.AllowDragSelectedCols = true;
-            gridBaseStyle13.Name = "Column Header";
-            gridBaseStyle13.StyleInfo.BaseStyle = "Header";
-            gridBaseStyle13.StyleInfo.CellType = "ColumnHeaderCell";
-            gridBaseStyle13.StyleInfo.Enabled = false;
-            gridBaseStyle13.StyleInfo.Font.Bold = false;
-            gridBaseStyle13.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Center;
-            gridBaseStyle14.Name = "Header";
-            gridBaseStyle14.StyleInfo.Borders.Bottom = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
-            gridBaseStyle14.StyleInfo.Borders.Left = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
-            gridBaseStyle14.StyleInfo.Borders.Right = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
-            gridBaseStyle14.StyleInfo.Borders.Top = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
-            gridBaseStyle14.StyleInfo.CellType = "Header";
-            gridBaseStyle14.StyleInfo.Font.Bold = true;
-            gridBaseStyle14.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(System.Drawing.SystemColors.Control);
-            gridBaseStyle14.StyleInfo.VerticalAlignment = Syncfusion.Windows.Forms.Grid.GridVerticalAlignment.Middle;
-            gridBaseStyle15.Name = "Standard";
-            gridBaseStyle15.StyleInfo.CheckBoxOptions.CheckedValue = "True";
-            gridBaseStyle15.StyleInfo.CheckBoxOptions.UncheckedValue = "False";
-            gridBaseStyle15.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(System.Drawing.SystemColors.Window);
-            gridBaseStyle16.Name = "Row Header";
-            gridBaseStyle16.StyleInfo.BaseStyle = "Header";
-            gridBaseStyle16.StyleInfo.CellType = "RowHeaderCell";
-            gridBaseStyle16.StyleInfo.Enabled = true;
-            gridBaseStyle16.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Left;
+            gridBaseStyle17.Name = "Column Header";
+            gridBaseStyle17.StyleInfo.BaseStyle = "Header";
+            gridBaseStyle17.StyleInfo.CellType = "ColumnHeaderCell";
+            gridBaseStyle17.StyleInfo.Enabled = false;
+            gridBaseStyle17.StyleInfo.Font.Bold = false;
+            gridBaseStyle17.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Center;
+            gridBaseStyle18.Name = "Header";
+            gridBaseStyle18.StyleInfo.Borders.Bottom = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle18.StyleInfo.Borders.Left = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle18.StyleInfo.Borders.Right = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle18.StyleInfo.Borders.Top = new Syncfusion.Windows.Forms.Grid.GridBorder(Syncfusion.Windows.Forms.Grid.GridBorderStyle.None);
+            gridBaseStyle18.StyleInfo.CellType = "Header";
+            gridBaseStyle18.StyleInfo.Font.Bold = true;
+            gridBaseStyle18.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(System.Drawing.SystemColors.Control);
+            gridBaseStyle18.StyleInfo.VerticalAlignment = Syncfusion.Windows.Forms.Grid.GridVerticalAlignment.Middle;
+            gridBaseStyle19.Name = "Standard";
+            gridBaseStyle19.StyleInfo.CheckBoxOptions.CheckedValue = "True";
+            gridBaseStyle19.StyleInfo.CheckBoxOptions.UncheckedValue = "False";
+            gridBaseStyle19.StyleInfo.Interior = new Syncfusion.Drawing.BrushInfo(System.Drawing.SystemColors.Window);
+            gridBaseStyle20.Name = "Row Header";
+            gridBaseStyle20.StyleInfo.BaseStyle = "Header";
+            gridBaseStyle20.StyleInfo.CellType = "RowHeaderCell";
+            gridBaseStyle20.StyleInfo.Enabled = true;
+            gridBaseStyle20.StyleInfo.HorizontalAlignment = Syncfusion.Windows.Forms.Grid.GridHorizontalAlignment.Left;
             this.gridDataBoundGrid1.BaseStylesMap.AddRange(new Syncfusion.Windows.Forms.Grid.GridBaseStyle[] {
-            gridBaseStyle13,
-            gridBaseStyle14,
-            gridBaseStyle15,
-            gridBaseStyle16});
+            gridBaseStyle17,
+            gridBaseStyle18,
+            gridBaseStyle19,
+            gridBaseStyle20});
             this.gridDataBoundGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridDataBoundGrid1.Location = new System.Drawing.Point(0, 0);
             this.gridDataBoundGrid1.Name = "gridDataBoundGrid1";
@@ -320,6 +320,7 @@ namespace VastGIS.QuickDB
             this.btnNewDatabase.Size = new System.Drawing.Size(76, 75);
             this.btnNewDatabase.Text = "新建数据库";
             this.btnNewDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnNewDatabase.Click += new System.EventHandler(this.btnNewDatabase_Click);
             // 
             // btnOpenDatabase
             // 

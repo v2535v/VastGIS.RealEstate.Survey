@@ -21,5 +21,14 @@ namespace VastGIS.QuickDB
         {
             InitializeComponent();
         }
+
+        private void btnNewDatabase_Click(object sender, EventArgs e)
+        {
+            frmCreateDB frm=new frmCreateDB();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                
+            }
+        }
     }
 }

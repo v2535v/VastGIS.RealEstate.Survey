@@ -38,6 +38,7 @@ namespace VastGIS.QuickDB
             
         }
 
+        public string DatabaseName { get { return txtDB.Text; } }
         private void btnCreate_Click(object sender, EventArgs e)
         {
             var spatialitePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Templates\\vastgis.sqlite");
@@ -86,6 +87,7 @@ namespace VastGIS.QuickDB
             command.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("数据库创建成功!", "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult=DialogResult.OK;
         }
 
         private void btnSR_Click(object sender, EventArgs e)

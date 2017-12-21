@@ -16,7 +16,7 @@ namespace VastGIS.QuickDB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCreateDB());
+            Application.Run(new frmMain());
         }
     }
 }
