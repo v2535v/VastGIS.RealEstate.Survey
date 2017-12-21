@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54BB55DA-DBDC-47E5-8DEC-DE325F35F074}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VastGIS.Services</RootNamespace>
+    <AssemblyName>VastGIS.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionItems\SolutionInfoCore.cs">
+      <Link>Properties\SolutionInfoCore.cs</Link>
+    </Compile>
+    <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Concrete\ConfigService.cs" />
+    <Compile Include="Concrete\FlexibleMessageBox.cs" />
+    <Compile Include="Concrete\FlexibleMessageService.cs" />
+    <Compile Include="Concrete\BaseLogger.cs" />
+    <Compile Include="Concrete\NominatimGeoLocationService.cs" />
+    <Compile Include="Concrete\ProjectLoaderBase.cs" />
+    <Compile Include="Concrete\SelectLayerService.cs" />
+    <Compile Include="Concrete\LogLevelConverter.cs" />
+    <Compile Include="Concrete\ProjectLoaderLegacy.cs" />
+    <Compile Include="Controls\MissingLayer.cs" />
+    <Compile Include="Controls\MissingLayersGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SelectLayerGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SelectLayerGrid.Designer.cs">
+      <DependentUpon>SelectLayerGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ExceptionHelper.cs" />
+    <Compile Include="Concrete\LogEntry.cs" />
+    <Compile Include="Concrete\LoggingService.cs" />
+    <Compile Include="Concrete\TempFileService.cs" />
+    <Compile Include="Config\LayerMetadataServiceBase.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Helpers\EnumConverters.cs" />
+    <Compile Include="Concrete\ProjectLoader.cs" />
+    <Compile Include="Helpers\LayerIconHelper.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Serialization\IProjectLoader.cs" />
+    <Compile Include="Concrete\ImageSerializationService.cs" />
+    <Compile Include="Serialization\LayerSerializationHelper.cs" />
+    <Compile Include="Serialization\Legacy\MapWin4Project.cs" />
+    <Compile Include="Serialization\XmlCustomObject.cs" />
+    <Compile Include="Serialization\XmlMapLocator.cs" />
+    <Compile Include="Serialization\XmlProjectSettings.cs" />
+    <Compile Include="Serialization\XmlRepository.cs" />
+    <Compile Include="Views\Abstract\IMissingLayersView.cs" />
+    <Compile Include="Views\Abstract\ISelectLayerView.cs" />
+    <Compile Include="Views\CreateLayerModel.cs" />
+    <Compile Include="Views\CreateLayerPresenter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\ISecureContext.cs" />
+    <Compile Include="Serialization\Legacy\MapWindow4Config.cs" />
+    <Compile Include="Serialization\Legacy\MapWin4XsdProject.cs" />
+    <Compile Include="Serialization\XmlConfig.cs" />
+    <Compile Include="Serialization\XmlEnvelope.cs" />
+    <Compile Include="Serialization\XmlGroup.cs" />
+    <Compile Include="Serialization\XmlLayer.cs" />
+    <Compile Include="Serialization\XmlMap.cs" />
+    <Compile Include="Serialization\XmlPlugin.cs" />
+    <Compile Include="Serialization\XmlProject.cs" />
+    <Compile Include="Concrete\FileDialogService.cs" />
+    <Compile Include="Concrete\LayerService.cs" />
+    <Compile Include="Concrete\ProjectService.cs" />
+    <Compile Include="Views\CreateLayerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CreateLayerView.Designer.cs">
+      <DependentUpon>CreateLayerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Abstract\ICreateLayerView.cs" />
+    <Compile Include="Views\ProjectLoadingView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProjectLoadingView.Designer.cs">
+      <DependentUpon>ProjectLoadingView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectLayerGridAdapter.cs" />
+    <Compile Include="Views\MissingLayersPresenter.cs" />
+    <Compile Include="Views\MissingLayersView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MissingLayersView.Designer.cs">
+      <DependentUpon>MissingLayersView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectLayerModel.cs" />
+    <Compile Include="Views\SelectLayerPresenter.cs" />
+    <Compile Include="Views\SelectLayerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SelectLayerView.Designer.cs">
+      <DependentUpon>SelectLayerView.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VastGIS.Api\VastGIS.Api.csproj">
+      <Project>{8aad34b3-8ef3-485f-a04d-ed2c07d8f1df}</Project>
+      <Name>VastGIS.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Plugins\VastGIS.Plugins.csproj">
+      <Project>{76644CDF-5165-428D-8419-93C1E978DB1B}</Project>
+      <Name>VastGIS.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Projections\VastGIS.Projections.csproj">
+      <Project>{dd259453-611a-4ad5-878e-385cb2c89df5}</Project>
+      <Name>VastGIS.Projections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Shared\VastGIS.Shared.csproj">
+      <Project>{79400594-DE0D-4FFD-B115-AF2AEAC79CD9}</Project>
+      <Name>VastGIS.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.UI\VastGIS.UI.csproj">
+      <Project>{784A24F2-9A57-46EE-8945-D87869595216}</Project>
+      <Name>VastGIS.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\MapWindow4Config.xml" />
+    <Content Include="Data\MapWindow4Project.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Resources\img_polygon.png" />
+    <None Include="Resources\img_point.png" />
+    <None Include="Resources\img_line.png" />
+    <None Include="Resources\img_raster.png" />
+    <None Include="Resources\img_geometry.png" />
+    <None Include="Resources\img_question32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ProjectLoadingView.resx">
+      <DependentUpon>ProjectLoadingView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SelectLayerGrid.resx">
+      <DependentUpon>SelectLayerGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreateLayerView.resx">
+      <DependentUpon>CreateLayerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MissingLayersView.resx">
+      <DependentUpon>MissingLayersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SelectLayerView.resx">
+      <DependentUpon>SelectLayerView.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

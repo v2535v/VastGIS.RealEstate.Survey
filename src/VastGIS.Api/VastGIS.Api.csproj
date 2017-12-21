@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8AAD34B3-8EF3-485F-A04D-ED2C07D8F1DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VastGIS.Api</RootNamespace>
+    <AssemblyName>VastGIS.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionItems\SolutionInfoCore.cs">
+      <Link>Properties\SolutionInfoCore.cs</Link>
+    </Compile>
+    <Compile Include="Concrete\ComplexGeometryType.cs" />
+    <Compile Include="Concrete\DatasourceDriver.cs" />
+    <Compile Include="Concrete\DriverManager.cs" />
+    <Compile Include="Concrete\DriverMetadata.cs" />
+    <Compile Include="Concrete\DriverOption.cs" />
+    <Compile Include="Concrete\EditorSettings.cs" />
+    <Compile Include="Concrete\ExpressionFunction.cs" />
+    <Compile Include="Concrete\ExpressionEvaluator.cs" />
+    <Compile Include="Concrete\GdalRasterDataset.cs" />
+    <Compile Include="Concrete\GeoAngle.cs" />
+    <Compile Include="Concrete\GeoSize.cs" />
+    <Compile Include="Concrete\GridBandCollection.cs" />
+    <Compile Include="Concrete\LayerIdentity.cs" />
+    <Compile Include="Concrete\NativeCallback.cs" />
+    <Compile Include="Concrete\MeasurerSettings.cs" />
+    <Compile Include="Concrete\RasterBandStatistics.cs" />
+    <Compile Include="Concrete\RasterOverviewCollection.cs" />
+    <Compile Include="Concrete\RasterBand.cs" />
+    <Compile Include="Concrete\ImageBandCollection.cs" />
+    <Compile Include="Concrete\RasterHistogram.cs" />
+    <Compile Include="Concrete\WmsSource.cs" />
+    <Compile Include="Events\LockedEventArgs.cs" />
+    <Compile Include="Events\UpdateJoinEventArgs.cs" />
+    <Compile Include="Helpers\AttributeTableHelper.cs" />
+    <Compile Include="Helpers\EnvelopeHelper.cs" />
+    <Compile Include="Helpers\FeatureSetHelper.cs" />
+    <Compile Include="Helpers\GdalFormats.cs" />
+    <Compile Include="Helpers\GdalHelper.cs" />
+    <Compile Include="Helpers\GeodesicUtils.cs" />
+    <Compile Include="Helpers\MapHelper.cs" />
+    <Compile Include="Helpers\UnitConversionHelper.cs" />
+    <Compile Include="Helpers\UnitsHelper.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\IDynamicVisibilityTarget.cs" />
+    <Compile Include="Interfaces\IGridSource.cs" />
+    <Compile Include="Interfaces\IMeasuringSettings.cs" />
+    <Compile Include="Interfaces\IRasterBandCollection.cs" />
+    <Compile Include="Legend\ClickInfo.cs" />
+    <Compile Include="Legend\Events\DatasourceCancelEventArgs.cs" />
+    <Compile Include="Legend\LayerElementsCollection.cs" />
+    <Compile Include="Legend\LegendControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Legend\LegendControl.Designer.cs">
+      <DependentUpon>LegendControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Legend\LegendControlBase.Designer.cs">
+      <DependentUpon>LegendControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Legend\LegendHitTest.cs" />
+    <Compile Include="Legend\Renderer\GroupRenderer.cs" />
+    <Compile Include="Legend\Renderer\LayerRenderer.cs" />
+    <Compile Include="Legend\Renderer\SymbologyRendererBase.cs" />
+    <Compile Include="Legend\Renderer\VectorSymbologyRenderer.cs" />
+    <Compile Include="Legend\Renderer\RasterSymbologyRenderer.cs" />
+    <Compile Include="Legend\Renderer\WmsSymbologyRenderer.cs" />
+    <Compile Include="Map\BoundMapControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Concrete\GlobalListeners.cs" />
+    <Compile Include="Concrete\AttributeTable.cs" />
+    <Compile Include="Concrete\BaseLayerCollection.cs" />
+    <Compile Include="Concrete\BitmapSource.cs" />
+    <Compile Include="Concrete\GlobalNativeCallback.cs" />
+    <Compile Include="Concrete\ColorInterval.cs" />
+    <Compile Include="Concrete\ColorRamp.cs" />
+    <Compile Include="Concrete\CompareByValueBase.cs" />
+    <Compile Include="Concrete\CompositeLine.cs" />
+    <Compile Include="Concrete\DecorationRectangle.cs" />
+    <Compile Include="Concrete\Diagram.cs" />
+    <Compile Include="Concrete\DiagramField.cs" />
+    <Compile Include="Concrete\DiagramFieldCollection.cs" />
+    <Compile Include="Concrete\DrawingLayers.cs" />
+    <Compile Include="Concrete\Envelope.cs" />
+    <Compile Include="Concrete\FeatureCategory.cs" />
+    <Compile Include="Concrete\AttributeField.cs" />
+    <Compile Include="Concrete\Feature.cs" />
+    <Compile Include="Concrete\FeatureCollection.cs" />
+    <Compile Include="Concrete\AttributeFieldList.cs" />
+    <Compile Include="Concrete\FeatureSet.cs" />
+    <Compile Include="Concrete\FieldJoin.cs" />
+    <Compile Include="Concrete\FieldJoinCollection.cs" />
+    <Compile Include="Concrete\FieldOperation.cs" />
+    <Compile Include="Concrete\FieldOperationList.cs" />
+    <Compile Include="Concrete\GeoLabel.cs" />
+    <Compile Include="Concrete\MeasuringTool.cs" />
+    <Compile Include="Concrete\GeometryEditor.cs" />
+    <Compile Include="Concrete\GeometryValidationInfo.cs" />
+    <Compile Include="Concrete\CustomCursor.cs" />
+    <Compile Include="Interfaces\ILayerMetadataBase.cs" />
+    <Compile Include="Concrete\SelectionItem.cs" />
+    <Compile Include="Concrete\ShapesList.cs" />
+    <Compile Include="Events\MapEventHandler.cs" />
+    <Compile Include="Interfaces\IMap.cs" />
+    <Compile Include="Interfaces\IShapesList.cs" />
+    <Compile Include="Legend\Abstract\ILegendGroup.cs" />
+    <Compile Include="Legend\Abstract\ILegendGroups.cs" />
+    <Compile Include="Legend\Abstract\ILegendLayer.cs" />
+    <Compile Include="Legend\Abstract\ILegend.cs" />
+    <Compile Include="Legend\ColorInfo.cs" />
+    <Compile Include="Legend\Constants.cs" />
+    <Compile Include="Legend\DragInfo.cs" />
+    <Compile Include="Legend\Events\ChartFieldClickedEventArgs.cs" />
+    <Compile Include="Legend\Events\GroupEventArgs.cs" />
+    <Compile Include="Legend\Events\GroupMouseEventArgs.cs" />
+    <Compile Include="Legend\Events\LayerCancelEventArgs.cs" />
+    <Compile Include="Legend\Events\LayerCategoryEventArgs.cs" />
+    <Compile Include="Legend\Events\LayerEventArgs.cs" />
+    <Compile Include="Legend\Events\LayerMeasureEventArgs.cs" />
+    <Compile Include="Legend\Events\LayerMouseEventArgs.cs" />
+    <Compile Include="Legend\Events\LayerPaintEventArgs.cs" />
+    <Compile Include="Legend\Events\LegendClickEventArgs.cs" />
+    <Compile Include="Legend\Events\PositionChangedEventArgs.cs" />
+    <Compile Include="Legend\Events\SingleTargetEventArgs.cs" />
+    <Compile Include="Legend\LegendEventHandler.cs" />
+    <Compile Include="Legend\LegendGroup.cs" />
+    <Compile Include="Legend\LegendGroups.cs" />
+    <Compile Include="Legend\Abstract\IMuteLegend.cs" />
+    <Compile Include="Legend\LegendElement.cs" />
+    <Compile Include="Legend\LegendControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Interfaces\ILayerCollection.cs" />
+    <Compile Include="Legend\LegendEnumerations.cs" />
+    <Compile Include="Legend\LegendHelper.cs" />
+    <Compile Include="Legend\LegendLayer.cs" />
+    <Compile Include="Legend\LayerCollection.cs" />
+    <Compile Include="Map\IPrintableMap.cs" />
+    <Compile Include="Static\GisUtils.cs" />
+    <Compile Include="Static\GeoSource.cs" />
+    <Compile Include="Concrete\RasterInterval.cs" />
+    <Compile Include="Concrete\RasterColorScheme.cs" />
+    <Compile Include="Concrete\GridSource.cs" />
+    <Compile Include="Concrete\GridSourceHeader.cs" />
+    <Compile Include="Concrete\HistoryList.cs" />
+    <Compile Include="Concrete\IdentifierSettings.cs" />
+    <Compile Include="Concrete\SimpleLine.cs" />
+    <Compile Include="Concrete\StopExecution.cs" />
+    <Compile Include="Concrete\TileManager.cs" />
+    <Compile Include="Concrete\TileProviderInfo.cs" />
+    <Compile Include="Concrete\TileProviderList.cs" />
+    <Compile Include="Concrete\Vector3D.cs" />
+    <Compile Include="Concrete\VectorDatasource.cs" />
+    <Compile Include="Concrete\VectorLayer.cs" />
+    <Compile Include="Static\MapConfig.cs" />
+    <Compile Include="Concrete\DiagramsLayer.cs" />
+    <Compile Include="Helpers\LayerSourceHelper.cs" />
+    <Compile Include="Interfaces\IDatasource.cs" />
+    <Compile Include="Interfaces\IGeometryEditor.cs" />
+    <Compile Include="Concrete\LabelCollection.cs" />
+    <Compile Include="Concrete\LabelInfo.cs" />
+    <Compile Include="Concrete\LabelStyleList.cs" />
+    <Compile Include="Concrete\LabelsLayer.cs" />
+    <Compile Include="Concrete\LabelStyle.cs" />
+    <Compile Include="Concrete\Geometry.cs" />
+    <Compile Include="Concrete\GeometryFillStyle.cs" />
+    <Compile Include="Concrete\GeometryLineStyle.cs" />
+    <Compile Include="Concrete\GeometryMarkerStyle.cs" />
+    <Compile Include="Concrete\GeometryPartCollection.cs" />
+    <Compile Include="Concrete\FeatureCategoryList.cs" />
+    <Compile Include="Concrete\Coordinate.cs" />
+    <Compile Include="Concrete\CoordinateList.cs" />
+    <Compile Include="Concrete\GeometryStyle.cs" />
+    <Compile Include="Concrete\GeometryVertexStyle.cs" />
+    <Compile Include="Concrete\Layer.cs" />
+    <Compile Include="Concrete\SimpleLayerCollection.cs" />
+    <Compile Include="Concrete\RasterSource.cs" />
+    <Compile Include="Concrete\FeatureSetSpatialIndex.cs" />
+    <Compile Include="Concrete\SpatialReference.cs" />
+    <Compile Include="Concrete\ZoomBarSettings.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Events\AfterShapeEditEventArgs.cs" />
+    <Compile Include="Events\BackgroundLoadingFinishedEventArgs.cs" />
+    <Compile Include="Events\BackgroundLoadingStartedEventArgs.cs" />
+    <Compile Include="Events\BeforeDeleteShapeEventArgs.cs" />
+    <Compile Include="Events\BeforeShapeEditEventArgs.cs" />
+    <Compile Include="Events\ChooseLayerEventArgs.cs" />
+    <Compile Include="Events\FileDroppedEventArgs.cs" />
+    <Compile Include="Events\TilesLoadedEventArgs.cs" />
+    <Compile Include="Events\ShapeValidationFailedEventArgs.cs" />
+    <Compile Include="Events\ShapeIdentifiedEventArgs.cs" />
+    <Compile Include="Events\ShapeHightlightedEventArgs.cs" />
+    <Compile Include="Events\SelectionChangedEventArgs.cs" />
+    <Compile Include="Events\SelectBoxFinalEventArgs.cs" />
+    <Compile Include="Events\ProjectionChangedEventArgs.cs" />
+    <Compile Include="Events\MeasuringChangedEventArgs.cs" />
+    <Compile Include="Events\LayerReprojectedEventArgs.cs" />
+    <Compile Include="Events\LayerRemovedEventArgs.cs" />
+    <Compile Include="Events\LayerProjectionIsEmptyEventArgs.cs" />
+    <Compile Include="Events\LayerAddedEventArgs.cs" />
+    <Compile Include="Events\GridOpenedEventArgs.cs" />
+    <Compile Include="Events\ValidateShapeEventArgs.cs" />
+    <Compile Include="Helpers\ErrorHelper.cs" />
+    <Compile Include="Helpers\GeometryHelper.cs" />
+    <Compile Include="Helpers\ShapefileHelper.cs" />
+    <Compile Include="Helpers\WrapperHelper.cs" />
+    <Compile Include="Interfaces\IAttributeTable.cs" />
+    <Compile Include="Interfaces\IColorRamp.cs" />
+    <Compile Include="Interfaces\IEnvelope.cs" />
+    <Compile Include="Interfaces\IFeatureCategory.cs" />
+    <Compile Include="Interfaces\IFeatureCategoryList.cs" />
+    <Compile Include="Interfaces\IAttributeField.cs" />
+    <Compile Include="Interfaces\IFeatureSet.cs" />
+    <Compile Include="Interfaces\IFeature.cs" />
+    <Compile Include="Interfaces\IGeoLabel.cs" />
+    <Compile Include="Interfaces\ILabelsLayer.cs" />
+    <Compile Include="Interfaces\ILabelStyle.cs" />
+    <Compile Include="Interfaces\IGeometryFillStyle.cs" />
+    <Compile Include="Interfaces\IGeometryLineStyle.cs" />
+    <Compile Include="Interfaces\IGeometryMarkerStyle.cs" />
+    <Compile Include="Interfaces\IGeometryStyle.cs" />
+    <Compile Include="Interfaces\IGeometry.cs" />
+    <Compile Include="Interfaces\ICoordinate.cs" />
+    <Compile Include="Interfaces\IGeometryVertexStyle.cs" />
+    <Compile Include="Interfaces\IImageSource.cs" />
+    <Compile Include="Interfaces\ILayer.cs" />
+    <Compile Include="Interfaces\ILayerSource.cs" />
+    <Compile Include="Interfaces\IMuteMap.cs" />
+    <Compile Include="Interfaces\IStopExecutionCallback.cs" />
+    <Compile Include="Interfaces\IVectorDatasource.cs" />
+    <Compile Include="Interfaces\IVectorLayer.cs" />
+    <Compile Include="Interfaces\IRasterSource.cs" />
+    <Compile Include="Interfaces\ISpatialReference.cs" />
+    <Compile Include="Interfaces\IComWrapper.cs" />
+    <Compile Include="Map\MapControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Map\MapControl.Designer.cs">
+      <DependentUpon>MapControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\MapEvents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Static\GdalUtils.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <COMReference Include="AxMapWinGIS">
+      <Guid>{C368D713-CC5F-40ED-9F53-F84FE197B96A}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>True</Isolated>
+      <Private>True</Private>
+    </COMReference>
+    <COMReference Include="MapWinGIS">
+      <Guid>{C368D713-CC5F-40ED-9F53-F84FE197B96A}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>True</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <COMReference Include="AxMapWinGIS">
+      <Guid>{C368D713-CC5F-40ED-9F53-F84FE197B96A}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+      <Private>True</Private>
+    </COMReference>
+    <COMReference Include="MapWinGIS">
+      <Guid>{C368D713-CC5F-40ED-9F53-F84FE197B96A}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Legend\LegendControlBase.resx">
+      <DependentUpon>LegendControlBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Map\BoundMapControl.resx">
+      <DependentUpon>BoundMapControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Map\MapControl.resx">
+      <DependentUpon>MapControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Map.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VastGIS.Shared\VastGIS.Shared.csproj">
+      <Project>{79400594-de0d-4ffd-b115-af2aeac79cd9}</Project>
+      <Name>VastGIS.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

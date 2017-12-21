@@ -1,0 +1,793 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <SGenUseProxyTypes>false</SGenUseProxyTypes>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1BD04FE1-16AD-41F9-8F80-485925E407DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VastGIS.Plugins.Symbology</RootNamespace>
+    <AssemblyName>VastGIS.Symbology</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <OutputPath>..\..\..\bin\$(Platform)\$(Configuration)\Plugins\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <OutputPath>..\..\VastGIS\bin\x86\Debug\Plugins\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <OutputPath>..\..\..\bin\x64\Debug\Plugins\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Syncfusion.Chart.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Chart.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\SolutionItems\SolutionInfoPlugins.cs">
+      <Link>Properties\SolutionInfoPlugins.cs</Link>
+    </Compile>
+    <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\AttributesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AttributesControl.Designer.cs">
+      <DependentUpon>AttributesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AttributeGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\InfoGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\InfoGrid.Designer.cs">
+      <DependentUpon>InfoGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ChartHelper.cs" />
+    <Compile Include="Helpers\VectorInfoHelper.cs" />
+    <Compile Include="Menu\MenuListener.cs" />
+    <Compile Include="Model\FieldAdapter.cs" />
+    <Compile Include="Model\SymbologyConfigPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Model\SymbologyConfigPage.Designer.cs">
+      <DependentUpon>SymbologyConfigPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Abstract\IVectorStyleView.cs" />
+    <Compile Include="Views\Abstract\IWmsStyleView.cs" />
+    <Compile Include="Views\CategoriesPresenter.cs" />
+    <Compile Include="Views\CategoriesSubView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CategoriesSubView.Designer.cs">
+      <DependentUpon>CategoriesSubView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CategoriesGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CategoriesGrid.Designer.cs">
+      <DependentUpon>CategoriesGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CategoryGridEventArgs.cs" />
+    <Compile Include="Controls\DataGridViewBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGridViewBase.Designer.cs">
+      <DependentUpon>DataGridViewBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DynamicVisibilityControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DynamicVisibilityControl.Designer.cs">
+      <DependentUpon>DynamicVisibilityControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HistogramControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\HistogramControl.Designer.cs">
+      <DependentUpon>HistogramControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageCombo\ColorSchemeCollection.cs" />
+    <Compile Include="Controls\ImageCombo\ColorSchemeCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JoinControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JoinControl.Designer.cs">
+      <DependentUpon>JoinControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListControls\IconInfo.cs" />
+    <Compile Include="Controls\OverviewScale.cs" />
+    <Compile Include="Controls\OverviewGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\OverviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OverviewControl.Designer.cs">
+      <DependentUpon>OverviewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PointIconControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PointIconControl.Designer.cs">
+      <DependentUpon>PointIconControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\FeatureSetStyleHelper.cs" />
+    <Compile Include="Helpers\GdiPlusHelper.cs" />
+    <Compile Include="Services\XmlColorBlend.cs" />
+    <Compile Include="Views\CategoriesSubViewModel.cs" />
+    <Compile Include="Views\RasterRenderingCommand.cs" />
+    <Compile Include="Views\RasterRenderingSubView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\RasterRenderingSubView.Designer.cs">
+      <DependentUpon>RasterRenderingSubView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RasterColorSchemeGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\RasterColorSchemeGrid.Designer.cs">
+      <DependentUpon>RasterColorSchemeGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RasterInfoTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\RasterInfoTreeView.Designer.cs">
+      <DependentUpon>RasterInfoTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RasterRenderingPresenter.cs" />
+    <Compile Include="Controls\RgbBandControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RgbBandControl.Designer.cs">
+      <DependentUpon>RgbBandControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VectorInfoTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Controls\RealIndexComboItem.cs" />
+    <Compile Include="Helpers\ColorBlendHelper.cs" />
+    <Compile Include="Helpers\RasterComboBoxHelper.cs" />
+    <Compile Include="Helpers\TrackbarHelper.cs" />
+    <Compile Include="Services\EnumConverters.cs" />
+    <Compile Include="Services\LabelMoveData.cs" />
+    <Compile Include="Services\LabelMover.cs" />
+    <Compile Include="Services\LabelMoverCursor.cs" />
+    <Compile Include="Helpers\ListViewHelper.cs" />
+    <Compile Include="Legacy\InputBoxHelper.cs" />
+    <Compile Include="Controls\ImageCombo\ColorSchemeProvider.cs" />
+    <Compile Include="Helpers\FormHelper.cs" />
+    <Compile Include="Services\LabelStyleRenderer.cs" />
+    <Compile Include="Helpers\LabelHelper.cs" />
+    <Compile Include="Controls\ListControls\CharacterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ListControls\IconControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ListControls\IconControl.Designer.cs">
+      <DependentUpon>IconControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListControls\LinePatternControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ListControls\LinePatternControl.Designer.cs">
+      <DependentUpon>LinePatternControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListControls\ListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ListControls\ListControl.Designer.cs">
+      <DependentUpon>ListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListControls\SymbolControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ListControls\SymbolControl.Designer.cs">
+      <DependentUpon>SymbolControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NumericUpDownEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\NumericUpDownEx.Designer.cs">
+      <DependentUpon>NumericUpDownEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScaleControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ScaleControl.Designer.cs">
+      <DependentUpon>ScaleControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddCategoriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCategoriesForm.Designer.cs">
+      <DependentUpon>AddCategoriesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CategoriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CategoriesForm.Designer.cs">
+      <DependentUpon>CategoriesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenerateCategoriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenerateCategoriesForm.Designer.cs">
+      <DependentUpon>GenerateCategoriesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddChartsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddChartsForm.Designer.cs">
+      <DependentUpon>AddChartsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChartStyleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChartStyleForm.Designer.cs">
+      <DependentUpon>ChartStyleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VectorStylePresenter.cs" />
+    <Compile Include="Views\VectorStyleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\VectorStyleView.Designer.cs">
+      <DependentUpon>VectorStyleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddLabelsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddLabelsForm.Designer.cs">
+      <DependentUpon>AddLabelsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FontGradientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FontGradientForm.Designer.cs">
+      <DependentUpon>FontGradientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LabelStyleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LabelStyleForm.Designer.cs">
+      <DependentUpon>LabelStyleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LinesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LinesForm.Designer.cs">
+      <DependentUpon>LinesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PointsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PointsForm.Designer.cs">
+      <DependentUpon>PointsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PolygonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PolygonForm.Designer.cs">
+      <DependentUpon>PolygonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddOptionsForm.Designer.cs">
+      <DependentUpon>AddOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageCombo\ColorSchemeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageCombo\ColorSchemeForm.Designer.cs">
+      <DependentUpon>ColorSchemeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageCombo\ColorSchemesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageCombo\ColorSchemesForm.Designer.cs">
+      <DependentUpon>ColorSchemesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OptionsChooserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OptionsChooserForm.Designer.cs">
+      <DependentUpon>OptionsChooserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OptionsManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OptionsManagerForm.Designer.cs">
+      <DependentUpon>OptionsManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\LegendListener.cs" />
+    <Compile Include="Menu\MenuCommands.cs" />
+    <Compile Include="Menu\MenuKeys.cs" />
+    <Compile Include="Menu\MenuGenerator.cs" />
+    <Compile Include="Services\SymbologyMetadataService.cs" />
+    <Compile Include="SymbologyPlugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Legacy\SymbologyPluginLegacy.cs" />
+    <Compile Include="Services\SymbologyMetadata.cs" />
+    <Compile Include="Views\Abstract\IHistogramOptionsView.cs" />
+    <Compile Include="Views\Abstract\IRasterColorSchemeView.cs" />
+    <Compile Include="Views\Abstract\IRasterMinMaxView.cs" />
+    <Compile Include="Views\Abstract\IRasterStyleView.cs" />
+    <Compile Include="Views\HistogramOptionsModel.cs" />
+    <Compile Include="Views\HistogramOptionsPresenter.cs" />
+    <Compile Include="Views\HistogramOptionsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HistogramOptionsView.Designer.cs">
+      <DependentUpon>HistogramOptionsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RasterColorSchemeCommand.cs" />
+    <Compile Include="Views\RasterColorSchemePresenter.cs" />
+    <Compile Include="Views\RasterColorSchemeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RasterColorSchemeView.Designer.cs">
+      <DependentUpon>RasterColorSchemeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RasterMinMaxModel.cs" />
+    <Compile Include="Views\RasterMinMaxPresenter.cs" />
+    <Compile Include="Views\RasterMinMaxView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RasterMinMaxView.Designer.cs">
+      <DependentUpon>RasterMinMaxView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RasterCommand.cs" />
+    <Compile Include="Views\RasterStylePresenter.cs" />
+    <Compile Include="Views\RasterStyleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RasterStyleView.Designer.cs">
+      <DependentUpon>RasterStyleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WmsStylePresenter.cs" />
+    <Compile Include="Views\WmsStyleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WmsStyleView.Designer.cs">
+      <DependentUpon>WmsStyleView.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\VastGIS.Api\VastGIS.Api.csproj">
+      <Project>{8AAD34B3-8EF3-485F-A04D-ED2C07D8F1DF}</Project>
+      <Name>VastGIS.Api</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.Attributes\VastGIS.Attributes.csproj">
+      <Project>{6AF734F1-2CD0-4636-88E2-EF2DAFA241F8}</Project>
+      <Name>VastGIS.Attributes</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.Data\VastGIS.Data.csproj">
+      <Project>{12476697-03B6-4944-92C1-AE7214A13F0B}</Project>
+      <Name>VastGIS.Data</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.Plugins\VastGIS.Plugins.csproj">
+      <Project>{76644CDF-5165-428D-8419-93C1E978DB1B}</Project>
+      <Name>VastGIS.Plugins</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.Projections\VastGIS.Projections.csproj">
+      <Project>{DD259453-611A-4AD5-878E-385CB2C89DF5}</Project>
+      <Name>VastGIS.Projections</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.Services\VastGIS.Services.csproj">
+      <Project>{54BB55DA-DBDC-47E5-8DEC-DE325F35F074}</Project>
+      <Name>VastGIS.Services</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.Shared\VastGIS.Shared.csproj">
+      <Project>{79400594-DE0D-4FFD-B115-AF2AEAC79CD9}</Project>
+      <Name>VastGIS.Shared</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.UI\VastGIS.UI.csproj">
+      <Project>{784A24F2-9A57-46EE-8945-D87869595216}</Project>
+      <Name>VastGIS.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_sql.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\AttributesControl.resx">
+      <DependentUpon>AttributesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InfoGrid.resx">
+      <DependentUpon>InfoGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\SymbologyConfigPage.resx">
+      <DependentUpon>SymbologyConfigPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CategoriesSubView.resx">
+      <DependentUpon>CategoriesSubView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DynamicVisibilityControl.resx">
+      <DependentUpon>DynamicVisibilityControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\HistogramControl.resx">
+      <DependentUpon>HistogramControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\JoinControl.resx">
+      <DependentUpon>JoinControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ListControls\CharacterControl.resx">
+      <DependentUpon>CharacterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ListControls\IconControl.resx">
+      <DependentUpon>IconControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ListControls\LinePatternControl.resx">
+      <DependentUpon>LinePatternControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ListControls\ListControl.resx">
+      <DependentUpon>ListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ListControls\SymbolControl.resx">
+      <DependentUpon>SymbolControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OverviewControl.resx">
+      <DependentUpon>OverviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PointIconControl.resx">
+      <DependentUpon>PointIconControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RasterRenderingSubView.resx">
+      <DependentUpon>RasterRenderingSubView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RgbBandControl.resx">
+      <DependentUpon>RgbBandControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ScaleControl.resx">
+      <DependentUpon>ScaleControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddCategoriesForm.resx">
+      <DependentUpon>AddCategoriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CategoriesForm.resx">
+      <DependentUpon>CategoriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenerateCategoriesForm.resx">
+      <DependentUpon>GenerateCategoriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddChartsForm.resx">
+      <DependentUpon>AddChartsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChartStyleForm.resx">
+      <DependentUpon>ChartStyleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\VectorStyleView.resx">
+      <DependentUpon>VectorStyleView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddLabelsForm.resx">
+      <DependentUpon>AddLabelsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FontGradientForm.resx">
+      <DependentUpon>FontGradientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LabelStyleForm.resx">
+      <DependentUpon>LabelStyleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LinesForm.resx">
+      <DependentUpon>LinesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PointsForm.resx">
+      <DependentUpon>PointsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PolygonForm.resx">
+      <DependentUpon>PolygonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddOptionsForm.resx">
+      <DependentUpon>AddOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ImageCombo\ColorSchemeForm.resx">
+      <DependentUpon>ColorSchemeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ImageCombo\ColorSchemesForm.resx">
+      <DependentUpon>ColorSchemesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OptionsChooserForm.resx">
+      <DependentUpon>OptionsChooserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OptionsManagerForm.resx">
+      <DependentUpon>OptionsManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HistogramOptionsView.resx">
+      <DependentUpon>HistogramOptionsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RasterColorSchemeView.resx">
+      <DependentUpon>RasterColorSchemeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RasterMinMaxView.resx">
+      <DependentUpon>RasterMinMaxView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RasterStyleView.resx">
+      <DependentUpon>RasterStyleView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WmsStyleView.resx">
+      <DependentUpon>WmsStyleView.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_view_tile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow2 - Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow2 - Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clipboard Paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\label_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\label-mover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer-categories.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer-more.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer-query.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer-remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer-vector-thematic-add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\No.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plus_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tag_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tag_gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\colorschemes.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\labels.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linepatterns.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursor_label_move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_hide24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_show24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_table24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_histogram24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_colors24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_contrast24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_info24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_pyramid24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_tools24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_palette24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_palette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_folder_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_save1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_remove16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_hard_disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_chart24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_label24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_eye24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_properties24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_database24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_database241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_field_add16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_layer_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_clear24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_palette32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_database_search32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_categories32.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
