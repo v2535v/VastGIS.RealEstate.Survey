@@ -141,9 +141,9 @@ namespace VastGIS.Services.Concrete
                 case DataSourceType.Vector:
                     return GeoSource.VectorFilter;
                 case DataSourceType.SpatiaLite:
-                    return "SpatiaLite databases|*.sqlite";
+                    return "SpatiaLite 数据库|*.sqlite";
             }
-            return "All files|*.*";
+            return "所有文件|*.*";
         }
     }
 }

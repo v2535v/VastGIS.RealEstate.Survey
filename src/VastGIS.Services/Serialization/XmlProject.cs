@@ -8,6 +8,7 @@ using VastGIS.Api.Helpers;
 using VastGIS.Api.Legend;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.Services.Concrete;
+using VastGIS.Services.Serialization.Legacy;
 
 namespace VastGIS.Services.Serialization
 {
@@ -16,7 +17,7 @@ namespace VastGIS.Services.Serialization
     /// Before serialization the instance is populated from ISerializedContext.
     /// After deserialization RestoreState method should be called.
     /// </summary>
-    [DataContract(Name="MapWindow5")]
+    [DataContract(Name="VastGIS")]
     public class XmlProject
     {
         public XmlProject(ISecureContext context, string filename)
@@ -47,14 +48,24 @@ namespace VastGIS.Services.Serialization
                 var service = context.Container.GetInstance<ImageSerializationService>();
                 Locator = new XmlMapLocator(context.Locator, service);
             }
+
+            VastProjectInfo = new XmlVastProjectInfo() {};
         }
 
-        [DataMember] public XmlMap Map { get; set; }
-        [DataMember] public XmlMapLocator Locator { get; set; }
-        [DataMember] public XmlProjectSettings Settings { get; set; }
-        [DataMember] public List<XmlGroup> Groups { get; set; }
-        [DataMember] public List<XmlLayer> Layers { get; set; }
-        [DataMember] public List<XmlPlugin> Plugins { get; set; }
-        
+        [DataMember]
+        public XmlVastProjectInfo VastProjectInfo { get; set; }
+        [DataMember]
+        public XmlMap Map { get; set; }
+        [DataMember]
+        public XmlMapLocator Locator { get; set; }
+        [DataMember]
+        public XmlProjectSettings Settings { get; set; }
+        [DataMember]
+        public List<XmlGroup> Groups { get; set; }
+        [DataMember]
+        public List<XmlLayer> Layers { get; set; }
+        [DataMember]
+        public List<XmlPlugin> Plugins { get; set; }
+
     }
 }

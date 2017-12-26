@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------------
-// <copyright file="StringParameterControl.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="StringParameterControl.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //  MapWindow OSS Team - 2015
 // </copyright>
 // -------------------------------------------------------------------------------------------

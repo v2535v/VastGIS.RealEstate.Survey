@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------------
-// <copyright file="IInputParameterControl.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="IInputParameterControl.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //  MapWindow OSS Team - 2015
 // </copyright>
 // -------------------------------------------------------------------------------------------

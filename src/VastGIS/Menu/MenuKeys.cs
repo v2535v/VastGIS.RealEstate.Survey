@@ -2,7 +2,10 @@
 {
     internal class MenuKeys
     {
+       
+        public const string ImportDXF="reImportDXF";
         public const string CreateZDDatabase = "CreateZDDatabase";
+        public const string NewProject = "reNewProject";
 
 
 
@@ -61,6 +64,8 @@
         public const string SupportedDrivers = "HelpSupportedDrivers";
         public const string ComUsage = "ComUsage";
         public const string Welcome = "HelpWelcome";
+
+        
     }
 }
 

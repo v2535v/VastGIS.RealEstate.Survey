@@ -82,10 +82,6 @@
       <Project>{76644cdf-5165-428d-8419-93c1e978db1b}</Project>
       <Name>VastGIS.Plugins</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VastGIS.Property\VastGIS.Property.csproj">
-      <Project>{98FDE41A-1D0E-44E9-8F6C-F3CDF39FD639}</Project>
-      <Name>VastGIS.Property</Name>
-    </ProjectReference>
     <ProjectReference Include="..\VastGIS.Tools\VastGIS.Tools.csproj">
       <Project>{fb836bb0-2668-41e6-a4ad-7798b13c327f}</Project>
       <Name>VastGIS.Tools</Name>

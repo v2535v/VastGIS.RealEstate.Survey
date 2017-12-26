@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------------
-// <copyright file="TemplateNameResolver.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="TemplateNameResolver.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //  MapWindow OSS Team - 2015
 // </copyright>
 // -------------------------------------------------------------------------------------------

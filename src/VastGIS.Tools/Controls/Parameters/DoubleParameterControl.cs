@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------------
-// <copyright file="DoubleParameterControl.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="DoubleParameterControl.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //  MapWindow OSS Team - 2015
 // </copyright>
 // -------------------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------------
-// <copyright file="TranslateRasterTool.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="TranslateRasterTool.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //  MapWindow OSS Team - 2016
 // </copyright>
 // -------------------------------------------------------------------------------------------

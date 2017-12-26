@@ -1,11 +1,12 @@
 ﻿// -------------------------------------------------------------------------------------------
-// <copyright file="AppContext.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="AppContext.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //  MapWindow OSS Team - 2016
 // </copyright>
 // -------------------------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using VastGIS.Api.Enums;
@@ -21,6 +22,9 @@ using VastGIS.Plugins.Interfaces.Projections;
 using VastGIS.Plugins.Mvp;
 using VastGIS.Plugins.Services;
 using VastGIS.Projections.Helpers;
+using VastGIS.RealEstate.Api;
+using VastGIS.RealEstate.Api.Concrete;
+using VastGIS.RealEstate.Api.Interface;
 using VastGIS.Services.Serialization;
 using VastGIS.Shared;
 using VastGIS.Tools.Toolbox;
@@ -34,7 +38,7 @@ namespace VastGIS
     /// <summary>
     /// Central class storing all the resource avaialable for plugins.
     /// </summary>
-    public class AppContext : ISecureContext
+    public class AppContext : ISecureContext, IRealEstateContext
     {
         private readonly IApplicationContainer _container;
         private readonly IProjectionDatabase _projectionDatabase;
@@ -51,6 +55,10 @@ namespace VastGIS
         private ToolboxPresenter _toolboxPresenter;
         private IMapTool _currentTool;
         private List<ICommand> _commands;
+       
+
+        private IREDatabase _realEstateDatabase;
+        private XmlProject _vastProject;
 
         public AppContext(
             IApplicationContainer container,
@@ -67,7 +75,7 @@ namespace VastGIS
             _projectionDatabase = projectionDatabase;
             _styleService = styleService;
             _tasks = tasks;
-            _commands=new List<ICommand>();
+            _commands = new List<ICommand>();
         }
 
         public IBroadcasterService Broadcaster { get; private set; }
@@ -138,11 +146,7 @@ namespace VastGIS
             get { return _mainView.ViewType; }
         }
 
-        public IRibbonMenu RibbonMenu
-        {
-            get;
-            private set;
-        }
+        public IRibbonMenu RibbonMenu { get; private set; }
 
         public IMapTool CurrentTool
         {
@@ -186,14 +190,23 @@ namespace VastGIS
         {
             switch (panel)
             {
-                case DefaultDockPanel.Legend:
-                    return _legendPresenter.Legend as Control;
-                case DefaultDockPanel.Toolbox:
-                    return _toolboxPresenter.View;
-                case DefaultDockPanel.Locator:
-                    return _locator != null ? _locator.GetInternalObject() : null;
-                default:
-                    throw new ArgumentOutOfRangeException("panel");
+                case DefaultDockPanel.Legend: return _legendPresenter.Legend as Control;
+                case DefaultDockPanel.Toolbox: return _toolboxPresenter.View;
+                case DefaultDockPanel.Locator: return _locator != null ? _locator.GetInternalObject() : null;
+                default: throw new ArgumentOutOfRangeException("panel");
+            }
+        }
+
+        public XmlProject VastProject
+        {
+            get { return _vastProject; }
+            set
+            {
+                _vastProject = value;
+                string parentPath = Path.GetDirectoryName(_project.Filename);
+                string dbPath = Path.Combine(parentPath, _vastProject.VastProjectInfo.DatabaseName);
+                _realEstateDatabase = new ReDatabase(dbPath);
+                _realEstateDatabase.CheckDatabase();
             }
         }
 
@@ -236,10 +249,7 @@ namespace VastGIS
                 var legend = _legendPresenter.Legend;
                 mainView.Map.Legend = legend;
                 legend.Map = mainView.Map;
-
             }
-
-           
 
             // it's expected here that we are on the UI thread
             SynchronizationContext = SynchronizationContext.Current;
@@ -270,21 +280,16 @@ namespace VastGIS
                     _styleService);
                 //创建Ribbon主菜单
                 RibbonMenu = MenuFactory.CreateRibbonMenu(mainView.RibbonControlAdv);
-
             }
             StatusBar = MenuFactory.CreateStatusBar(mainView.StatusBar, PluginIdentity.Default);
-
             _projectionDatabase.ReadFromExecutablePath(Application.ExecutablePath);
-
             Repository.Initialize(this);
 
             // comment this line to prevent locator loading            
             // may be useful for ocx debugging to not create additional 
             // instance of map
             _locator = new LocatorPresenter(_map);
-
             this.InitDocking();
-
             Initialized = true;
             Logger.Current.Trace("End AppContext.Init()");
         }
@@ -304,17 +309,20 @@ namespace VastGIS
 
         private void ManagerPluginUnloaded(object sender, PluginEventArgs e)
         {
-            if(Toolbars!=null)
-            Toolbars.RemoveItemsForPlugin(e.Identity);
+            if (Toolbars != null) Toolbars.RemoveItemsForPlugin(e.Identity);
             if (ViewType == MainViewType.Normal) Menu.RemoveItemsForPlugin(e.Identity);
             else
             {
-                
             }
             DockPanels.RemoveItemsForPlugin(e.Identity);
-            if (Toolbars != null)
-                Toolbox.RemoveItemsForPlugin(e.Identity);
+            if (Toolbars != null) Toolbox.RemoveItemsForPlugin(e.Identity);
             StatusBar.RemoveItemsForPlugin(e.Identity);
+        }
+
+        public IREDatabase RealEstateDatabase
+        {
+            get { return _realEstateDatabase; }
+            set { _realEstateDatabase = value; }
         }
     }
 }

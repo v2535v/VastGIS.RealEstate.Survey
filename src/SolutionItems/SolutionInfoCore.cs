@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SolutionInfo.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="SolutionInfo.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //   MapWindow OSS Team - 2015
 // </copyright>
 // <summary>
@@ -14,17 +14,17 @@ using System.Runtime.InteropServices;
 
 #endregion
 
-[assembly: AssemblyCompany("MapWindow OSS Team - www.mapwindow.org")]
-[assembly: AssemblyCopyright("Copyright (C) 1998-2016 MapWindow OSS Team")]
-[assembly: AssemblyTrademark("MapWindow GIS is a trademark of Daniel P. Ames, 2005-2016")]
+[assembly: AssemblyCompany("VastGIS RealEstate Team -- www.vastgis.com.cn")]
+[assembly: AssemblyCopyright("Copyright (C) 2017-2030 VastGIS RealEstate Team")]
+[assembly: AssemblyTrademark("VastGIS is a trademark of VastGIS, 2017-2030")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyTitle("MapWindow5 GIS")]
-[assembly: AssemblyDescription("MapWindow5 Open Source GIS application")]
+[assembly: AssemblyTitle("VastGIS RealEstate")]
+[assembly: AssemblyDescription("VastGIS RealEstate Application")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-[assembly: AssemblyVersion("5.1.1.*")]
-[assembly: AssemblyFileVersion("5.1.1.0")]
+[assembly: AssemblyVersion("1.1.1.*")]
+[assembly: AssemblyFileVersion("1.1.1.0")]

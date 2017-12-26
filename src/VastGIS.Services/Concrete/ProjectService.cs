@@ -19,8 +19,8 @@ namespace VastGIS.Services.Concrete
 {
     public class ProjectService: IProjectService, IProject
     {
-        private const string ProjectFilter = "MapWindow 5 project (*.mwproj)|*.mwproj|MapWindow 4 project (*.mwprj)|*.mwprj|All projects|*.mwprj;*.mwproj";
-        private const int ProjectFilterIndex = 3;
+        private const string ProjectFilter = "未见项目 (*.vgproj)|*.vgproj";
+        private const int ProjectFilterIndex = 0;
 
         private ProjectLoadingView _loadingForm;
         private readonly IAppContext _context;
@@ -335,7 +335,7 @@ namespace VastGIS.Services.Concrete
 
         private bool OpenLegacyProject(string filename, bool silent = false)
         {
-            Logger.Current.Info("Start opening legacy MapWindow 4 project: " + filename);
+            Logger.Current.Info("开始打开未见项目文件: " + filename);
 
             using (var reader = new StreamReader(filename))
             {
@@ -343,7 +343,7 @@ namespace VastGIS.Services.Concrete
 
                 try
                 {
-                    var project = state.DeserializeFromXml<MapWin4Project>();
+                    var project = state.DeserializeFromXml<VastGISProject>();
                     if (!_projectLoaderLegacy.Restore(project, filename))
                     {
                         Clear();
@@ -366,7 +366,7 @@ namespace VastGIS.Services.Concrete
                 }
                 catch(Exception ex)
                 {
-                    string msg = "Invalid project format: " + filename;
+                    string msg = "错误的项目文件格式 " + filename;
                     Logger.Current.Warn(msg, ex);
                     MessageService.Current.Warn(msg);
                 }

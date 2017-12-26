@@ -64,6 +64,7 @@ namespace VastGIS.Menu
 
 
             menu.AddButton(_commands[MenuKeys.NewMap]);
+            menu.AddButton(_commands[MenuKeys.NewProject]);
 
             menu.AddButton(_commands[MenuKeys.AddLayer]);
             menu.AddButton(_commands[MenuKeys.AddVectorLayer]);
@@ -123,14 +124,15 @@ namespace VastGIS.Menu
             var items = _context.Menu.FileMenu.SubItems;
 
             items.AddButton(_commands[MenuKeys.NewMap]);
-            
+            items.AddButton(_commands[MenuKeys.NewProject]);
+
             items.AddButton(_commands[MenuKeys.AddLayer], true);
             items.AddButton(_commands[MenuKeys.AddVectorLayer], true);
             items.AddButton(_commands[MenuKeys.AddRasterLayer]);
             items.AddButton(_commands[MenuKeys.AddDatabaseLayer]);
            // items.AddButton(_commands[MenuKeys.CreateZDDatabase]);
             items.AddButton(_commands[MenuKeys.AddWmsLayer]);
-
+            items.AddButton(_commands[MenuKeys.ImportDXF]);
             items.AddButton(_commands[MenuKeys.OpenProject], true);
             items.AddButton(_commands[MenuKeys.SaveProject], true);
             items.AddButton(_commands[MenuKeys.SaveProjectAs]);

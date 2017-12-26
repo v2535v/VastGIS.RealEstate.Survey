@@ -57,6 +57,14 @@ namespace VastGIS.Menu
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
 
+                command = new CmdCreateNewProject(_context);
+                command.PluginIdentity = _identity;
+                _commands.Add(command);
+
+                command = new CmdImportDXF(_context);
+                command.PluginIdentity = _identity;
+                _commands.Add(command);
+
                 command = new CmdAddLayer(_context);
                 command.PluginIdentity = _identity;
                 _commands.Add(command);

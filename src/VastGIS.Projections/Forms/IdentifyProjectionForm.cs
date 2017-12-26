@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------------
-// <copyright file="IdentifyProjectionForm.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="IdentifyProjectionForm.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //  MapWindow OSS Team - 2016
 // </copyright>
 // -------------------------------------------------------------------------------------------

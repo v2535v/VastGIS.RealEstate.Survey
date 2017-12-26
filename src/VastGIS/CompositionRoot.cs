@@ -47,8 +47,7 @@ namespace VastGIS
             Attributes.CompositionRoot.Compose(container);
             Tiles.CompositionRoot.Compose(container);
 
-            //增加
-            Property.CompositionRoot.Compose(container);
+    
 
             CommandBarHelper.InitMenuColors();
 

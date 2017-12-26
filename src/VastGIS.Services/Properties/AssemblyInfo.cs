@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="AssemblyInfo.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //   MapWindow OSS Team - 2015
 // </copyright>
 // <summary>
@@ -27,3 +27,5 @@ using System.Runtime.InteropServices;
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 [assembly: InternalsVisibleTo("VastGIS")]
+[assembly: InternalsVisibleTo("VastGIS.RealEstate.Api")]
+

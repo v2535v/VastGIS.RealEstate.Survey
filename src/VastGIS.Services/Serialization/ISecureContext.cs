@@ -15,5 +15,6 @@ namespace VastGIS.Services.Serialization
     {
         IPluginManager PluginManager { get; }
         Control GetDockPanelObject(DefaultDockPanel panel);
+        XmlProject VastProject { get; set; }
     }
 }

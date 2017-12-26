@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MenuListener.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="MenuListener.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //   MapWindow OSS Team - 2015-2017
 // </copyright>
 // <summary>

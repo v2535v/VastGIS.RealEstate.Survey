@@ -10,7 +10,7 @@ using VastGIS.Plugins.Enums;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.Plugins.RealEstate.Helpers;
 using VastGIS.Plugins.Services;
-using VastGIS.Property.Services;
+
 
 namespace VastGIS.Plugins.RealEstate.Services
 {
@@ -20,7 +20,7 @@ namespace VastGIS.Plugins.RealEstate.Services
         private readonly ILayerService _layerService;
         private readonly IFileDialogService _dialogService;
         private readonly IBroadcasterService _broadcaster;
-        private readonly IBDCDatabaseService _bdcDatabaseService;
+       
         private VectorLayer _currentEditingLayer;
        
         private bool _isEditing;
@@ -29,7 +29,7 @@ namespace VastGIS.Plugins.RealEstate.Services
         private string _editDatabase;
 
         public RealEstateEditingService(IAppContext context, ILayerService layerService, IFileDialogService dialogService,
-                                   IBroadcasterService _broadcaster,IBDCDatabaseService bdcDatabaseService)
+                                   IBroadcasterService _broadcaster)
         {
             if (context == null) throw new ArgumentNullException("context");
             if (layerService == null) throw new ArgumentNullException("layerService");
@@ -40,7 +40,7 @@ namespace VastGIS.Plugins.RealEstate.Services
             _layerService = layerService;
             _dialogService = dialogService;
             this._broadcaster = _broadcaster;
-            _bdcDatabaseService = bdcDatabaseService;
+        
             _databases=new List<string>();
         }
         public void OpenREDatabase()

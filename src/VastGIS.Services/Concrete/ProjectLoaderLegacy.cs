@@ -38,7 +38,7 @@ namespace VastGIS.Services.Concrete
         /// <summary>
         /// Restores the state of application by populating application _context after project file was deserialized.
         /// </summary>
-        public bool Restore(MapWin4Project project, string filename)
+        public bool Restore(VastGISProject project, string filename)
         {
             if (project == null)
             {
@@ -74,10 +74,11 @@ namespace VastGIS.Services.Concrete
                 _context.Map.Unlock();
                 _context.Legend.Unlock();
                 _context.Legend.Redraw(LegendRedraw.LegendAndMap);
+                
             }
         }
 
-        private void RestoreExtents(MapWin4Project project)
+        private void RestoreExtents(VastGISProject project)
         {
             if (project.MapwinGis == null || project.MapwinGis.Mapstate == null)
             {
@@ -101,14 +102,14 @@ namespace VastGIS.Services.Concrete
             }
         }
 
-        private void RestoreMapProjection(MapWin4Project project, string filename)
+        private void RestoreMapProjection(VastGISProject project, string filename)
         {
-            if (project.MapWindow == null)
+            if (project.VastGis == null)
             {
                 return;
             }
 
-            if (project.MapWindow.ProjectProjectionWKT == null && project.MapWindow.ProjectProjection == null)
+            if (project.VastGis.ProjectProjectionWKT == null && project.VastGis.ProjectProjection == null)
             {
                 Logger.Current.Info("No projection found int the project file: " + filename);
                 return;
@@ -116,9 +117,9 @@ namespace VastGIS.Services.Concrete
 
                     
             var sr = new SpatialReference();
-            if (!sr.ImportFromAutoDetect(project.MapWindow.ProjectProjectionWKT))
+            if (!sr.ImportFromAutoDetect(project.VastGis.ProjectProjectionWKT))
             {
-                if (!sr.ImportFromAutoDetect(project.MapWindow.ProjectProjection))
+                if (!sr.ImportFromAutoDetect(project.VastGis.ProjectProjection))
                 {
                     Logger.Current.Info("Failed to parse project projection: " + filename);
                     return;
@@ -128,14 +129,14 @@ namespace VastGIS.Services.Concrete
             _context.SetMapProjection(sr);
         }
 
-        private void RestoreLocator(MapWin4Project project)
+        private void RestoreLocator(VastGISProject project)
         {
-            if (project.MapWindow == null || project.MapWindow.PreviewMap == null)
+            if (project.VastGis == null || project.VastGis.PreviewMap == null)
             {
                 return;
             }
 
-            var xmlPreview = project.MapWindow.PreviewMap;
+            var xmlPreview = project.VastGis.PreviewMap;
             var bitmap = _imageSerializationService.ConvertStringToImage(xmlPreview.Image.Value, xmlPreview.Image.Type);
 
             double dx = NumericHelper.Parse(xmlPreview.Dx, 1.0);
@@ -146,7 +147,7 @@ namespace VastGIS.Services.Concrete
             _context.Locator.RestorePicture(bitmap as System.Drawing.Image, dx, dy, xll, yll);
         }
 
-        private void RestoreLayers(MapWin4Project project, string path)
+        private void RestoreLayers(VastGISProject project, string path)
         {
             if (project.MapwinGis == null || project.MapwinGis.Layers == null)
             {
@@ -193,15 +194,15 @@ namespace VastGIS.Services.Concrete
             }
         }
 
-        private void RestoreGroups(MapWin4Project project)
+        private void RestoreGroups(VastGISProject project)
         {
-            if (project.MapWindow == null || project.MapWindow.Groups == null || project.MapWindow.Layers == null)
+            if (project.VastGis == null || project.VastGis.Groups == null || project.VastGis.Layers == null)
             {
                 Logger.Current.Info("Failed to find Groups node in the legacy project file.");
                 return;
             }
             
-            var xmlGroups = project.MapWindow.Groups;
+            var xmlGroups = project.VastGis.Groups;
             var groups = _context.Legend.Groups;
 
             foreach (var xmlGroup in xmlGroups)
@@ -211,11 +212,11 @@ namespace VastGIS.Services.Concrete
             }
         }
 
-        private void MapLayerToGroups(MapWin4Project project)
+        private void MapLayerToGroups(VastGISProject project)
         {
             var groups = _context.Legend.Groups;
-            
-            var layers = project.MapWindow.Layers;
+            if (project.VastGis == null) return;
+            var layers = project.VastGis.Layers;
             var legendLayers = _context.Legend.Layers;
 
             foreach (var xmlLayer in layers)

@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------------
-// <copyright file="MenuListener.cs" company="MapWindow OSS Team - www.mapwindow.org">
+// <copyright file="MenuListener.cs" company="VastGIS RealEstate Team -- www.vastgis.com.cn">
 //  MapWindow OSS Team - 2016
 // </copyright>
 // -------------------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ using VastGIS.Plugins.Interfaces;
 using VastGIS.Plugins.Model;
 using VastGIS.Plugins.Services;
 using VastGIS.Projections.Helpers;
-using VastGIS.Property.Services;
+
 using VastGIS.Shared;
 using VastGIS.Tiles.Views;
 using VastGIS.UI.Docking;
@@ -37,14 +37,14 @@ namespace VastGIS.Menu
         private readonly IGeoDatabaseService _databaseService;
         private readonly ILayerService _layerService;
         private readonly IProjectService _projectService;
-        private readonly IBDCDatabaseService _bdcDatabaseService;
+        
 
         public MenuListener(
             IAppContext context,
             ILayerService layerService,
             IProjectService projectService,
-            IGeoDatabaseService databaseService,
-            IBDCDatabaseService bdcDatabaseService)
+            IGeoDatabaseService databaseService
+            )
         {
             Logger.Current.Trace("In MenuListener");
             if (context == null) throw new ArgumentNullException("context");
@@ -56,7 +56,7 @@ namespace VastGIS.Menu
             _layerService = layerService;
             _projectService = projectService;
             _databaseService = databaseService;
-            _bdcDatabaseService = bdcDatabaseService;
+            
             
 
             var appContext = context as AppContext;
@@ -339,6 +339,9 @@ namespace VastGIS.Menu
                     //_context.Projections.UpdateEsriName(_context.Projections.Name);
                     return true;
                 case MenuKeys.NewMap:
+                    _projectService.TryClose();
+                    return true;
+                case MenuKeys.NewProject:
                     _projectService.TryClose();
                     return true;
                 case MenuKeys.SaveProject:

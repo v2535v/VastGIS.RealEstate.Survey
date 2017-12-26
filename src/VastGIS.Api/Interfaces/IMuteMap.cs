@@ -70,7 +70,7 @@ namespace VastGIS.Api.Interfaces
         bool DegreesToProj(double degreesLngX, double degreesLatY, out double projX, out double projY);
 
         IGeometryEditor GeometryEditor { get; }
-        TileManager Tiles { get; }
+        //TileManager Tiles { get; }
         IdentifierSettings Identifier { get; }
         MeasuringTool Measuring { get; }
         HistoryList History { get; }
@@ -142,7 +142,7 @@ namespace VastGIS.Api.Interfaces
 
         bool GetIsCustomSelectionMode(Guid clientId);
 
-        void SetTileProvider(int providerId);
+        //void SetTileProvider(int providerId);
 
         bool IsEmpty { get; }
 
