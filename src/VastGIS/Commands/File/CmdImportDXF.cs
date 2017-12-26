@@ -26,7 +26,10 @@ namespace VastGIS.Commands.File
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "DXF图形(*.dxf)|*.dxf";
             if (dialog.ShowDialog() != DialogResult.OK) return;
-            if (((IRealEstateContext)_context).RealEstateDatabase != null)
+            if (((IRealEstateContext)_context).RealEstateDatabase == null)
+            {
+                ((IRealEstateContext)_context).CheckDatabase();
+            }
             {
                 ProjectLoadingView _loadingForm;
                 _loadingForm = new ProjectLoadingView("导入DXF操作:" + dialog.FileName);

@@ -37,12 +37,19 @@ namespace VastGIS.RealEstate.Api.Helpers
             reDatabase.InitREDatabase(epsgCode, _loadingForm,out errMsg);
             string projectFile = Path.Combine(info.FullName, name + ".vgproj");
             XmlProject project=new XmlProject(context as ISecureContext, projectFile);
-            project.VastProjectInfo=new XmlVastProjectInfo() {ProjectName = name,DatabaseName = "Database\\redatabase.db",AttachmentPath = "Attachments",MediaPath = "Medias"};
+            //project.VastProjectInfo=new XmlVastProjectInfo() {ProjectName = name,DatabaseName = "Database\\redatabase.db",AttachmentPath = "Attachments",MediaPath = "Medias"};
             _loadingForm.Close();
             _loadingForm.Dispose();
             context.View.Unlock();
             _loadingForm = null;
             return project;
+        }
+
+
+        public static string GetProjectDatabase(string projectFile)
+        {
+            string location = Path.Combine(Path.GetDirectoryName(projectFile), @"Database\redatabase.db");
+            return location;
         }
     }
 }

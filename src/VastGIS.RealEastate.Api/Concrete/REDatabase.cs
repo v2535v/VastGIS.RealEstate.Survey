@@ -499,9 +499,9 @@ namespace VastGIS.RealEstate.Api.Concrete
             int srid = mainService.GetGeometryColumnSRID("tmpcadd", "geometry");
             mainService.ClearCADTemps();
 
-
+            Ogr.RegisterAll();
             DataSource ds = Ogr.Open(dxfName, 0);
-            Driver drv = ds.GetDriver();
+            
             loadingForm.ShowProgress(0, "导入图形数据...");
             for (int i = 0; i < ds.GetLayerCount(); i++)
             {
@@ -628,7 +628,7 @@ namespace VastGIS.RealEstate.Api.Concrete
                         Geometry geometry = Ogr.ForceToPolygon(Geometry.CreateFromWkt(wkt));
                         string geomStr = "";
                         geometry.ExportToWkt(out geomStr);
-                        geomStr = geomStr.Replace("LINESTRING", "POLYGON (") + ")";
+                        //geomStr = geomStr.Replace("LINESTRING", "POLYGON (") + "";
                         cadm.Geometry = DbGeometry.FromText(geomStr);
                         cadmService.Create(cadm);
                     }

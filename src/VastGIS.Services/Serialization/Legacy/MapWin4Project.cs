@@ -6,8 +6,8 @@ using VastGIS.Shared;
 
 namespace VastGIS.Services.Serialization.Legacy
 {
-   [XmlRoot("VastGIS")]
-   public class VastGISProject
+    [XmlRoot("Mapwin")]
+    public class MapWin4Project
     {
         [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
@@ -18,14 +18,13 @@ namespace VastGIS.Services.Serialization.Legacy
         [XmlAttribute(AttributeName = "version")]
         public string Version { get; set; }
 
-      
         [XmlElement(ElementName = "MapWinGIS")]
         public MapWinGIS MapwinGis { get; set; }
 
-        [XmlElement(ElementName = "VastGIS1")]
-        public VastGIS1 VastGis { get; set; }
+        [XmlElement(ElementName = "MapWindow4")]
+        public MapWindow4 MapWindow { get; set; }
 
-        public class VastGIS1
+        public class MapWindow4
         {
             [XmlAttribute(AttributeName = "ConfigurationPath")]
             public string ConfigurationPath { get; set; }
@@ -109,25 +108,8 @@ namespace VastGIS.Services.Serialization.Legacy
             [XmlArray]
             [XmlArrayItem(ElementName = "Layer")]
             public List<LayerMapWin4> Layers { get; set; }
-
-            [XmlElement(ElementName = "VastProjectInfo")]
-            public VastProjectInfo VastProjectInfo { get; set; }
         }
-        public class VastProjectInfo
-        {
-            [XmlAttribute(AttributeName = "ProjectName")]
-            public string ProjectName { get; set; }
 
-            [XmlAttribute(AttributeName = "DatabaseName")]
-            public string DatabaseName { get; set; }
-
-            [XmlAttribute(AttributeName = "AttachmentPath")]
-            public string AttachmentPath { get; set; }
-
-            [XmlAttribute(AttributeName = "MediaPath")]
-            public string MediaPath { get; set; }
-
-        }
         public class LayerMapWin4
         {
             [XmlAttribute(AttributeName = "Name")]
@@ -557,3 +539,8 @@ namespace VastGIS.Services.Serialization.Legacy
         }
     }
 }
+
+
+
+
+

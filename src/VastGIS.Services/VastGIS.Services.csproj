@@ -122,7 +122,8 @@
     <Compile Include="Serialization\IProjectLoader.cs" />
     <Compile Include="Concrete\ImageSerializationService.cs" />
     <Compile Include="Serialization\LayerSerializationHelper.cs" />
-    <Compile Include="Serialization\Legacy\VastGISProject.cs" />
+    <Compile Include="Serialization\Legacy\MapWin4Project.cs" />
+    <Compile Include="Serialization\Legacy\MapWin4XsdProject.cs" />
     <Compile Include="Serialization\XmlCustomObject.cs" />
     <Compile Include="Serialization\XmlMapLocator.cs" />
     <Compile Include="Serialization\XmlProjectSettings.cs" />
@@ -134,7 +135,6 @@
     <Compile Include="Views\CreateLayerPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\ISecureContext.cs" />
-    <Compile Include="Serialization\Legacy\VastGISXsdProject.cs" />
     <Compile Include="Serialization\XmlConfig.cs" />
     <Compile Include="Serialization\XmlEnvelope.cs" />
     <Compile Include="Serialization\XmlGroup.cs" />
@@ -199,7 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\MapWindow4Config.xml" />
-    <Content Include="Data\VastGISProject.xml">
+    <Content Include="Data\MapWindow4Project.xml">
       <SubType>Designer</SubType>
     </Content>
     <None Include="Data\MapWindow4Project.xsc">

@@ -24,6 +24,7 @@ using VastGIS.Plugins.Services;
 using VastGIS.Projections.Helpers;
 using VastGIS.RealEstate.Api;
 using VastGIS.RealEstate.Api.Concrete;
+using VastGIS.RealEstate.Api.Helpers;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.Services.Serialization;
 using VastGIS.Shared;
@@ -204,7 +205,7 @@ namespace VastGIS
             {
                 _vastProject = value;
                 string parentPath = Path.GetDirectoryName(_project.Filename);
-                string dbPath = Path.Combine(parentPath, _vastProject.VastProjectInfo.DatabaseName);
+                string dbPath = Path.Combine(parentPath, @"Database\redatabase.db");
                 _realEstateDatabase = new ReDatabase(dbPath);
                 _realEstateDatabase.CheckDatabase();
             }
@@ -323,6 +324,15 @@ namespace VastGIS
         {
             get { return _realEstateDatabase; }
             set { _realEstateDatabase = value; }
+        }
+
+        public bool CheckDatabase()
+        {
+            string parentPath = Path.GetDirectoryName(_project.Filename);
+            string dbPath = Path.Combine(parentPath, @"Database\redatabase.db");
+            _realEstateDatabase = new ReDatabase(dbPath);
+            _realEstateDatabase.CheckDatabase();
+            return true;
         }
     }
 }

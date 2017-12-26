@@ -8,7 +8,6 @@ using VastGIS.Api.Helpers;
 using VastGIS.Api.Legend;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.Services.Concrete;
-using VastGIS.Services.Serialization.Legacy;
 
 namespace VastGIS.Services.Serialization
 {
@@ -17,7 +16,7 @@ namespace VastGIS.Services.Serialization
     /// Before serialization the instance is populated from ISerializedContext.
     /// After deserialization RestoreState method should be called.
     /// </summary>
-    [DataContract(Name="VastGIS")]
+    [DataContract(Name = "MapWindow5")]
     public class XmlProject
     {
         public XmlProject(ISecureContext context, string filename)
@@ -29,31 +28,27 @@ namespace VastGIS.Services.Serialization
             Groups = context.Legend.Groups.Select(g => new XmlGroup(g)).ToList();
 
             Plugins = context.PluginManager.ActivePlugins.Select(p => new XmlPlugin()
-            {
-                Name = p.Identity.Name,
-                Guid = p.Identity.Guid
-            }).ToList();
+                                                                          {
+                                                                              Name = p.Identity.Name,
+                                                                              Guid = p.Identity.Guid
+                                                                          }).ToList();
 
             Map = new XmlMap
-            {
-                Projection = context.Map.Projection.ExportToWkt(),
-                Envelope = new XmlEnvelope(context.Map.Extents),
-                TileProviderId = context.Map.Tiles.ProviderId
-            };
+                      {
+                          Projection = context.Map.Projection.ExportToWkt(),
+                          Envelope = new XmlEnvelope(context.Map.Extents),
+                          TileProviderId = context.Map.Tiles.ProviderId
+                      };
 
-            Settings = new XmlProjectSettings {SavedAsFilename = filename};
+            Settings = new XmlProjectSettings { SavedAsFilename = filename };
 
             if (!context.Locator.Empty)
             {
                 var service = context.Container.GetInstance<ImageSerializationService>();
                 Locator = new XmlMapLocator(context.Locator, service);
             }
-
-            VastProjectInfo = new XmlVastProjectInfo() {};
         }
 
-        [DataMember]
-        public XmlVastProjectInfo VastProjectInfo { get; set; }
         [DataMember]
         public XmlMap Map { get; set; }
         [DataMember]

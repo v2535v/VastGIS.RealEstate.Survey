@@ -262,7 +262,7 @@ namespace VastGIS.Services.Concrete
 
             ShowLoadingForm(filename);
 
-            bool legacy = !filename.ToLower().EndsWith(".mwproj");
+            bool legacy = !filename.ToLower().EndsWith(".vgproj");
             var loader = GetCurrentLoader(legacy);
             loader.ProgressChanged += OnLoadingProgressChanged;
 
@@ -272,7 +272,7 @@ namespace VastGIS.Services.Concrete
 
             if (legacy)
             {
-                result = OpenLegacyProject(filename);
+                result = OpenCore(filename, silent);// result = OpenLegacyProject(filename);
             }
             else
             {
@@ -343,7 +343,7 @@ namespace VastGIS.Services.Concrete
 
                 try
                 {
-                    var project = state.DeserializeFromXml<VastGISProject>();
+                    var project = state.DeserializeFromXml<MapWin4Project>();
                     if (!_projectLoaderLegacy.Restore(project, filename))
                     {
                         Clear();
