@@ -17,15 +17,15 @@ namespace VastGIS.Plugins.Printing.Menu
             _context = context;
             _plugin = plugin;
 
-            _plugin.ViewUpdating += OnViewUpdating;
+         //   _plugin.ViewUpdating += OnViewUpdating;
         }
 
         void OnViewUpdating(object sender, EventArgs e)
         {
-            bool mapIsEmpty = _context.Map.IsEmpty;
-            _context.Toolbars.FindItem(MenuKeys.Print, _plugin.Identity).Enabled = !mapIsEmpty;
-            _context.Toolbars.FindItem(MenuKeys.SelectPrintArea, _plugin.Identity).Enabled = !mapIsEmpty;
-            _context.Menu.FindItem(MenuKeys.Print, _plugin.Identity).Enabled = !mapIsEmpty;
+            //bool mapIsEmpty = _context.Map.IsEmpty;
+            //_context.Toolbars.FindItem(MenuKeys.Print, _plugin.Identity).Enabled = !mapIsEmpty;
+            //_context.Toolbars.FindItem(MenuKeys.SelectPrintArea, _plugin.Identity).Enabled = !mapIsEmpty;
+            //_context.Menu.FindItem(MenuKeys.Print, _plugin.Identity).Enabled = !mapIsEmpty;
         }
     }
 }

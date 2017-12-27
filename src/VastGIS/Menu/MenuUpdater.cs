@@ -41,7 +41,7 @@ namespace VastGIS.Menu
             }
             else
             {
-                UpdateMenu();
+               // UpdateMenu();
             }
 
             
@@ -70,32 +70,32 @@ namespace VastGIS.Menu
             else
             {
                 ToolStripItem oneItem;
-                oneItem=FindToolStripItem(MenuKeys.RemoveLayer);
-                if(oneItem != null) oneItem.Enabled = false;
-                oneItem = FindToolStripItem(MenuKeys.LayerClearSelection);
-                if (oneItem != null) oneItem.Enabled = true;
-                oneItem = FindToolStripItem(MenuKeys.ClearLayers);
-                if (oneItem != null) oneItem.Enabled = _map.Layers.Any();
-                oneItem = FindToolStripItem(MenuKeys.ClearSelection);
-                if (oneItem != null) oneItem.Enabled = _map.Layers.Any();
-                oneItem = FindToolStripItem(MenuKeys.ZoomToLayer);
-                if (oneItem != null) oneItem.Enabled = _map.Layers.Any();
-                oneItem = FindToolStripItem(MenuKeys.ZoomToBaseLayer);
-                if (oneItem != null) oneItem.Enabled = !_map.Projection.IsEmpty && _map.Tiles.Visible;
+                //oneItem=FindToolStripItem(MenuKeys.RemoveLayer);
+                //if(oneItem != null) oneItem.Enabled = false;
+                //oneItem = FindToolStripItem(MenuKeys.LayerClearSelection);
+                //if (oneItem != null) oneItem.Enabled = true;
+                //oneItem = FindToolStripItem(MenuKeys.ClearLayers);
+                //if (oneItem != null) oneItem.Enabled = _map.Layers.Any();
+                //oneItem = FindToolStripItem(MenuKeys.ClearSelection);
+                //if (oneItem != null) oneItem.Enabled = _map.Layers.Any();
+                //oneItem = FindToolStripItem(MenuKeys.ZoomToLayer);
+                //if (oneItem != null) oneItem.Enabled = _map.Layers.Any();
+                //oneItem = FindToolStripItem(MenuKeys.ZoomToBaseLayer);
+                //if (oneItem != null) oneItem.Enabled = !_map.Projection.IsEmpty && _map.Tiles.Visible;
 
-                var config = AppConfig.Instance;
-                oneItem = FindToolStripItem(MenuKeys.ShowCoordinates);
-                if (oneItem != null) ((ToolStripButton)oneItem).Checked = config.ShowCoordinates;
-                oneItem = FindToolStripItem(MenuKeys.ShowScalebar);
-                if (oneItem != null) ((ToolStripButton)oneItem).Checked = config.ShowScalebar;
-                oneItem = FindToolStripItem(MenuKeys.ShowZoombar);
-                if (oneItem != null) ((ToolStripButton)oneItem).Checked = config.ShowZoombar;
-                oneItem = FindToolStripItem(MenuKeys.ShowRedrawTime);
-                if (oneItem != null) ((ToolStripButton)oneItem).Checked = config.ShowRedrawTime;
-                oneItem = FindToolStripItem(MenuKeys.ZoomNext);
-                if (oneItem != null) oneItem.Enabled = _map.ExtentHistoryUndoCount > 0;
-                oneItem = FindToolStripItem(MenuKeys.ZoomPrev);
-                if (oneItem != null) oneItem.Enabled = _map.ExtentHistoryRedoCount > 0;
+                //var config = AppConfig.Instance;
+                //oneItem = FindToolStripItem(MenuKeys.ShowCoordinates);
+                //if (oneItem != null) ((ToolStripButton)oneItem).Checked = config.ShowCoordinates;
+                //oneItem = FindToolStripItem(MenuKeys.ShowScalebar);
+                //if (oneItem != null) ((ToolStripButton)oneItem).Checked = config.ShowScalebar;
+                //oneItem = FindToolStripItem(MenuKeys.ShowZoombar);
+                //if (oneItem != null) ((ToolStripButton)oneItem).Checked = config.ShowZoombar;
+                //oneItem = FindToolStripItem(MenuKeys.ShowRedrawTime);
+                //if (oneItem != null) ((ToolStripButton)oneItem).Checked = config.ShowRedrawTime;
+                //oneItem = FindToolStripItem(MenuKeys.ZoomNext);
+                //if (oneItem != null) oneItem.Enabled = _map.ExtentHistoryUndoCount > 0;
+                //oneItem = FindToolStripItem(MenuKeys.ZoomPrev);
+                //if (oneItem != null) oneItem.Enabled = _map.ExtentHistoryRedoCount > 0;
             }
            
         }

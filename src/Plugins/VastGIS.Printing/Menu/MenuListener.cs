@@ -33,11 +33,11 @@ namespace VastGIS.Plugins.Printing.Menu
         
         private void ViewUpdating(object sender, EventArgs e)
         {
-            var item = _context.Toolbars.FindItem(MenuKeys.SelectPrintArea, _plugin.Identity);
-            if (item != null)
-            {
-                item.Checked = _context.Map.GetIsCustomSelectionMode(_plugin.Identity.Guid);
-            }
+            //var item = _context.Toolbars.FindItem(MenuKeys.SelectPrintArea, _plugin.Identity);
+            //if (item != null)
+            //{
+            //    item.Checked = _context.Map.GetIsCustomSelectionMode(_plugin.Identity.Guid);
+            //}
         }
 
         private void OnItemClicked(object sender, MenuItemEventArgs e)

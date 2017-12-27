@@ -28,7 +28,7 @@ namespace VastGIS.Plugins.ShapeEditor.Menu
             _plugin = plugin;
             _geoprocessingService = geoprocessingService;
 
-            plugin.ViewUpdating += OnViewUpdating;
+           // plugin.ViewUpdating += OnViewUpdating;
             plugin.MapCursorChanged += OnMapCursorChanged;
 
             plugin.HistoryChanged += (s, e) =>

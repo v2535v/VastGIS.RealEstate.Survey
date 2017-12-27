@@ -27,11 +27,11 @@ namespace VastGIS.Plugins.ImageRegistration.Menu
 
         private void ViewUpdating(object sender, EventArgs e)
         {
-            var item = _context.Toolbars.FindItem(MenuKeys.RegisterImage, _plugin.Identity);
-            if (item != null)
-            {
-                item.Checked = !_context.Map.IsEmpty;
-            }
+            //var item = _context.Toolbars.FindItem(MenuKeys.RegisterImage, _plugin.Identity);
+            //if (item != null)
+            //{
+            //    item.Checked = !_context.Map.IsEmpty;
+            //}
         }
 
         private void OnItemClicked(object sender, MenuItemEventArgs e)

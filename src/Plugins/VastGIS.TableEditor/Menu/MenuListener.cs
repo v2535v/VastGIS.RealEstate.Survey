@@ -34,9 +34,9 @@ namespace VastGIS.Plugins.TableEditor.Menu
 
         private void ViewUpdating(object sender, EventArgs e)
         {
-            bool visible = _context.Map.SelectedFeatureSet != null;
-            FindToolbarItem(MenuKeys.ShowTable).Enabled = visible;
-            FindMenuItem(MenuKeys.ShowTable).Enabled = visible;
+            //bool visible = _context.Map.SelectedFeatureSet != null;
+            //FindToolbarItem(MenuKeys.ShowTable).Enabled = visible;
+            //FindMenuItem(MenuKeys.ShowTable).Enabled = visible;
         }
 
         private void PluginItemClicked(object sender, MenuItemEventArgs e)

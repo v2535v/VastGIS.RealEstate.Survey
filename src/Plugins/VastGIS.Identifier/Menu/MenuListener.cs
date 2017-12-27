@@ -22,11 +22,11 @@ namespace VastGIS.Plugins.Identifier.Menu
 
         private void ViewUpdating(object sender, EventArgs e)
         {
-            var item = _context.Toolbars.FindItem(MenuKeys.IdentifyTool, _plugin.Identity);
-            if (item != null)
-            {
-                item.Checked = _context.Map.MapCursor == MapCursor.Identify;
-            }
+            //var item = _context.Toolbars.FindItem(MenuKeys.IdentifyTool, _plugin.Identity);
+            //if (item != null)
+            //{
+            //    item.Checked = _context.Map.MapCursor == MapCursor.Identify;
+            //}
         }
 
         void plugin_ItemClicked(object sender, MenuItemEventArgs e)

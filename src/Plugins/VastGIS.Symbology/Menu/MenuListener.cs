@@ -67,21 +67,21 @@ namespace VastGIS.Plugins.Symbology.Menu
 
         private void UpdateItems(bool toolbar)
         {
-            var fs = _context.Map.SelectedFeatureSet;
+            //var fs = _context.Map.SelectedFeatureSet;
 
-            FindItem(MenuKeys.QueryBuilder, toolbar).Enabled = fs != null;
-            FindItem(MenuKeys.Categories, toolbar).Enabled = fs != null;
+            //FindItem(MenuKeys.QueryBuilder, toolbar).Enabled = fs != null;
+            //FindItem(MenuKeys.Categories, toolbar).Enabled = fs != null;
 
-            if (toolbar)
-            {
-                FindToolbarItem(MenuKeys.LabelMover).Checked = _context.Map.CustomCursor == LabelMoverCursor.Instance;
-            }
-            else
-            {
-                FindMenuItem(MenuKeys.Labels).Enabled = fs != null;
-                FindMenuItem(MenuKeys.Charts).Enabled = fs != null;
-                FindMenuItem(MenuKeys.LayerProperties).Enabled = _context.Map.Layers.Current != null;
-            }
+            //if (toolbar)
+            //{
+            //    FindToolbarItem(MenuKeys.LabelMover).Checked = _context.Map.CustomCursor == LabelMoverCursor.Instance;
+            //}
+            //else
+            //{
+            //    FindMenuItem(MenuKeys.Labels).Enabled = fs != null;
+            //    FindMenuItem(MenuKeys.Charts).Enabled = fs != null;
+            //    FindMenuItem(MenuKeys.LayerProperties).Enabled = _context.Map.Layers.Current != null;
+            //}
         }
 
         private IMenuItem FindItem(string key, bool toolbar)
