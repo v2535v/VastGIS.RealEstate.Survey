@@ -17,7 +17,7 @@ namespace VastGIS
     {
         public static void Compose(IApplicationContainer container)
         {
-            container.RegisterSingleton<IMainView, MainView>()
+            container.RegisterSingleton<IMainView, NewMainView>()
                 .RegisterSingleton<IAppContext, AppContext>()
                 .RegisterView<ISetProjectionView, SetProjectionView>()
                 .RegisterView<ILegendGroupView, LegendGroupView>()

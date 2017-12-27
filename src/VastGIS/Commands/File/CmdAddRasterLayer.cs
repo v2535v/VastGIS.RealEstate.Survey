@@ -15,6 +15,8 @@ namespace VastGIS.Commands.File
             base._text = "添加栅格图层";
             base._key = MenuKeys.AddRasterLayer;
             base._icon = Resources.icon_layer_raster_add;
+            base._headerName = "tabFile";
+            base._toolStripExName = "toolStripExLayer";
             _context = context;
         }
 

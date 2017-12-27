@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CmdNewJZD.cs" />
-    <Compile Include="Commands\CmdOpenRealEstateDatabase.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="frmSelectEditDatabase.cs">

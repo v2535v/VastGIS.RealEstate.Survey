@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using VastGIS.Api.Enums;
 using VastGIS.Plugins.Concrete;
 using VastGIS.Plugins.Enums;
 using VastGIS.Plugins.Interfaces;
@@ -46,7 +47,16 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public MenuGenerator(IAppContext context, RealEstateEditor plugin)
         {
             _commands = new MenuCommands(context,plugin);
-            InitMenu(context, plugin.Identity);
+            // InitMenu(context, plugin.Identity);
+            if (context.ViewType == MainViewType.Normal)
+            {
+
+                InitMenu(context, plugin.Identity);
+            }
+            else
+            {
+               // InitRibbonMenu(context, plugin.Identity);
+            }
         }
         #endregion
 

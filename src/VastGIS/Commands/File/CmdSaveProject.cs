@@ -14,6 +14,8 @@ namespace VastGIS.Commands.File
             base._text = "保存项目";
             base._key = MenuKeys.SaveProject;
             base._icon = Resources.icon_save;
+            base._headerName = "tabFile";
+            base._toolStripExName = "toolStripExFile";
             _context = context;
         }
 

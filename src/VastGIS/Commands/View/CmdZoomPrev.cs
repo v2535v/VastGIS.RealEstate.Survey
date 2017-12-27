@@ -13,6 +13,8 @@ namespace VastGIS.Commands.View
             base._text = "иор╩йсм╪";
             base._key = MenuKeys.ZoomPrev;
             base._icon = Resources.img_zoom_prev24;
+            base._headerName = "tabView";
+            base._toolStripExName = "toolStripView";
             _context = context;
         }
 

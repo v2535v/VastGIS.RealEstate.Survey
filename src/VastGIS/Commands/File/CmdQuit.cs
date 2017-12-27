@@ -12,6 +12,8 @@ namespace VastGIS.Commands.File
             base._text = "退出系统";
             base._key = Plugins.Menu.MenuKeys.Quit;
             base._icon = Resources.icon_quit;
+            base._headerName = "tabFile";
+            base._toolStripExName = "toolStripExFile";
             _context = context;
         }
 

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using VastGIS.Api;
+using VastGIS.Api.Enums;
 using VastGIS.Plugins.Concrete;
 using VastGIS.Plugins.Enums;
 using VastGIS.Plugins.Interfaces;
@@ -20,10 +21,17 @@ namespace VastGIS.Plugins.ShapeEditor.Menu
         public MenuGenerator(IAppContext context, ShapeEditor plugin)
         {
             _commands = new MenuCommands(plugin.Identity);
+            if (context.ViewType == MainViewType.Normal)
+            {
+                InitToolbar(context, plugin.Identity);
 
-            InitToolbar(context, plugin.Identity);
-
-            InitMenu(context, plugin.Identity);
+                InitMenu(context, plugin.Identity);
+            }
+            else
+            {
+                // InitRibbonMenu(context, plugin.Identity);
+            }
+           
         }
 
         private void InitToolbar(IAppContext context, PluginIdentity identity)

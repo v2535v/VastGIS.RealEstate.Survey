@@ -17,6 +17,7 @@ using netDxf.Entities;
 using OSGeo.OGR;
 using VastGIS.Api.Enums;
 using VastGIS.Api.Interfaces;
+using VastGIS.Plugins.Services;
 using VastGIS.RealEstate.Api.Helpers;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Dao.Impl;
@@ -531,7 +532,10 @@ namespace VastGIS.RealEstate.Api.Concrete
                             TmpCadzj cadzj = new TmpCadzj(handle, geomtryStr, "TEXT", dxfName);
                             cadzjService.Create(cadzj);
                             break;
-
+                        default:
+                            MessageService.Current.Info(typeName);
+                            System.Diagnostics.Trace.TraceInformation("CAD类型未处理 {0}", typeName);
+                            break;
                     }
 
                     feat.Dispose();

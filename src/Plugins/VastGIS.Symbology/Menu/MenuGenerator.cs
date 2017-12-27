@@ -1,4 +1,5 @@
 ﻿using System;
+using VastGIS.Api.Enums;
 using VastGIS.Plugins.Events;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.Plugins.Symbology.Helpers;
@@ -18,10 +19,17 @@ namespace VastGIS.Plugins.Symbology.Menu
             if (plugin == null) throw new ArgumentNullException("plugin");
 
             _commands = new MenuCommands(plugin.Identity);
+            if (context.ViewType == MainViewType.Normal)
+            {
+                InitToolbar();
 
-            InitToolbar();
-
-            InitMenu();
+                InitMenu();
+            }
+            else
+            {
+                // InitRibbonMenu(context, plugin.Identity);
+            }
+           
         }
 
         private void InitMenu()

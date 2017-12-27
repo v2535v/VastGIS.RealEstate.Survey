@@ -31,6 +31,8 @@ namespace VastGIS.Plugins.RealEstate.Commands
             base._icon = Properties.Resources.LayerTool32;
             _context = context;
             _plugin = plugin;
+            base._headerName = "tabRealEstate";
+            base._toolStripExName = "toolStripZD";
             base._cursor=MapCursor.AddShape;
         }
 

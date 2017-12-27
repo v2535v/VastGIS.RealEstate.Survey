@@ -14,6 +14,8 @@ namespace VastGIS.Commands.View
             base._text = "Àı–°";
             base._key = MenuKeys.ZoomOut;
             base._icon = Resources.icon_zoom_out;
+            base._headerName = "tabView";
+            base._toolStripExName = "toolStripView";
             _context = context;
         }
 

@@ -14,6 +14,8 @@ namespace VastGIS.Commands.File
             base._text = "设置";
             base._key = MenuKeys.Settings;
             base._icon = Resources.icon_settings;
+            base._headerName = "tabFile";
+            base._toolStripExName = "toolStripExFile";
             _context = context;
         }
 

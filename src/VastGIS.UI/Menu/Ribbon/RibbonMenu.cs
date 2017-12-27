@@ -39,7 +39,7 @@ namespace VastGIS.UI.Menu.Ribbon
 
         public ToolStripButton AddButton(ICommand menuCommand)
         {
-            ToolStripEx ex = AddToolStripEx(menuCommand.ToolStripExName, menuCommand.ToolStripExName, menuCommand.HeaderName);
+            ToolStripEx ex = AddToolStripEx(menuCommand.ToolStripExName, "", menuCommand.HeaderName);
            
             ToolStripButton btn = new ToolStripButton(menuCommand.Text, menuCommand.Icon);
             btn.Name = menuCommand.Key;
@@ -59,7 +59,7 @@ namespace VastGIS.UI.Menu.Ribbon
         }
         public ToolStripButton AddButton(IMenuItem menuItem)
         {
-            ToolStripEx ex = AddToolStripEx(menuItem.ToolStripExName, menuItem.ToolStripExName, menuItem.HeaderName);
+            ToolStripEx ex = AddToolStripEx(menuItem.ToolStripExName, menuItem.Text, menuItem.HeaderName);
             ToolStripButton btn=new ToolStripButton(menuItem.Text,menuItem.Icon.Image);
             btn.Name = menuItem.UniqueKey;
             ToolStripItem item = btn as ToolStripItem;
@@ -117,8 +117,11 @@ namespace VastGIS.UI.Menu.Ribbon
             if (item == null) return;
             MenuItemEventArgs args = new MenuItemEventArgs(item.Key, false);
             ICommand cmd = _commands.FirstOrDefault(c => c.Key == item.Key);
-            if(cmd != null)
-                PluginBroadcaster.Instance.FireItemClicked(cmd, args);
+            if (cmd != null)
+            {
+                cmd.OnClick();
+                //PluginBroadcaster.Instance.FireItemClicked(cmd, args);
+            }
         }
 
       

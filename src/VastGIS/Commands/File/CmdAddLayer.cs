@@ -15,6 +15,8 @@ namespace VastGIS.Commands.File
             base._text = "Ìí¼ÓÊý¾Ý";
             base._key = MenuKeys.AddLayer;
             base._icon = Resources.icon_layer_add;
+            base._headerName = "tabFile";
+            base._toolStripExName = "toolStripExLayer";
             _context = context;
         }
 

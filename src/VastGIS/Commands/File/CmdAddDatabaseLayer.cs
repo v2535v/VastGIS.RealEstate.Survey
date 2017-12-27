@@ -16,6 +16,8 @@ namespace VastGIS.Commands.File
             base._text = "添加数据库图层";
             base._key = MenuKeys.AddDatabaseLayer;
             base._icon = Resources.icon_layer_database_add;
+            base._headerName = "tabFile";
+            base._toolStripExName = "toolStripExLayer";
             _context = context;
         }
 

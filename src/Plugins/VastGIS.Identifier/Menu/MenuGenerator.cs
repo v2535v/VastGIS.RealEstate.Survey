@@ -1,4 +1,5 @@
 ﻿using System;
+using VastGIS.Api.Enums;
 using VastGIS.Plugins.Interfaces;
 
 namespace VastGIS.Plugins.Identifier.Menu
@@ -16,7 +17,17 @@ namespace VastGIS.Plugins.Identifier.Menu
             _commands = new MenuCommands(plugin.Identity);
             _context = context;
 
-            InitToolbar(context);
+            if (context.ViewType == MainViewType.Normal)
+            {
+
+                //InitMenu(context, plugin.Identity);
+                InitToolbar(context);
+            }
+            else
+            {
+                // InitRibbonMenu(context, plugin.Identity);
+            }
+            
         }
 
         private void InitToolbar(IAppContext context)

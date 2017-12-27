@@ -13,6 +13,8 @@ namespace VastGIS.Commands.View
             base._text = "全图";
             base._key = MenuKeys.ZoomMax;
             base._icon = Resources.icon_zoom_max_extents;
+            base._headerName = "tabView";
+            base._toolStripExName = "toolStripView";
             _context = context;
         }
 

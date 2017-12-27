@@ -25,7 +25,7 @@ namespace VastGIS.Commands.File
             base._key = MenuKeys.NewProject;
             base._icon = Resources.icon_new_map;
             base._headerName = "tabFile";
-            base._toolStripExName = "toolStripFiles";
+            base._toolStripExName = "toolStripExFile";
             _context = context;
         }
 

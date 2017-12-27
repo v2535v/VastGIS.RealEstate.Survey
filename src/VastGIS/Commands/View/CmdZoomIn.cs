@@ -14,6 +14,8 @@ namespace VastGIS.Commands.View
             base._text = "放大";
             base._key = MenuKeys.ZoomIn;
             base._icon = Resources.icon_zoom_in;
+            base._headerName = "tabView";
+            base._toolStripExName = "toolStripView";
             _context = context;
         }
 

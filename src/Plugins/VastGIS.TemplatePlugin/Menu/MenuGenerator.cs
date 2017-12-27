@@ -48,10 +48,10 @@ namespace VastGIS.Plugins.TemplatePlugin.Menu
             _commands = new MenuCommands(plugin.Identity);
 
             // Create the toolbar:
-            InitToolbar(context, plugin.Identity);
+            //InitToolbar(context, plugin.Identity);
 
-            // Create new top-level menu:
-            InitMenu(context, plugin.Identity);
+            //// Create new top-level menu:
+            //InitMenu(context, plugin.Identity);
         }
         #endregion
 

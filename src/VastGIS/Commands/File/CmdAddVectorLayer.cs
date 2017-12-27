@@ -15,6 +15,8 @@ namespace VastGIS.Commands.File
             base._text = "添加矢量图层";
             base._key = MenuKeys.AddVectorLayer;
             base._icon = Resources.icon_layer_vector_add;
+            base._headerName = "tabFile";
+            base._toolStripExName = "toolStripExLayer";
             _context = context;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using VastGIS.Api.Enums;
 using VastGIS.Plugins.Interfaces;
 
 namespace VastGIS.Plugins.TableEditor.Menu
@@ -14,10 +15,16 @@ namespace VastGIS.Plugins.TableEditor.Menu
             if (context == null) throw new ArgumentNullException("context");
             _context = context;
             _commands = new MenuCommands(plugin);
+            if (context.ViewType == MainViewType.Normal)
+            {
+                InitToolbars();
 
-            InitToolbars();
-
-            InitMenu();
+                InitMenu();
+            }
+            else
+            {
+                // InitRibbonMenu(context, plugin.Identity);
+            }
         }
 
         private void InitToolbars()

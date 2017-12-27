@@ -16,8 +16,8 @@ namespace VastGIS.Commands.File
             base._text = "µº»ÎDXF";
             base._key = MenuKeys.ImportDXF;
             base._icon = Resources.img_layers32;
-            base._headerName = "tabFile";
-            base._toolStripExName = "toolStripFiles";
+            base._headerName = "tabReady";
+            base._toolStripExName = "toolStripReadies";
             _context = context;
         }
 

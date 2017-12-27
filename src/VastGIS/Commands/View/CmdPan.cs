@@ -14,6 +14,8 @@ namespace VastGIS.Commands.View
             base._text = "Æ½ÒÆ";
             base._key = MenuKeys.Pan;
             base._icon = Resources.icon_pan;
+            base._headerName = "tabView";
+            base._toolStripExName = "toolStripView";
             _context = context;
         }
 

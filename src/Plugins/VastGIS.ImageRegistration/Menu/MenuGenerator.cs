@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VastGIS.Api.Enums;
 using VastGIS.Plugins.ImageRegistration.Properties;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.Plugins.Menu;
@@ -21,7 +22,16 @@ namespace VastGIS.Plugins.ImageRegistration.Menu
             if (context == null) throw new ArgumentNullException("context");
             if (plugin == null) throw new ArgumentNullException("plugin");
 
-            InitMenu(context);
+            if (context.ViewType == MainViewType.Normal)
+            {
+
+                InitMenu(context);
+            }
+            else
+            {
+                // InitRibbonMenu(context, plugin.Identity);
+            }
+           
         }
 
         private void InitMenu(IAppContext context)

@@ -6,10 +6,6 @@
         public const string ImportDXF="reImportDXF";
         public const string CreateZDDatabase = "CreateZDDatabase";
         public const string NewProject = "reNewProject";
-
-
-
-
         public const string NewMap = "FileNewMap";
         public const string OpenProject = "FileOpenProject";
         public const string SaveProject = "FileSaveProject";

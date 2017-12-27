@@ -5,6 +5,7 @@
 // -------------------------------------------------------------------------------------------
 
 using System;
+using VastGIS.Api.Enums;
 using VastGIS.Plugins.Concrete;
 using VastGIS.Plugins.Interfaces;
 
@@ -24,10 +25,18 @@ namespace VastGIS.Plugins.Printing.Menu
             _commands = new MenuCommands(plugin.Identity);
             _context = context;
             _plugin = plugin;
+            if (context.ViewType == MainViewType.Normal)
+            {
 
-            InitMenu();
+                InitMenu();
 
-            InitToolbar();
+                InitToolbar();
+            }
+            else
+            {
+                // InitRibbonMenu(context, plugin.Identity);
+            }
+           
         }
 
         private void InitMenu()

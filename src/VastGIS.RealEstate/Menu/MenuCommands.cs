@@ -56,12 +56,12 @@ namespace VastGIS.Plugins.RealEstate.Menu
         {
             // Create a list of MenuCommands for every toolbar button created in MenuGenerator:
             List<ICommand> commands=new List<ICommand>();
-            ICommand command = new CmdOpenRealEstateDatabase(_context);
-            command.PluginIdentity = _identity;
-            commands.Add(command);
-            command=new CmdNewJZD(_context,_plugin);
-            command.PluginIdentity = _identity;
-            commands.Add(command);
+            //ICommand command = new CmdOpenRealEstateDatabase(_context);
+            //command.PluginIdentity = _identity;
+            //commands.Add(command);
+            //command=new CmdNewJZD(_context,_plugin);
+            //command.PluginIdentity = _identity;
+            //commands.Add(command);
             return commands;
 
         }

@@ -56,27 +56,51 @@ namespace VastGIS.Menu
             RibbonMenu menu = _context.RibbonMenu as RibbonMenu;
             menu.AddHeaderTab("tabFile", "文件");
             menu.AddToolStripEx("toolStripExFile", "文件", "tabFile");
+            menu.AddToolStripEx("toolStripExLayer", "图层", "tabFile");
+
 
             menu.AddHeaderTab("tabView", "视图");
             menu.AddToolStripEx("toolStripView", "视图", "tabView");
             menu.AddToolStripEx("toolStripViewTools", "工具", "tabView");
             menu.AddToolStripEx("toolStripViewSelection", "选择", "tabView");
 
+            menu.AddHeaderTab("tabReady", "准备");
+            menu.AddToolStripEx("toolStripReadies", "准备", "tabReady");
 
-            menu.AddButton(_commands[MenuKeys.NewMap]);
+
+            //menu.AddButton(_commands[MenuKeys.NewMap]);
             menu.AddButton(_commands[MenuKeys.NewProject]);
-
-            menu.AddButton(_commands[MenuKeys.AddLayer]);
-            menu.AddButton(_commands[MenuKeys.AddVectorLayer]);
-            menu.AddButton(_commands[MenuKeys.AddRasterLayer]);
-            menu.AddButton(_commands[MenuKeys.AddDatabaseLayer]);
-            menu.AddButton(_commands[MenuKeys.AddWmsLayer]);
-
             menu.AddButton(_commands[MenuKeys.OpenProject]);
             menu.AddButton(_commands[MenuKeys.SaveProject]);
             menu.AddButton(_commands[MenuKeys.SaveProjectAs]);
-
+            menu.AddButton(_commands[MenuKeys.Settings]);
             menu.AddButton(_commands[Plugins.Menu.MenuKeys.Quit]);
+
+            menu.AddButton(_commands[MenuKeys.AddLayer]);
+            menu.AddButton(_commands[MenuKeys.AddDatabaseLayer]);
+            menu.AddButton(_commands[MenuKeys.AddVectorLayer]);
+
+            menu.AddButton(_commands[MenuKeys.ImportDXF]);
+
+
+            menu.AddButton(_commands[MenuKeys.ZoomIn]);
+            menu.AddButton(_commands[MenuKeys.ZoomOut]);
+            menu.AddButton(_commands[MenuKeys.ZoomMax]);
+            menu.AddButton(_commands[MenuKeys.Pan]);
+            menu.AddButton(_commands[MenuKeys.ZoomPrev]);
+            menu.AddButton(_commands[MenuKeys.ZoomNext]);
+
+            //menu.AddButton(_commands[MenuKeys.AddLayer]);
+            //menu.AddButton(_commands[MenuKeys.AddVectorLayer]);
+            //menu.AddButton(_commands[MenuKeys.AddRasterLayer]);
+            //menu.AddButton(_commands[MenuKeys.AddDatabaseLayer]);
+            //menu.AddButton(_commands[MenuKeys.AddWmsLayer]);
+
+            //menu.AddButton(_commands[MenuKeys.OpenProject]);
+            //menu.AddButton(_commands[MenuKeys.SaveProject]);
+            //menu.AddButton(_commands[MenuKeys.SaveProjectAs]);
+
+
         }
 
         private void InitMenus()
