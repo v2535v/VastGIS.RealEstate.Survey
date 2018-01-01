@@ -3,7 +3,7 @@
     public class TmpCadxdata : IEntity
     {
         public TmpCadxdata() { }
-        public int Bsm { get; set; }
+        public int Id { get; set; }
         public string Handle { get; set; }
         public string Wbnr { get; set; }
         public string Tc { get; set; }

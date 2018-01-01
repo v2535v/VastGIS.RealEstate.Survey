@@ -4,7 +4,7 @@ namespace VastGIS.RealEstate.Data.Entity
 {
     public abstract class TmpCadEntity : IEntity, IFeature
     {
-        public int Bsm { get; set; }
+        public int Id { get; set; }
         public DbGeometry Geometry { get; set; }
         public string EntityType { get; set; }
 

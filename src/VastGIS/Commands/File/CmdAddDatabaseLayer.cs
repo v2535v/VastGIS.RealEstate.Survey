@@ -29,8 +29,11 @@ namespace VastGIS.Commands.File
             {
                 using (var ds = new VectorDatasource())
                 {
+                    string encoding=OSGeo.GDAL.Gdal.GetConfigOption("SHAPE_ENCODING", "");
+                    OSGeo.GDAL.Gdal.SetConfigOption("SHAPE_ENCODING", "GB2312");
                     var model = new DatabaseLayersModel(ds, connection);
                     _context.Container.Run<DatabaseLayersPresenter, DatabaseLayersModel>(model);
+                    OSGeo.GDAL.Gdal.SetConfigOption("SHAPE_ENCODING", encoding);
                 }
             }
             return ;

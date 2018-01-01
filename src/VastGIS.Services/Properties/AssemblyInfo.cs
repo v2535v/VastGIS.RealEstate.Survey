@@ -28,4 +28,6 @@ using System.Runtime.InteropServices;
 
 [assembly: InternalsVisibleTo("VastGIS")]
 [assembly: InternalsVisibleTo("VastGIS.RealEstate.Api")]
+[assembly: InternalsVisibleTo("VastGIS.Plugins.RealEstate")]
+
 

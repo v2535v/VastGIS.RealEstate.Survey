@@ -39,6 +39,20 @@ namespace VastGIS.Projections.Helpers
             return -1;
         }
 
+        public static ICoordinateSystem ChooseEpsgProjection2(this IAppContext context )
+        {
+            using (var form = new ChooseProjectionForm(context.Projections, context))
+            {
+                if (context.View.ShowChildView(form))
+                {
+                    var cs = form.SelectedCoordinateSystem;
+                    return cs != null ? cs : null;
+                }
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Displays UI allowing the user to change map projection.
         /// </summary>

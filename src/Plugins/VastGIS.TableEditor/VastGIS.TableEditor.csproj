@@ -102,6 +102,7 @@
     <Compile Include="..\..\SolutionItems\SolutionInfoPlugins.cs">
       <Link>Properties\SolutionInfoPlugins.cs</Link>
     </Compile>
+    <Compile Include="Commands\CreateShowAttributeTable.cs" />
     <Compile Include="Controls\FieldStatsGrid.cs">
       <SubType>Component</SubType>
     </Compile>

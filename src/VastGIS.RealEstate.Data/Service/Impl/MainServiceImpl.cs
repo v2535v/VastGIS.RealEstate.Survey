@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VastGIS.RealEstate.Data.Dao;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Enums;
 
 namespace VastGIS.RealEstate.Data.Service.Impl
 {
@@ -29,6 +30,21 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         public void ClearCADTemps()
         {
             mainDao.ClearCADTemps();
+        }
+
+        public void ClearCADTemps(CADInsertMethod insertMethod, string dxfName)
+        {
+            mainDao.ClearCADTemps(insertMethod,dxfName);
+        }
+
+        public bool HasCADData(string fileName)
+        {
+            return mainDao.HasCADData(fileName);
+        }
+
+        public void SplitTmpCADToLayer(string cadLayerName, string tableName, string fileName = "", bool isClear = true)
+        {
+            mainDao.SplitTmpCADToLayer(cadLayerName,tableName,fileName,isClear);
         }
     }
 

@@ -4,7 +4,7 @@ namespace VastGIS.RealEstate.Data.Entity
 {
     public abstract class BaseMapText : IEntity, IFeature
     {
-        public int Bsm { get; set; }
+        public int Id { get; set; }
         public string Tc { get; set; }
         public string Zjwb { get; set; }
         public string Cassdm { get; set; }

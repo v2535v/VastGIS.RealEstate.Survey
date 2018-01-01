@@ -26,6 +26,7 @@ namespace VastGIS.Api.Concrete
         public VectorLayer()
         {
             _layer = new OgrLayer();
+            
         }
 
         public VectorLayer(string connectionString, string sql)

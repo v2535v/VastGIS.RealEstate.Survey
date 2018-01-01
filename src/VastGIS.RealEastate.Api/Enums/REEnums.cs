@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace VastGIS.RealEstate.Api.Enums
 {
+   
     public enum REClassType
     {
         Dataset=0,

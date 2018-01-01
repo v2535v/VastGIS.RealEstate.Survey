@@ -32,7 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="netDxf, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\netDXF.2.0.2\lib\net45\netDxf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Syncfusion.Shared.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -46,9 +51,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CmdCreateREProject.cs" />
+    <Compile Include="Commands\CmdSplitCAD.cs" />
+    <Compile Include="Commands\CmdImportDXF.cs" />
     <Compile Include="Commands\CmdNewJZD.cs" />
+    <Compile Include="Commands\CmdTestOgrChinese.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Forms\frmCreateDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCreateDB.Designer.cs">
+      <DependentUpon>frmCreateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmImportDXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmImportDXF.Designer.cs">
+      <DependentUpon>frmImportDXF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSplitCAD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSplitCAD.Designer.cs">
+      <DependentUpon>frmSplitCAD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTestOgrChinese.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTestOgrChinese.Designer.cs">
+      <DependentUpon>frmTestOgrChinese.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSelectEditDatabase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +89,7 @@
       <DependentUpon>frmSelectEditDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DatabaseHelper.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="MapListener.cs" />
     <Compile Include="Menu\MenuCommands.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
@@ -73,6 +107,10 @@
     <Compile Include="Services\RealEstateEditingService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\gdalwrapper\gdalwrapper.csproj">
+      <Project>{845110c4-43e3-4e96-8588-731008ae502a}</Project>
+      <Name>gdalwrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VastGIS.Api\VastGIS.Api.csproj">
       <Project>{8aad34b3-8ef3-485f-a04d-ed2c07d8f1df}</Project>
       <Name>VastGIS.Api</Name>
@@ -80,6 +118,26 @@
     <ProjectReference Include="..\VastGIS.Plugins\VastGIS.Plugins.csproj">
       <Project>{76644cdf-5165-428d-8419-93c1e978db1b}</Project>
       <Name>VastGIS.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Projections\VastGIS.Projections.csproj">
+      <Project>{DD259453-611A-4AD5-878E-385CB2C89DF5}</Project>
+      <Name>VastGIS.Projections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.RealEastate.Api\VastGIS.RealEstate.Api.csproj">
+      <Project>{9609A967-A37F-45A1-AD60-79E92BDBCE68}</Project>
+      <Name>VastGIS.RealEstate.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.RealEstate.Data\VastGIS.RealEstate.Data.csproj">
+      <Project>{135434DE-E426-4D69-B1D7-DF45A1A3C5BC}</Project>
+      <Name>VastGIS.RealEstate.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Services\VastGIS.Services.csproj">
+      <Project>{54BB55DA-DBDC-47E5-8DEC-DE325F35F074}</Project>
+      <Name>VastGIS.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Shared\VastGIS.Shared.csproj">
+      <Project>{79400594-DE0D-4FFD-B115-AF2AEAC79CD9}</Project>
+      <Name>VastGIS.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.Tools\VastGIS.Tools.csproj">
       <Project>{fb836bb0-2668-41e6-a4ad-7798b13c327f}</Project>
@@ -91,6 +149,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmCreateDB.resx">
+      <DependentUpon>frmCreateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmImportDXF.resx">
+      <DependentUpon>frmImportDXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSplitCAD.resx">
+      <DependentUpon>frmSplitCAD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTestOgrChinese.resx">
+      <DependentUpon>frmTestOgrChinese.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSelectEditDatabase.resx">
       <DependentUpon>frmSelectEditDatabase.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +170,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\editlayer.png" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +181,37 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\EditingSelectedGeodatabase32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chinese.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxMapWinGIS">
+      <Guid>{C368D713-CC5F-40ED-9F53-F84FE197B96A}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MapWinGIS">
+      <Guid>{C368D713-CC5F-40ED-9F53-F84FE197B96A}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

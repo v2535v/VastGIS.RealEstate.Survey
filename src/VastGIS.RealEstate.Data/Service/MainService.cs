@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using VastGIS.RealEstate.Data.Dao.Impl;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Enums;
 using VastGIS.RealEstate.Data.Service.Impl;
+
 
 namespace VastGIS.RealEstate.Data.Service
 {
@@ -14,6 +16,11 @@ namespace VastGIS.RealEstate.Data.Service
         void Close();
         int GetGeometryColumnSRID(string tableName, string columnName);
         void ClearCADTemps();
+        void ClearCADTemps(CADInsertMethod insertMethod, string dxfName);
+
+        bool HasCADData(string fileName);
+
+        void SplitTmpCADToLayer(string cadLayerName, string tableName, string fileName = "", bool isClear = true);
     }
 
     public interface TmpCaddService

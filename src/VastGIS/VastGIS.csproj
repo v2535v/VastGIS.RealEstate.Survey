@@ -151,8 +151,6 @@
     <Compile Include="Commands\File\CmdAddVectorLayer.cs" />
     <Compile Include="Commands\File\CmdAddWmsLayer.cs" />
     <Compile Include="Commands\File\CmdCreateNewMap.cs" />
-    <Compile Include="Commands\File\CmdCreateNewProject.cs" />
-    <Compile Include="Commands\File\CmdImportDXF.cs" />
     <Compile Include="Commands\File\CmdOpenProject.cs" />
     <Compile Include="Commands\File\CmdQuit.cs" />
     <Compile Include="Commands\File\CmdRemoveLayer.cs" />
@@ -266,12 +264,6 @@
     <Compile Include="Controls\LocatorPresenter.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="ExceptionHandler.cs" />
-    <Compile Include="Forms\frmCreateDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmCreateDB.Designer.cs">
-      <DependentUpon>frmCreateDB.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\Sandbox.cs" />
     <Compile Include="Helpers\UpdaterHelper.cs" />
     <Compile Include="Listeners\MainPluginListener.cs" />
@@ -467,9 +459,6 @@
     <EmbeddedResource Include="Controls\LocatorDockPanel.resx">
       <DependentUpon>LocatorDockPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCreateDB.resx">
-      <DependentUpon>frmCreateDB.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Menu\ContextMenuView.resx">
       <DependentUpon>ContextMenuView.cs</DependentUpon>
     </EmbeddedResource>
@@ -483,6 +472,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ConfigView.resx">
       <DependentUpon>ConfigView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CreatePyramidsView.resx">
       <DependentUpon>CreatePyramidsView.cs</DependentUpon>
@@ -1133,6 +1123,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\gdalwrapper\gdalwrapper.csproj">
+      <Project>{845110c4-43e3-4e96-8588-731008ae502a}</Project>
+      <Name>gdalwrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VastGIS.Api\VastGIS.Api.csproj">
       <Project>{8AAD34B3-8EF3-485F-A04D-ED2C07D8F1DF}</Project>
       <Name>VastGIS.Api</Name>

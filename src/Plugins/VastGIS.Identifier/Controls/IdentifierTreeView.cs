@@ -378,8 +378,17 @@ namespace VastGIS.Plugins.Identifier.Controls
                 {
                     continue;
                 }
-
+                
                 var value = fs.Table.CellValue(i, shapeIndex);
+                //string valueStr = "";
+                //if (value != null)
+                //{
+                //    valueStr = value.ToString().Trim();
+                //    valueStr = valueStr.Substring(0, valueStr.Length - 1);
+                //    byte[] byteArray = System.Text.Encoding.ASCII.GetBytes(valueStr);
+                //    string newValue = System.Text.Encoding.Default.GetString(byteArray);
+                //}
+                //fieldsNode.AddSubItem(fld.DisplayName, value != null ? valueStr : "<null>");
                 fieldsNode.AddSubItem(fld.DisplayName, value != null ? value.ToString() : "<null>");
                 nodeShape.Metadata = new IdentifierNodeMetadata(layerHandle, shapeIndex);
             }

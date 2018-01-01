@@ -63,6 +63,16 @@ namespace VastGIS.Plugins.RealEstate.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chinese {
+            get {
+                object obj = ResourceManager.GetObject("chinese", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DatabaseServersFolder32 {
             get {
                 object obj = ResourceManager.GetObject("DatabaseServersFolder32", resourceCulture);

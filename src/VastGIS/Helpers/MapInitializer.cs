@@ -45,7 +45,8 @@ namespace VastGIS.Helpers
             MapConfig.MouseTolerance = config.MouseTolerance;
             MapConfig.OgrLayerMaxFeatureCount = config.OgrMaxFeatureCount;
             MapConfig.OgrShareDatasources = config.OgrShareConnection;
-
+            MapConfig.OgrEncoding= OgrEncoding.Utf8;
+            
             map.ShowRedrawTime = config.ShowRedrawTime;
             map.ZoomBar.Visible = config.ShowZoombar;
             map.ScalebarVisible = config.ShowScalebar;

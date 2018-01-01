@@ -4,7 +4,7 @@ namespace VastGIS.RealEstate.Data.Entity
 {
     public abstract class BaseMapLine : IEntity, IFeature
     {
-        public int Bsm { get; set; }
+        public int Id { get; set; }
         public string Tc { get; set; }
         public string Cassdm { get; set; }
         public string Xx { get; set; }

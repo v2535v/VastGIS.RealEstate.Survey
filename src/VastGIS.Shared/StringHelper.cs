@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace VastGIS.Shared
 {
@@ -30,6 +31,17 @@ namespace VastGIS.Shared
         public static string Fill(string pattern, int count)
         {
             return Enumerable.Range(0, count).Aggregate(string.Empty, (current, item) => current + pattern);
+        }
+
+        public  static string StringToUtf8(string str,string fromEncoding="CP936")
+        {
+            Encoding utf8;
+            Encoding cp936;
+            utf8 = Encoding.GetEncoding("UTF-8");
+            cp936 = System.Text.Encoding.GetEncoding(fromEncoding);
+            byte[] gb = System.Text.Encoding.Default.GetBytes(str);
+            byte[]  gb2 = Encoding.Convert(cp936, utf8, gb);
+            return utf8.GetString(gb2);
         }
     }
 }

@@ -81,6 +81,7 @@
     <Compile Include="DebugHelper.cs" />
     <Compile Include="DownloadHelper.cs" />
     <Compile Include="DynamicJsonConverter.cs" />
+    <Compile Include="EncodingHelper.cs" />
     <Compile Include="FontHelper.cs" />
     <Compile Include="GcHelper.cs" />
     <Compile Include="IMarshal.cs" />

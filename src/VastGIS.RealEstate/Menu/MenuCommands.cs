@@ -8,6 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using VastGIS.Commands.File;
 using VastGIS.Plugins.Concrete;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.Plugins.RealEstate.Commands;
@@ -27,6 +28,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         private PluginIdentity _identity;
         private RealEstateEditor _plugin;
         #region Constructors and Destructors
+        private List<ICommand> _commands;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MenuCommands"/> class.
@@ -54,16 +56,27 @@ namespace VastGIS.Plugins.RealEstate.Menu
         /// </returns>
         public override IEnumerable<ICommand> GetCommands()
         {
-            // Create a list of MenuCommands for every toolbar button created in MenuGenerator:
-            List<ICommand> commands=new List<ICommand>();
-            //ICommand command = new CmdOpenRealEstateDatabase(_context);
-            //command.PluginIdentity = _identity;
-            //commands.Add(command);
-            //command=new CmdNewJZD(_context,_plugin);
-            //command.PluginIdentity = _identity;
-            //commands.Add(command);
-            return commands;
+            if (_commands == null)
+            {
+                _commands = new List<ICommand>();
+                ICommand command = new CmdTestOgrChinese(_context);
+                command.PluginIdentity = _identity;
+                _commands.Add(command);
 
+                command = new CmdCreateREProject(_context);
+                command.PluginIdentity = _identity;
+                _commands.Add(command);
+
+                command = new CmdImportDXF(_context);
+                command.PluginIdentity = _identity;
+                _commands.Add(command);
+
+                command = new CmdSplitCAD(_context);
+                command.PluginIdentity = _identity;
+                _commands.Add(command);
+
+            }
+            return _commands;
         }
 
         #endregion

@@ -8,3 +8,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("80B30FBE-758C-47FA-B7E4-CCDCD85BE7DB")]
 
 [assembly: InternalsVisibleTo("VastGIS.Services")]
+[assembly: InternalsVisibleTo("VastGIS.Plugins.RealEstate")]

@@ -15,7 +15,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
         public void Save(TmpCadxdata cadxdata)
         {
-            if (cadxdata.Bsm <= 0)
+            if (cadxdata.Id <= 0)
             {
                 SQLiteCommand command = new SQLiteCommand(connection);
                 StringBuilder fieldParameters = new StringBuilder();
@@ -57,7 +57,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 string query = String.Format("Insert Into TmpCadxdata ({0}) Values ({1})", fieldParameters.ToString(),
                     valuesParameters.ToString());
                 command.CommandText = query;
-                ExecuteSql(command);
+                command.ExecuteNonQuery();
             }
             else
             {
@@ -82,10 +82,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             fieldParameters.Append(",Xzjd=" + cadxdata.Xzjd.ToString());
             fieldParameters.Append(",FileName='" + cadxdata.FileName + "'");
 
-            string query = String.Format("Update TmpCadxdata Set {0} Where Bsm={1}", fieldParameters.ToString(),
-                cadxdata.Bsm);
+            string query = String.Format("Update TmpCadxdata Set {0} Where Id={1}", fieldParameters.ToString(),
+                cadxdata.Id);
             command.CommandText = query;
-            ExecuteSql(command);
+            command.ExecuteNonQuery();
         }
 
         public List<TmpCadxdata> Find(string query)
@@ -99,7 +99,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         public TmpCadxdata Find(int id)
         {
             SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = String.Format("Select  * from TmpCadxdata where Bsm={0}", id);
+            command.CommandText = String.Format("Select  * from TmpCadxdata where Id={0}", id);
             DataTable dt = ExecuteSql(command);
             return ProcessResult(dt)[0];
         }
@@ -118,7 +118,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             foreach (DataRow row in dt.Rows)
             {
                 TmpCadxdata cadd = new TmpCadxdata();
-                cadd.Bsm = int.Parse(row["Bsm"].ToString());
+                cadd.Id = int.Parse(row["Id"].ToString());
                 cadd.Handle = (string)row["Handle"];
                 cadd.Wbnr = (string)row["Wbnr"];
                 cadd.Tc = (string)row["Tc"];

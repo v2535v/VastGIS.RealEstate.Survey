@@ -252,6 +252,9 @@ namespace VastGIS
                 legend.Map = mainView.Map;
             }
 
+            //获得当前的Ogr的编码
+            string defaultEncoding = OSGeo.GDAL.Gdal.GetConfigOption("SHAPE_ENCODING", "");
+            OSGeo.GDAL.Gdal.GetConfigOption("SHAPE_ENCODING", "gb2312");
             // it's expected here that we are on the UI thread
             SynchronizationContext = SynchronizationContext.Current;
 
@@ -322,7 +325,11 @@ namespace VastGIS
 
         public IREDatabase RealEstateDatabase
         {
-            get { return _realEstateDatabase; }
+            get
+            {
+                if (_realEstateDatabase == null) CheckDatabase();
+                return _realEstateDatabase;
+            }
             set { _realEstateDatabase = value; }
         }
 

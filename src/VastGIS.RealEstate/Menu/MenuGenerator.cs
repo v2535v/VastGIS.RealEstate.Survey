@@ -12,6 +12,7 @@ using VastGIS.Plugins.Concrete;
 using VastGIS.Plugins.Enums;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.Plugins.ShapeEditor;
+using VastGIS.UI.Menu.Ribbon;
 
 namespace VastGIS.Plugins.RealEstate.Menu
 {
@@ -33,6 +34,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
 
         #endregion
 
+        private readonly IAppContext _context;
         #region Constructors and Destructors
 
         /// <summary>
@@ -47,6 +49,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public MenuGenerator(IAppContext context, RealEstateEditor plugin)
         {
             _commands = new MenuCommands(context,plugin);
+            _context = context;
             // InitMenu(context, plugin.Identity);
             if (context.ViewType == MainViewType.Normal)
             {
@@ -55,10 +58,21 @@ namespace VastGIS.Plugins.RealEstate.Menu
             }
             else
             {
-               // InitRibbonMenu(context, plugin.Identity);
+               InitRibbonMenu(context, plugin.Identity);
             }
         }
         #endregion
+
+        private void InitRibbonMenu(IAppContext context, PluginIdentity identity)
+        {
+            RibbonMenu menu = context.RibbonMenu as RibbonMenu;
+            menu.AddToolStripEx("toolStripExPrepare", "前期准备", "tabFile");
+            
+            menu.AddButton(_commands[MenuKeys.NewREProject]);
+            menu.AddButton(_commands[MenuKeys.ImportDXF]);
+            menu.AddButton(_commands[MenuKeys.TestOgrChinese]);
+            menu.AddButton(_commands[MenuKeys.SplitCAD]);
+        }
 
         public MenuCommands MenuCommands { get { return _commands; } }
         #region Methods

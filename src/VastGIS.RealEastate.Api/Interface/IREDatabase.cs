@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using VastGIS.RealEstate.Api.Enums;
 using VastGIS.RealEstate.Data;
+using VastGIS.RealEstate.Data.Enums;
 using VastGIS.Services.Views;
 
 namespace VastGIS.RealEstate.Api.Interface
@@ -18,7 +19,12 @@ namespace VastGIS.RealEstate.Api.Interface
         bool InitREDatabase(int epsgCode,ProjectLoadingView loadingForm,out string errorMsg);
         ICodeDomain GetDomain(string domainName);
         bool CheckDatabase();
-        void ImportDxfDrawing(string dxfName, ProjectLoadingView loadingForm);
+
+
+        void SplitTmpCadIntoLayers(string cadLayerName, string tableName, string fileName = "", bool isClear = true);
+
+        void ImportDxfDrawing(string dxfName, ProjectLoadingView loadingForm,string codePage="CP936", CADInsertMethod insertMthod=CADInsertMethod.DeleteByFileName);
+        bool HasCADData(string fileName);
     }
 
     public interface IRealEstateContext

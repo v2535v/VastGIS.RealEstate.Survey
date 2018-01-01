@@ -9,7 +9,7 @@ namespace VastGIS.RealEstate.Data.Entity
 {
     public interface IEntity
     {
-        int Bsm { get; set; }
+        int Id { get; set; }
     }
 
     public interface IFeature

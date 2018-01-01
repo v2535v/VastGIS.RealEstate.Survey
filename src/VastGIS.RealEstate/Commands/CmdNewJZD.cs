@@ -72,4 +72,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
             MessageService.Current.Info("X="+px.ToString()+";Y="+py.ToString());
         }
     }
+
+
+   
 }

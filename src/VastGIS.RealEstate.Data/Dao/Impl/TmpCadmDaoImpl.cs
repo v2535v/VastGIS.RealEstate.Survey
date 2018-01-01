@@ -11,14 +11,14 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
     public class TmpCadmDaoImpl : SQLiteDao, TmpCadmDao
     {
         private const string TmpCadmsTable = "TmpCadm";
-        private const string bsmCol = "Bsm";
+        private const string IdCol = "Id";
         private const string entitytypeCol = "EntityType";
         private const string handleCol = "Handle";
         private const string geometryCol = "Geometry";
 
         public void Save(TmpCadm cadd)
         {
-            if (cadd.Bsm <= 0)
+            if (cadd.Id <= 0)
             {
                 SQLiteCommand command = new SQLiteCommand(connection);
                 StringBuilder fieldParameters = new StringBuilder();
@@ -37,7 +37,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 string query = String.Format("Insert Into TmpCadm ({0}) Values ({1})", fieldParameters.ToString(),
                     valuesParameters.ToString());
                 command.CommandText = query;
-                ExecuteSql(command);
+                command.ExecuteNonQuery();
             }
             else
             {
@@ -54,16 +54,16 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             fieldParameters.Append(",EntityType='" + cadd.EntityType + "'");
             fieldParameters.Append(",FileName='" + cadd.FileName + "'");
             fieldParameters.Append(",Geometry=GeomFromText('" + cadd.Geometry.AsText() + "'," + _srid.ToString() + ")");
-            string query = String.Format("Update TmpCadm Set {0} Where Bsm={1}", fieldParameters.ToString(),
-                cadd.Bsm);
+            string query = String.Format("Update TmpCadm Set {0} Where Id={1}", fieldParameters.ToString(),
+                cadd.Id);
             command.CommandText = query;
-            ExecuteSql(command);
+            command.ExecuteNonQuery();
         }
 
         public List<TmpCadm> Find(string query)
         {
             SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = String.Format("Select Bsm,Handle,EntityType,AsText(Geometry),FileName from TmpCadm where EntityType like '{0}'", query);
+            command.CommandText = String.Format("Select Id,Handle,EntityType,AsText(Geometry),FileName from TmpCadm where EntityType like '{0}'", query);
             DataTable dt = ExecuteSql(command);
             return ProcessResult(dt);
         }
@@ -71,7 +71,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         public TmpCadm Find(int id)
         {
             SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = String.Format("Select Bsm,Handle,EntityType,AsText(Geometry),FileName from TmpCadm where Bsm={0}", id);
+            command.CommandText = String.Format("Select Id,Handle,EntityType,AsText(Geometry),FileName from TmpCadm where Id={0}", id);
             DataTable dt = ExecuteSql(command);
             return ProcessResult(dt)[0];
         }
@@ -79,7 +79,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         public TmpCadm FindByHandle(string handle)
         {
             SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = String.Format("Select Bsm,Handle,EntityType,AsText(Geometry),FileName from TmpCadm where Handle='{0}'", handle);
+            command.CommandText = String.Format("Select Id,Handle,EntityType,AsText(Geometry),FileName from TmpCadm where Handle='{0}'", handle);
             DataTable dt = ExecuteSql(command);
             return ProcessResult(dt)[0];
         }
@@ -90,7 +90,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             foreach (DataRow row in dt.Rows)
             {
                 TmpCadm cadd = new TmpCadm();
-                cadd.Bsm = int.Parse(row[bsmCol].ToString());
+                cadd.Id = int.Parse(row[IdCol].ToString());
                 cadd.Handle = (string)row[handleCol];
                 cadd.EntityType = (string)row[entitytypeCol];
                 cadd.Geometry = DbGeometry.FromText(row[3].ToString());
