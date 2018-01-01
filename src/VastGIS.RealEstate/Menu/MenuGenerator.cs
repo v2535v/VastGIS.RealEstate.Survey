@@ -72,6 +72,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
             menu.AddButton(_commands[MenuKeys.ImportDXF]);
             menu.AddButton(_commands[MenuKeys.TestOgrChinese]);
             menu.AddButton(_commands[MenuKeys.SplitCAD]);
+            menu.AddButton(_commands[MenuKeys.AssignCADText]);
         }
 
         public MenuCommands MenuCommands { get { return _commands; } }

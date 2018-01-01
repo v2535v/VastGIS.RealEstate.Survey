@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Linq;
+using System.Net.Mime;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 
@@ -212,6 +214,81 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 sql = cadLayerName != "" ? string.Format("delete from TmpCadzj where Handle in (select Handle from TmpCadzjView where Tc = '{0}')", cadLayerName): "delete from TmpCadzj";
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
+            }
+        }
+
+        public void AssignTextToPolygon(
+            AssignTextType assignType,
+            string polyTable,
+            string polyFieldName,
+            string textTable,
+            string textFieldName,
+            string whereClause,
+            object values)
+        {
+            using (SQLiteCommand command = new SQLiteCommand(DbConnection.GetConnection()))
+            {
+                string sql = "";
+                if(string.IsNullOrEmpty(whereClause))
+                    sql=string.Format(
+                    "Select a.{0} as Wbnr,b.Id as polyid from {1} a JOIN {2} b on Within(a.geometry,b.geometry);",
+                    textFieldName, textTable, polyTable);
+                else
+                    sql = string.Format(
+                        "Select a.{0} as Wbnr,b.Id as polyid from {1} a JOIN {2} b on Within(a.geometry,b.geometry) where {3};",
+                        textFieldName, textTable, polyTable,whereClause);
+                command.CommandText = sql;
+                
+                SQLiteDataReader reader = command.ExecuteReader();
+                string[] conValues = null;
+                if (assignType == AssignTextType.String)
+                {
+                    conValues = values as string[];
+                }
+                string updateSQL = "";
+                SQLiteCommand command2 = new SQLiteCommand(DbConnection.GetConnection());
+                while (reader.Read())
+                {
+                    string textContext = reader.GetString(0).Trim();
+                    int polyId = reader.GetInt32(1);
+                    if (assignType == AssignTextType.String)
+                    {
+                        if (conValues.Contains(textContext))
+                        {
+                            updateSQL=String.Format("update {0} set {1}='{2}' where Id={3}",polyTable,polyFieldName,textContext,polyId);
+                            command2.CommandText = updateSQL;
+                            command2.ExecuteNonQuery();
+                            continue;
+                        }
+                        continue;
+                    }
+                    if (assignType == AssignTextType.Integer || assignType == AssignTextType.Float)
+                    {
+                        if (!string.IsNullOrEmpty(textContext) && IsNumberic(textContext))
+                        {
+                            updateSQL = String.Format("update {0} set {1}='{2}' where Id={3}", polyTable, polyFieldName,
+                                textContext, polyId);
+                            command2.CommandText = updateSQL;
+                            command2.ExecuteNonQuery();
+                            continue;
+                        }
+                        continue;
+                    }
+                }
+                reader.Close();
+            }
+        }
+
+        private bool IsNumberic(string oText)
+        {
+            try
+            {
+                int var1 = Convert.ToInt32(oText);
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

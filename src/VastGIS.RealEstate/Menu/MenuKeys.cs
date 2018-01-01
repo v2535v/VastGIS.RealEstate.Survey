@@ -18,6 +18,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public const string NewREProject = "re_NewRealEstateProject";
         public const string ImportDXF = "re_ImportDXF";
         public const string SplitCAD = "re_SplitCAD";
+        public const string AssignCADText = "re_AssignCADText";
         #region Constants
 
         /// <summary>

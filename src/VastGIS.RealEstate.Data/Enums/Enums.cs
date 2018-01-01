@@ -12,4 +12,11 @@ namespace VastGIS.RealEstate.Data.Enums
         DeleteAll = 1,
         JustInsert = 2
     }
+
+    public enum AssignTextType
+    {
+        String=0,
+        Integer=1,
+        Float=2
+    }
 }

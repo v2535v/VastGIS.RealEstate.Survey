@@ -21,6 +21,15 @@ namespace VastGIS.RealEstate.Data.Service
         bool HasCADData(string fileName);
 
         void SplitTmpCADToLayer(string cadLayerName, string tableName, string fileName = "", bool isClear = true);
+
+        void AssignTextToPolygon(
+            AssignTextType assignType,
+            string polyTable,
+            string polyFieldName,
+            string textTable,
+            string textFieldName,
+            string whereClause,
+            object values);
     }
 
     public interface TmpCaddService

@@ -745,6 +745,19 @@ namespace VastGIS.RealEstate.Api.Concrete
             return mainService.HasCADData(fileName);
         }
 
+        public void AssignTextToPolygon(
+            AssignTextType assignType,
+            string polyTable,
+            string polyFieldName,
+            string textTable,
+            string textFieldName,
+            string whereClause,
+            object values)
+        {
+            MainService mainService = ServiceFactory.GetMainService();
+            mainService.AssignTextToPolygon(assignType,polyTable,polyFieldName,textTable,textFieldName,whereClause,values);
+        }
+
         public void SplitTmpCadIntoLayers(string cadLayerName, string tableName, string fileName = "", bool isClear = true)
         {
             MainService mainService = ServiceFactory.GetMainService();

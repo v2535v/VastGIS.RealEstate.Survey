@@ -20,11 +20,21 @@ namespace VastGIS.RealEstate.Api.Interface
         ICodeDomain GetDomain(string domainName);
         bool CheckDatabase();
 
-
+        #region CAD数据处理
         void SplitTmpCadIntoLayers(string cadLayerName, string tableName, string fileName = "", bool isClear = true);
 
         void ImportDxfDrawing(string dxfName, ProjectLoadingView loadingForm,string codePage="CP936", CADInsertMethod insertMthod=CADInsertMethod.DeleteByFileName);
         bool HasCADData(string fileName);
+
+        void AssignTextToPolygon(
+            AssignTextType assignType,
+            string polyTable,
+            string polyFieldName,
+            string textTable,
+            string textFieldName,
+            string whereClause,
+            object values);
+        #endregion
     }
 
     public interface IRealEstateContext

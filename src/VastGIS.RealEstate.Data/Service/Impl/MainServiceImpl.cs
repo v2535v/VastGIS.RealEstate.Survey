@@ -46,6 +46,18 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         {
             mainDao.SplitTmpCADToLayer(cadLayerName,tableName,fileName,isClear);
         }
+
+        public void AssignTextToPolygon(
+            AssignTextType assignType,
+            string polyTable,
+            string polyFieldName,
+            string textTable,
+            string textFieldName,
+            string whereClause,
+            object values)
+        {
+            mainDao.AssignTextToPolygon(assignType,polyTable,polyFieldName,textTable,textFieldName, whereClause,values);
+        }
     }
 
     public class TmpCaddServiceImpl : TmpCaddService
