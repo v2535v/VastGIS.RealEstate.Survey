@@ -1,6 +1,7 @@
 ﻿using System;
 using VastGIS.Plugins.Events;
 using VastGIS.Plugins.Interfaces;
+using VastGIS.Plugins.RealEstate.Config;
 using VastGIS.Plugins.RealEstate.Services;
 using VastGIS.Plugins.Services;
 
@@ -10,6 +11,7 @@ namespace VastGIS.Plugins.RealEstate
     {
         private readonly IAppContext _context;
         private readonly IRealEstateEditingService _layerService;
+        private RealEstateEditor _plugin;
 
         public ProjectListener(IAppContext context, RealEstateEditor plugin, IRealEstateEditingService layerService)
         {
@@ -18,9 +20,22 @@ namespace VastGIS.Plugins.RealEstate
 
             _context = context;
             _layerService = layerService;
-            
+            _plugin = plugin;
+            plugin.ProjectChanged += Plugin_ProjectChanged;
             plugin.ProjectClosing += plugin_ProjectClosing;
             plugin.BeforeRemoveLayer += plugin_BeforeRemoveLayer;
+        }
+
+        private void Plugin_ProjectChanged(object sender, EventArgs e)
+        {
+            if (_context.Map.Layers.Count <= 0)
+            {
+                if (string.IsNullOrEmpty(_context.Project.Filename) == false)
+                {
+                    VGLayerConfig config = new VGLayerConfig(_context, _plugin);
+                    config.AddLayersFromDb();
+                }
+            }
         }
 
         private void plugin_BeforeRemoveLayer(object sender, LayerCancelEventArgs e)

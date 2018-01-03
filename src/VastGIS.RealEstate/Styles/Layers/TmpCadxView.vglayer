@@ -1,0 +1,33 @@
+﻿<XmlLayer xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/VastGIS.Services.Serialization">
+  <ColorSchemeCaption />
+  <CustomObjects />
+  <Expanded>true</Expanded>
+  <Guid>7800a08b-060b-49c1-b009-97cd294ad78e</Guid>
+  <HideFromLegend>false</HideFromLegend>
+  <Identity xmlns:d2p1="http://schemas.datacontract.org/2004/07/VastGIS.Api.Concrete">
+    <d2p1:Connection>{ProjectPath}\Database\redatabase.db</d2p1:Connection>
+    <d2p1:Filename i:nil="true" />
+    <d2p1:GeometryType>Polyline</d2p1:GeometryType>
+    <d2p1:IdentityType>OgrDatasource</d2p1:IdentityType>
+    <d2p1:Query>tmpcadxview</d2p1:Query>
+    <d2p1:ZValueType>None</d2p1:ZValueType>
+  </Identity>
+  <LayerType>VectorLayer</LayerType>
+  <Name>tmpcadxview</Name>
+  <OcxLayer>
+    <Layer LayerType="OgrLayer" LayerName="tmpcadxview" LayerVisible="1" LayerKey="" xmlns="">
+      <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="tmpcadxview" SourceType="1" ForUpdate="0">
+        <ShapefileData ShpType="3">
+          <DefaultDrawingOptions FillColor="16777215" LineColor="6780753" />
+          <ShapefileCategoriesClass ClassificationField="-1" />
+          <LabelsClass Generated="0" TextRenderingHint="3" />
+          <ChartsClass />
+          <TableClass>
+            <Fields />
+          </TableClass>
+        </ShapefileData>
+      </OgrLayerClass>
+    </Layer>
+  </OcxLayer>
+  <Selected>false</Selected>
+</XmlLayer>

@@ -35,6 +35,11 @@ namespace VastGIS.Plugins.RealEstate
             plugin.ShapeValidationFailed += OnShapeValidationFailed;
         }
 
+        public IBroadcasterService Broadcaster
+        {
+            get { return _broadcaster; }
+        }
+
         private void OnMouseDown(IMuteMap map, MouseEventArgs e)
         {
           // _broadcaster.BroadcastEvent(p=>p.MouseDown_,map,e);

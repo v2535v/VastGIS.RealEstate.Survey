@@ -1,0 +1,31 @@
+﻿<VGLayer>
+  <Groups>
+    <XmlGroup position="3">
+      <Expanded>true</Expanded>
+      <Name>地籍数据</Name>
+      <Layers>
+        <Layer name="XZQ" position="1"/>
+      </Layers>
+    </XmlGroup>
+    <XmlGroup position="2">
+      <Expanded>true</Expanded>
+      <Name>地形地图</Name>
+      <Layers>
+      </Layers>
+    </XmlGroup>
+    <XmlGroup position="1">
+      <Expanded>true</Expanded>
+      <Name>CAD</Name>
+      <Layers>
+        <Layer name="TmpCadd" position="7"/>
+        <Layer name="TmpCaddView" position="6"/>
+        <Layer name="TmpCadzj" position="5"/>
+        <Layer name="TmpCadzjView" position="4"/>
+        <Layer name="TmpCadx" position="3"/>
+        <Layer name="TmpCadxView" position="2"/>
+        <Layer name="TmpCadm" position="1"/>
+        <Layer name="TmpCadmView" position="0"/>
+      </Layers>
+    </XmlGroup>
+  </Groups>
+</VGLayer>
