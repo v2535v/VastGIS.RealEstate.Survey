@@ -83,6 +83,8 @@
     <Compile Include="Commands\CmdTestOgrChinese.cs" />
     <Compile Include="Commands\ToolCreateJZDByPolygon.cs" />
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Config\VGLayer.cs" />
+    <Compile Include="Config\VGLayerConfig.cs" />
     <Compile Include="EditSettings\EditingCreateJZDByPolygon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +228,36 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Resources\editlayer.png" />
+    <None Include="Styles\Layers\TmpCadd.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCaddView.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadm.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadmView.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadx.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadxView.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadzj.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadzjView.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\XZQ.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\survey.vglayers">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LayerTool32.png" />

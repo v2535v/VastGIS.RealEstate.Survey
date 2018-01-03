@@ -108,6 +108,7 @@ namespace VastGIS.Plugins.Concrete
         internal EventHandler<MenuItemEventArgs> ItemClicked_;
         internal EventHandler<CancelEventArgs> ProjectClosing_;
         internal EventHandler<EventArgs> ProjectClosed_;
+        internal EventHandler<EventArgs> ProjectChanged_;
         internal EventHandler<LayerEventArgs> LayerEditingChanged_;
         internal EventHandler<LayerCancelEventArgs> BeforeRemoveLayer_;
         internal EventHandler<EventArgs> ViewUpdating_;
@@ -183,6 +184,12 @@ namespace VastGIS.Plugins.Concrete
         {
             add { ProjectClosed_ += value; }
             remove { ProjectClosed_ -= value; }
+        }
+
+        public event EventHandler<EventArgs> ProjectChanged
+        {
+            add { ProjectChanged_ += value; }
+            remove { ProjectChanged_ -= value; }
         }
 
         #endregion

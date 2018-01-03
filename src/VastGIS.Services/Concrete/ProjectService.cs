@@ -186,6 +186,7 @@ namespace VastGIS.Services.Concrete
             if (newProject)
             {
                 // OnProjectChanged();
+                _broadcaster.BroadcastEvent(c => c.ProjectChanged_, this, null);
             }
 
             return true;
@@ -408,6 +409,7 @@ namespace VastGIS.Services.Concrete
 
                 Logger.Current.Info("Project was loaded: " + filename);
 
+                _broadcaster.BroadcastEvent(c => c.ProjectChanged_, this, null);
                 return true;
             }
 
@@ -438,6 +440,7 @@ namespace VastGIS.Services.Concrete
         {
             _filename = "";
             //OnProjectChanged();
+            _broadcaster.BroadcastEvent(c => c.ProjectChanged_, this, null);
         }
     }
 }
