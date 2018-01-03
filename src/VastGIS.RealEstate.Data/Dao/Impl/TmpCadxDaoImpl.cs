@@ -93,7 +93,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 cadd.Id = int.Parse(row[IdCol].ToString());
                 cadd.Handle = (string)row[handleCol];
                 cadd.EntityType = (string)row[entitytypeCol];
-                cadd.Geometry = DbGeometry.FromText(row[3].ToString());
+                cadd.Wkt = row[3].ToString();
                 cadd.FileName = (string)row[4];
                 cadds.Add(cadd);
             }

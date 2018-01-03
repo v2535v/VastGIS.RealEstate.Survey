@@ -19,6 +19,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public const string ImportDXF = "re_ImportDXF";
         public const string SplitCAD = "re_SplitCAD";
         public const string AssignCADText = "re_AssignCADText";
+        public const string CreateJZDByPolygon = "re_CreateJZDByPolygon";
         #region Constants
 
         /// <summary>

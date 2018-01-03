@@ -2,7 +2,7 @@
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-    public abstract class BaseMapPoint:IEntity, IFeature
+    public abstract class BaseMapPoint : Feature, IEntity
     {
         public int Id { get; set; }
         public string Tc { get; set; }
@@ -13,6 +13,6 @@ namespace VastGIS.RealEstate.Data.Entity
         public string Fsxx1 { get; set; }
         public string Fsxx2 { get; set; }
         public string Ysdm { get; set; }
-        public DbGeometry Geometry { get; set; }
+      
     }
 }

@@ -2,10 +2,9 @@
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-    public abstract class TmpCadEntity : IEntity, IFeature
+    public abstract class TmpCadEntity : Feature, IEntity
     {
         public int Id { get; set; }
-        public DbGeometry Geometry { get; set; }
         public string EntityType { get; set; }
 
         public string Handle { get; set; }

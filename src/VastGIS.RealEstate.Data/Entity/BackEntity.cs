@@ -1,6 +1,6 @@
 namespace VastGIS.RealEstate.Data.Entity
 {
-    public abstract class BackEntity
+    public abstract class BackEntity:IBackEntity
     {
         public int Id { get; set; }
         public System.DateTime? WxDcsj { get; set; }

@@ -152,7 +152,15 @@ namespace VastGIS
         public IMapTool CurrentTool
         {
             get { return _currentTool; }
-            set { _currentTool = value; }
+            set
+            {
+                if (_currentTool != null)
+                {
+                    _currentTool.Deactiviate();
+                }
+                _currentTool = value;
+                _currentTool?.Activiate();
+            }
         }
 
         public bool SetCurrentTool(IMapTool tool)

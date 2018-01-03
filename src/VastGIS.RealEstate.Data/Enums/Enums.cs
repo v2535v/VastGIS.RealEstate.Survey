@@ -19,4 +19,10 @@ namespace VastGIS.RealEstate.Data.Enums
         Integer=1,
         Float=2
     }
+
+    public enum ZDBianHaoType
+    {
+        ZSBH,
+        TYH
+    }
 }

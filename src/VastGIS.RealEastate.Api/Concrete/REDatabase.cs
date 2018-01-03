@@ -539,7 +539,7 @@ namespace VastGIS.RealEstate.Api.Concrete
                 for (int i = 0; i < ds.GetLayerCount(); i++)
                 {
                     Layer pLayer = ds.GetLayerByIndex(i);
-                    Feature feat = pLayer.GetNextFeature();
+                    OSGeo.OGR.Feature feat = pLayer.GetNextFeature();
                     while (feat != null)
                     {
                         string handle = feat.GetFieldAsString(4);
@@ -608,8 +608,7 @@ namespace VastGIS.RealEstate.Api.Concrete
                     cadd.Handle = insert.Handle;
                     cadd.EntityType = "POINT";
                     cadd.FileName = dxfName;
-                    cadd.Geometry =
-                        DbGeometry.FromText(string.Format("POINT({0} {1})", insert.Position.X, insert.Position.Y));
+                    cadd.Wkt =string.Format("POINT({0} {1})", insert.Position.X, insert.Position.Y);
                     caddService.Create(cadd);
 
                     TmpCadxdata cadxdata = new TmpCadxdata();
@@ -726,7 +725,7 @@ namespace VastGIS.RealEstate.Api.Concrete
                     cadxdata = ReadXData(cadxdata, insert.XData, xodePage);
                     cadxdataService.Create(cadxdata);
                 }
-
+                mainService.UpdateTmpCadYsdm();
 
                 loadingForm.ShowProgress(100, "导入完成...");
                 MessageService.Current.Info(string.Format("导入DX完成{0}",dxfName));
@@ -756,6 +755,12 @@ namespace VastGIS.RealEstate.Api.Concrete
         {
             MainService mainService = ServiceFactory.GetMainService();
             mainService.AssignTextToPolygon(assignType,polyTable,polyFieldName,textTable,textFieldName,whereClause,values);
+        }
+
+        public VastGIS.RealEstate.Data.Entity.IFeature FindFirstRecord(string[] layers, double dx, double dy)
+        {
+            MainService mainService = ServiceFactory.GetMainService();
+            return mainService.FindFirstRecord(layers, dx, dy);
         }
 
         public void SplitTmpCadIntoLayers(string cadLayerName, string tableName, string fileName = "", bool isClear = true)

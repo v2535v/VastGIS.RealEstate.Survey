@@ -30,6 +30,10 @@ namespace VastGIS.RealEstate.Data.Service
             string textFieldName,
             string whereClause,
             object values);
+
+        void UpdateTmpCadYsdm();
+
+        IFeature FindFirstRecord(string[] getSearchLayers, double dx, double dy);
     }
 
     public interface TmpCaddService

@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Mime;
+using Dapper;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 
@@ -113,8 +116,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         " SELECT [a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
                         "   [a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
                         "   [a].[Fsxx2] AS [Fsxx2], [a].[Xzjd] AS [Xzjd], [a].[Fh] AS [Fh]," +
-                        "   [b].[YSDM] AS [YSDM] " +
-                        " FROM [TmpCaddView] AS [a] LEFT JOIN [vg_cadcodes] AS [b] ON ([a].[Cassdm] = [b].[CASSDM])" +
+                        "   [a].[YSDM] AS [YSDM] " +
+                        " FROM [TmpCaddView] AS [a]" +
                         " WHERE [a].[Tc]='{1}'", tableName, cadLayerName);
                 else
                 {
@@ -123,8 +126,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         " SELECT [a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
                         "   [a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
                         "   [a].[Fsxx2] AS [Fsxx2], [a].[Xzjd] AS [Xzjd], [a].[Fh] AS [Fh]," +
-                        "   [b].[YSDM] AS [YSDM] " +
-                        " FROM [TmpCaddView] AS [a] LEFT JOIN [vg_cadcodes] AS [b] ON ([a].[Cassdm] = [b].[CASSDM])" , tableName);
+                        "   [a].[YSDM] AS [YSDM] " +
+                        " FROM [TmpCaddView] AS [a]" , tableName);
                 }
                 if (!string.IsNullOrEmpty(fileName))
                 {
@@ -135,18 +138,18 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 if (cadLayerName != "")
                     sql = string.Format(
                     "INSERT INTO {0}X ([geometry],[TC],[CASSDM],[FSXX1],[FSXX2],[FH],[FHDX],[YSDM]) " +
-                    "SELECT[a].[geometry] AS[geometry], [a].[Tc] AS[Tc]," +
-                    "[a].[Cassdm] AS[Cassdm], [a].[Fsxx1] AS[Fsxx1]," +
-                    "[a].[Fsxx2] AS[Fsxx2],  [a].[Fh] AS[Fh], [a].[FHDX] AS[FHDX]," + "[b].[YSDM] AS[YSDM]  " +
-                    "FROM[TmpCadxView] AS[a] LEFT JOIN [vg_cadcodes] AS[b] ON([a].[Cassdm] = [b].[CASSDM]) " +
-                    "WHERE[a].[Tc] = '{1}'", tableName, cadLayerName);
+                    "SELECT[a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
+                    "[a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
+                    "[a].[Fsxx2] AS [Fsxx2],  [a].[Fh] AS [Fh], [a].[FHDX] AS [FHDX]," + "[a].[YSDM] AS [YSDM]  " +
+                    "FROM [TmpCadxView] AS [a]  " +
+                    "WHERE [a].[Tc] = '{1}'", tableName, cadLayerName);
                 else
                     sql = string.Format(
                         "INSERT INTO {0}X ([geometry],[TC],[CASSDM],[FSXX1],[FSXX2],[FH],[FHDX],[YSDM]) " +
-                        "SELECT[a].[geometry] AS[geometry], [a].[Tc] AS[Tc]," +
-                        "[a].[Cassdm] AS[Cassdm], [a].[Fsxx1] AS[Fsxx1]," +
-                        "[a].[Fsxx2] AS[Fsxx2],  [a].[Fh] AS[Fh], [a].[FHDX] AS[FHDX]," + "[b].[YSDM] AS[YSDM]  " +
-                        "FROM[TmpCadxView] AS[a] LEFT JOIN [vg_cadcodes] AS[b] ON([a].[Cassdm] = [b].[CASSDM]) " , tableName);
+                        "SELECT[a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
+                        "[a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
+                        "[a].[Fsxx2] AS [Fsxx2],  [a].[Fh] AS [Fh], [a].[FHDX] AS [FHDX]," + "[a].[YSDM] AS [YSDM]  " +
+                        "FROM [TmpCadxView] AS [a] " , tableName);
 
                 if (!string.IsNullOrEmpty(fileName))
                 {
@@ -157,18 +160,18 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 if (cadLayerName != "")
                     sql = string.Format(
                     "INSERT INTO {0}M ([geometry],[TC],[CASSDM],[FSXX1],[FSXX2],[YSDM]) " +
-                    "SELECT[a].[geometry] AS[geometry], [a].[Tc] AS[Tc]," +
-                    "[a].[Cassdm] AS[Cassdm], [a].[Fsxx1] AS[Fsxx1]," +
-                    "[a].[Fsxx2] AS[Fsxx2],  " + "[b].[YSDM] AS[YSDM]  " +
-                    "FROM[TmpCadmView] AS[a] LEFT JOIN [vg_cadcodes] AS[b] ON([a].[Cassdm] = [b].[CASSDM]) " +
+                    "SELECT[a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
+                    "[a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
+                    "[a].[Fsxx2] AS [Fsxx2],  " + "[a].[YSDM] AS [YSDM]  " +
+                    "FROM [TmpCadmView] AS [a]  " +
                     "WHERE[a].[Tc] = '{1}'", tableName, cadLayerName);
                 else
                     sql = string.Format(
                         "INSERT INTO {0}M ([geometry],[TC],[CASSDM],[FSXX1],[FSXX2],[YSDM]) " +
-                        "SELECT[a].[geometry] AS[geometry], [a].[Tc] AS[Tc]," +
-                        "[a].[Cassdm] AS[Cassdm], [a].[Fsxx1] AS[Fsxx1]," +
-                        "[a].[Fsxx2] AS[Fsxx2],  " + "[b].[YSDM] AS[YSDM]  " +
-                        "FROM[TmpCadmView] AS[a] LEFT JOIN [vg_cadcodes] AS[b] ON([a].[Cassdm] = [b].[CASSDM]) " , tableName);
+                        "SELECT[a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
+                        "[a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
+                        "[a].[Fsxx2] AS [Fsxx2],  " + "[a].[YSDM] AS [YSDM]  " +
+                        "FROM [TmpCadmView] AS [a]  " , tableName);
 
                 if (!string.IsNullOrEmpty(fileName))
                 {
@@ -179,18 +182,18 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 if (cadLayerName != "")
                     sql = string.Format(
                     "INSERT INTO {0}ZJ ([geometry],[WBNR],[TC],[CASSDM],[FH],[FHDX],[XZJD],[YSDM]) " +
-                    "SELECT[a].[geometry] AS[geometry], [a].[WBNR] AS[WBNR], [a].[Tc] AS[Tc]," +
-                    "[a].[Cassdm] AS[Cassdm], " +
-                    "[a].[Fh] AS[Fh], [a].[FHDX] AS[FHDX], [a].[Xzjd] AS [Xzjd]," + "[b].[YSDM] AS[YSDM]  " +
-                    "FROM[TmpCadzjView] AS[a] LEFT JOIN [vg_cadcodes] AS[b] ON([a].[Cassdm] = [b].[CASSDM]) " +
-                    "WHERE[a].[Tc] = '{1}'", tableName, cadLayerName);
+                    "SELECT[a].[geometry] AS [geometry], [a].[WBNR] AS [WBNR], [a].[Tc] AS [Tc]," +
+                    "[a].[Cassdm] AS [Cassdm], " +
+                    "[a].[Fh] AS [Fh], [a].[FHDX] AS [FHDX], [a].[Xzjd] AS [Xzjd]," + "[a].[YSDM] AS [YSDM]  " +
+                    "FROM [TmpCadzjView] AS [a]  " +
+                    "WHERE [a].[Tc] = '{1}'", tableName, cadLayerName);
                 else
                     sql = string.Format(
                         "INSERT INTO {0}ZJ ([geometry],[WBNR],[TC],[CASSDM],[FH],[FHDX],[XZJD],[YSDM]) " +
-                        "SELECT[a].[geometry] AS[geometry], [a].[WBNR] AS[WBNR], [a].[Tc] AS[Tc]," +
-                        "[a].[Cassdm] AS[Cassdm], " +
-                        "[a].[Fh] AS[Fh], [a].[FHDX] AS[FHDX], [a].[Xzjd] AS [Xzjd]," + "[b].[YSDM] AS[YSDM]  " +
-                        "FROM[TmpCadzjView] AS[a] LEFT JOIN [vg_cadcodes] AS[b] ON([a].[Cassdm] = [b].[CASSDM]) ", tableName);
+                        "SELECT[a].[geometry] AS [geometry], [a].[WBNR] AS [WBNR], [a].[Tc] AS [Tc]," +
+                        "[a].[Cassdm] AS [Cassdm], " +
+                        "[a].[Fh] AS [Fh], [a].[FHDX] AS [FHDX], [a].[Xzjd] AS [Xzjd]," + "[a].[YSDM] AS [YSDM]  " +
+                        "FROM [TmpCadzjView] AS [a]", tableName);
 
                 if (!string.IsNullOrEmpty(fileName))
                 {
@@ -277,6 +280,43 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 }
                 reader.Close();
             }
+        }
+
+        public void UpdateTmpCadYsdm()
+        {
+            using (SQLiteCommand command = new SQLiteCommand(DbConnection.GetConnection()))
+            {
+                command.CommandText =
+                    "update TmpCadxdata set Ysdm=(select vg_cadcodes.Ysdm from vg_cadcodes where vg_cadcodes.Cassdm=TmpCadxdata.Cassdm and vg_cadcodes.Tc=TmpCadxdata.Tc limit 1)";
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public IFeature FindFirstRecord(string[] layers, double dx, double dy)
+        {
+            IFeature pFeature = null;
+            try
+            {
+                for (int i = 0; i < layers.Length; i++)
+                {
+                    string sql =
+                        string.Format(
+                            "Select Id,AsText(geometry) as Wkt,'{0}' as TableName from {0} Where Within( GeomFromText('POINT({1} {2})'),geometry);", layers[i],
+                            dx, dy);
+                    var features = DbConnection.GetConnection().Query<SearchFeature>(sql);
+                    if (features != null && features.Count() > 0)
+                    {
+                        return features.First() as IFeature;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning(ex.Message);
+                return null;
+            }
+            return null;
         }
 
         private bool IsNumberic(string oText)

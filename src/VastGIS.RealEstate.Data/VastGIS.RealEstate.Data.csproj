@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -83,6 +87,7 @@
     <Compile Include="Dao\TmpCadxDao.cs" />
     <Compile Include="Dao\TmpCadzjDao.cs" />
     <Compile Include="Entity\BackEntity.cs" />
+    <Compile Include="Entity\BackFeature.cs" />
     <Compile Include="Entity\BaseMapArea.cs" />
     <Compile Include="Entity\BaseMapLine.cs" />
     <Compile Include="Entity\BaseMapPoint.cs" />
@@ -106,6 +111,7 @@
     <Compile Include="Entity\DxtKzdm.cs" />
     <Compile Include="Entity\DxtKzdx.cs" />
     <Compile Include="Entity\DxtKzdzj.cs" />
+    <Compile Include="Entity\Feature.cs" />
     <Compile Include="Entity\IBackEntity.cs" />
     <Compile Include="Entity\IEntity.cs" />
     <Compile Include="Entity\DxtJmdd.cs" />
@@ -116,16 +122,22 @@
     <Compile Include="Entity\DxtSxssm.cs" />
     <Compile Include="Entity\DxtSxssx.cs" />
     <Compile Include="Entity\DxtSxsszj.cs" />
+    <Compile Include="Entity\IFeature.cs" />
+    <Compile Include="Entity\JZD.cs" />
+    <Compile Include="Entity\JZDTOZD.cs" />
+    <Compile Include="Entity\JZX.cs" />
     <Compile Include="Entity\TmpCadd.cs" />
     <Compile Include="Entity\TmpCadEntity.cs" />
     <Compile Include="Entity\TmpCadm.cs" />
     <Compile Include="Entity\TmpCadx.cs" />
     <Compile Include="Entity\TmpCadxdata.cs" />
     <Compile Include="Entity\TmpCadzj.cs" />
+    <Compile Include="Entity\ZDJBXX.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Impl\MainServiceImpl.cs" />
     <Compile Include="Service\MainService.cs" />
+    <Compile Include="Service\ZDService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

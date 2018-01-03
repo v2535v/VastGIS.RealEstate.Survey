@@ -58,6 +58,16 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         {
             mainDao.AssignTextToPolygon(assignType,polyTable,polyFieldName,textTable,textFieldName, whereClause,values);
         }
+
+        public void UpdateTmpCadYsdm()
+        {
+            mainDao.UpdateTmpCadYsdm();
+        }
+
+        public IFeature FindFirstRecord(string[] getSearchLayers, double dx, double dy)
+        {
+            return mainDao.FindFirstRecord(getSearchLayers, dx, dy);
+        }
     }
 
     public class TmpCaddServiceImpl : TmpCaddService

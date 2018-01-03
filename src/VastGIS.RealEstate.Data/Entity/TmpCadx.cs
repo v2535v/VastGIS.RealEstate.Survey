@@ -9,7 +9,7 @@ namespace VastGIS.RealEstate.Data.Entity
         {
             Handle = handle;
             EntityType = entityType;
-            Geometry = DbGeometry.FromText(geoStr);
+            Wkt=geoStr;
             FileName = fileName;
         }
     }

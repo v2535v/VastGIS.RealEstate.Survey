@@ -1,4 +1,5 @@
-﻿using VastGIS.RealEstate.Data.Enums;
+﻿using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Enums;
 
 namespace VastGIS.RealEstate.Data.Dao
 {
@@ -22,6 +23,10 @@ namespace VastGIS.RealEstate.Data.Dao
             string textFieldName,
             string whereClause,
             object values);
+
+        void UpdateTmpCadYsdm();
+
+        IFeature FindFirstRecord(string[] getSearchLayers, double dx, double dy);
     }
 
    

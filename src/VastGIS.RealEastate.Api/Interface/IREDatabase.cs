@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VastGIS.RealEstate.Api.Enums;
 using VastGIS.RealEstate.Data;
+using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 using VastGIS.Services.Views;
 
@@ -35,6 +36,8 @@ namespace VastGIS.RealEstate.Api.Interface
             string whereClause,
             object values);
         #endregion
+
+        IFeature FindFirstRecord(string[] getSearchLayers, double dx, double dy);
     }
 
     public interface IRealEstateContext
