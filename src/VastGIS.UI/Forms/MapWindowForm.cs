@@ -22,7 +22,7 @@ namespace VastGIS.UI.Forms
 
         public MapWindowForm()
         {
-            Icon = Resources.MapWindow;
+            Icon = Resources.img_logo24;
 #if STYLE2010
             ApplyAeroTheme = false;
             UseOffice2010SchemeBackColor = true;

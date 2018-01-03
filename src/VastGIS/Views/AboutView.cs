@@ -58,8 +58,8 @@ namespace VastGIS.Views
 
             var cpu = GetArchitectureName(name.ProcessorArchitecture);
 
-            lblVersion.Text = string.Format("MapWindow version: {0} {1}", name.Version, cpu);
-            lblGdalVersion.Text = "GDAL version: " + MapConfig.GdalVersion;
+            lblVersion.Text = string.Format("系统版本: {0} {1}", name.Version, cpu);
+            lblGdalVersion.Text = "GDAL 版本: " + MapConfig.GdalVersion;
         }
 
         private void InitControls()
@@ -82,7 +82,7 @@ namespace VastGIS.Views
 
         public string OcxVersion
         {
-            set { lblOcxVersion.Text = "MapWinGIS version: " + value; }
+            set { lblOcxVersion.Text = "GIS核心版本: " + value; }
         }
 
         public List<AssemblyInfo> Assemblies

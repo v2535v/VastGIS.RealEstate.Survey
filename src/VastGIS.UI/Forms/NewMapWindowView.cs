@@ -28,7 +28,7 @@ namespace VastGIS.UI.Forms
             //Logger.Current.Trace("Start MapWindowView.InitializeComponent()");
             InitializeComponent();
             //Logger.Current.Trace("End MapWindowView.InitializeComponent()");
-            Icon = Resources.MapWindow;
+            Icon = Resources.img_logo24;
 #if STYLE2010
             ApplyAeroTheme = false;
             UseOffice2010SchemeBackColor = true;

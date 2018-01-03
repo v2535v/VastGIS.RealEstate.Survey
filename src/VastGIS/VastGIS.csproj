@@ -1112,6 +1112,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\logo2.png" />
+    <None Include="Resources\img_logo24.png" />
     <Content Include="Templates\Dictionary.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
