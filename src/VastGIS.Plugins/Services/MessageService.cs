@@ -4,7 +4,7 @@ namespace VastGIS.Plugins.Services
 {
     public class MessageService: IMessageService
     {
-        public const string AppName = "MapWindow 5";
+        public const string AppName = "未见不动产调查系统";
         private static IMessageService _service;
 
         public static IMessageService Current

@@ -143,38 +143,25 @@ namespace VastGIS.RealEstate.Api.Concrete
                 System.IO.FileInfo tmpFileInfo = SQLiteHelpers.GetTemplateDBInfo();
                 tmpFileInfo.CopyTo(_databaseName);
             }
-            using (SQLiteConnection connection =
-                new SQLiteConnection(SQLiteHelpers.ConnectionStringBuilder(_databaseName)))
-            {
-                connection.Open();
-                connection.EnableExtensions(true);
-                connection.LoadExtension("mod_spatialite.dll");
+            loadingForm.ShowProgress(70, "创建系统表");
+            ServiceFactory.SetDatabaseName(_databaseName);
+            SystemService systemService = ServiceFactory.GetSystemService();
+            systemService.InitTables();
+            VgSettings vgSettings=new VgSettings() {Csmc = "SRID",Csz = _epsgCode.ToString()};
+            systemService.SaveVgSettings(vgSettings);
+            loadingForm.ShowProgress(70, "创建数据字典");
+            DomainService domainService = ServiceFactory.GetDomainService();
+            domainService.InitTables();
+            loadingForm.ShowProgress(80, "创建临时表");
+            CadService cadService = ServiceFactory.GetCadService();
+            cadService.InitTables();
+            loadingForm.ShowProgress(80, "创建底图表");
+            BasemapService basemapService = ServiceFactory.GetBasemapService();
+            basemapService.InitTables();
 
-                loadingForm.ShowProgress(70, "创建系统表");
-                CreateRESystemTables(connection);
-                //loadingForm.ShowProgress(70, "创建数据字典");
-                //ImportDictionary(connection);
-                loadingForm.ShowProgress(80, "创建地籍表");
-                CreateREZDTables(connection);
-                loadingForm.ShowProgress(86, "创建控制点底图表");
-                CreateREBasemapTables(connection, "KZD");
-                loadingForm.ShowProgress(90, "创建居民地底图表");
-                CreateREBasemapTables(connection,"JMD");
-                loadingForm.ShowProgress(92, "创建道路底图表");
-                CreateREBasemapTables(connection, "DLSS");
-                loadingForm.ShowProgress(93, "创建水系底图表");
-                CreateREBasemapTables(connection, "SXSS");
-                loadingForm.ShowProgress(94, "创建地貌底图表");
-                CreateREBasemapTables(connection, "DMTZ");
-                loadingForm.ShowProgress(95, "创建独立地物底图表");
-                CreateREBasemapTables(connection, "DLDW");
-                loadingForm.ShowProgress(96, "创建其他底图表");
-                CreateREBasemapTables(connection, "QT");
-                loadingForm.ShowProgress(97, "创建注记底图表");
-                CreateREBasemapTables(connection, "ZJ",true,true,true,true);
-                loadingForm.ShowProgress(90, "创建临时表");
-                CreateRECADTempTables(connection);
-            }
+            loadingForm.ShowProgress(80, "创建地籍表");
+            ZdService zdService = ServiceFactory.GetZdService();
+            zdService.InitTables();
             return true;
         }
 
@@ -235,196 +222,10 @@ namespace VastGIS.RealEstate.Api.Concrete
             }
             return list;
         }
-        private void CreateRECADTempTables(SQLiteConnection connection)
-        {
-            string d =
-                "CREATE TABLE [TmpCadd] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [EntityType] CHAR(100),[Handle] CHAR(20),  FileName CHAR(200));";
-            string x =
-                "CREATE TABLE [TmpCadx] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [EntityType] CHAR(100),[Handle] CHAR(20),  FileName Char(200));";
-            string m =
-                "CREATE TABLE [TmpCadm] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [EntityType] CHAR(100),[Handle] CHAR(20), FileName Char(200))";
-            string zj =
-                "CREATE TABLE[TmpCadzj] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [EntityType] CHAR(100),[Handle] CHAR(20), FileName Char(200))";
+        
+       
 
-            string xdata = 
-                "CREATE TABLE[TmpCadxdata] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[Handle] CHAR(20)," +
-                " [Tc] CHAR(100),[Wbnr] CHAR(200),[Cassdm] CHAR(20),[Fsxx1] CHAR(200),[Fsxx2] CHAR(200)" +
-                ",[Xzjd] FLOAT,[Fh] CHAR(100),[Fhdx] Float,[Ysdm] CHAR(10), FileName Char(200))";
-
-            string dView =
-                "CREATE VIEW [TmpCaddView] AS SELECT [a].[ROWID] AS [ROWID], [a].[Id] AS [Id], [a].[EntityType] AS [EntityType],     [a].[Handle] AS [Handle], [a].[geometry] AS [geometry],[a].[FileName] AS [FileName],     [b].[Tc] AS [Tc], [b].[Cassdm] AS [Cassdm], [b].[Fsxx1] AS [Fsxx1],     [b].[Fsxx2] AS [Fsxx2], [b].[Xzjd] AS [Xzjd], [b].[Fh] AS [Fh],     [b].[Fhdx] AS [Fhdx],[b].[Ysdm] AS [Ysdm] FROM [TmpCadd] AS [a] JOIN [TmpCadxdata] AS [b] USING ([Handle],[FileName]);";
-            string xView = "CREATE VIEW [TmpCadxView] AS SELECT [a].[ROWID] AS [ROWID], [a].[Id] AS [Id], [a].[EntityType] AS [EntityType],     [a].[Handle] AS [Handle], [a].[geometry] AS [geometry],[a].[FileName] AS [FileName],     [b].[Tc] AS [Tc], [b].[Cassdm] AS [Cassdm], [b].[Fsxx1] AS [Fsxx1],     [b].[Fsxx2] AS [Fsxx2],  [b].[Fh] AS [Fh],     [b].[Fhdx] AS [Fhdx],[b].[Ysdm] AS [Ysdm] FROM [TmpCadx] AS [a] JOIN [TmpCadxdata] AS [b] USING ([Handle],[FileName]);";
-            string mView = "CREATE VIEW [TmpCadmView] AS SELECT [a].[ROWID] AS [ROWID], [a].[Id] AS [Id], [a].[EntityType] AS [EntityType],     [a].[Handle] AS [Handle], [a].[geometry] AS [geometry],[a].[FileName] AS [FileName],     [b].[Tc] AS [Tc], [b].[Cassdm] AS [Cassdm], [b].[Fsxx1] AS [Fsxx1],     [b].[Fsxx2] AS [Fsxx2],  [b].[Fh] AS [Fh],     [b].[Fhdx] AS [Fhdx],[b].[Ysdm] AS [Ysdm] FROM [TmpCadm] AS [a] JOIN [TmpCadxdata] AS [b] USING ([Handle],[FileName]);";
-            string zjView = "CREATE VIEW [TmpCadzjView] AS SELECT [a].[ROWID] AS [ROWID], [a].[Id] AS [Id], [a].[EntityType] AS [EntityType],     [a].[Handle] AS [Handle], [a].[geometry] AS [geometry],[a].[FileName] AS [FileName],     [b].[Tc] AS [Tc], [b].[Wbnr] AS [Wbnr],[b].[Cassdm] AS [Cassdm], [b].[Fsxx1] AS [Fsxx1],     [b].[Fsxx2] AS [Fsxx2], [b].[Xzjd] AS [Xzjd], [b].[Fh] AS [Fh],     [b].[Fhdx] AS [Fhdx],[b].[Ysdm] AS [Ysdm] FROM [TmpCadzj] AS [a] JOIN [TmpCadxdata] AS [b] USING ([Handle],[FileName]);";
-
-
-
-
-
-            using (SQLiteCommand command = new SQLiteCommand(d, connection))
-            {
-               
-                    command.ExecuteNonQuery();
-                    command.CommandText =
-                        string.Format("SELECT AddGeometryColumn('TmpCadd','geometry',{0},'POINT','XY',0);", 
-                            _epsgCode);
-                    command.ExecuteNonQuery();
-              
-                    command.CommandText = x;
-                    command.ExecuteNonQuery();
-                    command.CommandText =
-                        string.Format("SELECT AddGeometryColumn('TmpCadx','geometry',{0},'LINESTRING','XY',0);",
-                             _epsgCode);
-                    command.ExecuteNonQuery();
-              
-            
-                    command.CommandText = m;
-                    command.ExecuteNonQuery();
-                    command.CommandText =
-                        string.Format("SELECT AddGeometryColumn('TmpCadm','geometry',{0},'POLYGON','XY',0);", 
-                            _epsgCode);
-                    command.ExecuteNonQuery();
-               
-             
-                    command.CommandText = zj;
-                    command.ExecuteNonQuery();
-                    command.CommandText =
-                        string.Format("SELECT AddGeometryColumn('TmpCadzj','geometry',{0},'POINT','XY',0);", 
-                            _epsgCode);
-                    command.ExecuteNonQuery();
-
-                command.CommandText = xdata;
-                command.ExecuteNonQuery();
-
-                command.CommandText = dView;
-                command.ExecuteNonQuery();
-
-                command.CommandText = xView;
-                command.ExecuteNonQuery();
-
-                command.CommandText = mView;
-                command.ExecuteNonQuery();
-
-                command.CommandText = zjView;
-                command.ExecuteNonQuery();
-
-                command.CommandText =
-                    "insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only])" +
-                    "values('tmpcaddview','geometry','rowid','tmpcadd','geometry',1)";
-                
-                command.ExecuteNonQuery();
-
-               
-                command.CommandText =
-                    "insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only])" +
-                    "values('tmpcadxview','geometry','rowid','tmpcadx','geometry',1)";
-                command.ExecuteNonQuery();
-
-               
-
-                command.CommandText =
-                    "insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only])" +
-                    "values('tmpcadmview','geometry','rowid','tmpcadm','geometry',1)";
-                command.ExecuteNonQuery();
-               
-
-                command.CommandText =
-                    "insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only])" +
-                    "values('tmpcadzjview','geometry','rowid','tmpcadzj','geometry',1)";
-                command.ExecuteNonQuery();
-
-               
-
-
-            }
-        }
-        private void CreateREBasemapTables(SQLiteConnection connection,string layerName,bool createPoint=true, bool createLine = true, bool createArea = true, bool createText = true)
-        {
-            string d = string.Format(
-                "CREATE TABLE[DXT{0}D] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [TC] CHAR(100),[CASSDM] CHAR(20),[FH] CHAR(30),[FHDX] FLOAT,[XZJD] FLOAT,[FSXX1] CHAR(100),[FSXX2] CHAR(100),[YSDM] CHAR(10));",layerName);
-
-            string m = string.Format(
-                "CREATE TABLE[DXT{0}M] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [TC] CHAR(100),[CASSDM] CHAR(20),[FSXX1] CHAR(100),[FSXX2] CHAR(100),[YSDM] CHAR(10));",
-                layerName);
-
-            string x=string.Format("CREATE TABLE[DXT{0}X] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [TC] CHAR(100),[CASSDM] CHAR(20),[FH] CHAR(30),[FHDX] FLOAT,[FSXX1] CHAR(100),[FSXX2] CHAR(100),[YSDM] CHAR(10));",
-                layerName);
-
-            string zj = string.Format(
-                "CREATE TABLE[DXT{0}ZJ] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [WBNR] CHAR(200),[TC] CHAR(100),[CASSDM] CHAR(20),[FH] CHAR(30),[FHDX] FLOAT,[XZJD] FLOAT,[YSDM] CHAR(10));",
-                layerName);
-
-            using (SQLiteCommand command = new SQLiteCommand(d, connection))
-            {
-                if (createPoint)
-                {
-                    command.ExecuteNonQuery();
-                    command.CommandText =
-                        string.Format("SELECT AddGeometryColumn('DXT{0}D','geometry',{1},'POINT','XY');", layerName,
-                            _epsgCode);
-                    command.ExecuteNonQuery();
-                }
-                if (createLine)
-                {
-                    command.CommandText = x;
-                    command.ExecuteNonQuery();
-                    command.CommandText =
-                        string.Format("SELECT AddGeometryColumn('DXT{0}X','geometry',{1},'LINESTRING','XY');",
-                            layerName, _epsgCode);
-                    command.ExecuteNonQuery();
-                }
-                if (createArea)
-                {
-                    command.CommandText = m;
-                    command.ExecuteNonQuery();
-                    command.CommandText =
-                        string.Format("SELECT AddGeometryColumn('DXT{0}M','geometry',{1},'POLYGON','XY');", layerName,
-                            _epsgCode);
-                    command.ExecuteNonQuery();
-                }
-                if (createText)
-                {
-                    command.CommandText = zj;
-                    command.ExecuteNonQuery();
-                    command.CommandText =
-                        string.Format("SELECT AddGeometryColumn('DXT{0}ZJ','geometry',{1},'POINT','XY');", layerName,
-                            _epsgCode);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-        private void CreateRESystemTables(SQLiteConnection connection)
-        {
-            using (SQLiteCommand cmd = new SQLiteCommand(SQLiteHelpers.VG_OBJECTCLASSES, connection))
-            {
-                cmd.ExecuteNonQuery();
-                //cmd.CommandText = SQLiteHelpers.VG_DICTIONARYNAME;
-                //cmd.ExecuteNonQuery();
-                //cmd.CommandText = SQLiteHelpers.VG_DICTIONARY;
-                //cmd.ExecuteNonQuery();
-
-
-            }
-        }
-
-        private void ImportDictionary(SQLiteConnection connection)
-        {
-            using (SQLiteCommand cmd = new SQLiteCommand(SQLiteHelpers.VG_OBJECTCLASSES, connection))
-            {
-                string dataFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "Templates\\Dictionary.sql");
-
-                StreamReader reader = File.OpenText(dataFile);
-                while (reader.Peek() > -1)
-                {
-                    string line = reader.ReadLine().Trim();
-                    if (string.IsNullOrEmpty(line)) continue;
-                    cmd.CommandText = line;
-                    cmd.ExecuteNonQuery();
-                }
-                reader.Close();
-            }
-        }
+     
 
         private void CreateREZDTables(SQLiteConnection connection)
         {
@@ -511,19 +312,36 @@ namespace VastGIS.RealEstate.Api.Concrete
                 
 
                 //DbConnection.GetConnection().Open();
-                MainService mainService = ServiceFactory.GetMainService();
-                TmpCaddService caddService = ServiceFactory.GetTmpCaddService();
-                TmpCadxService cadxService = ServiceFactory.GetTmpCadxService();
-                TmpCadmService cadmService = ServiceFactory.GetTmpCadmService();
-                TmpCadzjService cadzjService = ServiceFactory.GetTmpCadzjService();
-                TmpCadxdataService cadxdataService = ServiceFactory.GetTmpCadxdataService();
+                SystemService mainService = ServiceFactory.GetSystemService();
+                CadService cadService = ServiceFactory.GetCadService();
+
 
                 int srid = mainService.GetGeometryColumnSRID("tmpcadd", "geometry");
                 loadingForm.ShowProgress(0, "清理原有数据");
                 if (insertMethod != CADInsertMethod.JustInsert)
                 {
-                    mainService.ClearCADTemps(insertMethod, dxfName);
+                    if (insertMethod == CADInsertMethod.DeleteAll)
+                    {
+                        cadService.DeleteTmpCadd("");
+                        cadService.DeleteTmpCadx("");
+                        cadService.DeleteTmpCadm("");
+                        cadService.DeleteTmpCadzj("");
+                        cadService.DeleteTmpCadxdata("");
+                    }
+                    else
+                    {
+                        cadService.DeleteTmpCadd("FileName='"+dxfName+"'");
+                        cadService.DeleteTmpCadx("FileName='" + dxfName + "'");
+                        cadService.DeleteTmpCadm("FileName='" + dxfName + "'");
+                        cadService.DeleteTmpCadzj("FileName='" + dxfName + "'");
+                        cadService.DeleteTmpCadxdata("FileName='" + dxfName + "'");
+                    }
                 }
+                List<TmpCadd> cadds=new List<TmpCadd>();
+                List<TmpCadx> cadxs = new List<TmpCadx>();
+                List<TmpCadm> cadms = new List<TmpCadm>();
+                List<TmpCadzj> cadzjs = new List<TmpCadzj>();
+                List<TmpCadxdata> cadxdatas = new List<TmpCadxdata>();
 
                 Ogr.RegisterAll();
                 Gdal.SetConfigOption("GDAL_FILENAME_IS_UTF8", "YES");
@@ -555,8 +373,8 @@ namespace VastGIS.RealEstate.Api.Concrete
                         {
                             case "AcDbPolyline":
                             case "AcDbLine":
-                                TmpCadx cadx = new TmpCadx(handle, geomtryStr, "POLYLINE", dxfName);
-                                cadxService.Create(cadx);
+                                TmpCadx cadx = new TmpCadx() {EntityType = "POLYLINE",FileName = dxfName,Handle = handle,Geometry=DbGeometry.FromText(geomtryStr) } ;
+                                cadxs.Add(cadx);
                                 //判断是否是单一的多边形，如果是，则插入多边形
                                
                                     int pntCounts = geometry.GetPointCount();
@@ -573,8 +391,8 @@ namespace VastGIS.RealEstate.Api.Concrete
                                             //说明为多边形
                                             Geometry polygeometry = Ogr.ForceToPolygon(geometry);
                                             polygeometry.ExportToWkt(out geomtryStr);
-                                            TmpCadm cadm = new TmpCadm(handle, geomtryStr, "POLYGON", dxfName);
-                                            cadmService.Create(cadm);
+                                            TmpCadm cadm = new TmpCadm() { EntityType = "POLYGON", FileName = dxfName, Handle = handle, Geometry = DbGeometry.FromText(geomtryStr) };
+                                            cadms.Add(cadm);
                                         }
                                     }
                                 
@@ -585,8 +403,8 @@ namespace VastGIS.RealEstate.Api.Concrete
                                 //因为GDAL直接读取了块图形，因此，块在下面的方法和属性一起读取
                                 break;
                             case "AcDbText:AcDbText":
-                                TmpCadzj cadzj = new TmpCadzj(handle, geomtryStr, "TEXT", dxfName);
-                                cadzjService.Create(cadzj);
+                                TmpCadzj cadzj = new TmpCadzj() { EntityType = "TEXT", FileName = dxfName, Handle = handle, Geometry = DbGeometry.FromText(geomtryStr) };
+                                cadzjs.Add(cadzj);
                                 break;
                             default:
                                 MessageService.Current.Info(typeName);
@@ -608,8 +426,9 @@ namespace VastGIS.RealEstate.Api.Concrete
                     cadd.Handle = insert.Handle;
                     cadd.EntityType = "POINT";
                     cadd.FileName = dxfName;
-                    cadd.Wkt =string.Format("POINT({0} {1})", insert.Position.X, insert.Position.Y);
-                    caddService.Create(cadd);
+                    //cadd.Wkt =string.Format("POINT({0} {1})", insert.Position.X, insert.Position.Y);
+                    cadd.Geometry=DbGeometry.FromText(string.Format("POINT({0} {1})", insert.Position.X, insert.Position.Y));
+                    cadds.Add(cadd);
 
                     TmpCadxdata cadxdata = new TmpCadxdata();
                     cadxdata.Handle = insert.Handle;
@@ -619,7 +438,7 @@ namespace VastGIS.RealEstate.Api.Concrete
                     cadxdata.Xzjd = insert.Rotation;
                     cadxdata.FileName = dxfName;
                     cadxdata = ReadXData(cadxdata, insert.XData, xodePage);
-                    cadxdataService.Create(cadxdata);
+                    cadxdatas.Add(cadxdata);
                 }
 
                 //开始读取点数据
@@ -638,7 +457,7 @@ namespace VastGIS.RealEstate.Api.Concrete
                     cadxdata.Wbnr = StringHelper.StringToUtf8(insert.Value, xodePage);
                     cadxdata.FileName = dxfName;
                     cadxdata = ReadXData(cadxdata, insert.XData, xodePage);
-                    cadxdataService.Create(cadxdata);
+                    cadxdatas.Add(cadxdata);
                 }
 
                 //开始读取线数据
@@ -657,30 +476,13 @@ namespace VastGIS.RealEstate.Api.Concrete
                     cadxdata.Wbnr = "";
                     cadxdata.FileName = dxfName;
                     cadxdata = ReadXData(cadxdata, insert.XData, xodePage);
-                    cadxdataService.Create(cadxdata);
+                    cadxdatas.Add(cadxdata);
                 }
-                loadingForm.ShowProgress(80, "导入多边形数据...");
+                loadingForm.ShowProgress(70, "导入多边形数据...");
                 for (int i = 0; i < doc.LwPolylines.Count; i++)
                 {
                     LwPolyline insert = doc.LwPolylines[i];
-                    //if (insert.IsClosed)
-                    //{
-                    //    //插入多边形
-                    //    TmpCadx cadx = cadxService.GetTmpCadx(insert.Handle);
-                    //    if (cadx != null)
-                    //    {
-                    //        TmpCadm cadm = new TmpCadm() { Handle = cadx.Handle, EntityType = "POLYGON", FileName = dxfName };
-                    //        string wkt = cadx.Geometry.AsText();
-                    //        Geometry geometry = Ogr.ForceToPolygon(Geometry.CreateFromWkt(wkt));
-                    //        string geomStr = "";
-                    //        geometry.ExportToWkt(out geomStr);
-                    //        //geomStr = geomStr.Replace("LINESTRING", "POLYGON (") + "";
-                    //        cadm.Geometry = DbGeometry.FromText(geomStr);
-                    //        cadmService.Create(cadm);
-                    //    }
-                    //}
-
-
+                   
                     TmpCadxdata cadxdata = new TmpCadxdata();
                     cadxdata.Handle = insert.Handle;
                     cadxdata.Tc = StringHelper.StringToUtf8(insert.Layer.Name, xodePage);
@@ -690,30 +492,13 @@ namespace VastGIS.RealEstate.Api.Concrete
                     cadxdata.Wbnr = "";
                     cadxdata.FileName = dxfName;
                     cadxdata = ReadXData(cadxdata, insert.XData, xodePage);
-                    cadxdataService.Create(cadxdata);
+                    cadxdatas.Add(cadxdata);
                 }
 
                 for (int i = 0; i < doc.Polylines.Count; i++)
                 {
                     Polyline insert = doc.Polylines[i];
-                    //if (insert.IsClosed)
-                    //{
-                    //    //插入多边形
-                    //    TmpCadx cadx = cadxService.GetTmpCadx(insert.Handle);
-                    //    if (cadx != null)
-                    //    {
-                    //        TmpCadm cadm = new TmpCadm() { Handle = cadx.Handle, EntityType = "POLYGON", FileName = dxfName };
-                    //        string wkt = cadx.Geometry.AsText();
-                    //        Geometry geometry = Ogr.ForceToPolygon(Geometry.CreateFromWkt(wkt));
-                    //        string geomStr = "";
-                    //        geometry.ExportToWkt(out geomStr);
-                    //        geomStr = geomStr.Replace("LINESTRING", "POLYGON (") + ")";
-                    //        cadm.Geometry = DbGeometry.FromText(geomStr);
-                    //        cadmService.Create(cadm);
-                    //    }
-                    //}
-
-
+                   
                     TmpCadxdata cadxdata = new TmpCadxdata();
                     cadxdata.Handle = insert.Handle;
                     cadxdata.Tc = StringHelper.StringToUtf8(insert.Layer.Name);
@@ -723,9 +508,19 @@ namespace VastGIS.RealEstate.Api.Concrete
                     cadxdata.Wbnr = "";
                     cadxdata.FileName = dxfName;
                     cadxdata = ReadXData(cadxdata, insert.XData, xodePage);
-                    cadxdataService.Create(cadxdata);
+                    cadxdatas.Add(cadxdata);
                 }
-                mainService.UpdateTmpCadYsdm();
+                loadingForm.ShowProgress(75, "保存点数据...");
+                cadService.SaveTmpCadds(cadds);
+                loadingForm.ShowProgress(80, "保存线数据...");
+                cadService.SaveTmpCadxs(cadxs);
+                loadingForm.ShowProgress(85, "保存面数据...");
+                cadService.SaveTmpCadms(cadms);
+                loadingForm.ShowProgress(90, "保存文本数据...");
+                cadService.SaveTmpCadzjs(cadzjs);
+                loadingForm.ShowProgress(95, "保存属性数据...");
+                cadService.SaveTmpCadxdatas(cadxdatas);
+                cadService.UpdateTmpCadYsdm();
 
                 loadingForm.ShowProgress(100, "导入完成...");
                 MessageService.Current.Info(string.Format("导入DX完成{0}",dxfName));
@@ -740,7 +535,7 @@ namespace VastGIS.RealEstate.Api.Concrete
 
         public bool HasCADData(string fileName)
         {
-            MainService mainService = ServiceFactory.GetMainService();
+            CadService mainService = ServiceFactory.GetCadService();
             return mainService.HasCADData(fileName);
         }
 
@@ -753,19 +548,19 @@ namespace VastGIS.RealEstate.Api.Concrete
             string whereClause,
             object values)
         {
-            MainService mainService = ServiceFactory.GetMainService();
+            SystemService mainService = ServiceFactory.GetSystemService();
             mainService.AssignTextToPolygon(assignType,polyTable,polyFieldName,textTable,textFieldName,whereClause,values);
         }
 
         public VastGIS.RealEstate.Data.Entity.IFeature FindFirstRecord(string[] layers, double dx, double dy)
         {
-            MainService mainService = ServiceFactory.GetMainService();
+            SystemService mainService = ServiceFactory.GetSystemService();
             return mainService.FindFirstRecord(layers, dx, dy);
         }
 
         public void SplitTmpCadIntoLayers(string cadLayerName, string tableName, string fileName = "", bool isClear = true)
         {
-            MainService mainService = ServiceFactory.GetMainService();
+            CadService mainService = ServiceFactory.GetCadService();
             mainService.SplitTmpCADToLayer(cadLayerName,tableName,fileName,isClear);
         }
 

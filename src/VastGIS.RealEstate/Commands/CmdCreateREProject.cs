@@ -11,6 +11,7 @@ using VastGIS.Plugins.RealEstate.Menu;
 using VastGIS.Plugins.RealEstate.Properties;
 using VastGIS.Plugins.Services;
 using VastGIS.RealEstate.Api.Helpers;
+using VastGIS.RealEstate.Api.Interface;
 using VastGIS.Services.Serialization;
 using VastGIS.Shared;
 
@@ -48,6 +49,8 @@ namespace VastGIS.Plugins.RealEstate.Commands
                 }
                 //((ISecureContext) _context).VastProject = project;
                 IProjectService projectService = _context.Container.GetSingleton<IProjectService>();
+                projectService.TryClose();
+                ((IRealEstateContext)_context).RealEstateDatabase = null;
                 projectService.Open(projectFile, false);
             }
         }

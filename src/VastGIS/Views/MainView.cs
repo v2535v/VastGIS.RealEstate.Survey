@@ -31,7 +31,7 @@ namespace VastGIS.Views
     public partial class MainView : MapWindowView, IMainView
     {
         public const string SerializationKey = ""; // intentionally empty
-        private const string WindowTitle = "MapWindow 5";
+        private const string WindowTitle = "未见不动产调查系统";
         private readonly IAppContext _context;
         private bool _locked;
         private bool _rendered;

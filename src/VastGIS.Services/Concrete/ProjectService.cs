@@ -124,6 +124,7 @@ namespace VastGIS.Services.Concrete
             _context.Legend.Layers.Clear();
             _context.Map.SetDefaultExtents();
             _context.Map.MapCursor = Api.Enums.MapCursor.ZoomIn;
+            
 
             if (_context.Locator != null)
             {
@@ -139,7 +140,7 @@ namespace VastGIS.Services.Concrete
                 case ProjectState.NotSaved:
                 case ProjectState.HasChanges:
                 {
-                    string prompt = "Save the project?";
+                    string prompt = "保存本项目吗?";
 
                     if (!string.IsNullOrWhiteSpace(_filename))
                     {
@@ -397,7 +398,7 @@ namespace VastGIS.Services.Concrete
                     SetEmptyProject();
                     return false;
                 }
-
+                
                 AppConfig.Instance.AddRecentProject(filename);
 
                 _filename = filename;

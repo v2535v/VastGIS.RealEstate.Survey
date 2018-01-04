@@ -228,7 +228,7 @@ namespace VastGIS.Views
             this.Controls.Add(this.dockingClientPanel1);
             this.Controls.Add(this.statusStripEx1);
             this.Name = "MainView";
-            this.Text = "MapWindow 5";
+            this.Text = "未见不动产调查系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this._dockingManager1)).EndInit();
             this.dockingClientPanel1.ResumeLayout(false);

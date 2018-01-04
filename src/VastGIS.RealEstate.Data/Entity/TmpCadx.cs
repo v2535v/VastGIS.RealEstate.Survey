@@ -1,16 +1,16 @@
-﻿using System.Data.Entity.Spatial;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+using System.Data.SQLite;
+using System.Data.Entity.Spatial;
+using System.ComponentModel;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-    public class TmpCadx : TmpCadEntity
+
+    public partial class TmpCadx
     {
-        public TmpCadx() { }
-        public TmpCadx(string handle, string geoStr, string entityType, string fileName)
-        {
-            Handle = handle;
-            EntityType = entityType;
-            Wkt=geoStr;
-            FileName = fileName;
-        }
     }
+
 }

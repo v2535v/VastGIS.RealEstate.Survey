@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
@@ -15,7 +16,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         public SQLiteDao()
         {
             connection = DbConnection.GetConnection();
-            GetSRID();
+            //GetSRID();
         }
         
         public DataTable ExecuteSql(SQLiteCommand command)
@@ -26,6 +27,19 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             dt.Load(reader);
             reader.Close();
             return dt;
+        }
+
+        public DataTable ExecuteSql(string query)
+        {
+            using (SQLiteCommand command=new SQLiteCommand(query,connection))
+            {
+                Trace.TraceInformation("Execute query {0}", query);
+                DataTable dt = new DataTable();
+                SQLiteDataReader reader = command.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+                return dt; 
+            }
         }
 
         public int GetSRID()
@@ -39,5 +53,59 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 return _srid;
             }
         }
+
+        #region 获取所有表名
+        /// <summary>
+        /// 获取数据库名
+        /// </summary>
+        public List<string> GetAllTableName()
+        {
+
+            DataTable dt = ExecuteSql("select tbl_name from sqlite_master where type='table'");
+            List<string> result = new List<string>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                result.Add(dr["tbl_name"].ToString());
+            }
+            return result;
+        }
+        #endregion
+
+        #region 获取表的所有字段名及字段类型
+        /// <summary>
+        /// 获取表的所有字段名及字段类型
+        /// </summary>
+        public List<Dictionary<string, string>> GetAllColumnTypes(string tableName)
+        {
+            
+            DataTable dt = ExecuteSql("PRAGMA table_info('" + tableName + "')");
+            List<Dictionary<string, string>> result = new List<Dictionary<string, string>>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                Dictionary<string, string> dic = new Dictionary<string, string>();
+                dic.Add("name", dr["name"].ToString());
+                dic.Add("notnull", dr["notnull"].ToString());
+                result.Add(dic);
+            }
+            return result;
+        }
+        #endregion
+
+        #region 获取表的所有字段名
+        /// <summary>
+        /// 获取表的所有字段名及字段类型
+        /// </summary>
+        public List<string> GetAllColumns(string tableName)
+        {
+
+            DataTable dt = ExecuteSql("PRAGMA table_info('" + tableName + "')");
+            List<string> result = new List<string>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                result.Add(dr["name"].ToString());
+            }
+            return result;
+        }
+        #endregion
     }
 }
