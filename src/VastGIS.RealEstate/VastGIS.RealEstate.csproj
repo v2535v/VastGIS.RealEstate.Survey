@@ -55,6 +55,7 @@
     <Reference Include="Syncfusion.Grid.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=15.1460.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Tools.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Tools.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -85,6 +86,12 @@
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Config\VGLayer.cs" />
     <Compile Include="Config\VGLayerConfig.cs" />
+    <Compile Include="DataControls\ucJZD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucJZD.Designer.cs">
+      <DependentUpon>ucJZD.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditSettings\EditingCreateJZDByPolygon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +205,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DataControls\ucJZD.resx">
+      <DependentUpon>ucJZD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditSettings\EditingCreateJZDByPolygon.resx">
       <DependentUpon>EditingCreateJZDByPolygon.cs</DependentUpon>
     </EmbeddedResource>

@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace VastGIS.RealEstate.Data.Entity
 {
 
-    public partial class Djzq
+    public partial class Djzq 
     {
     }
 

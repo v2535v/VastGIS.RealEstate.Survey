@@ -78,54 +78,7 @@ namespace VastGIS.RealEstate.Api.Concrete
         #endregion
 
         #region 公共方法
-
-        public List<IObjectClass> GetObjectClasses()
-        {
-            return GetClasses(true);
-        }
-
-        public List<IObjectClass> GetClasses(bool IsRecursion = true)
-        {
-            List<IObjectClass> _datasets = new List<IObjectClass>();
-
-
-            string connectionString = SQLiteHelpers.ConnectionStringBuilder(_databaseName);
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command =
-                    new SQLiteCommand(
-                        "select MC,ZWMC,DXLX,XHZDMC,TXZDMC,TXLX,FBMC from vg_objectclasses Order by ParentName",
-                        connection))
-                {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            IObjectClass objectClass = new ObjectClass(reader);
-                            objectClass.DatabaseName = _databaseName;
-                            _datasets.Add(objectClass);
-                        }
-                    }
-                }
-            }
-            if (IsRecursion == false)
-                return _datasets;
-            else
-            {
-                List<IObjectClass> list = _datasets.FindAll(c => c.ParentName == "");
-                List<IObjectClass> newList = new List<IObjectClass>(list);
-                foreach (IObjectClass objectClass in newList)
-                {
-                    List<IObjectClass> children = FindChildClasses(_datasets, objectClass.Name);
-                    if (children != null && children.Count > 0)
-                    {
-                        objectClass.SubClasses = children;
-                    }
-                }
-                return newList;
-            }
-        }
+    
 
         public bool InitREDatabase(int epsgCode, ProjectLoadingView loadingForm, out string errorMsg)
         {
@@ -165,35 +118,7 @@ namespace VastGIS.RealEstate.Api.Concrete
             return true;
         }
 
-        public ICodeDomain GetDomain(string domainName)
-        {
-            string connectionString = SQLiteHelpers.ConnectionStringBuilder(_databaseName);
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command =
-                    new SQLiteCommand(
-                        "select ZDZ,ZDSM,SFQS from vg_dictionary where ZDMC='" + domainName + "' Order by PX,ZDZ",
-                        connection))
-                {
-                    ICodeDomain codeDomain = new CodeDomain() {Name = domainName};
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            ICodeDomainValue codeDomainValue =
-                                new CodeDomainValue(reader.GetString(0), reader.GetString(1), reader.GetBoolean(2));
-                            codeDomain.Values.Add(codeDomainValue);
-                            if (codeDomainValue.IsDefault)
-                            {
-                                codeDomain.DefaultValue = codeDomainValue;
-                            }
-                        }
-                    }
-                    return codeDomain;
-                }
-            }
-        }
+       
 
         public bool CheckDatabase()
         {
@@ -207,86 +132,7 @@ namespace VastGIS.RealEstate.Api.Concrete
         #endregion
 
         #region 私有方法
-
-        private List<IObjectClass> FindChildClasses(List<IObjectClass> objectClasses, string key)
-        {
-            List<IObjectClass> list = objectClasses.FindAll(c => c.ParentName == key);
-            List<IObjectClass> tmpList = new List<IObjectClass>(list);
-            foreach (IObjectClass objectClass in tmpList)
-            {
-                List<IObjectClass> tmpChildren = FindChildClasses(objectClasses, objectClass.Name);
-                if (tmpChildren != null && tmpChildren.Count > 0)
-                {
-                    list.AddRange(tmpChildren);
-                }
-            }
-            return list;
-        }
         
-       
-
-     
-
-        private void CreateREZDTables(SQLiteConnection connection)
-        {
-            using (SQLiteCommand command = new SQLiteCommand(SQLiteHelpers.C, connection))
-            {
-                command.ExecuteNonQuery();
-                command.CommandText = SQLiteHelpers.QLR;
-                command.ExecuteNonQuery();
-                command.CommandText = SQLiteHelpers.FDCQXM;
-                command.ExecuteNonQuery();
-                command.CommandText = SQLiteHelpers.H;
-                command.ExecuteNonQuery();
-                command.CommandText = SQLiteHelpers.JSYDSYQ;
-                command.ExecuteNonQuery();
-                command.CommandText = SQLiteHelpers.TDSYQ;
-                command.ExecuteNonQuery();
-                //行政区
-                command.CommandText = SQLiteHelpers.XZQ;
-                command.ExecuteNonQuery();
-                command.CommandText = "SELECT AddGeometryColumn('XZQ','geometry'," + _epsgCode.ToString() +
-                                      ",'POLYGON','XY');";
-                command.ExecuteNonQuery();
-                //行政区界线
-                command.CommandText = SQLiteHelpers.XZQJX;
-                command.ExecuteNonQuery();
-                command.CommandText = "SELECT AddGeometryColumn('XZQJX','geometry'," + _epsgCode.ToString() +
-                                      ",'LINESTRING','XY');";
-                command.ExecuteNonQuery();
-                //地籍区
-                command.CommandText = SQLiteHelpers.DJQ;
-                command.ExecuteNonQuery();
-                command.CommandText = "SELECT AddGeometryColumn('DJQ','geometry'," + _epsgCode.ToString() +
-                                      ",'POLYGON','XY');";
-                command.ExecuteNonQuery();
-                //地籍子区
-                command.CommandText = SQLiteHelpers.DJZQ;
-                command.ExecuteNonQuery();
-                command.CommandText = "SELECT AddGeometryColumn('DJZQ','geometry'," + _epsgCode.ToString() +
-                                      ",'POLYGON','XY');";
-                command.ExecuteNonQuery();
-                //宗地
-                command.CommandText = SQLiteHelpers.ZDJBXX;
-                command.ExecuteNonQuery();
-                command.CommandText = "SELECT AddGeometryColumn('ZDJBXX','geometry'," + _epsgCode.ToString() +
-                                      ",'POLYGON','XY');";
-                command.ExecuteNonQuery();
-                //宗地界址线
-                command.CommandText = SQLiteHelpers.JZX;
-                command.ExecuteNonQuery();
-                command.CommandText = "SELECT AddGeometryColumn('jzx','geometry'," + _epsgCode.ToString() +
-                                      ",'LINESTRING','XY');";
-                command.ExecuteNonQuery();
-                //界址点
-                command.CommandText = SQLiteHelpers.JZD;
-                command.ExecuteNonQuery();
-                command.CommandText = "SELECT AddGeometryColumn('jzd','geometry'," + _epsgCode.ToString() +
-                                      ",'MULTIPOINT','XY');";
-                command.ExecuteNonQuery();
-            }
-        }
-
         #endregion
 
         #region CAD

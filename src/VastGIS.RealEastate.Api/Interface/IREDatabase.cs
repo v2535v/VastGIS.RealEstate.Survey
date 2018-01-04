@@ -15,10 +15,10 @@ namespace VastGIS.RealEstate.Api.Interface
     {
         string DatabaseName { get; set; }
         int EpsgCode { get; set; }
-        List<IObjectClass> GetObjectClasses();
-        List<IObjectClass> GetClasses(bool IsRecursion = true);
+        //List<IObjectClass> GetObjectClasses();
+        //List<IObjectClass> GetClasses(bool IsRecursion = true);
         bool InitREDatabase(int epsgCode,ProjectLoadingView loadingForm,out string errorMsg);
-        ICodeDomain GetDomain(string domainName);
+        //ICodeDomain GetDomain(string domainName);
         bool CheckDatabase();
 
         #region CAD数据处理

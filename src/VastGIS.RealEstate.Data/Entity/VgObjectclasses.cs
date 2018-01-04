@@ -11,6 +11,21 @@ namespace VastGIS.RealEstate.Data.Entity
 
     public partial class VgObjectclasses
     {
+        protected IEnumerable<VgObjectclasses> subClasses;
+
+        public IEnumerable<VgObjectclasses> SubClasses
+        {
+            get { return this.subClasses; }
+            set
+            {
+                if (this.subClasses != value)
+                {
+                    this.OnPropertyChanging("SubClasses");
+                    this.subClasses = value;
+                    this.OnPropertyChanged("SubClasses");
+                }
+            }
+        }
     }
 
 }

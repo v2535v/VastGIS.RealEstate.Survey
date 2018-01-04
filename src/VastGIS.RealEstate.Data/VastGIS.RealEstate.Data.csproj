@@ -97,10 +97,6 @@
     <Compile Include="Dao\ZdDao.generate.cs" />
     <Compile Include="Entity\BackEntity.cs" />
     <Compile Include="Entity\BackFeature.cs" />
-    <Compile Include="Entity\BaseMapArea.cs" />
-    <Compile Include="Entity\BaseMapLine.cs" />
-    <Compile Include="Entity\BaseMapPoint.cs" />
-    <Compile Include="Entity\BaseMapText.cs" />
     <Compile Include="Entity\CadLayerPair.cs" />
     <Compile Include="Entity\ColumnMapping.cs" />
     <Compile Include="Entity\Djq.cs" />
@@ -173,11 +169,11 @@
     <Compile Include="Entity\Dxtzjzj.generate.cs" />
     <Compile Include="Entity\Feature.cs" />
     <Compile Include="Entity\IBackEntity.cs" />
+    <Compile Include="Entity\IDatabaseEntity.cs" />
     <Compile Include="Entity\IEntity.cs" />
     <Compile Include="Entity\IFeature.cs" />
-    <Compile Include="Entity\JZD.cs" />
+    <Compile Include="Entity\Jzd.cs" />
     <Compile Include="Entity\Jzd.generate.cs" />
-    <Compile Include="Entity\JZDTOZD.cs" />
     <Compile Include="Entity\Jzdzj.cs" />
     <Compile Include="Entity\Jzdzj.generate.cs" />
     <Compile Include="Entity\JZX.cs" />

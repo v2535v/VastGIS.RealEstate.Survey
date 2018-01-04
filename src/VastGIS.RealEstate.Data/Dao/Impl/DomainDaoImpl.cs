@@ -4,7 +4,9 @@ using System.Text;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using Dapper;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 
@@ -54,7 +56,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             return true;
         }
-        
+
+        public List<VgDictionary> GetDictionaryByName(string dictionaryName)
+        {
+           
+            string sql = "select * from vg_dictionary where ZDMC='" + dictionaryName + "'";
+            List<VgDictionary> values = connection.Query<VgDictionary>(sql).ToList();
+            return values;
+
+        }
     }
 }
 

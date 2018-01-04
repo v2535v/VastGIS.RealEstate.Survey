@@ -57,6 +57,10 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             return _systemDao.CopyFeature(sourceTable, id, targetTable, isDelete, isAttributeAutoTransform);
         }
 
+        public List<VgObjectclasses> GetObjectclasseses(bool isDeep = true)
+        {
+            return _systemDao.GetObjectclasseses(isDeep);
+        }
     }
 }
 

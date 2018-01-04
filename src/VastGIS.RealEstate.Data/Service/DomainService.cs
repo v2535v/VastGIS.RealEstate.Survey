@@ -13,7 +13,9 @@ namespace VastGIS.RealEstate.Data.Service
     public partial interface DomainService
     {      
         bool InitTables();
-        
+
+        List<VgDictionary> GetDictionaryByName(string DictionaryName);
+
     }
 }
 

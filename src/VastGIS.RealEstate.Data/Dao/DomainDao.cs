@@ -13,7 +13,8 @@ namespace VastGIS.RealEstate.Data.Dao
     public partial interface DomainDao
     {      
         bool InitTables();
-        
+
+        List<VgDictionary> GetDictionaryByName(string dictionaryName);
     }
 }
 

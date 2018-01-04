@@ -72,6 +72,44 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             return true;
         }
+
+        public List<VgObjectclasses> GetObjectclasseses(bool isDeep)
+        {
+            List<VgObjectclasses> objectclasseses = connection
+                .Query<VgObjectclasses>("select * from vg_objectclasses").ToList();
+            if (isDeep == false) return objectclasseses;
+            else
+            {
+                List<VgObjectclasses> list = objectclasseses.FindAll(c => c.Fbmc == "");
+                List<VgObjectclasses> newList = new List<VgObjectclasses>(list);
+                foreach (VgObjectclasses objectClass in newList)
+                {
+                    List<VgObjectclasses> children = FindChildClasses(objectclasseses, objectClass.Mc);
+                    if (children != null && children.Count > 0)
+                    {
+                        objectClass.SubClasses = children;
+                    }
+                }
+                return newList;
+            }
+        }
+
+        private List<VgObjectclasses> FindChildClasses(List<VgObjectclasses> objectClasses, string key)
+        {
+            List<VgObjectclasses> list = objectClasses.FindAll(c => c.Fbmc == key);
+            List<VgObjectclasses> tmpList = new List<VgObjectclasses>(list);
+            foreach (VgObjectclasses objectClass in tmpList)
+            {
+                List<VgObjectclasses> tmpChildren = FindChildClasses(objectClasses, objectClass.Mc);
+                if (tmpChildren != null && tmpChildren.Count > 0)
+                {
+                    list.AddRange(tmpChildren);
+                }
+            }
+            return list;
+        }
+
+
         public void Close()
         {
             connection.Close();

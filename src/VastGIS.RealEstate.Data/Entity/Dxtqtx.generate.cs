@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace VastGIS.RealEstate.Data.Entity
 {
 
-    public partial class Dxtqtx:INotifyPropertyChanging, INotifyPropertyChanged
+    public partial class Dxtqtx:INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity
     {
         #region 表结构
         public const string TABLE_NAME = "DXTQTX";
@@ -21,6 +21,8 @@ namespace VastGIS.RealEstate.Data.Entity
 	    public const string COL_FSXX1 = "FSXX1";
 	    public const string COL_FSXX2 = "FSXX2";
 	    public const string COL_YSDM = "YSDM";
+	    public const string COL_DATABASEID = "DatabaseId";
+	    public const string COL_FLAGS = "FLAGS";
 	    public const string COL_GEOMETRY = "geometry";
 	
         public const string PARAM_ID = "@Id";
@@ -31,15 +33,17 @@ namespace VastGIS.RealEstate.Data.Entity
         public const string PARAM_FSXX1 = "@FSXX1";
         public const string PARAM_FSXX2 = "@FSXX2";
         public const string PARAM_YSDM = "@YSDM";
+        public const string PARAM_DATABASEID = "@DatabaseId";
+        public const string PARAM_FLAGS = "@FLAGS";
         public const string PARAM_GEOMETRY = "@geometry";
 	
         #endregion
         
         #region 查询
 	
-	    private const string SQL_INSERT_DXTQTX = "INSERT INTO DXTQTX (TC, CASSDM, FH, FHDX, FSXX1, FSXX2, YSDM, geometry) VALUES ( @TC, @CASSDM, @FH, @FHDX, @FSXX1, @FSXX2, @YSDM, GeomFromText(@geometry,@SRID));" + " SELECT last_insert_rowid();";
+	    private const string SQL_INSERT_DXTQTX = "INSERT INTO DXTQTX (TC, CASSDM, FH, FHDX, FSXX1, FSXX2, YSDM, DatabaseId, FLAGS, geometry) VALUES ( @TC, @CASSDM, @FH, @FHDX, @FSXX1, @FSXX2, @YSDM, @DatabaseId, @FLAGS, GeomFromText(@geometry,@SRID));" + " SELECT last_insert_rowid();";
 	
-	    private const string SQL_UPDATE_DXTQTX = "UPDATE DXTQTX SET TC = @TC, CASSDM = @CASSDM, FH = @FH, FHDX = @FHDX, FSXX1 = @FSXX1, FSXX2 = @FSXX2, YSDM = @YSDM, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
+	    private const string SQL_UPDATE_DXTQTX = "UPDATE DXTQTX SET TC = @TC, CASSDM = @CASSDM, FH = @FH, FHDX = @FHDX, FSXX1 = @FSXX1, FSXX2 = @FSXX2, YSDM = @YSDM, DatabaseId = @DatabaseId, FLAGS = @FLAGS, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_DXTQTX = "DELETE FROM DXTQTX WHERE  Id = @Id ";
 	
@@ -55,6 +59,8 @@ namespace VastGIS.RealEstate.Data.Entity
 		protected string fsxx1 = default(string);
 		protected string fsxx2 = default(string);
 		protected string ysdm = default(string);
+		protected long? databaseid = default(long?);
+		protected short? flag = default(short?);
         protected DbGeometry _geometry;
         protected string _wkt=default(string);
         
@@ -172,6 +178,30 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
+        public long? DatabaseID 
+        {
+            get { return this.databaseid; }
+			set	{ 
+                  if(this.databaseid != value)
+                    {
+                        this.OnPropertyChanging("DatabaseID");  
+                        this.databaseid = value;                        
+                        this.OnPropertyChanged("DatabaseID");
+                    }   
+                }
+        }	
+        public short? Flags 
+        {
+            get { return this.flag; }
+			set	{ 
+                  if(this.flag != value)
+                    {
+                        this.OnPropertyChanging("Flags");  
+                        this.flag = value;                        
+                        this.OnPropertyChanged("Flags");
+                    }   
+                }
+        }	
         public DbGeometry Geometry
         {
             get{return _geometry;}
@@ -233,6 +263,8 @@ namespace VastGIS.RealEstate.Data.Entity
                  command.Parameters.AddWithValue(PARAM_FSXX1,this.Fsxx1);    				
                  command.Parameters.AddWithValue(PARAM_FSXX2,this.Fsxx2);    				
                  command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);    				
+                 command.Parameters.AddWithValue(PARAM_DATABASEID,this.DatabaseID);    				
+                 command.Parameters.AddWithValue(PARAM_FLAGS,this.Flags);    				
 				command.Parameters.AddWithValue(PARAM_GEOMETRY,this._wkt);
                 command.Parameters.AddWithValue("@SRID",srid);
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
@@ -252,6 +284,8 @@ namespace VastGIS.RealEstate.Data.Entity
 				command.Parameters.AddWithValue(PARAM_FSXX1,this.Fsxx1);  
 				command.Parameters.AddWithValue(PARAM_FSXX2,this.Fsxx2);  
 				command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);  
+				command.Parameters.AddWithValue(PARAM_DATABASEID,this.DatabaseID);  
+				command.Parameters.AddWithValue(PARAM_FLAGS,this.Flags);  
 				command.Parameters.AddWithValue(PARAM_GEOMETRY,this._wkt);
                 command.Parameters.AddWithValue("@SRID",srid);
 			

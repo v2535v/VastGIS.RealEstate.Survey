@@ -38,6 +38,10 @@ namespace VastGIS.RealEstate.Data.Service
         /// <returns></returns>
         bool CopyFeature(string sourceTable, int id, string targetTable, bool isDelete = false, bool isAttributeAutoTransform = true);
 
+
+        List<VgObjectclasses> GetObjectclasseses(bool isDeep = true);
+
+
     }
 }
 

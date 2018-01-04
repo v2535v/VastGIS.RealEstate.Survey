@@ -36,7 +36,7 @@ namespace VastGIS.RealEstate.Data.Entity
 
         public string TableName { get; set; }
 
-        public int Id { get; set; }
+        public long ID { get; set; }
 
         public DateTime? WxDcsj { get; set; }
 

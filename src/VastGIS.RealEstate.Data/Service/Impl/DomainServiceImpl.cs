@@ -16,7 +16,11 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         {
            return  _domainDao.InitTables();
         }
-        
+
+        public List<VgDictionary> GetDictionaryByName(string DictionaryName)
+        {
+            return _domainDao.GetDictionaryByName(DictionaryName);
+        }
     }
 }
 

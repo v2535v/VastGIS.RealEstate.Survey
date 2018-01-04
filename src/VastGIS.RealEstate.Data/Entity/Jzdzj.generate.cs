@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace VastGIS.RealEstate.Data.Entity
 {
 
-    public partial class Jzdzj:INotifyPropertyChanging, INotifyPropertyChanged
+    public partial class Jzdzj:INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity
     {
         #region 表结构
         public const string TABLE_NAME = "JZDZJ";
