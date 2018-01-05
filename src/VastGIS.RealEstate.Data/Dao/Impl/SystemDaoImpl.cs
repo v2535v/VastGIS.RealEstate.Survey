@@ -80,7 +80,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             if (isDeep == false) return objectclasseses;
             else
             {
-                List<VgObjectclasses> list = objectclasseses.FindAll(c => c.Fbmc == "");
+                List<VgObjectclasses> list = objectclasseses.FindAll(c => c.Fbmc == null || c.Fbmc=="");
                 List<VgObjectclasses> newList = new List<VgObjectclasses>(list);
                 foreach (VgObjectclasses objectClass in newList)
                 {
