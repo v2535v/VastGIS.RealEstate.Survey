@@ -30,6 +30,7 @@ namespace VastGIS.RealEstate.Data.Entity
 	    private const string SQL_UPDATE_VG_SETTINGS = "UPDATE vg_settings SET CSMC = @CSMC, CSZ = @CSZ WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_VG_SETTINGS = "DELETE FROM vg_settings WHERE  Id = @Id ";
+        
 	
         #endregion            
         
@@ -96,7 +97,14 @@ namespace VastGIS.RealEstate.Data.Entity
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  VgSettings()
+        {
+            
+        }
+        #endregion
         
         #region 方法           
     
@@ -162,7 +170,8 @@ namespace VastGIS.RealEstate.Data.Entity
 		public bool Delete(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_VG_SETTINGS,connection))
-            {							
+            {
+               
 				command.Parameters.AddWithValue(PARAM_ID, this.ID);
                 return (command.ExecuteNonQuery() == 1);
             }

@@ -21,6 +21,12 @@ namespace VastGIS.RealEstate.Data.Entity
 	    public const string COL_XHZDMC = "XHZDMC";
 	    public const string COL_TXZDMC = "TXZDMC";
 	    public const string COL_TXLX = "TXLX";
+	    public const string COL_IDENTIFY = "IDENTIFY";
+	    public const string COL_EDITABLE = "EDITABLE";
+	    public const string COL_QUERYABLE = "QUERYABLE";
+	    public const string COL_SNAPABLE = "SNAPABLE";
+	    public const string COL_VISIBLE = "VISIBLE";
+	    public const string COL_XSSX = "XSSX";
 	
         public const string PARAM_ID = "@Id";
         public const string PARAM_MC = "@MC";
@@ -30,16 +36,23 @@ namespace VastGIS.RealEstate.Data.Entity
         public const string PARAM_XHZDMC = "@XHZDMC";
         public const string PARAM_TXZDMC = "@TXZDMC";
         public const string PARAM_TXLX = "@TXLX";
+        public const string PARAM_IDENTIFY = "@IDENTIFY";
+        public const string PARAM_EDITABLE = "@EDITABLE";
+        public const string PARAM_QUERYABLE = "@QUERYABLE";
+        public const string PARAM_SNAPABLE = "@SNAPABLE";
+        public const string PARAM_VISIBLE = "@VISIBLE";
+        public const string PARAM_XSSX = "@XSSX";
 	
         #endregion
         
         #region 查询
 	
-	    private const string SQL_INSERT_VG_OBJECTCLASSES = "INSERT INTO vg_objectclasses (MC, DXLX, ZWMC, FBMC, XHZDMC, TXZDMC, TXLX) VALUES ( @MC, @DXLX, @ZWMC, @FBMC, @XHZDMC, @TXZDMC, @TXLX);" + " SELECT last_insert_rowid();";
+	    private const string SQL_INSERT_VG_OBJECTCLASSES = "INSERT INTO vg_objectclasses (MC, DXLX, ZWMC, FBMC, XHZDMC, TXZDMC, TXLX, IDENTIFY, EDITABLE, QUERYABLE, SNAPABLE, VISIBLE, XSSX) VALUES ( @MC, @DXLX, @ZWMC, @FBMC, @XHZDMC, @TXZDMC, @TXLX, @IDENTIFY, @EDITABLE, @QUERYABLE, @SNAPABLE, @VISIBLE, @XSSX);" + " SELECT last_insert_rowid();";
 	
-	    private const string SQL_UPDATE_VG_OBJECTCLASSES = "UPDATE vg_objectclasses SET MC = @MC, DXLX = @DXLX, ZWMC = @ZWMC, FBMC = @FBMC, XHZDMC = @XHZDMC, TXZDMC = @TXZDMC, TXLX = @TXLX WHERE Id = @Id";
+	    private const string SQL_UPDATE_VG_OBJECTCLASSES = "UPDATE vg_objectclasses SET MC = @MC, DXLX = @DXLX, ZWMC = @ZWMC, FBMC = @FBMC, XHZDMC = @XHZDMC, TXZDMC = @TXZDMC, TXLX = @TXLX, IDENTIFY = @IDENTIFY, EDITABLE = @EDITABLE, QUERYABLE = @QUERYABLE, SNAPABLE = @SNAPABLE, VISIBLE = @VISIBLE, XSSX = @XSSX WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_VG_OBJECTCLASSES = "DELETE FROM vg_objectclasses WHERE  Id = @Id ";
+        
 	
         #endregion            
         
@@ -53,6 +66,12 @@ namespace VastGIS.RealEstate.Data.Entity
 		protected string xhzdmc = default(string);
 		protected string txzdmc = default(string);
 		protected int? txlx = default(int?);
+		protected bool? identify = default(bool?);
+		protected bool? editable = default(bool?);
+		protected bool? queryable = default(bool?);
+		protected bool? snapable = default(bool?);
+		protected bool? visible = default(bool?);
+		protected long? xssx = default(long?);
         
         private event PropertyChangingEventHandler propertyChanging;            
         private event PropertyChangedEventHandler propertyChanged;
@@ -168,10 +187,89 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
+        public bool? Identify 
+        {
+            get { return this.identify; }
+			set	{ 
+                  if(this.identify != value)
+                    {
+                        this.OnPropertyChanging("Identify");  
+                        this.identify = value;                        
+                        this.OnPropertyChanged("Identify");
+                    }   
+                }
+        }	
+        public bool? Editable 
+        {
+            get { return this.editable; }
+			set	{ 
+                  if(this.editable != value)
+                    {
+                        this.OnPropertyChanging("Editable");  
+                        this.editable = value;                        
+                        this.OnPropertyChanged("Editable");
+                    }   
+                }
+        }	
+        public bool? Queryable 
+        {
+            get { return this.queryable; }
+			set	{ 
+                  if(this.queryable != value)
+                    {
+                        this.OnPropertyChanging("Queryable");  
+                        this.queryable = value;                        
+                        this.OnPropertyChanged("Queryable");
+                    }   
+                }
+        }	
+        public bool? Snapable 
+        {
+            get { return this.snapable; }
+			set	{ 
+                  if(this.snapable != value)
+                    {
+                        this.OnPropertyChanging("Snapable");  
+                        this.snapable = value;                        
+                        this.OnPropertyChanged("Snapable");
+                    }   
+                }
+        }	
+        public bool? Visible 
+        {
+            get { return this.visible; }
+			set	{ 
+                  if(this.visible != value)
+                    {
+                        this.OnPropertyChanging("Visible");  
+                        this.visible = value;                        
+                        this.OnPropertyChanged("Visible");
+                    }   
+                }
+        }	
+        public long? Xssx 
+        {
+            get { return this.xssx; }
+			set	{ 
+                  if(this.xssx != value)
+                    {
+                        this.OnPropertyChanging("Xssx");  
+                        this.xssx = value;                        
+                        this.OnPropertyChanged("Xssx");
+                    }   
+                }
+        }	
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  VgObjectclasses()
+        {
+            
+        }
+        #endregion
         
         #region 方法           
     
@@ -209,6 +307,12 @@ namespace VastGIS.RealEstate.Data.Entity
                  command.Parameters.AddWithValue(PARAM_XHZDMC,this.Xhzdmc);    				
                  command.Parameters.AddWithValue(PARAM_TXZDMC,this.Txzdmc);    				
                  command.Parameters.AddWithValue(PARAM_TXLX,this.Txlx);    				
+                 command.Parameters.AddWithValue(PARAM_IDENTIFY,this.Identify);    				
+                 command.Parameters.AddWithValue(PARAM_EDITABLE,this.Editable);    				
+                 command.Parameters.AddWithValue(PARAM_QUERYABLE,this.Queryable);    				
+                 command.Parameters.AddWithValue(PARAM_SNAPABLE,this.Snapable);    				
+                 command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible);    				
+                 command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx);    				
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return true;
             }
@@ -226,6 +330,12 @@ namespace VastGIS.RealEstate.Data.Entity
 				command.Parameters.AddWithValue(PARAM_XHZDMC,this.Xhzdmc);  
 				command.Parameters.AddWithValue(PARAM_TXZDMC,this.Txzdmc);  
 				command.Parameters.AddWithValue(PARAM_TXLX,this.Txlx);  
+				command.Parameters.AddWithValue(PARAM_IDENTIFY,this.Identify);  
+				command.Parameters.AddWithValue(PARAM_EDITABLE,this.Editable);  
+				command.Parameters.AddWithValue(PARAM_QUERYABLE,this.Queryable);  
+				command.Parameters.AddWithValue(PARAM_SNAPABLE,this.Snapable);  
+				command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible);  
+				command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx);  
 			
                 return (command.ExecuteNonQuery() == 1);
             }
@@ -247,7 +357,8 @@ namespace VastGIS.RealEstate.Data.Entity
 		public bool Delete(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_VG_OBJECTCLASSES,connection))
-            {							
+            {
+               
 				command.Parameters.AddWithValue(PARAM_ID, this.ID);
                 return (command.ExecuteNonQuery() == 1);
             }

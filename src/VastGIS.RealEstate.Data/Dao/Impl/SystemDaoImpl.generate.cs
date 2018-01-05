@@ -12,7 +12,7 @@ using VastGIS.RealEstate.Data.Enums;
 namespace VastGIS.RealEstate.Data.Dao.Impl
 {
 
-    public partial class SystemDaoImpl:SystemDao
+    public partial class SystemDaoImpl:SQLiteDao,SystemDao
     {
         //private SystemDao _systemDao;
         
@@ -53,6 +53,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteVgCadcodes(VgCadcodes record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteVgCadcodes(long id)
         {
@@ -79,7 +83,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         ///VgObjectclasses函数
         public VgObjectclasses GetVgObjectclasses(long id)
         {
-            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX from vg_objectclasses" + " where id="+id.ToString();
+            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX from vg_objectclasses" + " where id="+id.ToString();
             IEnumerable<VgObjectclasses> vgObjectclasss=connection.Query<VgObjectclasses>(sql);
             if(vgObjectclasss != null && vgObjectclasss.Count()>0)
             {
@@ -90,7 +94,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public IEnumerable<VgObjectclasses> GetVgObjectclassess(string filter)
         {
-            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX from vg_objectclasses" + " where "+filter;
+            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX from vg_objectclasses" + " where "+filter;
             var vgObjectclasss=connection.Query<VgObjectclasses>(sql);
             
             return vgObjectclasss;
@@ -112,6 +116,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteVgObjectclasses(VgObjectclasses record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteVgObjectclasses(long id)
         {
@@ -171,6 +179,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteVgSettings(VgSettings record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteVgSettings(long id)
         {

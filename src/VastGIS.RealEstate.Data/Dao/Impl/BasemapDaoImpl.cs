@@ -75,7 +75,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                                 Mc = tbName,
                                                                 Zwmc = chlayer,
                                                                 Fbmc = "DXT",
-                                                                Dxlx = 0
+                                                                Dxlx = 0,
+                                                                Visible = true,
+                                                                Editable = true,
+                                                                Identify = true,
+                                                                Queryable = true,
+                                                                Snapable = true
                                                             };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
@@ -84,8 +89,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Zwmc = chlayer+"点",
                                                 Fbmc = tbName,
                                                 Dxlx = 1,
-                                                Txlx = 1
-                                            };
+                                                Txlx = 1,
+                                                Visible = true,
+                                                Editable = true,
+                                                Identify = true,
+                                                Queryable = true,
+                                                Snapable = true
+                        };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
                                             {
@@ -93,8 +103,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Zwmc = chlayer + "线",
                                                 Fbmc = tbName,
                                                 Dxlx = 1,
-                                                Txlx = 2
-                                            };
+                                                Txlx = 2,
+                                                Visible = true,
+                                                Editable = true,
+                                                Identify = true,
+                                                Queryable = true,
+                                                Snapable = true
+                        };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
                                             {
@@ -102,8 +117,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Zwmc = chlayer + "面",
                                                 Fbmc = tbName,
                                                 Dxlx = 1,
-                                                Txlx = 3
-                                            };
+                                                Txlx = 3,
+                                                Visible = true,
+                                                Editable = true,
+                                                Identify = true,
+                                                Queryable = true,
+                                                Snapable = true
+                        };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
                                             {
@@ -111,8 +131,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Zwmc = chlayer + "注记",
                                                 Fbmc = tbName,
                                                 Dxlx = 1,
-                                                Txlx = 1
-                                            };
+                                                Txlx = 1,
+                                                Visible = true,
+                                                Editable = true,
+                                                Identify = true,
+                                                Queryable = true,
+                                                Snapable = true
+                        };
                         objectclasses.Save(connection, srid);
                     }
                     

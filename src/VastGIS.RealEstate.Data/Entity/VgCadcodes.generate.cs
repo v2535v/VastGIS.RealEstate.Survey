@@ -44,6 +44,7 @@ namespace VastGIS.RealEstate.Data.Entity
 	    private const string SQL_UPDATE_VG_CADCODES = "UPDATE vg_cadcodes SET XH = @XH, SFCY = @SFCY, TC = @TC, CASSDM = @CASSDM, TXLX = @TXLX, XTC = @XTC, YSDM = @YSDM, YSLX = @YSLX, YSZL = @YSZL WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_VG_CADCODES = "DELETE FROM vg_cadcodes WHERE  Id = @Id ";
+        
 	
         #endregion            
         
@@ -201,7 +202,14 @@ namespace VastGIS.RealEstate.Data.Entity
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  VgCadcodes()
+        {
+            
+        }
+        #endregion
         
         #region 方法           
     
@@ -281,7 +289,8 @@ namespace VastGIS.RealEstate.Data.Entity
 		public bool Delete(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_VG_CADCODES,connection))
-            {							
+            {
+               
 				command.Parameters.AddWithValue(PARAM_ID, this.ID);
                 return (command.ExecuteNonQuery() == 1);
             }

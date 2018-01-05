@@ -150,8 +150,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Zwmc = "地籍区",
                                             Fbmc = "DJSJ",
                                             Dxlx = 1,
-                                            Txlx = 3
-                                        };
+                                            Txlx = 3,
+                                            Visible = true,
+                                            Editable = true,
+                                            Identify = true,
+                                            Queryable = true,
+                                            Snapable = true
+                    };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
                                         {
@@ -159,8 +164,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Zwmc = "地籍子区",
                                             Fbmc = "DJSJ",
                                             Dxlx = 1,
-                                            Txlx = 3
-                                        };
+                                            Txlx = 3,
+                                            Visible = true,
+                                            Editable = true,
+                                            Identify = true,
+                                            Queryable = true,
+                                            Snapable = true
+                    };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
                                         {
@@ -168,7 +178,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Zwmc = "宗地",
                                             Fbmc = "DJSJ",
                                             Dxlx = 1,
-                                            Txlx = 3
+                                            Txlx = 3,
+                                            Visible = true,
+                                            Editable = true,
+                                            Identify = true,
+                                            Queryable = true,
+                                            Snapable = true
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -177,8 +192,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Zwmc = "宗地注记",
                                             Fbmc = "DJSJ",
                                             Dxlx = 1,
-                                            Txlx = 1
-                                        };
+                                            Txlx = 1,
+                                            Visible = true,
+                                            Editable = true,
+                                            Identify = true,
+                                            Queryable = true,
+                                            Snapable = true
+                    };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
                                         {
@@ -186,8 +206,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Zwmc = "界址线",
                                             Fbmc = "DJSJ",
                                             Dxlx = 1,
-                                            Txlx =2
-                                        };
+                                            Txlx =2,
+                                            Visible = true,
+                                            Editable = true,
+                                            Identify = true,
+                                            Queryable = true,
+                                            Snapable = true
+                    };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
                                         {
@@ -195,8 +220,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Zwmc = "界址线注记",
                                             Fbmc = "DJSJ",
                                             Dxlx = 1,
-                                            Txlx = 1
-                                        };
+                                            Txlx = 1,
+                                            Visible = true,
+                                            Editable = true,
+                                            Identify = true,
+                                            Queryable = true,
+                                            Snapable = true
+                    };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
                                         {
@@ -204,8 +234,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Zwmc = "界址点",
                                             Fbmc = "DJSJ",
                                             Dxlx = 1,
-                                            Txlx = 2
-                                        };
+                                            Txlx = 2,
+                                            Visible = true,
+                                            Editable = true,
+                                            Identify = true,
+                                            Queryable = true,
+                                            Snapable = true
+                    };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
                                         {
@@ -213,8 +248,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Zwmc = "界址点注记",
                                             Fbmc = "DJSJ",
                                             Dxlx = 1,
-                                            Txlx = 1
-                                        };
+                                            Txlx = 1,
+                                            Visible = true,
+                                            Editable = true,
+                                            Identify = true,
+                                            Queryable = true,
+                                            Snapable = true
+                    };
                     objectclasses.Save(connection, GetSRID());
 
                 }
