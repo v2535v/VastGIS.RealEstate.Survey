@@ -56,6 +56,8 @@ namespace VastGIS.RealEstate.Data.Entity
 	    private const string SQL_UPDATE_DJQ = "UPDATE DJQ SET YSDM = @YSDM, DJQDM = @DJQDM, DJQMC = @DJQMC, WX_DCY = @WX_DCY, WX_DCSJ = @WX_DCSJ, WX_CLY = @WX_CLY, WX_CLSJ = @WX_CLSJ, WX_ZTY = @WX_ZTY, WX_ZTSJ = @WX_ZTSJ, WX_ZJY = @WX_ZJY, WX_ZJSJ = @WX_ZJSJ, WX_WYDM = @WX_WYDM, DatabaseId = @DatabaseId, FLAGS = @FLAGS, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_DJQ = "DELETE FROM DJQ WHERE  Id = @Id ";
+        
+        private const string SQL_DELETE_FLAG_DJQ = "UPDATE DJQ Set Flags=3 WHERE  Id = @Id ";
 	
         #endregion            
         
@@ -300,7 +302,18 @@ namespace VastGIS.RealEstate.Data.Entity
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  Djq()
+        {
+            this.ysdm="'1002000000'";
+            this.wxWydm=Guid.NewGuid();
+            this.wxDcsj=DateTime.Now;
+            this.databaseid=0;
+            this.flag=1;
+        }
+        #endregion
         
         #region 方法           
     
@@ -393,10 +406,23 @@ namespace VastGIS.RealEstate.Data.Entity
 
 		public bool Delete(SQLiteConnection connection)
         {
-            using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_DJQ,connection))
-            {							
-				command.Parameters.AddWithValue(PARAM_ID, this.ID);
-                return (command.ExecuteNonQuery() == 1);
+            if(this.databaseid==0)
+            {
+                using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_DJQ,connection))
+                {
+                   
+    				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+                    return (command.ExecuteNonQuery() == 1);
+                }
+            }
+            else
+            {
+                using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_FLAG_DJQ,connection))
+                {
+                   
+    				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+                    return (command.ExecuteNonQuery() == 1);
+                }
             }
         }
         

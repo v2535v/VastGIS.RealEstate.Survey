@@ -23,6 +23,21 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         {
             InitializeComponent();
             _jzd = jzd;
+            InitDataBinding();
+        }
+
+        private void InitDataBinding()
+        {
+            txtJZDH.DataBindings.Add("Text", _jzd, "Jzdh");
+        }
+        public Jzd Jzd
+        {
+            get { return _jzd; }
+            set
+            {
+                _jzd=value;
+                
+            }
         }
 
         private void tabPageAdv1_Click(object sender, EventArgs e)

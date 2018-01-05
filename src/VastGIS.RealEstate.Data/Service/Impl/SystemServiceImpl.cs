@@ -12,6 +12,11 @@ namespace VastGIS.RealEstate.Data.Service.Impl
 
     public partial class SystemServiceImpl
     {
+        public void CreateEmptyDatabase(string dbName)
+        {
+            _systemDao.CreateEmptyDatabase(dbName);
+        }
+
         public bool InitTables()
         {
             return _systemDao.InitTables();

@@ -48,6 +48,8 @@ namespace VastGIS.RealEstate.Data.Entity
 	    private const string SQL_UPDATE_DXTKZDD = "UPDATE DXTKZDD SET TC = @TC, CASSDM = @CASSDM, FH = @FH, FHDX = @FHDX, XZJD = @XZJD, FSXX1 = @FSXX1, FSXX2 = @FSXX2, YSDM = @YSDM, DatabaseId = @DatabaseId, FLAGS = @FLAGS, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_DXTKZDD = "DELETE FROM DXTKZDD WHERE  Id = @Id ";
+        
+        private const string SQL_DELETE_FLAG_DXTKZDD = "UPDATE DXTKZDD Set Flags=3 WHERE  Id = @Id ";
 	
         #endregion            
         
@@ -240,7 +242,16 @@ namespace VastGIS.RealEstate.Data.Entity
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  Dxtkzdd()
+        {
+            
+            this.databaseid=0;
+            this.flag=1;
+        }
+        #endregion
         
         #region 方法           
     
@@ -325,10 +336,23 @@ namespace VastGIS.RealEstate.Data.Entity
 
 		public bool Delete(SQLiteConnection connection)
         {
-            using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_DXTKZDD,connection))
-            {							
-				command.Parameters.AddWithValue(PARAM_ID, this.ID);
-                return (command.ExecuteNonQuery() == 1);
+            if(this.databaseid==0)
+            {
+                using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_DXTKZDD,connection))
+                {
+                   
+    				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+                    return (command.ExecuteNonQuery() == 1);
+                }
+            }
+            else
+            {
+                using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_FLAG_DXTKZDD,connection))
+                {
+                   
+    				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+                    return (command.ExecuteNonQuery() == 1);
+                }
             }
         }
         

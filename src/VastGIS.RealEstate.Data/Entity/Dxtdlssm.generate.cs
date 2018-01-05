@@ -42,6 +42,8 @@ namespace VastGIS.RealEstate.Data.Entity
 	    private const string SQL_UPDATE_DXTDLSSM = "UPDATE DXTDLSSM SET TC = @TC, CASSDM = @CASSDM, FSXX1 = @FSXX1, FSXX2 = @FSXX2, YSDM = @YSDM, DatabaseId = @DatabaseId, FLAGS = @FLAGS, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_DXTDLSSM = "DELETE FROM DXTDLSSM WHERE  Id = @Id ";
+        
+        private const string SQL_DELETE_FLAG_DXTDLSSM = "UPDATE DXTDLSSM Set Flags=3 WHERE  Id = @Id ";
 	
         #endregion            
         
@@ -195,7 +197,16 @@ namespace VastGIS.RealEstate.Data.Entity
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  Dxtdlssm()
+        {
+            
+            this.databaseid=0;
+            this.flag=1;
+        }
+        #endregion
         
         #region 方法           
     
@@ -274,10 +285,23 @@ namespace VastGIS.RealEstate.Data.Entity
 
 		public bool Delete(SQLiteConnection connection)
         {
-            using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_DXTDLSSM,connection))
-            {							
-				command.Parameters.AddWithValue(PARAM_ID, this.ID);
-                return (command.ExecuteNonQuery() == 1);
+            if(this.databaseid==0)
+            {
+                using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_DXTDLSSM,connection))
+                {
+                   
+    				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+                    return (command.ExecuteNonQuery() == 1);
+                }
+            }
+            else
+            {
+                using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_FLAG_DXTDLSSM,connection))
+                {
+                   
+    				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+                    return (command.ExecuteNonQuery() == 1);
+                }
             }
         }
         

@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Commands\CmdAssignCADText.cs" />
     <Compile Include="Commands\CmdCreateREProject.cs" />
+    <Compile Include="Commands\CmdResetLayers.cs" />
     <Compile Include="Commands\CmdSplitCAD.cs" />
     <Compile Include="Commands\CmdImportDXF.cs" />
     <Compile Include="Commands\CmdNewJZD.cs" />

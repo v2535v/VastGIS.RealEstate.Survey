@@ -94,6 +94,18 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
         }
 
+        public void CreateEmptyDatabase(string dbName)
+        {
+            SQLiteConnection.CreateFile(dbName);
+            DbConnection.SetDatabaseName(dbName);
+            connection = DbConnection.GetConnection();
+            using (SQLiteCommand command = new SQLiteCommand(connection))
+            {
+                command.CommandText = "SELECT InitSpatialMetaData();";
+                command.ExecuteNonQuery();
+            }
+        }
+
         private List<VgObjectclasses> FindChildClasses(List<VgObjectclasses> objectClasses, string key)
         {
             List<VgObjectclasses> list = objectClasses.FindAll(c => c.Fbmc == key);
@@ -234,13 +246,19 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     List<string> targetColumns = GetAllColumns(targetTable);
                     Dictionary<string, string> mappingColumns = SQLiteHelper.AutoMappingColumn(sourceColumns, targetColumns);
                     StringBuilder builder = new StringBuilder();
-                    builder.Append("insert into " + targetTable + "(geometry");
+                    if(targetColumns.Contains("wx_wydm"))
+                        builder.Append("insert into " + targetTable + "(wx_wydm, geometry");
+                    else
+                        builder.Append("insert into " + targetTable + "(geometry");
                     foreach (var mappingColumn in mappingColumns)
                     {
                         if (mappingColumn.Value.ToLower().Equals("geometry")) continue;
                         builder.Append("," + mappingColumn.Value);
                     }
-                    builder.Append(") SELECT geometry");
+                    if (targetColumns.Contains("wx_wydm"))
+                        builder.Append(") SELECT '"+ Guid.NewGuid().ToString()+"', geometry");
+                    else
+                        builder.Append(") SELECT geometry");
                     foreach (var mappingColumn in mappingColumns)
                     {
                         if (mappingColumn.Value.ToLower().Equals("geometry")) continue;

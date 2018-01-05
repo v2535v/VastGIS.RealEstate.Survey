@@ -102,6 +102,8 @@ namespace VastGIS.RealEstate.Data.Entity
 	    private const string SQL_UPDATE_ZDJBXX = "UPDATE ZDJBXX SET YSDM = @YSDM, ZDDM = @ZDDM, BDCDYH = @BDCDYH, ZDTZM = @ZDTZM, ZL = @ZL, ZDMJ = @ZDMJ, MJDW = @MJDW, YT = @YT, DJ = @DJ, JG = @JG, QLLX = @QLLX, QLXZ = @QLXZ, QLSDFS = @QLSDFS, RJL = @RJL, JZMD = @JZMD, JZXG = @JZXG, ZDSZD = @ZDSZD, ZDSZN = @ZDSZN, ZDSZX = @ZDSZX, ZDSZB = @ZDSZB, ZDT = @ZDT, TFH = @TFH, DJH = @DJH, DAH = @DAH, BZ = @BZ, ZT = @ZT, WX_DCY = @WX_DCY, WX_DCSJ = @WX_DCSJ, WX_CLY = @WX_CLY, WX_CLSJ = @WX_CLSJ, WX_ZTY = @WX_ZTY, WX_ZTSJ = @WX_ZTSJ, WX_ZJY = @WX_ZJY, WX_ZJSJ = @WX_ZJSJ, WX_WYDM = @WX_WYDM, DatabaseId = @DatabaseId, FLAGS = @FLAGS, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_ZDJBXX = "DELETE FROM ZDJBXX WHERE  Id = @Id ";
+        
+        private const string SQL_DELETE_FLAG_ZDJBXX = "UPDATE ZDJBXX Set Flags=3 WHERE  Id = @Id ";
 	
         #endregion            
         
@@ -645,7 +647,18 @@ namespace VastGIS.RealEstate.Data.Entity
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  Zdjbxx()
+        {
+            this.ysdm="'6001010000'";
+            this.wxWydm=Guid.NewGuid();
+            this.wxDcsj=DateTime.Now;
+            this.databaseid=0;
+            this.flag=1;
+        }
+        #endregion
         
         #region 方法           
     
@@ -784,10 +797,23 @@ namespace VastGIS.RealEstate.Data.Entity
 
 		public bool Delete(SQLiteConnection connection)
         {
-            using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_ZDJBXX,connection))
-            {							
-				command.Parameters.AddWithValue(PARAM_ID, this.ID);
-                return (command.ExecuteNonQuery() == 1);
+            if(this.databaseid==0)
+            {
+                using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_ZDJBXX,connection))
+                {
+                   
+    				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+                    return (command.ExecuteNonQuery() == 1);
+                }
+            }
+            else
+            {
+                using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_FLAG_ZDJBXX,connection))
+                {
+                   
+    				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+                    return (command.ExecuteNonQuery() == 1);
+                }
             }
         }
         

@@ -34,6 +34,8 @@ namespace VastGIS.RealEstate.Data.Dao
         bool InitTables();
 
         List<VgObjectclasses> GetObjectclasseses(bool isDeep);
+
+        void CreateEmptyDatabase(string dbName);
     }
 }
 

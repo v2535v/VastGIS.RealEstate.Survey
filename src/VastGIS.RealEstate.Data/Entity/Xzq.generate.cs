@@ -40,6 +40,8 @@ namespace VastGIS.RealEstate.Data.Entity
 	    private const string SQL_UPDATE_XZQ = "UPDATE XZQ SET YSDM = @YSDM, XZQDM = @XZQDM, XZQMC = @XZQMC, XZQMJ = @XZQMJ, DatabaseId = @DatabaseId, FLAGS = @FLAGS, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_XZQ = "DELETE FROM XZQ WHERE  Id = @Id ";
+        
+        private const string SQL_DELETE_FLAG_XZQ = "UPDATE XZQ Set Flags=3 WHERE  Id = @Id ";
 	
         #endregion            
         
@@ -180,7 +182,16 @@ namespace VastGIS.RealEstate.Data.Entity
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  Xzq()
+        {
+            this.ysdm="'1001010000'";
+            this.databaseid=0;
+            this.flag=1;
+        }
+        #endregion
         
         #region 方法           
     
@@ -257,10 +268,23 @@ namespace VastGIS.RealEstate.Data.Entity
 
 		public bool Delete(SQLiteConnection connection)
         {
-            using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_XZQ,connection))
-            {							
-				command.Parameters.AddWithValue(PARAM_ID, this.ID);
-                return (command.ExecuteNonQuery() == 1);
+            if(this.databaseid==0)
+            {
+                using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_XZQ,connection))
+                {
+                   
+    				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+                    return (command.ExecuteNonQuery() == 1);
+                }
+            }
+            else
+            {
+                using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_FLAG_XZQ,connection))
+                {
+                   
+    				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+                    return (command.ExecuteNonQuery() == 1);
+                }
             }
         }
         

@@ -102,7 +102,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             List<string> result = new List<string>();
             foreach (DataRow dr in dt.Rows)
             {
-                result.Add(dr["name"].ToString());
+                result.Add(dr["name"].ToString().ToLower());
             }
             return result;
         }

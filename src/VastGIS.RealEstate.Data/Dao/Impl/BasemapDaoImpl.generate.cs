@@ -53,12 +53,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdldwd(Dxtdldwd record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdldwd(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDLDWD where Id=" + id.ToString();
+                Dxtdldwd row=this.GetDxtdldwd(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDLDWD where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDLDWD set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -67,11 +79,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDLDWD";
-                else
-                    command.CommandText="delete from DXTDLDWD where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdldwd> rows=GetDxtdldwds(filter);
+                foreach(Dxtdldwd row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -112,12 +124,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdldwm(Dxtdldwm record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdldwm(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDLDWM where Id=" + id.ToString();
+                Dxtdldwm row=this.GetDxtdldwm(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDLDWM where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDLDWM set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -126,11 +150,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDLDWM";
-                else
-                    command.CommandText="delete from DXTDLDWM where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdldwm> rows=GetDxtdldwms(filter);
+                foreach(Dxtdldwm row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -171,12 +195,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdldwx(Dxtdldwx record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdldwx(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDLDWX where Id=" + id.ToString();
+                Dxtdldwx row=this.GetDxtdldwx(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDLDWX where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDLDWX set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -185,11 +221,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDLDWX";
-                else
-                    command.CommandText="delete from DXTDLDWX where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdldwx> rows=GetDxtdldwxs(filter);
+                foreach(Dxtdldwx row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -230,12 +266,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdldwzj(Dxtdldwzj record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdldwzj(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDLDWZJ where Id=" + id.ToString();
+                Dxtdldwzj row=this.GetDxtdldwzj(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDLDWZJ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDLDWZJ set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -244,11 +292,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDLDWZJ";
-                else
-                    command.CommandText="delete from DXTDLDWZJ where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdldwzj> rows=GetDxtdldwzjs(filter);
+                foreach(Dxtdldwzj row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -289,12 +337,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdlssd(Dxtdlssd record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdlssd(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDLSSD where Id=" + id.ToString();
+                Dxtdlssd row=this.GetDxtdlssd(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDLSSD where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDLSSD set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -303,11 +363,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDLSSD";
-                else
-                    command.CommandText="delete from DXTDLSSD where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdlssd> rows=GetDxtdlssds(filter);
+                foreach(Dxtdlssd row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -348,12 +408,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdlssm(Dxtdlssm record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdlssm(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDLSSM where Id=" + id.ToString();
+                Dxtdlssm row=this.GetDxtdlssm(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDLSSM where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDLSSM set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -362,11 +434,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDLSSM";
-                else
-                    command.CommandText="delete from DXTDLSSM where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdlssm> rows=GetDxtdlssms(filter);
+                foreach(Dxtdlssm row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -407,12 +479,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdlssx(Dxtdlssx record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdlssx(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDLSSX where Id=" + id.ToString();
+                Dxtdlssx row=this.GetDxtdlssx(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDLSSX where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDLSSX set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -421,11 +505,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDLSSX";
-                else
-                    command.CommandText="delete from DXTDLSSX where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdlssx> rows=GetDxtdlssxs(filter);
+                foreach(Dxtdlssx row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -466,12 +550,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdlsszj(Dxtdlsszj record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdlsszj(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDLSSZJ where Id=" + id.ToString();
+                Dxtdlsszj row=this.GetDxtdlsszj(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDLSSZJ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDLSSZJ set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -480,11 +576,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDLSSZJ";
-                else
-                    command.CommandText="delete from DXTDLSSZJ where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdlsszj> rows=GetDxtdlsszjs(filter);
+                foreach(Dxtdlsszj row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -525,12 +621,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdmtzd(Dxtdmtzd record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdmtzd(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDMTZD where Id=" + id.ToString();
+                Dxtdmtzd row=this.GetDxtdmtzd(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDMTZD where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDMTZD set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -539,11 +647,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDMTZD";
-                else
-                    command.CommandText="delete from DXTDMTZD where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdmtzd> rows=GetDxtdmtzds(filter);
+                foreach(Dxtdmtzd row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -584,12 +692,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdmtzm(Dxtdmtzm record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdmtzm(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDMTZM where Id=" + id.ToString();
+                Dxtdmtzm row=this.GetDxtdmtzm(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDMTZM where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDMTZM set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -598,11 +718,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDMTZM";
-                else
-                    command.CommandText="delete from DXTDMTZM where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdmtzm> rows=GetDxtdmtzms(filter);
+                foreach(Dxtdmtzm row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -643,12 +763,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdmtzx(Dxtdmtzx record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdmtzx(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDMTZX where Id=" + id.ToString();
+                Dxtdmtzx row=this.GetDxtdmtzx(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDMTZX where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDMTZX set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -657,11 +789,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDMTZX";
-                else
-                    command.CommandText="delete from DXTDMTZX where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdmtzx> rows=GetDxtdmtzxs(filter);
+                foreach(Dxtdmtzx row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -702,12 +834,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtdmtzzj(Dxtdmtzzj record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtdmtzzj(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTDMTZZJ where Id=" + id.ToString();
+                Dxtdmtzzj row=this.GetDxtdmtzzj(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTDMTZZJ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTDMTZZJ set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -716,11 +860,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTDMTZZJ";
-                else
-                    command.CommandText="delete from DXTDMTZZJ where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtdmtzzj> rows=GetDxtdmtzzjs(filter);
+                foreach(Dxtdmtzzj row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -761,12 +905,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtjmdd(Dxtjmdd record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtjmdd(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTJMDD where Id=" + id.ToString();
+                Dxtjmdd row=this.GetDxtjmdd(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTJMDD where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTJMDD set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -775,11 +931,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTJMDD";
-                else
-                    command.CommandText="delete from DXTJMDD where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtjmdd> rows=GetDxtjmdds(filter);
+                foreach(Dxtjmdd row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -820,12 +976,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtjmdm(Dxtjmdm record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtjmdm(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTJMDM where Id=" + id.ToString();
+                Dxtjmdm row=this.GetDxtjmdm(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTJMDM where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTJMDM set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -834,11 +1002,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTJMDM";
-                else
-                    command.CommandText="delete from DXTJMDM where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtjmdm> rows=GetDxtjmdms(filter);
+                foreach(Dxtjmdm row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -879,12 +1047,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtjmdx(Dxtjmdx record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtjmdx(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTJMDX where Id=" + id.ToString();
+                Dxtjmdx row=this.GetDxtjmdx(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTJMDX where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTJMDX set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -893,11 +1073,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTJMDX";
-                else
-                    command.CommandText="delete from DXTJMDX where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtjmdx> rows=GetDxtjmdxs(filter);
+                foreach(Dxtjmdx row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -938,12 +1118,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtjmdzj(Dxtjmdzj record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtjmdzj(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTJMDZJ where Id=" + id.ToString();
+                Dxtjmdzj row=this.GetDxtjmdzj(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTJMDZJ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTJMDZJ set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -952,11 +1144,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTJMDZJ";
-                else
-                    command.CommandText="delete from DXTJMDZJ where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtjmdzj> rows=GetDxtjmdzjs(filter);
+                foreach(Dxtjmdzj row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -997,12 +1189,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtkzdd(Dxtkzdd record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtkzdd(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTKZDD where Id=" + id.ToString();
+                Dxtkzdd row=this.GetDxtkzdd(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTKZDD where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTKZDD set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1011,11 +1215,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTKZDD";
-                else
-                    command.CommandText="delete from DXTKZDD where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtkzdd> rows=GetDxtkzdds(filter);
+                foreach(Dxtkzdd row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1056,12 +1260,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtkzdm(Dxtkzdm record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtkzdm(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTKZDM where Id=" + id.ToString();
+                Dxtkzdm row=this.GetDxtkzdm(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTKZDM where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTKZDM set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1070,11 +1286,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTKZDM";
-                else
-                    command.CommandText="delete from DXTKZDM where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtkzdm> rows=GetDxtkzdms(filter);
+                foreach(Dxtkzdm row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1115,12 +1331,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtkzdx(Dxtkzdx record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtkzdx(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTKZDX where Id=" + id.ToString();
+                Dxtkzdx row=this.GetDxtkzdx(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTKZDX where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTKZDX set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1129,11 +1357,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTKZDX";
-                else
-                    command.CommandText="delete from DXTKZDX where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtkzdx> rows=GetDxtkzdxs(filter);
+                foreach(Dxtkzdx row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1174,12 +1402,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtkzdzj(Dxtkzdzj record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtkzdzj(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTKZDZJ where Id=" + id.ToString();
+                Dxtkzdzj row=this.GetDxtkzdzj(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTKZDZJ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTKZDZJ set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1188,11 +1428,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTKZDZJ";
-                else
-                    command.CommandText="delete from DXTKZDZJ where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtkzdzj> rows=GetDxtkzdzjs(filter);
+                foreach(Dxtkzdzj row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1233,12 +1473,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtqtd(Dxtqtd record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtqtd(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTQTD where Id=" + id.ToString();
+                Dxtqtd row=this.GetDxtqtd(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTQTD where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTQTD set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1247,11 +1499,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTQTD";
-                else
-                    command.CommandText="delete from DXTQTD where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtqtd> rows=GetDxtqtds(filter);
+                foreach(Dxtqtd row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1292,12 +1544,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtqtm(Dxtqtm record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtqtm(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTQTM where Id=" + id.ToString();
+                Dxtqtm row=this.GetDxtqtm(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTQTM where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTQTM set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1306,11 +1570,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTQTM";
-                else
-                    command.CommandText="delete from DXTQTM where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtqtm> rows=GetDxtqtms(filter);
+                foreach(Dxtqtm row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1351,12 +1615,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtqtx(Dxtqtx record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtqtx(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTQTX where Id=" + id.ToString();
+                Dxtqtx row=this.GetDxtqtx(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTQTX where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTQTX set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1365,11 +1641,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTQTX";
-                else
-                    command.CommandText="delete from DXTQTX where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtqtx> rows=GetDxtqtxs(filter);
+                foreach(Dxtqtx row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1410,12 +1686,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtqtzj(Dxtqtzj record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtqtzj(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTQTZJ where Id=" + id.ToString();
+                Dxtqtzj row=this.GetDxtqtzj(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTQTZJ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTQTZJ set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1424,11 +1712,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTQTZJ";
-                else
-                    command.CommandText="delete from DXTQTZJ where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtqtzj> rows=GetDxtqtzjs(filter);
+                foreach(Dxtqtzj row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1469,12 +1757,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtsxssd(Dxtsxssd record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtsxssd(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTSXSSD where Id=" + id.ToString();
+                Dxtsxssd row=this.GetDxtsxssd(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTSXSSD where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTSXSSD set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1483,11 +1783,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTSXSSD";
-                else
-                    command.CommandText="delete from DXTSXSSD where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtsxssd> rows=GetDxtsxssds(filter);
+                foreach(Dxtsxssd row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1528,12 +1828,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtsxssm(Dxtsxssm record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtsxssm(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTSXSSM where Id=" + id.ToString();
+                Dxtsxssm row=this.GetDxtsxssm(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTSXSSM where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTSXSSM set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1542,11 +1854,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTSXSSM";
-                else
-                    command.CommandText="delete from DXTSXSSM where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtsxssm> rows=GetDxtsxssms(filter);
+                foreach(Dxtsxssm row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1587,12 +1899,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtsxssx(Dxtsxssx record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtsxssx(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTSXSSX where Id=" + id.ToString();
+                Dxtsxssx row=this.GetDxtsxssx(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTSXSSX where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTSXSSX set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1601,11 +1925,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTSXSSX";
-                else
-                    command.CommandText="delete from DXTSXSSX where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtsxssx> rows=GetDxtsxssxs(filter);
+                foreach(Dxtsxssx row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1646,12 +1970,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtsxsszj(Dxtsxsszj record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtsxsszj(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTSXSSZJ where Id=" + id.ToString();
+                Dxtsxsszj row=this.GetDxtsxsszj(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTSXSSZJ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTSXSSZJ set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1660,11 +1996,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTSXSSZJ";
-                else
-                    command.CommandText="delete from DXTSXSSZJ where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtsxsszj> rows=GetDxtsxsszjs(filter);
+                foreach(Dxtsxsszj row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1705,12 +2041,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtzjd(Dxtzjd record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtzjd(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTZJD where Id=" + id.ToString();
+                Dxtzjd row=this.GetDxtzjd(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTZJD where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTZJD set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1719,11 +2067,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTZJD";
-                else
-                    command.CommandText="delete from DXTZJD where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtzjd> rows=GetDxtzjds(filter);
+                foreach(Dxtzjd row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1764,12 +2112,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtzjm(Dxtzjm record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtzjm(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTZJM where Id=" + id.ToString();
+                Dxtzjm row=this.GetDxtzjm(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTZJM where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTZJM set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1778,11 +2138,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTZJM";
-                else
-                    command.CommandText="delete from DXTZJM where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtzjm> rows=GetDxtzjms(filter);
+                foreach(Dxtzjm row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1823,12 +2183,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtzjx(Dxtzjx record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtzjx(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTZJX where Id=" + id.ToString();
+                Dxtzjx row=this.GetDxtzjx(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTZJX where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTZJX set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1837,11 +2209,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTZJX";
-                else
-                    command.CommandText="delete from DXTZJX where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtzjx> rows=GetDxtzjxs(filter);
+                foreach(Dxtzjx row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         
@@ -1882,12 +2254,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             tran.Dispose();
         }
         
+        public void DeleteDxtzjzj(Dxtzjzj record)
+        {
+            record.Delete(connection);
+        }
         
         public void DeleteDxtzjzj(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                command.CommandText="delete from DXTZJZJ where Id=" + id.ToString();
+                Dxtzjzj row=this.GetDxtzjzj(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DXTZJZJ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DXTZJZJ set Flags=3 where Id=" + id.ToString();
+                }
                 command.ExecuteNonQuery();
             }
         }
@@ -1896,11 +2280,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from DXTZJZJ";
-                else
-                    command.CommandText="delete from DXTZJZJ where " + filter;
-                command.ExecuteNonQuery();
+                IEnumerable<Dxtzjzj> rows=GetDxtzjzjs(filter);
+                foreach(Dxtzjzj row in rows)
+                {
+                    row.Delete(connection);
+                }
             }
         }
         

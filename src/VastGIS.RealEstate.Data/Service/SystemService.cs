@@ -12,6 +12,7 @@ namespace VastGIS.RealEstate.Data.Service
 
     public partial interface SystemService
     {
+        void CreateEmptyDatabase(string dbName);
         bool InitTables();
         void Close();
         int GetGeometryColumnSRID(string tableName, string columnName);

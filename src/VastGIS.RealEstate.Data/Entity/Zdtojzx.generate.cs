@@ -32,6 +32,7 @@ namespace VastGIS.RealEstate.Data.Entity
 	    private const string SQL_UPDATE_ZDTOJZX = "UPDATE ZDTOJZX SET ZD_WYDM = @ZD_WYDM, JZX_WYDM = @JZX_WYDM, SXH = @SXH WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_ZDTOJZX = "DELETE FROM ZDTOJZX WHERE  Id = @Id ";
+        
 	
         #endregion            
         
@@ -111,7 +112,14 @@ namespace VastGIS.RealEstate.Data.Entity
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  Zdtojzx()
+        {
+            
+        }
+        #endregion
         
         #region 方法           
     
@@ -179,7 +187,8 @@ namespace VastGIS.RealEstate.Data.Entity
 		public bool Delete(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_ZDTOJZX,connection))
-            {							
+            {
+               
 				command.Parameters.AddWithValue(PARAM_ID, this.ID);
                 return (command.ExecuteNonQuery() == 1);
             }
