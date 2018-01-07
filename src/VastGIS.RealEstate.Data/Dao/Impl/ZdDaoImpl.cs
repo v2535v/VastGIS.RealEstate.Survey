@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
+using System.Data.Entity.Spatial;
 using System.Data.SQLite;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
@@ -12,6 +13,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
     public partial class ZdDaoImpl
     {
+        #region 表生成SQL
         private string CREATE_XZQ =
                 "CREATE TABLE [XZQ] ( [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,  [YSDM] CHAR(10) DEFAULT '1001010000', [XZQDM] CHAR(12), [XZQMC] NCHAR(100), [XZQMJ] FLOAT,[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);"
             ;
@@ -36,7 +38,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             ;
 
         private string CREATE_JZX =
-                "CREATE TABLE [JZX] ( [Id] INTEGER NOT NULL  PRIMARY KEY AUTOINCREMENT, [ZDZHDM] CHAR, [YSDM] CHAR(10)  DEFAULT '6001060000', [JZXCD] FLOAT, [JZXLB] CHAR(2), [JZXWZ] CHAR(1), [JXXZ] CHAR(1), [QSJXXYSBH] CHAR(30), [QSJXXYS] BLOB, [QSZYYYSBH] CHAR(30), [QSZYYYS] BLOB, [WX_DCY] NCHAR(30), [WX_DCSJ] DATETIME default (datetime('now', 'localtime')), [WX_CLY] NCHAR(30), [WX_CLSJ] DATETIME, [WX_ZTY] NCHAR(30), [WX_ZTSJ] DATETIME, [WX_ZJY] NCHAR(30), [WX_ZJSJ] DATETIME, [WX_WYDM] GUID, [QSJZDBH] CHAR(29),[JZJZDBH] CHAR(29),[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);"
+                "CREATE TABLE [JZX] ( [Id] INTEGER NOT NULL  PRIMARY KEY AUTOINCREMENT, [ZDZHDM] CHAR, [YSDM] CHAR(10)  DEFAULT '6001060000', [JZXGZBH] CHAR(29) CONSTRAINT[cn_jzx_gzbh] UNIQUE ON CONFLICT ROLLBACK,[JZXCD] FLOAT,"+
+            " [JZXLB] CHAR(2), [JZXWZ] CHAR(1), [JXXZ] CHAR(1), [QSJXXYSBH] CHAR(30), [QSJXXYS] BLOB, [QSZYYYSBH] CHAR(30), [QSZYYYS] BLOB, [WX_DCY] NCHAR(30), "+
+            "[WX_DCSJ] DATETIME default (datetime('now', 'localtime')), [WX_CLY] NCHAR(30), [WX_CLSJ] DATETIME, [WX_ZTY] NCHAR(30), [WX_ZTSJ] DATETIME, [WX_ZJY] NCHAR(30), "+
+            "[WX_ZJSJ] DATETIME, [WX_WYDM] GUID, [QSJZDBH] CHAR(29),[JZJZDBH] CHAR(29),[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);CREATE UNIQUE INDEX [ix_jzx_gzbh] ON[JZX] ([JZXGZBH]);"
             ;
 
         private string CREATE_ZDTOJZD =
@@ -48,18 +53,24 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             ;
 
         private string CREATE_JZD =
-                "CREATE TABLE [JZD] ( [Id] INTEGER NOT NULL  PRIMARY KEY AUTOINCREMENT, [ZDZHDM] CHAR, [YSDM] CHAR(10) DEFAULT '6001070000', [JZDH] CHAR(10), [SXH] INTEGER, [JBLX] CHAR(2), [JZDLX] CHAR(2), [XZBZ] FLOAT, [YZBZ] FLOAT, [WX_DCY] NCHAR(30), [WX_DCSJ] DATETIME default (datetime('now', 'localtime')), [WX_CLY] NCHAR(30), [WX_CLSJ] DATETIME, [WX_ZTY] NCHAR(30), [WX_ZTSJ] DATETIME, [WX_ZJY] NCHAR(30), [WX_ZJSJ] DATETIME, [WX_WYDM] GUID,[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);"
-            ;
+                "CREATE TABLE [JZD] ( [Id] INTEGER NOT NULL  PRIMARY KEY AUTOINCREMENT, [ZDZHDM] CHAR, [YSDM] CHAR(10) DEFAULT '6001070000', [JZDH] CHAR(10),[JZDGZBH] CHAR(29) CONSTRAINT[cn_jzd_gzbh] UNIQUE ON CONFLICT ROLLBACK,"+
+            " [SXH] INTEGER, [JBLX] CHAR(2), [JZDLX] CHAR(2), [XZBZ] FLOAT, [YZBZ] FLOAT, [WX_DCY] NCHAR(30), [WX_DCSJ] DATETIME default (datetime('now', 'localtime')), [WX_CLY] NCHAR(30), "+
+            "[WX_CLSJ] DATETIME, [WX_ZTY] NCHAR(30), [WX_ZTSJ] DATETIME, [WX_ZJY] NCHAR(30), [WX_ZJSJ] DATETIME, [WX_WYDM] GUID,[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);"+
+            "CREATE UNIQUE INDEX [ix_jzd_gzbh] ON[JZD] ([JZDGZBH]);";
 
         private string CREATE_ZDJBXXZJ =
                 "CREATE TABLE [ZDJBXXZJ] ( [Id] INTEGER NOT NULL  PRIMARY KEY AUTOINCREMENT, [GLYSDM]CHAR(29), [YSDM] CHAR(10) DEFAULT '6001080000', [ZJNR] NCHAR(200), [ZT] NCHAR(50), [YS] CHAR(20), [BS] INTEGER, [XZ] CHAR(1), [XHX] CHAR(1), [KD] FLOAT, [GD] FLOAT, [ZJDZXJXZB] FLOAT, [ZJDZXJYZB] FLOAT, [ZJFX] FLOAT,[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);"
             ;
         private string CREATE_JZDZJ =
-                "CREATE TABLE [JZDZJ] ( [Id] INTEGER NOT NULL  PRIMARY KEY AUTOINCREMENT, [GLYSDM]CHAR(29), [YSDM] CHAR(10) DEFAULT '6001080000', [ZJNR] NCHAR(200), [ZT] NCHAR(50), [YS] CHAR(20), [BS] INTEGER, [XZ] CHAR(1), [XHX] CHAR(1), [KD] FLOAT, [GD] FLOAT, [ZJDZXJXZB] FLOAT, [ZJDZXJYZB] FLOAT, [ZJFX] FLOAT,[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);"
+                "CREATE TABLE [JZDZJ] ( [Id] INTEGER NOT NULL  PRIMARY KEY AUTOINCREMENT, [GLYSBH]CHAR(29) CONSTRAINT [fk_jzd_gzbh] REFERENCES [JZD]([JZDGZBH]), "+
+            "[YSDM] CHAR(10) DEFAULT '6001080000', [ZJNR] NCHAR(200), [ZT] NCHAR(50), [YS] CHAR(20), [BS] INTEGER, [XZ] CHAR(1), [XHX] CHAR(1), [KD] FLOAT, [GD] FLOAT, [ZJDZXJXZB] FLOAT, [ZJDZXJYZB] FLOAT, [ZJFX] FLOAT,[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);"
             ;
         private string CREATE_JZXZJ =
-                "CREATE TABLE [JZXZJ] ( [Id] INTEGER NOT NULL  PRIMARY KEY AUTOINCREMENT, [GLYSDM]CHAR(29), [YSDM] CHAR(10) DEFAULT '6001080000', [ZJNR] NCHAR(200), [ZT] NCHAR(50), [YS] CHAR(20), [BS] INTEGER, [XZ] CHAR(1), [XHX] CHAR(1), [KD] FLOAT, [GD] FLOAT, [ZJDZXJXZB] FLOAT, [ZJDZXJYZB] FLOAT, [ZJFX] FLOAT,[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);"
+                "CREATE TABLE [JZXZJ] ( [Id] INTEGER NOT NULL  PRIMARY KEY AUTOINCREMENT, [GLYSBH]CHAR(29) CONSTRAINT [fk_jzx_gzbh] REFERENCES [JZX]([JZXGZBH]), [YSDM] CHAR(10) DEFAULT '6001080000', [ZJNR] NCHAR(200), [ZT] NCHAR(50), [YS] CHAR(20), [BS] INTEGER, [XZ] CHAR(1), [XHX] CHAR(1), [KD] FLOAT, [GD] FLOAT, [ZJDZXJXZB] FLOAT, [ZJDZXJYZB] FLOAT, [ZJFX] FLOAT,[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);"
             ;
+        #endregion
+
+        #region 初始化
         public bool InitTables()
         {
             using (SQLiteTransaction trans = connection.BeginTransaction())
@@ -141,8 +152,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                       {
                                                           Mc="DJSJ",
                                                           Zwmc = "地籍数据",
-                                                          Dxlx = 0
-                                                      };
+                                                          Dxlx = 0,
+                                                          Xssx = 3
+                                                          
+                    };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
                                         {
@@ -155,7 +168,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Editable = true,
                                             Identify = true,
                                             Queryable = true,
-                                            Snapable = true
+                                            Snapable = true,
+                                            Xssx = 1,
+                                            Filter = "Select * from DJQ Where Flags<3"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -169,7 +184,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Editable = true,
                                             Identify = true,
                                             Queryable = true,
-                                            Snapable = true
+                                            Snapable = true,
+                                            Xssx = 2,
+                                            Filter = "Select * from DJZQ Where Flags<3"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -183,7 +200,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Editable = true,
                                             Identify = true,
                                             Queryable = true,
-                                            Snapable = true
+                                            Snapable = true,
+                                            Xssx = 3,
+                                            Filter = "Select * from ZDJBXX Where Flags<3"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -197,7 +216,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Editable = true,
                                             Identify = true,
                                             Queryable = true,
-                                            Snapable = true
+                                            Snapable = true,
+                                            Xssx =4,
+                                            Filter = "Select * from ZDJBXXZJ Where Flags<3"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -211,7 +232,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Editable = true,
                                             Identify = true,
                                             Queryable = true,
-                                            Snapable = true
+                                            Snapable = true,
+                                            Xssx =5,
+                                            Filter = "Select * from JZX Where Flags<3"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -225,7 +248,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Editable = true,
                                             Identify = true,
                                             Queryable = true,
-                                            Snapable = true
+                                            Snapable = true,
+                                            Xssx = 6,
+                                            Filter = "Select * from JZXZJ Where Flags<3"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -239,7 +264,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Editable = true,
                                             Identify = true,
                                             Queryable = true,
-                                            Snapable = true
+                                            Snapable = true,
+                                            Xssx =7,
+                                            Filter = "Select * from JZD Where Flags<3"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -253,7 +280,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Editable = true,
                                             Identify = true,
                                             Queryable = true,
-                                            Snapable = true
+                                            Snapable = true,
+                                            Xssx =8,
+                                            Filter = "Select * from JZDZJ Where Flags<3"
                     };
                     objectclasses.Save(connection, GetSRID());
 
@@ -264,7 +293,57 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             return true;
         }
-        
+#endregion
+
+
+
+        /// <summary>
+        /// 删除宗地及附属的界址点、界址线和注记信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool DeepDeleteZdjbxx(Jzd jzd)
+        {
+            
+            return true;
+        }
+
+        public bool DeepDeleteJzd(Jzd jzd,bool deleteZj=true, bool deleteRelate=false)
+        {
+            string gzbh = jzd.Jzdgzbh;
+            if (deleteZj)
+            {
+                string deleteSql = "GLYSBH = '" + gzbh + "'";
+                this.DeleteJzdzj(deleteSql);
+            }
+            this.DeleteJzd(jzd);
+            if (deleteRelate)
+            {
+                string deleteSql = "[QSJZDBH]='" + gzbh + "' OR [JZJZDBH]='" + gzbh + "'";
+                this.DeleteJzx(deleteSql);
+            }
+            return true;
+        }
+
+        public string GetOverlayPolyAttribute(string targetTable, string valueField, DbGeometry geometry)
+        {
+            return GetOverlayPolyAttribute(targetTable, valueField, geometry.AsText());
+        }
+
+        public string GetOverlayPolyAttribute(string targetTable, string valueField, string wellKnownText)
+        {
+            using (SQLiteCommand command = new SQLiteCommand(connection))
+            {
+                string sql = string.Format("select {0} from {1} where Within(GeomFromText('{2}'),geometry);",
+                    valueField, targetTable, wellKnownText);
+                command.CommandText = sql;
+                object result = command.ExecuteScalar();
+                if (result == null) return string.Empty;
+                return result.ToString();
+            }
+        }
+
+
     }
 }
 

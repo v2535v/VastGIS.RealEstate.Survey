@@ -54,7 +54,8 @@ namespace VastGIS.Plugins.RealEstate.Forms
             txtDXF.Text = fileName;
             IRealEstateContext reContext = ((IRealEstateContext)_context);
             IREDatabase database = reContext.RealEstateDatabase;
-            bool hasData= reContext.RealEstateDatabase.HasCADData(fileName);
+
+            bool hasData= reContext.RealEstateDatabase.CadService.HasCADData(fileName);
             if (hasData)
             {
                 lblCAD.Text = "数据库里有该DXF文件数据";
@@ -95,10 +96,28 @@ namespace VastGIS.Plugins.RealEstate.Forms
             _context.View.ShowChildView(_loadingForm, false);
             Application.DoEvents();
             _context.View.Lock();
-            ((IRealEstateContext)_context).RealEstateDatabase.ImportDxfDrawing(fileName, _loadingForm,cmbCodepages.Text,(CADInsertMethod)cmbInsertMethod.SelectedIndex);
+            string errMsg = "";
+            bool retVal=((IRealEstateContext)_context).RealEstateDatabase.CadService.ImportDxfDrawing(fileName,out errMsg);
+            if (retVal == false)
+            {
+                MessageService.Current.Warn("导入CAD发生错误，"+errMsg);
+                _context.View.Unlock();
+                _loadingForm.Close();
+                _loadingForm.Dispose();
+                return;
+            }
+            _loadingForm.ShowProgress(50,"对导入数据进行分层处理");
+            bool isDelete = cmbInsertMethod.SelectedIndex > 1 ? false : true;
+            string deleteFileName = cmbInsertMethod.SelectedIndex == 1 ? "" : fileName;
+            ((IRealEstateContext)_context).RealEstateDatabase.CadService.ImportTmpCadToBasemap(isDelete, deleteFileName);
+            _loadingForm.ShowProgress(80, "对文本属性进行识别处理");
+            ((IRealEstateContext)_context).RealEstateDatabase.BasemapService.AssignTextToAttribute();
+            _loadingForm.ShowProgress(90, "对多边形数据进行排序处理");
+            ((IRealEstateContext)_context).RealEstateDatabase.BasemapService.ReorderAllPolygon();
             _context.View.Unlock();
             _loadingForm.Close();
             _loadingForm.Dispose();
+            DialogResult=DialogResult.OK;
         }
     }
 }

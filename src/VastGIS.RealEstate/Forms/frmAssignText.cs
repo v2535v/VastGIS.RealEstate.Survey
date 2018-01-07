@@ -60,7 +60,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 TextAssignConfigure configure = checkedItem as TextAssignConfigure ;
                 int value = step * 100 / count;
                 _loadingForm.ShowProgress(value, "进行分层:" + configure.Name);
-                ((IRealEstateContext)_context).RealEstateDatabase.AssignTextToPolygon(configure.AssignType,configure.AssignTable,
+                ((IRealEstateContext)_context).RealEstateDatabase.SystemService.AssignTextToPolygon(configure.AssignType,configure.AssignTable,
                     configure.AssignField, configure.TextTable, configure.TextField,configure.TextWhereClause, configure.TextValues);
                 step++;
             }

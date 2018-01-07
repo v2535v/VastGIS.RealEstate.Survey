@@ -34,7 +34,7 @@ namespace VastGIS.RealEstate.Api.Helpers
             IREDatabase reDatabase=new ReDatabase(Path.Combine(info.FullName, "Database\\redatabase.db"));
             string errMsg = "";
             _loadingForm.ShowProgress(50, "初始化项目数据库，数据较多，请耐心等待");
-            reDatabase.InitREDatabase(epsgCode, _loadingForm,out errMsg);
+            reDatabase.InitDatabase(epsgCode);
             string projectFile = Path.Combine(info.FullName, name + ".vgproj");
             XmlProject project=new XmlProject(context as ISecureContext, projectFile);
             //project.VastProjectInfo=new XmlVastProjectInfo() {ProjectName = name,DatabaseName = "Database\\redatabase.db",AttachmentPath = "Attachments",MediaPath = "Medias"};
@@ -50,6 +50,13 @@ namespace VastGIS.RealEstate.Api.Helpers
         {
             string location = Path.Combine(Path.GetDirectoryName(projectFile), @"Database\redatabase.db");
             return location;
+        }
+
+        public static FileInfo GetTemplateDBInfo()
+        {
+            FileInfo fileInfo = new FileInfo(Path.Combine(Application.StartupPath, "Templates\\vastgis.sqlite"));
+            if (fileInfo.Exists) return fileInfo;
+            return null;
         }
     }
 }

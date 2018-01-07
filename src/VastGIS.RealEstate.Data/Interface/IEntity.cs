@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VastGIS.RealEstate.Data.Entity
+namespace VastGIS.RealEstate.Data.Interface
 {
     public interface IEntity
     {

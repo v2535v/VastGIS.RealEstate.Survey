@@ -13,6 +13,7 @@ namespace VastGIS.Api.Concrete
     public class VectorLayer: IVectorLayer
     {
         private readonly OgrLayer _layer;
+        private string _name;
 
         public VectorLayer(OgrLayer layer)
         {
@@ -129,7 +130,12 @@ namespace VastGIS.Api.Concrete
 
         public string Name
         {
-            get { return _layer.Name; }
+            get
+            {
+                //if (!string.IsNullOrEmpty(_name)) return _name;
+                return _layer.Name;
+            }
+            //set { _name = value; }
         }
 
         public GeometryType GeometryType

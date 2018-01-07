@@ -1,5 +1,6 @@
 using System;
 using System.Data.Entity.Spatial;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
@@ -52,6 +53,6 @@ namespace VastGIS.RealEstate.Data.Entity
 
         public DateTime? WxZjsj { get; set; }
 
-        public Guid WxWydm { get; set; }
+        public Guid? WxWydm { get; set; }
     }
 }

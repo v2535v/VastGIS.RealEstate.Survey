@@ -14,6 +14,10 @@ namespace VastGIS.RealEstate.Data.Service
     {
         bool InitTables();
 
+        bool AssignTextToAttribute();
+        bool ReorderAllPolygon(string tableName);
+
+        bool ReorderAllPolygon();
     }
 }
 

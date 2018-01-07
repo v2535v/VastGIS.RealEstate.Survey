@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.SQLite;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
-
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Dao
 {
@@ -36,6 +36,19 @@ namespace VastGIS.RealEstate.Data.Dao
         List<VgObjectclasses> GetObjectclasseses(bool isDeep);
 
         void CreateEmptyDatabase(string dbName);
+
+        void InternalInitTables();
+
+        bool SaveVgSettings2(VgSettings setting);
+        bool SaveVgSettings2(string csmc, string csz);
+
+        VgSettings GetVgSettings(string csmc);
+
+        int GetSystemSRID();
+
+        void InitSettings();
+
+        IEnumerable<VgAreacodes> GetAreaCodesByJB(string parentCode, int jb);
     }
 }
 

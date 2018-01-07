@@ -16,6 +16,21 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         {
             return _basemapDao.InitTables();
         }
+
+        public bool AssignTextToAttribute()
+        {
+            return _basemapDao.AssignTextToAttribute();
+        }
+
+        public bool ReorderAllPolygon(string tableName)
+        {
+            return _basemapDao.ReorderAllPolygon(tableName);
+        }
+
+        public bool ReorderAllPolygon()
+        {
+            return _basemapDao.ReorderAllPolygon();
+        }
     }
 }
 

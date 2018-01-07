@@ -162,7 +162,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         ///Jzd函数
         public Jzd GetJzd(long id)
         {
-            string sql="select Id,ZDZHDM,YSDM,JZDH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZD" + " where id="+id.ToString();
+            string sql="select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZD" + " where id="+id.ToString();
             IEnumerable<Jzd> jzds=connection.Query<Jzd>(sql);
             if(jzds != null && jzds.Count()>0)
             {
@@ -173,7 +173,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public IEnumerable<Jzd> GetJzds(string filter)
         {
-            string sql="select Id,ZDZHDM,YSDM,JZDH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZD" + " where "+filter;
+            string sql="select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZD" + " where "+filter;
             var jzds=connection.Query<Jzd>(sql);
             
             return jzds;
@@ -233,7 +233,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         ///Jzdzj函数
         public Jzdzj GetJzdzj(long id)
         {
-            string sql="select Id,GLYSDM,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZDZJ" + " where id="+id.ToString();
+            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZDZJ" + " where id="+id.ToString();
             IEnumerable<Jzdzj> jzdzjs=connection.Query<Jzdzj>(sql);
             if(jzdzjs != null && jzdzjs.Count()>0)
             {
@@ -244,7 +244,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public IEnumerable<Jzdzj> GetJzdzjs(string filter)
         {
-            string sql="select Id,GLYSDM,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZDZJ" + " where "+filter;
+            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZDZJ" + " where "+filter;
             var jzdzjs=connection.Query<Jzdzj>(sql);
             
             return jzdzjs;
@@ -304,7 +304,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         ///Jzx函数
         public Jzx GetJzx(long id)
         {
-            string sql="select Id,ZDZHDM,YSDM,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZX" + " where id="+id.ToString();
+            string sql="select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZX" + " where id="+id.ToString();
             IEnumerable<Jzx> jzxs=connection.Query<Jzx>(sql);
             if(jzxs != null && jzxs.Count()>0)
             {
@@ -315,7 +315,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public IEnumerable<Jzx> GetJzxs(string filter)
         {
-            string sql="select Id,ZDZHDM,YSDM,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZX" + " where "+filter;
+            string sql="select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZX" + " where "+filter;
             var jzxs=connection.Query<Jzx>(sql);
             
             return jzxs;
@@ -375,7 +375,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         ///Jzxzj函数
         public Jzxzj GetJzxzj(long id)
         {
-            string sql="select Id,GLYSDM,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZXZJ" + " where id="+id.ToString();
+            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZXZJ" + " where id="+id.ToString();
             IEnumerable<Jzxzj> jzxzjs=connection.Query<Jzxzj>(sql);
             if(jzxzjs != null && jzxzjs.Count()>0)
             {
@@ -386,7 +386,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public IEnumerable<Jzxzj> GetJzxzjs(string filter)
         {
-            string sql="select Id,GLYSDM,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZXZJ" + " where "+filter;
+            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZXZJ" + " where "+filter;
             var jzxzjs=connection.Query<Jzxzj>(sql);
             
             return jzxzjs;

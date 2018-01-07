@@ -18,6 +18,31 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             {
                 this._systemDao = systemDao;
             }
+            public VgAreacodes GetVgAreacodes(long id)
+            {
+                return _systemDao.GetVgAreacodes(id);
+            }
+            
+            public IEnumerable<VgAreacodes> GetVgAreacodess(string filter)
+            {
+                return _systemDao.GetVgAreacodess(filter);
+            }
+            public bool SaveVgAreacodes(VgAreacodes vgAreacode)
+            {
+                return _systemDao.SaveVgAreacodes(vgAreacode);
+            }
+            public void SaveVgAreacodess(List<VgAreacodes> vgAreacodes)
+            {
+                _systemDao.SaveVgAreacodess(vgAreacodes);
+            }
+            public void DeleteVgAreacodes(long id)
+            {
+                _systemDao.DeleteVgAreacodes(id);
+            }
+            public void DeleteVgAreacodes(string filter)
+            {
+                _systemDao.DeleteVgAreacodes(filter);
+            }
             public VgCadcodes GetVgCadcodes(long id)
             {
                 return _systemDao.GetVgCadcodes(id);

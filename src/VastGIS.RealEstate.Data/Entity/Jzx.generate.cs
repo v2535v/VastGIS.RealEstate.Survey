@@ -5,6 +5,10 @@ using System.Data;
 using System.Data.SQLite;
 using System.Data.Entity.Spatial;
 using System.ComponentModel;
+using VastGIS.Api.Concrete;
+using VastGIS.Api.Enums;
+using VastGIS.Api.Interfaces;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
@@ -16,6 +20,7 @@ namespace VastGIS.RealEstate.Data.Entity
 	    public const string COL_ID = "Id";
 	    public const string COL_ZDZHDM = "ZDZHDM";
 	    public const string COL_YSDM = "YSDM";
+	    public const string COL_JZXGZBH = "JZXGZBH";
 	    public const string COL_JZXCD = "JZXCD";
 	    public const string COL_JZXLB = "JZXLB";
 	    public const string COL_JZXWZ = "JZXWZ";
@@ -42,6 +47,7 @@ namespace VastGIS.RealEstate.Data.Entity
         public const string PARAM_ID = "@Id";
         public const string PARAM_ZDZHDM = "@ZDZHDM";
         public const string PARAM_YSDM = "@YSDM";
+        public const string PARAM_JZXGZBH = "@JZXGZBH";
         public const string PARAM_JZXCD = "@JZXCD";
         public const string PARAM_JZXLB = "@JZXLB";
         public const string PARAM_JZXWZ = "@JZXWZ";
@@ -69,9 +75,9 @@ namespace VastGIS.RealEstate.Data.Entity
         
         #region 查询
 	
-	    private const string SQL_INSERT_JZX = "INSERT INTO JZX (ZDZHDM, YSDM, JZXCD, JZXLB, JZXWZ, JXXZ, QSJXXYSBH, QSJXXYS, QSZYYYSBH, QSZYYYS, WX_DCY, WX_DCSJ, WX_CLY, WX_CLSJ, WX_ZTY, WX_ZTSJ, WX_ZJY, WX_ZJSJ, WX_WYDM, QSJZDBH, JZJZDBH, DatabaseId, FLAGS, geometry) VALUES ( @ZDZHDM, @YSDM, @JZXCD, @JZXLB, @JZXWZ, @JXXZ, @QSJXXYSBH, @QSJXXYS, @QSZYYYSBH, @QSZYYYS, @WX_DCY, @WX_DCSJ, @WX_CLY, @WX_CLSJ, @WX_ZTY, @WX_ZTSJ, @WX_ZJY, @WX_ZJSJ, @WX_WYDM, @QSJZDBH, @JZJZDBH, @DatabaseId, @FLAGS, GeomFromText(@geometry,@SRID));" + " SELECT last_insert_rowid();";
+	    private const string SQL_INSERT_JZX = "INSERT INTO JZX (ZDZHDM, YSDM, JZXGZBH, JZXCD, JZXLB, JZXWZ, JXXZ, QSJXXYSBH, QSJXXYS, QSZYYYSBH, QSZYYYS, WX_DCY, WX_DCSJ, WX_CLY, WX_CLSJ, WX_ZTY, WX_ZTSJ, WX_ZJY, WX_ZJSJ, WX_WYDM, QSJZDBH, JZJZDBH, DatabaseId, FLAGS, geometry) VALUES ( @ZDZHDM, @YSDM, @JZXGZBH, @JZXCD, @JZXLB, @JZXWZ, @JXXZ, @QSJXXYSBH, @QSJXXYS, @QSZYYYSBH, @QSZYYYS, @WX_DCY, @WX_DCSJ, @WX_CLY, @WX_CLSJ, @WX_ZTY, @WX_ZTSJ, @WX_ZJY, @WX_ZJSJ, @WX_WYDM, @QSJZDBH, @JZJZDBH, @DatabaseId, @FLAGS, GeomFromText(@geometry,@SRID));" + " SELECT last_insert_rowid();";
 	
-	    private const string SQL_UPDATE_JZX = "UPDATE JZX SET ZDZHDM = @ZDZHDM, YSDM = @YSDM, JZXCD = @JZXCD, JZXLB = @JZXLB, JZXWZ = @JZXWZ, JXXZ = @JXXZ, QSJXXYSBH = @QSJXXYSBH, QSJXXYS = @QSJXXYS, QSZYYYSBH = @QSZYYYSBH, QSZYYYS = @QSZYYYS, WX_DCY = @WX_DCY, WX_DCSJ = @WX_DCSJ, WX_CLY = @WX_CLY, WX_CLSJ = @WX_CLSJ, WX_ZTY = @WX_ZTY, WX_ZTSJ = @WX_ZTSJ, WX_ZJY = @WX_ZJY, WX_ZJSJ = @WX_ZJSJ, WX_WYDM = @WX_WYDM, QSJZDBH = @QSJZDBH, JZJZDBH = @JZJZDBH, DatabaseId = @DatabaseId, FLAGS = @FLAGS, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
+	    private const string SQL_UPDATE_JZX = "UPDATE JZX SET ZDZHDM = @ZDZHDM, YSDM = @YSDM, JZXGZBH = @JZXGZBH, JZXCD = @JZXCD, JZXLB = @JZXLB, JZXWZ = @JZXWZ, JXXZ = @JXXZ, QSJXXYSBH = @QSJXXYSBH, QSJXXYS = @QSJXXYS, QSZYYYSBH = @QSZYYYSBH, QSZYYYS = @QSZYYYS, WX_DCY = @WX_DCY, WX_DCSJ = @WX_DCSJ, WX_CLY = @WX_CLY, WX_CLSJ = @WX_CLSJ, WX_ZTY = @WX_ZTY, WX_ZTSJ = @WX_ZTSJ, WX_ZJY = @WX_ZJY, WX_ZJSJ = @WX_ZJSJ, WX_WYDM = @WX_WYDM, QSJZDBH = @QSJZDBH, JZJZDBH = @JZJZDBH, DatabaseId = @DatabaseId, FLAGS = @FLAGS, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_JZX = "DELETE FROM JZX WHERE  Id = @Id ";
         
@@ -84,6 +90,7 @@ namespace VastGIS.RealEstate.Data.Entity
 		protected long id = default(long);
 		protected string zdzhdm = default(string);
 		protected string ysdm = default(string);
+		protected string jzxgzbh = default(string);
 		protected double? jzxcd = default(double?);
 		protected string jzxlb = default(string);
 		protected string jzxwz = default(string);
@@ -100,13 +107,14 @@ namespace VastGIS.RealEstate.Data.Entity
 		protected System.DateTime? wxZtsj = default(System.DateTime?);
 		protected string wxZjy = default(string);
 		protected System.DateTime? wxZjsj = default(System.DateTime?);
-		protected System.Guid wxWydm = default(System.Guid);
+		protected System.Guid? wxWydm = default(System.Guid?);
 		protected string qsjzdbh = default(string);
 		protected string jzjzdbh = default(string);
 		protected long? databaseid = default(long?);
 		protected short? flag = default(short?);
-        protected DbGeometry _geometry;
+        protected IGeometry _geometry;
         protected string _wkt=default(string);
+        protected GeometryType _geometryType=GeometryType.Polyline;
         
         private event PropertyChangingEventHandler propertyChanging;            
         private event PropertyChangedEventHandler propertyChanged;
@@ -159,6 +167,18 @@ namespace VastGIS.RealEstate.Data.Entity
                         this.OnPropertyChanging("Ysdm");  
                         this.ysdm = value;                        
                         this.OnPropertyChanged("Ysdm");
+                    }   
+                }
+        }	
+        public string Jzxgzbh 
+        {
+            get { return this.jzxgzbh; }
+			set	{ 
+                  if(this.jzxgzbh != value)
+                    {
+                        this.OnPropertyChanging("Jzxgzbh");  
+                        this.jzxgzbh = value;                        
+                        this.OnPropertyChanged("Jzxgzbh");
                     }   
                 }
         }	
@@ -354,7 +374,7 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public System.Guid WxWydm 
+        public System.Guid? WxWydm 
         {
             get { return this.wxWydm; }
 			set	{ 
@@ -414,15 +434,20 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public DbGeometry Geometry
+        public IGeometry Geometry
         {
             get{return _geometry;}
             set{
                 this.OnPropertyChanging("Geometry");  
                 _geometry=value;
-                _wkt=_geometry.AsText();
+                _wkt = _geometry.ExportToWkt();
                 this.OnPropertyChanged("Geometry");
                 }
+        }
+        public GeometryType GeometryType
+        {
+            get{return _geometryType;}
+            set{_geometryType=value;}
         }
         public string Wkt
         {
@@ -430,7 +455,8 @@ namespace VastGIS.RealEstate.Data.Entity
             set{
                this.OnPropertyChanging("Geometry");  
                 _wkt=value;
-                _geometry=DbGeometry.FromText(_wkt);
+                //_geometry=DbGeometry.FromText(_wkt);
+                _geometry.ImportFromWkt(_wkt);
                 this.OnPropertyChanged("Geometry"); 
             }
         }
@@ -442,6 +468,7 @@ namespace VastGIS.RealEstate.Data.Entity
         #region 创建方法
         public  Jzx()
         {
+            _geometry=new Geometry(_geometryType,ZValueType.None);
             this.ysdm="'6001060000'";
             this.wxWydm=Guid.NewGuid();
             this.wxDcsj=DateTime.Now;
@@ -481,6 +508,7 @@ namespace VastGIS.RealEstate.Data.Entity
             {	
                  command.Parameters.AddWithValue(PARAM_ZDZHDM,this.Zdzhdm);    				
                  command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);    				
+                 command.Parameters.AddWithValue(PARAM_JZXGZBH,this.Jzxgzbh);    				
                  command.Parameters.AddWithValue(PARAM_JZXCD,this.Jzxcd);    				
                  command.Parameters.AddWithValue(PARAM_JZXLB,this.Jzxlb);    				
                  command.Parameters.AddWithValue(PARAM_JZXWZ,this.Jzxwz);    				
@@ -516,6 +544,7 @@ namespace VastGIS.RealEstate.Data.Entity
 				command.Parameters.AddWithValue(PARAM_ID,this.ID);  
 				command.Parameters.AddWithValue(PARAM_ZDZHDM,this.Zdzhdm);  
 				command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);  
+				command.Parameters.AddWithValue(PARAM_JZXGZBH,this.Jzxgzbh);  
 				command.Parameters.AddWithValue(PARAM_JZXCD,this.Jzxcd);  
 				command.Parameters.AddWithValue(PARAM_JZXLB,this.Jzxlb);  
 				command.Parameters.AddWithValue(PARAM_JZXWZ,this.Jzxwz);  

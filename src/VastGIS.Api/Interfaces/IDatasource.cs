@@ -8,7 +8,7 @@ namespace VastGIS.Api.Interfaces
     // at least to prevent adding types that are not suppported
     public interface IDatasource: IComWrapper, IDisposable
     {
-        string Name { get; }
+        string Name { get;}
 
         string Filename { get; }
 

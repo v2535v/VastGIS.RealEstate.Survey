@@ -14,6 +14,12 @@ namespace VastGIS.RealEstate.Data.Dao
     {
 
         bool InitTables();
+
+        bool ReorderAllPolygon(string tableName);
+
+        bool AssignTextToAttribute();
+
+        bool ReorderAllPolygon();
     }
 }
 

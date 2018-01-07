@@ -41,6 +41,16 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         {
             _cadDao.SplitTmpCADToLayer(cadLayerName, tableName, fileName, isClear);
         }
+
+        public bool ImportDxfDrawing(string dxfName, out string errorMsg)
+        {
+            return _cadDao.ImportDxfDrawing(dxfName, out errorMsg);
+        }
+
+        public bool ImportTmpCadToBasemap(bool isClearBasemap = true, string fileName = "")
+        {
+            return _cadDao.ImportTmpCadToBasemap(isClearBasemap,fileName);
+        }
     }
 }
 

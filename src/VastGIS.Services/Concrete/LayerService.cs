@@ -201,10 +201,55 @@ namespace VastGIS.Services.Concrete
                 {
                     layer.SetActiveGeometryType(multiGeometryType, zValue);
                 }
-
+                
                 return AddDatasource(layer);
             }
 
+            return false;
+        }
+
+        public bool AddDatabaseLayer2(
+            string connection,
+            string layerName,
+            GeometryType multiGeometryType = GeometryType.None,
+            ZValueType zValue = ZValueType.None,string filter="")
+        {
+            var layer = new VectorLayer();
+            if (string.IsNullOrEmpty(filter))
+            {
+                if (layer.Open(connection, layerName))
+                {
+                    if (multiGeometryType != GeometryType.None)
+                    {
+                        layer.SetActiveGeometryType(multiGeometryType, zValue);
+                    }
+
+                    return AddDatasource(layer);
+                }
+            }
+            else
+            {
+                layer.OpenFromQuery(connection, filter);
+              
+                if (multiGeometryType != GeometryType.None)
+                    {
+                        layer.SetActiveGeometryType(multiGeometryType, zValue);
+                    }
+
+                    return AddDatasource(layer);
+               
+
+                //if (layer.OpenFromQuery(connection, filter))
+                //{
+                //   // layer.Name = layerName;
+                //    if (multiGeometryType != GeometryType.None)
+                //    {
+                //        layer.SetActiveGeometryType(multiGeometryType, zValue);
+                //    }
+
+                //    return AddDatasource(layer);
+                //}
+            }
             return false;
         }
 

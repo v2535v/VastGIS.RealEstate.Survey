@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using System.Data.SQLite;
+using System.Linq;
+using Dapper;
+using Newtonsoft.Json;
+using VastGIS.Api.Concrete;
+using VastGIS.Api.Enums;
+using VastGIS.Api.Interfaces;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
-
+using VastGIS.RealEstate.Data.Helpers;
+using VastGIS.RealEstate.Data.Service;
+using VastGIS.RealEstate.Data.Settings;
 
 namespace VastGIS.RealEstate.Data.Dao.Impl
 {
@@ -26,7 +34,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         readonly string[] CREATE_BASEMAP_LAYERS_CH = new string[] { "控制点", "居民地", "道路设施", "独立地物", "水系设施", "地貌土质", "注记", "其他图层" };
         public bool InitTables()
         {
-            
+           
             using (SQLiteTransaction trans = connection.BeginTransaction())
             {
                 int srid = GetSRID();
@@ -36,12 +44,14 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                         {
                                                             Mc = "DXT",
                                                             Zwmc = "底图数据",
-                                                            Dxlx = 0
+                                                            Dxlx = 0,
+                                                            Xssx= 1
                                                         };
                     objectclasses.Save(connection, GetSRID());
-
-                    for (int i=0;i<CREATE_BASEMAP_LAYERS.Length;i++)
+                    int j = 0;
+                    for (int i= CREATE_BASEMAP_LAYERS.Length-1; i>=0;i--)
                     {
+                        j++;
                         string layer = CREATE_BASEMAP_LAYERS[i];
                         string chlayer = CREATE_BASEMAP_LAYERS_CH[i];
                         string tbName = "DXT" + layer;
@@ -80,8 +90,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                                 Editable = true,
                                                                 Identify = true,
                                                                 Queryable = true,
-                                                                Snapable = true
-                                                            };
+                                                                Snapable = true,
+                                                                Xssx = j
+                        };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
                                             {
@@ -94,7 +105,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Editable = true,
                                                 Identify = true,
                                                 Queryable = true,
-                                                Snapable = true
+                                                Snapable = true,
+                                                Xssx = 4,
+                                                Filter =string.Format("Select * from {0}D Where Flags<3",tbName)
                         };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
@@ -108,7 +121,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Editable = true,
                                                 Identify = true,
                                                 Queryable = true,
-                                                Snapable = true
+                                                Snapable = true,
+                                                Xssx = 2,
+                                                Filter = string.Format("Select * from {0}X Where Flags<3", tbName)
                         };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
@@ -122,7 +137,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Editable = true,
                                                 Identify = true,
                                                 Queryable = true,
-                                                Snapable = true
+                                                Snapable = true,
+                                                Xssx =1,
+                                                Filter = string.Format("Select * from {0}M Where Flags<3", tbName)
                         };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
@@ -136,7 +153,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Editable = true,
                                                 Identify = true,
                                                 Queryable = true,
-                                                Snapable = true
+                                                Snapable = true,
+                                                Xssx = 3,
+                                                Filter = string.Format("Select * from {0}ZJ Where Flags<3", tbName)
                         };
                         objectclasses.Save(connection, srid);
                     }
@@ -147,6 +166,49 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             return true;
         }
 
+        //对图层内的多边形端点重新排序
+        public bool ReorderAllPolygon(string tableName)
+        {
+            string sql = string.Format("SELECT ID, AsText(geometry) as Wkt,DatabaseID,Flags,'{0}' As TableName,YSDM  from {0}", tableName);
+            IList<SimpleDatabaseFeature> features = connection.Query<SimpleDatabaseFeature>(sql).ToList();
+            int srid = GetSRID();
+            using (SQLiteTransaction trans=connection.BeginTransaction())
+            {
+                foreach (SimpleDatabaseFeature feature in features)
+                {
+                    IGeometry geometry = feature.Geometry.Clone();
+                    if (geometry.PartIsClockWise(0) == false)
+                    {
+                        geometry.PartReserveOrder(0);
+                    }
+                    feature.Geometry = SpatialHelper.ReorderPolygonVertex(geometry);
+                    
+                    feature.Save(connection, srid);
+                }
+                trans.Commit();
+            }
+            return true;
+        }
+
+        public bool ReorderAllPolygon()
+        {
+            ReorderAllPolygon("DXTJMDM");
+            return true;
+        }
+
+        public bool AssignTextToAttribute()
+        {
+            SystemDao service=new SystemDaoImpl();
+            VgSettings setting = service.GetVgSettings(SettingKeyHelper.DiXingTuWenZiShiBie);
+            List<TextAssignConfig> configs = JsonConvert.DeserializeObject<List<TextAssignConfig>>(setting.Csz);
+
+            foreach (TextAssignConfig config in configs)
+            {
+                Console.WriteLine("{0}", config.Name);
+                SpatialHelper.AssignTextToPolygon(DbConnection.GetConnection(), config);
+            }
+            return true;
+        }
     }
 }
 

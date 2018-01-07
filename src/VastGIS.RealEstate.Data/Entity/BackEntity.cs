@@ -1,3 +1,5 @@
+using VastGIS.RealEstate.Data.Interface;
+
 namespace VastGIS.RealEstate.Data.Entity
 {
     public abstract class BackEntity:IBackEntity
@@ -10,6 +12,6 @@ namespace VastGIS.RealEstate.Data.Entity
         public System.DateTime? WxZtsj { get; set; }
         public string WxZjy { get; set; }
         public System.DateTime? WxZjsj { get; set; }
-        public System.Guid WxWydm { get; set; }
+        public System.Guid? WxWydm { get; set; }
     }
 }

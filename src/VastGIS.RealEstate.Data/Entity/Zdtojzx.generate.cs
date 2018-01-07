@@ -5,6 +5,10 @@ using System.Data;
 using System.Data.SQLite;
 using System.Data.Entity.Spatial;
 using System.ComponentModel;
+using VastGIS.Api.Concrete;
+using VastGIS.Api.Enums;
+using VastGIS.Api.Interfaces;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
@@ -117,6 +121,7 @@ namespace VastGIS.RealEstate.Data.Entity
         #region 创建方法
         public  Zdtojzx()
         {
+            
             
         }
         #endregion

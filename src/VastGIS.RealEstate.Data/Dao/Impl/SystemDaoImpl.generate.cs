@@ -17,6 +17,69 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         //private SystemDao _systemDao;
         
         
+        ///VgAreacodes函数
+        public VgAreacodes GetVgAreacodes(long id)
+        {
+            string sql="select Id,XZQHMC,XZQHDM,XZQHJB from vg_areacodes" + " where id="+id.ToString();
+            IEnumerable<VgAreacodes> vgAreacodes=connection.Query<VgAreacodes>(sql);
+            if(vgAreacodes != null && vgAreacodes.Count()>0)
+            {
+                return vgAreacodes.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<VgAreacodes> GetVgAreacodess(string filter)
+        {
+            string sql="select Id,XZQHMC,XZQHDM,XZQHJB from vg_areacodes" + " where "+filter;
+            var vgAreacodes=connection.Query<VgAreacodes>(sql);
+            
+            return vgAreacodes;
+        }
+        
+        public bool SaveVgAreacodes(VgAreacodes vgAreacode)
+        {
+            return vgAreacode.Save(connection,GetSRID());
+        }
+        
+        public void SaveVgAreacodess(List<VgAreacodes> vgAreacodes)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in vgAreacodes)
+            {
+                rec.Save(connection,GetSRID());
+            }
+            tran.Commit();
+            tran.Dispose();
+        }
+        
+        public void DeleteVgAreacodes(VgAreacodes record)
+        {
+            record.Delete(connection);
+        }
+        
+        public void DeleteVgAreacodes(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                command.CommandText="delete from vg_areacodes where Id=" + id.ToString();
+                command.ExecuteNonQuery();
+            }
+        }
+        
+        public void DeleteVgAreacodes(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                if(string.IsNullOrEmpty(filter))
+                    command.CommandText="delete from vg_areacodes";
+                else
+                    command.CommandText="delete from vg_areacodes where " + filter;
+                command.ExecuteNonQuery();
+            }
+        }
+        
+        
         ///VgCadcodes函数
         public VgCadcodes GetVgCadcodes(long id)
         {
@@ -83,7 +146,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         ///VgObjectclasses函数
         public VgObjectclasses GetVgObjectclasses(long id)
         {
-            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX from vg_objectclasses" + " where id="+id.ToString();
+            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX,FILTER from vg_objectclasses" + " where id="+id.ToString();
             IEnumerable<VgObjectclasses> vgObjectclasss=connection.Query<VgObjectclasses>(sql);
             if(vgObjectclasss != null && vgObjectclasss.Count()>0)
             {
@@ -94,7 +157,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public IEnumerable<VgObjectclasses> GetVgObjectclassess(string filter)
         {
-            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX from vg_objectclasses" + " where "+filter;
+            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX,FILTER from vg_objectclasses" + " where "+filter;
             var vgObjectclasss=connection.Query<VgObjectclasses>(sql);
             
             return vgObjectclasss;

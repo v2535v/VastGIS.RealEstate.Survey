@@ -48,8 +48,22 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             using (SQLiteCommand command = new SQLiteCommand(connection))
             {
                 command.CommandText =
-                    "Select srid from geometry_columns where f_table_name='tmpcadd' and f_geometry_column='geometry'";
+                    "Select Csz from vg_settings where Csmc='SRID'";
                 _srid = Convert.ToInt32(command.ExecuteScalar());
+                if (_srid == 0) _srid = 4520;
+                return _srid;
+            }
+        }
+
+        public int GetSystemSRID()
+        {
+            if (_srid > 0) return _srid;
+            using (SQLiteCommand command = new SQLiteCommand(connection))
+            {
+                command.CommandText =
+                    "Select Csz from vg_settings where Csmc='SRID'";
+                _srid = Convert.ToInt32(command.ExecuteScalar());
+                if (_srid == 0) _srid = 4539;
                 return _srid;
             }
         }

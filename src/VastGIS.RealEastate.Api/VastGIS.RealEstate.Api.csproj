@@ -71,13 +71,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\ObjectClass.cs" />
     <Compile Include="Concrete\REDatabase.cs" />
     <Compile Include="Enums\REEnums.cs" />
-    <Compile Include="Helpers\CadDrawingHelper.cs" />
     <Compile Include="Helpers\ReProjectHelper.cs" />
-    <Compile Include="Helpers\SQLiteHelpers.cs" />
-    <Compile Include="Interface\IObjectClass.cs" />
+    <Compile Include="Interface\IRealEstateContext.cs" />
     <Compile Include="Interface\IREDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

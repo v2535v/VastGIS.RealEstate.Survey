@@ -30,7 +30,7 @@ namespace VastGIS.Plugins.RealEstate.Model
             TextTable = "DXTZJZJ";
             TextField = "Wbnr";
             TextWhereClause = "a.TC='ZJ'";
-            TextValues = values;
+            TextValues = values.ToList();
         }
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -47,6 +47,6 @@ namespace VastGIS.Plugins.RealEstate.Model
         [JsonProperty("whereclause")]
         public string TextWhereClause { get; set; }
         [JsonProperty("assignvalues")]
-        public string[] TextValues { get; set; }
+        public List<string> TextValues { get; set; }
     }
 }

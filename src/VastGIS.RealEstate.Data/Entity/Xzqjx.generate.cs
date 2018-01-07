@@ -5,6 +5,10 @@ using System.Data;
 using System.Data.SQLite;
 using System.Data.Entity.Spatial;
 using System.ComponentModel;
+using VastGIS.Api.Concrete;
+using VastGIS.Api.Enums;
+using VastGIS.Api.Interfaces;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
@@ -54,8 +58,9 @@ namespace VastGIS.RealEstate.Data.Entity
 		protected string jxsm = default(string);
 		protected long? databaseid = default(long?);
 		protected short? flag = default(short?);
-        protected DbGeometry _geometry;
+        protected IGeometry _geometry;
         protected string _wkt=default(string);
+        protected GeometryType _geometryType=GeometryType.Polyline;
         
         private event PropertyChangingEventHandler propertyChanging;            
         private event PropertyChangedEventHandler propertyChanged;
@@ -159,15 +164,20 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public DbGeometry Geometry
+        public IGeometry Geometry
         {
             get{return _geometry;}
             set{
                 this.OnPropertyChanging("Geometry");  
                 _geometry=value;
-                _wkt=_geometry.AsText();
+                _wkt = _geometry.ExportToWkt();
                 this.OnPropertyChanged("Geometry");
                 }
+        }
+        public GeometryType GeometryType
+        {
+            get{return _geometryType;}
+            set{_geometryType=value;}
         }
         public string Wkt
         {
@@ -175,7 +185,8 @@ namespace VastGIS.RealEstate.Data.Entity
             set{
                this.OnPropertyChanging("Geometry");  
                 _wkt=value;
-                _geometry=DbGeometry.FromText(_wkt);
+                //_geometry=DbGeometry.FromText(_wkt);
+                _geometry.ImportFromWkt(_wkt);
                 this.OnPropertyChanged("Geometry"); 
             }
         }
@@ -187,6 +198,7 @@ namespace VastGIS.RealEstate.Data.Entity
         #region 创建方法
         public  Xzqjx()
         {
+            _geometry=new Geometry(_geometryType,ZValueType.None);
             this.ysdm="'1001020000'";
             this.databaseid=0;
             this.flag=1;

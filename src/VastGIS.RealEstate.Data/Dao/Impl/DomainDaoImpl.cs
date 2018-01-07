@@ -17,10 +17,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
     public partial class DomainDaoImpl
     {
         protected const string VG_DICTIONARYNAME =
-            "CREATE TABLE [vg_dictoryname] ( [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,  [ZDMC] CHAR(30),   [ZDSM] CHAR(200));";
-
+                "CREATE TABLE [vg_dictoryname] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[ZDMC] CHAR(30) CONSTRAINT[cn_vgdictionary_zdmc] UNIQUE ON CONFLICT ROLLBACK, [ZDSM] CHAR(200));CREATE UNIQUE INDEX[ix_dictionaryname_zdmc] ON[vg_dictoryname] ([ZDMC]);"
+            ;
         protected const string VG_DICTIONARY =
-            "CREATE TABLE [vg_dictionary] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   [ZDMC] CHAR(30),   [ZDZ] CHAR(30),   [ZDSM] CHAR(200),   [SFQS] BOOLEAN DEFAULT 0,   [PX] INT DEFAULT 0);";
+            "CREATE TABLE [vg_dictionary] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   [ZDMC] CHAR(30) CONSTRAINT [fk_vg_dictionary_name] REFERENCES [vg_dictoryname]([ZDMC]),   [ZDZ] CHAR(30),   [ZDSM] CHAR(200),   [SFQS] BOOLEAN DEFAULT 0,   [PX] INT DEFAULT 0);";
 
         public bool InitTables()
         {
@@ -64,6 +64,32 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             List<VgDictionary> values = connection.Query<VgDictionary>(sql).ToList();
             return values;
 
+        }
+
+        public void InternalInitTables()
+        {
+            using (SQLiteTransaction trans = connection.BeginTransaction())
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand(connection))
+                {
+                    cmd.CommandText = VG_DICTIONARYNAME;
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = VG_DICTIONARY;
+                    cmd.ExecuteNonQuery();
+                }
+                trans.Commit();
+            }
+            using (SQLiteTransaction trans = connection.BeginTransaction())
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand(connection))
+                {
+                    
+                        cmd.CommandText = Properties.Resources.Dictionary;
+                        cmd.ExecuteNonQuery();
+                  
+                }
+                trans.Commit();
+            }
         }
     }
 }

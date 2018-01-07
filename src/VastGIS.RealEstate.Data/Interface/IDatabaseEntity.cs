@@ -1,4 +1,4 @@
-﻿namespace VastGIS.RealEstate.Data.Entity
+﻿namespace VastGIS.RealEstate.Data.Interface
 {
     public interface IDatabaseEntity
     {

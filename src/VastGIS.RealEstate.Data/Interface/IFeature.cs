@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity.Spatial;
 
-namespace VastGIS.RealEstate.Data.Entity
+namespace VastGIS.RealEstate.Data.Interface
 {
     public interface IFeature
     {

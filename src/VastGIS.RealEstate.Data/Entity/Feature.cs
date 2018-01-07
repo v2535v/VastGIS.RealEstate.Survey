@@ -1,4 +1,5 @@
 using System.Data.Entity.Spatial;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {

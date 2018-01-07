@@ -10,6 +10,14 @@ namespace VastGIS.RealEstate.Data.Dao
 
     public partial interface SystemDao
     {
+            ///VgAreacodes函数
+            VgAreacodes GetVgAreacodes(long id);
+            IEnumerable<VgAreacodes> GetVgAreacodess(string filter);
+            bool SaveVgAreacodes(VgAreacodes vgAreacode);
+            void SaveVgAreacodess(List<VgAreacodes> vgAreacodes);
+            void DeleteVgAreacodes(long id);
+            void DeleteVgAreacodes(string filter);
+            
             ///VgCadcodes函数
             VgCadcodes GetVgCadcodes(long id);
             IEnumerable<VgCadcodes> GetVgCadcodess(string filter);

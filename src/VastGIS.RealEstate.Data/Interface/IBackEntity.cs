@@ -1,4 +1,4 @@
-namespace VastGIS.RealEstate.Data.Entity
+namespace VastGIS.RealEstate.Data.Interface
 {
     public interface IBackEntity: IEntity
     {
@@ -9,6 +9,6 @@ namespace VastGIS.RealEstate.Data.Entity
         System.DateTime? WxZtsj { get; set; }
         string WxZjy { get; set; }
         System.DateTime? WxZjsj { get; set; }
-        System.Guid WxWydm { get; set; }
+        System.Guid? WxWydm { get; set; }
     }
 }

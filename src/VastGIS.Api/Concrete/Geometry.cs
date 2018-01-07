@@ -365,6 +365,16 @@ namespace VastGIS.Api.Concrete
             }
         }
 
+        public bool PartIsClockWise(int partIndex)
+        {
+            return _shape.PartIsClockWise[partIndex];
+        }
+
+        public bool PartReserveOrder(int partIndex)
+        {
+            return _shape.ReversePointsOrder(partIndex);
+        }
+
         public bool Touches(IGeometry g)
         {
             return _shape.Touches(g.GetInternal());

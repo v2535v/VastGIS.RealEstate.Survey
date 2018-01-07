@@ -5,6 +5,10 @@ using System.Data;
 using System.Data.SQLite;
 using System.Data.Entity.Spatial;
 using System.ComponentModel;
+using VastGIS.Api.Concrete;
+using VastGIS.Api.Enums;
+using VastGIS.Api.Interfaces;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
@@ -14,7 +18,7 @@ namespace VastGIS.RealEstate.Data.Entity
         #region 表结构
         public const string TABLE_NAME = "JZXZJ";
 	    public const string COL_ID = "Id";
-	    public const string COL_GLYSDM = "GLYSDM";
+	    public const string COL_GLYSBH = "GLYSBH";
 	    public const string COL_YSDM = "YSDM";
 	    public const string COL_ZJNR = "ZJNR";
 	    public const string COL_ZT = "ZT";
@@ -32,7 +36,7 @@ namespace VastGIS.RealEstate.Data.Entity
 	    public const string COL_GEOMETRY = "geometry";
 	
         public const string PARAM_ID = "@Id";
-        public const string PARAM_GLYSDM = "@GLYSDM";
+        public const string PARAM_GLYSBH = "@GLYSBH";
         public const string PARAM_YSDM = "@YSDM";
         public const string PARAM_ZJNR = "@ZJNR";
         public const string PARAM_ZT = "@ZT";
@@ -53,9 +57,9 @@ namespace VastGIS.RealEstate.Data.Entity
         
         #region 查询
 	
-	    private const string SQL_INSERT_JZXZJ = "INSERT INTO JZXZJ (GLYSDM, YSDM, ZJNR, ZT, YS, BS, XZ, XHX, KD, GD, ZJDZXJXZB, ZJDZXJYZB, ZJFX, DatabaseId, FLAGS, geometry) VALUES ( @GLYSDM, @YSDM, @ZJNR, @ZT, @YS, @BS, @XZ, @XHX, @KD, @GD, @ZJDZXJXZB, @ZJDZXJYZB, @ZJFX, @DatabaseId, @FLAGS, GeomFromText(@geometry,@SRID));" + " SELECT last_insert_rowid();";
+	    private const string SQL_INSERT_JZXZJ = "INSERT INTO JZXZJ (GLYSBH, YSDM, ZJNR, ZT, YS, BS, XZ, XHX, KD, GD, ZJDZXJXZB, ZJDZXJYZB, ZJFX, DatabaseId, FLAGS, geometry) VALUES ( @GLYSBH, @YSDM, @ZJNR, @ZT, @YS, @BS, @XZ, @XHX, @KD, @GD, @ZJDZXJXZB, @ZJDZXJYZB, @ZJFX, @DatabaseId, @FLAGS, GeomFromText(@geometry,@SRID));" + " SELECT last_insert_rowid();";
 	
-	    private const string SQL_UPDATE_JZXZJ = "UPDATE JZXZJ SET GLYSDM = @GLYSDM, YSDM = @YSDM, ZJNR = @ZJNR, ZT = @ZT, YS = @YS, BS = @BS, XZ = @XZ, XHX = @XHX, KD = @KD, GD = @GD, ZJDZXJXZB = @ZJDZXJXZB, ZJDZXJYZB = @ZJDZXJYZB, ZJFX = @ZJFX, DatabaseId = @DatabaseId, FLAGS = @FLAGS, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
+	    private const string SQL_UPDATE_JZXZJ = "UPDATE JZXZJ SET GLYSBH = @GLYSBH, YSDM = @YSDM, ZJNR = @ZJNR, ZT = @ZT, YS = @YS, BS = @BS, XZ = @XZ, XHX = @XHX, KD = @KD, GD = @GD, ZJDZXJXZB = @ZJDZXJXZB, ZJDZXJYZB = @ZJDZXJYZB, ZJFX = @ZJFX, DatabaseId = @DatabaseId, FLAGS = @FLAGS, geometry = GeomFromText(@geometry,@SRID) WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_JZXZJ = "DELETE FROM JZXZJ WHERE  Id = @Id ";
         
@@ -66,7 +70,7 @@ namespace VastGIS.RealEstate.Data.Entity
         #region 声明
 
 		protected long id = default(long);
-		protected string glysdm = default(string);
+		protected string glysbh = default(string);
 		protected string ysdm = default(string);
 		protected string zjnr = default(string);
 		protected string zt = default(string);
@@ -81,8 +85,11 @@ namespace VastGIS.RealEstate.Data.Entity
 		protected double? zjfx = default(double?);
 		protected long? databaseid = default(long?);
 		protected short? flag = default(short?);
-        protected DbGeometry _geometry;
+        protected IGeometry _geometry;
         protected string _wkt=default(string);
+        protected GeometryType _geometryType=GeometryType.Point;
+		protected Jzx jzxRef;
+	
         
         private event PropertyChangingEventHandler propertyChanging;            
         private event PropertyChangedEventHandler propertyChanged;
@@ -114,15 +121,15 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public string Glysdm 
+        public string Glysbh 
         {
-            get { return this.glysdm; }
+            get { return this.glysbh; }
 			set	{ 
-                  if(this.glysdm != value)
+                  if(this.glysbh != value)
                     {
-                        this.OnPropertyChanging("Glysdm");  
-                        this.glysdm = value;                        
-                        this.OnPropertyChanged("Glysdm");
+                        this.OnPropertyChanging("Glysbh");  
+                        this.glysbh = value;                        
+                        this.OnPropertyChanged("Glysbh");
                     }   
                 }
         }	
@@ -294,15 +301,20 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public DbGeometry Geometry
+        public IGeometry Geometry
         {
             get{return _geometry;}
             set{
                 this.OnPropertyChanging("Geometry");  
                 _geometry=value;
-                _wkt=_geometry.AsText();
+                _wkt = _geometry.ExportToWkt();
                 this.OnPropertyChanged("Geometry");
                 }
+        }
+        public GeometryType GeometryType
+        {
+            get{return _geometryType;}
+            set{_geometryType=value;}
         }
         public string Wkt
         {
@@ -310,7 +322,8 @@ namespace VastGIS.RealEstate.Data.Entity
             set{
                this.OnPropertyChanging("Geometry");  
                 _wkt=value;
-                _geometry=DbGeometry.FromText(_wkt);
+                //_geometry=DbGeometry.FromText(_wkt);
+                _geometry.ImportFromWkt(_wkt);
                 this.OnPropertyChanged("Geometry"); 
             }
         }
@@ -322,6 +335,7 @@ namespace VastGIS.RealEstate.Data.Entity
         #region 创建方法
         public  Jzxzj()
         {
+            _geometry=new Geometry(_geometryType,ZValueType.None);
             this.ysdm="'6001080000'";
             this.databaseid=0;
             this.flag=1;
@@ -357,7 +371,7 @@ namespace VastGIS.RealEstate.Data.Entity
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_JZXZJ,connection))
             {	
-                 command.Parameters.AddWithValue(PARAM_GLYSDM,this.Glysdm);    				
+                 command.Parameters.AddWithValue(PARAM_GLYSBH,this.Glysbh);    				
                  command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);    				
                  command.Parameters.AddWithValue(PARAM_ZJNR,this.Zjnr);    				
                  command.Parameters.AddWithValue(PARAM_ZT,this.Zt);    				
@@ -384,7 +398,7 @@ namespace VastGIS.RealEstate.Data.Entity
             using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_JZXZJ,connection))
             {							
 				command.Parameters.AddWithValue(PARAM_ID,this.ID);  
-				command.Parameters.AddWithValue(PARAM_GLYSDM,this.Glysdm);  
+				command.Parameters.AddWithValue(PARAM_GLYSBH,this.Glysbh);  
 				command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);  
 				command.Parameters.AddWithValue(PARAM_ZJNR,this.Zjnr);  
 				command.Parameters.AddWithValue(PARAM_ZT,this.Zt);  

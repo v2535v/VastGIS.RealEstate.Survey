@@ -57,5 +57,11 @@ namespace VastGIS.Api.Interfaces
         bool Touches(IGeometry g);
         bool Within(IGeometry g);
         bool GetPoint(int index, out double x, out double y);
+
+        bool PartIsClockWise(int partIndex);
+
+
+        bool PartReserveOrder(int partIndex);
+
     }
 }

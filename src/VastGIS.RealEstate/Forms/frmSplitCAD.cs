@@ -71,12 +71,12 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 string[] pairStrs = pairStr.Split(',');
                 int value = step*100 / total;
                 _loadingForm.ShowProgress(value,"进行分层:"+pairStrs[0]);
-                ((IRealEstateContext)_context).RealEstateDatabase.SplitTmpCadIntoLayers(pairStrs[1],pairStrs[2],"",isClear);
+                ((IRealEstateContext)_context).RealEstateDatabase.CadService.SplitTmpCADToLayer(pairStrs[1],pairStrs[2],"",isClear);
             }
             if (isOther)
             {
                 _loadingForm.ShowProgress(100, "进行分层:其他");
-                ((IRealEstateContext)_context).RealEstateDatabase.SplitTmpCadIntoLayers("", "DXTQT", "", isClear);
+                ((IRealEstateContext)_context).RealEstateDatabase.CadService.SplitTmpCADToLayer("", "DXTQT", "", isClear);
             }
             _context.View.Unlock();
             _loadingForm.Close();

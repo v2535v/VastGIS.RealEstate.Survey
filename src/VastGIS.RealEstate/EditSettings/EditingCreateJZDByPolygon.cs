@@ -120,11 +120,11 @@ namespace VastGIS.Plugins.RealEstate.EditSettings
         }
         public void SetQueryPoint(double dx, double dy)
         {
-           IFeature pFeature= ((IRealEstateContext)_context).RealEstateDatabase.FindFirstRecord(GetSearchLayers(), dx, dy);
-            if (pFeature != null)
-            {
-                SetPolygon(pFeature.Geometry);
-            }
+           //IFeature pFeature= ((IRealEstateContext)_context).RealEstateDatabase.FindFirstRecord(GetSearchLayers(), dx, dy);
+           // if (pFeature != null)
+           // {
+           //     SetPolygon(pFeature.Geometry);
+           // }
         }
     }
 }

@@ -15,6 +15,8 @@ namespace VastGIS.RealEstate.Data.Dao
         bool InitTables();
 
         List<VgDictionary> GetDictionaryByName(string dictionaryName);
+
+        void InternalInitTables();
     }
 }
 

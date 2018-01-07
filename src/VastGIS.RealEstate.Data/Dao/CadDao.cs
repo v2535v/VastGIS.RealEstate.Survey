@@ -23,6 +23,9 @@ namespace VastGIS.RealEstate.Data.Dao
 
         void SplitTmpCADToLayer(string cadLayerName, string tableName, string fileName = "", bool isClear = true);
 
+        bool ImportDxfDrawing(string dxfName, out string errorMsg);
+
+        bool ImportTmpCadToBasemap(bool isClearBasemap = true, string fileName = "");
     }
 }
 
