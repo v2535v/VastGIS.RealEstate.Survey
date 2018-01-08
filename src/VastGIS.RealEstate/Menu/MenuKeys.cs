@@ -21,6 +21,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public const string AssignCADText = "re_AssignCADText";
         public const string CreateJZDByPolygon = "re_CreateJZDByPolygon";
         public const string ReOrginzeLayers = "re_ReOrginzeLayers";
+        public const string LayerManagement = "re_LayerManagement";
         #region Constants
 
         /// <summary>

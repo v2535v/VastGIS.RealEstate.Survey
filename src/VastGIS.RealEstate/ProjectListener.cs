@@ -76,19 +76,21 @@ namespace VastGIS.Plugins.RealEstate
             }
             else
             {
-                if (!string.IsNullOrEmpty(oneclass.Filter))
-                {
-                    IVectorLayer vectorLayer = ((IVectorDatasource)ds).RunQuery(oneclass.Filter);
-                    vectorLayer.DynamicLoading = true;
+                //if (!string.IsNullOrEmpty(oneclass.Filter))
+                //{
+                //    IVectorLayer vectorLayer = ((IVectorDatasource)ds).RunQuery(oneclass.Filter);
+                //    vectorLayer.DynamicLoading = true;
                     
-                    _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
-                }
-                else
-                {
+                //    int i = _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
+                //    _context.Layers.ItemByHandle(i).Name = oneclass.Zwmc;
+                //}
+                //else
+                //{
                     IVectorLayer vectorLayer = ((IVectorDatasource)ds).GetLayerByName(oneclass.Mc,false);
                     vectorLayer.DynamicLoading = true;
-                    _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
-                }
+                    int i = _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
+                    _context.Layers.ItemByHandle(i).Name = oneclass.Zwmc;
+                //}
 
 
             }
