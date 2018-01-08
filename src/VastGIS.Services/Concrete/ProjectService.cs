@@ -282,11 +282,11 @@ namespace VastGIS.Services.Concrete
             }
 
             // let's redraw map before hiding the progress
-            _loadingForm.ShowProgress(100, "Rendering map...");
+            _loadingForm.ShowProgress(100, "加载数据图层");
             _context.Map.Redraw();
             _context.View.Unlock();
 
-            Application.DoEvents();
+            //Application.DoEvents();
 
             loader.ProgressChanged -= OnLoadingProgressChanged;
 

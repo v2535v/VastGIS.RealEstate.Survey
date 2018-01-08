@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using VastGIS.Api.Enums;
 using VastGIS.Api.Helpers;
 using VastGIS.Api.Interfaces;
+using VastGIS.Api.Legend;
+using VastGIS.Api.Legend.Abstract;
 using VastGIS.Api.Static;
 using VastGIS.Plugins.Events;
 using VastGIS.Plugins.Interfaces;
@@ -56,41 +58,63 @@ namespace VastGIS.Plugins.RealEstate
                     string connectionString = "Data Source=" +
                                               ((IRealEstateContext)_context).RealEstateDatabase.DatabaseName;
                     var ds = GeoSource.Open(((IRealEstateContext)_context).RealEstateDatabase.DatabaseName);
+                    
+                    _context.Map.Lock();
+                    _context.Legend.Lock();
                     foreach (var oneclass in classes)
                     {
-                        LoadDataToMap(ds,connectionString, oneclass);
+                        LoadDataToMap(ds,connectionString, oneclass,null);
                     }
+                    _context.Map.Unlock();
+                    _context.Legend.Unlock();
+                    _context.Legend.Redraw();
                 }
             }
         }
 
-        private void LoadDataToMap(IDatasource ds,string connectionString, VgObjectclasses oneclass)
+        private void LoadDataToMap(IDatasource ds,string connectionString, VgObjectclasses oneclass,ILegendGroup parentGroup)
         {
-            if (oneclass.Dxlx == 0)
+            string stepMsg = "";
+            try
             {
-                if (oneclass.SubClasses == null) return;
-                foreach (var subClass in oneclass.SubClasses)
+                if (oneclass.Dxlx == 0)
                 {
-                    LoadDataToMap(ds,connectionString, subClass);
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(oneclass.Filter))
-                {
-                    IVectorLayer vectorLayer = ((IVectorDatasource)ds).RunQuery(oneclass.Filter);
-                    vectorLayer.DynamicLoading = true;
-                    
-                    _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
+                    if (oneclass.SubClasses == null) return;
+                    ILegendGroup legendGroup = _context.Legend.Groups.Add(oneclass.Zwmc);
+                    stepMsg = oneclass.Zwmc;
+                    foreach (var subClass in oneclass.SubClasses)
+                    {
+                        LoadDataToMap(ds, connectionString, subClass, legendGroup);
+                       
+                    }
                 }
                 else
                 {
-                    IVectorLayer vectorLayer = ((IVectorDatasource)ds).GetLayerByName(oneclass.Mc,false);
-                    vectorLayer.DynamicLoading = true;
-                    _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
+                    if (string.IsNullOrEmpty(oneclass.Filter))
+                    {
+                        stepMsg = oneclass.Zwmc;
+                        IVectorLayer vectorLayer = ((IVectorDatasource)ds).RunQuery(oneclass.Filter);
+                        vectorLayer.DynamicLoading = true;
+                        int handle = _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
+                        _context.Legend.Layers.ItemByHandle(handle).Name = oneclass.Zwmc;
+                        //_context.Legend.Layers.MoveLayer(handle, parentGroup.Handle);
+                    }
+                    else
+                    {
+                        stepMsg = oneclass.Zwmc;
+                        IVectorLayer vectorLayer = ((IVectorDatasource)ds).GetLayerByName(oneclass.Mc, false);
+                        vectorLayer.DynamicLoading = true;
+                        int handle = _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
+                        _context.Legend.Layers.ItemByHandle(handle).Name = oneclass.Zwmc;
+                        //_context.Legend.Layers.MoveLayer(handle, parentGroup.Handle);
+                    }
+
                 }
-
-
+            }
+            catch (Exception ex)
+            {
+                MessageService.Current.Warn("图层加载发生错误,"+stepMsg+":"+ex.Message);
+                return;
             }
             
         }

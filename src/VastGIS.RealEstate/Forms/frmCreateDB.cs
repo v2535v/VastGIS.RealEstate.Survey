@@ -16,7 +16,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
         public frmCreateDB(IAppContext context):base(context)
         {
             InitializeComponent();
-            txtName.Text = "BDC_" + DateTime.Now.ToString("yyyyMMdd_hhmm");
+            txtName.Text = "BDC_" + DateTime.Now.ToString("yyyyMMdd_HHmm");
             txtDB.Text = PathHelper.GetAbsolutePath(_context.Config.DefaultProjectPath, AssemblyHelper.GetAppFolder());
         }
 

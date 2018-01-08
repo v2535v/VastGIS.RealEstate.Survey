@@ -20,6 +20,14 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
     public partial class BasemapDaoImpl
     {
+        string SELECT_BASEMAPD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from [DXT_LAYERNAME_D] Where [FLAGS] < 3";
+
+        string SELECT_BASEMAPM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from [DXT_LAYERNAME_M] Where [FLAGS] < 3";
+
+        string SELECT_BASEMAPX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from [DXT_LAYERNAME_X] Where [FLAGS] < 3";
+
+        string SELECT_BASEMAPZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from [DXT_LAYERNAME_ZJ] Where [FLAGS] < 3";
+            
         string CREATE_BASEMAPD =
             "CREATE TABLE[DXT_LAYERNAME_D] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [TC] NCHAR(100),[CASSDM] CHAR(20),[FH] NCHAR(30),[FHDX] FLOAT,[XZJD] FLOAT,[FSXX1] NCHAR(100),[FSXX2] NCHAR(100),[YSDM] CHAR(10),[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);";
 
@@ -40,14 +48,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 int srid = GetSRID();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
-                    VgObjectclasses objectclasses = new VgObjectclasses()
-                                                        {
-                                                            Mc = "DXT",
-                                                            Zwmc = "底图数据",
-                                                            Dxlx = 0,
-                                                            Xssx= 1
-                                                        };
-                    objectclasses.Save(connection, GetSRID());
+                    VgObjectclasses objectclasses;
+                    //VgObjectclasses objectclasses = new VgObjectclasses()
+                    //                                    {
+                    //                                        Mc = "DXT",
+                    //                                        Zwmc = "底图数据",
+                    //                                        Dxlx = 0,
+                    //                                        Xssx= 1
+                    //                                    };
+                    //objectclasses.Save(connection, GetSRID());
                     int j = 0;
                     for (int i= CREATE_BASEMAP_LAYERS.Length-1; i>=0;i--)
                     {
@@ -84,7 +93,6 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                             {
                                                                 Mc = tbName,
                                                                 Zwmc = chlayer,
-                                                                Fbmc = "DXT",
                                                                 Dxlx = 0,
                                                                 Visible = true,
                                                                 Editable = true,
@@ -107,8 +115,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx = 4,
-                                                Filter =string.Format("Select * from {0}D Where Flags<3",tbName)
-                        };
+                                                Filter = SELECT_BASEMAPD.Replace("_LAYERNAME_", layer) //string.Format("Select * from {0}D Where Flags<3",tbName))
+                    };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
                                             {
@@ -123,7 +131,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx = 2,
-                                                Filter = string.Format("Select * from {0}X Where Flags<3", tbName)
+                                                Filter = SELECT_BASEMAPX.Replace("_LAYERNAME_", layer) //string.Format("Select * from {0}D Where Flags<3",tbName))
                         };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
@@ -139,7 +147,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx =1,
-                                                Filter = string.Format("Select * from {0}M Where Flags<3", tbName)
+                                                Filter = SELECT_BASEMAPM.Replace("_LAYERNAME_", layer) //string.Format("Select * from {0}D Where Flags<3",tbName))
                         };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
@@ -155,7 +163,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx = 3,
-                                                Filter = string.Format("Select * from {0}ZJ Where Flags<3", tbName)
+                                                Filter = SELECT_BASEMAPZJ.Replace("_LAYERNAME_", layer) //string.Format("Select * from {0}D Where Flags<3",tbName))
                         };
                         objectclasses.Save(connection, srid);
                     }

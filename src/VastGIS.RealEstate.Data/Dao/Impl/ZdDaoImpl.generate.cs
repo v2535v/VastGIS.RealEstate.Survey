@@ -15,6 +15,31 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
     public partial class ZdDaoImpl:SQLiteDao,ZdDao
     {
         //private ZdDao _zdDao;
+        string SELECT_DJQ = "select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJQ Where [FLAGS] < 3";
+        
+        string SELECT_DJZQ = "select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJZQ Where [FLAGS] < 3";
+        
+        string SELECT_JZD = "select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from JZD Where [FLAGS] < 3";
+        
+        string SELECT_JZDZJ = "select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZDZJ Where [FLAGS] < 3";
+        
+        string SELECT_JZX = "select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,geometry from JZX Where [FLAGS] < 3";
+        
+        string SELECT_JZXZJ = "select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZXZJ Where [FLAGS] < 3";
+        
+        string SELECT_XZQ = "select Id,YSDM,XZQDM,XZQMC,XZQMJ,DatabaseId,FLAGS,geometry from XZQ Where [FLAGS] < 3";
+        
+        string SELECT_XZQJX = "select Id,YSDM,JXLX,JXXZ,JXSM,DatabaseId,FLAGS,geometry from XZQJX Where [FLAGS] < 3";
+        
+        string SELECT_ZDBHQK = "select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK Where [FLAGS] < 3";
+        
+        string SELECT_ZDJBXX = "select Id,YSDM,ZDDM,BDCDYH,ZDTZM,ZL,ZDMJ,MJDW,YT,DJ,JG,QLLX,QLXZ,QLSDFS,RJL,JZMD,JZXG,ZDSZD,ZDSZN,ZDSZX,ZDSZB,ZDT,TFH,DJH,DAH,BZ,ZT,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from ZDJBXX Where [FLAGS] < 3";
+        
+        string SELECT_ZDJBXXZJ = "select Id,GLYSDM,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from ZDJBXXZJ Where [FLAGS] < 3";
+        
+        string SELECT_ZDTOJZD = "select Id,ZD_WYDM,JZD_WYDM,SXH from ZDTOJZD";
+        
+        string SELECT_ZDTOJZX = "select Id,ZD_WYDM,JZX_WYDM,SXH from ZDTOJZX";
         
         
         ///Djq函数

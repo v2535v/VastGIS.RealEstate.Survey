@@ -27,7 +27,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             "CREATE TABLE [vg_settings] ( [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,  [CSMC] NCHAR(30),   [CSZ] NVARCHAR);";
 
         protected const string VG_OBJECTCLASSES =
-                "CREATE TABLE [vg_objectclasses] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[MC] NCHAR(30), [DXLX] INT DEFAULT 0,[ZWMC] NCHAR(30), [FBMC] NCHAR(30), [XHZDMC] NCHAR(30), [TXZDMC] NCHAR(30), [TXLX] INT DEFAULT 0,[IDENTIFY] BOOLEAN DEFAULT True,   [EDITABLE] BOOLEAN DEFAULT False,   [QUERYABLE] BOOLEAN DEFAULT True,   [SNAPABLE] BOOLEAN DEFAULT False,   [VISIBLE] BOOLEAN DEFAULT True,   [XSSX] INTEGER DEFAULT 0,[FILTER] NVARCHAR);"
+                "CREATE TABLE [vg_objectclasses] (   [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   [MC] NCHAR(30),   [DXLX] INT NOT NULL DEFAULT 0,   [ZWMC] NCHAR(30),   [FBMC] NCHAR(30),   [XHZDMC] NCHAR(30),   [TXZDMC] NCHAR(30),   [TXLX] INT NOT NULL DEFAULT 0,   [IDENTIFY] BOOLEAN NOT NULL DEFAULT True,   [EDITABLE] BOOLEAN NOT NULL DEFAULT False,   [QUERYABLE] BOOLEAN NOT NULL DEFAULT True,   [SNAPABLE] BOOLEAN NOT NULL DEFAULT False,   [VISIBLE] BOOLEAN NOT NULL DEFAULT True,   [XSSX] INTEGER NOT NULL DEFAULT 0,   [FILTER] NVARCHAR);"
             ;
 
         protected const string VG_AREACODES =
@@ -101,7 +101,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 .Query<VgObjectclasses>("select * from vg_objectclasses").ToList();
             if (isDeep == false) return objectclasseses;
             
-                List<VgObjectclasses> list = objectclasseses.FindAll(c => c.Fbmc == null || c.Fbmc=="").OrderBy(c=>c.Xssx).ToList();
+                List<VgObjectclasses> list = objectclasseses.FindAll(c => c.Fbmc == null || c.Fbmc=="").OrderByDescending(c=>c.Xssx).ToList();
                 List<VgObjectclasses> newList = new List<VgObjectclasses>(list);
                 foreach (VgObjectclasses objectClass in newList)
                 {
@@ -177,7 +177,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
         private List<VgObjectclasses> FindChildClasses(List<VgObjectclasses> objectClasses, string key)
         {
-            List<VgObjectclasses> list = objectClasses.FindAll(c => c.Fbmc == key);
+            List<VgObjectclasses> list = objectClasses.FindAll(c => c.Fbmc == key).OrderBy(c=>c.Xssx).ToList();
             List<VgObjectclasses> tmpList = new List<VgObjectclasses>(list);
             foreach (VgObjectclasses objectClass in tmpList)
             {

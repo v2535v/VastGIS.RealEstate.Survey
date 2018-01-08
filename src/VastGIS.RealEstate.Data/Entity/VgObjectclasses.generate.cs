@@ -66,18 +66,18 @@ namespace VastGIS.RealEstate.Data.Entity
 
 		protected long id = default(long);
 		protected string mc = default(string);
-		protected int? dxlx = default(int?);
+		protected int dxlx = default(int);
 		protected string zwmc = default(string);
 		protected string fbmc = default(string);
 		protected string xhzdmc = default(string);
 		protected string txzdmc = default(string);
-		protected int? txlx = default(int?);
-		protected bool? identify = default(bool?);
-		protected bool? editable = default(bool?);
-		protected bool? queryable = default(bool?);
-		protected bool? snapable = default(bool?);
-		protected bool? visible = default(bool?);
-		protected long? xssx = default(long?);
+		protected int txlx = default(int);
+		protected bool identify = default(bool);
+		protected bool editable = default(bool);
+		protected bool queryable = default(bool);
+		protected bool snapable = default(bool);
+		protected bool visible = default(bool);
+		protected long xssx = default(long);
 		protected string filter = default(string);
         
         private event PropertyChangingEventHandler propertyChanging;            
@@ -122,7 +122,7 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public int? Dxlx 
+        public int Dxlx 
         {
             get { return this.dxlx; }
 			set	{ 
@@ -182,7 +182,7 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public int? Txlx 
+        public int Txlx 
         {
             get { return this.txlx; }
 			set	{ 
@@ -194,7 +194,7 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public bool? Identify 
+        public bool Identify 
         {
             get { return this.identify; }
 			set	{ 
@@ -206,7 +206,7 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public bool? Editable 
+        public bool Editable 
         {
             get { return this.editable; }
 			set	{ 
@@ -218,7 +218,7 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public bool? Queryable 
+        public bool Queryable 
         {
             get { return this.queryable; }
 			set	{ 
@@ -230,7 +230,7 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public bool? Snapable 
+        public bool Snapable 
         {
             get { return this.snapable; }
 			set	{ 
@@ -242,7 +242,7 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public bool? Visible 
+        public bool Visible 
         {
             get { return this.visible; }
 			set	{ 
@@ -254,7 +254,7 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
-        public long? Xssx 
+        public long Xssx 
         {
             get { return this.xssx; }
 			set	{ 

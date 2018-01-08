@@ -14,6 +14,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
     public partial class ZdDaoImpl
     {
         #region 表生成SQL
+      
         private string CREATE_XZQ =
                 "CREATE TABLE [XZQ] ( [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,  [YSDM] CHAR(10) DEFAULT '1001010000', [XZQDM] CHAR(12), [XZQMC] NCHAR(100), [XZQMJ] FLOAT,[DatabaseId] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1);"
             ;
@@ -153,7 +154,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                           Mc="DJSJ",
                                                           Zwmc = "地籍数据",
                                                           Dxlx = 0,
-                                                          Xssx = 3
+                                                          Xssx = 8
                                                           
                     };
                     objectclasses.Save(connection, GetSRID());
@@ -170,7 +171,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 1,
-                                            Filter = "Select * from DJQ Where Flags<3"
+                                            Filter = SELECT_DJQ
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -186,7 +187,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 2,
-                                            Filter = "Select * from DJZQ Where Flags<3"
+                                            Filter = SELECT_DJZQ
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -202,7 +203,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 3,
-                                            Filter = "Select * from ZDJBXX Where Flags<3"
+                                            Filter =SELECT_ZDJBXX
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -218,7 +219,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =4,
-                                            Filter = "Select * from ZDJBXXZJ Where Flags<3"
+                                            Filter =SELECT_ZDJBXXZJ
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -234,7 +235,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =5,
-                                            Filter = "Select * from JZX Where Flags<3"
+                                            Filter = SELECT_JZX
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -250,7 +251,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 6,
-                                            Filter = "Select * from JZXZJ Where Flags<3"
+                                            Filter = SELECT_JZXZJ
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -266,7 +267,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =7,
-                                            Filter = "Select * from JZD Where Flags<3"
+                                            Filter = SELECT_JZD
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -282,7 +283,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =8,
-                                            Filter = "Select * from JZDZJ Where Flags<3"
+                                            Filter = SELECT_JZDZJ
                     };
                     objectclasses.Save(connection, GetSRID());
 

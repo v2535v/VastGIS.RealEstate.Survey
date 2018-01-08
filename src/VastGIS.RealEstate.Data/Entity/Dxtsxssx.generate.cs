@@ -13,7 +13,7 @@ using VastGIS.RealEstate.Data.Interface;
 namespace VastGIS.RealEstate.Data.Entity
 {
 
-    public partial class Dxtsxssx:INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity, IBasemapPolyline
+    public partial class Dxtsxssx:INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity,IBasemapPolyline
     {
         #region 表结构
         public const string TABLE_NAME = "DXTSXSSX";
