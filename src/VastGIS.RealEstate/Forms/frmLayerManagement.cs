@@ -19,18 +19,12 @@ namespace VastGIS.Plugins.RealEstate.Forms
 {
     public partial class frmLayerManagement : VastGIS.UI.Forms.MapWindowForm
     {
-        private readonly RealEstateEditor _plugin;
         private BindingList<VgObjectclasses> _vgObjectclasseses;
-        private string _connectionString;
 
-        public frmLayerManagement(IAppContext context, RealEstateEditor plugin) : base(context)
+        public frmLayerManagement(IAppContext context) : base(context)
         {
             InitializeComponent();
-            _plugin = plugin;
-            _connectionString = "Data Source=" + ((IRealEstateContext)_context).RealEstateDatabase.DatabaseName;
             this.dgvLayers.AutoGenerateColumns = false;
-            //_layers = new BindingList<VGXmlLayer>(_plugin.VgLayer.Layers);
-            //this.dgvLayers.DataSource = _layers;
             _vgObjectclasseses = new BindingList<VgObjectclasses>();
             IlistToBindingList(((IRealEstateContext)_context).RealEstateDatabase.SystemService.GetObjectclasseses(true));
             LoadFromMap();

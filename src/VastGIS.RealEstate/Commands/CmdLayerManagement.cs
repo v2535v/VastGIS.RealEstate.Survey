@@ -14,7 +14,6 @@ namespace VastGIS.Plugins.RealEstate.Commands
     class CmdLayerManagement : BaseCommand
     {
         private IAppContext _context;
-        private RealEstateEditor _plugin;
         public CmdLayerManagement(IAppContext context)
         {
             base._text = "图层管理";
@@ -28,7 +27,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
 
         public override void OnClick()
         {
-            frmLayerManagement frm = new frmLayerManagement(_context, _plugin);
+            frmLayerManagement frm = new frmLayerManagement(_context);
             _context.View.ShowChildView(frm);
         }
     }
