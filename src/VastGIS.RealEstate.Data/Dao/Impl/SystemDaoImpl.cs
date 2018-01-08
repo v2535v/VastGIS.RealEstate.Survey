@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using Dapper;
+using GeoAPI.Geometries;
 using Newtonsoft.Json;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
@@ -101,7 +102,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 .Query<VgObjectclasses>("select * from vg_objectclasses").ToList();
             if (isDeep == false) return objectclasseses;
             
-                List<VgObjectclasses> list = objectclasseses.FindAll(c => c.Fbmc == null || c.Fbmc=="").OrderByDescending(c=>c.Xssx).ToList();
+                List<VgObjectclasses> list = objectclasseses.FindAll(c => c.Fbmc == null || c.Fbmc=="").OrderBy(c=>c.Xssx).ToList();
                 List<VgObjectclasses> newList = new List<VgObjectclasses>(list);
                 foreach (VgObjectclasses objectClass in newList)
                 {
@@ -454,6 +455,23 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             return connection.Query<VgAreacodes>(sql);
 
         }
+
+        public void RecalculateDBExtent(out double xmin, out double ymin, out double xmax, out double ymax)
+        {
+            string sql = "SELECT MIN(extent_min_x) as MinX,MIN(extent_min_y) as MinY,MAX(extent_max_x) as MaxX,MAX(extent_max_Y) as MaxY from vector_layers_statistics;";
+            using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+            {
+                SQLiteDataReader reader = command.ExecuteReader();
+                reader.Read();
+                xmin = reader.GetDouble(0);
+                ymin = reader.GetDouble(1);
+                xmax = reader.GetDouble(2);
+                ymax = reader.GetDouble(3);
+                reader.Close();
+            }
+        }
+
+        
     }
 }
 

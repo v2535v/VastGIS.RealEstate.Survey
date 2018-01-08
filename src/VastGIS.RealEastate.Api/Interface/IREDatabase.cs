@@ -36,6 +36,8 @@ namespace VastGIS.RealEstate.Api.Interface
         void InitDatabase(int epsgCode);
 
         void LoadDataToMap(IMuteMap contextMap);
+
+        IEnvelope GetDatabaseEnvelope();
     }
 
    

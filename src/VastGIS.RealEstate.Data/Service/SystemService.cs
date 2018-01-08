@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using System.Data.SQLite;
+using GeoAPI.Geometries;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 using VastGIS.RealEstate.Data.Interface;
@@ -57,6 +58,9 @@ namespace VastGIS.RealEstate.Data.Service
 
         IEnumerable<VgAreacodes> GetAreaCodesByJB(string parentCode, int jb = 1);
 
+       
+
+        void RecalculateDBExtent(out double xmin, out double ymin, out double xmax, out double ymax);
     }
 }
 

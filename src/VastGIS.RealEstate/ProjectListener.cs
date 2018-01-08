@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
+using VastGIS.Api.Concrete;
 using VastGIS.Api.Enums;
 using VastGIS.Api.Helpers;
 using VastGIS.Api.Interfaces;
@@ -23,6 +27,8 @@ namespace VastGIS.Plugins.RealEstate
         private readonly IRealEstateEditingService _layerService;
         private RealEstateEditor _plugin;
         private ILayerService _olayerService;
+        private SynchronizationContext _syncContext;
+        private ISpatialReference _spatialReference;
 
         public ProjectListener(IAppContext context, RealEstateEditor plugin, IRealEstateEditingService layerService,ILayerService oLayerService)
         {
@@ -51,28 +57,88 @@ namespace VastGIS.Plugins.RealEstate
                 {
                     //VGLayerConfig config = new VGLayerConfig(_context, _plugin);
                     //config.AddLayersFromDb();
+
                     ((IRealEstateContext)_context).RealEstateDatabase.DatabaseName =
                         ReProjectHelper.GetProjectDatabase(_context.Project.Filename);
                     List<VgObjectclasses> classes = ((IRealEstateContext)_context).RealEstateDatabase.SystemService
                         .GetObjectclasseses(true);
-                    string connectionString = "Data Source=" +
-                                              ((IRealEstateContext)_context).RealEstateDatabase.DatabaseName;
-                    var ds = GeoSource.Open(((IRealEstateContext)_context).RealEstateDatabase.DatabaseName);
-                    
-                    _context.Map.Lock();
-                    _context.Legend.Lock();
-                    foreach (var oneclass in classes)
-                    {
-                        LoadDataToMap(ds,connectionString, oneclass,null);
-                    }
-                    _context.Map.Unlock();
-                    _context.Legend.Unlock();
-                    _context.Legend.Redraw();
+                    int srid = ((IRealEstateContext)_context).RealEstateDatabase.SystemService.GetSystemSRID();
+                    _spatialReference = new SpatialReference();
+                    _spatialReference.ImportFromEpsg(srid);
+                    //_context.Map.Projection = _spatialReference;
+                    string connectionString =((IRealEstateContext)_context).RealEstateDatabase.DatabaseName ;
+
+                    _syncContext = SynchronizationContext.Current;
+                    _olayerService.BeginBatch();
+                    Task.Factory.StartNew(() =>
+                        {
+                            foreach (var oneclass in classes)
+                            {
+                                if (oneclass.Dxlx == 0)
+                                {
+                                    ILegendGroup legendGroup = _context.Legend.Groups.Add(oneclass.Zwmc);
+                                    if (oneclass.SubClasses == null) continue;
+                                    foreach (var subClass in oneclass.SubClasses)
+                                    {
+                                        LoadDataToMap(connectionString, subClass, legendGroup);
+                                    }
+                                }
+                            }
+                            
+                        }).ContinueWith(t =>
+                        {
+                            _olayerService.EndBatch();
+                            ReorderLayers(classes);
+                            
+                        }, TaskScheduler.FromCurrentSynchronizationContext());
                 }
             }
         }
 
-        private void LoadDataToMap(IDatasource ds,string connectionString, VgObjectclasses oneclass,ILegendGroup parentGroup)
+        private void ReorderLayers(List<VgObjectclasses> classes)
+        {
+            foreach (var oneclass in classes)
+            {
+                if (oneclass.Dxlx > 0) continue;
+                int groupHandle = FindGroupHandle(oneclass.Zwmc);
+                foreach (var subClass in oneclass.SubClasses)
+                {
+                   
+                    int subHandle = FindLayerHandle(subClass.Zwmc);
+                    if (groupHandle > -1 && subHandle > -1)
+                    {
+                        _context.Legend.Layers.MoveLayer(subHandle, groupHandle);
+                    }
+                }
+            }
+        }
+
+        private int FindGroupHandle(string layerName)
+        {
+            var layers = _context.Legend.Groups;
+            for (int i = 0; i < layers.Count; i++)
+            {
+                var layer = layers[i];
+                Debug.WriteLine(layer.Text + ": " + layer.Handle.ToString());
+                if (layer.Text == layerName)
+                    return layer.Handle;
+            }
+            return -1;
+        }
+        private int FindLayerHandle(string layerName)
+        {
+            var layers = _context.Legend.Layers;
+            for (int i = 0; i < layers.Count; i++)
+            {
+                var layer = layers[i];
+                Debug.WriteLine(layer.Name + ": "+ layer.Handle.ToString());
+                if (layer.Name == layerName)
+                    return layer.Handle;
+            }
+            return -1;
+        }
+
+        private void LoadDataToMap(string connectionString, VgObjectclasses oneclass,ILegendGroup parentGroup)
         {
             string stepMsg = "";
             try
@@ -81,32 +147,43 @@ namespace VastGIS.Plugins.RealEstate
                 {
                     if (oneclass.SubClasses == null) return;
                     ILegendGroup legendGroup = _context.Legend.Groups.Add(oneclass.Zwmc);
+                    
                     stepMsg = oneclass.Zwmc;
                     foreach (var subClass in oneclass.SubClasses)
                     {
-                        LoadDataToMap(ds, connectionString, subClass, legendGroup);
-                       
+                        LoadDataToMap(connectionString, subClass, legendGroup);
                     }
                 }
                 else
                 {
-                    if (string.IsNullOrEmpty(oneclass.Filter))
+                    stepMsg = oneclass.Zwmc;
+                    var vectorLayer = new VectorLayer();
+                    vectorLayer.DynamicLoading = true;
+                    if (!string.IsNullOrEmpty(oneclass.Filter))
                     {
-                        stepMsg = oneclass.Zwmc;
-                        IVectorLayer vectorLayer = ((IVectorDatasource)ds).RunQuery(oneclass.Filter);
-                        vectorLayer.DynamicLoading = true;
-                        int handle = _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
-                        _context.Legend.Layers.ItemByHandle(handle).Name = oneclass.Zwmc;
-                        //_context.Legend.Layers.MoveLayer(handle, parentGroup.Handle);
+                        if (vectorLayer.Open(connectionString, oneclass.Filter,false))
+                        {
+                            
+                            //bool isDynamic = vectorLayer.DynamicLoading;
+                            //vectorLayer.DynamicLoading = true;
+                            var data = vectorLayer.Data;
+                            AddLayerToMap(vectorLayer, oneclass.Zwmc);
+                            
+                        }
                     }
                     else
                     {
-                        stepMsg = oneclass.Zwmc;
-                        IVectorLayer vectorLayer = ((IVectorDatasource)ds).GetLayerByName(oneclass.Mc, false);
-                        vectorLayer.DynamicLoading = true;
-                        int handle = _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
-                        _context.Legend.Layers.ItemByHandle(handle).Name = oneclass.Zwmc;
-                        //_context.Legend.Layers.MoveLayer(handle, parentGroup.Handle);
+                        if (vectorLayer.Open(connectionString, oneclass.Mc,false))
+                        {
+                            //bool isDynamic = vectorLayer.DynamicLoading;
+                            //vectorLayer.DynamicLoading = true;
+                           var data = vectorLayer.Data;
+                            AddLayerToMap(vectorLayer,oneclass.Zwmc);
+                            //_olayerService.AddDatasource(vectorLayer, oneclass.Zwmc);
+                            //int handle = _olayerService.LastLayerHandle;
+                            //ILegendLayer legendLayer = _context.Legend.Layers.ItemByHandle(handle);
+                            // legendLayer.Name = oneclass.Zwmc;
+                        }
                     }
 
                 }
@@ -117,6 +194,11 @@ namespace VastGIS.Plugins.RealEstate
                 return;
             }
             
+        }
+
+        private void AddLayerToMap(VectorLayer layer,string layerName)
+        {
+            _syncContext.Post(o => _olayerService.AddDatasource(layer,layerName), layer);
         }
 
         private void plugin_BeforeRemoveLayer(object sender, LayerCancelEventArgs e)

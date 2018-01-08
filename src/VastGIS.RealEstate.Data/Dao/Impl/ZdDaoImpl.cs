@@ -85,11 +85,34 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         command.CommandText =
                             string.Format("SELECT AddGeometryColumn('XZQ','geometry',{0},'POLYGON','XY',0);", srid);
                         command.ExecuteNonQuery();
+                    command.CommandText = CREATE_VIEW_XZQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_XZQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_XZQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_XZQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GEOMETRY_REGISTER_XZQVIEW;
+                    command.ExecuteNonQuery();
+
+
 
                     command.CommandText = CREATE_XZQJX;
                     command.ExecuteNonQuery();
                     command.CommandText =
                         string.Format("SELECT AddGeometryColumn('XZQJX','geometry',{0},'LINESTRING','XY',0);", srid);
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = CREATE_VIEW_XZQJX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_XZQJX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_XZQJX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_XZQJX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GEOMETRY_REGISTER_XZQJXVIEW;
                     command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_DJQ;
@@ -98,10 +121,32 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         string.Format("SELECT AddGeometryColumn('DJQ','geometry',{0},'POLYGON','XY',0);", srid);
                     command.ExecuteNonQuery();
 
+                    command.CommandText = CREATE_VIEW_DJQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_DJQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_DJQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_DJQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GEOMETRY_REGISTER_DJQVIEW;
+                    command.ExecuteNonQuery();
+
                     command.CommandText = CREATE_DJZQ;
                     command.ExecuteNonQuery();
                     command.CommandText =
                         string.Format("SELECT AddGeometryColumn('DJZQ','geometry',{0},'POLYGON','XY',0);", srid);
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = CREATE_VIEW_DJZQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_DJZQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_DJZQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_DJZQ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GEOMETRY_REGISTER_DJZQVIEW;
                     command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_ZDJBXX;
@@ -110,10 +155,31 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         string.Format("SELECT AddGeometryColumn('ZDJBXX','geometry',{0},'POLYGON','XY',0);", srid);
                     command.ExecuteNonQuery();
 
+                    command.CommandText = CREATE_VIEW_ZDJBXX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_ZDJBXX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_ZDJBXX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_ZDJBXX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GEOMETRY_REGISTER_ZDJBXXVIEW;
+                    command.ExecuteNonQuery();
+
                     command.CommandText = CREATE_JZD;
                     command.ExecuteNonQuery();
                     command.CommandText =
                         string.Format("SELECT AddGeometryColumn('JZD','geometry',{0},'POINT','XY',0);", srid);
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_VIEW_JZD;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_JZD;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_JZD;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_JZD;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GEOMETRY_REGISTER_JZDVIEW;
                     command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_JZX;
@@ -122,10 +188,32 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         string.Format("SELECT AddGeometryColumn('JZX','geometry',{0},'LINESTRING','XY',0);", srid);
                     command.ExecuteNonQuery();
 
+                    command.CommandText = CREATE_VIEW_JZX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_JZX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_JZX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_JZX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GEOMETRY_REGISTER_JZXVIEW;
+                    command.ExecuteNonQuery();
+
                     command.CommandText = CREATE_ZDJBXXZJ;
                     command.ExecuteNonQuery();
                     command.CommandText =
                         string.Format("SELECT AddGeometryColumn('ZDJBXXZJ','geometry',{0},'POINT','XY',0);", srid);
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = CREATE_VIEW_ZDJBXXZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_ZDJBXXZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_ZDJBXXZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_ZDJBXXZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GEOMETRY_REGISTER_ZDJBXXZJVIEW;
                     command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_JZDZJ;
@@ -134,14 +222,46 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         string.Format("SELECT AddGeometryColumn('JZDZJ','geometry',{0},'POINT','XY',0);", srid);
                     command.ExecuteNonQuery();
 
+                    command.CommandText = CREATE_VIEW_JZDZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_JZDZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_JZDZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_JZDZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GEOMETRY_REGISTER_JZDZJVIEW;
+                    command.ExecuteNonQuery();
+
                     command.CommandText = CREATE_JZXZJ;
                     command.ExecuteNonQuery();
                     command.CommandText =
                         string.Format("SELECT AddGeometryColumn('JZXZJ','geometry',{0},'POINT','XY',0);", srid);
                     command.ExecuteNonQuery();
 
+                    command.CommandText = CREATE_VIEW_JZXZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_JZXZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_JZXZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_JZXZJ;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GEOMETRY_REGISTER_JZXZJVIEW;
+                    command.ExecuteNonQuery();
+
                     command.CommandText = CREATE_ZDBHQK;
                     command.ExecuteNonQuery();
+
+                    command.CommandText = CREATE_VIEW_ZDBHQK;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_INSERT_TRIGGER_ZDBHQK;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_UPDATE_TRIGGER_ZDBHQK;
+                    command.ExecuteNonQuery();
+                    command.CommandText = CREATE_DELETE_TRIGGER_ZDBHQK;
+                    command.ExecuteNonQuery();
+                  
 
                     command.CommandText = CREATE_ZDTOJZD;
                     command.ExecuteNonQuery();
@@ -154,8 +274,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                           Mc="DJSJ",
                                                           Zwmc = "地籍数据",
                                                           Dxlx = 0,
-                                                          Xssx = 8
-                                                          
+                                                          Xssx = 10,
+                                                          Visible = true,
+                                                          Editable = true,
+                                                          Identify = true,
+                                                          Queryable = true,
+                                                          Snapable = true,
+
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -171,7 +296,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 1,
-                                            Filter = SELECT_DJQ
+                                            Filter = "DJQVIEW"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -187,7 +312,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 2,
-                                            Filter = SELECT_DJZQ
+                                            Filter = "DJZQVIEW"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -203,7 +328,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 3,
-                                            Filter =SELECT_ZDJBXX
+                                            Filter ="ZDJBXXVIEW"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -219,7 +344,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =4,
-                                            Filter =SELECT_ZDJBXXZJ
+                                            Filter = "ZDJBXXZJVIEW"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -235,7 +360,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =5,
-                                            Filter = SELECT_JZX
+                                            Filter = "JZXVIEW"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -251,7 +376,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 6,
-                                            Filter = SELECT_JZXZJ
+                                            Filter = "JZXZJVIEW"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -267,7 +392,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =7,
-                                            Filter = SELECT_JZD
+                                            Filter = "JZDVIEW"
                     };
                     objectclasses.Save(connection, GetSRID());
                     objectclasses = new VgObjectclasses()
@@ -283,7 +408,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =8,
-                                            Filter = SELECT_JZDZJ
+                                            Filter = "JZDZJVIEW"
                     };
                     objectclasses.Save(connection, GetSRID());
 

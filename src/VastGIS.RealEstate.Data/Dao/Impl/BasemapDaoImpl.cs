@@ -20,6 +20,53 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
     public partial class BasemapDaoImpl
     {
+        private string CREATE_VIEW_BASEMAPD = "CREATE VIEW DXTBASEMAPDVIEW AS select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTBASEMAPD Where [FLAGS] < 3;";
+
+        private string CREATE_INSERT_TRIGGER_BASEMAPD = "CREATE TRIGGER [vw_ins_DXTBASEMAPDVIEW] INSTEAD OF INSERT ON [DXTBASEMAPDVIEW] BEGIN  INSERT OR REPLACE INTO [DXTBASEMAPD] ([Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+
+        private string CREATE_UPDATE_TRIGGER_BASEMAPD = "CREATE TRIGGER [vw_upd_DXTBASEMAPDVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTBASEMAPDVIEW] BEGIN  Update [DXTBASEMAPD] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+
+        private string CREATE_DELETE_TRIGGER_BASEMAPD = "CREATE TRIGGER vw_del_DXTBASEMAPDVIEW INSTEAD OF DELETE ON DXTBASEMAPDVIEW BEGIN DELETE FROM DXTBASEMAPD WHERE ROWID=OLD.ROWID;END";
+
+        private string GEOMETRY_REGISTER_BASEMAPDVIEW = "insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtBASEMAPdview','geometry','rowid','dxtBASEMAPd','geometry',0)";
+
+        private string SELECT_DXTBASEMAPD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTBASEMAPD Where [FLAGS] < 3";
+
+        private string CREATE_VIEW_BASEMAPM = "CREATE VIEW DXTBASEMAPMVIEW AS select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTBASEMAPM Where [FLAGS] < 3;";
+
+        private string CREATE_INSERT_TRIGGER_BASEMAPM = "CREATE TRIGGER [vw_ins_DXTBASEMAPMVIEW] INSTEAD OF INSERT ON [DXTBASEMAPMVIEW] BEGIN  INSERT OR REPLACE INTO [DXTBASEMAPM] ([Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+
+        private string CREATE_UPDATE_TRIGGER_BASEMAPM = "CREATE TRIGGER [vw_upd_DXTBASEMAPMVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTBASEMAPMVIEW] BEGIN  Update [DXTBASEMAPM] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+
+        private string CREATE_DELETE_TRIGGER_BASEMAPM = "CREATE TRIGGER vw_del_DXTBASEMAPMVIEW INSTEAD OF DELETE ON DXTBASEMAPMVIEW BEGIN DELETE FROM DXTBASEMAPM WHERE ROWID=OLD.ROWID;END";
+
+        private string GEOMETRY_REGISTER_BASEMAPMVIEW = "insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtBASEMAPmview','geometry','rowid','dxtBASEMAPm','geometry',0)";
+        private string SELECT_DXTBASEMAPM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTBASEMAPM Where [FLAGS] < 3";
+
+        private string CREATE_VIEW_BASEMAPX = "CREATE VIEW DXTBASEMAPXVIEW AS select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTBASEMAPX Where [FLAGS] < 3;";
+
+        private string CREATE_INSERT_TRIGGER_BASEMAPX = "CREATE TRIGGER [vw_ins_DXTBASEMAPXVIEW] INSTEAD OF INSERT ON [DXTBASEMAPXVIEW] BEGIN  INSERT OR REPLACE INTO [DXTBASEMAPX] ([Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+
+        private string CREATE_UPDATE_TRIGGER_BASEMAPX = "CREATE TRIGGER [vw_upd_DXTBASEMAPXVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTBASEMAPXVIEW] BEGIN  Update [DXTBASEMAPX] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+
+        private string CREATE_DELETE_TRIGGER_BASEMAPX = "CREATE TRIGGER vw_del_DXTBASEMAPXVIEW INSTEAD OF DELETE ON DXTBASEMAPXVIEW BEGIN DELETE FROM DXTBASEMAPX WHERE ROWID=OLD.ROWID;END";
+
+        private string GEOMETRY_REGISTER_BASEMAPXVIEW = "insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtBASEMAPxview','geometry','rowid','dxtBASEMAPx','geometry',0)";
+        private string SELECT_DXTBASEMAPX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTBASEMAPX Where [FLAGS] < 3";
+
+        private string CREATE_VIEW_BASEMAPZJ = "CREATE VIEW DXTBASEMAPZJVIEW AS select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTBASEMAPZJ Where [FLAGS] < 3;";
+
+        private string CREATE_INSERT_TRIGGER_BASEMAPZJ = "CREATE TRIGGER [vw_ins_DXTBASEMAPZJVIEW] INSTEAD OF INSERT ON [DXTBASEMAPZJVIEW] BEGIN  INSERT OR REPLACE INTO [DXTBASEMAPZJ] ([Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[WBNR], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+
+        private string CREATE_UPDATE_TRIGGER_BASEMAPZJ = "CREATE TRIGGER [vw_upd_DXTBASEMAPZJVIEW] INSTEAD OF UPDATE OF [Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTBASEMAPZJVIEW] BEGIN  Update [DXTBASEMAPZJ] SET [Id]=NEW.[Id], [WBNR]=NEW.[WBNR], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+
+        private string CREATE_DELETE_TRIGGER_BASEMAPZJ = "CREATE TRIGGER vw_del_DXTBASEMAPZJVIEW INSTEAD OF DELETE ON DXTBASEMAPZJVIEW BEGIN DELETE FROM DXTBASEMAPZJ WHERE ROWID=OLD.ROWID;END";
+
+        private string GEOMETRY_REGISTER_BASEMAPZJVIEW = "insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtBASEMAPzjview','geometry','rowid','dxtBASEMAPzj','geometry',0)";
+        private string SELECT_DXTBASEMAPZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTBASEMAPZJ Where [FLAGS] < 3";
+
+
+
         string SELECT_BASEMAPD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from [DXT_LAYERNAME_D] Where [FLAGS] < 3";
 
         string SELECT_BASEMAPM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from [DXT_LAYERNAME_M] Where [FLAGS] < 3";
@@ -70,11 +117,33 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                             string.Format("SELECT AddGeometryColumn('{1}D','geometry',{0},'POINT','XY',0);", srid,tbName);
                         command.ExecuteNonQuery();
 
+                        command.CommandText = CREATE_VIEW_BASEMAPD.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_INSERT_TRIGGER_BASEMAPD.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_UPDATE_TRIGGER_BASEMAPD.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_DELETE_TRIGGER_BASEMAPD.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = GEOMETRY_REGISTER_BASEMAPDVIEW.Replace("BASEMAP", layer.ToLower());
+                        command.ExecuteNonQuery();
+
                         command.CommandText = CREATE_BASEMAPX.Replace("_LAYERNAME_", layer);
                         command.ExecuteNonQuery();
                         command.CommandText =
                             string.Format("SELECT AddGeometryColumn('{1}X','geometry',{0},'LINESTRING','XY',0);",
                                 srid, tbName);
+                        command.ExecuteNonQuery();
+
+                        command.CommandText = CREATE_VIEW_BASEMAPX.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_INSERT_TRIGGER_BASEMAPX.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_UPDATE_TRIGGER_BASEMAPX.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_DELETE_TRIGGER_BASEMAPX.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = GEOMETRY_REGISTER_BASEMAPXVIEW.Replace("BASEMAP", layer.ToLower());
                         command.ExecuteNonQuery();
 
                         command.CommandText = CREATE_BASEMAPM.Replace("_LAYERNAME_", layer);
@@ -83,11 +152,45 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                             string.Format("SELECT AddGeometryColumn('{1}M','geometry',{0},'POLYGON','XY',0);", srid, tbName);
                         command.ExecuteNonQuery();
 
+                        command.CommandText = CREATE_VIEW_BASEMAPM.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_INSERT_TRIGGER_BASEMAPM.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_UPDATE_TRIGGER_BASEMAPM.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_DELETE_TRIGGER_BASEMAPM.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = GEOMETRY_REGISTER_BASEMAPMVIEW.Replace("BASEMAP", layer.ToLower());
+                        command.ExecuteNonQuery();
+
                         command.CommandText = CREATE_BASEMAPZJ.Replace("_LAYERNAME_", layer);
                         command.ExecuteNonQuery();
                         command.CommandText =
                             string.Format("SELECT AddGeometryColumn('{1}ZJ','geometry',{0},'POINT','XY',0);", srid, tbName);
                         command.ExecuteNonQuery();
+
+                        command.CommandText = CREATE_VIEW_BASEMAPZJ.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_INSERT_TRIGGER_BASEMAPZJ.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_UPDATE_TRIGGER_BASEMAPZJ.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = CREATE_DELETE_TRIGGER_BASEMAPZJ.Replace("BASEMAP", layer);
+                        command.ExecuteNonQuery();
+                        command.CommandText = GEOMETRY_REGISTER_BASEMAPZJVIEW.Replace("BASEMAP", layer.ToLower());
+                        command.ExecuteNonQuery();
+
+                        //command.CommandText = string.Format("CREATE VIEW DXT{0}DVIEW AS {1}", layer,
+                        //    SELECT_BASEMAPD.Replace("_LAYER_NAME_", layer));
+                        //command.ExecuteNonQuery();
+                        //command.CommandText = string.Format("CREATE VIEW DXT{0}XVIEW AS {1}", layer,
+                        //    SELECT_BASEMAPX.Replace("_LAYER_NAME_", layer));
+                        //command.ExecuteNonQuery();
+                        //command.CommandText = string.Format("CREATE VIEW DXT{0}MVIEW AS {1}", layer,
+                        //    SELECT_BASEMAPM.Replace("_LAYER_NAME_", layer));
+                        //command.CommandText = string.Format("CREATE VIEW DXT{0}ZJVIEW AS {1}", layer,
+                        //    SELECT_BASEMAPZJ.Replace("_LAYER_NAME_", layer));
+                        //command.ExecuteNonQuery();
 
                         objectclasses = new VgObjectclasses()
                                                             {
@@ -115,8 +218,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx = 4,
-                                                Filter = SELECT_BASEMAPD.Replace("_LAYERNAME_", layer) //string.Format("Select * from {0}D Where Flags<3",tbName))
-                    };
+                                                Filter = tbName + "DVIEW" //string.Format("Select * from {0}D Where Flags<3",tbName))
+                        };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
                                             {
@@ -131,7 +234,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx = 2,
-                                                Filter = SELECT_BASEMAPX.Replace("_LAYERNAME_", layer) //string.Format("Select * from {0}D Where Flags<3",tbName))
+                                                Filter = tbName + "XVIEW"//string.Format("Select * from {0}D Where Flags<3",tbName))
                         };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
@@ -147,7 +250,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx =1,
-                                                Filter = SELECT_BASEMAPM.Replace("_LAYERNAME_", layer) //string.Format("Select * from {0}D Where Flags<3",tbName))
+                                                Filter = tbName + "MVIEW" //string.Format("Select * from {0}D Where Flags<3",tbName))
                         };
                         objectclasses.Save(connection, srid);
                         objectclasses = new VgObjectclasses()
@@ -163,7 +266,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx = 3,
-                                                Filter = SELECT_BASEMAPZJ.Replace("_LAYERNAME_", layer) //string.Format("Select * from {0}D Where Flags<3",tbName))
+                                                Filter = tbName + "ZJVIEW" //string.Format("Select * from {0}D Where Flags<3",tbName))
                         };
                         objectclasses.Save(connection, srid);
                     }

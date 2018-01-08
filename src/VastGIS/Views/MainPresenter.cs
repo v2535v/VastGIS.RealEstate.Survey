@@ -89,6 +89,7 @@ namespace VastGIS.Views
 
                 view.Map.Initialize();
                 view.Map.ApplyConfig(configService);
+                
 
                 view.ViewClosing += OnViewClosing;
                 view.ViewUpdating += OnViewUpdating;

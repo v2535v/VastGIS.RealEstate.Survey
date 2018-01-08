@@ -15,31 +15,128 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
     public partial class ZdDaoImpl:SQLiteDao,ZdDao
     {
         //private ZdDao _zdDao;
-        string SELECT_DJQ = "select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJQ Where [FLAGS] < 3";
+        private string CREATE_VIEW_DJQ="CREATE VIEW DJQVIEW AS select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJQ Where [FLAGS] < 3;";
         
-        string SELECT_DJZQ = "select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJZQ Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_DJQ="CREATE TRIGGER [vw_ins_DJQVIEW] INSTEAD OF INSERT ON [DJQVIEW] BEGIN  INSERT OR REPLACE INTO [DJQ] ([Id], [YSDM], [DJQDM], [DJQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[YSDM], NEW.[DJQDM], NEW.[DJQMC], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_JZD = "select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from JZD Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_DJQ="CREATE TRIGGER [vw_upd_DJQVIEW] INSTEAD OF UPDATE OF [Id], [YSDM], [DJQDM], [DJQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry] ON [DJQVIEW] BEGIN  Update [DJQ] SET [Id]=NEW.[Id], [YSDM]=NEW.[YSDM], [DJQDM]=NEW.[DJQDM], [DJQMC]=NEW.[DJQMC], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_JZDZJ = "select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZDZJ Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DJQ="CREATE TRIGGER vw_del_DJQVIEW INSTEAD OF DELETE ON DJQVIEW BEGIN DELETE FROM DJQ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DJQVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('djqview','geometry','rowid','djq','geometry',0)";
+        private string SELECT_DJQ = "select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJQ Where [FLAGS] < 3";
         
-        string SELECT_JZX = "select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,geometry from JZX Where [FLAGS] < 3";
+        private string CREATE_VIEW_DJZQ="CREATE VIEW DJZQVIEW AS select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJZQ Where [FLAGS] < 3;";
         
-        string SELECT_JZXZJ = "select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZXZJ Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_DJZQ="CREATE TRIGGER [vw_ins_DJZQVIEW] INSTEAD OF INSERT ON [DJZQVIEW] BEGIN  INSERT OR REPLACE INTO [DJZQ] ([Id], [YSDM], [DJZQDM], [DJZQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[YSDM], NEW.[DJZQDM], NEW.[DJZQMC], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_XZQ = "select Id,YSDM,XZQDM,XZQMC,XZQMJ,DatabaseId,FLAGS,geometry from XZQ Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_DJZQ="CREATE TRIGGER [vw_upd_DJZQVIEW] INSTEAD OF UPDATE OF [Id], [YSDM], [DJZQDM], [DJZQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry] ON [DJZQVIEW] BEGIN  Update [DJZQ] SET [Id]=NEW.[Id], [YSDM]=NEW.[YSDM], [DJZQDM]=NEW.[DJZQDM], [DJZQMC]=NEW.[DJZQMC], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_XZQJX = "select Id,YSDM,JXLX,JXXZ,JXSM,DatabaseId,FLAGS,geometry from XZQJX Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DJZQ="CREATE TRIGGER vw_del_DJZQVIEW INSTEAD OF DELETE ON DJZQVIEW BEGIN DELETE FROM DJZQ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DJZQVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('djzqview','geometry','rowid','djzq','geometry',0)";
+        private string SELECT_DJZQ = "select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJZQ Where [FLAGS] < 3";
         
-        string SELECT_ZDBHQK = "select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK Where [FLAGS] < 3";
+        private string CREATE_VIEW_JZD="CREATE VIEW JZDVIEW AS select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from JZD Where [FLAGS] < 3;";
         
-        string SELECT_ZDJBXX = "select Id,YSDM,ZDDM,BDCDYH,ZDTZM,ZL,ZDMJ,MJDW,YT,DJ,JG,QLLX,QLXZ,QLSDFS,RJL,JZMD,JZXG,ZDSZD,ZDSZN,ZDSZX,ZDSZB,ZDT,TFH,DJH,DAH,BZ,ZT,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from ZDJBXX Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_JZD="CREATE TRIGGER [vw_ins_JZDVIEW] INSTEAD OF INSERT ON [JZDVIEW] BEGIN  INSERT OR REPLACE INTO [JZD] ([Id], [ZDZHDM], [YSDM], [JZDH], [JZDGZBH], [SXH], [JBLX], [JZDLX], [XZBZ], [YZBZ], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[ZDZHDM], NEW.[YSDM], NEW.[JZDH], NEW.[JZDGZBH], NEW.[SXH], NEW.[JBLX], NEW.[JZDLX], NEW.[XZBZ], NEW.[YZBZ], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_ZDJBXXZJ = "select Id,GLYSDM,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from ZDJBXXZJ Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_JZD="CREATE TRIGGER [vw_upd_JZDVIEW] INSTEAD OF UPDATE OF [Id], [ZDZHDM], [YSDM], [JZDH], [JZDGZBH], [SXH], [JBLX], [JZDLX], [XZBZ], [YZBZ], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry] ON [JZDVIEW] BEGIN  Update [JZD] SET [Id]=NEW.[Id], [ZDZHDM]=NEW.[ZDZHDM], [YSDM]=NEW.[YSDM], [JZDH]=NEW.[JZDH], [JZDGZBH]=NEW.[JZDGZBH], [SXH]=NEW.[SXH], [JBLX]=NEW.[JBLX], [JZDLX]=NEW.[JZDLX], [XZBZ]=NEW.[XZBZ], [YZBZ]=NEW.[YZBZ], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_ZDTOJZD = "select Id,ZD_WYDM,JZD_WYDM,SXH from ZDTOJZD";
+        private string CREATE_DELETE_TRIGGER_JZD="CREATE TRIGGER vw_del_JZDVIEW INSTEAD OF DELETE ON JZDVIEW BEGIN DELETE FROM JZD WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_JZDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzdview','geometry','rowid','jzd','geometry',0)";
+        private string SELECT_JZD = "select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from JZD Where [FLAGS] < 3";
         
-        string SELECT_ZDTOJZX = "select Id,ZD_WYDM,JZX_WYDM,SXH from ZDTOJZX";
+        private string CREATE_VIEW_JZDZJ="CREATE VIEW JZDZJVIEW AS select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZDZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_JZDZJ="CREATE TRIGGER [vw_ins_JZDZJVIEW] INSTEAD OF INSERT ON [JZDZJVIEW] BEGIN  INSERT OR REPLACE INTO [JZDZJ] ([Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[GLYSBH], NEW.[YSDM], NEW.[ZJNR], NEW.[ZT], NEW.[YS], NEW.[BS], NEW.[XZ], NEW.[XHX], NEW.[KD], NEW.[GD], NEW.[ZJDZXJXZB], NEW.[ZJDZXJYZB], NEW.[ZJFX], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_JZDZJ="CREATE TRIGGER [vw_upd_JZDZJVIEW] INSTEAD OF UPDATE OF [Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry] ON [JZDZJVIEW] BEGIN  Update [JZDZJ] SET [Id]=NEW.[Id], [GLYSBH]=NEW.[GLYSBH], [YSDM]=NEW.[YSDM], [ZJNR]=NEW.[ZJNR], [ZT]=NEW.[ZT], [YS]=NEW.[YS], [BS]=NEW.[BS], [XZ]=NEW.[XZ], [XHX]=NEW.[XHX], [KD]=NEW.[KD], [GD]=NEW.[GD], [ZJDZXJXZB]=NEW.[ZJDZXJXZB], [ZJDZXJYZB]=NEW.[ZJDZXJYZB], [ZJFX]=NEW.[ZJFX], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_JZDZJ="CREATE TRIGGER vw_del_JZDZJVIEW INSTEAD OF DELETE ON JZDZJVIEW BEGIN DELETE FROM JZDZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_JZDZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzdzjview','geometry','rowid','jzdzj','geometry',0)";
+        private string SELECT_JZDZJ = "select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZDZJ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_JZX="CREATE VIEW JZXVIEW AS select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,geometry from JZX Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_JZX="CREATE TRIGGER [vw_ins_JZXVIEW] INSTEAD OF INSERT ON [JZXVIEW] BEGIN  INSERT OR REPLACE INTO [JZX] ([Id], [ZDZHDM], [YSDM], [JZXGZBH], [JZXCD], [JZXLB], [JZXWZ], [JXXZ], [QSJXXYSBH], [QSJXXYS], [QSZYYYSBH], [QSZYYYS], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [QSJZDBH], [JZJZDBH], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[ZDZHDM], NEW.[YSDM], NEW.[JZXGZBH], NEW.[JZXCD], NEW.[JZXLB], NEW.[JZXWZ], NEW.[JXXZ], NEW.[QSJXXYSBH], NEW.[QSJXXYS], NEW.[QSZYYYSBH], NEW.[QSZYYYS], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[QSJZDBH], NEW.[JZJZDBH], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_JZX="CREATE TRIGGER [vw_upd_JZXVIEW] INSTEAD OF UPDATE OF [Id], [ZDZHDM], [YSDM], [JZXGZBH], [JZXCD], [JZXLB], [JZXWZ], [JXXZ], [QSJXXYSBH], [QSJXXYS], [QSZYYYSBH], [QSZYYYS], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [QSJZDBH], [JZJZDBH], [DatabaseId], [FLAGS], [geometry] ON [JZXVIEW] BEGIN  Update [JZX] SET [Id]=NEW.[Id], [ZDZHDM]=NEW.[ZDZHDM], [YSDM]=NEW.[YSDM], [JZXGZBH]=NEW.[JZXGZBH], [JZXCD]=NEW.[JZXCD], [JZXLB]=NEW.[JZXLB], [JZXWZ]=NEW.[JZXWZ], [JXXZ]=NEW.[JXXZ], [QSJXXYSBH]=NEW.[QSJXXYSBH], [QSJXXYS]=NEW.[QSJXXYS], [QSZYYYSBH]=NEW.[QSZYYYSBH], [QSZYYYS]=NEW.[QSZYYYS], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [QSJZDBH]=NEW.[QSJZDBH], [JZJZDBH]=NEW.[JZJZDBH], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_JZX="CREATE TRIGGER vw_del_JZXVIEW INSTEAD OF DELETE ON JZXVIEW BEGIN DELETE FROM JZX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_JZXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzxview','geometry','rowid','jzx','geometry',0)";
+        private string SELECT_JZX = "select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,geometry from JZX Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_JZXZJ="CREATE VIEW JZXZJVIEW AS select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZXZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_JZXZJ="CREATE TRIGGER [vw_ins_JZXZJVIEW] INSTEAD OF INSERT ON [JZXZJVIEW] BEGIN  INSERT OR REPLACE INTO [JZXZJ] ([Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[GLYSBH], NEW.[YSDM], NEW.[ZJNR], NEW.[ZT], NEW.[YS], NEW.[BS], NEW.[XZ], NEW.[XHX], NEW.[KD], NEW.[GD], NEW.[ZJDZXJXZB], NEW.[ZJDZXJYZB], NEW.[ZJFX], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_JZXZJ="CREATE TRIGGER [vw_upd_JZXZJVIEW] INSTEAD OF UPDATE OF [Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry] ON [JZXZJVIEW] BEGIN  Update [JZXZJ] SET [Id]=NEW.[Id], [GLYSBH]=NEW.[GLYSBH], [YSDM]=NEW.[YSDM], [ZJNR]=NEW.[ZJNR], [ZT]=NEW.[ZT], [YS]=NEW.[YS], [BS]=NEW.[BS], [XZ]=NEW.[XZ], [XHX]=NEW.[XHX], [KD]=NEW.[KD], [GD]=NEW.[GD], [ZJDZXJXZB]=NEW.[ZJDZXJXZB], [ZJDZXJYZB]=NEW.[ZJDZXJYZB], [ZJFX]=NEW.[ZJFX], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_JZXZJ="CREATE TRIGGER vw_del_JZXZJVIEW INSTEAD OF DELETE ON JZXZJVIEW BEGIN DELETE FROM JZXZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_JZXZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzxzjview','geometry','rowid','jzxzj','geometry',0)";
+        private string SELECT_JZXZJ = "select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZXZJ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_XZQ="CREATE VIEW XZQVIEW AS select Id,YSDM,XZQDM,XZQMC,XZQMJ,DatabaseId,FLAGS,geometry from XZQ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_XZQ="CREATE TRIGGER [vw_ins_XZQVIEW] INSTEAD OF INSERT ON [XZQVIEW] BEGIN  INSERT OR REPLACE INTO [XZQ] ([Id], [YSDM], [XZQDM], [XZQMC], [XZQMJ], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[YSDM], NEW.[XZQDM], NEW.[XZQMC], NEW.[XZQMJ], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_XZQ="CREATE TRIGGER [vw_upd_XZQVIEW] INSTEAD OF UPDATE OF [Id], [YSDM], [XZQDM], [XZQMC], [XZQMJ], [DatabaseId], [FLAGS], [geometry] ON [XZQVIEW] BEGIN  Update [XZQ] SET [Id]=NEW.[Id], [YSDM]=NEW.[YSDM], [XZQDM]=NEW.[XZQDM], [XZQMC]=NEW.[XZQMC], [XZQMJ]=NEW.[XZQMJ], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_XZQ="CREATE TRIGGER vw_del_XZQVIEW INSTEAD OF DELETE ON XZQVIEW BEGIN DELETE FROM XZQ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_XZQVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('xzqview','geometry','rowid','xzq','geometry',0)";
+        private string SELECT_XZQ = "select Id,YSDM,XZQDM,XZQMC,XZQMJ,DatabaseId,FLAGS,geometry from XZQ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_XZQJX="CREATE VIEW XZQJXVIEW AS select Id,YSDM,JXLX,JXXZ,JXSM,DatabaseId,FLAGS,geometry from XZQJX Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_XZQJX="CREATE TRIGGER [vw_ins_XZQJXVIEW] INSTEAD OF INSERT ON [XZQJXVIEW] BEGIN  INSERT OR REPLACE INTO [XZQJX] ([Id], [YSDM], [JXLX], [JXXZ], [JXSM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[YSDM], NEW.[JXLX], NEW.[JXXZ], NEW.[JXSM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_XZQJX="CREATE TRIGGER [vw_upd_XZQJXVIEW] INSTEAD OF UPDATE OF [Id], [YSDM], [JXLX], [JXXZ], [JXSM], [DatabaseId], [FLAGS], [geometry] ON [XZQJXVIEW] BEGIN  Update [XZQJX] SET [Id]=NEW.[Id], [YSDM]=NEW.[YSDM], [JXLX]=NEW.[JXLX], [JXXZ]=NEW.[JXXZ], [JXSM]=NEW.[JXSM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_XZQJX="CREATE TRIGGER vw_del_XZQJXVIEW INSTEAD OF DELETE ON XZQJXVIEW BEGIN DELETE FROM XZQJX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_XZQJXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('xzqjxview','geometry','rowid','xzqjx','geometry',0)";
+        private string SELECT_XZQJX = "select Id,YSDM,JXLX,JXXZ,JXSM,DatabaseId,FLAGS,geometry from XZQJX Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_ZDBHQK="CREATE VIEW ZDBHQKVIEW AS select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_ins_ZDBHQKVIEW] INSTEAD OF INSERT ON [ZDBHQKVIEW] BEGIN  INSERT OR REPLACE INTO [ZDBHQK] ([Id], [ZDDM], [BHYY], [BHNR], [DJSJ], [DBR], [FJ], [DatabaseId], [FLAGS]) VALUES ( NEW.[Id], NEW.[ZDDM], NEW.[BHYY], NEW.[BHNR], NEW.[DJSJ], NEW.[DBR], NEW.[FJ], NEW.[DatabaseId], NEW.[FLAGS]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_upd_ZDBHQKVIEW] INSTEAD OF UPDATE OF [Id], [ZDDM], [BHYY], [BHNR], [DJSJ], [DBR], [FJ], [DatabaseId], [FLAGS] ON [ZDBHQKVIEW] BEGIN  Update [ZDBHQK] SET [Id]=NEW.[Id], [ZDDM]=NEW.[ZDDM], [BHYY]=NEW.[BHYY], [BHNR]=NEW.[BHNR], [DJSJ]=NEW.[DJSJ], [DBR]=NEW.[DBR], [FJ]=NEW.[FJ], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_ZDBHQK="CREATE TRIGGER vw_del_ZDBHQKVIEW INSTEAD OF DELETE ON ZDBHQKVIEW BEGIN DELETE FROM ZDBHQK WHERE ROWID=OLD.ROWID;END";
+        private string SELECT_ZDBHQK = "select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_ZDJBXX="CREATE VIEW ZDJBXXVIEW AS select Id,YSDM,ZDDM,BDCDYH,ZDTZM,ZL,ZDMJ,MJDW,YT,DJ,JG,QLLX,QLXZ,QLSDFS,RJL,JZMD,JZXG,ZDSZD,ZDSZN,ZDSZX,ZDSZB,ZDT,TFH,DJH,DAH,BZ,ZT,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from ZDJBXX Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_ZDJBXX="CREATE TRIGGER [vw_ins_ZDJBXXVIEW] INSTEAD OF INSERT ON [ZDJBXXVIEW] BEGIN  INSERT OR REPLACE INTO [ZDJBXX] ([Id], [YSDM], [ZDDM], [BDCDYH], [ZDTZM], [ZL], [ZDMJ], [MJDW], [YT], [DJ], [JG], [QLLX], [QLXZ], [QLSDFS], [RJL], [JZMD], [JZXG], [ZDSZD], [ZDSZN], [ZDSZX], [ZDSZB], [ZDT], [TFH], [DJH], [DAH], [BZ], [ZT], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[YSDM], NEW.[ZDDM], NEW.[BDCDYH], NEW.[ZDTZM], NEW.[ZL], NEW.[ZDMJ], NEW.[MJDW], NEW.[YT], NEW.[DJ], NEW.[JG], NEW.[QLLX], NEW.[QLXZ], NEW.[QLSDFS], NEW.[RJL], NEW.[JZMD], NEW.[JZXG], NEW.[ZDSZD], NEW.[ZDSZN], NEW.[ZDSZX], NEW.[ZDSZB], NEW.[ZDT], NEW.[TFH], NEW.[DJH], NEW.[DAH], NEW.[BZ], NEW.[ZT], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_ZDJBXX="CREATE TRIGGER [vw_upd_ZDJBXXVIEW] INSTEAD OF UPDATE OF [Id], [YSDM], [ZDDM], [BDCDYH], [ZDTZM], [ZL], [ZDMJ], [MJDW], [YT], [DJ], [JG], [QLLX], [QLXZ], [QLSDFS], [RJL], [JZMD], [JZXG], [ZDSZD], [ZDSZN], [ZDSZX], [ZDSZB], [ZDT], [TFH], [DJH], [DAH], [BZ], [ZT], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry] ON [ZDJBXXVIEW] BEGIN  Update [ZDJBXX] SET [Id]=NEW.[Id], [YSDM]=NEW.[YSDM], [ZDDM]=NEW.[ZDDM], [BDCDYH]=NEW.[BDCDYH], [ZDTZM]=NEW.[ZDTZM], [ZL]=NEW.[ZL], [ZDMJ]=NEW.[ZDMJ], [MJDW]=NEW.[MJDW], [YT]=NEW.[YT], [DJ]=NEW.[DJ], [JG]=NEW.[JG], [QLLX]=NEW.[QLLX], [QLXZ]=NEW.[QLXZ], [QLSDFS]=NEW.[QLSDFS], [RJL]=NEW.[RJL], [JZMD]=NEW.[JZMD], [JZXG]=NEW.[JZXG], [ZDSZD]=NEW.[ZDSZD], [ZDSZN]=NEW.[ZDSZN], [ZDSZX]=NEW.[ZDSZX], [ZDSZB]=NEW.[ZDSZB], [ZDT]=NEW.[ZDT], [TFH]=NEW.[TFH], [DJH]=NEW.[DJH], [DAH]=NEW.[DAH], [BZ]=NEW.[BZ], [ZT]=NEW.[ZT], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_ZDJBXX="CREATE TRIGGER vw_del_ZDJBXXVIEW INSTEAD OF DELETE ON ZDJBXXVIEW BEGIN DELETE FROM ZDJBXX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_ZDJBXXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('zdjbxxview','geometry','rowid','zdjbxx','geometry',0)";
+        private string SELECT_ZDJBXX = "select Id,YSDM,ZDDM,BDCDYH,ZDTZM,ZL,ZDMJ,MJDW,YT,DJ,JG,QLLX,QLXZ,QLSDFS,RJL,JZMD,JZXG,ZDSZD,ZDSZN,ZDSZX,ZDSZB,ZDT,TFH,DJH,DAH,BZ,ZT,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from ZDJBXX Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_ZDJBXXZJ="CREATE VIEW ZDJBXXZJVIEW AS select Id,GLYSDM,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from ZDJBXXZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_ZDJBXXZJ="CREATE TRIGGER [vw_ins_ZDJBXXZJVIEW] INSTEAD OF INSERT ON [ZDJBXXZJVIEW] BEGIN  INSERT OR REPLACE INTO [ZDJBXXZJ] ([Id], [GLYSDM], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[GLYSDM], NEW.[YSDM], NEW.[ZJNR], NEW.[ZT], NEW.[YS], NEW.[BS], NEW.[XZ], NEW.[XHX], NEW.[KD], NEW.[GD], NEW.[ZJDZXJXZB], NEW.[ZJDZXJYZB], NEW.[ZJFX], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_ZDJBXXZJ="CREATE TRIGGER [vw_upd_ZDJBXXZJVIEW] INSTEAD OF UPDATE OF [Id], [GLYSDM], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry] ON [ZDJBXXZJVIEW] BEGIN  Update [ZDJBXXZJ] SET [Id]=NEW.[Id], [GLYSDM]=NEW.[GLYSDM], [YSDM]=NEW.[YSDM], [ZJNR]=NEW.[ZJNR], [ZT]=NEW.[ZT], [YS]=NEW.[YS], [BS]=NEW.[BS], [XZ]=NEW.[XZ], [XHX]=NEW.[XHX], [KD]=NEW.[KD], [GD]=NEW.[GD], [ZJDZXJXZB]=NEW.[ZJDZXJXZB], [ZJDZXJYZB]=NEW.[ZJDZXJYZB], [ZJFX]=NEW.[ZJFX], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_ZDJBXXZJ="CREATE TRIGGER vw_del_ZDJBXXZJVIEW INSTEAD OF DELETE ON ZDJBXXZJVIEW BEGIN DELETE FROM ZDJBXXZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_ZDJBXXZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('zdjbxxzjview','geometry','rowid','zdjbxxzj','geometry',0)";
+        private string SELECT_ZDJBXXZJ = "select Id,GLYSDM,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from ZDJBXXZJ Where [FLAGS] < 3";
+        
+        private string SELECT_ZDTOJZD = "select Id,ZD_WYDM,JZD_WYDM,SXH from ZDTOJZD";
+        
+        private string SELECT_ZDTOJZX = "select Id,ZD_WYDM,JZX_WYDM,SXH from ZDTOJZX";
         
         
         ///Djq函数

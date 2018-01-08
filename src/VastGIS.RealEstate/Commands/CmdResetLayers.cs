@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -38,55 +39,23 @@ namespace VastGIS.Plugins.RealEstate.Commands
 
         public override void OnClick()
         {
-           
-            _context.Legend.Layers.Clear();
-            //_context.Map.Layers.Clear();
-           
-            _layerService = _context.Container.GetSingleton<ILayerService>();
-            ((IRealEstateContext)_context).RealEstateDatabase.DatabaseName =
-                ReProjectHelper.GetProjectDatabase(_context.Project.Filename);
-            List<VgObjectclasses> classes = ((IRealEstateContext)_context).RealEstateDatabase.SystemService
-                .GetObjectclasseses(true);
-            string connectionString = "Data Source=" +
-                                      ((IRealEstateContext)_context).RealEstateDatabase.DatabaseName;
-            var ds = GeoSource.Open(((IRealEstateContext)_context).RealEstateDatabase.DatabaseName);
-            foreach (var oneclass in classes)
+
+            IEnvelope envelope = ((IRealEstateContext)_context).RealEstateDatabase.GetDatabaseEnvelope();
+
+            foreach (var layer in _context.Map.Layers)
             {
-                LoadDataToMap(ds, connectionString, oneclass);
+                layer.VectorSource.ReloadFromSource();
+                
+                   var data=layer.VectorSource.Data;
+                if(data.NumFeatures>0)
+                    Debug.WriteLine(string.Format("{0} has {1} features",layer.Name,data.NumFeatures));
             }
+            _context.Map.ZoomToExtents(envelope);
 
         }
 
 
-        private void LoadDataToMap(IDatasource ds, string connectionString, VgObjectclasses oneclass)
-        {
-            if (oneclass.Dxlx == 0)
-            {
-                if (oneclass.SubClasses == null) return;
-                foreach (var subClass in oneclass.SubClasses)
-                {
-                    LoadDataToMap(ds, connectionString, subClass);
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(oneclass.Filter))
-                {
-                    IVectorLayer vectorLayer = ((IVectorDatasource)ds).RunQuery(oneclass.Filter);
-                    vectorLayer.DynamicLoading = true;
-                    _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
-                }
-                else
-                {
-                    IVectorLayer vectorLayer = ((IVectorDatasource)ds).GetLayerByName(oneclass.Mc, false);
-                    vectorLayer.DynamicLoading = true;
-                    _context.Map.Layers.Add(vectorLayer, (bool)oneclass.Visible);
-                }
-
-            }
-
-        }
-
+       
 
     }
 }

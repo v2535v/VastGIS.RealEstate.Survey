@@ -652,14 +652,18 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
                 }
                 //查询点
+                string targetTable = "";
                 if (!string.IsNullOrWhiteSpace(cadLayerName) && !string.IsNullOrEmpty(cadLayerName))
+                {
                     sql = string.Format(
                         @"INSERT INTO DXT{0}D ([geometry],[TC],[CASSDM],[FSXX1],[FSXX2],[XZJD],[Fh],[YSDM])" +
                         " SELECT [a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
                         "   [a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
                         "   [a].[Fsxx2] AS [Fsxx2], [a].[Xzjd] AS [Xzjd], [a].[Fh] AS [Fh]," +
-                        "   [a].[YSDM] AS [YSDM] " + " FROM [TmpCaddView] AS [a]" + " WHERE [a].[Tc]='{0}'", cadLayerName
-                        );
+                        "   [a].[YSDM] AS [YSDM] " + " FROM [TmpCaddView] AS [a]" + " WHERE [a].[Tc]='{0}'",
+                        cadLayerName);
+                    targetTable = "DXT" + cadLayerName + "D";
+                }
                 else
                 {
                     sql = string.Format(
@@ -668,6 +672,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         "   [a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
                         "   [a].[Fsxx2] AS [Fsxx2], [a].[Xzjd] AS [Xzjd], [a].[Fh] AS [Fh]," +
                         "   [a].[YSDM] AS [YSDM] " + " FROM [TmpCaddView] AS [a]");
+                    targetTable = "DXTQTD";
                 }
                 if (!string.IsNullOrEmpty(fileName))
                 {
@@ -675,7 +680,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 }
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
-                
+
+                command.CommandText = string.Format("SELECT UpdateLayerStatistics('{0}');", targetTable);
+                command.ExecuteNonQuery();
+
+                command.CommandText = string.Format("SELECT UpdateLayerStatistics('{0}VIEW');", targetTable);
+                command.ExecuteNonQuery();
+
+
+
                 sql = string.IsNullOrWhiteSpace(cadLayerName)
                           ? "delete from TmpCadd":string.Format(
                               "delete from TmpCadd where Handle in (select Handle from TmpCaddView where Tc = '{0}')",
@@ -690,6 +703,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             using (SQLiteCommand command = new SQLiteCommand(connection))
             {
                 string sql = "";
+                string targetTable = "";
                 if (isClear)
                 {
                   
@@ -699,25 +713,37 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 }
 
                 if (!string.IsNullOrWhiteSpace(cadLayerName) && !string.IsNullOrEmpty(cadLayerName))
+                {
                     sql = string.Format(
                         "INSERT INTO DXT{0}X ([geometry],[TC],[CASSDM],[FSXX1],[FSXX2],[FH],[FHDX],[YSDM]) " +
                         "SELECT[a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
                         "[a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
                         "[a].[Fsxx2] AS [Fsxx2],  [a].[Fh] AS [Fh], [a].[FHDX] AS [FHDX]," + "[a].[YSDM] AS [YSDM]  " +
-                        "FROM [TmpCadxView] AS [a]  " + "WHERE [a].[Tc] = '{0}'",  cadLayerName);
+                        "FROM [TmpCadxView] AS [a]  " + "WHERE [a].[Tc] = '{0}'", cadLayerName);
+                    targetTable = "DXT" + cadLayerName + "X";
+                }
                 else
+                {
                     sql = string.Format(
                         "INSERT INTO DXTQTX ([geometry],[TC],[CASSDM],[FSXX1],[FSXX2],[FH],[FHDX],[YSDM]) " +
                         "SELECT[a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
                         "[a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
                         "[a].[Fsxx2] AS [Fsxx2],  [a].[Fh] AS [Fh], [a].[FHDX] AS [FHDX]," + "[a].[YSDM] AS [YSDM]  " +
                         "FROM [TmpCadxView] AS [a] ");
+                    targetTable = "DXTQTX";
+                }
 
                 if (!string.IsNullOrEmpty(fileName))
                 {
                     sql += string.IsNullOrWhiteSpace(cadLayerName) || string.IsNullOrEmpty(cadLayerName) ? string.Format(" Where  [a].[FileName]='{0}'", fileName) : string.Format("  AND [a].[FileName]='{0}'", fileName);
                 }
                 command.CommandText = sql;
+                command.ExecuteNonQuery();
+
+                command.CommandText = string.Format("SELECT UpdateLayerStatistics('{0}');", targetTable);
+                command.ExecuteNonQuery();
+
+                command.CommandText = string.Format("SELECT UpdateLayerStatistics('{0}VIEW');", targetTable);
                 command.ExecuteNonQuery();
 
                 sql = cadLayerName != ""
@@ -736,6 +762,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             using (SQLiteCommand command = new SQLiteCommand(connection))
             {
                 string sql = "";
+                string targetTable = "";
                 if (isClear)
                 {
                     command.CommandText = string.IsNullOrWhiteSpace(cadLayerName) || string.IsNullOrEmpty(cadLayerName) ? "delete from DXTQTM" : string.Format("delete from DXT{0}M", cadLayerName);
@@ -743,23 +770,35 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 }
 
                 if (!string.IsNullOrWhiteSpace(cadLayerName) && !string.IsNullOrEmpty(cadLayerName))
+                {
                     sql = string.Format(
                         "INSERT INTO DXT{0}M ([geometry],[TC],[CASSDM],[FSXX1],[FSXX2],[YSDM]) " +
                         "SELECT[a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
                         "[a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," + "[a].[Fsxx2] AS [Fsxx2],  " +
-                        "[a].[YSDM] AS [YSDM]  " + "FROM [TmpCadmView] AS [a]  " + "WHERE[a].[Tc] = '{0}'", cadLayerName);
+                        "[a].[YSDM] AS [YSDM]  " + "FROM [TmpCadmView] AS [a]  " + "WHERE[a].[Tc] = '{0}'",
+                        cadLayerName);
+                    targetTable = "DXT" + cadLayerName + "X";
+                }
                 else
-                    sql = string.Format(
-                        "INSERT INTO DXTQTM ([geometry],[TC],[CASSDM],[FSXX1],[FSXX2],[YSDM]) " +
-                        "SELECT[a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
-                        "[a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," + "[a].[Fsxx2] AS [Fsxx2],  " +
-                        "[a].[YSDM] AS [YSDM]  " + "FROM [TmpCadmView] AS [a]  ");
+                {
+                    sql = string.Format("INSERT INTO DXTQTM ([geometry],[TC],[CASSDM],[FSXX1],[FSXX2],[YSDM]) " +
+                                        "SELECT[a].[geometry] AS [geometry], [a].[Tc] AS [Tc]," +
+                                        "[a].[Cassdm] AS [Cassdm], [a].[Fsxx1] AS [Fsxx1]," +
+                                        "[a].[Fsxx2] AS [Fsxx2],  " + "[a].[YSDM] AS [YSDM]  " +
+                                        "FROM [TmpCadmView] AS [a]  ");
+                    targetTable = "DXTQTM";
+                }
 
                 if (!string.IsNullOrEmpty(fileName))
                 {
                     sql += string.IsNullOrWhiteSpace(cadLayerName) || string.IsNullOrEmpty(cadLayerName) ? string.Format(" Where  [a].[FileName]='{0}'", fileName) : string.Format("  AND [a].[FileName]='{0}'", fileName);
                 }
                 command.CommandText = sql;
+                command.ExecuteNonQuery();
+                command.CommandText = string.Format("SELECT UpdateLayerStatistics('{0}');", targetTable);
+                command.ExecuteNonQuery();
+
+                command.CommandText = string.Format("SELECT UpdateLayerStatistics('{0}VIEW');", targetTable);
                 command.ExecuteNonQuery();
 
                 sql = cadLayerName != ""
@@ -777,6 +816,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using (SQLiteCommand command = new SQLiteCommand(connection))
             {
+                string targetTable = "";
                 string sql = "";
                 if (isClear)
                 {
@@ -785,23 +825,35 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 }
 
                 if (!string.IsNullOrWhiteSpace(cadLayerName) && !string.IsNullOrEmpty(cadLayerName))
+                { 
                     sql = string.Format(
                         "INSERT INTO DXT{0}ZJ ([geometry],[WBNR],[TC],[CASSDM],[FH],[FHDX],[XZJD],[YSDM]) " +
                         "SELECT[a].[geometry] AS [geometry], [a].[WBNR] AS [WBNR], [a].[Tc] AS [Tc]," +
                         "[a].[Cassdm] AS [Cassdm], " + "[a].[Fh] AS [Fh], [a].[FHDX] AS [FHDX], [a].[Xzjd] AS [Xzjd]," +
-                        "[a].[YSDM] AS [YSDM]  " + "FROM [TmpCadzjView] AS [a]  " + "WHERE [a].[Tc] = '{0}'", cadLayerName);
+                        "[a].[YSDM] AS [YSDM]  " + "FROM [TmpCadzjView] AS [a]  " + "WHERE [a].[Tc] = '{0}'",
+                        cadLayerName);
+                    targetTable = "DXT" + cadLayerName + "ZJ";
+                }
                 else
+                {
                     sql = string.Format(
                         "INSERT INTO DXTQTZJ ([geometry],[WBNR],[TC],[CASSDM],[FH],[FHDX],[XZJD],[YSDM]) " +
                         "SELECT[a].[geometry] AS [geometry], [a].[WBNR] AS [WBNR], [a].[Tc] AS [Tc]," +
                         "[a].[Cassdm] AS [Cassdm], " + "[a].[Fh] AS [Fh], [a].[FHDX] AS [FHDX], [a].[Xzjd] AS [Xzjd]," +
                         "[a].[YSDM] AS [YSDM]  " + "FROM [TmpCadzjView] AS [a]");
+                    targetTable = "DXTQTZJ";
+                }
 
                 if (!string.IsNullOrEmpty(fileName))
                 {
                     sql += string.IsNullOrWhiteSpace(cadLayerName) || string.IsNullOrEmpty(cadLayerName) ? string.Format(" Where  [a].[FileName]='{0}'", fileName) : string.Format("  AND [a].[FileName]='{0}'", fileName);
                 }
                 command.CommandText = sql;
+                command.ExecuteNonQuery();
+                command.CommandText = string.Format("SELECT UpdateLayerStatistics('{0}');", targetTable);
+                command.ExecuteNonQuery();
+
+                command.CommandText = string.Format("SELECT UpdateLayerStatistics('{0}VIEW');", targetTable);
                 command.ExecuteNonQuery();
 
                 sql = cadLayerName != ""

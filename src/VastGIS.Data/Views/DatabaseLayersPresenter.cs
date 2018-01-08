@@ -44,7 +44,7 @@ namespace VastGIS.Data.Views
                 foreach (var info in layers)
                 {
                     var layer = new VectorLayer();
-                    if (layer.Open(info.Layer.ConnectionString, info.Layer.Name))
+                    if (layer.Open(info.Layer.ConnectionString,info.Layer.Name))
                     {
                         var data = layer.Data;
                         AddLayerToMap(layer);

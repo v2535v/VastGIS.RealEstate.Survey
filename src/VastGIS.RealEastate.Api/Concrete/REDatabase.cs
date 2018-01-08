@@ -163,6 +163,18 @@ namespace VastGIS.RealEstate.Api.Concrete
             }
         }
 
+        public IEnvelope GetDatabaseEnvelope()
+        {
+            double xmin=0.0;
+            double ymin = 0.0;
+            double xmax = 0.0;
+            double ymax = 0.0;
+            _systemService.RecalculateDBExtent(out xmin, out ymin, out xmax, out ymax);
+            //_context.Map.SetGeographicExtents(envelope);
+            IEnvelope envelope = new Envelope(xmin, xmax, ymin, ymax);
+            return envelope;
+        }
+
         private void LoadDataToMap(IMuteMap contextMap, VgObjectclasses dataClass)
         {
             string connectionString = "Data Source=" + _databaseName;

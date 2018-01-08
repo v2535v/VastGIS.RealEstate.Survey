@@ -74,12 +74,11 @@ namespace VastGIS.Helpers
             ApplyMouseWheelDirection(map, config.MouseWheelDirection);
 
             var tiles = map.Tiles;
-
+            map.TileProvider = TileProvider.None;
             tiles.GridLinesVisible = DebugHelper.DrawTilesGrid;
-
             ApplyTilesSettings(tiles, config);
-
             ApplyTilesProxy(tiles, config);
+            map.TileProvider = TileProvider.None;
             Logger.Current.Trace("End MapInitializer.ApplyConfig()");
         }
 

@@ -20,7 +20,7 @@ namespace VastGIS.Menu
     /// </summary>
     internal static class TilesMenuHelper
     {
-        private const string NoTilesMenuItem = "No Tiles";
+        private const string NoTilesMenuItem = "无背景图层";
         private const int EmptyProviderId = -1;
 
         public static event EventHandler<TileProviderArgs> TileProviderSelected;
@@ -61,22 +61,22 @@ namespace VastGIS.Menu
 
         private static void AddDefaultProviders(IDropDownMenuItem root)
         {
-            var list = new[]
-            {
-                TileProvider.OpenStreetMap, TileProvider.OpenTransportMap,
-                TileProvider.OpenHumanitarianMap, TileProvider.OpenCycleMap,
-                TileProvider.MapQuestAerial, TileProvider.BingMaps,
-                TileProvider.BingHybrid, TileProvider.BingSatellite,
-            };
+           // var list = new[];
+            //{
+            //TileProvider.OpenStreetMap, TileProvider.OpenTransportMap,
+            //TileProvider.OpenHumanitarianMap, TileProvider.OpenCycleMap,
+            //TileProvider.MapQuestAerial, TileProvider.BingMaps,
+            //TileProvider.BingHybrid, TileProvider.BingSatellite,
+            //};
 
-            foreach (var p in list)
-            {
-                var item = root.SubItems.AddButton(p.EnumToString(), PluginIdentity.Default);
-                item.Tag = p;
-                item.ItemClicked += OnItemClick;
-            }
-
-            root.SubItems[1].BeginGroup = true;
+            //foreach (var p in list)
+            //{
+            //    var item = root.SubItems.AddButton(p.EnumToString(), PluginIdentity.Default);
+            //    item.Tag = p;
+            //    item.ItemClicked += OnItemClick;
+            //}
+            
+            //root.SubItems[1].BeginGroup = true;
         }
 
         private static void OnTilesDropDownOpening(object sender, EventArgs e)
@@ -116,12 +116,12 @@ namespace VastGIS.Menu
         private static int FireChooseActiveProvider()
         {
             var handler = ChooseActiveProvider;
-            if (handler != null)
-            {
-                var args = new TileProviderArgs(EmptyProviderId);
-                handler(null, args);
-                return args.ProviderId;
-            }
+            //if (handler != null)
+            //{
+            //    var args = new TileProviderArgs(EmptyProviderId);
+            //    handler(null, args);
+            //    return args.ProviderId;
+            //}
 
             return EmptyProviderId;
         }

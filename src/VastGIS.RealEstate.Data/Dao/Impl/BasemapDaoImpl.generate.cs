@@ -15,69 +15,358 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
     public partial class BasemapDaoImpl:SQLiteDao,BasemapDao
     {
         //private BasemapDao _basemapDao;
-        string SELECT_DXTDLDWD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWD Where [FLAGS] < 3";
+        private string CREATE_VIEW_DXTDLDWD="CREATE VIEW DXTDLDWDVIEW AS select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWD Where [FLAGS] < 3;";
         
-        string SELECT_DXTDLDWM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWM Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_DXTDLDWD="CREATE TRIGGER [vw_ins_DXTDLDWDVIEW] INSTEAD OF INSERT ON [DXTDLDWDVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDLDWD] ([Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_DXTDLDWX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWX Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_DXTDLDWD="CREATE TRIGGER [vw_upd_DXTDLDWDVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDLDWDVIEW] BEGIN  Update [DXTDLDWD] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_DXTDLDWZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWZJ Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DXTDLDWD="CREATE TRIGGER vw_del_DXTDLDWDVIEW INSTEAD OF DELETE ON DXTDLDWDVIEW BEGIN DELETE FROM DXTDLDWD WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDLDWDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdldwdview','geometry','rowid','dxtdldwd','geometry',0)";
+
+        private string SELECT_DXTDLDWD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWD Where [FLAGS] < 3";
         
-        string SELECT_DXTDLSSD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSD Where [FLAGS] < 3";
+        private string CREATE_VIEW_DXTDLDWM="CREATE VIEW DXTDLDWMVIEW AS select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWM Where [FLAGS] < 3;";
         
-        string SELECT_DXTDLSSM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSM Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_DXTDLDWM="CREATE TRIGGER [vw_ins_DXTDLDWMVIEW] INSTEAD OF INSERT ON [DXTDLDWMVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDLDWM] ([Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_DXTDLSSX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSX Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_DXTDLDWM="CREATE TRIGGER [vw_upd_DXTDLDWMVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDLDWMVIEW] BEGIN  Update [DXTDLDWM] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_DXTDLSSZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSZJ Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DXTDLDWM="CREATE TRIGGER vw_del_DXTDLDWMVIEW INSTEAD OF DELETE ON DXTDLDWMVIEW BEGIN DELETE FROM DXTDLDWM WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDLDWMVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdldwmview','geometry','rowid','dxtdldwm','geometry',0)";
+        private string SELECT_DXTDLDWM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWM Where [FLAGS] < 3";
         
-        string SELECT_DXTDMTZD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZD Where [FLAGS] < 3";
+        private string CREATE_VIEW_DXTDLDWX="CREATE VIEW DXTDLDWXVIEW AS select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWX Where [FLAGS] < 3;";
         
-        string SELECT_DXTDMTZM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZM Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_DXTDLDWX="CREATE TRIGGER [vw_ins_DXTDLDWXVIEW] INSTEAD OF INSERT ON [DXTDLDWXVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDLDWX] ([Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_DXTDMTZX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZX Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_DXTDLDWX="CREATE TRIGGER [vw_upd_DXTDLDWXVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDLDWXVIEW] BEGIN  Update [DXTDLDWX] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_DXTDMTZZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZZJ Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DXTDLDWX="CREATE TRIGGER vw_del_DXTDLDWXVIEW INSTEAD OF DELETE ON DXTDLDWXVIEW BEGIN DELETE FROM DXTDLDWX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDLDWXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdldwxview','geometry','rowid','dxtdldwx','geometry',0)";
+        private string SELECT_DXTDLDWX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWX Where [FLAGS] < 3";
         
-        string SELECT_DXTJMDD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTJMDD Where [FLAGS] < 3";
+        private string CREATE_VIEW_DXTDLDWZJ="CREATE VIEW DXTDLDWZJVIEW AS select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWZJ Where [FLAGS] < 3;";
         
-        string SELECT_DXTJMDM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTJMDM Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_DXTDLDWZJ="CREATE TRIGGER [vw_ins_DXTDLDWZJVIEW] INSTEAD OF INSERT ON [DXTDLDWZJVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDLDWZJ] ([Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[WBNR], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_DXTJMDX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTJMDX Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_DXTDLDWZJ="CREATE TRIGGER [vw_upd_DXTDLDWZJVIEW] INSTEAD OF UPDATE OF [Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDLDWZJVIEW] BEGIN  Update [DXTDLDWZJ] SET [Id]=NEW.[Id], [WBNR]=NEW.[WBNR], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_DXTJMDZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTJMDZJ Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DXTDLDWZJ="CREATE TRIGGER vw_del_DXTDLDWZJVIEW INSTEAD OF DELETE ON DXTDLDWZJVIEW BEGIN DELETE FROM DXTDLDWZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDLDWZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdldwzjview','geometry','rowid','dxtdldwzj','geometry',0)";
+        private string SELECT_DXTDLDWZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTDLDWZJ Where [FLAGS] < 3";
         
-        string SELECT_DXTKZDD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTKZDD Where [FLAGS] < 3";
+        private string CREATE_VIEW_DXTDLSSD="CREATE VIEW DXTDLSSDVIEW AS select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSD Where [FLAGS] < 3;";
         
-        string SELECT_DXTKZDM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTKZDM Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_DXTDLSSD="CREATE TRIGGER [vw_ins_DXTDLSSDVIEW] INSTEAD OF INSERT ON [DXTDLSSDVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDLSSD] ([Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_DXTKZDX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTKZDX Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_DXTDLSSD="CREATE TRIGGER [vw_upd_DXTDLSSDVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDLSSDVIEW] BEGIN  Update [DXTDLSSD] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_DXTKZDZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTKZDZJ Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DXTDLSSD="CREATE TRIGGER vw_del_DXTDLSSDVIEW INSTEAD OF DELETE ON DXTDLSSDVIEW BEGIN DELETE FROM DXTDLSSD WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDLSSDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdlssdview','geometry','rowid','dxtdlssd','geometry',0)";
+        private string SELECT_DXTDLSSD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSD Where [FLAGS] < 3";
         
-        string SELECT_DXTQTD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTQTD Where [FLAGS] < 3";
+        private string CREATE_VIEW_DXTDLSSM="CREATE VIEW DXTDLSSMVIEW AS select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSM Where [FLAGS] < 3;";
         
-        string SELECT_DXTQTM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTQTM Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_DXTDLSSM="CREATE TRIGGER [vw_ins_DXTDLSSMVIEW] INSTEAD OF INSERT ON [DXTDLSSMVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDLSSM] ([Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_DXTQTX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTQTX Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_DXTDLSSM="CREATE TRIGGER [vw_upd_DXTDLSSMVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDLSSMVIEW] BEGIN  Update [DXTDLSSM] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_DXTQTZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTQTZJ Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DXTDLSSM="CREATE TRIGGER vw_del_DXTDLSSMVIEW INSTEAD OF DELETE ON DXTDLSSMVIEW BEGIN DELETE FROM DXTDLSSM WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDLSSMVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdlssmview','geometry','rowid','dxtdlssm','geometry',0)";
+        private string SELECT_DXTDLSSM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSM Where [FLAGS] < 3";
         
-        string SELECT_DXTSXSSD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSD Where [FLAGS] < 3";
+        private string CREATE_VIEW_DXTDLSSX="CREATE VIEW DXTDLSSXVIEW AS select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSX Where [FLAGS] < 3;";
         
-        string SELECT_DXTSXSSM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSM Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_DXTDLSSX="CREATE TRIGGER [vw_ins_DXTDLSSXVIEW] INSTEAD OF INSERT ON [DXTDLSSXVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDLSSX] ([Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_DXTSXSSX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSX Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_DXTDLSSX="CREATE TRIGGER [vw_upd_DXTDLSSXVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDLSSXVIEW] BEGIN  Update [DXTDLSSX] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_DXTSXSSZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSZJ Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DXTDLSSX="CREATE TRIGGER vw_del_DXTDLSSXVIEW INSTEAD OF DELETE ON DXTDLSSXVIEW BEGIN DELETE FROM DXTDLSSX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDLSSXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdlssxview','geometry','rowid','dxtdlssx','geometry',0)";
+        private string SELECT_DXTDLSSX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSX Where [FLAGS] < 3";
         
-        string SELECT_DXTZJD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTZJD Where [FLAGS] < 3";
+        private string CREATE_VIEW_DXTDLSSZJ="CREATE VIEW DXTDLSSZJVIEW AS select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSZJ Where [FLAGS] < 3;";
         
-        string SELECT_DXTZJM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTZJM Where [FLAGS] < 3";
+        private string CREATE_INSERT_TRIGGER_DXTDLSSZJ="CREATE TRIGGER [vw_ins_DXTDLSSZJVIEW] INSTEAD OF INSERT ON [DXTDLSSZJVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDLSSZJ] ([Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[WBNR], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        string SELECT_DXTZJX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTZJX Where [FLAGS] < 3";
+        private string CREATE_UPDATE_TRIGGER_DXTDLSSZJ="CREATE TRIGGER [vw_upd_DXTDLSSZJVIEW] INSTEAD OF UPDATE OF [Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDLSSZJVIEW] BEGIN  Update [DXTDLSSZJ] SET [Id]=NEW.[Id], [WBNR]=NEW.[WBNR], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        string SELECT_DXTZJZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTZJZJ Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DXTDLSSZJ="CREATE TRIGGER vw_del_DXTDLSSZJVIEW INSTEAD OF DELETE ON DXTDLSSZJVIEW BEGIN DELETE FROM DXTDLSSZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDLSSZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdlsszjview','geometry','rowid','dxtdlsszj','geometry',0)";
+        private string SELECT_DXTDLSSZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTDLSSZJ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTDMTZD="CREATE VIEW DXTDMTZDVIEW AS select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZD Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTDMTZD="CREATE TRIGGER [vw_ins_DXTDMTZDVIEW] INSTEAD OF INSERT ON [DXTDMTZDVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDMTZD] ([Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTDMTZD="CREATE TRIGGER [vw_upd_DXTDMTZDVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDMTZDVIEW] BEGIN  Update [DXTDMTZD] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTDMTZD="CREATE TRIGGER vw_del_DXTDMTZDVIEW INSTEAD OF DELETE ON DXTDMTZDVIEW BEGIN DELETE FROM DXTDMTZD WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDMTZDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdmtzdview','geometry','rowid','dxtdmtzd','geometry',0)";
+        private string SELECT_DXTDMTZD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZD Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTDMTZM="CREATE VIEW DXTDMTZMVIEW AS select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZM Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTDMTZM="CREATE TRIGGER [vw_ins_DXTDMTZMVIEW] INSTEAD OF INSERT ON [DXTDMTZMVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDMTZM] ([Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTDMTZM="CREATE TRIGGER [vw_upd_DXTDMTZMVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDMTZMVIEW] BEGIN  Update [DXTDMTZM] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTDMTZM="CREATE TRIGGER vw_del_DXTDMTZMVIEW INSTEAD OF DELETE ON DXTDMTZMVIEW BEGIN DELETE FROM DXTDMTZM WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDMTZMVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdmtzmview','geometry','rowid','dxtdmtzm','geometry',0)";
+        private string SELECT_DXTDMTZM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZM Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTDMTZX="CREATE VIEW DXTDMTZXVIEW AS select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZX Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTDMTZX="CREATE TRIGGER [vw_ins_DXTDMTZXVIEW] INSTEAD OF INSERT ON [DXTDMTZXVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDMTZX] ([Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTDMTZX="CREATE TRIGGER [vw_upd_DXTDMTZXVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDMTZXVIEW] BEGIN  Update [DXTDMTZX] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTDMTZX="CREATE TRIGGER vw_del_DXTDMTZXVIEW INSTEAD OF DELETE ON DXTDMTZXVIEW BEGIN DELETE FROM DXTDMTZX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDMTZXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdmtzxview','geometry','rowid','dxtdmtzx','geometry',0)";
+        private string SELECT_DXTDMTZX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZX Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTDMTZZJ="CREATE VIEW DXTDMTZZJVIEW AS select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTDMTZZJ="CREATE TRIGGER [vw_ins_DXTDMTZZJVIEW] INSTEAD OF INSERT ON [DXTDMTZZJVIEW] BEGIN  INSERT OR REPLACE INTO [DXTDMTZZJ] ([Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[WBNR], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTDMTZZJ="CREATE TRIGGER [vw_upd_DXTDMTZZJVIEW] INSTEAD OF UPDATE OF [Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTDMTZZJVIEW] BEGIN  Update [DXTDMTZZJ] SET [Id]=NEW.[Id], [WBNR]=NEW.[WBNR], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTDMTZZJ="CREATE TRIGGER vw_del_DXTDMTZZJVIEW INSTEAD OF DELETE ON DXTDMTZZJVIEW BEGIN DELETE FROM DXTDMTZZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTDMTZZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtdmtzzjview','geometry','rowid','dxtdmtzzj','geometry',0)";
+        private string SELECT_DXTDMTZZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTDMTZZJ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTJMDD="CREATE VIEW DXTJMDDVIEW AS select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTJMDD Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTJMDD="CREATE TRIGGER [vw_ins_DXTJMDDVIEW] INSTEAD OF INSERT ON [DXTJMDDVIEW] BEGIN  INSERT OR REPLACE INTO [DXTJMDD] ([Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTJMDD="CREATE TRIGGER [vw_upd_DXTJMDDVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTJMDDVIEW] BEGIN  Update [DXTJMDD] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTJMDD="CREATE TRIGGER vw_del_DXTJMDDVIEW INSTEAD OF DELETE ON DXTJMDDVIEW BEGIN DELETE FROM DXTJMDD WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTJMDDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtjmddview','geometry','rowid','dxtjmdd','geometry',0)";
+        private string SELECT_DXTJMDD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTJMDD Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTJMDM="CREATE VIEW DXTJMDMVIEW AS select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTJMDM Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTJMDM="CREATE TRIGGER [vw_ins_DXTJMDMVIEW] INSTEAD OF INSERT ON [DXTJMDMVIEW] BEGIN  INSERT OR REPLACE INTO [DXTJMDM] ([Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTJMDM="CREATE TRIGGER [vw_upd_DXTJMDMVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTJMDMVIEW] BEGIN  Update [DXTJMDM] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTJMDM="CREATE TRIGGER vw_del_DXTJMDMVIEW INSTEAD OF DELETE ON DXTJMDMVIEW BEGIN DELETE FROM DXTJMDM WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTJMDMVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtjmdmview','geometry','rowid','dxtjmdm','geometry',0)";
+        private string SELECT_DXTJMDM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTJMDM Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTJMDX="CREATE VIEW DXTJMDXVIEW AS select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTJMDX Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTJMDX="CREATE TRIGGER [vw_ins_DXTJMDXVIEW] INSTEAD OF INSERT ON [DXTJMDXVIEW] BEGIN  INSERT OR REPLACE INTO [DXTJMDX] ([Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTJMDX="CREATE TRIGGER [vw_upd_DXTJMDXVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTJMDXVIEW] BEGIN  Update [DXTJMDX] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTJMDX="CREATE TRIGGER vw_del_DXTJMDXVIEW INSTEAD OF DELETE ON DXTJMDXVIEW BEGIN DELETE FROM DXTJMDX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTJMDXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtjmdxview','geometry','rowid','dxtjmdx','geometry',0)";
+        private string SELECT_DXTJMDX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTJMDX Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTJMDZJ="CREATE VIEW DXTJMDZJVIEW AS select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTJMDZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTJMDZJ="CREATE TRIGGER [vw_ins_DXTJMDZJVIEW] INSTEAD OF INSERT ON [DXTJMDZJVIEW] BEGIN  INSERT OR REPLACE INTO [DXTJMDZJ] ([Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[WBNR], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTJMDZJ="CREATE TRIGGER [vw_upd_DXTJMDZJVIEW] INSTEAD OF UPDATE OF [Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTJMDZJVIEW] BEGIN  Update [DXTJMDZJ] SET [Id]=NEW.[Id], [WBNR]=NEW.[WBNR], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTJMDZJ="CREATE TRIGGER vw_del_DXTJMDZJVIEW INSTEAD OF DELETE ON DXTJMDZJVIEW BEGIN DELETE FROM DXTJMDZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTJMDZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtjmdzjview','geometry','rowid','dxtjmdzj','geometry',0)";
+        private string SELECT_DXTJMDZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTJMDZJ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTKZDD="CREATE VIEW DXTKZDDVIEW AS select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTKZDD Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTKZDD="CREATE TRIGGER [vw_ins_DXTKZDDVIEW] INSTEAD OF INSERT ON [DXTKZDDVIEW] BEGIN  INSERT OR REPLACE INTO [DXTKZDD] ([Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTKZDD="CREATE TRIGGER [vw_upd_DXTKZDDVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTKZDDVIEW] BEGIN  Update [DXTKZDD] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTKZDD="CREATE TRIGGER vw_del_DXTKZDDVIEW INSTEAD OF DELETE ON DXTKZDDVIEW BEGIN DELETE FROM DXTKZDD WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTKZDDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtkzddview','geometry','rowid','dxtkzdd','geometry',0)";
+        private string SELECT_DXTKZDD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTKZDD Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTKZDM="CREATE VIEW DXTKZDMVIEW AS select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTKZDM Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTKZDM="CREATE TRIGGER [vw_ins_DXTKZDMVIEW] INSTEAD OF INSERT ON [DXTKZDMVIEW] BEGIN  INSERT OR REPLACE INTO [DXTKZDM] ([Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTKZDM="CREATE TRIGGER [vw_upd_DXTKZDMVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTKZDMVIEW] BEGIN  Update [DXTKZDM] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTKZDM="CREATE TRIGGER vw_del_DXTKZDMVIEW INSTEAD OF DELETE ON DXTKZDMVIEW BEGIN DELETE FROM DXTKZDM WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTKZDMVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtkzdmview','geometry','rowid','dxtkzdm','geometry',0)";
+        private string SELECT_DXTKZDM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTKZDM Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTKZDX="CREATE VIEW DXTKZDXVIEW AS select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTKZDX Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTKZDX="CREATE TRIGGER [vw_ins_DXTKZDXVIEW] INSTEAD OF INSERT ON [DXTKZDXVIEW] BEGIN  INSERT OR REPLACE INTO [DXTKZDX] ([Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTKZDX="CREATE TRIGGER [vw_upd_DXTKZDXVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTKZDXVIEW] BEGIN  Update [DXTKZDX] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTKZDX="CREATE TRIGGER vw_del_DXTKZDXVIEW INSTEAD OF DELETE ON DXTKZDXVIEW BEGIN DELETE FROM DXTKZDX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTKZDXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtkzdxview','geometry','rowid','dxtkzdx','geometry',0)";
+        private string SELECT_DXTKZDX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTKZDX Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTKZDZJ="CREATE VIEW DXTKZDZJVIEW AS select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTKZDZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTKZDZJ="CREATE TRIGGER [vw_ins_DXTKZDZJVIEW] INSTEAD OF INSERT ON [DXTKZDZJVIEW] BEGIN  INSERT OR REPLACE INTO [DXTKZDZJ] ([Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[WBNR], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTKZDZJ="CREATE TRIGGER [vw_upd_DXTKZDZJVIEW] INSTEAD OF UPDATE OF [Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTKZDZJVIEW] BEGIN  Update [DXTKZDZJ] SET [Id]=NEW.[Id], [WBNR]=NEW.[WBNR], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTKZDZJ="CREATE TRIGGER vw_del_DXTKZDZJVIEW INSTEAD OF DELETE ON DXTKZDZJVIEW BEGIN DELETE FROM DXTKZDZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTKZDZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtkzdzjview','geometry','rowid','dxtkzdzj','geometry',0)";
+        private string SELECT_DXTKZDZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTKZDZJ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTQTD="CREATE VIEW DXTQTDVIEW AS select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTQTD Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTQTD="CREATE TRIGGER [vw_ins_DXTQTDVIEW] INSTEAD OF INSERT ON [DXTQTDVIEW] BEGIN  INSERT OR REPLACE INTO [DXTQTD] ([Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTQTD="CREATE TRIGGER [vw_upd_DXTQTDVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTQTDVIEW] BEGIN  Update [DXTQTD] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTQTD="CREATE TRIGGER vw_del_DXTQTDVIEW INSTEAD OF DELETE ON DXTQTDVIEW BEGIN DELETE FROM DXTQTD WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTQTDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtqtdview','geometry','rowid','dxtqtd','geometry',0)";
+        private string SELECT_DXTQTD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTQTD Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTQTM="CREATE VIEW DXTQTMVIEW AS select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTQTM Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTQTM="CREATE TRIGGER [vw_ins_DXTQTMVIEW] INSTEAD OF INSERT ON [DXTQTMVIEW] BEGIN  INSERT OR REPLACE INTO [DXTQTM] ([Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTQTM="CREATE TRIGGER [vw_upd_DXTQTMVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTQTMVIEW] BEGIN  Update [DXTQTM] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTQTM="CREATE TRIGGER vw_del_DXTQTMVIEW INSTEAD OF DELETE ON DXTQTMVIEW BEGIN DELETE FROM DXTQTM WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTQTMVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtqtmview','geometry','rowid','dxtqtm','geometry',0)";
+        private string SELECT_DXTQTM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTQTM Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTQTX="CREATE VIEW DXTQTXVIEW AS select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTQTX Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTQTX="CREATE TRIGGER [vw_ins_DXTQTXVIEW] INSTEAD OF INSERT ON [DXTQTXVIEW] BEGIN  INSERT OR REPLACE INTO [DXTQTX] ([Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTQTX="CREATE TRIGGER [vw_upd_DXTQTXVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTQTXVIEW] BEGIN  Update [DXTQTX] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTQTX="CREATE TRIGGER vw_del_DXTQTXVIEW INSTEAD OF DELETE ON DXTQTXVIEW BEGIN DELETE FROM DXTQTX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTQTXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtqtxview','geometry','rowid','dxtqtx','geometry',0)";
+        private string SELECT_DXTQTX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTQTX Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTQTZJ="CREATE VIEW DXTQTZJVIEW AS select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTQTZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTQTZJ="CREATE TRIGGER [vw_ins_DXTQTZJVIEW] INSTEAD OF INSERT ON [DXTQTZJVIEW] BEGIN  INSERT OR REPLACE INTO [DXTQTZJ] ([Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[WBNR], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTQTZJ="CREATE TRIGGER [vw_upd_DXTQTZJVIEW] INSTEAD OF UPDATE OF [Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTQTZJVIEW] BEGIN  Update [DXTQTZJ] SET [Id]=NEW.[Id], [WBNR]=NEW.[WBNR], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTQTZJ="CREATE TRIGGER vw_del_DXTQTZJVIEW INSTEAD OF DELETE ON DXTQTZJVIEW BEGIN DELETE FROM DXTQTZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTQTZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtqtzjview','geometry','rowid','dxtqtzj','geometry',0)";
+        private string SELECT_DXTQTZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTQTZJ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTSXSSD="CREATE VIEW DXTSXSSDVIEW AS select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSD Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTSXSSD="CREATE TRIGGER [vw_ins_DXTSXSSDVIEW] INSTEAD OF INSERT ON [DXTSXSSDVIEW] BEGIN  INSERT OR REPLACE INTO [DXTSXSSD] ([Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTSXSSD="CREATE TRIGGER [vw_upd_DXTSXSSDVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTSXSSDVIEW] BEGIN  Update [DXTSXSSD] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTSXSSD="CREATE TRIGGER vw_del_DXTSXSSDVIEW INSTEAD OF DELETE ON DXTSXSSDVIEW BEGIN DELETE FROM DXTSXSSD WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTSXSSDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtsxssdview','geometry','rowid','dxtsxssd','geometry',0)";
+        private string SELECT_DXTSXSSD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSD Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTSXSSM="CREATE VIEW DXTSXSSMVIEW AS select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSM Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTSXSSM="CREATE TRIGGER [vw_ins_DXTSXSSMVIEW] INSTEAD OF INSERT ON [DXTSXSSMVIEW] BEGIN  INSERT OR REPLACE INTO [DXTSXSSM] ([Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTSXSSM="CREATE TRIGGER [vw_upd_DXTSXSSMVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTSXSSMVIEW] BEGIN  Update [DXTSXSSM] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTSXSSM="CREATE TRIGGER vw_del_DXTSXSSMVIEW INSTEAD OF DELETE ON DXTSXSSMVIEW BEGIN DELETE FROM DXTSXSSM WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTSXSSMVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtsxssmview','geometry','rowid','dxtsxssm','geometry',0)";
+        private string SELECT_DXTSXSSM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSM Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTSXSSX="CREATE VIEW DXTSXSSXVIEW AS select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSX Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTSXSSX="CREATE TRIGGER [vw_ins_DXTSXSSXVIEW] INSTEAD OF INSERT ON [DXTSXSSXVIEW] BEGIN  INSERT OR REPLACE INTO [DXTSXSSX] ([Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTSXSSX="CREATE TRIGGER [vw_upd_DXTSXSSXVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTSXSSXVIEW] BEGIN  Update [DXTSXSSX] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTSXSSX="CREATE TRIGGER vw_del_DXTSXSSXVIEW INSTEAD OF DELETE ON DXTSXSSXVIEW BEGIN DELETE FROM DXTSXSSX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTSXSSXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtsxssxview','geometry','rowid','dxtsxssx','geometry',0)";
+        private string SELECT_DXTSXSSX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSX Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTSXSSZJ="CREATE VIEW DXTSXSSZJVIEW AS select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTSXSSZJ="CREATE TRIGGER [vw_ins_DXTSXSSZJVIEW] INSTEAD OF INSERT ON [DXTSXSSZJVIEW] BEGIN  INSERT OR REPLACE INTO [DXTSXSSZJ] ([Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[WBNR], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTSXSSZJ="CREATE TRIGGER [vw_upd_DXTSXSSZJVIEW] INSTEAD OF UPDATE OF [Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTSXSSZJVIEW] BEGIN  Update [DXTSXSSZJ] SET [Id]=NEW.[Id], [WBNR]=NEW.[WBNR], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTSXSSZJ="CREATE TRIGGER vw_del_DXTSXSSZJVIEW INSTEAD OF DELETE ON DXTSXSSZJVIEW BEGIN DELETE FROM DXTSXSSZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTSXSSZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtsxsszjview','geometry','rowid','dxtsxsszj','geometry',0)";
+        private string SELECT_DXTSXSSZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTSXSSZJ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTZJD="CREATE VIEW DXTZJDVIEW AS select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTZJD Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTZJD="CREATE TRIGGER [vw_ins_DXTZJDVIEW] INSTEAD OF INSERT ON [DXTZJDVIEW] BEGIN  INSERT OR REPLACE INTO [DXTZJD] ([Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTZJD="CREATE TRIGGER [vw_upd_DXTZJDVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [XZJD], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTZJDVIEW] BEGIN  Update [DXTZJD] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTZJD="CREATE TRIGGER vw_del_DXTZJDVIEW INSTEAD OF DELETE ON DXTZJDVIEW BEGIN DELETE FROM DXTZJD WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTZJDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtzjdview','geometry','rowid','dxtzjd','geometry',0)";
+        private string SELECT_DXTZJD = "select Id,TC,CASSDM,FH,FHDX,XZJD,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTZJD Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTZJM="CREATE VIEW DXTZJMVIEW AS select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTZJM Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTZJM="CREATE TRIGGER [vw_ins_DXTZJMVIEW] INSTEAD OF INSERT ON [DXTZJMVIEW] BEGIN  INSERT OR REPLACE INTO [DXTZJM] ([Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTZJM="CREATE TRIGGER [vw_upd_DXTZJMVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTZJMVIEW] BEGIN  Update [DXTZJM] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTZJM="CREATE TRIGGER vw_del_DXTZJMVIEW INSTEAD OF DELETE ON DXTZJMVIEW BEGIN DELETE FROM DXTZJM WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTZJMVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtzjmview','geometry','rowid','dxtzjm','geometry',0)";
+        private string SELECT_DXTZJM = "select Id,TC,CASSDM,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTZJM Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTZJX="CREATE VIEW DXTZJXVIEW AS select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTZJX Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTZJX="CREATE TRIGGER [vw_ins_DXTZJXVIEW] INSTEAD OF INSERT ON [DXTZJXVIEW] BEGIN  INSERT OR REPLACE INTO [DXTZJX] ([Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[FSXX1], NEW.[FSXX2], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTZJX="CREATE TRIGGER [vw_upd_DXTZJXVIEW] INSTEAD OF UPDATE OF [Id], [TC], [CASSDM], [FH], [FHDX], [FSXX1], [FSXX2], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTZJXVIEW] BEGIN  Update [DXTZJX] SET [Id]=NEW.[Id], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [FSXX1]=NEW.[FSXX1], [FSXX2]=NEW.[FSXX2], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTZJX="CREATE TRIGGER vw_del_DXTZJXVIEW INSTEAD OF DELETE ON DXTZJXVIEW BEGIN DELETE FROM DXTZJX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTZJXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtzjxview','geometry','rowid','dxtzjx','geometry',0)";
+        private string SELECT_DXTZJX = "select Id,TC,CASSDM,FH,FHDX,FSXX1,FSXX2,YSDM,DatabaseId,FLAGS,geometry from DXTZJX Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DXTZJZJ="CREATE VIEW DXTZJZJVIEW AS select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTZJZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DXTZJZJ="CREATE TRIGGER [vw_ins_DXTZJZJVIEW] INSTEAD OF INSERT ON [DXTZJZJVIEW] BEGIN  INSERT OR REPLACE INTO [DXTZJZJ] ([Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[WBNR], NEW.[TC], NEW.[CASSDM], NEW.[FH], NEW.[FHDX], NEW.[XZJD], NEW.[YSDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DXTZJZJ="CREATE TRIGGER [vw_upd_DXTZJZJVIEW] INSTEAD OF UPDATE OF [Id], [WBNR], [TC], [CASSDM], [FH], [FHDX], [XZJD], [YSDM], [DatabaseId], [FLAGS], [geometry] ON [DXTZJZJVIEW] BEGIN  Update [DXTZJZJ] SET [Id]=NEW.[Id], [WBNR]=NEW.[WBNR], [TC]=NEW.[TC], [CASSDM]=NEW.[CASSDM], [FH]=NEW.[FH], [FHDX]=NEW.[FHDX], [XZJD]=NEW.[XZJD], [YSDM]=NEW.[YSDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DXTZJZJ="CREATE TRIGGER vw_del_DXTZJZJVIEW INSTEAD OF DELETE ON DXTZJZJVIEW BEGIN DELETE FROM DXTZJZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DXTZJZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('dxtzjzjview','geometry','rowid','dxtzjzj','geometry',0)";
+        private string SELECT_DXTZJZJ = "select Id,WBNR,TC,CASSDM,FH,FHDX,XZJD,YSDM,DatabaseId,FLAGS,geometry from DXTZJZJ Where [FLAGS] < 3";
         
         
         ///Dxtdldwd函数

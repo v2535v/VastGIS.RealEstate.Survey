@@ -71,13 +71,13 @@ namespace VastGIS.Plugins.RealEstate.Menu
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
 
-                command = new CmdSplitCAD(_context);
-                command.PluginIdentity = _identity;
-                _commands.Add(command);
+                //command = new CmdSplitCAD(_context);
+                //command.PluginIdentity = _identity;
+                //_commands.Add(command);
 
-                command = new CmdAssignCADText(_context);
-                command.PluginIdentity = _identity;
-                _commands.Add(command);
+                //command = new CmdAssignCADText(_context);
+                //command.PluginIdentity = _identity;
+                //_commands.Add(command);
 
                 command = new ToolCreateJZDByPolygon(_context);
                 command.PluginIdentity = _identity;
