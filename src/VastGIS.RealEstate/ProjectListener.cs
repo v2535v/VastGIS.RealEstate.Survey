@@ -72,6 +72,7 @@ namespace VastGIS.Plugins.RealEstate
                     _olayerService.BeginBatch();
                     Task.Factory.StartNew(() =>
                         {
+                            _context.Legend.Groups.Clear();
                             foreach (var oneclass in classes)
                             {
                                 if (oneclass.Dxlx == 0)
