@@ -5,8 +5,10 @@ using System.Data;
 using Dapper;
 using System.Linq;
 using System.Data.SQLite;
+using VastGIS.RealEstate.Data.Dao;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
+using VastGIS.RealEstate.Data.Events;
 
 
 namespace VastGIS.RealEstate.Data.Dao.Impl
@@ -14,13 +16,49 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
     public partial class DomainDaoImpl:SQLiteDao,DomainDao
     {
+        public Dictionary<string, string> _entityNames;
         //private DomainDao _domainDao;
+        private string SELECT_VG_DICTIONARY = "select Id,ZDZ,ZDSM,SFQS,PX from vg_dictionary";
         
+        private string SELECT_VG_DICTORYNAME = "select Id,ZDMC,ZDSM from vg_dictoryname";
+        
+        
+        public DomainDaoImpl(): base()
+        {
+            _entityNames=new Dictionary<string, string>();
+            _entityNames.Add("VG_DICTIONARY","");
+            _entityNames.Add("VG_DICTORYNAME","");
+        }
+        
+        private event EntityChangedEventHandler entityChanged;
+
+        public event EntityChangedEventHandler EntityChanged
+        {
+            add { this.entityChanged += value; }
+            remove { this.entityChanged -= value; }
+        }
+
+        protected virtual void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
+        {
+            if (this.entityChanged != null)
+            {
+                this.entityChanged(this, new EntityChanedEventArgs(tableName, layerName, operationType, ids));
+            }
+        }
+        
+        public string GetLayerName(string tableName)
+        {
+            tableName=tableName.ToUpper();
+            if(_entityNames.ContainsKey(tableName))
+                return _entityNames[tableName];
+            else
+                return "";
+        }
         
         ///VgDictionary函数
         public VgDictionary GetVgDictionary(long id)
         {
-            string sql="select Id,ZDMC,ZDZ,ZDSM,SFQS,PX from vg_dictionary" + " where id="+id.ToString();
+            string sql="select Id,ZDZ,ZDSM,SFQS,PX from vg_dictionary" + " where id="+id.ToString();
             IEnumerable<VgDictionary> vgDictionarys=connection.Query<VgDictionary>(sql);
             if(vgDictionarys != null && vgDictionarys.Count()>0)
             {
@@ -31,7 +69,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public IEnumerable<VgDictionary> GetVgDictionarys(string filter)
         {
-            string sql="select Id,ZDMC,ZDZ,ZDSM,SFQS,PX from vg_dictionary" + " where "+filter;
+            string sql="select Id,ZDZ,ZDSM,SFQS,PX from vg_dictionary" + " where "+filter;
             var vgDictionarys=connection.Query<VgDictionary>(sql);
             
             return vgDictionarys;
@@ -39,7 +77,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveVgDictionary(VgDictionary vgDictionary)
         {
-            return vgDictionary.Save(connection,GetSRID());
+            bool retVal= vgDictionary.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Save,new List<long>{vgDictionary.ID});
+            }
+            return retVal;
         }
         
         public void SaveVgDictionarys(List<VgDictionary> vgDictionarys)
@@ -51,8 +94,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             tran.Commit();
             tran.Dispose();
+            List<long> ids=vgDictionarys.Select(a => a.ID).ToList(); 
+            OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Save,ids);
         }
         
+        public void DeleteVgDictionary(VgDictionary record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
         
         public void DeleteVgDictionary(long id)
         {
@@ -60,6 +110,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             {
                 command.CommandText="delete from vg_dictionary where Id=" + id.ToString();
                 command.ExecuteNonQuery();
+                OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Delete,new List<long>{id});
             }
         }
         
@@ -72,6 +123,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 else
                     command.CommandText="delete from vg_dictionary where " + filter;
                 command.ExecuteNonQuery();
+                OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Delete,null);
             }
         }
         
@@ -98,7 +150,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveVgDictoryname(VgDictoryname vgDictoryname)
         {
-            return vgDictoryname.Save(connection,GetSRID());
+            bool retVal= vgDictoryname.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Save,new List<long>{vgDictoryname.ID});
+            }
+            return retVal;
         }
         
         public void SaveVgDictorynames(List<VgDictoryname> vgDictorynames)
@@ -110,8 +167,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             tran.Commit();
             tran.Dispose();
+            List<long> ids=vgDictorynames.Select(a => a.ID).ToList(); 
+            OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Save,ids);
         }
         
+        public void DeleteVgDictoryname(VgDictoryname record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
         
         public void DeleteVgDictoryname(long id)
         {
@@ -119,6 +183,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             {
                 command.CommandText="delete from vg_dictoryname where Id=" + id.ToString();
                 command.ExecuteNonQuery();
+                OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Delete,new List<long>{id});
             }
         }
         
@@ -131,6 +196,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 else
                     command.CommandText="delete from vg_dictoryname where " + filter;
                 command.ExecuteNonQuery();
+                OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Delete,null);
             }
         }
         

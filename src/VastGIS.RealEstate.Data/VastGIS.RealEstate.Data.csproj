@@ -191,6 +191,7 @@
     <Compile Include="Entity\Feature.cs" />
     <Compile Include="Entity\SimpleDatabaseFeature.cs" />
     <Compile Include="Entity\VgAreacodes.generate.cs" />
+    <Compile Include="Events\EntityChanedEventArgs.cs" />
     <Compile Include="Helpers\GeometryHelper.cs" />
     <Compile Include="Helpers\NumberHelper.cs" />
     <Compile Include="Helpers\SettingKeyHelper.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Interface\IBasemapPolygon.cs" />
     <Compile Include="Interface\IDatabaseEntity.cs" />
     <Compile Include="Interface\IEntity.cs" />
+    <Compile Include="Interface\IEntityChanged.cs" />
     <Compile Include="Interface\IFeature.cs" />
     <Compile Include="Entity\Jzd.cs" />
     <Compile Include="Entity\Jzd.generate.cs" />

@@ -87,6 +87,7 @@
     <Compile Include="Helpers\GeometryHelperTests.cs" />
     <Compile Include="Helpers\NumberHelperTests.cs" />
     <Compile Include="Service\Impl\BasemapServiceImplTests.cs" />
+    <Compile Include="Service\Impl\DomainServiceImplTests.cs" />
     <Compile Include="Service\Impl\SystemServiceImplTests.cs" />
     <Compile Include="Service\Impl\ZdServiceImplTests.cs" />
     <Compile Include="Service\ServiceFactoryTests.cs" />

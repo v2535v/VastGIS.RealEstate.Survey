@@ -23,4 +23,10 @@ namespace VastGIS.RealEstate.Data.Enums
         ZSBH,
         TYH
     }
+
+    public enum EntityOperationType
+    {
+        Save,
+        Delete
+    }
 }

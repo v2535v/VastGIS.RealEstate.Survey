@@ -121,5 +121,17 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             return result;
         }
         #endregion
+
+        public string GetLayerNameFromTable(string tableName)
+        {
+            tableName = tableName.ToUpper();
+            using (SQLiteCommand command = new SQLiteCommand(connection))
+            {
+                command.CommandText =string.Format("Select Zwmc from vg_objectclasses where Mc='{0}'",tableName);
+                object retVal = command.ExecuteScalar();
+                if (retVal == null) return "";
+                return retVal.ToString();
+            }
+        }
     }
 }

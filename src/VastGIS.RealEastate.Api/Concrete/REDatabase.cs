@@ -9,7 +9,10 @@ using VastGIS.RealEstate.Api.Helpers;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Dao.Impl;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Enums;
+using VastGIS.RealEstate.Data.Events;
 using VastGIS.RealEstate.Data.Helpers;
+using VastGIS.RealEstate.Data.Interface;
 using VastGIS.RealEstate.Data.Service;
 using VastGIS.RealEstate.Data.Service.Impl;
 
@@ -52,11 +55,28 @@ namespace VastGIS.RealEstate.Api.Concrete
             }
             InitService();
         }
-        
+
 
         #endregion
 
         #region 属性
+
+        private event EntityChangedEventHandler entityChanged;
+
+        public event EntityChangedEventHandler EntityChanged
+        {
+            add { this.entityChanged += value; }
+            remove { this.entityChanged -= value; }
+        }
+
+        protected virtual void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
+        {
+            if (this.entityChanged != null)
+            {
+                this.entityChanged(this, new EntityChanedEventArgs(tableName, layerName, operationType, ids));
+            }
+        }
+
 
         public void SetProjectFile(string fileName)
         {
@@ -89,12 +109,32 @@ namespace VastGIS.RealEstate.Api.Concrete
 
         private void InitService()
         {
+            
             DbConnection.SetDatabaseName(_databaseName);
             _cadService=new CadServiceImpl(new CadDaoImpl());
             _zdService = new ZdServiceImpl(new ZdDaoImpl());
             _basemapService = new BasemapServiceImpl(new BasemapDaoImpl());
             _systemService = new SystemServiceImpl(new SystemDaoImpl());
             _domainService = new DomainServiceImpl(new DomainDaoImpl());
+            ((IEntityChanged)_cadService).EntityChanged += ReDatabase_EntityChanged;
+            ((IEntityChanged)_zdService).EntityChanged += ReDatabase_EntityChanged;
+            ((IEntityChanged)_basemapService).EntityChanged += ReDatabase_EntityChanged;
+            ((IEntityChanged)_systemService).EntityChanged += ReDatabase_EntityChanged;
+            ((IEntityChanged)_domainService).EntityChanged += ReDatabase_EntityChanged;
+        }
+
+        private void ReDatabase_EntityChanged(object sender, EntityChanedEventArgs e)
+        {
+            OnEntityChanged(e.TableName,e.LayerName,e.OperationType,e.Ids);
+        }
+
+        private void ClearService()
+        {
+            if (_cadService != null) _cadService.EntityChanged -= ReDatabase_EntityChanged;
+            if (_zdService != null) _zdService.EntityChanged -= ReDatabase_EntityChanged;
+            if (_basemapService != null) _basemapService.EntityChanged -= ReDatabase_EntityChanged;
+            if (_systemService != null) _systemService.EntityChanged -= ReDatabase_EntityChanged;
+            if (_domainService != null) _domainService.EntityChanged -= ReDatabase_EntityChanged;
         }
         #endregion
 

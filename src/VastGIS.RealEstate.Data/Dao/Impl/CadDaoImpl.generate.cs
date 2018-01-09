@@ -5,8 +5,10 @@ using System.Data;
 using Dapper;
 using System.Linq;
 using System.Data.SQLite;
+using VastGIS.RealEstate.Data.Dao;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
+using VastGIS.RealEstate.Data.Events;
 
 
 namespace VastGIS.RealEstate.Data.Dao.Impl
@@ -14,8 +16,61 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
     public partial class CadDaoImpl:SQLiteDao,CadDao
     {
+        public Dictionary<string, string> _entityNames;
         //private CadDao _cadDao;
+         
+        private string GEOMETRY_REGISTER_TmpCaddVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcaddview','geometry','rowid','tmpcadd','geometry',0)";
+        private string SELECT_TMPCADD = "select Id,EntityType,Handle,FileName,geometry from TmpCadd";
         
+         
+        private string GEOMETRY_REGISTER_TmpCadmVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadmview','geometry','rowid','tmpcadm','geometry',0)";
+        private string SELECT_TMPCADM = "select Id,EntityType,Handle,FileName,geometry from TmpCadm";
+        
+         
+        private string GEOMETRY_REGISTER_TmpCadxVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadxview','geometry','rowid','tmpcadx','geometry',0)";
+        private string SELECT_TMPCADX = "select Id,EntityType,Handle,FileName,geometry from TmpCadx";
+        
+        private string SELECT_TMPCADXDATA = "select Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName from TmpCadxdata";
+        
+         
+        private string GEOMETRY_REGISTER_TmpCadzjVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadzjview','geometry','rowid','tmpcadzj','geometry',0)";
+        private string SELECT_TMPCADZJ = "select Id,EntityType,Handle,FileName,geometry from TmpCadzj";
+        
+        
+        public CadDaoImpl(): base()
+        {
+            _entityNames=new Dictionary<string, string>();
+            _entityNames.Add("TMPCADD","");
+            _entityNames.Add("TMPCADM","");
+            _entityNames.Add("TMPCADX","");
+            _entityNames.Add("TMPCADXDATA","");
+            _entityNames.Add("TMPCADZJ","");
+        }
+        
+        private event EntityChangedEventHandler entityChanged;
+
+        public event EntityChangedEventHandler EntityChanged
+        {
+            add { this.entityChanged += value; }
+            remove { this.entityChanged -= value; }
+        }
+
+        protected virtual void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
+        {
+            if (this.entityChanged != null)
+            {
+                this.entityChanged(this, new EntityChanedEventArgs(tableName, layerName, operationType, ids));
+            }
+        }
+        
+        public string GetLayerName(string tableName)
+        {
+            tableName=tableName.ToUpper();
+            if(_entityNames.ContainsKey(tableName))
+                return _entityNames[tableName];
+            else
+                return "";
+        }
         
         ///TmpCadd函数
         public TmpCadd GetTmpCadd(long id)
@@ -39,7 +94,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveTmpCadd(TmpCadd tmpcadd)
         {
-            return tmpcadd.Save(connection,GetSRID());
+            bool retVal= tmpcadd.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("tmpcadd",GetLayerName("TmpCadd"),EntityOperationType.Save,new List<long>{tmpcadd.ID});
+            }
+            return retVal;
         }
         
         public void SaveTmpCadds(List<TmpCadd> tmpcadds)
@@ -51,8 +111,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             tran.Commit();
             tran.Dispose();
+            List<long> ids=tmpcadds.Select(a => a.ID).ToList(); 
+            OnEntityChanged("tmpcadd",GetLayerName("TmpCadd"),EntityOperationType.Save,ids);
         }
         
+        public void DeleteTmpCadd(TmpCadd record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("tmpcadd",GetLayerName("TmpCadd"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
         
         public void DeleteTmpCadd(long id)
         {
@@ -60,6 +127,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             {
                 command.CommandText="delete from TmpCadd where Id=" + id.ToString();
                 command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadd",GetLayerName("TmpCadd"),EntityOperationType.Delete,new List<long>{id});
             }
         }
         
@@ -72,6 +140,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 else
                     command.CommandText="delete from TmpCadd where " + filter;
                 command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadd",GetLayerName("TmpCadd"),EntityOperationType.Delete,null);
             }
         }
         
@@ -98,7 +167,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveTmpCadm(TmpCadm tmpcadm)
         {
-            return tmpcadm.Save(connection,GetSRID());
+            bool retVal= tmpcadm.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("tmpcadm",GetLayerName("TmpCadm"),EntityOperationType.Save,new List<long>{tmpcadm.ID});
+            }
+            return retVal;
         }
         
         public void SaveTmpCadms(List<TmpCadm> tmpcadms)
@@ -110,8 +184,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             tran.Commit();
             tran.Dispose();
+            List<long> ids=tmpcadms.Select(a => a.ID).ToList(); 
+            OnEntityChanged("tmpcadm",GetLayerName("TmpCadm"),EntityOperationType.Save,ids);
         }
         
+        public void DeleteTmpCadm(TmpCadm record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("tmpcadm",GetLayerName("TmpCadm"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
         
         public void DeleteTmpCadm(long id)
         {
@@ -119,6 +200,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             {
                 command.CommandText="delete from TmpCadm where Id=" + id.ToString();
                 command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadm",GetLayerName("TmpCadm"),EntityOperationType.Delete,new List<long>{id});
             }
         }
         
@@ -131,6 +213,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 else
                     command.CommandText="delete from TmpCadm where " + filter;
                 command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadm",GetLayerName("TmpCadm"),EntityOperationType.Delete,null);
             }
         }
         
@@ -157,7 +240,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveTmpCadx(TmpCadx tmpcadx)
         {
-            return tmpcadx.Save(connection,GetSRID());
+            bool retVal= tmpcadx.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("tmpcadx",GetLayerName("TmpCadx"),EntityOperationType.Save,new List<long>{tmpcadx.ID});
+            }
+            return retVal;
         }
         
         public void SaveTmpCadxs(List<TmpCadx> tmpcadxs)
@@ -169,8 +257,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             tran.Commit();
             tran.Dispose();
+            List<long> ids=tmpcadxs.Select(a => a.ID).ToList(); 
+            OnEntityChanged("tmpcadx",GetLayerName("TmpCadx"),EntityOperationType.Save,ids);
         }
         
+        public void DeleteTmpCadx(TmpCadx record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("tmpcadx",GetLayerName("TmpCadx"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
         
         public void DeleteTmpCadx(long id)
         {
@@ -178,6 +273,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             {
                 command.CommandText="delete from TmpCadx where Id=" + id.ToString();
                 command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadx",GetLayerName("TmpCadx"),EntityOperationType.Delete,new List<long>{id});
             }
         }
         
@@ -190,6 +286,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 else
                     command.CommandText="delete from TmpCadx where " + filter;
                 command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadx",GetLayerName("TmpCadx"),EntityOperationType.Delete,null);
             }
         }
         
@@ -216,7 +313,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveTmpCadxdata(TmpCadxdata tmpcadxdatum)
         {
-            return tmpcadxdatum.Save(connection,GetSRID());
+            bool retVal= tmpcadxdatum.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Save,new List<long>{tmpcadxdatum.ID});
+            }
+            return retVal;
         }
         
         public void SaveTmpCadxdatas(List<TmpCadxdata> tmpcadxdatums)
@@ -228,8 +330,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             tran.Commit();
             tran.Dispose();
+            List<long> ids=tmpcadxdatums.Select(a => a.ID).ToList(); 
+            OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Save,ids);
         }
         
+        public void DeleteTmpCadxdata(TmpCadxdata record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
         
         public void DeleteTmpCadxdata(long id)
         {
@@ -237,6 +346,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             {
                 command.CommandText="delete from TmpCadxdata where Id=" + id.ToString();
                 command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,new List<long>{id});
             }
         }
         
@@ -249,6 +359,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 else
                     command.CommandText="delete from TmpCadxdata where " + filter;
                 command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,null);
             }
         }
         
@@ -275,7 +386,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveTmpCadzj(TmpCadzj tmpcadzj)
         {
-            return tmpcadzj.Save(connection,GetSRID());
+            bool retVal= tmpcadzj.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Save,new List<long>{tmpcadzj.ID});
+            }
+            return retVal;
         }
         
         public void SaveTmpCadzjs(List<TmpCadzj> tmpcadzjs)
@@ -287,8 +403,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             tran.Commit();
             tran.Dispose();
+            List<long> ids=tmpcadzjs.Select(a => a.ID).ToList(); 
+            OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Save,ids);
         }
         
+        public void DeleteTmpCadzj(TmpCadzj record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
         
         public void DeleteTmpCadzj(long id)
         {
@@ -296,6 +419,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             {
                 command.CommandText="delete from TmpCadzj where Id=" + id.ToString();
                 command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Delete,new List<long>{id});
             }
         }
         
@@ -308,6 +432,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 else
                     command.CommandText="delete from TmpCadzj where " + filter;
                 command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Delete,null);
             }
         }
         
