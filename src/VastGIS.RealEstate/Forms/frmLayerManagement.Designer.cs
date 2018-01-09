@@ -33,13 +33,16 @@
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageLayers = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.dgvLayers = new System.Windows.Forms.DataGridView();
-            this.ColCanDisplay = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColCaption = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColCanIdentify = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColCanEditing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColCanSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColCanSanpping = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColVisible = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColZwmc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColIdentify = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColEditable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColQueryable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColSnapable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColMc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cmbLayerType = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnOK = new Syncfusion.Windows.Forms.ButtonAdv();
@@ -47,6 +50,7 @@
             this.tabControlAdv1.SuspendLayout();
             this.tabPageLayers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLayers)).BeginInit();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +75,7 @@
             // tabPageLayers
             // 
             this.tabPageLayers.Controls.Add(this.dgvLayers);
+            this.tabPageLayers.Controls.Add(this.panel2);
             this.tabPageLayers.Image = global::VastGIS.Plugins.RealEstate.Properties.Resources.LayerManagement;
             this.tabPageLayers.ImageSize = new System.Drawing.Size(16, 16);
             this.tabPageLayers.Location = new System.Drawing.Point(1, 28);
@@ -88,7 +93,7 @@
             this.dgvLayers.AllowUserToResizeColumns = false;
             this.dgvLayers.AllowUserToResizeRows = false;
             this.dgvLayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -98,67 +103,95 @@
             this.dgvLayers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColCanDisplay,
-            this.ColCaption,
-            this.ColCanIdentify,
-            this.ColCanEditing,
-            this.ColCanSelect,
-            this.ColCanSanpping,
-            this.ColName});
+            this.ColVisible,
+            this.ColZwmc,
+            this.ColIdentify,
+            this.ColEditable,
+            this.ColQueryable,
+            this.ColSnapable,
+            this.ColMc});
             this.dgvLayers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLayers.Location = new System.Drawing.Point(0, 0);
+            this.dgvLayers.Location = new System.Drawing.Point(0, 40);
             this.dgvLayers.MultiSelect = false;
             this.dgvLayers.Name = "dgvLayers";
             this.dgvLayers.RowHeadersVisible = false;
             this.dgvLayers.RowTemplate.Height = 23;
             this.dgvLayers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLayers.Size = new System.Drawing.Size(645, 225);
+            this.dgvLayers.Size = new System.Drawing.Size(645, 185);
             this.dgvLayers.TabIndex = 1;
             // 
-            // ColCanDisplay
+            // ColVisible
             // 
-            this.ColCanDisplay.DataPropertyName = "Visible";
-            this.ColCanDisplay.HeaderText = "显示";
-            this.ColCanDisplay.Name = "ColCanDisplay";
+            this.ColVisible.DataPropertyName = "Visible";
+            this.ColVisible.HeaderText = "   显示";
+            this.ColVisible.Name = "ColVisible";
             // 
-            // ColCaption
+            // ColZwmc
             // 
-            this.ColCaption.DataPropertyName = "Zwmc";
-            this.ColCaption.HeaderText = "层名";
-            this.ColCaption.Name = "ColCaption";
-            this.ColCaption.ReadOnly = true;
+            this.ColZwmc.DataPropertyName = "Zwmc";
+            this.ColZwmc.HeaderText = "中文名称";
+            this.ColZwmc.Name = "ColZwmc";
+            this.ColZwmc.ReadOnly = true;
             // 
-            // ColCanIdentify
+            // ColIdentify
             // 
-            this.ColCanIdentify.DataPropertyName = "Identify";
-            this.ColCanIdentify.HeaderText = "查看定义";
-            this.ColCanIdentify.Name = "ColCanIdentify";
-            this.ColCanIdentify.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColCanIdentify.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColIdentify.DataPropertyName = "Identify";
+            this.ColIdentify.HeaderText = "   可识别";
+            this.ColIdentify.Name = "ColIdentify";
+            this.ColIdentify.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColIdentify.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // ColCanEditing
+            // ColEditable
             // 
-            this.ColCanEditing.DataPropertyName = "Editable";
-            this.ColCanEditing.HeaderText = "可编辑";
-            this.ColCanEditing.Name = "ColCanEditing";
+            this.ColEditable.DataPropertyName = "Editable";
+            this.ColEditable.HeaderText = "   可编辑";
+            this.ColEditable.Name = "ColEditable";
             // 
-            // ColCanSelect
+            // ColQueryable
             // 
-            this.ColCanSelect.DataPropertyName = "Queryable";
-            this.ColCanSelect.HeaderText = "可查询";
-            this.ColCanSelect.Name = "ColCanSelect";
+            this.ColQueryable.DataPropertyName = "Queryable";
+            this.ColQueryable.HeaderText = "   可查询";
+            this.ColQueryable.Name = "ColQueryable";
             // 
-            // ColCanSanpping
+            // ColSnapable
             // 
-            this.ColCanSanpping.DataPropertyName = "Snapable";
-            this.ColCanSanpping.HeaderText = "可捕捉";
-            this.ColCanSanpping.Name = "ColCanSanpping";
+            this.ColSnapable.DataPropertyName = "Snapable";
+            this.ColSnapable.HeaderText = "   可捕捉";
+            this.ColSnapable.Name = "ColSnapable";
             // 
-            // ColName
+            // ColMc
             // 
-            this.ColName.DataPropertyName = "Mc";
-            this.ColName.HeaderText = "表名";
-            this.ColName.Name = "ColName";
+            this.ColMc.DataPropertyName = "Mc";
+            this.ColMc.HeaderText = "名称";
+            this.ColMc.Name = "ColMc";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.cmbLayerType);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(645, 40);
+            this.panel2.TabIndex = 2;
+            // 
+            // cmbLayerType
+            // 
+            this.cmbLayerType.FormattingEnabled = true;
+            this.cmbLayerType.Location = new System.Drawing.Point(82, 10);
+            this.cmbLayerType.Name = "cmbLayerType";
+            this.cmbLayerType.Size = new System.Drawing.Size(211, 20);
+            this.cmbLayerType.TabIndex = 1;
+            this.cmbLayerType.SelectedIndexChanged += new System.EventHandler(this.cmbLayerType_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "图层类型：";
             // 
             // panel1
             // 
@@ -197,10 +230,13 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmLayerManagement";
             this.Text = "图层管理";
+            this.Load += new System.EventHandler(this.frmLayerManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).EndInit();
             this.tabControlAdv1.ResumeLayout(false);
             this.tabPageLayers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLayers)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -215,12 +251,15 @@
         private Syncfusion.Windows.Forms.ButtonAdv btnOK;
         private System.Windows.Forms.DataGridView dgvLayers;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColCanDisplay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColCaption;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColCanIdentify;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColCanEditing;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColCanSelect;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColCanSanpping;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox cmbLayerType;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColVisible;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColZwmc;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColIdentify;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColEditable;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColQueryable;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColSnapable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColMc;
     }
 }
