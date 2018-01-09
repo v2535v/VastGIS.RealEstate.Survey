@@ -87,6 +87,7 @@
     <Compile Include="Commands\CmdTestOgrChinese.cs" />
     <Compile Include="Commands\ToolCopyFeature.cs" />
     <Compile Include="Commands\ToolCreateJZDByPolygon.cs" />
+    <Compile Include="Commands\ToolDeleteFeature.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Config\VGLayer.cs" />
     <Compile Include="Config\VGLayerConfig.cs" />
@@ -127,6 +128,12 @@
     <Compile Include="Forms\frmCreateDB.Designer.cs">
       <DependentUpon>frmCreateDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmDeleteFeature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDeleteFeature.Designer.cs">
+      <DependentUpon>frmDeleteFeature.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmImportDXF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +164,7 @@
     <Compile Include="Forms\frmTestOgrChinese.Designer.cs">
       <DependentUpon>frmTestOgrChinese.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\IEditForm.cs" />
     <Compile Include="frmSelectEditDatabase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCreateDB.resx">
       <DependentUpon>frmCreateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDeleteFeature.resx">
+      <DependentUpon>frmDeleteFeature.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmImportDXF.resx">
       <DependentUpon>frmImportDXF.cs</DependentUpon>

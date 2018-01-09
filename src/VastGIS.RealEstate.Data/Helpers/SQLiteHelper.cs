@@ -23,6 +23,7 @@ namespace VastGIS.RealEstate.Data.Helpers
             }
             return true;
         }
+        
         public static Dictionary<string, string> AutoMappingColumn(List<string> sources, List<string> targets,bool ignoreSystemColumn=true)
         {
             Dictionary<string, string> columns = new Dictionary<string, string>();
@@ -109,7 +110,7 @@ namespace VastGIS.RealEstate.Data.Helpers
         public static bool ColumnExists(SQLiteConnection conn, string tableName, string colName)
         {
             var reader = TableInfo(conn, tableName);
-            for (int i = 0; i < reader.FieldCount; i++)//VisibleFieldCountにするべき？
+            for (int i = 0; i < reader.FieldCount; i++)
             {
                 if (reader.GetName(i) == colName)
                     return true;

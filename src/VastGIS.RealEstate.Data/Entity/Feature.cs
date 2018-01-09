@@ -7,7 +7,7 @@ namespace VastGIS.RealEstate.Data.Entity
 {
     public class SearchFeature : Feature
     {
-
+        public long InListID { get;set;}
     }
 
     public abstract class Feature : IFeature

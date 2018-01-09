@@ -92,8 +92,10 @@ namespace VastGIS.Plugins.RealEstate
                             _olayerService.EndBatch();
                             ReorderLayers(classes);
                             ((IRealEstateContext)_context).RealEstateDatabase.EntityChanged += RealEstateDatabase_EntityChanged;
+                            _context.Map.Drawing.AddLayer(DrawReferenceList.SpatiallyReferencedList);
                         }, TaskScheduler.FromCurrentSynchronizationContext());
                 }
+                
             }
         }
 

@@ -32,7 +32,7 @@ namespace VastGIS.RealEstate.Data.Dao
 
         List<SearchFeature> FindRecords(string[] layers, double dx, double dy);
 
-        bool CopyFeature(string sourceTable, int id, string targetTable, bool isDelete = false, bool isAttributeAutoTransform = true);
+        bool CopyFeature(string sourceTable, long id, string targetTable, bool isDelete = false, bool isAttributeAutoTransform = true);
 
         bool InitTables();
 
@@ -54,6 +54,10 @@ namespace VastGIS.RealEstate.Data.Dao
         IEnumerable<VgAreacodes> GetAreaCodesByJB(string parentCode, int jb);
         
         void RecalculateDBExtent(out double xmin, out double ymin, out double xmax, out double ymax);
+
+        List<SearchFeature> FindRecords(List<VgObjectclasses> classes, double dx, double dy);
+
+        bool DeleteFeature(string sourceTable, long id);
     }
 }
 

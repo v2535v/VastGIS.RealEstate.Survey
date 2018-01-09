@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Dapper;
 using GeoAPI.Geometries;
 using Newtonsoft.Json;
+using VastGIS.Api.Enums;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 using VastGIS.RealEstate.Data.Helpers;
@@ -332,7 +333,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
         public bool CopyFeature(
             string sourceTable,
-            int id,
+            long id,
             string targetTable,
             bool isDelete = false,
             bool isAttributeAutoTransform = true)
@@ -363,13 +364,17 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         if (mappingColumn.Value.ToLower().Equals("geometry")) continue;
                         builder.Append("," + mappingColumn.Value);
                     }
+                    
                     builder.Append(" from " + sourceTable + " where Id=" + id.ToString());
                     command.CommandText = builder.ToString();
                     command.ExecuteNonQuery();
+                    OnEntityChanged(targetTable,GetLayerName(targetTable),EntityOperationType.Save, null);
                     if (isDelete)
                     {
-                        command.CommandText = "delete " + sourceTable + " from Id=" + id.ToString();
-                        command.ExecuteNonQuery();
+                        //command.CommandText = "delete from " + sourceTable + " where Id=" + id.ToString();
+                        //command.ExecuteNonQuery();
+                        //OnEntityChanged(sourceTable, GetLayerName(sourceTable), EntityOperationType.Delete, null);
+                        DeleteFeature(sourceTable, id);
                     }
                     return true;
                 }
@@ -500,7 +505,84 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
         }
 
-        
+        public List<SearchFeature> FindRecords(List<VgObjectclasses> classes, double dx, double dy)
+        {
+            try
+            {
+                List<SearchFeature> features = new List<SearchFeature>();
+                for (int i = 0; i < classes.Count; i++)
+                {
+                    string sql =
+                        SpatialHelper.SearchSQLBuilder(classes[i].Mc, (GeometryType)classes[i].Txlx, dx, dy, 2);
+                       
+                    var findfeatures = connection.Query<SearchFeature>(sql).ToList();
+                    if (findfeatures != null && findfeatures.Count() > 0)
+                    {
+                        features.AddRange(findfeatures);
+                    }
+
+                }
+                return features;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning(ex.Message);
+                return null;
+            }
+            return null;
+        }
+
+        public bool DeleteFeature(string sourceTable, long id)
+        {
+            List<string> sourceColumns = GetAllColumns(sourceTable);
+            bool hasDatabaseId = false;
+            bool hasBackFields = false;
+            string sql = "";
+            HasSpecialFields(sourceTable, out hasDatabaseId, out hasBackFields);
+            using (SQLiteCommand command = new SQLiteCommand(connection))
+            {
+                if (hasDatabaseId == false)
+                {
+                    sql = string.Format("delete from {0} where id={1} ", sourceTable, id);
+                }
+                else
+                {
+                    command.CommandText = string.Format("select databaseId from {0} where id={1}", sourceTable, id);
+                    object dbRet = command.ExecuteScalar();
+                    
+                        
+                        if (dbRet == null)
+                        {
+                            sql = string.Format("delete from {0} where id={1} ", sourceTable, id);
+                        }
+                        else
+                        {
+                            long olddbId = Convert.ToInt64(dbRet);
+                            if (olddbId == 0)
+                            {
+                                sql = string.Format("delete from {0} where id={1} ", sourceTable, id);
+                            }
+                            else
+                            {
+                                if (!hasBackFields)
+                                {
+                                    sql = string.Format("update {0} set Flags=3 where id={1} ", sourceTable, id);
+                                }
+                                else
+                                {
+                                sql = string.Format("update {0} set Flags=3,WX_dcsj='{2}' where id={1} ", sourceTable, id,DateTime.Now.ToString());
+                            }
+                            }
+                        }
+                    
+                    
+                }
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+                OnEntityChanged(sourceTable, GetLayerName(sourceTable), EntityOperationType.Delete, null);
+            }
+            return true;
+        }
     }
 }
 

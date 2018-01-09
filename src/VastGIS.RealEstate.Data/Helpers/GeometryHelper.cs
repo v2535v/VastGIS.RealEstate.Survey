@@ -105,6 +105,25 @@ namespace VastGIS.RealEstate.Data.Helpers
             return geometry;
         }
 
+        public static string CreateCircularWkt(double centerX, double centerY, double distance)
+        {
+            double xx1 = centerX - distance;
+            double yy1 = centerY;
+
+            double xx2 = centerX;
+            double yy2 = centerY + distance;
+
+            double xx3 = centerX + distance;
+            double yy3 = centerY;
+
+            double xx4 = centerX;
+            double yy4 = centerY - distance;
+            string wkt = string.Format("CIRCULARSTRING({0} {1},{2} {3},{4} {5},{6} {7},{0} {1})", xx1, yy1, xx2, yy2,
+                xx3, yy3, xx4, yy4);
+            
+            return wkt;
+        }
+
 
         /// <summary>
         /// 多边形合并，主要用于宗地或者房产的处理

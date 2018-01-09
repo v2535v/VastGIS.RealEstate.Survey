@@ -122,6 +122,21 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         }
         #endregion
 
+
+        public bool HasSpecialFields(string tableName, out bool hasDatabaseId, out bool hasBackField)
+        {
+            DataTable dt = ExecuteSql("PRAGMA table_info('" + tableName + "')");
+            hasDatabaseId = false;
+            hasBackField = false;
+            foreach (DataRow dr in dt.Rows)
+            {
+                string tbName = dr["name"].ToString().ToLower();
+                if (tbName == "databaseid") hasDatabaseId = true;
+                if (tbName == "wx_wydm") hasBackField = true;
+            }
+            return true;
+        }
+
         public string GetLayerNameFromTable(string tableName)
         {
             tableName = tableName.ToUpper();

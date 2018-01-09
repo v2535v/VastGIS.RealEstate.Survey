@@ -67,14 +67,24 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             return _systemDao.FindRecords(layers, dx, dy);
         }
 
+        public List<SearchFeature> FindRecords(List<VgObjectclasses> classes, double dx, double dy)
+        {
+            return _systemDao.FindRecords(classes, dx, dy);
+        }
+
         public bool CopyFeature(
             string sourceTable,
-            int id,
+            long id,
             string targetTable,
             bool isDelete = false,
             bool isAttributeAutoTransform = true)
         {
             return _systemDao.CopyFeature(sourceTable, id, targetTable, isDelete, isAttributeAutoTransform);
+        }
+
+        public bool DeleteFeature(string sourceTable, long id)
+        {
+            return _systemDao.DeleteFeature(sourceTable, id);
         }
 
         public List<VgObjectclasses> GetObjectclasseses(bool isDeep = true)

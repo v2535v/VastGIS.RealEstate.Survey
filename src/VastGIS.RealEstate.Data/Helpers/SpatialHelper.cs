@@ -240,5 +240,35 @@ namespace VastGIS.RealEstate.Data.Helpers
                 return id;
             }
         }
+
+
+        public static string SearchSQLBuilder(
+            string tableName,
+            GeometryType geometryType,
+            double dx,
+            double dy,
+            double radius = 2.0)
+        {
+            string sql = "";
+            if (geometryType == GeometryType.Polygon)
+            {
+                sql= string.Format(
+                    "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Within( GeomFromText('POINT({1} {2})'),geometry);",tableName,
+                    dx, dy);
+            }
+            else if (geometryType == GeometryType.Polyline)
+            {
+                sql = string.Format(
+                    "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Intersects( GeomFromText('{1}'),geometry);", tableName,
+                    GeometryHelper.CreateCircularWkt(dx,dy,radius));
+            }
+            else if (geometryType == GeometryType.Point || geometryType == GeometryType.TextPoint)
+            {
+                sql = string.Format(
+                    "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Within( geometry,GeomFromText('{1}'));", tableName,
+                    GeometryHelper.CreateCircularWkt(dx, dy, radius));
+            }
+            return sql;
+        }
     }
 }

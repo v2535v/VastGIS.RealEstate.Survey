@@ -32,6 +32,8 @@ namespace VastGIS.RealEstate.Data.Service
         IFeature FindFirstRecord(string[] getSearchLayers, double dx, double dy);
 
         List<SearchFeature> FindRecords(string[] layers, double dx, double dy);
+
+        List<SearchFeature> FindRecords(List<VgObjectclasses> classes, double dx, double dy);
         /// <summary>
         /// 复制要素到另外一个表
         /// </summary>
@@ -41,8 +43,9 @@ namespace VastGIS.RealEstate.Data.Service
         /// <param name="isDelete">是否从来源表中删除</param>
         ///  <param name="isAttributeAutoTransform">是否自动传递同名属性</param>
         /// <returns></returns>
-        bool CopyFeature(string sourceTable, int id, string targetTable, bool isDelete = false, bool isAttributeAutoTransform = true);
+        bool CopyFeature(string sourceTable, long id, string targetTable, bool isDelete = false, bool isAttributeAutoTransform = true);
 
+        bool DeleteFeature(string sourceTable, long id);
 
         List<VgObjectclasses> GetObjectclasseses(bool isDeep = true);
 

@@ -42,7 +42,7 @@
             this.btnUnionAndCopy = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
             this.btnCanel = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkDeleteOrginal = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radMulti = new System.Windows.Forms.RadioButton();
             this.radSingle = new System.Windows.Forms.RadioButton();
@@ -163,6 +163,7 @@
             this.btnClear.TabIndex = 11;
             this.btnClear.Text = "清空";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnUnionAndCopy
             // 
@@ -181,6 +182,7 @@
             this.btnCopy.TabIndex = 13;
             this.btnCopy.Text = "拷贝";
             this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // btnCanel
             // 
@@ -190,16 +192,17 @@
             this.btnCanel.TabIndex = 14;
             this.btnCanel.Text = "退出";
             this.btnCanel.UseVisualStyleBackColor = true;
+            this.btnCanel.Click += new System.EventHandler(this.btnCanel_Click);
             // 
-            // checkBox1
+            // chkDeleteOrginal
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(75, 249);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(108, 16);
-            this.checkBox1.TabIndex = 15;
-            this.checkBox1.Text = "从现有图层移除";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkDeleteOrginal.AutoSize = true;
+            this.chkDeleteOrginal.Location = new System.Drawing.Point(75, 249);
+            this.chkDeleteOrginal.Name = "chkDeleteOrginal";
+            this.chkDeleteOrginal.Size = new System.Drawing.Size(108, 16);
+            this.chkDeleteOrginal.TabIndex = 15;
+            this.chkDeleteOrginal.Text = "从现有图层移除";
+            this.chkDeleteOrginal.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -244,6 +247,7 @@
             this.lstSource.Name = "lstSource";
             this.lstSource.Size = new System.Drawing.Size(238, 64);
             this.lstSource.TabIndex = 17;
+            this.lstSource.SelectedIndexChanged += new System.EventHandler(this.lstSource_SelectedIndexChanged);
             // 
             // frmCopyFeature
             // 
@@ -251,7 +255,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(262, 309);
             this.Controls.Add(this.lstSource);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkDeleteOrginal);
             this.Controls.Add(this.btnCanel);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnUnionAndCopy);
@@ -292,7 +296,7 @@
         private System.Windows.Forms.Button btnUnionAndCopy;
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button btnCanel;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkDeleteOrginal;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton radMulti;
         private System.Windows.Forms.RadioButton radSingle;

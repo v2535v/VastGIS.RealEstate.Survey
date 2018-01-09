@@ -43,7 +43,8 @@ namespace VastGIS.Plugins.RealEstate.Commands
                 _copyForm = new frmCopyFeature(_context);
 
             }
-            _context.View.ShowChildView(_copyForm, false);
+            if(_copyForm.Visible==false)
+                _context.View.ShowChildView(_copyForm, false);
             IMap map = _context.Map as IMap;
             map.MapCursor = MapCursor.None;
             map.MouseUp += Map_MouseUp;
@@ -51,7 +52,8 @@ namespace VastGIS.Plugins.RealEstate.Commands
 
         public override void Deactiviate()
         {
-            IMap map = _context.Map as IMap;
+            if (_copyForm != null) _copyForm.Visible = false;
+           IMap map = _context.Map as IMap;
             map.MouseUp -= Map_MouseUp;
         }
 
