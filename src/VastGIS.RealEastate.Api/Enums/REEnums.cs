@@ -34,4 +34,10 @@ namespace VastGIS.RealEstate.Api.Enums
         Text
     }
 
+    public enum FeatureSelectionMode
+    {
+        CreateNew,
+        AddInto
+    }
+
 }

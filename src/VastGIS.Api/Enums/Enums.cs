@@ -18,7 +18,8 @@
         Point = 1,
         Polyline = 2,
         Polygon = 3,
-        MultiPoint = 4
+        MultiPoint = 4,
+        TextPoint=5
     }
 
     public enum ZValueType

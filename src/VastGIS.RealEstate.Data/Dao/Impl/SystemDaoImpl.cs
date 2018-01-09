@@ -283,15 +283,44 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 {
                     string sql =
                         string.Format(
-                            "Select Id,AsText(geometry) as Wkt,'{0}' as TableName from {0} Where Within( GeomFromText('POINT({1} {2})'),geometry);", layers[i],
+                            "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Within( GeomFromText('POINT({1} {2})'),geometry);", layers[i],
                             dx, dy);
-                    var features = DbConnection.GetConnection().Query<SearchFeature>(sql);
+                    var features = connection.Query<SearchFeature>(sql);
                     if (features != null && features.Count() > 0)
                     {
                         return features.First() as IFeature;
                     }
 
                 }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning(ex.Message);
+                return null;
+            }
+            return null;
+        }
+
+        public List<SearchFeature> FindRecords(string[] layers, double dx, double dy)
+        {
+           
+            try
+            {
+                List<SearchFeature> features=new List<SearchFeature>();
+                for (int i = 0; i < layers.Length; i++)
+                {
+                    string sql =
+                        string.Format(
+                            "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Within( GeomFromText('POINT({1} {2})'),geometry);", layers[i],
+                            dx, dy);
+                    var findfeatures = connection.Query<SearchFeature>(sql).ToList();
+                    if (findfeatures != null && findfeatures.Count() > 0)
+                    {
+                         features.AddRange(findfeatures);
+                    }
+
+                }
+                return features;
             }
             catch (Exception ex)
             {

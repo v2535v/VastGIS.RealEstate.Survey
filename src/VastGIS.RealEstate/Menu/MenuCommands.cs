@@ -83,6 +83,10 @@ namespace VastGIS.Plugins.RealEstate.Menu
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
 
+                command = new ToolCopyFeature(_context);
+                command.PluginIdentity = _identity;
+                _commands.Add(command);
+
                 command = new CmdResetLayers(_context);
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
@@ -90,6 +94,8 @@ namespace VastGIS.Plugins.RealEstate.Menu
                 command = new CmdLayerManagement(_context);
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
+
+
             }
             return _commands;
         }

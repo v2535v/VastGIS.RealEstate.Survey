@@ -62,6 +62,11 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             return _systemDao.FindFirstRecord(getSearchLayers, dx, dy);
         }
 
+        public List<SearchFeature> FindRecords(string[] layers, double dx, double dy)
+        {
+            return _systemDao.FindRecords(layers, dx, dy);
+        }
+
         public bool CopyFeature(
             string sourceTable,
             int id,

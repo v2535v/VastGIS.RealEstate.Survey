@@ -134,5 +134,42 @@ namespace VastGIS.RealEstate.Data.Helpers
             lastGeom = SpatialHelper.ReorderPolygonVertex(lastGeom);
             return lastGeom;
         }
+
+        public static IGeometry CreateGeometryByDbGeometry(DbGeometry dbgeometry)
+        {
+            IGeometry geometry=null;
+            switch (dbgeometry.SpatialTypeName)
+            {
+                case "MultiPolygon":
+                case "Polygon":
+                    {
+                        geometry = new Api.Concrete.Geometry(GeometryType.Polygon, ZValueType.None);
+                        geometry.ImportFromWkt(dbgeometry.AsText());
+                        break;
+                    }
+                case "Point":
+                    {
+                        geometry = new Api.Concrete.Geometry(GeometryType.Point, ZValueType.None);
+                        geometry.ImportFromWkt(dbgeometry.AsText());
+                        break;
+                    }
+                case "MultiPoint":
+                    {
+                        geometry = new Api.Concrete.Geometry(GeometryType.MultiPoint, ZValueType.None);
+                        geometry.ImportFromWkt(dbgeometry.AsText());
+                        break;
+                    }
+                case "MultiLineString":
+                case "LineString":
+                    {
+                        geometry = new Api.Concrete.Geometry(GeometryType.Polyline, ZValueType.None);
+                        geometry.ImportFromWkt(dbgeometry.AsText());
+                        break;
+                    }
+                case "GeometryCollection": break;
+                default: break;
+            }
+            return geometry;
+        }
     }
 }

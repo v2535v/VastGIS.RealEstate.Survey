@@ -17,6 +17,7 @@ namespace VastGIS.RealEstate.Data.Entity
     {
         #region 表结构
         public const string TABLE_NAME = "DXTSXSSZJ";
+        public const string LAYER_NAME="水系设施注记";
 	    public const string COL_ID = "Id";
 	    public const string COL_WBNR = "WBNR";
 	    public const string COL_TC = "TC";
@@ -233,6 +234,22 @@ namespace VastGIS.RealEstate.Data.Entity
                 //_geometry=DbGeometry.FromText(_wkt);
                 _geometry.ImportFromWkt(_wkt);
                 this.OnPropertyChanged("Geometry"); 
+            }
+        }
+        
+        public string SimpleLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ({2})","DXTSXSSZJ",this.id,this.ysdm);
+            }
+        }
+        
+        public string FullLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ({2})","DXTSXSSZJ",this.id,this.ysdm);
             }
         }
         

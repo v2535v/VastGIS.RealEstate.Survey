@@ -85,6 +85,7 @@
     <Compile Include="Commands\CmdImportDXF.cs" />
     <Compile Include="Commands\CmdNewJZD.cs" />
     <Compile Include="Commands\CmdTestOgrChinese.cs" />
+    <Compile Include="Commands\ToolCopyFeature.cs" />
     <Compile Include="Commands\ToolCreateJZDByPolygon.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Config\VGLayer.cs" />
@@ -114,6 +115,12 @@
     <Compile Include="Forms\frmAssignText.Designer.cs">
       <DependentUpon>frmAssignText.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCopyFeature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCopyFeature.Designer.cs">
+      <DependentUpon>frmCopyFeature.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCreateDB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +138,12 @@
     </Compile>
     <Compile Include="Forms\frmLayerManagement.Designer.cs">
       <DependentUpon>frmLayerManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSelectLayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSelectLayer.Designer.cs">
+      <DependentUpon>frmSelectLayer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmSplitCAD.cs">
       <SubType>Form</SubType>
@@ -223,6 +236,9 @@
     <EmbeddedResource Include="Forms\frmAssignText.resx">
       <DependentUpon>frmAssignText.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCopyFeature.resx">
+      <DependentUpon>frmCopyFeature.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCreateDB.resx">
       <DependentUpon>frmCreateDB.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLayerManagement.resx">
       <DependentUpon>frmLayerManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelectLayer.resx">
+      <DependentUpon>frmSelectLayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSplitCAD.resx">
       <DependentUpon>frmSplitCAD.cs</DependentUpon>

@@ -17,6 +17,7 @@ namespace VastGIS.RealEstate.Data.Entity
     {
         #region 表结构
         public const string TABLE_NAME = "DXTDLDWM";
+        public const string LAYER_NAME="独立地物面";
 	    public const string COL_ID = "Id";
 	    public const string COL_TC = "TC";
 	    public const string COL_CASSDM = "CASSDM";
@@ -203,6 +204,22 @@ namespace VastGIS.RealEstate.Data.Entity
                 //_geometry=DbGeometry.FromText(_wkt);
                 _geometry.ImportFromWkt(_wkt);
                 this.OnPropertyChanged("Geometry"); 
+            }
+        }
+        
+        public string SimpleLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ({2})","DXTDLDWM",this.id,this.ysdm);
+            }
+        }
+        
+        public string FullLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ({2})","DXTDLDWM",this.id,this.ysdm);
             }
         }
         

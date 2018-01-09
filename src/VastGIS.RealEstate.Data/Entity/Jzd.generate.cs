@@ -17,6 +17,7 @@ namespace VastGIS.RealEstate.Data.Entity
     {
         #region 表结构
         public const string TABLE_NAME = "JZD";
+        public const string LAYER_NAME="界址点";
 	    public const string COL_ID = "Id";
 	    public const string COL_ZDZHDM = "ZDZHDM";
 	    public const string COL_YSDM = "YSDM";
@@ -398,6 +399,22 @@ namespace VastGIS.RealEstate.Data.Entity
                 //_geometry=DbGeometry.FromText(_wkt);
                 _geometry.ImportFromWkt(_wkt);
                 this.OnPropertyChanged("Geometry"); 
+            }
+        }
+        
+        public string SimpleLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ({2})","JZD",this.id,this.ysdm);
+            }
+        }
+        
+        public string FullLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ({2})","JZD",this.id,this.ysdm);
             }
         }
         

@@ -30,6 +30,8 @@ namespace VastGIS.RealEstate.Data.Dao
 
         IFeature FindFirstRecord(string[] getSearchLayers, double dx, double dy);
 
+        List<SearchFeature> FindRecords(string[] layers, double dx, double dy);
+
         bool CopyFeature(string sourceTable, int id, string targetTable, bool isDelete = false, bool isAttributeAutoTransform = true);
 
         bool InitTables();

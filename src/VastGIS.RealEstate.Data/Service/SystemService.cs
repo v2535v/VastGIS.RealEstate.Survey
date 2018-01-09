@@ -31,6 +31,7 @@ namespace VastGIS.RealEstate.Data.Service
 
         IFeature FindFirstRecord(string[] getSearchLayers, double dx, double dy);
 
+        List<SearchFeature> FindRecords(string[] layers, double dx, double dy);
         /// <summary>
         /// 复制要素到另外一个表
         /// </summary>

@@ -17,6 +17,7 @@ namespace VastGIS.RealEstate.Data.Entity
     {
         #region 表结构
         public const string TABLE_NAME = "vg_settings";
+        public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_CSMC = "CSMC";
 	    public const string COL_CSZ = "CSZ";
@@ -98,6 +99,22 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
+        
+        public string SimpleLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ","vg_settings",this.id);
+            }
+        }
+        
+        public string FullLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ","vg_settings",this.id);
+            }
+        }
         
         
         

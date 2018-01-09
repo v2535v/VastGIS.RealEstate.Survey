@@ -34,6 +34,11 @@ namespace VastGIS.RealEstate.Data.Entity
                 }
             }
         }
+
+        public string Information
+        {
+            get { return string.Format("{0}({1}--{2})", mc, zwmc, filter); }
+        }
     }
 
 }

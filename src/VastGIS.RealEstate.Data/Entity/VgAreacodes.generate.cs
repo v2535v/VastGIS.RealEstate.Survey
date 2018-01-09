@@ -17,6 +17,7 @@ namespace VastGIS.RealEstate.Data.Entity
     {
         #region 表结构
         public const string TABLE_NAME = "vg_areacodes";
+        public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_XZQHMC = "XZQHMC";
 	    public const string COL_XZQHDM = "XZQHDM";
@@ -113,6 +114,22 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
+        
+        public string SimpleLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ","vg_areacodes",this.id);
+            }
+        }
+        
+        public string FullLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ","vg_areacodes",this.id);
+            }
+        }
         
         
         

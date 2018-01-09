@@ -17,6 +17,7 @@ namespace VastGIS.RealEstate.Data.Entity
     {
         #region 表结构
         public const string TABLE_NAME = "TmpCadxdata";
+        public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_HANDLE = "Handle";
 	    public const string COL_TC = "Tc";
@@ -233,6 +234,22 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
+        
+        public string SimpleLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ({2})","TmpCadxdata",this.id,this.ysdm);
+            }
+        }
+        
+        public string FullLabelString
+        {
+            get
+            {
+                return string.Format("{0} {1} ({2})","TmpCadxdata",this.id,this.ysdm);
+            }
+        }
         
         
         
