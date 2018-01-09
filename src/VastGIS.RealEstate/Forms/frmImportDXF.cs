@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using netDxf;
+using VastGIS.Api.Interfaces;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.Plugins.RealEstate.Helpers;
 using VastGIS.Plugins.Services;
@@ -117,7 +118,9 @@ namespace VastGIS.Plugins.RealEstate.Forms
             _context.View.Unlock();
             _loadingForm.Close();
             _loadingForm.Dispose();
-            DialogResult=DialogResult.OK;
+            IEnvelope envelope = ((IRealEstateContext)_context).RealEstateDatabase.GetDatabaseEnvelope();
+            _context.Map.ZoomToExtents(envelope);
+            DialogResult =DialogResult.OK;
         }
     }
 }

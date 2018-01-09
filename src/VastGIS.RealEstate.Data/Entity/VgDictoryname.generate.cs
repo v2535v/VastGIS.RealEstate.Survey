@@ -5,6 +5,10 @@ using System.Data;
 using System.Data.SQLite;
 using System.Data.Entity.Spatial;
 using System.ComponentModel;
+using VastGIS.Api.Concrete;
+using VastGIS.Api.Enums;
+using VastGIS.Api.Interfaces;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
@@ -30,6 +34,7 @@ namespace VastGIS.RealEstate.Data.Entity
 	    private const string SQL_UPDATE_VG_DICTORYNAME = "UPDATE vg_dictoryname SET ZDMC = @ZDMC, ZDSM = @ZDSM WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_VG_DICTORYNAME = "DELETE FROM vg_dictoryname WHERE  Id = @Id ";
+        
 	
         #endregion            
         
@@ -96,7 +101,15 @@ namespace VastGIS.RealEstate.Data.Entity
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  VgDictoryname()
+        {
+            
+            
+        }
+        #endregion
         
         #region 方法           
     
@@ -162,7 +175,8 @@ namespace VastGIS.RealEstate.Data.Entity
 		public bool Delete(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_VG_DICTORYNAME,connection))
-            {							
+            {
+               
 				command.Parameters.AddWithValue(PARAM_ID, this.ID);
                 return (command.ExecuteNonQuery() == 1);
             }

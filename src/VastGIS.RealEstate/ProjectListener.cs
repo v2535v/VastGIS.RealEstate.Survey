@@ -60,6 +60,7 @@ namespace VastGIS.Plugins.RealEstate
 
                     ((IRealEstateContext)_context).RealEstateDatabase.DatabaseName =
                         ReProjectHelper.GetProjectDatabase(_context.Project.Filename);
+
                     List<VgObjectclasses> classes = ((IRealEstateContext)_context).RealEstateDatabase.SystemService
                         .GetObjectclasseses(true);
                     int srid = ((IRealEstateContext)_context).RealEstateDatabase.SystemService.GetSystemSRID();
@@ -89,8 +90,25 @@ namespace VastGIS.Plugins.RealEstate
                         {
                             _olayerService.EndBatch();
                             ReorderLayers(classes);
-                            
+                            ((IRealEstateContext)_context).RealEstateDatabase.EntityChanged += RealEstateDatabase_EntityChanged;
                         }, TaskScheduler.FromCurrentSynchronizationContext());
+                }
+            }
+        }
+
+        private void RealEstateDatabase_EntityChanged(object sender, VastGIS.RealEstate.Data.Events.EntityChanedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.LayerName)) return;
+            string targetLayer = e.TableName.ToUpper();
+            for (int i = 0; i < _context.Map.Layers.Count; i++)
+            {
+                ILayer pLayer = _context.Map.Layers[i];
+                string lyrName = pLayer.Name.ToUpper();
+                if (targetLayer == lyrName || e.LayerName == lyrName)
+                {
+                    if(pLayer.IsVector)
+                       pLayer.VectorSource.ReloadFromSource();
+                    return;
                 }
             }
         }
@@ -163,12 +181,10 @@ namespace VastGIS.Plugins.RealEstate
                     {
                         if (vectorLayer.Open(connectionString, oneclass.Filter,false))
                         {
-                            
                             //bool isDynamic = vectorLayer.DynamicLoading;
                             //vectorLayer.DynamicLoading = true;
                             var data = vectorLayer.Data;
                             AddLayerToMap(vectorLayer, oneclass.Zwmc);
-                            
                         }
                     }
                     else
@@ -179,10 +195,6 @@ namespace VastGIS.Plugins.RealEstate
                             //vectorLayer.DynamicLoading = true;
                            var data = vectorLayer.Data;
                             AddLayerToMap(vectorLayer,oneclass.Zwmc);
-                            //_olayerService.AddDatasource(vectorLayer, oneclass.Zwmc);
-                            //int handle = _olayerService.LastLayerHandle;
-                            //ILegendLayer legendLayer = _context.Legend.Layers.ItemByHandle(handle);
-                            // legendLayer.Name = oneclass.Zwmc;
                         }
                     }
 

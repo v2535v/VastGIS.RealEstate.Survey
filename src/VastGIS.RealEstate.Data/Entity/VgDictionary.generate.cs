@@ -5,6 +5,10 @@ using System.Data;
 using System.Data.SQLite;
 using System.Data.Entity.Spatial;
 using System.ComponentModel;
+using VastGIS.Api.Concrete;
+using VastGIS.Api.Enums;
+using VastGIS.Api.Interfaces;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
@@ -36,6 +40,7 @@ namespace VastGIS.RealEstate.Data.Entity
 	    private const string SQL_UPDATE_VG_DICTIONARY = "UPDATE vg_dictionary SET ZDMC = @ZDMC, ZDZ = @ZDZ, ZDSM = @ZDSM, SFQS = @SFQS, PX = @PX WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_VG_DICTIONARY = "DELETE FROM vg_dictionary WHERE  Id = @Id ";
+        
 	
         #endregion            
         
@@ -47,6 +52,8 @@ namespace VastGIS.RealEstate.Data.Entity
 		protected string zdsm = default(string);
 		protected bool? sfq = default(bool?);
 		protected int? px = default(int?);
+		protected VgDictoryname vgDictorynameRef;
+	
         
         private event PropertyChangingEventHandler propertyChanging;            
         private event PropertyChangedEventHandler propertyChanged;
@@ -141,7 +148,15 @@ namespace VastGIS.RealEstate.Data.Entity
         
         
         
-        #endregion            
+        #endregion     
+        
+        #region 创建方法
+        public  VgDictionary()
+        {
+            
+            
+        }
+        #endregion
         
         #region 方法           
     
@@ -213,7 +228,8 @@ namespace VastGIS.RealEstate.Data.Entity
 		public bool Delete(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_VG_DICTIONARY,connection))
-            {							
+            {
+               
 				command.Parameters.AddWithValue(PARAM_ID, this.ID);
                 return (command.ExecuteNonQuery() == 1);
             }

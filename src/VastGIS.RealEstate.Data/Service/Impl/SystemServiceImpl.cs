@@ -6,6 +6,7 @@ using System.Data.SQLite;
 using GeoAPI.Geometries;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
+using VastGIS.RealEstate.Data.Events;
 using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Service.Impl
@@ -106,7 +107,7 @@ namespace VastGIS.RealEstate.Data.Service.Impl
              _systemDao.RecalculateDBExtent(out xmin, out ymin, out xmax, out ymax);
         }
 
-       
+        
     }
 }
 

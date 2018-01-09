@@ -35,10 +35,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 "CREATE TABLE [main].[vg_areacodes] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[XZQHMC] NCHAR(100), [XZQHDM] CHAR(6), [XZQHJB] INTEGER);"
             ;
        
-        public SystemDaoImpl():base()
-        {
-            connection = DbConnection.GetConnection();
-        }
+        //public SystemDaoImpl():base()
+        //{
+        //    connection = DbConnection.GetConnection();
+        //}
         public bool InitTables()
         {
             using (SQLiteTransaction trans = connection.BeginTransaction())

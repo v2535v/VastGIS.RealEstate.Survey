@@ -127,7 +127,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         command.ExecuteNonQuery();
                         command.CommandText = GEOMETRY_REGISTER_BASEMAPDVIEW.Replace("BASEMAP", layer.ToLower());
                         command.ExecuteNonQuery();
-
+                        
                         command.CommandText = CREATE_BASEMAPX.Replace("_LAYERNAME_", layer);
                         command.ExecuteNonQuery();
                         command.CommandText =

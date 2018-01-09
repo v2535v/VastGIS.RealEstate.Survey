@@ -583,9 +583,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         continue;
                     }
                     ImportTmpCaddToBasemap(tcName,  fileName, isClearBasemap);
+                    OnEntityChanged(baseName+"D", GetLayerNameFromTable(baseName + "D"),EntityOperationType.Save, null);
                 }
                 reader.Close();
                 ImportTmpCaddToBasemap("", fileName, isClearBasemap);
+                OnEntityChanged("DXTQTD", GetLayerNameFromTable("DXTQTD"), EntityOperationType.Save, null);
 
                 command.CommandText = "SELECT DISTINCT TC FROM TmpCadxView";
                 reader = command.ExecuteReader();
@@ -600,9 +602,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         continue;
                     }
                     ImportTmpCadxToBasemap(tcName, fileName, isClearBasemap);
+                    OnEntityChanged(baseName + "X", GetLayerNameFromTable(baseName + "X"), EntityOperationType.Save, null);
                 }
                 reader.Close();
                 ImportTmpCadxToBasemap("", fileName, isClearBasemap);
+                OnEntityChanged("DXTQTX", GetLayerNameFromTable("DXTQTX"), EntityOperationType.Save, null);
 
                 command.CommandText = "SELECT DISTINCT TC FROM TmpCadmView";
                 reader = command.ExecuteReader();
@@ -617,9 +621,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         continue;
                     }
                     ImportTmpCadmToBasemap(tcName, fileName, isClearBasemap);
+                    OnEntityChanged(baseName + "M", GetLayerNameFromTable(baseName + "M"), EntityOperationType.Save, null);
                 }
                 reader.Close();
                 ImportTmpCadmToBasemap("", fileName, isClearBasemap);
+                OnEntityChanged("DXTQTM", GetLayerNameFromTable("DXTQTM"), EntityOperationType.Save, null);
 
                 command.CommandText = "SELECT DISTINCT TC FROM TmpCadzjView";
                 reader = command.ExecuteReader();
@@ -634,9 +640,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         continue;
                     }
                     ImportTmpCadzjToBasemap(tcName, fileName, isClearBasemap);
+                    OnEntityChanged(baseName + "ZJ", GetLayerNameFromTable(baseName + "ZJ"), EntityOperationType.Save, null);
                 }
                 reader.Close();
                 ImportTmpCadzjToBasemap("", fileName, isClearBasemap);
+                OnEntityChanged("DXTQTZJ", GetLayerNameFromTable("DXTQTZJ"), EntityOperationType.Save, null);
             }
             return true;
         }

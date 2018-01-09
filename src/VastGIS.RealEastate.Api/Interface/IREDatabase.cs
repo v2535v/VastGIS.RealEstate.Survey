@@ -8,6 +8,7 @@ using VastGIS.RealEstate.Api.Enums;
 using VastGIS.RealEstate.Data;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
+using VastGIS.RealEstate.Data.Events;
 using VastGIS.RealEstate.Data.Service;
 using VastGIS.Services.Views;
 
@@ -15,6 +16,8 @@ namespace VastGIS.RealEstate.Api.Interface
 {
     public interface IREDatabase
     {
+        event EntityChangedEventHandler EntityChanged;
+
         void SetProjectFile(string fileName);
         string DatabaseName { get; set; }
 
