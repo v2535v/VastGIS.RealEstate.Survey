@@ -221,7 +221,7 @@ namespace VastGIS.Services.Concrete
 
                     // PM:
                     // MessageService.Current.Info("Project was saved: " + filename);
-                    Logger.Current.Info("Project was saved: " + filename);
+                    Logger.Current.Info("项目已经保存: " + filename);
                 }
 
                 return true;
@@ -405,10 +405,10 @@ namespace VastGIS.Services.Concrete
 
                 if (!silent)
                 {
-                    MessageService.Current.Info("Project was loaded: " + filename);
+                    MessageService.Current.Info("项目已经引导: " + filename);
                 }
 
-                Logger.Current.Info("Project was loaded: " + filename);
+                Logger.Current.Info("项目已经引导: " + filename);
 
                 _broadcaster.BroadcastEvent(c => c.ProjectChanged_, this, null);
                 return true;

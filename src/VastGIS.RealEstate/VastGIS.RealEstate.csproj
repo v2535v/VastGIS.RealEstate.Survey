@@ -88,6 +88,7 @@
     <Compile Include="Commands\ToolCopyFeature.cs" />
     <Compile Include="Commands\ToolCreateJZDByPolygon.cs" />
     <Compile Include="Commands\ToolDeleteFeature.cs" />
+    <Compile Include="Commands\ToolDistanceToDistanceConstructor.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Config\VGLayer.cs" />
     <Compile Include="Config\VGLayerConfig.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="EditSettings\EditingCreateJZDByPolygon.Designer.cs">
       <DependentUpon>EditingCreateJZDByPolygon.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditSettings\IReAttributeForm.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Forms\EditSettingForm.cs">
       <SubType>Form</SubType>
@@ -371,6 +373,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LayerManagement.png" />
+    <None Include="Resources\icon_edit_copy.png" />
+    <None Include="Resources\icon_edit_cut.png" />
+    <None Include="Resources\icon_edit_paste.png" />
+    <None Include="Resources\icon_edit_redo.png" />
+    <None Include="Resources\icon_edit_undo.png" />
+    <None Include="Resources\icon_geometry_attributes.png" />
+    <None Include="Resources\icon_geometry_create.png" />
+    <None Include="Resources\icon_geometry_erase_by_polygon.png" />
+    <None Include="Resources\icon_geometry_merge.png" />
+    <None Include="Resources\icon_geometry_move.png" />
+    <None Include="Resources\icon_geometry_rotate.png" />
+    <None Include="Resources\icon_geometry_split.png" />
+    <None Include="Resources\icon_geometry_split_by_polyline.png" />
+    <None Include="Resources\icon_layer_create.png" />
+    <None Include="Resources\icon_layer_edit.png" />
+    <None Include="Resources\icon_layer_save.png" />
+    <None Include="Resources\icon_vertex_editor.png" />
+    <None Include="Resources\img_delete_selected.png" />
+    <None Include="Resources\img_shape_editor32.png" />
     <Content Include="Sql\createretables.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

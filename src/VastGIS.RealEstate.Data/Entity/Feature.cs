@@ -7,6 +7,10 @@ namespace VastGIS.RealEstate.Data.Entity
 {
     public class SearchFeature : Feature
     {
+        public SearchFeature()
+        {
+            
+        }
         public long InListID { get;set;}
     }
 
@@ -17,9 +21,10 @@ namespace VastGIS.RealEstate.Data.Entity
         internal IGeometry _geometry;
         private string _simpleLabelString;
         private string _fullLabelString;
-        private long _id;
+        private long _id=default(long);
         private string _ysdm = default(string);
 
+        
         public DbGeometry GetDbGeometry()
         {
             return _dbgeometry;

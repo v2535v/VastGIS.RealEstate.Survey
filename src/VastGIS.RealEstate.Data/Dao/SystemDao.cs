@@ -58,6 +58,8 @@ namespace VastGIS.RealEstate.Data.Dao
         List<SearchFeature> FindRecords(List<VgObjectclasses> classes, double dx, double dy);
 
         bool DeleteFeature(string sourceTable, long id);
+
+        long SaveSearchFeature(SearchFeature feature);
     }
 }
 

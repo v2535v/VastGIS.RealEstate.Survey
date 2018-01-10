@@ -419,6 +419,7 @@
       <DependentUpon>WelcomeView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\WelcomeViewModel.cs" />
+    <None Include="Templates\Ysdm.sql" />
     <EmbeddedResource Include="Configuration\DataFormatsConfigPage.resx">
       <DependentUpon>DataFormatsConfigPage.cs</DependentUpon>
     </EmbeddedResource>

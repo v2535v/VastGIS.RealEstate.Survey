@@ -34,15 +34,16 @@
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.btnRevSelect = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.lstGroup = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lstLayers
             // 
             this.lstLayers.FormattingEnabled = true;
             this.lstLayers.ItemHeight = 12;
-            this.lstLayers.Location = new System.Drawing.Point(13, 36);
+            this.lstLayers.Location = new System.Drawing.Point(124, 36);
             this.lstLayers.Name = "lstLayers";
-            this.lstLayers.Size = new System.Drawing.Size(262, 244);
+            this.lstLayers.Size = new System.Drawing.Size(151, 244);
             this.lstLayers.TabIndex = 1;
             // 
             // btnOK
@@ -95,11 +96,22 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // lstGroup
+            // 
+            this.lstGroup.FormattingEnabled = true;
+            this.lstGroup.ItemHeight = 12;
+            this.lstGroup.Location = new System.Drawing.Point(12, 36);
+            this.lstGroup.Name = "lstGroup";
+            this.lstGroup.Size = new System.Drawing.Size(106, 244);
+            this.lstGroup.TabIndex = 7;
+            this.lstGroup.SelectedIndexChanged += new System.EventHandler(this.lstGroup_SelectedIndexChanged);
+            // 
             // frmSelectLayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 318);
+            this.Controls.Add(this.lstGroup);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnRevSelect);
             this.Controls.Add(this.btnSelectAll);
@@ -121,5 +133,6 @@
         private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Button btnRevSelect;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ListBox lstGroup;
     }
 }

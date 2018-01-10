@@ -91,6 +91,10 @@ namespace VastGIS.Plugins.RealEstate.Menu
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
 
+                command = new ToolDistanceToDistanceConstructor(_context);
+                command.PluginIdentity = _identity;
+                _commands.Add(command);
+
                 command = new CmdResetLayers(_context);
                 command.PluginIdentity = _identity;
                 _commands.Add(command);

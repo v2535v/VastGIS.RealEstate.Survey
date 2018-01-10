@@ -61,14 +61,15 @@ namespace VastGIS.RealEstate.Data.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to insert into [main].[vg_areacodes] values(2, &apos;北京市&apos;, &apos;110000&apos;, 1);
-        ///insert into [main].[vg_areacodes] values(3, &apos;市辖区&apos;, &apos;110100&apos;, 2);
-        ///insert into [main].[vg_areacodes] values(4, &apos;东城区&apos;, &apos;110101&apos;, 3);
-        ///insert into [main].[vg_areacodes] values(5, &apos;西城区&apos;, &apos;110102&apos;, 3);
-        ///insert into [main].[vg_areacodes] values(6, &apos;朝阳区&apos;, &apos;110105&apos;, 3);
-        ///insert into [main].[vg_areacodes] values(7, &apos;丰台区&apos;, &apos;110106&apos;, 3);
-        ///insert into [main].[vg_areacodes] values(8, &apos;石景山区&apos;, &apos;110107&apos;, 3);
-        ///insert into [main].[vg_areacodes] values(9, &apos;海淀区&apos; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to insert into [vg_areacodes] values(2, &apos;北京市&apos;, &apos;110000&apos;, 1);
+        ///insert into [vg_areacodes] values(3, &apos;市辖区&apos;, &apos;110100&apos;, 2);
+        ///insert into [vg_areacodes] values(4, &apos;东城区&apos;, &apos;110101&apos;, 3);
+        ///insert into [vg_areacodes] values(5, &apos;西城区&apos;, &apos;110102&apos;, 3);
+        ///insert into [vg_areacodes] values(6, &apos;朝阳区&apos;, &apos;110105&apos;, 3);
+        ///insert into [vg_areacodes] values(7, &apos;丰台区&apos;, &apos;110106&apos;, 3);
+        ///insert into [vg_areacodes] values(8, &apos;石景山区&apos;, &apos;110107&apos;, 3);
+        ///insert into [vg_areacodes] values(9, &apos;海淀区&apos;, &apos;110108&apos;, 3);
+        ///insert into [vg_areacodes] values(10, &apos; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Areacodes {
             get {
@@ -100,6 +101,21 @@ namespace VastGIS.RealEstate.Data.Properties {
         internal static string Dictionary {
             get {
                 return ResourceManager.GetString("Dictionary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to insert into [vg_objectysdm] values(31, &apos;1001010000&apos;, &apos;行政区&apos;, 0, &apos;XZQ&apos;, null, 1);
+        ///insert into [vg_objectysdm] values(32, &apos;1001020000&apos;, &apos;行政区界线&apos;, 0, &apos;XZQJX&apos;, null, 1);
+        ///insert into [vg_objectysdm] values(33, &apos;1001030000&apos;, &apos;行政区注记&apos;, 0, &apos;XZQZJ&apos;, null, 1);
+        ///insert into [vg_objectysdm] values(34, &apos;1002000000&apos;, &apos;地籍区&apos;, 0, &apos;DJQ&apos;, null, 1);
+        ///insert into [vg_objectysdm] values(35, &apos;1003000000&apos;, &apos;地籍子区&apos;, 0, &apos;DJZQ&apos;, null, 1);
+        ///insert into [vg_objectysdm] values(36, &apos;6001010000&apos;, &apos;宗地&apos;, 0, &apos;ZDJBXX&apos;, null, 1);
+        ///insert into [v [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Ysdm {
+            get {
+                return ResourceManager.GetString("Ysdm", resourceCulture);
             }
         }
     }

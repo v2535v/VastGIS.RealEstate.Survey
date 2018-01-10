@@ -28,6 +28,22 @@ namespace VastGIS.RealEstate.Data.Dao
         void DeleteVgCadcodes(long id);
         void DeleteVgCadcodes(string filter);
             
+        ///VgLayergroup函数
+        VgLayergroup GetVgLayergroup(long id);
+        IEnumerable<VgLayergroup> GetVgLayergroups(string filter);
+        bool SaveVgLayergroup(VgLayergroup vgLayergroup);
+        void SaveVgLayergroups(List<VgLayergroup> vgLayergroups);
+        void DeleteVgLayergroup(long id);
+        void DeleteVgLayergroup(string filter);
+            
+        ///VgLayergroupdetail函数
+        VgLayergroupdetail GetVgLayergroupdetail(long id);
+        IEnumerable<VgLayergroupdetail> GetVgLayergroupdetails(string filter);
+        bool SaveVgLayergroupdetail(VgLayergroupdetail vgLayergroupdetail);
+        void SaveVgLayergroupdetails(List<VgLayergroupdetail> vgLayergroupdetails);
+        void DeleteVgLayergroupdetail(long id);
+        void DeleteVgLayergroupdetail(string filter);
+            
         ///VgObjectclasses函数
         VgObjectclasses GetVgObjectclasses(long id);
         IEnumerable<VgObjectclasses> GetVgObjectclassess(string filter);
@@ -35,6 +51,14 @@ namespace VastGIS.RealEstate.Data.Dao
         void SaveVgObjectclassess(List<VgObjectclasses> vgObjectclasss);
         void DeleteVgObjectclasses(long id);
         void DeleteVgObjectclasses(string filter);
+            
+        ///VgObjectysdm函数
+        VgObjectysdm GetVgObjectysdm(long id);
+        IEnumerable<VgObjectysdm> GetVgObjectysdms(string filter);
+        bool SaveVgObjectysdm(VgObjectysdm vgObjectysdm);
+        void SaveVgObjectysdms(List<VgObjectysdm> vgObjectysdms);
+        void DeleteVgObjectysdm(long id);
+        void DeleteVgObjectysdm(string filter);
             
         ///VgSettings函数
         VgSettings GetVgSettings(long id);

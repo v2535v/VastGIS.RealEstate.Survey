@@ -481,6 +481,9 @@ namespace VastGIS.Plugins.Concrete
         [DataMember]
         public string DefaultProjectPath { get; set; }
 
+        [DataMember]
+        public double RealEstateTolerance { get; set; }
+
         public void AddRecentProject(string path)
         {
             path = path.ToLower();
@@ -625,6 +628,7 @@ namespace VastGIS.Plugins.Concrete
             ZoomBehavior = ZoomBehavior.UseTileLevels;
             ZoomBoxStyle = ZoomBoxStyle.Blue;
             DefaultProjectPath   = @".\Projects";
+            RealEstateTolerance = 1.0;
             Logger.Current.Trace("End AppConfig.SetDefaults()");
         }
 

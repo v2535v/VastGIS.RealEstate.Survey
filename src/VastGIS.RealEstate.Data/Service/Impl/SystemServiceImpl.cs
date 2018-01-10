@@ -122,7 +122,10 @@ namespace VastGIS.RealEstate.Data.Service.Impl
              _systemDao.RecalculateDBExtent(out xmin, out ymin, out xmax, out ymax);
         }
 
-        
+        public long SaveSearchFeature(SearchFeature feature)
+        {
+            return _systemDao.SaveSearchFeature(feature);
+        }
     }
 }
 

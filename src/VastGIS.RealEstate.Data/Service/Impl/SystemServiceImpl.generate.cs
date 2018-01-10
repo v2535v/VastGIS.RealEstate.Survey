@@ -98,6 +98,64 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _systemDao.DeleteVgCadcodes(filter);
             
         }
+        public VgLayergroup GetVgLayergroup(long id)
+        {
+            return _systemDao.GetVgLayergroup(id);
+        }
+        
+        public IEnumerable<VgLayergroup> GetVgLayergroups(string filter)
+        {
+            return _systemDao.GetVgLayergroups(filter);
+        }
+        public bool SaveVgLayergroup(VgLayergroup vgLayergroup)
+        {
+            bool retVal=_systemDao.SaveVgLayergroup(vgLayergroup);
+            return retVal;
+        }
+        public void SaveVgLayergroups(List<VgLayergroup> vgLayergroups)
+        {
+            _systemDao.SaveVgLayergroups(vgLayergroups);
+            
+        }
+        public void DeleteVgLayergroup(long id)
+        {
+            _systemDao.DeleteVgLayergroup(id);
+            
+        }
+        public void DeleteVgLayergroup(string filter)
+        {
+            _systemDao.DeleteVgLayergroup(filter);
+            
+        }
+        public VgLayergroupdetail GetVgLayergroupdetail(long id)
+        {
+            return _systemDao.GetVgLayergroupdetail(id);
+        }
+        
+        public IEnumerable<VgLayergroupdetail> GetVgLayergroupdetails(string filter)
+        {
+            return _systemDao.GetVgLayergroupdetails(filter);
+        }
+        public bool SaveVgLayergroupdetail(VgLayergroupdetail vgLayergroupdetail)
+        {
+            bool retVal=_systemDao.SaveVgLayergroupdetail(vgLayergroupdetail);
+            return retVal;
+        }
+        public void SaveVgLayergroupdetails(List<VgLayergroupdetail> vgLayergroupdetails)
+        {
+            _systemDao.SaveVgLayergroupdetails(vgLayergroupdetails);
+            
+        }
+        public void DeleteVgLayergroupdetail(long id)
+        {
+            _systemDao.DeleteVgLayergroupdetail(id);
+            
+        }
+        public void DeleteVgLayergroupdetail(string filter)
+        {
+            _systemDao.DeleteVgLayergroupdetail(filter);
+            
+        }
         public VgObjectclasses GetVgObjectclasses(long id)
         {
             return _systemDao.GetVgObjectclasses(id);
@@ -125,6 +183,35 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         public void DeleteVgObjectclasses(string filter)
         {
             _systemDao.DeleteVgObjectclasses(filter);
+            
+        }
+        public VgObjectysdm GetVgObjectysdm(long id)
+        {
+            return _systemDao.GetVgObjectysdm(id);
+        }
+        
+        public IEnumerable<VgObjectysdm> GetVgObjectysdms(string filter)
+        {
+            return _systemDao.GetVgObjectysdms(filter);
+        }
+        public bool SaveVgObjectysdm(VgObjectysdm vgObjectysdm)
+        {
+            bool retVal=_systemDao.SaveVgObjectysdm(vgObjectysdm);
+            return retVal;
+        }
+        public void SaveVgObjectysdms(List<VgObjectysdm> vgObjectysdms)
+        {
+            _systemDao.SaveVgObjectysdms(vgObjectysdms);
+            
+        }
+        public void DeleteVgObjectysdm(long id)
+        {
+            _systemDao.DeleteVgObjectysdm(id);
+            
+        }
+        public void DeleteVgObjectysdm(string filter)
+        {
+            _systemDao.DeleteVgObjectysdm(filter);
             
         }
         public VgSettings GetVgSettings(long id)

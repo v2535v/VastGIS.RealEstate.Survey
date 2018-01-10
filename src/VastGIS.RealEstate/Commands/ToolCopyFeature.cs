@@ -18,7 +18,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
     public class ToolCopyFeature : BaseTool
     {
         private IAppContext _context;
-        private frmCopyFeature _copyForm;
+        private IEditForm _editForm;
 
         public ToolCopyFeature(IAppContext context)
         {
@@ -40,23 +40,23 @@ namespace VastGIS.Plugins.RealEstate.Commands
         {
             IMap map = _context.Map as IMap;
             map.MapCursor = MapCursor.None;
-            if ((_copyForm==null) || _copyForm.IsDisposed )
+            if ((_editForm == null) || _editForm.IsDisposed )
             {
-                _copyForm = new frmCopyFeature(_context);
+                _editForm = new frmCopyFeature(_context);
                 
                 map.MouseUp += Map_MouseUp;
             }
-            if(_copyForm.Visible==false)
-                _context.View.ShowChildView(_copyForm, false);
+            if(_editForm.Visible==false)
+                _context.View.ShowChildView(_editForm as Form, false);
             
         }
 
         public override void Deactiviate()
         {
-            if (_copyForm != null && _copyForm.Visible)
+            if (_editForm != null && _editForm.Visible)
             {
-                _copyForm.Visible = false;
-                _copyForm = null;
+                _editForm.Visible = false;
+                _editForm = null;
             }
            IMap map = _context.Map as IMap;
             map.MouseUp -= Map_MouseUp;
@@ -67,7 +67,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
             double dx = 0.0;
             double dy = 0.0;
             _context.Map.PixelToProj(e.X, e.Y, out dx, out dy);
-            _copyForm.SetQueryPoint(dx, dy);
+            _editForm.SetQueryPoint(dx, dy);
         }
 
         public override void OnMouseUp(IMuteMap map, MouseEventArgs e)

@@ -271,7 +271,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
                     VgObjectclasses objectclasses=new VgObjectclasses()
                                                       {
-                                                          Mc="DJSJ",
+                                                          Mc= "地籍数据",
                                                           Zwmc = "地籍数据",
                                                           Dxlx = 0,
                                                           Xssx = 10,
@@ -287,7 +287,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                         {
                                             Mc = "DJQ",
                                             Zwmc = "地籍区",
-                                            Fbmc = "DJSJ",
+                                            Fbmc = "地籍数据",
                                             Dxlx = 1,
                                             Txlx = 3,
                                             Visible = true,
@@ -303,7 +303,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                         {
                                             Mc = "DJZQ",
                                             Zwmc = "地籍子区",
-                                            Fbmc = "DJSJ",
+                                            Fbmc = "地籍数据",
                                             Dxlx = 1,
                                             Txlx = 3,
                                             Visible = true,
@@ -319,7 +319,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                         {
                                             Mc = "ZDJBXX",
                                             Zwmc = "宗地",
-                                            Fbmc = "DJSJ",
+                                            Fbmc = "地籍数据",
                                             Dxlx = 1,
                                             Txlx = 3,
                                             Visible = true,
@@ -335,7 +335,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                         {
                                             Mc = "ZDJBXXZJ",
                                             Zwmc = "宗地注记",
-                                            Fbmc = "DJSJ",
+                                            Fbmc = "地籍数据",
                                             Dxlx = 1,
                                             Txlx = 1,
                                             Visible = true,
@@ -351,7 +351,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                         {
                                             Mc = "JZX",
                                             Zwmc = "界址线",
-                                            Fbmc = "DJSJ",
+                                            Fbmc = "地籍数据",
                                             Dxlx = 1,
                                             Txlx =2,
                                             Visible = true,
@@ -367,7 +367,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                         {
                                             Mc = "JZXZJ",
                                             Zwmc = "界址线注记",
-                                            Fbmc = "DJSJ",
+                                            Fbmc = "地籍数据",
                                             Dxlx = 1,
                                             Txlx = 1,
                                             Visible = true,
@@ -383,7 +383,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                         {
                                             Mc = "JZD",
                                             Zwmc = "界址点",
-                                            Fbmc = "DJSJ",
+                                            Fbmc = "地籍数据",
                                             Dxlx = 1,
                                             Txlx = 2,
                                             Visible = true,
@@ -399,7 +399,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                         {
                                             Mc = "JZDZJ",
                                             Zwmc = "界址点注记",
-                                            Fbmc = "DJSJ",
+                                            Fbmc = "地籍数据",
                                             Dxlx = 1,
                                             Txlx = 1,
                                             Visible = true,

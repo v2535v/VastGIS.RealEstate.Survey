@@ -16,7 +16,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
 {
     public partial class ucSelectLayer : UserControl
     {
-        private BindingList<VgObjectclasses> _sourceClasses;
+        private List<VgObjectclasses> _sourceClasses;
         private GeometryType _geometryType;
         private VgObjectclasses _selectedClass;
         private List<VgObjectclasses> _selectedClasses;
@@ -28,7 +28,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             _selectedClass = null;
         }
 
-        public void SetClasses(BindingList<VgObjectclasses> sourceClasses)
+        public void SetClasses(List<VgObjectclasses> sourceClasses)
         {
             _sourceClasses = sourceClasses;
             _selectedClasses=new List<VgObjectclasses>();
@@ -40,6 +40,14 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         {
             get { return btnTargetLayer.Text; }
             set { btnTargetLayer.Text = value; }
+        }
+
+        public bool SingleSelect
+        {
+            get { return _isSingle; }
+            set { _isSingle = value;
+                CheckValues();
+            }
         }
 
         public GeometryType GeometryType
@@ -89,7 +97,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
 
         private void btnTargetLayer_Click(object sender, EventArgs e)
         {
-            frmSelectLayer frmSelected=new frmSelectLayer(_sourceClasses.ToList(),_geometryType);
+            frmSelectLayer frmSelected=new frmSelectLayer(_sourceClasses,_geometryType);
             if (_isSingle) frmSelected.SelectionMode = SelectionMode.One;
             else frmSelected.SelectionMode = SelectionMode.MultiExtended;
 

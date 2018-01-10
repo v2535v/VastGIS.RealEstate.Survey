@@ -33,6 +33,7 @@ namespace VastGIS.RealEstate.Data.Entity
 	    public const string COL_VISIBLE = "VISIBLE";
 	    public const string COL_XSSX = "XSSX";
 	    public const string COL_FILTER = "FILTER";
+	    public const string COL_QSDM = "QSDM";
 	
         public const string PARAM_ID = "@Id";
         public const string PARAM_MC = "@MC";
@@ -49,14 +50,15 @@ namespace VastGIS.RealEstate.Data.Entity
         public const string PARAM_VISIBLE = "@VISIBLE";
         public const string PARAM_XSSX = "@XSSX";
         public const string PARAM_FILTER = "@FILTER";
+        public const string PARAM_QSDM = "@QSDM";
 	
         #endregion
         
         #region 查询
 	
-	    private const string SQL_INSERT_VG_OBJECTCLASSES = "INSERT INTO vg_objectclasses (MC, DXLX, ZWMC, FBMC, XHZDMC, TXZDMC, TXLX, IDENTIFY, EDITABLE, QUERYABLE, SNAPABLE, VISIBLE, XSSX, FILTER) VALUES ( @MC, @DXLX, @ZWMC, @FBMC, @XHZDMC, @TXZDMC, @TXLX, @IDENTIFY, @EDITABLE, @QUERYABLE, @SNAPABLE, @VISIBLE, @XSSX, @FILTER);" + " SELECT last_insert_rowid();";
+	    private const string SQL_INSERT_VG_OBJECTCLASSES = "INSERT INTO vg_objectclasses (MC, DXLX, ZWMC, FBMC, XHZDMC, TXZDMC, TXLX, IDENTIFY, EDITABLE, QUERYABLE, SNAPABLE, VISIBLE, XSSX, FILTER, QSDM) VALUES ( @MC, @DXLX, @ZWMC, @FBMC, @XHZDMC, @TXZDMC, @TXLX, @IDENTIFY, @EDITABLE, @QUERYABLE, @SNAPABLE, @VISIBLE, @XSSX, @FILTER, @QSDM);" + " SELECT last_insert_rowid();";
 	
-	    private const string SQL_UPDATE_VG_OBJECTCLASSES = "UPDATE vg_objectclasses SET MC = @MC, DXLX = @DXLX, ZWMC = @ZWMC, FBMC = @FBMC, XHZDMC = @XHZDMC, TXZDMC = @TXZDMC, TXLX = @TXLX, IDENTIFY = @IDENTIFY, EDITABLE = @EDITABLE, QUERYABLE = @QUERYABLE, SNAPABLE = @SNAPABLE, VISIBLE = @VISIBLE, XSSX = @XSSX, FILTER = @FILTER WHERE Id = @Id";
+	    private const string SQL_UPDATE_VG_OBJECTCLASSES = "UPDATE vg_objectclasses SET MC = @MC, DXLX = @DXLX, ZWMC = @ZWMC, FBMC = @FBMC, XHZDMC = @XHZDMC, TXZDMC = @TXZDMC, TXLX = @TXLX, IDENTIFY = @IDENTIFY, EDITABLE = @EDITABLE, QUERYABLE = @QUERYABLE, SNAPABLE = @SNAPABLE, VISIBLE = @VISIBLE, XSSX = @XSSX, FILTER = @FILTER, QSDM = @QSDM WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_VG_OBJECTCLASSES = "DELETE FROM vg_objectclasses WHERE  Id = @Id ";
         
@@ -80,6 +82,7 @@ namespace VastGIS.RealEstate.Data.Entity
 		protected bool visible = default(bool);
 		protected long xssx = default(long);
 		protected string filter = default(string);
+		protected string qsdm = default(string);
         
         private event PropertyChangingEventHandler propertyChanging;            
         private event PropertyChangedEventHandler propertyChanged;
@@ -279,6 +282,18 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
+        public string Qsdm 
+        {
+            get { return this.qsdm; }
+			set	{ 
+                  if(this.qsdm != value)
+                    {
+                        this.OnPropertyChanging("Qsdm");  
+                        this.qsdm = value;                        
+                        this.OnPropertyChanged("Qsdm");
+                    }   
+                }
+        }	
         
         public string SimpleLabelString
         {
@@ -351,6 +366,7 @@ namespace VastGIS.RealEstate.Data.Entity
                  command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible);    				
                  command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx);    				
                  command.Parameters.AddWithValue(PARAM_FILTER,this.Filter);    				
+                 command.Parameters.AddWithValue(PARAM_QSDM,this.Qsdm);    				
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return true;
             }
@@ -375,6 +391,7 @@ namespace VastGIS.RealEstate.Data.Entity
 				command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible);  
 				command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx);  
 				command.Parameters.AddWithValue(PARAM_FILTER,this.Filter);  
+				command.Parameters.AddWithValue(PARAM_QSDM,this.Qsdm);  
 			
                 return (command.ExecuteNonQuery() == 1);
             }

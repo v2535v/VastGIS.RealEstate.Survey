@@ -410,7 +410,7 @@ namespace VastGIS.Menu
 
         private void ShowProjectSaved()
         {
-            MessageService.Current.Info("Project was saved: " + _projectService.Filename);
+            MessageService.Current.Info("项目已经保存: " + _projectService.Filename);
         }
 
         private void ZoomToBaseLayer()

@@ -22,7 +22,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         private string SELECT_VG_CADCODES = "select Id,XH,SFCY,TC,CASSDM,TXLX,XTC,YSDM,YSLX,YSZL from vg_cadcodes";
         
-        private string SELECT_VG_OBJECTCLASSES = "select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX,FILTER from vg_objectclasses";
+        private string SELECT_VG_LAYERGROUP = "select Id,ZM from vg_layergroup";
+        
+        private string SELECT_VG_LAYERGROUPDETAIL = "select Id,ZM,Mc,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE from vg_layergroupdetail";
+        
+        private string SELECT_VG_OBJECTCLASSES = "select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX,FILTER,QSDM from vg_objectclasses";
+        
+        private string SELECT_VG_OBJECTYSDM = "select Id,YSDM,YSMC,XSSX,QSBG,QSFH,SFKJ from vg_objectysdm";
         
         private string SELECT_VG_SETTINGS = "select Id,CSMC,CSZ from vg_settings";
         
@@ -32,7 +38,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             _entityNames=new Dictionary<string, string>();
             _entityNames.Add("VG_AREACODES","");
             _entityNames.Add("VG_CADCODES","");
+            _entityNames.Add("VG_LAYERGROUP","");
+            _entityNames.Add("VG_LAYERGROUPDETAIL","");
             _entityNames.Add("VG_OBJECTCLASSES","");
+            _entityNames.Add("VG_OBJECTYSDM","");
             _entityNames.Add("VG_SETTINGS","");
         }
         
@@ -207,10 +216,156 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         }
         
         
+        ///VgLayergroup函数
+        public VgLayergroup GetVgLayergroup(long id)
+        {
+            string sql="select Id,ZM from vg_layergroup" + " where id="+id.ToString();
+            IEnumerable<VgLayergroup> vgLayergroups=connection.Query<VgLayergroup>(sql);
+            if(vgLayergroups != null && vgLayergroups.Count()>0)
+            {
+                return vgLayergroups.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<VgLayergroup> GetVgLayergroups(string filter)
+        {
+            string sql="select Id,ZM from vg_layergroup" + " where "+filter;
+            var vgLayergroups=connection.Query<VgLayergroup>(sql);
+            
+            return vgLayergroups;
+        }
+        
+        public bool SaveVgLayergroup(VgLayergroup vgLayergroup)
+        {
+            bool retVal= vgLayergroup.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("vg_layergroup",GetLayerName("vg_layergroup"),EntityOperationType.Save,new List<long>{vgLayergroup.ID});
+            }
+            return retVal;
+        }
+        
+        public void SaveVgLayergroups(List<VgLayergroup> vgLayergroups)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in vgLayergroups)
+            {
+                rec.Save(connection,GetSRID());
+            }
+            tran.Commit();
+            tran.Dispose();
+            List<long> ids=vgLayergroups.Select(a => a.ID).ToList(); 
+            OnEntityChanged("vg_layergroup",GetLayerName("vg_layergroup"),EntityOperationType.Save,ids);
+        }
+        
+        public void DeleteVgLayergroup(VgLayergroup record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("vg_layergroup",GetLayerName("vg_layergroup"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
+        
+        public void DeleteVgLayergroup(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                command.CommandText="delete from vg_layergroup where Id=" + id.ToString();
+                command.ExecuteNonQuery();
+                OnEntityChanged("vg_layergroup",GetLayerName("vg_layergroup"),EntityOperationType.Delete,new List<long>{id});
+            }
+        }
+        
+        public void DeleteVgLayergroup(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                if(string.IsNullOrEmpty(filter))
+                    command.CommandText="delete from vg_layergroup";
+                else
+                    command.CommandText="delete from vg_layergroup where " + filter;
+                command.ExecuteNonQuery();
+                OnEntityChanged("vg_layergroup",GetLayerName("vg_layergroup"),EntityOperationType.Delete,null);
+            }
+        }
+        
+        
+        ///VgLayergroupdetail函数
+        public VgLayergroupdetail GetVgLayergroupdetail(long id)
+        {
+            string sql="select Id,ZM,Mc,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE from vg_layergroupdetail" + " where id="+id.ToString();
+            IEnumerable<VgLayergroupdetail> vgLayergroupdetails=connection.Query<VgLayergroupdetail>(sql);
+            if(vgLayergroupdetails != null && vgLayergroupdetails.Count()>0)
+            {
+                return vgLayergroupdetails.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<VgLayergroupdetail> GetVgLayergroupdetails(string filter)
+        {
+            string sql="select Id,ZM,Mc,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE from vg_layergroupdetail" + " where "+filter;
+            var vgLayergroupdetails=connection.Query<VgLayergroupdetail>(sql);
+            
+            return vgLayergroupdetails;
+        }
+        
+        public bool SaveVgLayergroupdetail(VgLayergroupdetail vgLayergroupdetail)
+        {
+            bool retVal= vgLayergroupdetail.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("vg_layergroupdetail",GetLayerName("vg_layergroupdetail"),EntityOperationType.Save,new List<long>{vgLayergroupdetail.ID});
+            }
+            return retVal;
+        }
+        
+        public void SaveVgLayergroupdetails(List<VgLayergroupdetail> vgLayergroupdetails)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in vgLayergroupdetails)
+            {
+                rec.Save(connection,GetSRID());
+            }
+            tran.Commit();
+            tran.Dispose();
+            List<long> ids=vgLayergroupdetails.Select(a => a.ID).ToList(); 
+            OnEntityChanged("vg_layergroupdetail",GetLayerName("vg_layergroupdetail"),EntityOperationType.Save,ids);
+        }
+        
+        public void DeleteVgLayergroupdetail(VgLayergroupdetail record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("vg_layergroupdetail",GetLayerName("vg_layergroupdetail"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
+        
+        public void DeleteVgLayergroupdetail(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                command.CommandText="delete from vg_layergroupdetail where Id=" + id.ToString();
+                command.ExecuteNonQuery();
+                OnEntityChanged("vg_layergroupdetail",GetLayerName("vg_layergroupdetail"),EntityOperationType.Delete,new List<long>{id});
+            }
+        }
+        
+        public void DeleteVgLayergroupdetail(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                if(string.IsNullOrEmpty(filter))
+                    command.CommandText="delete from vg_layergroupdetail";
+                else
+                    command.CommandText="delete from vg_layergroupdetail where " + filter;
+                command.ExecuteNonQuery();
+                OnEntityChanged("vg_layergroupdetail",GetLayerName("vg_layergroupdetail"),EntityOperationType.Delete,null);
+            }
+        }
+        
+        
         ///VgObjectclasses函数
         public VgObjectclasses GetVgObjectclasses(long id)
         {
-            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX,FILTER from vg_objectclasses" + " where id="+id.ToString();
+            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX,FILTER,QSDM from vg_objectclasses" + " where id="+id.ToString();
             IEnumerable<VgObjectclasses> vgObjectclasss=connection.Query<VgObjectclasses>(sql);
             if(vgObjectclasss != null && vgObjectclasss.Count()>0)
             {
@@ -221,7 +376,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public IEnumerable<VgObjectclasses> GetVgObjectclassess(string filter)
         {
-            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX,FILTER from vg_objectclasses" + " where "+filter;
+            string sql="select Id,MC,DXLX,ZWMC,FBMC,XHZDMC,TXZDMC,TXLX,IDENTIFY,EDITABLE,QUERYABLE,SNAPABLE,VISIBLE,XSSX,FILTER,QSDM from vg_objectclasses" + " where "+filter;
             var vgObjectclasss=connection.Query<VgObjectclasses>(sql);
             
             return vgObjectclasss;
@@ -276,6 +431,79 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.CommandText="delete from vg_objectclasses where " + filter;
                 command.ExecuteNonQuery();
                 OnEntityChanged("vg_objectclasses",GetLayerName("vg_objectclasses"),EntityOperationType.Delete,null);
+            }
+        }
+        
+        
+        ///VgObjectysdm函数
+        public VgObjectysdm GetVgObjectysdm(long id)
+        {
+            string sql="select Id,YSDM,YSMC,XSSX,QSBG,QSFH,SFKJ from vg_objectysdm" + " where id="+id.ToString();
+            IEnumerable<VgObjectysdm> vgObjectysdms=connection.Query<VgObjectysdm>(sql);
+            if(vgObjectysdms != null && vgObjectysdms.Count()>0)
+            {
+                return vgObjectysdms.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<VgObjectysdm> GetVgObjectysdms(string filter)
+        {
+            string sql="select Id,YSDM,YSMC,XSSX,QSBG,QSFH,SFKJ from vg_objectysdm" + " where "+filter;
+            var vgObjectysdms=connection.Query<VgObjectysdm>(sql);
+            
+            return vgObjectysdms;
+        }
+        
+        public bool SaveVgObjectysdm(VgObjectysdm vgObjectysdm)
+        {
+            bool retVal= vgObjectysdm.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("vg_objectysdm",GetLayerName("vg_objectysdm"),EntityOperationType.Save,new List<long>{vgObjectysdm.ID});
+            }
+            return retVal;
+        }
+        
+        public void SaveVgObjectysdms(List<VgObjectysdm> vgObjectysdms)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in vgObjectysdms)
+            {
+                rec.Save(connection,GetSRID());
+            }
+            tran.Commit();
+            tran.Dispose();
+            List<long> ids=vgObjectysdms.Select(a => a.ID).ToList(); 
+            OnEntityChanged("vg_objectysdm",GetLayerName("vg_objectysdm"),EntityOperationType.Save,ids);
+        }
+        
+        public void DeleteVgObjectysdm(VgObjectysdm record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("vg_objectysdm",GetLayerName("vg_objectysdm"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
+        
+        public void DeleteVgObjectysdm(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                command.CommandText="delete from vg_objectysdm where Id=" + id.ToString();
+                command.ExecuteNonQuery();
+                OnEntityChanged("vg_objectysdm",GetLayerName("vg_objectysdm"),EntityOperationType.Delete,new List<long>{id});
+            }
+        }
+        
+        public void DeleteVgObjectysdm(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                if(string.IsNullOrEmpty(filter))
+                    command.CommandText="delete from vg_objectysdm";
+                else
+                    command.CommandText="delete from vg_objectysdm where " + filter;
+                command.ExecuteNonQuery();
+                OnEntityChanged("vg_objectysdm",GetLayerName("vg_objectysdm"),EntityOperationType.Delete,null);
             }
         }
         

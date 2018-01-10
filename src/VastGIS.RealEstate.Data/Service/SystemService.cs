@@ -65,6 +65,8 @@ namespace VastGIS.RealEstate.Data.Service
        
 
         void RecalculateDBExtent(out double xmin, out double ymin, out double xmax, out double ymax);
+
+        long SaveSearchFeature(SearchFeature feature);
     }
 }
 

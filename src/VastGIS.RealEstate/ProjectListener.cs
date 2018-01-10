@@ -109,8 +109,11 @@ namespace VastGIS.Plugins.RealEstate
                 string lyrName = pLayer.Name.ToUpper();
                 if (targetLayer == lyrName || e.LayerName == lyrName)
                 {
-                    if(pLayer.IsVector)
-                       pLayer.VectorSource.ReloadFromSource();
+                    if (pLayer.IsVector)
+                    {
+                        pLayer.VectorSource.ReloadFromSource();
+                        _context.Map.Redraw(RedrawType.Minimal);
+                    }
                     return;
                 }
             }
@@ -197,6 +200,7 @@ namespace VastGIS.Plugins.RealEstate
                             //bool isDynamic = vectorLayer.DynamicLoading;
                             //vectorLayer.DynamicLoading = true;
                            var data = vectorLayer.Data;
+                            vectorLayer.Data.Snappable = oneclass.Snapable;
                             AddLayerToMap(vectorLayer,oneclass.Zwmc);
                         }
                     }

@@ -31,15 +31,15 @@ namespace VastGIS.Views
             lbProject3.Tag = 2;
             ProjectId = -1;
 
-            lbGettingStarted.Click += (s, e) => Invoke(GettingStartedClicked);
-            lbHelpFile.Click += (s, e) => Invoke(DocumentsClicked);
-            lbPaypal.Click += (s, e) => Invoke(DonateClicked);
-            lbAddData.Click += (s, e) => Invoke(OpenLayerClicked);
+            //lbGettingStarted.Click += (s, e) => Invoke(GettingStartedClicked);
+            //lbHelpFile.Click += (s, e) => Invoke(DocumentsClicked);
+            //lbPaypal.Click += (s, e) => Invoke(DonateClicked);
+            //lbAddData.Click += (s, e) => Invoke(OpenLayerClicked);
             lbOpenProject.Click += OpenProjectClick;
             picureLogo.Click += (s, e) => Invoke(LogoClicked);
 
             var asm = Assembly.GetExecutingAssembly();
-            lblVersion.Text = "version " + asm.GetName().Version;
+            lblVersion.Text = "版本 " + asm.GetName().Version;
         }
 
         public void Initialize()

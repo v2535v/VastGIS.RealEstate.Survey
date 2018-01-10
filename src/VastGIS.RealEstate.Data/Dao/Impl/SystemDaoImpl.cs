@@ -23,19 +23,31 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
     public partial class SystemDaoImpl:SQLiteDao
     {
+        protected const string VG_OBJECTYSDM =
+                "CREATE TABLE[vg_objectysdm] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [YSDM] CHAR(10),[YSMC] NCHAR(50),[XSSX] INTEGER DEFAULT 0,[QSBG] CHAR(50),[QSFH] NCHAR,[SFKJ] BOOLEAN NOT NULL DEFAULT 1);"
+            ;
+        protected const string VG_LAYERGROUP =
+            "CREATE TABLE[vg_layergroup]([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[ZM] NCHAR(30));";
+
+        protected const string VG_LAYERGROUPDETAIL =
+                "CREATE TABLE[vg_layergroupdetail] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[ZM] NCHAR(30), [Mc] NCHAR(30), [IDENTIFY] BOOLEAN NOT NULL DEFAULT 1,   [EDITABLE] BOOLEAN NOT NULL DEFAULT 1,   [QUERYABLE] BOOLEAN NOT NULL DEFAULT 1,   [SNAPABLE] BOOLEAN NOT NULL DEFAULT 1,   [VISIBLE] BOOLEAN NOT NULL DEFAULT 1);"
+            ;
         protected const string VG_CADCODES = "CREATE TABLE [vg_cadcodes] (   [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   [XH] CHAR(5),   [SFCY] INTEGER,   [TC] NCHAR(20),   [CASSDM] CHAR(10),   [TXLX] CHAR(10),   [XTC] NCHAR(20),   [YSDM] CHAR(11),   [YSLX] NCHAR(10),   [YSZL] INTEGER);";
 
         protected const string VG_SETTINGS =
             "CREATE TABLE [vg_settings] ( [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,  [CSMC] NCHAR(30),   [CSZ] NVARCHAR);";
 
         protected const string VG_OBJECTCLASSES =
-                "CREATE TABLE [vg_objectclasses] (   [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   [MC] NCHAR(30),   [DXLX] INT NOT NULL DEFAULT 0,   [ZWMC] NCHAR(30),   [FBMC] NCHAR(30),   [XHZDMC] NCHAR(30),   [TXZDMC] NCHAR(30),   [TXLX] INT NOT NULL DEFAULT 0,   [IDENTIFY] BOOLEAN NOT NULL DEFAULT True,   [EDITABLE] BOOLEAN NOT NULL DEFAULT False,   [QUERYABLE] BOOLEAN NOT NULL DEFAULT True,   [SNAPABLE] BOOLEAN NOT NULL DEFAULT False,   [VISIBLE] BOOLEAN NOT NULL DEFAULT True,   [XSSX] INTEGER NOT NULL DEFAULT 0,   [FILTER] NVARCHAR);"
+                "CREATE TABLE [vg_objectclasses] (   [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   [MC] NCHAR(30),   [DXLX] INT NOT NULL DEFAULT 0,   [ZWMC] NCHAR(30),   [FBMC] NCHAR(30),   [XHZDMC] NCHAR(30),   [TXZDMC] NCHAR(30),   [TXLX] INT NOT NULL DEFAULT 0,   [IDENTIFY] BOOLEAN NOT NULL DEFAULT 1,   [EDITABLE] BOOLEAN NOT NULL DEFAULT 1,   [QUERYABLE] BOOLEAN NOT NULL DEFAULT 1,   [SNAPABLE] BOOLEAN NOT NULL DEFAULT 1,   [VISIBLE] BOOLEAN NOT NULL DEFAULT 1,   [XSSX] INTEGER NOT NULL DEFAULT 0,   [FILTER] NVARCHAR,[QSDM] CHAR(10));"
             ;
 
         protected const string VG_AREACODES =
                 "CREATE TABLE [main].[vg_areacodes] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[XZQHMC] NCHAR(100), [XZQHDM] CHAR(6), [XZQHJB] INTEGER);"
             ;
-       
+
+        protected const string VG_UPDATEYSDM =
+                "update [vg_objectclasses] set [QSDM]=(select [vg_objectysdm].[YSDM] from  [vg_objectclasses] inner join [vg_objectysdm] on [vg_objectysdm].[QSBG]=[vg_objectclasses].MC);"
+            ;
         //public SystemDaoImpl():base()
         //{
         //    connection = DbConnection.GetConnection();
@@ -57,6 +69,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
 
                     command.CommandText = VG_AREACODES;
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = VG_OBJECTYSDM;
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = VG_LAYERGROUP;
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = VG_LAYERGROUPDETAIL;
                     command.ExecuteNonQuery();
 
                 }
@@ -91,8 +112,26 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         cmd.ExecuteNonQuery();
                     }
                     reader.Close();
+
+                    dataFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                        "Templates\\Ysdm.sql");
+
+                    reader = File.OpenText(dataFile);
+                    while (reader.Peek() > -1)
+                    {
+                        string line = reader.ReadLine().Trim();
+                        if (string.IsNullOrEmpty(line)) continue;
+                        cmd.CommandText = line;
+                        cmd.ExecuteNonQuery();
+                    }
+                    reader.Close();
                 }
                 trans.Commit();
+                using (SQLiteCommand cmd = new SQLiteCommand(connection))
+                {
+                    cmd.CommandText = VG_UPDATEYSDM;
+                    cmd.ExecuteNonQuery();
+                }
             }
             return true;
         }
@@ -148,6 +187,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.CommandText = VG_AREACODES;
                     command.ExecuteNonQuery();
 
+                    command.CommandText = VG_OBJECTYSDM;
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = VG_LAYERGROUP;
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = VG_LAYERGROUPDETAIL;
+                    command.ExecuteNonQuery();
+
                 }
                 trans.Commit();
             }
@@ -169,6 +217,20 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 {
                     
                     cmd.CommandText = Properties.Resources.Areacodes;
+                    cmd.ExecuteNonQuery();
+
+                }
+                trans.Commit();
+            }
+
+            using (SQLiteTransaction trans = connection.BeginTransaction())
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand(connection))
+                {
+
+                    cmd.CommandText = Properties.Resources.Ysdm;
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = VG_UPDATEYSDM;
                     cmd.ExecuteNonQuery();
 
                 }
@@ -368,7 +430,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     builder.Append(" from " + sourceTable + " where Id=" + id.ToString());
                     command.CommandText = builder.ToString();
                     command.ExecuteNonQuery();
-                    OnEntityChanged(targetTable,GetLayerName(targetTable),EntityOperationType.Save, null);
+                    OnEntityChanged(targetTable,GetLayerNameFromTable(targetTable),EntityOperationType.Save, null);
                     if (isDelete)
                     {
                         //command.CommandText = "delete from " + sourceTable + " where Id=" + id.ToString();
@@ -579,9 +641,52 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 }
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
-                OnEntityChanged(sourceTable, GetLayerName(sourceTable), EntityOperationType.Delete, null);
+                OnEntityChanged(sourceTable, GetLayerNameFromTable(sourceTable), EntityOperationType.Delete, null);
             }
             return true;
+        }
+
+        public long SaveSearchFeature(SearchFeature feature)
+        {
+            using (SQLiteCommand command = new SQLiteCommand(connection))
+            {
+                List<string> sourceColumns = GetAllColumns(feature.TableName);
+                StringBuilder builder = new StringBuilder();
+                StringBuilder valuesbuilder = new StringBuilder();
+                if (sourceColumns.Contains("wx_wydm"))
+                {
+                    builder.Append("insert into " + feature.TableName + "(wx_wydm, geometry,ysdm");
+                    valuesbuilder.Append(" VALUES(@wx_wydm,GeomFromText(@wkt,@SRID),@ysdm");
+                }
+                else
+                {
+                    builder.Append("insert into " + feature.TableName + "(geometry");
+                    valuesbuilder.Append(" VALUES(GeomFromText(@wkt,@SRID)");
+                }
+
+                if (sourceColumns.Contains("databaseid"))
+                {
+                    builder.Append(",databaseid, flags)");
+                    valuesbuilder.Append(",0,1)");
+                }
+                else
+                {
+                    builder.Append(")");
+                    valuesbuilder.Append(")");
+                }
+                builder.Append(valuesbuilder.ToString());
+                builder.Append(";select last_insert_rowid();");
+                command.CommandText = builder.ToString();
+                if (sourceColumns.Contains("wx_wydm"))
+                    command.Parameters.AddWithValue("@wx_wydm", Guid.NewGuid());
+                command.Parameters.AddWithValue("@wkt",feature.Wkt);
+                command.Parameters.AddWithValue("@ysdm", feature.Ysdm);
+                command.Parameters.AddWithValue("@SRID", GetSRID());
+                long rowid = Convert.ToInt64(command.ExecuteScalar());
+                feature.ID = rowid;
+                OnEntityChanged(feature.TableName, GetLayerNameFromTable(feature.TableName), EntityOperationType.Delete, new List<long>() {rowid});
+                return rowid;
+            }
         }
     }
 }

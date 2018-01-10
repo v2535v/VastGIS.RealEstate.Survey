@@ -25,6 +25,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public const string LayerManagement = "re_LayerManagement";
         public const string CopyFeature = "re_CopyFeature";
         public const string DeleteFeature = "re_DeleteFeature";
+        public const string TwoDistanceConstructor = "re_TwoDistanceConstructor";
         #region Constants
 
         /// <summary>

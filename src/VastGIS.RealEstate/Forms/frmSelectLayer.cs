@@ -19,6 +19,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private GeometryType _geometryType;
         private List<VgObjectclasses> _selectedClass;
         private List<VgObjectclasses> _sourceClass;
+        private List<VgObjectclasses> _listClass;
         public frmSelectLayer(List<VgObjectclasses> classes,GeometryType geometryType)
         {
             InitializeComponent();
@@ -26,14 +27,29 @@ namespace VastGIS.Plugins.RealEstate.Forms
             if (geometryType != GeometryType.None)
             {
                 _sourceClass = classes.Where(c => c.Txlx == (int)geometryType).ToList();
-                lstLayers.DataSource = _sourceClass;
+               
             }
             else
             {
                 _sourceClass = classes;
-                lstLayers.DataSource = classes;
+               
             }
-            lstLayers.DisplayMember = "Information";
+            _listClass=new List<VgObjectclasses>();
+            _listClass.AddRange(_sourceClass);
+            RefreshList();
+            
+            
+            lstGroup.Items.Add("全部");
+            lstGroup.Items.AddRange(_sourceClass.Select(c=>c.Fbmc).Distinct().ToArray());
+        }
+
+        private void RefreshList()
+        {
+            lstLayers.Items.Clear();
+            foreach (VgObjectclasses objectclasses in _listClass)
+            {
+                lstLayers.Items.Add(objectclasses.Information);
+            }
         }
 
         public List<VgObjectclasses> SelectedObjectClasses
@@ -85,7 +101,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                     return;
                 }
                 _selectedClass=new List<VgObjectclasses>();
-                _selectedClass.Add((_sourceClass[lstLayers.SelectedIndex]));
+                _selectedClass.Add((_listClass[lstLayers.SelectedIndex]));
                 DialogResult = DialogResult.OK;
                 return;
             }
@@ -95,11 +111,33 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 return;
             }
             _selectedClass = new List<VgObjectclasses>();
-            foreach (var oneItem in lstLayers.SelectedItems)
+            foreach (var oneItem in lstLayers.SelectedIndices)
             {
-                _selectedClass.Add(oneItem as VgObjectclasses);
+                _selectedClass.Add(_listClass[(int)oneItem]);
             }
             DialogResult = DialogResult.OK;
+        }
+
+        private void lstGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if (lstGroup.SelectedIndex == 0)
+            {
+                _listClass.Clear();
+                _listClass.AddRange(_sourceClass);
+            }
+            else
+            {
+                _listClass.Clear();
+                string groupName = lstGroup.SelectedItem.ToString();
+                foreach (var oneclass in _sourceClass)
+                {
+                    if(oneclass.Fbmc==groupName)
+                        _listClass.Add(oneclass);
+                }
+                RefreshList();
+
+            }
         }
     }
 }

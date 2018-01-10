@@ -194,7 +194,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
                         objectclasses = new VgObjectclasses()
                                                             {
-                                                                Mc = tbName,
+                                                                Mc = chlayer,
                                                                 Zwmc = chlayer,
                                                                 Dxlx = 0,
                                                                 Visible = true,
@@ -209,7 +209,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             {
                                                 Mc = tbName+"D",
                                                 Zwmc = chlayer+"点",
-                                                Fbmc = tbName,
+                                                Fbmc = chlayer,
                                                 Dxlx = 1,
                                                 Txlx = 1,
                                                 Visible = true,
@@ -225,7 +225,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             {
                                                 Mc = tbName + "X",
                                                 Zwmc = chlayer + "线",
-                                                Fbmc = tbName,
+                                                Fbmc = chlayer,
                                                 Dxlx = 1,
                                                 Txlx = 2,
                                                 Visible = true,
@@ -241,7 +241,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             {
                                                 Mc = tbName + "M",
                                                 Zwmc = chlayer + "面",
-                                                Fbmc = tbName,
+                                                Fbmc = chlayer,
                                                 Dxlx = 1,
                                                 Txlx = 3,
                                                 Visible = true,
@@ -257,7 +257,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             {
                                                 Mc = tbName + "ZJ",
                                                 Zwmc = chlayer + "注记",
-                                                Fbmc = tbName,
+                                                Fbmc = chlayer,
                                                 Dxlx = 1,
                                                 Txlx = 1,
                                                 Visible = true,
