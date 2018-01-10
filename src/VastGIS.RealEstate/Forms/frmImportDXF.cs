@@ -22,7 +22,7 @@ using VastGIS.Shared;
 
 namespace VastGIS.Plugins.RealEstate.Forms
 {
-    public partial class frmImportDXF : MapWindowForm
+    public partial class frmImportDXF : MapEditingForm
     {
         public frmImportDXF(IAppContext context):base(context)
         {

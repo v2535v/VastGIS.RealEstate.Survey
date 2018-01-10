@@ -17,7 +17,7 @@ using VastGIS.UI.Forms;
 
 namespace VastGIS.Plugins.RealEstate.Forms
 {
-    public partial class frmDeleteFeature : MapWindowForm,IEditForm
+    public partial class frmDeleteFeature : MapEditingForm,IEditForm
     {
         private IREDatabase _database;
         private List<VgObjectclasses> _classes;

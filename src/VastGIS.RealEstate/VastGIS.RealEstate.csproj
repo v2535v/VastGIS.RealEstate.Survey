@@ -97,6 +97,12 @@
     <Compile Include="DataControls\ucJZD.Designer.cs">
       <DependentUpon>ucJZD.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataControls\ucSelectLayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucSelectLayer.Designer.cs">
+      <DependentUpon>ucSelectLayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditSettings\EditingCreateJZDByPolygon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,12 @@
     </Compile>
     <Compile Include="Forms\frmDeleteFeature.Designer.cs">
       <DependentUpon>frmDeleteFeature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDistanceIntersection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDistanceIntersection.Designer.cs">
+      <DependentUpon>frmDistanceIntersection.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmImportDXF.cs">
       <SubType>Form</SubType>
@@ -238,6 +250,9 @@
     <EmbeddedResource Include="DataControls\ucJZD.resx">
       <DependentUpon>ucJZD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucSelectLayer.resx">
+      <DependentUpon>ucSelectLayer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditSettings\EditingCreateJZDByPolygon.resx">
       <DependentUpon>EditingCreateJZDByPolygon.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDeleteFeature.resx">
       <DependentUpon>frmDeleteFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDistanceIntersection.resx">
+      <DependentUpon>frmDistanceIntersection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmImportDXF.resx">
       <DependentUpon>frmImportDXF.cs</DependentUpon>

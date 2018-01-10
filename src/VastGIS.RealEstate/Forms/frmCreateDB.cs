@@ -10,7 +10,7 @@ using VastGIS.UI.Forms;
 
 namespace VastGIS.Plugins.RealEstate.Forms
 {
-    public partial class frmCreateDB : MapWindowForm
+    public partial class frmCreateDB : MapEditingForm
     {
       
         public frmCreateDB(IAppContext context):base(context)

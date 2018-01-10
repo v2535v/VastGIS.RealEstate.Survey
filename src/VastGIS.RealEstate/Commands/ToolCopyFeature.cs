@@ -38,21 +38,26 @@ namespace VastGIS.Plugins.RealEstate.Commands
 
         public override void Activiate()
         {
-            if (_copyForm == null)
+            IMap map = _context.Map as IMap;
+            map.MapCursor = MapCursor.None;
+            if ((_copyForm==null) || _copyForm.IsDisposed )
             {
                 _copyForm = new frmCopyFeature(_context);
-
+                
+                map.MouseUp += Map_MouseUp;
             }
             if(_copyForm.Visible==false)
                 _context.View.ShowChildView(_copyForm, false);
-            IMap map = _context.Map as IMap;
-            map.MapCursor = MapCursor.None;
-            map.MouseUp += Map_MouseUp;
+            
         }
 
         public override void Deactiviate()
         {
-            if (_copyForm != null) _copyForm.Visible = false;
+            if (_copyForm != null && _copyForm.Visible)
+            {
+                _copyForm.Visible = false;
+                _copyForm = null;
+            }
            IMap map = _context.Map as IMap;
             map.MouseUp -= Map_MouseUp;
         }

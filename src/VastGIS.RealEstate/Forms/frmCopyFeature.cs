@@ -19,7 +19,7 @@ using VastGIS.UI.Forms;
 
 namespace VastGIS.Plugins.RealEstate.Forms
 {
-    public partial class frmCopyFeature : MapWindowForm
+    public partial class frmCopyFeature : MapEditingForm
     {
         private IREDatabase _database;
         private List<VgObjectclasses> _classes;

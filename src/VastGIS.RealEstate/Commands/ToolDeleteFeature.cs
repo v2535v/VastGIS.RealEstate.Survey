@@ -32,19 +32,26 @@ namespace VastGIS.Plugins.RealEstate.Commands
 
         public override void Activiate()
         {
-            if (_editForm == null)
-            {
-                _editForm = new frmDeleteFeature(_context);
-            }
-            if (_editForm.Visible == false) _context.View.ShowChildView(_editForm as Form, false);
             IMap map = _context.Map as IMap;
             map.MapCursor = MapCursor.None;
-            map.MouseUp += Map_MouseUp;
+            if ((_editForm == null) || ((Form)_editForm).IsDisposed)
+            {
+                _editForm = new frmDeleteFeature(_context);
+
+                map.MouseUp += Map_MouseUp;
+            }
+            if (_editForm.Visible == false)
+                _context.View.ShowChildView((Form)_editForm, false);
+
         }
 
         public override void Deactiviate()
         {
-            if (_editForm != null) _editForm.Visible = false;
+            if (_editForm != null && _editForm.Visible)
+            {
+                _editForm.Visible = false;
+                _editForm = null;
+            }
             IMap map = _context.Map as IMap;
             map.MouseUp -= Map_MouseUp;
         }

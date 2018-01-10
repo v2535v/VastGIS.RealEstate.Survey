@@ -154,6 +154,11 @@ namespace VastGIS
             get { return _currentTool; }
             set
             {
+                if (_currentTool == value)
+                {
+                    _currentTool.Activiate();
+                    return;
+                }
                 if (_currentTool != null)
                 {
                     _currentTool.Deactiviate();
@@ -165,6 +170,11 @@ namespace VastGIS
 
         public bool SetCurrentTool(IMapTool tool)
         {
+            if (_currentTool == tool)
+            {
+                _currentTool.Activiate();
+                return true;
+            }
             if (_currentTool != null)
             {
                 _currentTool.Deactiviate();
