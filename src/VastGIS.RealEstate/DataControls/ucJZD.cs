@@ -14,35 +14,35 @@ namespace VastGIS.Plugins.RealEstate.DataControls
     public partial class ucJZD : UserControl
     {
         private Jzd _jzd;
+
         public ucJZD()
         {
             InitializeComponent();
         }
 
-        public ucJZD(Jzd jzd)
+        public void LinkObject(Jzd jzd)
         {
-            InitializeComponent();
+            intID.DataBindings.Clear();
+            intID.DataBindings.Add("IntegerValue", jzd, "ID");
+            txtZDZHDM.DataBindings.Clear();
+            txtZDZHDM.DataBindings.Add("Text", jzd, "Zdzhdm");
+            txtYSDM.DataBindings.Clear();
+            txtYSDM.DataBindings.Add("Text", jzd, "Ysdm");
+            txtJZDH.DataBindings.Clear();
+            txtJZDH.DataBindings.Add("Text", jzd, "Jzdh");
+            txtJZDGZBH.DataBindings.Clear();
+            txtJZDGZBH.DataBindings.Add("Text", jzd, "Jzdgzbh");
+            //intSXH.DataBindings.Clear();
+            //intSXH.DataBindings.Add("IntegerValue", jzd, "Sxh");
+            //cmbJBLX.DataBindings.Clear();
+            //cmbJBLX.DataBindings.Add("SelectedValue", jzd, "Jblx");
+            //cmbJZDLX.DataBindings.Clear();
+            //cmbJZDLX.DataBindings.Add("SelectedValue", jzd, "Jzdlx");
+            //dblXZBZ.DataBindings.Clear();
+            //dblXZBZ.DataBindings.Add("DoubleValue", jzd, "Xzbz");
+            //dblYZBZ.DataBindings.Clear();
+            //dblYZBZ.DataBindings.Add("DoubleValue", jzd, "Yzbz");
             _jzd = jzd;
-            InitDataBinding();
-        }
-
-        private void InitDataBinding()
-        {
-            txtJZDH.DataBindings.Add("Text", _jzd, "Jzdh");
-        }
-        public Jzd Jzd
-        {
-            get { return _jzd; }
-            set
-            {
-                _jzd=value;
-                
-            }
-        }
-
-        private void tabPageAdv1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

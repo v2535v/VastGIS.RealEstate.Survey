@@ -15,6 +15,9 @@ namespace VastGIS.RealEstate.Data.Entity
         private string _fullLabelString;
         private long _id;
         private string _ysdm = default(string);
+        private string _entityName;
+        private string _wxDcy;
+        private string _objectName;
 
         public DbGeometry GetDbGeometry()
         {
@@ -57,6 +60,16 @@ namespace VastGIS.RealEstate.Data.Entity
         public string Ysdm { get { return _ysdm; } set { _ysdm = value; } }
         public long ID { get { return _id; } set { _id = value; } }
 
+        public string EntityName
+        {
+            get { return _entityName; }
+        }
+
+        public string ObjectName
+        {
+            get { return _objectName; }
+        }
+
         public string TableName { get; set; }
 
         public string SimpleLabelString
@@ -67,6 +80,12 @@ namespace VastGIS.RealEstate.Data.Entity
         public string FullLabelString
         {
             get { return string.Format("{0} {1} ({2})", TableName, _id, _ysdm); }
+        }
+
+        public string WxDcy
+        {
+            get { return _wxDcy; }
+            set { _wxDcy = value; }
         }
 
         public DateTime? WxDcsj { get; set; }

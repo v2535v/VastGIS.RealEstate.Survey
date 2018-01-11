@@ -21,7 +21,7 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             remove { this.entityChanged -= value; }
         }
 
-        protected virtual void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
+        public  void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
         {
             if (this.entityChanged != null)
             {
@@ -127,35 +127,6 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _cadDao.DeleteTmpCadx(filter);
             
         }
-        public TmpCadxdata GetTmpCadxdata(long id)
-        {
-            return _cadDao.GetTmpCadxdata(id);
-        }
-        
-        public IEnumerable<TmpCadxdata> GetTmpCadxdatas(string filter)
-        {
-            return _cadDao.GetTmpCadxdatas(filter);
-        }
-        public bool SaveTmpCadxdata(TmpCadxdata tmpcadxdatum)
-        {
-            bool retVal=_cadDao.SaveTmpCadxdata(tmpcadxdatum);
-            return retVal;
-        }
-        public void SaveTmpCadxdatas(List<TmpCadxdata> tmpcadxdatums)
-        {
-            _cadDao.SaveTmpCadxdatas(tmpcadxdatums);
-            
-        }
-        public void DeleteTmpCadxdata(long id)
-        {
-            _cadDao.DeleteTmpCadxdata(id);
-            
-        }
-        public void DeleteTmpCadxdata(string filter)
-        {
-            _cadDao.DeleteTmpCadxdata(filter);
-            
-        }
         public TmpCadzj GetTmpCadzj(long id)
         {
             return _cadDao.GetTmpCadzj(id);
@@ -183,6 +154,35 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         public void DeleteTmpCadzj(string filter)
         {
             _cadDao.DeleteTmpCadzj(filter);
+            
+        }
+        public TmpCadxdata GetTmpCadxdata(long id)
+        {
+            return _cadDao.GetTmpCadxdata(id);
+        }
+        
+        public IEnumerable<TmpCadxdata> GetTmpCadxdatas(string filter)
+        {
+            return _cadDao.GetTmpCadxdatas(filter);
+        }
+        public bool SaveTmpCadxdata(TmpCadxdata tmpcadxdatum)
+        {
+            bool retVal=_cadDao.SaveTmpCadxdata(tmpcadxdatum);
+            return retVal;
+        }
+        public void SaveTmpCadxdatas(List<TmpCadxdata> tmpcadxdatums)
+        {
+            _cadDao.SaveTmpCadxdatas(tmpcadxdatums);
+            
+        }
+        public void DeleteTmpCadxdata(long id)
+        {
+            _cadDao.DeleteTmpCadxdata(id);
+            
+        }
+        public void DeleteTmpCadxdata(string filter)
+        {
+            _cadDao.DeleteTmpCadxdata(filter);
             
         }
     }

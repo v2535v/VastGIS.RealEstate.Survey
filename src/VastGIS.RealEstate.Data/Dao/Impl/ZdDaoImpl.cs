@@ -79,6 +79,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 int srid = GetSRID();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
+                    command.CommandText = GetRegisterGroupSql("Zd");
+                    command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_XZQ;
                         command.ExecuteNonQuery();
@@ -95,7 +97,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
                     command.CommandText = GEOMETRY_REGISTER_XZQVIEW;
                     command.ExecuteNonQuery();
-
+                    command.CommandText = GetRegisterClassSql("Zd","XZQ");
+                    command.ExecuteNonQuery();
 
 
                     command.CommandText = CREATE_XZQJX;
@@ -114,6 +117,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
                     command.CommandText = GEOMETRY_REGISTER_XZQJXVIEW;
                     command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "XZQJX");
+                    command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_DJQ;
                     command.ExecuteNonQuery();
@@ -130,6 +135,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.CommandText = CREATE_DELETE_TRIGGER_DJQ;
                     command.ExecuteNonQuery();
                     command.CommandText = GEOMETRY_REGISTER_DJQVIEW;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "DJQ");
                     command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_DJZQ;
@@ -148,6 +155,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
                     command.CommandText = GEOMETRY_REGISTER_DJZQVIEW;
                     command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "DJZQ");
+                    command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_ZDJBXX;
                     command.ExecuteNonQuery();
@@ -165,6 +174,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
                     command.CommandText = GEOMETRY_REGISTER_ZDJBXXVIEW;
                     command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "ZDJBXX");
+                    command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_JZD;
                     command.ExecuteNonQuery();
@@ -180,6 +191,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.CommandText = CREATE_DELETE_TRIGGER_JZD;
                     command.ExecuteNonQuery();
                     command.CommandText = GEOMETRY_REGISTER_JZDVIEW;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "JZD");
                     command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_JZX;
@@ -198,6 +211,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
                     command.CommandText = GEOMETRY_REGISTER_JZXVIEW;
                     command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "JZX");
+                    command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_ZDJBXXZJ;
                     command.ExecuteNonQuery();
@@ -214,6 +229,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.CommandText = CREATE_DELETE_TRIGGER_ZDJBXXZJ;
                     command.ExecuteNonQuery();
                     command.CommandText = GEOMETRY_REGISTER_ZDJBXXZJVIEW;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "ZDJBXXZJ");
                     command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_JZDZJ;
@@ -232,6 +249,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
                     command.CommandText = GEOMETRY_REGISTER_JZDZJVIEW;
                     command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "JZDZJ");
+                    command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_JZXZJ;
                     command.ExecuteNonQuery();
@@ -249,6 +268,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
                     command.CommandText = GEOMETRY_REGISTER_JZXZJVIEW;
                     command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "JZXZJ");
+                    command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_ZDBHQK;
                     command.ExecuteNonQuery();
@@ -261,12 +282,18 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
                     command.CommandText = CREATE_DELETE_TRIGGER_ZDBHQK;
                     command.ExecuteNonQuery();
-                  
+                    command.CommandText = GetRegisterClassSql("Zd", "ZDBHQK");
+                    command.ExecuteNonQuery();
+
 
                     command.CommandText = CREATE_ZDTOJZD;
                     command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "ZDTOJZD");
+                    command.ExecuteNonQuery();
 
                     command.CommandText = CREATE_ZDTOJZX;
+                    command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Zd", "ZDTOJZX");
                     command.ExecuteNonQuery();
 
                     VgObjectclasses objectclasses=new VgObjectclasses()
@@ -281,8 +308,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                           Queryable = true,
                                                           Snapable = true,
 
+
                     };
-                    objectclasses.Save(connection, GetSRID());
+                    objectclasses.Save(connection);
                     objectclasses = new VgObjectclasses()
                                         {
                                             Mc = "DJQ",
@@ -296,9 +324,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 1,
-                                            Filter = "DJQVIEW"
+                                            Filter = "DJQVIEW",
+                                            Bjct = "frmDJQ"
                     };
-                    objectclasses.Save(connection, GetSRID());
+                    objectclasses.Save(connection);
                     objectclasses = new VgObjectclasses()
                                         {
                                             Mc = "DJZQ",
@@ -312,9 +341,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 2,
-                                            Filter = "DJZQVIEW"
+                                            Filter = "DJZQVIEW",
+                                            Bjct = "frmDJZQ"
                     };
-                    objectclasses.Save(connection, GetSRID());
+                    objectclasses.Save(connection);
                     objectclasses = new VgObjectclasses()
                                         {
                                             Mc = "ZDJBXX",
@@ -328,9 +358,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 3,
-                                            Filter ="ZDJBXXVIEW"
+                                            Filter ="ZDJBXXVIEW",
+                                            Bjct = "frmZDJBXX"
                     };
-                    objectclasses.Save(connection, GetSRID());
+                    objectclasses.Save(connection);
                     objectclasses = new VgObjectclasses()
                                         {
                                             Mc = "ZDJBXXZJ",
@@ -344,9 +375,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =4,
-                                            Filter = "ZDJBXXZJVIEW"
+                                            Filter = "ZDJBXXZJVIEW",
+                                            Bjct = "frmZDZJ"
                     };
-                    objectclasses.Save(connection, GetSRID());
+                    objectclasses.Save(connection);
                     objectclasses = new VgObjectclasses()
                                         {
                                             Mc = "JZX",
@@ -360,9 +392,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =5,
-                                            Filter = "JZXVIEW"
+                                            Filter = "JZXVIEW",
+                                            Bjct = "frmJZX"
                     };
-                    objectclasses.Save(connection, GetSRID());
+                    objectclasses.Save(connection);
                     objectclasses = new VgObjectclasses()
                                         {
                                             Mc = "JZXZJ",
@@ -376,25 +409,27 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx = 6,
-                                            Filter = "JZXZJVIEW"
+                                            Filter = "JZXZJVIEW",
+                                            Bjct = "frmZDZJ"
                     };
-                    objectclasses.Save(connection, GetSRID());
+                    objectclasses.Save(connection);
                     objectclasses = new VgObjectclasses()
                                         {
                                             Mc = "JZD",
                                             Zwmc = "界址点",
                                             Fbmc = "地籍数据",
                                             Dxlx = 1,
-                                            Txlx = 2,
+                                            Txlx = 1,
                                             Visible = true,
                                             Editable = true,
                                             Identify = true,
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =7,
-                                            Filter = "JZDVIEW"
+                                            Filter = "JZDVIEW",
+                                            Bjct = "frmJZD"
                     };
-                    objectclasses.Save(connection, GetSRID());
+                    objectclasses.Save(connection);
                     objectclasses = new VgObjectclasses()
                                         {
                                             Mc = "JZDZJ",
@@ -408,9 +443,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                             Queryable = true,
                                             Snapable = true,
                                             Xssx =8,
-                                            Filter = "JZDZJVIEW"
+                                            Filter = "JZDZJVIEW",
+                                            Bjct = "frmZDZJ"
                     };
-                    objectclasses.Save(connection, GetSRID());
+                    objectclasses.Save(connection);
 
                 }
 

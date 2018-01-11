@@ -33,12 +33,6 @@
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageLayers = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.dgvLayers = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cmbLayerType = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnOK = new Syncfusion.Windows.Forms.ButtonAdv();
             this.ColVisible = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColZwmc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColIdentify = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -46,6 +40,12 @@
             this.ColQueryable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColSnapable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColMc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cmbLayerType = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnOK = new Syncfusion.Windows.Forms.ButtonAdv();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPageLayers.SuspendLayout();
@@ -95,7 +95,7 @@
             this.dgvLayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -119,6 +119,52 @@
             this.dgvLayers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLayers.Size = new System.Drawing.Size(645, 185);
             this.dgvLayers.TabIndex = 1;
+            // 
+            // ColVisible
+            // 
+            this.ColVisible.DataPropertyName = "Visible";
+            this.ColVisible.HeaderText = "   显示";
+            this.ColVisible.Name = "ColVisible";
+            // 
+            // ColZwmc
+            // 
+            this.ColZwmc.DataPropertyName = "Zwmc";
+            this.ColZwmc.HeaderText = "中文名称";
+            this.ColZwmc.Name = "ColZwmc";
+            this.ColZwmc.ReadOnly = true;
+            // 
+            // ColIdentify
+            // 
+            this.ColIdentify.DataPropertyName = "Identify";
+            this.ColIdentify.HeaderText = "   可识别";
+            this.ColIdentify.Name = "ColIdentify";
+            this.ColIdentify.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColIdentify.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ColEditable
+            // 
+            this.ColEditable.DataPropertyName = "Editable";
+            this.ColEditable.HeaderText = "   可编辑";
+            this.ColEditable.Name = "ColEditable";
+            // 
+            // ColQueryable
+            // 
+            this.ColQueryable.DataPropertyName = "Queryable";
+            this.ColQueryable.HeaderText = "   可查询";
+            this.ColQueryable.Name = "ColQueryable";
+            // 
+            // ColSnapable
+            // 
+            this.ColSnapable.DataPropertyName = "Snapable";
+            this.ColSnapable.HeaderText = "   可捕捉";
+            this.ColSnapable.Name = "ColSnapable";
+            // 
+            // ColMc
+            // 
+            this.ColMc.DataPropertyName = "Mc";
+            this.ColMc.HeaderText = "名称";
+            this.ColMc.Name = "ColMc";
+            this.ColMc.ReadOnly = true;
             // 
             // panel2
             // 
@@ -176,52 +222,6 @@
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "确定";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // ColVisible
-            // 
-            this.ColVisible.DataPropertyName = "Visible";
-            this.ColVisible.HeaderText = "   显示";
-            this.ColVisible.Name = "ColVisible";
-            // 
-            // ColZwmc
-            // 
-            this.ColZwmc.DataPropertyName = "Zwmc";
-            this.ColZwmc.HeaderText = "中文名称";
-            this.ColZwmc.Name = "ColZwmc";
-            this.ColZwmc.ReadOnly = true;
-            // 
-            // ColIdentify
-            // 
-            this.ColIdentify.DataPropertyName = "Identify";
-            this.ColIdentify.HeaderText = "   可识别";
-            this.ColIdentify.Name = "ColIdentify";
-            this.ColIdentify.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColIdentify.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColEditable
-            // 
-            this.ColEditable.DataPropertyName = "Editable";
-            this.ColEditable.HeaderText = "   可编辑";
-            this.ColEditable.Name = "ColEditable";
-            // 
-            // ColQueryable
-            // 
-            this.ColQueryable.DataPropertyName = "Queryable";
-            this.ColQueryable.HeaderText = "   可查询";
-            this.ColQueryable.Name = "ColQueryable";
-            // 
-            // ColSnapable
-            // 
-            this.ColSnapable.DataPropertyName = "Snapable";
-            this.ColSnapable.HeaderText = "   可捕捉";
-            this.ColSnapable.Name = "ColSnapable";
-            // 
-            // ColMc
-            // 
-            this.ColMc.DataPropertyName = "Mc";
-            this.ColMc.HeaderText = "名称";
-            this.ColMc.Name = "ColMc";
-            this.ColMc.ReadOnly = true;
             // 
             // frmLayerManagement
             // 

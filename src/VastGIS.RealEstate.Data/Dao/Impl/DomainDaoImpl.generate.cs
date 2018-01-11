@@ -38,7 +38,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             remove { this.entityChanged -= value; }
         }
 
-        protected virtual void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
+        public  void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
         {
             if (this.entityChanged != null)
             {
@@ -77,7 +77,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveVgDictionary(VgDictionary vgDictionary)
         {
-            bool retVal= vgDictionary.Save(connection,GetSRID());
+            bool retVal= vgDictionary.Save(connection);
             if(retVal)
             {
                 OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Save,new List<long>{vgDictionary.ID});
@@ -90,7 +90,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             SQLiteTransaction tran = connection.BeginTransaction();
             foreach(var rec in vgDictionarys)
             {
-                rec.Save(connection,GetSRID());
+                rec.Save(connection);
             }
             tran.Commit();
             tran.Dispose();
@@ -150,7 +150,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveVgDictoryname(VgDictoryname vgDictoryname)
         {
-            bool retVal= vgDictoryname.Save(connection,GetSRID());
+            bool retVal= vgDictoryname.Save(connection);
             if(retVal)
             {
                 OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Save,new List<long>{vgDictoryname.ID});
@@ -163,7 +163,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             SQLiteTransaction tran = connection.BeginTransaction();
             foreach(var rec in vgDictorynames)
             {
-                rec.Save(connection,GetSRID());
+                rec.Save(connection);
             }
             tran.Commit();
             tran.Dispose();

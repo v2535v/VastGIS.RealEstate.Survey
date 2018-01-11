@@ -12,13 +12,22 @@ namespace VastGIS.RealEstate.Data.Service
     public partial interface SystemService:IEntityChanged
     {
               
-        ///VgAreacodes函数
-        VgAreacodes GetVgAreacodes(long id);
-        IEnumerable<VgAreacodes> GetVgAreacodess(string filter);
-        bool SaveVgAreacodes(VgAreacodes vgAreacode);
-        void SaveVgAreacodess(List<VgAreacodes> vgAreacodes);
-        void DeleteVgAreacodes(long id);
-        void DeleteVgAreacodes(string filter);
+        ///VgObjectclasses函数
+        VgObjectclasses GetVgObjectclasses(long id);
+        IEnumerable<VgObjectclasses> GetVgObjectclassess(string filter);
+        bool SaveVgObjectclasses(VgObjectclasses vgObjectclass);
+        void SaveVgObjectclassess(List<VgObjectclasses> vgObjectclasss);
+        void DeleteVgObjectclasses(long id);
+        void DeleteVgObjectclasses(string filter);
+            
+            
+        ///VgSettings函数
+        VgSettings GetVgSettings(long id);
+        IEnumerable<VgSettings> GetVgSettingss(string filter);
+        bool SaveVgSettings(VgSettings vgSetting);
+        void SaveVgSettingss(List<VgSettings> vgSettings);
+        void DeleteVgSettings(long id);
+        void DeleteVgSettings(string filter);
             
             
         ///VgCadcodes函数
@@ -28,6 +37,24 @@ namespace VastGIS.RealEstate.Data.Service
         void SaveVgCadcodess(List<VgCadcodes> vgCadcodes);
         void DeleteVgCadcodes(long id);
         void DeleteVgCadcodes(string filter);
+            
+            
+        ///VgAreacodes函数
+        VgAreacodes GetVgAreacodes(long id);
+        IEnumerable<VgAreacodes> GetVgAreacodess(string filter);
+        bool SaveVgAreacodes(VgAreacodes vgAreacode);
+        void SaveVgAreacodess(List<VgAreacodes> vgAreacodes);
+        void DeleteVgAreacodes(long id);
+        void DeleteVgAreacodes(string filter);
+            
+            
+        ///VgObjectysdm函数
+        VgObjectysdm GetVgObjectysdm(long id);
+        IEnumerable<VgObjectysdm> GetVgObjectysdms(string filter);
+        bool SaveVgObjectysdm(VgObjectysdm vgObjectysdm);
+        void SaveVgObjectysdms(List<VgObjectysdm> vgObjectysdms);
+        void DeleteVgObjectysdm(long id);
+        void DeleteVgObjectysdm(string filter);
             
             
         ///VgLayergroup函数
@@ -48,31 +75,31 @@ namespace VastGIS.RealEstate.Data.Service
         void DeleteVgLayergroupdetail(string filter);
             
             
-        ///VgObjectclasses函数
-        VgObjectclasses GetVgObjectclasses(long id);
-        IEnumerable<VgObjectclasses> GetVgObjectclassess(string filter);
-        bool SaveVgObjectclasses(VgObjectclasses vgObjectclass);
-        void SaveVgObjectclassess(List<VgObjectclasses> vgObjectclasss);
-        void DeleteVgObjectclasses(long id);
-        void DeleteVgObjectclasses(string filter);
+        ///VgClassgroup函数
+        VgClassgroup GetVgClassgroup(long id);
+        IEnumerable<VgClassgroup> GetVgClassgroups(string filter);
+        bool SaveVgClassgroup(VgClassgroup vgClassgroup);
+        void SaveVgClassgroups(List<VgClassgroup> vgClassgroups);
+        void DeleteVgClassgroup(long id);
+        void DeleteVgClassgroup(string filter);
             
             
-        ///VgObjectysdm函数
-        VgObjectysdm GetVgObjectysdm(long id);
-        IEnumerable<VgObjectysdm> GetVgObjectysdms(string filter);
-        bool SaveVgObjectysdm(VgObjectysdm vgObjectysdm);
-        void SaveVgObjectysdms(List<VgObjectysdm> vgObjectysdms);
-        void DeleteVgObjectysdm(long id);
-        void DeleteVgObjectysdm(string filter);
+        ///VgClassdetail函数
+        VgClassdetail GetVgClassdetail(long id);
+        IEnumerable<VgClassdetail> GetVgClassdetails(string filter);
+        bool SaveVgClassdetail(VgClassdetail vgClassdetail);
+        void SaveVgClassdetails(List<VgClassdetail> vgClassdetails);
+        void DeleteVgClassdetail(long id);
+        void DeleteVgClassdetail(string filter);
             
             
-        ///VgSettings函数
-        VgSettings GetVgSettings(long id);
-        IEnumerable<VgSettings> GetVgSettingss(string filter);
-        bool SaveVgSettings(VgSettings vgSetting);
-        void SaveVgSettingss(List<VgSettings> vgSettings);
-        void DeleteVgSettings(long id);
-        void DeleteVgSettings(string filter);
+        ///VgFieldinfo函数
+        VgFieldinfo GetVgFieldinfo(long id);
+        IEnumerable<VgFieldinfo> GetVgFieldinfos(string filter);
+        bool SaveVgFieldinfo(VgFieldinfo vgFieldinfo);
+        void SaveVgFieldinfos(List<VgFieldinfo> vgFieldinfos);
+        void DeleteVgFieldinfo(long id);
+        void DeleteVgFieldinfo(string filter);
             
             
         

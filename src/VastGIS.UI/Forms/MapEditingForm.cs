@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Syncfusion.Windows.Forms;
+using System.Windows.Forms;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.UI.Properties;
 
 namespace VastGIS.UI.Forms
 {
-    public  class MapEditingForm : Office2010Form
+    public  class MapEditingForm :Form// Office2010Form
     {
         protected readonly IAppContext _context;
 
@@ -36,7 +32,7 @@ namespace VastGIS.UI.Forms
             // 
             // MapWindowForm
             // 
-            this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+           // this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "MapWindowForm";
             this.Load += new System.EventHandler(this.MapEditingForm_Load);
@@ -46,7 +42,7 @@ namespace VastGIS.UI.Forms
         private void MapEditingForm_Load(object sender, EventArgs e)
         {
             // Fixing CORE-160
-            CaptionFont = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+           // CaptionFont = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
         }
     }
 }

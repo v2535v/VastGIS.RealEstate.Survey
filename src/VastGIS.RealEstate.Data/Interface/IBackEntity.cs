@@ -2,6 +2,7 @@ namespace VastGIS.RealEstate.Data.Interface
 {
     public interface IBackEntity: IEntity
     {
+        string WxDcy { get; set; }
         System.DateTime? WxDcsj { get; set; }
         string WxCly { get; set; }
         System.DateTime? WxClsj { get; set; }

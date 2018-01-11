@@ -30,11 +30,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         private string GEOMETRY_REGISTER_TmpCadxVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadxview','geometry','rowid','tmpcadx','geometry',0)";
         private string SELECT_TMPCADX = "select Id,EntityType,Handle,FileName,geometry from TmpCadx";
         
-        private string SELECT_TMPCADXDATA = "select Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName from TmpCadxdata";
-        
          
         private string GEOMETRY_REGISTER_TmpCadzjVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadzjview','geometry','rowid','tmpcadzj','geometry',0)";
         private string SELECT_TMPCADZJ = "select Id,EntityType,Handle,FileName,geometry from TmpCadzj";
+        
+        private string SELECT_TMPCADXDATA = "select Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName from TmpCadxdata";
         
         
         public CadDaoImpl(): base()
@@ -43,8 +43,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             _entityNames.Add("TMPCADD","");
             _entityNames.Add("TMPCADM","");
             _entityNames.Add("TMPCADX","");
-            _entityNames.Add("TMPCADXDATA","");
             _entityNames.Add("TMPCADZJ","");
+            _entityNames.Add("TMPCADXDATA","");
         }
         
         private event EntityChangedEventHandler entityChanged;
@@ -55,7 +55,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             remove { this.entityChanged -= value; }
         }
 
-        protected virtual void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
+        public  void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
         {
             if (this.entityChanged != null)
             {
@@ -291,79 +291,6 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         }
         
         
-        ///TmpCadxdata函数
-        public TmpCadxdata GetTmpCadxdata(long id)
-        {
-            string sql="select Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName from TmpCadxdata" + " where id="+id.ToString();
-            IEnumerable<TmpCadxdata> tmpcadxdatums=connection.Query<TmpCadxdata>(sql);
-            if(tmpcadxdatums != null && tmpcadxdatums.Count()>0)
-            {
-                return tmpcadxdatums.First();
-            }
-            return null;
-        }
-        
-        public IEnumerable<TmpCadxdata> GetTmpCadxdatas(string filter)
-        {
-            string sql="select Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName from TmpCadxdata" + " where "+filter;
-            var tmpcadxdatums=connection.Query<TmpCadxdata>(sql);
-            
-            return tmpcadxdatums;
-        }
-        
-        public bool SaveTmpCadxdata(TmpCadxdata tmpcadxdatum)
-        {
-            bool retVal= tmpcadxdatum.Save(connection,GetSRID());
-            if(retVal)
-            {
-                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Save,new List<long>{tmpcadxdatum.ID});
-            }
-            return retVal;
-        }
-        
-        public void SaveTmpCadxdatas(List<TmpCadxdata> tmpcadxdatums)
-        {
-            SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in tmpcadxdatums)
-            {
-                rec.Save(connection,GetSRID());
-            }
-            tran.Commit();
-            tran.Dispose();
-            List<long> ids=tmpcadxdatums.Select(a => a.ID).ToList(); 
-            OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Save,ids);
-        }
-        
-        public void DeleteTmpCadxdata(TmpCadxdata record)
-        {
-            record.Delete(connection);
-            OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,new List<long>{record.ID});
-        }
-        
-        public void DeleteTmpCadxdata(long id)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                command.CommandText="delete from TmpCadxdata where Id=" + id.ToString();
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,new List<long>{id});
-            }
-        }
-        
-        public void DeleteTmpCadxdata(string filter)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from TmpCadxdata";
-                else
-                    command.CommandText="delete from TmpCadxdata where " + filter;
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,null);
-            }
-        }
-        
-        
         ///TmpCadzj函数
         public TmpCadzj GetTmpCadzj(long id)
         {
@@ -433,6 +360,79 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.CommandText="delete from TmpCadzj where " + filter;
                 command.ExecuteNonQuery();
                 OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Delete,null);
+            }
+        }
+        
+        
+        ///TmpCadxdata函数
+        public TmpCadxdata GetTmpCadxdata(long id)
+        {
+            string sql="select Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName from TmpCadxdata" + " where id="+id.ToString();
+            IEnumerable<TmpCadxdata> tmpcadxdatums=connection.Query<TmpCadxdata>(sql);
+            if(tmpcadxdatums != null && tmpcadxdatums.Count()>0)
+            {
+                return tmpcadxdatums.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<TmpCadxdata> GetTmpCadxdatas(string filter)
+        {
+            string sql="select Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName from TmpCadxdata" + " where "+filter;
+            var tmpcadxdatums=connection.Query<TmpCadxdata>(sql);
+            
+            return tmpcadxdatums;
+        }
+        
+        public bool SaveTmpCadxdata(TmpCadxdata tmpcadxdatum)
+        {
+            bool retVal= tmpcadxdatum.Save(connection);
+            if(retVal)
+            {
+                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Save,new List<long>{tmpcadxdatum.ID});
+            }
+            return retVal;
+        }
+        
+        public void SaveTmpCadxdatas(List<TmpCadxdata> tmpcadxdatums)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in tmpcadxdatums)
+            {
+                rec.Save(connection);
+            }
+            tran.Commit();
+            tran.Dispose();
+            List<long> ids=tmpcadxdatums.Select(a => a.ID).ToList(); 
+            OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Save,ids);
+        }
+        
+        public void DeleteTmpCadxdata(TmpCadxdata record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
+        
+        public void DeleteTmpCadxdata(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                command.CommandText="delete from TmpCadxdata where Id=" + id.ToString();
+                command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,new List<long>{id});
+            }
+        }
+        
+        public void DeleteTmpCadxdata(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                if(string.IsNullOrEmpty(filter))
+                    command.CommandText="delete from TmpCadxdata";
+                else
+                    command.CommandText="delete from TmpCadxdata where " + filter;
+                command.ExecuteNonQuery();
+                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,null);
             }
         }
         

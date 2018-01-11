@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
     public partial class Zdtojzx:INotifyPropertyChanging, INotifyPropertyChanged
     {
         #region 表结构
         public const string TABLE_NAME = "ZDTOJZX";
+        public string ObjectName
+        {
+         get{
+                return "ZDTOJZX";
+               }
+        }
+        public string EntityName{
+            get{
+                return "Zdtojzx";
+               }
+        }
         public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_ZD_WYDM = "ZD_WYDM";
@@ -166,44 +176,40 @@ namespace VastGIS.RealEstate.Data.Entity
             return hashCode;          
         }
         
-        
-        
-        public bool Create(SQLiteConnection connection,int srid)
+        public bool Create(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_ZDTOJZX,connection))
             {	
-                 command.Parameters.AddWithValue(PARAM_ZD_WYDM,this.ZdWydm);    				
-                 command.Parameters.AddWithValue(PARAM_JZX_WYDM,this.JzxWydm);    				
-                 command.Parameters.AddWithValue(PARAM_SXH,this.Sxh);    				
+                 command.Parameters.AddWithValue(PARAM_ZD_WYDM,this.ZdWydm); 
+                 command.Parameters.AddWithValue(PARAM_JZX_WYDM,this.JzxWydm); 
+                 command.Parameters.AddWithValue(PARAM_SXH,this.Sxh); 
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return true;
             }
         }
 
-		public bool Update(SQLiteConnection connection,int srid)
+		public bool Update(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_ZDTOJZX,connection))
             {							
-				command.Parameters.AddWithValue(PARAM_ID,this.ID);  
-				command.Parameters.AddWithValue(PARAM_ZD_WYDM,this.ZdWydm);  
-				command.Parameters.AddWithValue(PARAM_JZX_WYDM,this.JzxWydm);  
-				command.Parameters.AddWithValue(PARAM_SXH,this.Sxh);  
-			
+				command.Parameters.AddWithValue(PARAM_ID,this.ID); 
+				command.Parameters.AddWithValue(PARAM_ZD_WYDM,this.ZdWydm); 
+				command.Parameters.AddWithValue(PARAM_JZX_WYDM,this.JzxWydm); 
+				command.Parameters.AddWithValue(PARAM_SXH,this.Sxh); 
                 return (command.ExecuteNonQuery() == 1);
             }
         }
         
-        public bool Save(SQLiteConnection connection,int srid)
+        public bool Save(SQLiteConnection connection)
         {
             if(this.id == default(long))
             {
-                return Create(connection,srid);
+                return Create(connection);
             }
             else
             {
-                return Update(connection,srid);
-            }
-            
+                return Update(connection);
+            }            
         }
 
 		public bool Delete(SQLiteConnection connection)

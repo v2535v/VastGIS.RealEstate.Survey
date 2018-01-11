@@ -77,6 +77,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute\frmJZD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmJZD.Designer.cs">
+      <DependentUpon>frmJZD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmDJZQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmDJZQ.Designer.cs">
+      <DependentUpon>frmDJZQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmXZQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmXZQ.Designer.cs">
+      <DependentUpon>frmXZQ.cs</DependentUpon>
+    </Compile>
     <Compile Include="Commands\CmdAssignCADText.cs" />
     <Compile Include="Commands\CmdCreateREProject.cs" />
     <Compile Include="Commands\CmdLayerManagement.cs" />
@@ -92,6 +110,12 @@
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Config\VGLayer.cs" />
     <Compile Include="Config\VGLayerConfig.cs" />
+    <Compile Include="DataControls\ucDJZQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucDJZQ.Designer.cs">
+      <DependentUpon>ucDJZQ.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataControls\ucJZD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,13 +128,25 @@
     <Compile Include="DataControls\ucSelectLayer.Designer.cs">
       <DependentUpon>ucSelectLayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataControls\ucWXInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucWXInfo.Designer.cs">
+      <DependentUpon>ucWXInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucXZQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucXZQ.Designer.cs">
+      <DependentUpon>ucXZQ.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditSettings\EditingCreateJZDByPolygon.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditSettings\EditingCreateJZDByPolygon.Designer.cs">
       <DependentUpon>EditingCreateJZDByPolygon.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditSettings\IReAttributeForm.cs" />
+    <Compile Include="Attribute\IReAttributeForm.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Forms\EditSettingForm.cs">
       <SubType>Form</SubType>
@@ -249,11 +285,26 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Attribute\frmJZD.resx">
+      <DependentUpon>frmJZD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmDJZQ.resx">
+      <DependentUpon>frmDJZQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmXZQ.resx">
+      <DependentUpon>frmXZQ.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataControls\ucJZD.resx">
       <DependentUpon>ucJZD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataControls\ucSelectLayer.resx">
       <DependentUpon>ucSelectLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucWXInfo.resx">
+      <DependentUpon>ucWXInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucXZQ.resx">
+      <DependentUpon>ucXZQ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditSettings\EditingCreateJZDByPolygon.resx">
       <DependentUpon>EditingCreateJZDByPolygon.cs</DependentUpon>

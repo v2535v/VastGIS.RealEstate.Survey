@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
-    public partial class Jzx:INotifyPropertyChanging, INotifyPropertyChanged,IBackEntity,IDatabaseEntity
+    public partial class Jzx:INotifyPropertyChanging, INotifyPropertyChanged,IBackEntity
     {
         #region 表结构
         public const string TABLE_NAME = "JZX";
+        public string ObjectName
+        {
+         get{
+                return "JZX";
+               }
+        }
+        public string EntityName{
+            get{
+                return "Jzx";
+               }
+        }
         public const string LAYER_NAME="界址线";
 	    public const string COL_ID = "Id";
 	    public const string COL_ZDZHDM = "ZDZHDM";
@@ -486,7 +496,7 @@ namespace VastGIS.RealEstate.Data.Entity
         public  Jzx()
         {
             _geometry=new Geometry(_geometryType,ZValueType.None);
-            this.ysdm="'6001060000'";
+            this.ysdm="6001060000";
             this.wxWydm=Guid.NewGuid();
             this.wxDcsj=DateTime.Now;
             this.databaseid=0;
@@ -516,7 +526,6 @@ namespace VastGIS.RealEstate.Data.Entity
                         
             return hashCode;          
         }
-        
         
         
         public bool Create(SQLiteConnection connection,int srid)
@@ -601,7 +610,8 @@ namespace VastGIS.RealEstate.Data.Entity
                 return Update(connection,srid);
             }
             
-        }
+        }        
+        
 
 		public bool Delete(SQLiteConnection connection)
         {

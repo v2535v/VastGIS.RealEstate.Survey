@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
     public partial class TmpCadzj:INotifyPropertyChanging, INotifyPropertyChanged
     {
         #region 表结构
         public const string TABLE_NAME = "TmpCadzj";
+        public string ObjectName
+        {
+         get{
+                return "TmpCadzj";
+               }
+        }
+        public string EntityName{
+            get{
+                return "TmpCadzj";
+               }
+        }
         public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_ENTITYTYPE = "EntityType";
@@ -198,7 +208,6 @@ namespace VastGIS.RealEstate.Data.Entity
         }
         
         
-        
         public bool Create(SQLiteConnection connection,int srid)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_TMPCADZJ,connection))
@@ -239,7 +248,8 @@ namespace VastGIS.RealEstate.Data.Entity
                 return Update(connection,srid);
             }
             
-        }
+        }        
+        
 
 		public bool Delete(SQLiteConnection connection)
         {

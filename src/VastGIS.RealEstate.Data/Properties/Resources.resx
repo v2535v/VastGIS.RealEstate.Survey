@@ -130,4 +130,7 @@
   <data name="Ysdm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ysdm.SQL;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
+  <data name="Zdxx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Zdxx.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
+  </data>
 </root>

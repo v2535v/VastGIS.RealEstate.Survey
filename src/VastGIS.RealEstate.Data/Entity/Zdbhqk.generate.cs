@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
-    public partial class Zdbhqk:INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity
+    public partial class Zdbhqk:INotifyPropertyChanging, INotifyPropertyChanged
     {
         #region 表结构
         public const string TABLE_NAME = "ZDBHQK";
+        public string ObjectName
+        {
+         get{
+                return "ZDBHQK";
+               }
+        }
+        public string EntityName{
+            get{
+                return "Zdbhqk";
+               }
+        }
         public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_ZDDM = "ZDDM";
@@ -244,54 +254,50 @@ namespace VastGIS.RealEstate.Data.Entity
             return hashCode;          
         }
         
-        
-        
-        public bool Create(SQLiteConnection connection,int srid)
+        public bool Create(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_ZDBHQK,connection))
             {	
-                 command.Parameters.AddWithValue(PARAM_ZDDM,this.Zddm);    				
-                 command.Parameters.AddWithValue(PARAM_BHYY,this.Bhyy);    				
-                 command.Parameters.AddWithValue(PARAM_BHNR,this.Bhnr);    				
-                 command.Parameters.AddWithValue(PARAM_DJSJ,this.Djsj);    				
-                 command.Parameters.AddWithValue(PARAM_DBR,this.Dbr);    				
-                 command.Parameters.AddWithValue(PARAM_FJ,this.Fj);    				
-                 command.Parameters.AddWithValue(PARAM_DATABASEID,this.DatabaseID);    				
-                 command.Parameters.AddWithValue(PARAM_FLAGS,this.Flags);    				
+                 command.Parameters.AddWithValue(PARAM_ZDDM,this.Zddm); 
+                 command.Parameters.AddWithValue(PARAM_BHYY,this.Bhyy); 
+                 command.Parameters.AddWithValue(PARAM_BHNR,this.Bhnr); 
+                 command.Parameters.AddWithValue(PARAM_DJSJ,this.Djsj); 
+                 command.Parameters.AddWithValue(PARAM_DBR,this.Dbr); 
+                 command.Parameters.AddWithValue(PARAM_FJ,this.Fj); 
+                 command.Parameters.AddWithValue(PARAM_DATABASEID,this.DatabaseID); 
+                 command.Parameters.AddWithValue(PARAM_FLAGS,this.Flags); 
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return true;
             }
         }
 
-		public bool Update(SQLiteConnection connection,int srid)
+		public bool Update(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_ZDBHQK,connection))
             {							
-				command.Parameters.AddWithValue(PARAM_ID,this.ID);  
-				command.Parameters.AddWithValue(PARAM_ZDDM,this.Zddm);  
-				command.Parameters.AddWithValue(PARAM_BHYY,this.Bhyy);  
-				command.Parameters.AddWithValue(PARAM_BHNR,this.Bhnr);  
-				command.Parameters.AddWithValue(PARAM_DJSJ,this.Djsj);  
-				command.Parameters.AddWithValue(PARAM_DBR,this.Dbr);  
-				command.Parameters.AddWithValue(PARAM_FJ,this.Fj);  
-				command.Parameters.AddWithValue(PARAM_DATABASEID,this.DatabaseID);  
-				command.Parameters.AddWithValue(PARAM_FLAGS,this.Flags);  
-			
+				command.Parameters.AddWithValue(PARAM_ID,this.ID); 
+				command.Parameters.AddWithValue(PARAM_ZDDM,this.Zddm); 
+				command.Parameters.AddWithValue(PARAM_BHYY,this.Bhyy); 
+				command.Parameters.AddWithValue(PARAM_BHNR,this.Bhnr); 
+				command.Parameters.AddWithValue(PARAM_DJSJ,this.Djsj); 
+				command.Parameters.AddWithValue(PARAM_DBR,this.Dbr); 
+				command.Parameters.AddWithValue(PARAM_FJ,this.Fj); 
+				command.Parameters.AddWithValue(PARAM_DATABASEID,this.DatabaseID); 
+				command.Parameters.AddWithValue(PARAM_FLAGS,this.Flags); 
                 return (command.ExecuteNonQuery() == 1);
             }
         }
         
-        public bool Save(SQLiteConnection connection,int srid)
+        public bool Save(SQLiteConnection connection)
         {
             if(this.id == default(long))
             {
-                return Create(connection,srid);
+                return Create(connection);
             }
             else
             {
-                return Update(connection,srid);
-            }
-            
+                return Update(connection);
+            }            
         }
 
 		public bool Delete(SQLiteConnection connection)

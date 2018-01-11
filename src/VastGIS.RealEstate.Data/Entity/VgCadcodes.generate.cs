@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
     public partial class VgCadcodes:INotifyPropertyChanging, INotifyPropertyChanged
     {
         #region 表结构
         public const string TABLE_NAME = "vg_cadcodes";
+        public string ObjectName
+        {
+         get{
+                return "vg_cadcodes";
+               }
+        }
+        public string EntityName{
+            get{
+                return "VgCadcodes";
+               }
+        }
         public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_XH = "XH";
@@ -256,56 +266,52 @@ namespace VastGIS.RealEstate.Data.Entity
             return hashCode;          
         }
         
-        
-        
-        public bool Create(SQLiteConnection connection,int srid)
+        public bool Create(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_VG_CADCODES,connection))
             {	
-                 command.Parameters.AddWithValue(PARAM_XH,this.Xh);    				
-                 command.Parameters.AddWithValue(PARAM_SFCY,this.Sfcy);    				
-                 command.Parameters.AddWithValue(PARAM_TC,this.Tc);    				
-                 command.Parameters.AddWithValue(PARAM_CASSDM,this.Cassdm);    				
-                 command.Parameters.AddWithValue(PARAM_TXLX,this.Txlx);    				
-                 command.Parameters.AddWithValue(PARAM_XTC,this.Xtc);    				
-                 command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);    				
-                 command.Parameters.AddWithValue(PARAM_YSLX,this.Yslx);    				
-                 command.Parameters.AddWithValue(PARAM_YSZL,this.Yszl);    				
+                 command.Parameters.AddWithValue(PARAM_XH,this.Xh); 
+                 command.Parameters.AddWithValue(PARAM_SFCY,this.Sfcy); 
+                 command.Parameters.AddWithValue(PARAM_TC,this.Tc); 
+                 command.Parameters.AddWithValue(PARAM_CASSDM,this.Cassdm); 
+                 command.Parameters.AddWithValue(PARAM_TXLX,this.Txlx); 
+                 command.Parameters.AddWithValue(PARAM_XTC,this.Xtc); 
+                 command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm); 
+                 command.Parameters.AddWithValue(PARAM_YSLX,this.Yslx); 
+                 command.Parameters.AddWithValue(PARAM_YSZL,this.Yszl); 
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return true;
             }
         }
 
-		public bool Update(SQLiteConnection connection,int srid)
+		public bool Update(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_VG_CADCODES,connection))
             {							
-				command.Parameters.AddWithValue(PARAM_ID,this.ID);  
-				command.Parameters.AddWithValue(PARAM_XH,this.Xh);  
-				command.Parameters.AddWithValue(PARAM_SFCY,this.Sfcy);  
-				command.Parameters.AddWithValue(PARAM_TC,this.Tc);  
-				command.Parameters.AddWithValue(PARAM_CASSDM,this.Cassdm);  
-				command.Parameters.AddWithValue(PARAM_TXLX,this.Txlx);  
-				command.Parameters.AddWithValue(PARAM_XTC,this.Xtc);  
-				command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);  
-				command.Parameters.AddWithValue(PARAM_YSLX,this.Yslx);  
-				command.Parameters.AddWithValue(PARAM_YSZL,this.Yszl);  
-			
+				command.Parameters.AddWithValue(PARAM_ID,this.ID); 
+				command.Parameters.AddWithValue(PARAM_XH,this.Xh); 
+				command.Parameters.AddWithValue(PARAM_SFCY,this.Sfcy); 
+				command.Parameters.AddWithValue(PARAM_TC,this.Tc); 
+				command.Parameters.AddWithValue(PARAM_CASSDM,this.Cassdm); 
+				command.Parameters.AddWithValue(PARAM_TXLX,this.Txlx); 
+				command.Parameters.AddWithValue(PARAM_XTC,this.Xtc); 
+				command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm); 
+				command.Parameters.AddWithValue(PARAM_YSLX,this.Yslx); 
+				command.Parameters.AddWithValue(PARAM_YSZL,this.Yszl); 
                 return (command.ExecuteNonQuery() == 1);
             }
         }
         
-        public bool Save(SQLiteConnection connection,int srid)
+        public bool Save(SQLiteConnection connection)
         {
             if(this.id == default(long))
             {
-                return Create(connection,srid);
+                return Create(connection);
             }
             else
             {
-                return Update(connection,srid);
-            }
-            
+                return Update(connection);
+            }            
         }
 
 		public bool Delete(SQLiteConnection connection)

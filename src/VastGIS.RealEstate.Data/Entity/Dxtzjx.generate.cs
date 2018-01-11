@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
-    public partial class Dxtzjx:INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity,IBasemapPolyline
+    public partial class Dxtzjx:INotifyPropertyChanging, INotifyPropertyChanged,IBasemapPolyline
     {
         #region 表结构
         public const string TABLE_NAME = "DXTZJX";
+        public string ObjectName
+        {
+         get{
+                return "DXTZJX";
+               }
+        }
+        public string EntityName{
+            get{
+                return "BasemapPolyline";
+               }
+        }       
         public const string LAYER_NAME="注记线";
 	    public const string COL_ID = "Id";
 	    public const string COL_TC = "TC";
@@ -291,7 +301,6 @@ namespace VastGIS.RealEstate.Data.Entity
         }
         
         
-        
         public bool Create(SQLiteConnection connection,int srid)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_DXTZJX,connection))
@@ -344,7 +353,8 @@ namespace VastGIS.RealEstate.Data.Entity
                 return Update(connection,srid);
             }
             
-        }
+        }        
+        
 
 		public bool Delete(SQLiteConnection connection)
         {

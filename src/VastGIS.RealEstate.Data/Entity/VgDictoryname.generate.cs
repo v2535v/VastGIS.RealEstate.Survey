@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
     public partial class VgDictoryname:INotifyPropertyChanging, INotifyPropertyChanged
     {
         #region 表结构
         public const string TABLE_NAME = "vg_dictoryname";
+        public string ObjectName
+        {
+         get{
+                return "vg_dictoryname";
+               }
+        }
+        public string EntityName{
+            get{
+                return "VgDictoryname";
+               }
+        }
         public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_ZDMC = "ZDMC";
@@ -151,42 +161,38 @@ namespace VastGIS.RealEstate.Data.Entity
             return hashCode;          
         }
         
-        
-        
-        public bool Create(SQLiteConnection connection,int srid)
+        public bool Create(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_VG_DICTORYNAME,connection))
             {	
-                 command.Parameters.AddWithValue(PARAM_ZDMC,this.Zdmc);    				
-                 command.Parameters.AddWithValue(PARAM_ZDSM,this.Zdsm);    				
+                 command.Parameters.AddWithValue(PARAM_ZDMC,this.Zdmc); 
+                 command.Parameters.AddWithValue(PARAM_ZDSM,this.Zdsm); 
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return true;
             }
         }
 
-		public bool Update(SQLiteConnection connection,int srid)
+		public bool Update(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_VG_DICTORYNAME,connection))
             {							
-				command.Parameters.AddWithValue(PARAM_ID,this.ID);  
-				command.Parameters.AddWithValue(PARAM_ZDMC,this.Zdmc);  
-				command.Parameters.AddWithValue(PARAM_ZDSM,this.Zdsm);  
-			
+				command.Parameters.AddWithValue(PARAM_ID,this.ID); 
+				command.Parameters.AddWithValue(PARAM_ZDMC,this.Zdmc); 
+				command.Parameters.AddWithValue(PARAM_ZDSM,this.Zdsm); 
                 return (command.ExecuteNonQuery() == 1);
             }
         }
         
-        public bool Save(SQLiteConnection connection,int srid)
+        public bool Save(SQLiteConnection connection)
         {
             if(this.id == default(long))
             {
-                return Create(connection,srid);
+                return Create(connection);
             }
             else
             {
-                return Update(connection,srid);
-            }
-            
+                return Update(connection);
+            }            
         }
 
 		public bool Delete(SQLiteConnection connection)

@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
     public partial class VgObjectysdm:INotifyPropertyChanging, INotifyPropertyChanged
     {
         #region 表结构
         public const string TABLE_NAME = "vg_objectysdm";
+        public string ObjectName
+        {
+         get{
+                return "vg_objectysdm";
+               }
+        }
+        public string EntityName{
+            get{
+                return "VgObjectysdm";
+               }
+        }
         public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_YSDM = "YSDM";
@@ -211,50 +221,46 @@ namespace VastGIS.RealEstate.Data.Entity
             return hashCode;          
         }
         
-        
-        
-        public bool Create(SQLiteConnection connection,int srid)
+        public bool Create(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_VG_OBJECTYSDM,connection))
             {	
-                 command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);    				
-                 command.Parameters.AddWithValue(PARAM_YSMC,this.Ysmc);    				
-                 command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx);    				
-                 command.Parameters.AddWithValue(PARAM_QSBG,this.Qsbg);    				
-                 command.Parameters.AddWithValue(PARAM_QSFH,this.Qsfh);    				
-                 command.Parameters.AddWithValue(PARAM_SFKJ,this.Sfkj);    				
+                 command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm); 
+                 command.Parameters.AddWithValue(PARAM_YSMC,this.Ysmc); 
+                 command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx); 
+                 command.Parameters.AddWithValue(PARAM_QSBG,this.Qsbg); 
+                 command.Parameters.AddWithValue(PARAM_QSFH,this.Qsfh); 
+                 command.Parameters.AddWithValue(PARAM_SFKJ,this.Sfkj); 
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return true;
             }
         }
 
-		public bool Update(SQLiteConnection connection,int srid)
+		public bool Update(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_VG_OBJECTYSDM,connection))
             {							
-				command.Parameters.AddWithValue(PARAM_ID,this.ID);  
-				command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);  
-				command.Parameters.AddWithValue(PARAM_YSMC,this.Ysmc);  
-				command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx);  
-				command.Parameters.AddWithValue(PARAM_QSBG,this.Qsbg);  
-				command.Parameters.AddWithValue(PARAM_QSFH,this.Qsfh);  
-				command.Parameters.AddWithValue(PARAM_SFKJ,this.Sfkj);  
-			
+				command.Parameters.AddWithValue(PARAM_ID,this.ID); 
+				command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm); 
+				command.Parameters.AddWithValue(PARAM_YSMC,this.Ysmc); 
+				command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx); 
+				command.Parameters.AddWithValue(PARAM_QSBG,this.Qsbg); 
+				command.Parameters.AddWithValue(PARAM_QSFH,this.Qsfh); 
+				command.Parameters.AddWithValue(PARAM_SFKJ,this.Sfkj); 
                 return (command.ExecuteNonQuery() == 1);
             }
         }
         
-        public bool Save(SQLiteConnection connection,int srid)
+        public bool Save(SQLiteConnection connection)
         {
             if(this.id == default(long))
             {
-                return Create(connection,srid);
+                return Create(connection);
             }
             else
             {
-                return Update(connection,srid);
-            }
-            
+                return Update(connection);
+            }            
         }
 
 		public bool Delete(SQLiteConnection connection)

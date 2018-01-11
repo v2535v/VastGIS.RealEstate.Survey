@@ -32,6 +32,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     cmd.ExecuteNonQuery();
                     cmd.CommandText = VG_DICTIONARY;
                     cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterGroupSql("Domain");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("Domain", "vg_dictionary");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("Domain", "vg_dictoryname");
+                    cmd.ExecuteNonQuery();
                 }
                 trans.Commit();
             }
@@ -76,6 +82,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     cmd.ExecuteNonQuery();
                     cmd.CommandText = VG_DICTIONARY;
                     cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterGroupSql("Domain");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("Domain", "vg_dictionary");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("Domain", "vg_dictoryname");
+                    cmd.ExecuteNonQuery();
                 }
                 trans.Commit();
             }
@@ -86,7 +98,6 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     
                         cmd.CommandText = Properties.Resources.Dictionary;
                         cmd.ExecuteNonQuery();
-                  
                 }
                 trans.Commit();
             }

@@ -118,5 +118,19 @@ namespace VastGIS.RealEstate.Data.Properties {
                 return ResourceManager.GetString("Ysdm", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to insert into [vg_fieldinfo] values(1, &apos;XZQ&apos;, 1, &apos;标识码&apos;, &apos;BSM&apos;, &apos;Int&apos;, 10, null, null, &apos;M&apos;, null);
+        ///insert into [vg_fieldinfo] values(2, &apos;XZQ&apos;, 2, &apos;要素代码&apos;, &apos;YSDM&apos;, &apos;Char&apos;, 10, null, null, &apos;M&apos;, null);
+        ///insert into [vg_fieldinfo] values(3, &apos;XZQ&apos;, 3, &apos;行政区代码&apos;, &apos;XZQDM&apos;, &apos;Char&apos;, 12, null, null, &apos;M&apos;, null);
+        ///insert into [vg_fieldinfo] values(4, &apos;XZQ&apos;, 4, &apos;行政区名称&apos;, &apos;XZQMC&apos;, &apos;Char&apos;, 100, null, null, &apos;M&apos;, null);
+        ///insert into [vg_fieldinfo] values(5, &apos;XZQ&apos;, 5, &apos;行政区面积&apos;, &apos;XZQMJ&apos;, &apos;Float&apos;, 15, 2, null, &apos;C&apos;, null);
+        ///insert int [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Zdxx {
+            get {
+                return ResourceManager.GetString("Zdxx", resourceCulture);
+            }
+        }
     }
 }

@@ -56,8 +56,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         /// </returns>
         public override IEnumerable<ICommand> GetCommands()
         {
-            if (_commands == null)
-            {
+            
                 _commands = new List<ICommand>();
                 ICommand command = new CmdTestOgrChinese(_context);
                 command.PluginIdentity = _identity;
@@ -83,7 +82,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
 
-                command = new ToolCopyFeature(_context);
+                command = new ToolCopyFeature(_context, _plugin);
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
 
@@ -91,7 +90,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
 
-                command = new ToolDistanceToDistanceConstructor(_context);
+                command = new ToolDistanceToDistanceConstructor(_context, _plugin);
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
 
@@ -104,7 +103,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
                 _commands.Add(command);
 
 
-            }
+           
             return _commands;
         }
 

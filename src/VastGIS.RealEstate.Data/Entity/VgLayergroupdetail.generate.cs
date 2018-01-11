@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
     public partial class VgLayergroupdetail:INotifyPropertyChanging, INotifyPropertyChanged
     {
         #region 表结构
         public const string TABLE_NAME = "vg_layergroupdetail";
+        public string ObjectName
+        {
+         get{
+                return "vg_layergroupdetail";
+               }
+        }
+        public string EntityName{
+            get{
+                return "VgLayergroupdetail";
+               }
+        }
         public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_ZM = "ZM";
@@ -226,52 +236,48 @@ namespace VastGIS.RealEstate.Data.Entity
             return hashCode;          
         }
         
-        
-        
-        public bool Create(SQLiteConnection connection,int srid)
+        public bool Create(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_VG_LAYERGROUPDETAIL,connection))
             {	
-                 command.Parameters.AddWithValue(PARAM_ZM,this.Zm);    				
-                 command.Parameters.AddWithValue(PARAM_MC,this.Mc);    				
-                 command.Parameters.AddWithValue(PARAM_IDENTIFY,this.Identify);    				
-                 command.Parameters.AddWithValue(PARAM_EDITABLE,this.Editable);    				
-                 command.Parameters.AddWithValue(PARAM_QUERYABLE,this.Queryable);    				
-                 command.Parameters.AddWithValue(PARAM_SNAPABLE,this.Snapable);    				
-                 command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible);    				
+                 command.Parameters.AddWithValue(PARAM_ZM,this.Zm); 
+                 command.Parameters.AddWithValue(PARAM_MC,this.Mc); 
+                 command.Parameters.AddWithValue(PARAM_IDENTIFY,this.Identify); 
+                 command.Parameters.AddWithValue(PARAM_EDITABLE,this.Editable); 
+                 command.Parameters.AddWithValue(PARAM_QUERYABLE,this.Queryable); 
+                 command.Parameters.AddWithValue(PARAM_SNAPABLE,this.Snapable); 
+                 command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible); 
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return true;
             }
         }
 
-		public bool Update(SQLiteConnection connection,int srid)
+		public bool Update(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_VG_LAYERGROUPDETAIL,connection))
             {							
-				command.Parameters.AddWithValue(PARAM_ID,this.ID);  
-				command.Parameters.AddWithValue(PARAM_ZM,this.Zm);  
-				command.Parameters.AddWithValue(PARAM_MC,this.Mc);  
-				command.Parameters.AddWithValue(PARAM_IDENTIFY,this.Identify);  
-				command.Parameters.AddWithValue(PARAM_EDITABLE,this.Editable);  
-				command.Parameters.AddWithValue(PARAM_QUERYABLE,this.Queryable);  
-				command.Parameters.AddWithValue(PARAM_SNAPABLE,this.Snapable);  
-				command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible);  
-			
+				command.Parameters.AddWithValue(PARAM_ID,this.ID); 
+				command.Parameters.AddWithValue(PARAM_ZM,this.Zm); 
+				command.Parameters.AddWithValue(PARAM_MC,this.Mc); 
+				command.Parameters.AddWithValue(PARAM_IDENTIFY,this.Identify); 
+				command.Parameters.AddWithValue(PARAM_EDITABLE,this.Editable); 
+				command.Parameters.AddWithValue(PARAM_QUERYABLE,this.Queryable); 
+				command.Parameters.AddWithValue(PARAM_SNAPABLE,this.Snapable); 
+				command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible); 
                 return (command.ExecuteNonQuery() == 1);
             }
         }
         
-        public bool Save(SQLiteConnection connection,int srid)
+        public bool Save(SQLiteConnection connection)
         {
             if(this.id == default(long))
             {
-                return Create(connection,srid);
+                return Create(connection);
             }
             else
             {
-                return Update(connection,srid);
-            }
-            
+                return Update(connection);
+            }            
         }
 
 		public bool Delete(SQLiteConnection connection)

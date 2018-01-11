@@ -3,12 +3,18 @@
 //  MapWindow OSS Team - 2018
 // </copyright>
 // -------------------------------------------------------------------------------------------
-namespace VastGIS.Plugins.RealEstate.EditSettings
+
+using VastGIS.Plugins.Interfaces;
+using VastGIS.RealEstate.Data.Interface;
+
+namespace VastGIS.Plugins.RealEstate.Attribute
 {
     public interface IReAttributeForm
     {
         string ObjectKey { get; set; }
-        object LinkedObject { get; set; }
+        IEntity LinkedObject { get; }
         string FormName { get; set; }
+        IAppContext Context { get; set; }
+        void LoadEntity(string tableName,string entityName,long id);
     }
 }

@@ -26,10 +26,10 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private bool _isFirst = true;
         private ICoordinate _point1;
         private ICoordinate _point2;
-
+        private RealEstateEditor _plugin;
         private ICoordinate _respoint1;
         private ICoordinate _respoint2;
-        public frmDistanceIntersection(IAppContext context):base(context)
+        public frmDistanceIntersection(IAppContext context,RealEstateEditor plugin):base(context)
         {
             InitializeComponent();
             _database = ((IRealEstateContext)_context).RealEstateDatabase;
@@ -42,6 +42,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             _isFirst = true;
             distPoint1.MinValue = 0;
             distPoint2.MinValue = 0;
+            _plugin = plugin;
 
             distPoint1.TextChanged += distPoint_TextChanged;
             distPoint2.TextChanged += distPoint_TextChanged;
@@ -212,6 +213,10 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 {
                     Clear();
                     return;
+                }
+                else
+                {
+                    _plugin.LoadAttributeForm(ucSelectLayer1.SelectedClass.Mc, ucSelectLayer1.SelectedClass.Bjct,rowId);
                 }
             }
         }

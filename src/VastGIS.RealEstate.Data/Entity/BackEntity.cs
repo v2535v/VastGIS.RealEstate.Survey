@@ -5,6 +5,11 @@ namespace VastGIS.RealEstate.Data.Entity
     public abstract class BackEntity:IBackEntity
     {
         public long ID { get; set; }
+
+        public string EntityName { get; }
+        public string ObjectName { get; }
+
+        public string WxDcy { get; set; }
         public System.DateTime? WxDcsj { get; set; }
         public string WxCly { get; set; }
         public System.DateTime? WxClsj { get; set; }

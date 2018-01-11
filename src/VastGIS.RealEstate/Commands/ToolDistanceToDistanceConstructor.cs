@@ -13,9 +13,10 @@ namespace VastGIS.Plugins.RealEstate.Commands
     {
         private IAppContext _context;
         private IEditForm _editForm;
-
-        public ToolDistanceToDistanceConstructor(IAppContext context)
+        private RealEstateEditor _plugin;
+        public ToolDistanceToDistanceConstructor(IAppContext context, RealEstateEditor plugin)
         {
+            _plugin = plugin;
             _context = context;
             base._text = "æ‡¿ÎΩªª·";
             base._key = MenuKeys.TwoDistanceConstructor;
@@ -36,7 +37,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
             map.MapCursor = MapCursor.None;
             if ((_editForm == null) || _editForm.IsDisposed)
             {
-                _editForm = new frmDistanceIntersection(_context);
+                _editForm = new frmDistanceIntersection(_context,_plugin);
 
                 map.MouseUp += Map_MouseUp;
             }

@@ -21,7 +21,7 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             remove { this.entityChanged -= value; }
         }
 
-        protected virtual void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
+        public  void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
         {
             if (this.entityChanged != null)
             {
@@ -40,33 +40,62 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             OnEntityChanged(e.TableName,e.LayerName,e.OperationType,e.Ids);
         }
         
-        public VgAreacodes GetVgAreacodes(long id)
+        public VgObjectclasses GetVgObjectclasses(long id)
         {
-            return _systemDao.GetVgAreacodes(id);
+            return _systemDao.GetVgObjectclasses(id);
         }
         
-        public IEnumerable<VgAreacodes> GetVgAreacodess(string filter)
+        public IEnumerable<VgObjectclasses> GetVgObjectclassess(string filter)
         {
-            return _systemDao.GetVgAreacodess(filter);
+            return _systemDao.GetVgObjectclassess(filter);
         }
-        public bool SaveVgAreacodes(VgAreacodes vgAreacode)
+        public bool SaveVgObjectclasses(VgObjectclasses vgObjectclass)
         {
-            bool retVal=_systemDao.SaveVgAreacodes(vgAreacode);
+            bool retVal=_systemDao.SaveVgObjectclasses(vgObjectclass);
             return retVal;
         }
-        public void SaveVgAreacodess(List<VgAreacodes> vgAreacodes)
+        public void SaveVgObjectclassess(List<VgObjectclasses> vgObjectclasss)
         {
-            _systemDao.SaveVgAreacodess(vgAreacodes);
+            _systemDao.SaveVgObjectclassess(vgObjectclasss);
             
         }
-        public void DeleteVgAreacodes(long id)
+        public void DeleteVgObjectclasses(long id)
         {
-            _systemDao.DeleteVgAreacodes(id);
+            _systemDao.DeleteVgObjectclasses(id);
             
         }
-        public void DeleteVgAreacodes(string filter)
+        public void DeleteVgObjectclasses(string filter)
         {
-            _systemDao.DeleteVgAreacodes(filter);
+            _systemDao.DeleteVgObjectclasses(filter);
+            
+        }
+        public VgSettings GetVgSettings(long id)
+        {
+            return _systemDao.GetVgSettings(id);
+        }
+        
+        public IEnumerable<VgSettings> GetVgSettingss(string filter)
+        {
+            return _systemDao.GetVgSettingss(filter);
+        }
+        public bool SaveVgSettings(VgSettings vgSetting)
+        {
+            bool retVal=_systemDao.SaveVgSettings(vgSetting);
+            return retVal;
+        }
+        public void SaveVgSettingss(List<VgSettings> vgSettings)
+        {
+            _systemDao.SaveVgSettingss(vgSettings);
+            
+        }
+        public void DeleteVgSettings(long id)
+        {
+            _systemDao.DeleteVgSettings(id);
+            
+        }
+        public void DeleteVgSettings(string filter)
+        {
+            _systemDao.DeleteVgSettings(filter);
             
         }
         public VgCadcodes GetVgCadcodes(long id)
@@ -96,6 +125,64 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         public void DeleteVgCadcodes(string filter)
         {
             _systemDao.DeleteVgCadcodes(filter);
+            
+        }
+        public VgAreacodes GetVgAreacodes(long id)
+        {
+            return _systemDao.GetVgAreacodes(id);
+        }
+        
+        public IEnumerable<VgAreacodes> GetVgAreacodess(string filter)
+        {
+            return _systemDao.GetVgAreacodess(filter);
+        }
+        public bool SaveVgAreacodes(VgAreacodes vgAreacode)
+        {
+            bool retVal=_systemDao.SaveVgAreacodes(vgAreacode);
+            return retVal;
+        }
+        public void SaveVgAreacodess(List<VgAreacodes> vgAreacodes)
+        {
+            _systemDao.SaveVgAreacodess(vgAreacodes);
+            
+        }
+        public void DeleteVgAreacodes(long id)
+        {
+            _systemDao.DeleteVgAreacodes(id);
+            
+        }
+        public void DeleteVgAreacodes(string filter)
+        {
+            _systemDao.DeleteVgAreacodes(filter);
+            
+        }
+        public VgObjectysdm GetVgObjectysdm(long id)
+        {
+            return _systemDao.GetVgObjectysdm(id);
+        }
+        
+        public IEnumerable<VgObjectysdm> GetVgObjectysdms(string filter)
+        {
+            return _systemDao.GetVgObjectysdms(filter);
+        }
+        public bool SaveVgObjectysdm(VgObjectysdm vgObjectysdm)
+        {
+            bool retVal=_systemDao.SaveVgObjectysdm(vgObjectysdm);
+            return retVal;
+        }
+        public void SaveVgObjectysdms(List<VgObjectysdm> vgObjectysdms)
+        {
+            _systemDao.SaveVgObjectysdms(vgObjectysdms);
+            
+        }
+        public void DeleteVgObjectysdm(long id)
+        {
+            _systemDao.DeleteVgObjectysdm(id);
+            
+        }
+        public void DeleteVgObjectysdm(string filter)
+        {
+            _systemDao.DeleteVgObjectysdm(filter);
             
         }
         public VgLayergroup GetVgLayergroup(long id)
@@ -156,91 +243,91 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _systemDao.DeleteVgLayergroupdetail(filter);
             
         }
-        public VgObjectclasses GetVgObjectclasses(long id)
+        public VgClassgroup GetVgClassgroup(long id)
         {
-            return _systemDao.GetVgObjectclasses(id);
+            return _systemDao.GetVgClassgroup(id);
         }
         
-        public IEnumerable<VgObjectclasses> GetVgObjectclassess(string filter)
+        public IEnumerable<VgClassgroup> GetVgClassgroups(string filter)
         {
-            return _systemDao.GetVgObjectclassess(filter);
+            return _systemDao.GetVgClassgroups(filter);
         }
-        public bool SaveVgObjectclasses(VgObjectclasses vgObjectclass)
+        public bool SaveVgClassgroup(VgClassgroup vgClassgroup)
         {
-            bool retVal=_systemDao.SaveVgObjectclasses(vgObjectclass);
+            bool retVal=_systemDao.SaveVgClassgroup(vgClassgroup);
             return retVal;
         }
-        public void SaveVgObjectclassess(List<VgObjectclasses> vgObjectclasss)
+        public void SaveVgClassgroups(List<VgClassgroup> vgClassgroups)
         {
-            _systemDao.SaveVgObjectclassess(vgObjectclasss);
+            _systemDao.SaveVgClassgroups(vgClassgroups);
             
         }
-        public void DeleteVgObjectclasses(long id)
+        public void DeleteVgClassgroup(long id)
         {
-            _systemDao.DeleteVgObjectclasses(id);
+            _systemDao.DeleteVgClassgroup(id);
             
         }
-        public void DeleteVgObjectclasses(string filter)
+        public void DeleteVgClassgroup(string filter)
         {
-            _systemDao.DeleteVgObjectclasses(filter);
+            _systemDao.DeleteVgClassgroup(filter);
             
         }
-        public VgObjectysdm GetVgObjectysdm(long id)
+        public VgClassdetail GetVgClassdetail(long id)
         {
-            return _systemDao.GetVgObjectysdm(id);
+            return _systemDao.GetVgClassdetail(id);
         }
         
-        public IEnumerable<VgObjectysdm> GetVgObjectysdms(string filter)
+        public IEnumerable<VgClassdetail> GetVgClassdetails(string filter)
         {
-            return _systemDao.GetVgObjectysdms(filter);
+            return _systemDao.GetVgClassdetails(filter);
         }
-        public bool SaveVgObjectysdm(VgObjectysdm vgObjectysdm)
+        public bool SaveVgClassdetail(VgClassdetail vgClassdetail)
         {
-            bool retVal=_systemDao.SaveVgObjectysdm(vgObjectysdm);
+            bool retVal=_systemDao.SaveVgClassdetail(vgClassdetail);
             return retVal;
         }
-        public void SaveVgObjectysdms(List<VgObjectysdm> vgObjectysdms)
+        public void SaveVgClassdetails(List<VgClassdetail> vgClassdetails)
         {
-            _systemDao.SaveVgObjectysdms(vgObjectysdms);
+            _systemDao.SaveVgClassdetails(vgClassdetails);
             
         }
-        public void DeleteVgObjectysdm(long id)
+        public void DeleteVgClassdetail(long id)
         {
-            _systemDao.DeleteVgObjectysdm(id);
+            _systemDao.DeleteVgClassdetail(id);
             
         }
-        public void DeleteVgObjectysdm(string filter)
+        public void DeleteVgClassdetail(string filter)
         {
-            _systemDao.DeleteVgObjectysdm(filter);
+            _systemDao.DeleteVgClassdetail(filter);
             
         }
-        public VgSettings GetVgSettings(long id)
+        public VgFieldinfo GetVgFieldinfo(long id)
         {
-            return _systemDao.GetVgSettings(id);
+            return _systemDao.GetVgFieldinfo(id);
         }
         
-        public IEnumerable<VgSettings> GetVgSettingss(string filter)
+        public IEnumerable<VgFieldinfo> GetVgFieldinfos(string filter)
         {
-            return _systemDao.GetVgSettingss(filter);
+            return _systemDao.GetVgFieldinfos(filter);
         }
-        public bool SaveVgSettings(VgSettings vgSetting)
+        public bool SaveVgFieldinfo(VgFieldinfo vgFieldinfo)
         {
-            bool retVal=_systemDao.SaveVgSettings(vgSetting);
+            bool retVal=_systemDao.SaveVgFieldinfo(vgFieldinfo);
             return retVal;
         }
-        public void SaveVgSettingss(List<VgSettings> vgSettings)
+        public void SaveVgFieldinfos(List<VgFieldinfo> vgFieldinfos)
         {
-            _systemDao.SaveVgSettingss(vgSettings);
+            _systemDao.SaveVgFieldinfos(vgFieldinfos);
             
         }
-        public void DeleteVgSettings(long id)
+        public void DeleteVgFieldinfo(long id)
         {
-            _systemDao.DeleteVgSettings(id);
+            _systemDao.DeleteVgFieldinfo(id);
             
         }
-        public void DeleteVgSettings(string filter)
+        public void DeleteVgFieldinfo(string filter)
         {
-            _systemDao.DeleteVgSettings(filter);
+            _systemDao.DeleteVgFieldinfo(filter);
             
         }
     }

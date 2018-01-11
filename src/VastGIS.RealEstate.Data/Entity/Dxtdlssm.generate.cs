@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
-    public partial class Dxtdlssm:INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity,IBasemapPolygon
+    public partial class Dxtdlssm:INotifyPropertyChanging, INotifyPropertyChanged,IBasemapPolygon
     {
         #region 表结构
         public const string TABLE_NAME = "DXTDLSSM";
+        public string ObjectName
+        {
+         get{
+                return "DXTDLSSM";
+               }
+        }
+        public string EntityName{
+            get{
+                return "BasemapPolygon";
+               }
+        }       
         public const string LAYER_NAME="道路设施面";
 	    public const string COL_ID = "Id";
 	    public const string COL_TC = "TC";
@@ -261,7 +271,6 @@ namespace VastGIS.RealEstate.Data.Entity
         }
         
         
-        
         public bool Create(SQLiteConnection connection,int srid)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_DXTDLSSM,connection))
@@ -310,7 +319,8 @@ namespace VastGIS.RealEstate.Data.Entity
                 return Update(connection,srid);
             }
             
-        }
+        }        
+        
 
 		public bool Delete(SQLiteConnection connection)
         {

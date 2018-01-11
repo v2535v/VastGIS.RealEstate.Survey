@@ -39,15 +39,6 @@ namespace VastGIS.RealEstate.Data.Service
         void DeleteTmpCadx(string filter);
             
             
-        ///TmpCadxdata函数
-        TmpCadxdata GetTmpCadxdata(long id);
-        IEnumerable<TmpCadxdata> GetTmpCadxdatas(string filter);
-        bool SaveTmpCadxdata(TmpCadxdata tmpcadxdatum);
-        void SaveTmpCadxdatas(List<TmpCadxdata> tmpcadxdatums);
-        void DeleteTmpCadxdata(long id);
-        void DeleteTmpCadxdata(string filter);
-            
-            
         ///TmpCadzj函数
         TmpCadzj GetTmpCadzj(long id);
         IEnumerable<TmpCadzj> GetTmpCadzjs(string filter);
@@ -55,6 +46,15 @@ namespace VastGIS.RealEstate.Data.Service
         void SaveTmpCadzjs(List<TmpCadzj> tmpcadzjs);
         void DeleteTmpCadzj(long id);
         void DeleteTmpCadzj(string filter);
+            
+            
+        ///TmpCadxdata函数
+        TmpCadxdata GetTmpCadxdata(long id);
+        IEnumerable<TmpCadxdata> GetTmpCadxdatas(string filter);
+        bool SaveTmpCadxdata(TmpCadxdata tmpcadxdatum);
+        void SaveTmpCadxdatas(List<TmpCadxdata> tmpcadxdatums);
+        void DeleteTmpCadxdata(long id);
+        void DeleteTmpCadxdata(string filter);
             
             
         

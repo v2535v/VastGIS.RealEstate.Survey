@@ -21,7 +21,7 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             remove { this.entityChanged -= value; }
         }
 
-        protected virtual void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
+        public  void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
         {
             if (this.entityChanged != null)
             {
@@ -40,180 +40,6 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             OnEntityChanged(e.TableName,e.LayerName,e.OperationType,e.Ids);
         }
         
-        public Djq GetDjq(long id)
-        {
-            return _zdDao.GetDjq(id);
-        }
-        
-        public IEnumerable<Djq> GetDjqs(string filter)
-        {
-            return _zdDao.GetDjqs(filter);
-        }
-        public bool SaveDjq(Djq djq)
-        {
-            bool retVal=_zdDao.SaveDjq(djq);
-            return retVal;
-        }
-        public void SaveDjqs(List<Djq> djqs)
-        {
-            _zdDao.SaveDjqs(djqs);
-            
-        }
-        public void DeleteDjq(long id)
-        {
-            _zdDao.DeleteDjq(id);
-            
-        }
-        public void DeleteDjq(string filter)
-        {
-            _zdDao.DeleteDjq(filter);
-            
-        }
-        public Djzq GetDjzq(long id)
-        {
-            return _zdDao.GetDjzq(id);
-        }
-        
-        public IEnumerable<Djzq> GetDjzqs(string filter)
-        {
-            return _zdDao.GetDjzqs(filter);
-        }
-        public bool SaveDjzq(Djzq djzq)
-        {
-            bool retVal=_zdDao.SaveDjzq(djzq);
-            return retVal;
-        }
-        public void SaveDjzqs(List<Djzq> djzqs)
-        {
-            _zdDao.SaveDjzqs(djzqs);
-            
-        }
-        public void DeleteDjzq(long id)
-        {
-            _zdDao.DeleteDjzq(id);
-            
-        }
-        public void DeleteDjzq(string filter)
-        {
-            _zdDao.DeleteDjzq(filter);
-            
-        }
-        public Jzd GetJzd(long id)
-        {
-            return _zdDao.GetJzd(id);
-        }
-        
-        public IEnumerable<Jzd> GetJzds(string filter)
-        {
-            return _zdDao.GetJzds(filter);
-        }
-        public bool SaveJzd(Jzd jzd)
-        {
-            bool retVal=_zdDao.SaveJzd(jzd);
-            return retVal;
-        }
-        public void SaveJzds(List<Jzd> jzds)
-        {
-            _zdDao.SaveJzds(jzds);
-            
-        }
-        public void DeleteJzd(long id)
-        {
-            _zdDao.DeleteJzd(id);
-            
-        }
-        public void DeleteJzd(string filter)
-        {
-            _zdDao.DeleteJzd(filter);
-            
-        }
-        public Jzdzj GetJzdzj(long id)
-        {
-            return _zdDao.GetJzdzj(id);
-        }
-        
-        public IEnumerable<Jzdzj> GetJzdzjs(string filter)
-        {
-            return _zdDao.GetJzdzjs(filter);
-        }
-        public bool SaveJzdzj(Jzdzj jzdzj)
-        {
-            bool retVal=_zdDao.SaveJzdzj(jzdzj);
-            return retVal;
-        }
-        public void SaveJzdzjs(List<Jzdzj> jzdzjs)
-        {
-            _zdDao.SaveJzdzjs(jzdzjs);
-            
-        }
-        public void DeleteJzdzj(long id)
-        {
-            _zdDao.DeleteJzdzj(id);
-            
-        }
-        public void DeleteJzdzj(string filter)
-        {
-            _zdDao.DeleteJzdzj(filter);
-            
-        }
-        public Jzx GetJzx(long id)
-        {
-            return _zdDao.GetJzx(id);
-        }
-        
-        public IEnumerable<Jzx> GetJzxs(string filter)
-        {
-            return _zdDao.GetJzxs(filter);
-        }
-        public bool SaveJzx(Jzx jzx)
-        {
-            bool retVal=_zdDao.SaveJzx(jzx);
-            return retVal;
-        }
-        public void SaveJzxs(List<Jzx> jzxs)
-        {
-            _zdDao.SaveJzxs(jzxs);
-            
-        }
-        public void DeleteJzx(long id)
-        {
-            _zdDao.DeleteJzx(id);
-            
-        }
-        public void DeleteJzx(string filter)
-        {
-            _zdDao.DeleteJzx(filter);
-            
-        }
-        public Jzxzj GetJzxzj(long id)
-        {
-            return _zdDao.GetJzxzj(id);
-        }
-        
-        public IEnumerable<Jzxzj> GetJzxzjs(string filter)
-        {
-            return _zdDao.GetJzxzjs(filter);
-        }
-        public bool SaveJzxzj(Jzxzj jzxzj)
-        {
-            bool retVal=_zdDao.SaveJzxzj(jzxzj);
-            return retVal;
-        }
-        public void SaveJzxzjs(List<Jzxzj> jzxzjs)
-        {
-            _zdDao.SaveJzxzjs(jzxzjs);
-            
-        }
-        public void DeleteJzxzj(long id)
-        {
-            _zdDao.DeleteJzxzj(id);
-            
-        }
-        public void DeleteJzxzj(string filter)
-        {
-            _zdDao.DeleteJzxzj(filter);
-            
-        }
         public Xzq GetXzq(long id)
         {
             return _zdDao.GetXzq(id);
@@ -272,33 +98,62 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _zdDao.DeleteXzqjx(filter);
             
         }
-        public Zdbhqk GetZdbhqk(long id)
+        public Djq GetDjq(long id)
         {
-            return _zdDao.GetZdbhqk(id);
+            return _zdDao.GetDjq(id);
         }
         
-        public IEnumerable<Zdbhqk> GetZdbhqks(string filter)
+        public IEnumerable<Djq> GetDjqs(string filter)
         {
-            return _zdDao.GetZdbhqks(filter);
+            return _zdDao.GetDjqs(filter);
         }
-        public bool SaveZdbhqk(Zdbhqk zdbhqk)
+        public bool SaveDjq(Djq djq)
         {
-            bool retVal=_zdDao.SaveZdbhqk(zdbhqk);
+            bool retVal=_zdDao.SaveDjq(djq);
             return retVal;
         }
-        public void SaveZdbhqks(List<Zdbhqk> zdbhqks)
+        public void SaveDjqs(List<Djq> djqs)
         {
-            _zdDao.SaveZdbhqks(zdbhqks);
+            _zdDao.SaveDjqs(djqs);
             
         }
-        public void DeleteZdbhqk(long id)
+        public void DeleteDjq(long id)
         {
-            _zdDao.DeleteZdbhqk(id);
+            _zdDao.DeleteDjq(id);
             
         }
-        public void DeleteZdbhqk(string filter)
+        public void DeleteDjq(string filter)
         {
-            _zdDao.DeleteZdbhqk(filter);
+            _zdDao.DeleteDjq(filter);
+            
+        }
+        public Djzq GetDjzq(long id)
+        {
+            return _zdDao.GetDjzq(id);
+        }
+        
+        public IEnumerable<Djzq> GetDjzqs(string filter)
+        {
+            return _zdDao.GetDjzqs(filter);
+        }
+        public bool SaveDjzq(Djzq djzq)
+        {
+            bool retVal=_zdDao.SaveDjzq(djzq);
+            return retVal;
+        }
+        public void SaveDjzqs(List<Djzq> djzqs)
+        {
+            _zdDao.SaveDjzqs(djzqs);
+            
+        }
+        public void DeleteDjzq(long id)
+        {
+            _zdDao.DeleteDjzq(id);
+            
+        }
+        public void DeleteDjzq(string filter)
+        {
+            _zdDao.DeleteDjzq(filter);
             
         }
         public Zdjbxx GetZdjbxx(long id)
@@ -330,6 +185,64 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _zdDao.DeleteZdjbxx(filter);
             
         }
+        public Jzd GetJzd(long id)
+        {
+            return _zdDao.GetJzd(id);
+        }
+        
+        public IEnumerable<Jzd> GetJzds(string filter)
+        {
+            return _zdDao.GetJzds(filter);
+        }
+        public bool SaveJzd(Jzd jzd)
+        {
+            bool retVal=_zdDao.SaveJzd(jzd);
+            return retVal;
+        }
+        public void SaveJzds(List<Jzd> jzds)
+        {
+            _zdDao.SaveJzds(jzds);
+            
+        }
+        public void DeleteJzd(long id)
+        {
+            _zdDao.DeleteJzd(id);
+            
+        }
+        public void DeleteJzd(string filter)
+        {
+            _zdDao.DeleteJzd(filter);
+            
+        }
+        public Jzx GetJzx(long id)
+        {
+            return _zdDao.GetJzx(id);
+        }
+        
+        public IEnumerable<Jzx> GetJzxs(string filter)
+        {
+            return _zdDao.GetJzxs(filter);
+        }
+        public bool SaveJzx(Jzx jzx)
+        {
+            bool retVal=_zdDao.SaveJzx(jzx);
+            return retVal;
+        }
+        public void SaveJzxs(List<Jzx> jzxs)
+        {
+            _zdDao.SaveJzxs(jzxs);
+            
+        }
+        public void DeleteJzx(long id)
+        {
+            _zdDao.DeleteJzx(id);
+            
+        }
+        public void DeleteJzx(string filter)
+        {
+            _zdDao.DeleteJzx(filter);
+            
+        }
         public Zdjbxxzj GetZdjbxxzj(long id)
         {
             return _zdDao.GetZdjbxxzj(id);
@@ -357,6 +270,93 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         public void DeleteZdjbxxzj(string filter)
         {
             _zdDao.DeleteZdjbxxzj(filter);
+            
+        }
+        public Jzdzj GetJzdzj(long id)
+        {
+            return _zdDao.GetJzdzj(id);
+        }
+        
+        public IEnumerable<Jzdzj> GetJzdzjs(string filter)
+        {
+            return _zdDao.GetJzdzjs(filter);
+        }
+        public bool SaveJzdzj(Jzdzj jzdzj)
+        {
+            bool retVal=_zdDao.SaveJzdzj(jzdzj);
+            return retVal;
+        }
+        public void SaveJzdzjs(List<Jzdzj> jzdzjs)
+        {
+            _zdDao.SaveJzdzjs(jzdzjs);
+            
+        }
+        public void DeleteJzdzj(long id)
+        {
+            _zdDao.DeleteJzdzj(id);
+            
+        }
+        public void DeleteJzdzj(string filter)
+        {
+            _zdDao.DeleteJzdzj(filter);
+            
+        }
+        public Jzxzj GetJzxzj(long id)
+        {
+            return _zdDao.GetJzxzj(id);
+        }
+        
+        public IEnumerable<Jzxzj> GetJzxzjs(string filter)
+        {
+            return _zdDao.GetJzxzjs(filter);
+        }
+        public bool SaveJzxzj(Jzxzj jzxzj)
+        {
+            bool retVal=_zdDao.SaveJzxzj(jzxzj);
+            return retVal;
+        }
+        public void SaveJzxzjs(List<Jzxzj> jzxzjs)
+        {
+            _zdDao.SaveJzxzjs(jzxzjs);
+            
+        }
+        public void DeleteJzxzj(long id)
+        {
+            _zdDao.DeleteJzxzj(id);
+            
+        }
+        public void DeleteJzxzj(string filter)
+        {
+            _zdDao.DeleteJzxzj(filter);
+            
+        }
+        public Zdbhqk GetZdbhqk(long id)
+        {
+            return _zdDao.GetZdbhqk(id);
+        }
+        
+        public IEnumerable<Zdbhqk> GetZdbhqks(string filter)
+        {
+            return _zdDao.GetZdbhqks(filter);
+        }
+        public bool SaveZdbhqk(Zdbhqk zdbhqk)
+        {
+            bool retVal=_zdDao.SaveZdbhqk(zdbhqk);
+            return retVal;
+        }
+        public void SaveZdbhqks(List<Zdbhqk> zdbhqks)
+        {
+            _zdDao.SaveZdbhqks(zdbhqks);
+            
+        }
+        public void DeleteZdbhqk(long id)
+        {
+            _zdDao.DeleteZdbhqk(id);
+            
+        }
+        public void DeleteZdbhqk(string filter)
+        {
+            _zdDao.DeleteZdbhqk(filter);
             
         }
         public Zdtojzd GetZdtojzd(long id)

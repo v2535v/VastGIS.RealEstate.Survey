@@ -21,7 +21,7 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             remove { this.entityChanged -= value; }
         }
 
-        protected virtual void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
+        public  void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
         {
             if (this.entityChanged != null)
             {
@@ -40,6 +40,470 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             OnEntityChanged(e.TableName,e.LayerName,e.OperationType,e.Ids);
         }
         
+        public Dxtqtd GetDxtqtd(long id)
+        {
+            return _basemapDao.GetDxtqtd(id);
+        }
+        
+        public IEnumerable<Dxtqtd> GetDxtqtds(string filter)
+        {
+            return _basemapDao.GetDxtqtds(filter);
+        }
+        public bool SaveDxtqtd(Dxtqtd dxtqtd)
+        {
+            bool retVal=_basemapDao.SaveDxtqtd(dxtqtd);
+            return retVal;
+        }
+        public void SaveDxtqtds(List<Dxtqtd> dxtqtds)
+        {
+            _basemapDao.SaveDxtqtds(dxtqtds);
+            
+        }
+        public void DeleteDxtqtd(long id)
+        {
+            _basemapDao.DeleteDxtqtd(id);
+            
+        }
+        public void DeleteDxtqtd(string filter)
+        {
+            _basemapDao.DeleteDxtqtd(filter);
+            
+        }
+        public Dxtqtx GetDxtqtx(long id)
+        {
+            return _basemapDao.GetDxtqtx(id);
+        }
+        
+        public IEnumerable<Dxtqtx> GetDxtqtxs(string filter)
+        {
+            return _basemapDao.GetDxtqtxs(filter);
+        }
+        public bool SaveDxtqtx(Dxtqtx dxtqtx)
+        {
+            bool retVal=_basemapDao.SaveDxtqtx(dxtqtx);
+            return retVal;
+        }
+        public void SaveDxtqtxs(List<Dxtqtx> dxtqtxs)
+        {
+            _basemapDao.SaveDxtqtxs(dxtqtxs);
+            
+        }
+        public void DeleteDxtqtx(long id)
+        {
+            _basemapDao.DeleteDxtqtx(id);
+            
+        }
+        public void DeleteDxtqtx(string filter)
+        {
+            _basemapDao.DeleteDxtqtx(filter);
+            
+        }
+        public Dxtqtm GetDxtqtm(long id)
+        {
+            return _basemapDao.GetDxtqtm(id);
+        }
+        
+        public IEnumerable<Dxtqtm> GetDxtqtms(string filter)
+        {
+            return _basemapDao.GetDxtqtms(filter);
+        }
+        public bool SaveDxtqtm(Dxtqtm dxtqtm)
+        {
+            bool retVal=_basemapDao.SaveDxtqtm(dxtqtm);
+            return retVal;
+        }
+        public void SaveDxtqtms(List<Dxtqtm> dxtqtms)
+        {
+            _basemapDao.SaveDxtqtms(dxtqtms);
+            
+        }
+        public void DeleteDxtqtm(long id)
+        {
+            _basemapDao.DeleteDxtqtm(id);
+            
+        }
+        public void DeleteDxtqtm(string filter)
+        {
+            _basemapDao.DeleteDxtqtm(filter);
+            
+        }
+        public Dxtqtzj GetDxtqtzj(long id)
+        {
+            return _basemapDao.GetDxtqtzj(id);
+        }
+        
+        public IEnumerable<Dxtqtzj> GetDxtqtzjs(string filter)
+        {
+            return _basemapDao.GetDxtqtzjs(filter);
+        }
+        public bool SaveDxtqtzj(Dxtqtzj dxtqtzj)
+        {
+            bool retVal=_basemapDao.SaveDxtqtzj(dxtqtzj);
+            return retVal;
+        }
+        public void SaveDxtqtzjs(List<Dxtqtzj> dxtqtzjs)
+        {
+            _basemapDao.SaveDxtqtzjs(dxtqtzjs);
+            
+        }
+        public void DeleteDxtqtzj(long id)
+        {
+            _basemapDao.DeleteDxtqtzj(id);
+            
+        }
+        public void DeleteDxtqtzj(string filter)
+        {
+            _basemapDao.DeleteDxtqtzj(filter);
+            
+        }
+        public Dxtzjd GetDxtzjd(long id)
+        {
+            return _basemapDao.GetDxtzjd(id);
+        }
+        
+        public IEnumerable<Dxtzjd> GetDxtzjds(string filter)
+        {
+            return _basemapDao.GetDxtzjds(filter);
+        }
+        public bool SaveDxtzjd(Dxtzjd dxtzjd)
+        {
+            bool retVal=_basemapDao.SaveDxtzjd(dxtzjd);
+            return retVal;
+        }
+        public void SaveDxtzjds(List<Dxtzjd> dxtzjds)
+        {
+            _basemapDao.SaveDxtzjds(dxtzjds);
+            
+        }
+        public void DeleteDxtzjd(long id)
+        {
+            _basemapDao.DeleteDxtzjd(id);
+            
+        }
+        public void DeleteDxtzjd(string filter)
+        {
+            _basemapDao.DeleteDxtzjd(filter);
+            
+        }
+        public Dxtzjx GetDxtzjx(long id)
+        {
+            return _basemapDao.GetDxtzjx(id);
+        }
+        
+        public IEnumerable<Dxtzjx> GetDxtzjxs(string filter)
+        {
+            return _basemapDao.GetDxtzjxs(filter);
+        }
+        public bool SaveDxtzjx(Dxtzjx dxtzjx)
+        {
+            bool retVal=_basemapDao.SaveDxtzjx(dxtzjx);
+            return retVal;
+        }
+        public void SaveDxtzjxs(List<Dxtzjx> dxtzjxs)
+        {
+            _basemapDao.SaveDxtzjxs(dxtzjxs);
+            
+        }
+        public void DeleteDxtzjx(long id)
+        {
+            _basemapDao.DeleteDxtzjx(id);
+            
+        }
+        public void DeleteDxtzjx(string filter)
+        {
+            _basemapDao.DeleteDxtzjx(filter);
+            
+        }
+        public Dxtzjm GetDxtzjm(long id)
+        {
+            return _basemapDao.GetDxtzjm(id);
+        }
+        
+        public IEnumerable<Dxtzjm> GetDxtzjms(string filter)
+        {
+            return _basemapDao.GetDxtzjms(filter);
+        }
+        public bool SaveDxtzjm(Dxtzjm dxtzjm)
+        {
+            bool retVal=_basemapDao.SaveDxtzjm(dxtzjm);
+            return retVal;
+        }
+        public void SaveDxtzjms(List<Dxtzjm> dxtzjms)
+        {
+            _basemapDao.SaveDxtzjms(dxtzjms);
+            
+        }
+        public void DeleteDxtzjm(long id)
+        {
+            _basemapDao.DeleteDxtzjm(id);
+            
+        }
+        public void DeleteDxtzjm(string filter)
+        {
+            _basemapDao.DeleteDxtzjm(filter);
+            
+        }
+        public Dxtzjzj GetDxtzjzj(long id)
+        {
+            return _basemapDao.GetDxtzjzj(id);
+        }
+        
+        public IEnumerable<Dxtzjzj> GetDxtzjzjs(string filter)
+        {
+            return _basemapDao.GetDxtzjzjs(filter);
+        }
+        public bool SaveDxtzjzj(Dxtzjzj dxtzjzj)
+        {
+            bool retVal=_basemapDao.SaveDxtzjzj(dxtzjzj);
+            return retVal;
+        }
+        public void SaveDxtzjzjs(List<Dxtzjzj> dxtzjzjs)
+        {
+            _basemapDao.SaveDxtzjzjs(dxtzjzjs);
+            
+        }
+        public void DeleteDxtzjzj(long id)
+        {
+            _basemapDao.DeleteDxtzjzj(id);
+            
+        }
+        public void DeleteDxtzjzj(string filter)
+        {
+            _basemapDao.DeleteDxtzjzj(filter);
+            
+        }
+        public Dxtdmtzd GetDxtdmtzd(long id)
+        {
+            return _basemapDao.GetDxtdmtzd(id);
+        }
+        
+        public IEnumerable<Dxtdmtzd> GetDxtdmtzds(string filter)
+        {
+            return _basemapDao.GetDxtdmtzds(filter);
+        }
+        public bool SaveDxtdmtzd(Dxtdmtzd dxtdmtzd)
+        {
+            bool retVal=_basemapDao.SaveDxtdmtzd(dxtdmtzd);
+            return retVal;
+        }
+        public void SaveDxtdmtzds(List<Dxtdmtzd> dxtdmtzds)
+        {
+            _basemapDao.SaveDxtdmtzds(dxtdmtzds);
+            
+        }
+        public void DeleteDxtdmtzd(long id)
+        {
+            _basemapDao.DeleteDxtdmtzd(id);
+            
+        }
+        public void DeleteDxtdmtzd(string filter)
+        {
+            _basemapDao.DeleteDxtdmtzd(filter);
+            
+        }
+        public Dxtdmtzx GetDxtdmtzx(long id)
+        {
+            return _basemapDao.GetDxtdmtzx(id);
+        }
+        
+        public IEnumerable<Dxtdmtzx> GetDxtdmtzxs(string filter)
+        {
+            return _basemapDao.GetDxtdmtzxs(filter);
+        }
+        public bool SaveDxtdmtzx(Dxtdmtzx dxtdmtzx)
+        {
+            bool retVal=_basemapDao.SaveDxtdmtzx(dxtdmtzx);
+            return retVal;
+        }
+        public void SaveDxtdmtzxs(List<Dxtdmtzx> dxtdmtzxs)
+        {
+            _basemapDao.SaveDxtdmtzxs(dxtdmtzxs);
+            
+        }
+        public void DeleteDxtdmtzx(long id)
+        {
+            _basemapDao.DeleteDxtdmtzx(id);
+            
+        }
+        public void DeleteDxtdmtzx(string filter)
+        {
+            _basemapDao.DeleteDxtdmtzx(filter);
+            
+        }
+        public Dxtdmtzm GetDxtdmtzm(long id)
+        {
+            return _basemapDao.GetDxtdmtzm(id);
+        }
+        
+        public IEnumerable<Dxtdmtzm> GetDxtdmtzms(string filter)
+        {
+            return _basemapDao.GetDxtdmtzms(filter);
+        }
+        public bool SaveDxtdmtzm(Dxtdmtzm dxtdmtzm)
+        {
+            bool retVal=_basemapDao.SaveDxtdmtzm(dxtdmtzm);
+            return retVal;
+        }
+        public void SaveDxtdmtzms(List<Dxtdmtzm> dxtdmtzms)
+        {
+            _basemapDao.SaveDxtdmtzms(dxtdmtzms);
+            
+        }
+        public void DeleteDxtdmtzm(long id)
+        {
+            _basemapDao.DeleteDxtdmtzm(id);
+            
+        }
+        public void DeleteDxtdmtzm(string filter)
+        {
+            _basemapDao.DeleteDxtdmtzm(filter);
+            
+        }
+        public Dxtdmtzzj GetDxtdmtzzj(long id)
+        {
+            return _basemapDao.GetDxtdmtzzj(id);
+        }
+        
+        public IEnumerable<Dxtdmtzzj> GetDxtdmtzzjs(string filter)
+        {
+            return _basemapDao.GetDxtdmtzzjs(filter);
+        }
+        public bool SaveDxtdmtzzj(Dxtdmtzzj dxtdmtzzj)
+        {
+            bool retVal=_basemapDao.SaveDxtdmtzzj(dxtdmtzzj);
+            return retVal;
+        }
+        public void SaveDxtdmtzzjs(List<Dxtdmtzzj> dxtdmtzzjs)
+        {
+            _basemapDao.SaveDxtdmtzzjs(dxtdmtzzjs);
+            
+        }
+        public void DeleteDxtdmtzzj(long id)
+        {
+            _basemapDao.DeleteDxtdmtzzj(id);
+            
+        }
+        public void DeleteDxtdmtzzj(string filter)
+        {
+            _basemapDao.DeleteDxtdmtzzj(filter);
+            
+        }
+        public Dxtsxssd GetDxtsxssd(long id)
+        {
+            return _basemapDao.GetDxtsxssd(id);
+        }
+        
+        public IEnumerable<Dxtsxssd> GetDxtsxssds(string filter)
+        {
+            return _basemapDao.GetDxtsxssds(filter);
+        }
+        public bool SaveDxtsxssd(Dxtsxssd dxtsxssd)
+        {
+            bool retVal=_basemapDao.SaveDxtsxssd(dxtsxssd);
+            return retVal;
+        }
+        public void SaveDxtsxssds(List<Dxtsxssd> dxtsxssds)
+        {
+            _basemapDao.SaveDxtsxssds(dxtsxssds);
+            
+        }
+        public void DeleteDxtsxssd(long id)
+        {
+            _basemapDao.DeleteDxtsxssd(id);
+            
+        }
+        public void DeleteDxtsxssd(string filter)
+        {
+            _basemapDao.DeleteDxtsxssd(filter);
+            
+        }
+        public Dxtsxssx GetDxtsxssx(long id)
+        {
+            return _basemapDao.GetDxtsxssx(id);
+        }
+        
+        public IEnumerable<Dxtsxssx> GetDxtsxssxs(string filter)
+        {
+            return _basemapDao.GetDxtsxssxs(filter);
+        }
+        public bool SaveDxtsxssx(Dxtsxssx dxtsxssx)
+        {
+            bool retVal=_basemapDao.SaveDxtsxssx(dxtsxssx);
+            return retVal;
+        }
+        public void SaveDxtsxssxs(List<Dxtsxssx> dxtsxssxs)
+        {
+            _basemapDao.SaveDxtsxssxs(dxtsxssxs);
+            
+        }
+        public void DeleteDxtsxssx(long id)
+        {
+            _basemapDao.DeleteDxtsxssx(id);
+            
+        }
+        public void DeleteDxtsxssx(string filter)
+        {
+            _basemapDao.DeleteDxtsxssx(filter);
+            
+        }
+        public Dxtsxssm GetDxtsxssm(long id)
+        {
+            return _basemapDao.GetDxtsxssm(id);
+        }
+        
+        public IEnumerable<Dxtsxssm> GetDxtsxssms(string filter)
+        {
+            return _basemapDao.GetDxtsxssms(filter);
+        }
+        public bool SaveDxtsxssm(Dxtsxssm dxtsxssm)
+        {
+            bool retVal=_basemapDao.SaveDxtsxssm(dxtsxssm);
+            return retVal;
+        }
+        public void SaveDxtsxssms(List<Dxtsxssm> dxtsxssms)
+        {
+            _basemapDao.SaveDxtsxssms(dxtsxssms);
+            
+        }
+        public void DeleteDxtsxssm(long id)
+        {
+            _basemapDao.DeleteDxtsxssm(id);
+            
+        }
+        public void DeleteDxtsxssm(string filter)
+        {
+            _basemapDao.DeleteDxtsxssm(filter);
+            
+        }
+        public Dxtsxsszj GetDxtsxsszj(long id)
+        {
+            return _basemapDao.GetDxtsxsszj(id);
+        }
+        
+        public IEnumerable<Dxtsxsszj> GetDxtsxsszjs(string filter)
+        {
+            return _basemapDao.GetDxtsxsszjs(filter);
+        }
+        public bool SaveDxtsxsszj(Dxtsxsszj dxtsxsszj)
+        {
+            bool retVal=_basemapDao.SaveDxtsxsszj(dxtsxsszj);
+            return retVal;
+        }
+        public void SaveDxtsxsszjs(List<Dxtsxsszj> dxtsxsszjs)
+        {
+            _basemapDao.SaveDxtsxsszjs(dxtsxsszjs);
+            
+        }
+        public void DeleteDxtsxsszj(long id)
+        {
+            _basemapDao.DeleteDxtsxsszj(id);
+            
+        }
+        public void DeleteDxtsxsszj(string filter)
+        {
+            _basemapDao.DeleteDxtsxsszj(filter);
+            
+        }
         public Dxtdldwd GetDxtdldwd(long id)
         {
             return _basemapDao.GetDxtdldwd(id);
@@ -69,35 +533,6 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _basemapDao.DeleteDxtdldwd(filter);
             
         }
-        public Dxtdldwm GetDxtdldwm(long id)
-        {
-            return _basemapDao.GetDxtdldwm(id);
-        }
-        
-        public IEnumerable<Dxtdldwm> GetDxtdldwms(string filter)
-        {
-            return _basemapDao.GetDxtdldwms(filter);
-        }
-        public bool SaveDxtdldwm(Dxtdldwm dxtdldwm)
-        {
-            bool retVal=_basemapDao.SaveDxtdldwm(dxtdldwm);
-            return retVal;
-        }
-        public void SaveDxtdldwms(List<Dxtdldwm> dxtdldwms)
-        {
-            _basemapDao.SaveDxtdldwms(dxtdldwms);
-            
-        }
-        public void DeleteDxtdldwm(long id)
-        {
-            _basemapDao.DeleteDxtdldwm(id);
-            
-        }
-        public void DeleteDxtdldwm(string filter)
-        {
-            _basemapDao.DeleteDxtdldwm(filter);
-            
-        }
         public Dxtdldwx GetDxtdldwx(long id)
         {
             return _basemapDao.GetDxtdldwx(id);
@@ -125,6 +560,35 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         public void DeleteDxtdldwx(string filter)
         {
             _basemapDao.DeleteDxtdldwx(filter);
+            
+        }
+        public Dxtdldwm GetDxtdldwm(long id)
+        {
+            return _basemapDao.GetDxtdldwm(id);
+        }
+        
+        public IEnumerable<Dxtdldwm> GetDxtdldwms(string filter)
+        {
+            return _basemapDao.GetDxtdldwms(filter);
+        }
+        public bool SaveDxtdldwm(Dxtdldwm dxtdldwm)
+        {
+            bool retVal=_basemapDao.SaveDxtdldwm(dxtdldwm);
+            return retVal;
+        }
+        public void SaveDxtdldwms(List<Dxtdldwm> dxtdldwms)
+        {
+            _basemapDao.SaveDxtdldwms(dxtdldwms);
+            
+        }
+        public void DeleteDxtdldwm(long id)
+        {
+            _basemapDao.DeleteDxtdldwm(id);
+            
+        }
+        public void DeleteDxtdldwm(string filter)
+        {
+            _basemapDao.DeleteDxtdldwm(filter);
             
         }
         public Dxtdldwzj GetDxtdldwzj(long id)
@@ -185,35 +649,6 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _basemapDao.DeleteDxtdlssd(filter);
             
         }
-        public Dxtdlssm GetDxtdlssm(long id)
-        {
-            return _basemapDao.GetDxtdlssm(id);
-        }
-        
-        public IEnumerable<Dxtdlssm> GetDxtdlssms(string filter)
-        {
-            return _basemapDao.GetDxtdlssms(filter);
-        }
-        public bool SaveDxtdlssm(Dxtdlssm dxtdlssm)
-        {
-            bool retVal=_basemapDao.SaveDxtdlssm(dxtdlssm);
-            return retVal;
-        }
-        public void SaveDxtdlssms(List<Dxtdlssm> dxtdlssms)
-        {
-            _basemapDao.SaveDxtdlssms(dxtdlssms);
-            
-        }
-        public void DeleteDxtdlssm(long id)
-        {
-            _basemapDao.DeleteDxtdlssm(id);
-            
-        }
-        public void DeleteDxtdlssm(string filter)
-        {
-            _basemapDao.DeleteDxtdlssm(filter);
-            
-        }
         public Dxtdlssx GetDxtdlssx(long id)
         {
             return _basemapDao.GetDxtdlssx(id);
@@ -241,6 +676,35 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         public void DeleteDxtdlssx(string filter)
         {
             _basemapDao.DeleteDxtdlssx(filter);
+            
+        }
+        public Dxtdlssm GetDxtdlssm(long id)
+        {
+            return _basemapDao.GetDxtdlssm(id);
+        }
+        
+        public IEnumerable<Dxtdlssm> GetDxtdlssms(string filter)
+        {
+            return _basemapDao.GetDxtdlssms(filter);
+        }
+        public bool SaveDxtdlssm(Dxtdlssm dxtdlssm)
+        {
+            bool retVal=_basemapDao.SaveDxtdlssm(dxtdlssm);
+            return retVal;
+        }
+        public void SaveDxtdlssms(List<Dxtdlssm> dxtdlssms)
+        {
+            _basemapDao.SaveDxtdlssms(dxtdlssms);
+            
+        }
+        public void DeleteDxtdlssm(long id)
+        {
+            _basemapDao.DeleteDxtdlssm(id);
+            
+        }
+        public void DeleteDxtdlssm(string filter)
+        {
+            _basemapDao.DeleteDxtdlssm(filter);
             
         }
         public Dxtdlsszj GetDxtdlsszj(long id)
@@ -272,122 +736,6 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _basemapDao.DeleteDxtdlsszj(filter);
             
         }
-        public Dxtdmtzd GetDxtdmtzd(long id)
-        {
-            return _basemapDao.GetDxtdmtzd(id);
-        }
-        
-        public IEnumerable<Dxtdmtzd> GetDxtdmtzds(string filter)
-        {
-            return _basemapDao.GetDxtdmtzds(filter);
-        }
-        public bool SaveDxtdmtzd(Dxtdmtzd dxtdmtzd)
-        {
-            bool retVal=_basemapDao.SaveDxtdmtzd(dxtdmtzd);
-            return retVal;
-        }
-        public void SaveDxtdmtzds(List<Dxtdmtzd> dxtdmtzds)
-        {
-            _basemapDao.SaveDxtdmtzds(dxtdmtzds);
-            
-        }
-        public void DeleteDxtdmtzd(long id)
-        {
-            _basemapDao.DeleteDxtdmtzd(id);
-            
-        }
-        public void DeleteDxtdmtzd(string filter)
-        {
-            _basemapDao.DeleteDxtdmtzd(filter);
-            
-        }
-        public Dxtdmtzm GetDxtdmtzm(long id)
-        {
-            return _basemapDao.GetDxtdmtzm(id);
-        }
-        
-        public IEnumerable<Dxtdmtzm> GetDxtdmtzms(string filter)
-        {
-            return _basemapDao.GetDxtdmtzms(filter);
-        }
-        public bool SaveDxtdmtzm(Dxtdmtzm dxtdmtzm)
-        {
-            bool retVal=_basemapDao.SaveDxtdmtzm(dxtdmtzm);
-            return retVal;
-        }
-        public void SaveDxtdmtzms(List<Dxtdmtzm> dxtdmtzms)
-        {
-            _basemapDao.SaveDxtdmtzms(dxtdmtzms);
-            
-        }
-        public void DeleteDxtdmtzm(long id)
-        {
-            _basemapDao.DeleteDxtdmtzm(id);
-            
-        }
-        public void DeleteDxtdmtzm(string filter)
-        {
-            _basemapDao.DeleteDxtdmtzm(filter);
-            
-        }
-        public Dxtdmtzx GetDxtdmtzx(long id)
-        {
-            return _basemapDao.GetDxtdmtzx(id);
-        }
-        
-        public IEnumerable<Dxtdmtzx> GetDxtdmtzxs(string filter)
-        {
-            return _basemapDao.GetDxtdmtzxs(filter);
-        }
-        public bool SaveDxtdmtzx(Dxtdmtzx dxtdmtzx)
-        {
-            bool retVal=_basemapDao.SaveDxtdmtzx(dxtdmtzx);
-            return retVal;
-        }
-        public void SaveDxtdmtzxs(List<Dxtdmtzx> dxtdmtzxs)
-        {
-            _basemapDao.SaveDxtdmtzxs(dxtdmtzxs);
-            
-        }
-        public void DeleteDxtdmtzx(long id)
-        {
-            _basemapDao.DeleteDxtdmtzx(id);
-            
-        }
-        public void DeleteDxtdmtzx(string filter)
-        {
-            _basemapDao.DeleteDxtdmtzx(filter);
-            
-        }
-        public Dxtdmtzzj GetDxtdmtzzj(long id)
-        {
-            return _basemapDao.GetDxtdmtzzj(id);
-        }
-        
-        public IEnumerable<Dxtdmtzzj> GetDxtdmtzzjs(string filter)
-        {
-            return _basemapDao.GetDxtdmtzzjs(filter);
-        }
-        public bool SaveDxtdmtzzj(Dxtdmtzzj dxtdmtzzj)
-        {
-            bool retVal=_basemapDao.SaveDxtdmtzzj(dxtdmtzzj);
-            return retVal;
-        }
-        public void SaveDxtdmtzzjs(List<Dxtdmtzzj> dxtdmtzzjs)
-        {
-            _basemapDao.SaveDxtdmtzzjs(dxtdmtzzjs);
-            
-        }
-        public void DeleteDxtdmtzzj(long id)
-        {
-            _basemapDao.DeleteDxtdmtzzj(id);
-            
-        }
-        public void DeleteDxtdmtzzj(string filter)
-        {
-            _basemapDao.DeleteDxtdmtzzj(filter);
-            
-        }
         public Dxtjmdd GetDxtjmdd(long id)
         {
             return _basemapDao.GetDxtjmdd(id);
@@ -417,35 +765,6 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _basemapDao.DeleteDxtjmdd(filter);
             
         }
-        public Dxtjmdm GetDxtjmdm(long id)
-        {
-            return _basemapDao.GetDxtjmdm(id);
-        }
-        
-        public IEnumerable<Dxtjmdm> GetDxtjmdms(string filter)
-        {
-            return _basemapDao.GetDxtjmdms(filter);
-        }
-        public bool SaveDxtjmdm(Dxtjmdm dxtjmdm)
-        {
-            bool retVal=_basemapDao.SaveDxtjmdm(dxtjmdm);
-            return retVal;
-        }
-        public void SaveDxtjmdms(List<Dxtjmdm> dxtjmdms)
-        {
-            _basemapDao.SaveDxtjmdms(dxtjmdms);
-            
-        }
-        public void DeleteDxtjmdm(long id)
-        {
-            _basemapDao.DeleteDxtjmdm(id);
-            
-        }
-        public void DeleteDxtjmdm(string filter)
-        {
-            _basemapDao.DeleteDxtjmdm(filter);
-            
-        }
         public Dxtjmdx GetDxtjmdx(long id)
         {
             return _basemapDao.GetDxtjmdx(id);
@@ -473,6 +792,35 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         public void DeleteDxtjmdx(string filter)
         {
             _basemapDao.DeleteDxtjmdx(filter);
+            
+        }
+        public Dxtjmdm GetDxtjmdm(long id)
+        {
+            return _basemapDao.GetDxtjmdm(id);
+        }
+        
+        public IEnumerable<Dxtjmdm> GetDxtjmdms(string filter)
+        {
+            return _basemapDao.GetDxtjmdms(filter);
+        }
+        public bool SaveDxtjmdm(Dxtjmdm dxtjmdm)
+        {
+            bool retVal=_basemapDao.SaveDxtjmdm(dxtjmdm);
+            return retVal;
+        }
+        public void SaveDxtjmdms(List<Dxtjmdm> dxtjmdms)
+        {
+            _basemapDao.SaveDxtjmdms(dxtjmdms);
+            
+        }
+        public void DeleteDxtjmdm(long id)
+        {
+            _basemapDao.DeleteDxtjmdm(id);
+            
+        }
+        public void DeleteDxtjmdm(string filter)
+        {
+            _basemapDao.DeleteDxtjmdm(filter);
             
         }
         public Dxtjmdzj GetDxtjmdzj(long id)
@@ -533,35 +881,6 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _basemapDao.DeleteDxtkzdd(filter);
             
         }
-        public Dxtkzdm GetDxtkzdm(long id)
-        {
-            return _basemapDao.GetDxtkzdm(id);
-        }
-        
-        public IEnumerable<Dxtkzdm> GetDxtkzdms(string filter)
-        {
-            return _basemapDao.GetDxtkzdms(filter);
-        }
-        public bool SaveDxtkzdm(Dxtkzdm dxtkzdm)
-        {
-            bool retVal=_basemapDao.SaveDxtkzdm(dxtkzdm);
-            return retVal;
-        }
-        public void SaveDxtkzdms(List<Dxtkzdm> dxtkzdms)
-        {
-            _basemapDao.SaveDxtkzdms(dxtkzdms);
-            
-        }
-        public void DeleteDxtkzdm(long id)
-        {
-            _basemapDao.DeleteDxtkzdm(id);
-            
-        }
-        public void DeleteDxtkzdm(string filter)
-        {
-            _basemapDao.DeleteDxtkzdm(filter);
-            
-        }
         public Dxtkzdx GetDxtkzdx(long id)
         {
             return _basemapDao.GetDxtkzdx(id);
@@ -591,6 +910,35 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _basemapDao.DeleteDxtkzdx(filter);
             
         }
+        public Dxtkzdm GetDxtkzdm(long id)
+        {
+            return _basemapDao.GetDxtkzdm(id);
+        }
+        
+        public IEnumerable<Dxtkzdm> GetDxtkzdms(string filter)
+        {
+            return _basemapDao.GetDxtkzdms(filter);
+        }
+        public bool SaveDxtkzdm(Dxtkzdm dxtkzdm)
+        {
+            bool retVal=_basemapDao.SaveDxtkzdm(dxtkzdm);
+            return retVal;
+        }
+        public void SaveDxtkzdms(List<Dxtkzdm> dxtkzdms)
+        {
+            _basemapDao.SaveDxtkzdms(dxtkzdms);
+            
+        }
+        public void DeleteDxtkzdm(long id)
+        {
+            _basemapDao.DeleteDxtkzdm(id);
+            
+        }
+        public void DeleteDxtkzdm(string filter)
+        {
+            _basemapDao.DeleteDxtkzdm(filter);
+            
+        }
         public Dxtkzdzj GetDxtkzdzj(long id)
         {
             return _basemapDao.GetDxtkzdzj(id);
@@ -618,354 +966,6 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         public void DeleteDxtkzdzj(string filter)
         {
             _basemapDao.DeleteDxtkzdzj(filter);
-            
-        }
-        public Dxtqtd GetDxtqtd(long id)
-        {
-            return _basemapDao.GetDxtqtd(id);
-        }
-        
-        public IEnumerable<Dxtqtd> GetDxtqtds(string filter)
-        {
-            return _basemapDao.GetDxtqtds(filter);
-        }
-        public bool SaveDxtqtd(Dxtqtd dxtqtd)
-        {
-            bool retVal=_basemapDao.SaveDxtqtd(dxtqtd);
-            return retVal;
-        }
-        public void SaveDxtqtds(List<Dxtqtd> dxtqtds)
-        {
-            _basemapDao.SaveDxtqtds(dxtqtds);
-            
-        }
-        public void DeleteDxtqtd(long id)
-        {
-            _basemapDao.DeleteDxtqtd(id);
-            
-        }
-        public void DeleteDxtqtd(string filter)
-        {
-            _basemapDao.DeleteDxtqtd(filter);
-            
-        }
-        public Dxtqtm GetDxtqtm(long id)
-        {
-            return _basemapDao.GetDxtqtm(id);
-        }
-        
-        public IEnumerable<Dxtqtm> GetDxtqtms(string filter)
-        {
-            return _basemapDao.GetDxtqtms(filter);
-        }
-        public bool SaveDxtqtm(Dxtqtm dxtqtm)
-        {
-            bool retVal=_basemapDao.SaveDxtqtm(dxtqtm);
-            return retVal;
-        }
-        public void SaveDxtqtms(List<Dxtqtm> dxtqtms)
-        {
-            _basemapDao.SaveDxtqtms(dxtqtms);
-            
-        }
-        public void DeleteDxtqtm(long id)
-        {
-            _basemapDao.DeleteDxtqtm(id);
-            
-        }
-        public void DeleteDxtqtm(string filter)
-        {
-            _basemapDao.DeleteDxtqtm(filter);
-            
-        }
-        public Dxtqtx GetDxtqtx(long id)
-        {
-            return _basemapDao.GetDxtqtx(id);
-        }
-        
-        public IEnumerable<Dxtqtx> GetDxtqtxs(string filter)
-        {
-            return _basemapDao.GetDxtqtxs(filter);
-        }
-        public bool SaveDxtqtx(Dxtqtx dxtqtx)
-        {
-            bool retVal=_basemapDao.SaveDxtqtx(dxtqtx);
-            return retVal;
-        }
-        public void SaveDxtqtxs(List<Dxtqtx> dxtqtxs)
-        {
-            _basemapDao.SaveDxtqtxs(dxtqtxs);
-            
-        }
-        public void DeleteDxtqtx(long id)
-        {
-            _basemapDao.DeleteDxtqtx(id);
-            
-        }
-        public void DeleteDxtqtx(string filter)
-        {
-            _basemapDao.DeleteDxtqtx(filter);
-            
-        }
-        public Dxtqtzj GetDxtqtzj(long id)
-        {
-            return _basemapDao.GetDxtqtzj(id);
-        }
-        
-        public IEnumerable<Dxtqtzj> GetDxtqtzjs(string filter)
-        {
-            return _basemapDao.GetDxtqtzjs(filter);
-        }
-        public bool SaveDxtqtzj(Dxtqtzj dxtqtzj)
-        {
-            bool retVal=_basemapDao.SaveDxtqtzj(dxtqtzj);
-            return retVal;
-        }
-        public void SaveDxtqtzjs(List<Dxtqtzj> dxtqtzjs)
-        {
-            _basemapDao.SaveDxtqtzjs(dxtqtzjs);
-            
-        }
-        public void DeleteDxtqtzj(long id)
-        {
-            _basemapDao.DeleteDxtqtzj(id);
-            
-        }
-        public void DeleteDxtqtzj(string filter)
-        {
-            _basemapDao.DeleteDxtqtzj(filter);
-            
-        }
-        public Dxtsxssd GetDxtsxssd(long id)
-        {
-            return _basemapDao.GetDxtsxssd(id);
-        }
-        
-        public IEnumerable<Dxtsxssd> GetDxtsxssds(string filter)
-        {
-            return _basemapDao.GetDxtsxssds(filter);
-        }
-        public bool SaveDxtsxssd(Dxtsxssd dxtsxssd)
-        {
-            bool retVal=_basemapDao.SaveDxtsxssd(dxtsxssd);
-            return retVal;
-        }
-        public void SaveDxtsxssds(List<Dxtsxssd> dxtsxssds)
-        {
-            _basemapDao.SaveDxtsxssds(dxtsxssds);
-            
-        }
-        public void DeleteDxtsxssd(long id)
-        {
-            _basemapDao.DeleteDxtsxssd(id);
-            
-        }
-        public void DeleteDxtsxssd(string filter)
-        {
-            _basemapDao.DeleteDxtsxssd(filter);
-            
-        }
-        public Dxtsxssm GetDxtsxssm(long id)
-        {
-            return _basemapDao.GetDxtsxssm(id);
-        }
-        
-        public IEnumerable<Dxtsxssm> GetDxtsxssms(string filter)
-        {
-            return _basemapDao.GetDxtsxssms(filter);
-        }
-        public bool SaveDxtsxssm(Dxtsxssm dxtsxssm)
-        {
-            bool retVal=_basemapDao.SaveDxtsxssm(dxtsxssm);
-            return retVal;
-        }
-        public void SaveDxtsxssms(List<Dxtsxssm> dxtsxssms)
-        {
-            _basemapDao.SaveDxtsxssms(dxtsxssms);
-            
-        }
-        public void DeleteDxtsxssm(long id)
-        {
-            _basemapDao.DeleteDxtsxssm(id);
-            
-        }
-        public void DeleteDxtsxssm(string filter)
-        {
-            _basemapDao.DeleteDxtsxssm(filter);
-            
-        }
-        public Dxtsxssx GetDxtsxssx(long id)
-        {
-            return _basemapDao.GetDxtsxssx(id);
-        }
-        
-        public IEnumerable<Dxtsxssx> GetDxtsxssxs(string filter)
-        {
-            return _basemapDao.GetDxtsxssxs(filter);
-        }
-        public bool SaveDxtsxssx(Dxtsxssx dxtsxssx)
-        {
-            bool retVal=_basemapDao.SaveDxtsxssx(dxtsxssx);
-            return retVal;
-        }
-        public void SaveDxtsxssxs(List<Dxtsxssx> dxtsxssxs)
-        {
-            _basemapDao.SaveDxtsxssxs(dxtsxssxs);
-            
-        }
-        public void DeleteDxtsxssx(long id)
-        {
-            _basemapDao.DeleteDxtsxssx(id);
-            
-        }
-        public void DeleteDxtsxssx(string filter)
-        {
-            _basemapDao.DeleteDxtsxssx(filter);
-            
-        }
-        public Dxtsxsszj GetDxtsxsszj(long id)
-        {
-            return _basemapDao.GetDxtsxsszj(id);
-        }
-        
-        public IEnumerable<Dxtsxsszj> GetDxtsxsszjs(string filter)
-        {
-            return _basemapDao.GetDxtsxsszjs(filter);
-        }
-        public bool SaveDxtsxsszj(Dxtsxsszj dxtsxsszj)
-        {
-            bool retVal=_basemapDao.SaveDxtsxsszj(dxtsxsszj);
-            return retVal;
-        }
-        public void SaveDxtsxsszjs(List<Dxtsxsszj> dxtsxsszjs)
-        {
-            _basemapDao.SaveDxtsxsszjs(dxtsxsszjs);
-            
-        }
-        public void DeleteDxtsxsszj(long id)
-        {
-            _basemapDao.DeleteDxtsxsszj(id);
-            
-        }
-        public void DeleteDxtsxsszj(string filter)
-        {
-            _basemapDao.DeleteDxtsxsszj(filter);
-            
-        }
-        public Dxtzjd GetDxtzjd(long id)
-        {
-            return _basemapDao.GetDxtzjd(id);
-        }
-        
-        public IEnumerable<Dxtzjd> GetDxtzjds(string filter)
-        {
-            return _basemapDao.GetDxtzjds(filter);
-        }
-        public bool SaveDxtzjd(Dxtzjd dxtzjd)
-        {
-            bool retVal=_basemapDao.SaveDxtzjd(dxtzjd);
-            return retVal;
-        }
-        public void SaveDxtzjds(List<Dxtzjd> dxtzjds)
-        {
-            _basemapDao.SaveDxtzjds(dxtzjds);
-            
-        }
-        public void DeleteDxtzjd(long id)
-        {
-            _basemapDao.DeleteDxtzjd(id);
-            
-        }
-        public void DeleteDxtzjd(string filter)
-        {
-            _basemapDao.DeleteDxtzjd(filter);
-            
-        }
-        public Dxtzjm GetDxtzjm(long id)
-        {
-            return _basemapDao.GetDxtzjm(id);
-        }
-        
-        public IEnumerable<Dxtzjm> GetDxtzjms(string filter)
-        {
-            return _basemapDao.GetDxtzjms(filter);
-        }
-        public bool SaveDxtzjm(Dxtzjm dxtzjm)
-        {
-            bool retVal=_basemapDao.SaveDxtzjm(dxtzjm);
-            return retVal;
-        }
-        public void SaveDxtzjms(List<Dxtzjm> dxtzjms)
-        {
-            _basemapDao.SaveDxtzjms(dxtzjms);
-            
-        }
-        public void DeleteDxtzjm(long id)
-        {
-            _basemapDao.DeleteDxtzjm(id);
-            
-        }
-        public void DeleteDxtzjm(string filter)
-        {
-            _basemapDao.DeleteDxtzjm(filter);
-            
-        }
-        public Dxtzjx GetDxtzjx(long id)
-        {
-            return _basemapDao.GetDxtzjx(id);
-        }
-        
-        public IEnumerable<Dxtzjx> GetDxtzjxs(string filter)
-        {
-            return _basemapDao.GetDxtzjxs(filter);
-        }
-        public bool SaveDxtzjx(Dxtzjx dxtzjx)
-        {
-            bool retVal=_basemapDao.SaveDxtzjx(dxtzjx);
-            return retVal;
-        }
-        public void SaveDxtzjxs(List<Dxtzjx> dxtzjxs)
-        {
-            _basemapDao.SaveDxtzjxs(dxtzjxs);
-            
-        }
-        public void DeleteDxtzjx(long id)
-        {
-            _basemapDao.DeleteDxtzjx(id);
-            
-        }
-        public void DeleteDxtzjx(string filter)
-        {
-            _basemapDao.DeleteDxtzjx(filter);
-            
-        }
-        public Dxtzjzj GetDxtzjzj(long id)
-        {
-            return _basemapDao.GetDxtzjzj(id);
-        }
-        
-        public IEnumerable<Dxtzjzj> GetDxtzjzjs(string filter)
-        {
-            return _basemapDao.GetDxtzjzjs(filter);
-        }
-        public bool SaveDxtzjzj(Dxtzjzj dxtzjzj)
-        {
-            bool retVal=_basemapDao.SaveDxtzjzj(dxtzjzj);
-            return retVal;
-        }
-        public void SaveDxtzjzjs(List<Dxtzjzj> dxtzjzjs)
-        {
-            _basemapDao.SaveDxtzjzjs(dxtzjzjs);
-            
-        }
-        public void DeleteDxtzjzj(long id)
-        {
-            _basemapDao.DeleteDxtzjzj(id);
-            
-        }
-        public void DeleteDxtzjzj(string filter)
-        {
-            _basemapDao.DeleteDxtzjzj(filter);
             
         }
     }

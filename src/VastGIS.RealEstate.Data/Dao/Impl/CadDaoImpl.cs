@@ -126,8 +126,27 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         "insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only])" +
                         "values('tmpcadzjview','geometry','rowid','tmpcadzj','geometry',1)";
                     command.ExecuteNonQuery();
+
+                    command.CommandText = GetRegisterGroupSql("Cad");
+                    command.ExecuteNonQuery();
+                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadd");
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadm");
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadx");
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadzj");
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadxdata");
+                    command.ExecuteNonQuery();
+                   
                 }
                 trans.Commit();
+               
             }
             return true;
         }

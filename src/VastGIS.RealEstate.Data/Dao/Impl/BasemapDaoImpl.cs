@@ -104,6 +104,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     //                                        Xssx= 1
                     //                                    };
                     //objectclasses.Save(connection, GetSRID());
+                    command.CommandText = GetRegisterGroupSql("Basemap");
+                    command.ExecuteNonQuery();
                     int j = 0;
                     for (int i= CREATE_BASEMAP_LAYERS.Length-1; i>=0;i--)
                     {
@@ -204,7 +206,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                                 Snapable = true,
                                                                 Xssx = j
                         };
-                        objectclasses.Save(connection, srid);
+                        objectclasses.Save(connection);
                         objectclasses = new VgObjectclasses()
                                             {
                                                 Mc = tbName+"D",
@@ -218,9 +220,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx = 4,
-                                                Filter = tbName + "DVIEW" //string.Format("Select * from {0}D Where Flags<3",tbName))
+                                                Filter = tbName + "DVIEW" ,
+                                                Bjct="frmBasemapPoint"
                         };
-                        objectclasses.Save(connection, srid);
+                        objectclasses.Save(connection);
                         objectclasses = new VgObjectclasses()
                                             {
                                                 Mc = tbName + "X",
@@ -234,9 +237,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx = 2,
-                                                Filter = tbName + "XVIEW"//string.Format("Select * from {0}D Where Flags<3",tbName))
+                                                Filter = tbName + "XVIEW",
+                                                Bjct = "frmBasemapPolyline"
                         };
-                        objectclasses.Save(connection, srid);
+                        objectclasses.Save(connection);
                         objectclasses = new VgObjectclasses()
                                             {
                                                 Mc = tbName + "M",
@@ -250,9 +254,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx =1,
-                                                Filter = tbName + "MVIEW" //string.Format("Select * from {0}D Where Flags<3",tbName))
+                                                Filter = tbName + "MVIEW",
+                                                Bjct = "frmBasemapPolygon"
                         };
-                        objectclasses.Save(connection, srid);
+                        objectclasses.Save(connection);
                         objectclasses = new VgObjectclasses()
                                             {
                                                 Mc = tbName + "ZJ",
@@ -266,9 +271,20 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                                                 Queryable = true,
                                                 Snapable = true,
                                                 Xssx = 3,
-                                                Filter = tbName + "ZJVIEW" //string.Format("Select * from {0}D Where Flags<3",tbName))
+                                                Filter = tbName + "ZJVIEW",
+                                                Bjct = "frmBasemapText"
                         };
-                        objectclasses.Save(connection, srid);
+                        objectclasses.Save(connection);
+
+                        command.CommandText = GetRegisterClassSql("Basemap", tbName + "D", "IBasemap");
+                        command.ExecuteNonQuery();
+                        command.CommandText = GetRegisterClassSql("Basemap", tbName + "X", "IBasemap");
+                        command.ExecuteNonQuery();
+                        command.CommandText = GetRegisterClassSql("Basemap", tbName + "M", "IBasemap");
+                        command.ExecuteNonQuery();
+                        command.CommandText = GetRegisterClassSql("Basemap", tbName + "ZJ", "IBasemap");
+                        command.ExecuteNonQuery();
+
                     }
                     
                 }

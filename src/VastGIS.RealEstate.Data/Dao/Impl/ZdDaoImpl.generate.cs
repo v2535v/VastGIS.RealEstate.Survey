@@ -18,72 +18,6 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
     {
         public Dictionary<string, string> _entityNames;
         //private ZdDao _zdDao;
-        private string CREATE_VIEW_DJQ="CREATE VIEW DJQVIEW AS select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJQ Where [FLAGS] < 3;";
-        
-        private string CREATE_INSERT_TRIGGER_DJQ="CREATE TRIGGER [vw_ins_DJQVIEW] INSTEAD OF INSERT ON [DJQVIEW] BEGIN  INSERT OR REPLACE INTO [DJQ] ([Id], [YSDM], [DJQDM], [DJQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[YSDM], NEW.[DJQDM], NEW.[DJQMC], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
-        
-        private string CREATE_UPDATE_TRIGGER_DJQ="CREATE TRIGGER [vw_upd_DJQVIEW] INSTEAD OF UPDATE OF [Id], [YSDM], [DJQDM], [DJQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry] ON [DJQVIEW] BEGIN  Update [DJQ] SET [Id]=NEW.[Id], [YSDM]=NEW.[YSDM], [DJQDM]=NEW.[DJQDM], [DJQMC]=NEW.[DJQMC], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
-        
-        private string CREATE_DELETE_TRIGGER_DJQ="CREATE TRIGGER vw_del_DJQVIEW INSTEAD OF DELETE ON DJQVIEW BEGIN DELETE FROM DJQ WHERE ROWID=OLD.ROWID;END";
-         
-        private string GEOMETRY_REGISTER_DJQVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('djqview','geometry','rowid','djq','geometry',0)";
-        private string SELECT_DJQ = "select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJQ Where [FLAGS] < 3";
-        
-        private string CREATE_VIEW_DJZQ="CREATE VIEW DJZQVIEW AS select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJZQ Where [FLAGS] < 3;";
-        
-        private string CREATE_INSERT_TRIGGER_DJZQ="CREATE TRIGGER [vw_ins_DJZQVIEW] INSTEAD OF INSERT ON [DJZQVIEW] BEGIN  INSERT OR REPLACE INTO [DJZQ] ([Id], [YSDM], [DJZQDM], [DJZQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[YSDM], NEW.[DJZQDM], NEW.[DJZQMC], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
-        
-        private string CREATE_UPDATE_TRIGGER_DJZQ="CREATE TRIGGER [vw_upd_DJZQVIEW] INSTEAD OF UPDATE OF [Id], [YSDM], [DJZQDM], [DJZQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry] ON [DJZQVIEW] BEGIN  Update [DJZQ] SET [Id]=NEW.[Id], [YSDM]=NEW.[YSDM], [DJZQDM]=NEW.[DJZQDM], [DJZQMC]=NEW.[DJZQMC], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
-        
-        private string CREATE_DELETE_TRIGGER_DJZQ="CREATE TRIGGER vw_del_DJZQVIEW INSTEAD OF DELETE ON DJZQVIEW BEGIN DELETE FROM DJZQ WHERE ROWID=OLD.ROWID;END";
-         
-        private string GEOMETRY_REGISTER_DJZQVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('djzqview','geometry','rowid','djzq','geometry',0)";
-        private string SELECT_DJZQ = "select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJZQ Where [FLAGS] < 3";
-        
-        private string CREATE_VIEW_JZD="CREATE VIEW JZDVIEW AS select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from JZD Where [FLAGS] < 3;";
-        
-        private string CREATE_INSERT_TRIGGER_JZD="CREATE TRIGGER [vw_ins_JZDVIEW] INSTEAD OF INSERT ON [JZDVIEW] BEGIN  INSERT OR REPLACE INTO [JZD] ([Id], [ZDZHDM], [YSDM], [JZDH], [JZDGZBH], [SXH], [JBLX], [JZDLX], [XZBZ], [YZBZ], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[ZDZHDM], NEW.[YSDM], NEW.[JZDH], NEW.[JZDGZBH], NEW.[SXH], NEW.[JBLX], NEW.[JZDLX], NEW.[XZBZ], NEW.[YZBZ], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
-        
-        private string CREATE_UPDATE_TRIGGER_JZD="CREATE TRIGGER [vw_upd_JZDVIEW] INSTEAD OF UPDATE OF [Id], [ZDZHDM], [YSDM], [JZDH], [JZDGZBH], [SXH], [JBLX], [JZDLX], [XZBZ], [YZBZ], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry] ON [JZDVIEW] BEGIN  Update [JZD] SET [Id]=NEW.[Id], [ZDZHDM]=NEW.[ZDZHDM], [YSDM]=NEW.[YSDM], [JZDH]=NEW.[JZDH], [JZDGZBH]=NEW.[JZDGZBH], [SXH]=NEW.[SXH], [JBLX]=NEW.[JBLX], [JZDLX]=NEW.[JZDLX], [XZBZ]=NEW.[XZBZ], [YZBZ]=NEW.[YZBZ], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
-        
-        private string CREATE_DELETE_TRIGGER_JZD="CREATE TRIGGER vw_del_JZDVIEW INSTEAD OF DELETE ON JZDVIEW BEGIN DELETE FROM JZD WHERE ROWID=OLD.ROWID;END";
-         
-        private string GEOMETRY_REGISTER_JZDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzdview','geometry','rowid','jzd','geometry',0)";
-        private string SELECT_JZD = "select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from JZD Where [FLAGS] < 3";
-        
-        private string CREATE_VIEW_JZDZJ="CREATE VIEW JZDZJVIEW AS select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZDZJ Where [FLAGS] < 3;";
-        
-        private string CREATE_INSERT_TRIGGER_JZDZJ="CREATE TRIGGER [vw_ins_JZDZJVIEW] INSTEAD OF INSERT ON [JZDZJVIEW] BEGIN  INSERT OR REPLACE INTO [JZDZJ] ([Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[GLYSBH], NEW.[YSDM], NEW.[ZJNR], NEW.[ZT], NEW.[YS], NEW.[BS], NEW.[XZ], NEW.[XHX], NEW.[KD], NEW.[GD], NEW.[ZJDZXJXZB], NEW.[ZJDZXJYZB], NEW.[ZJFX], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
-        
-        private string CREATE_UPDATE_TRIGGER_JZDZJ="CREATE TRIGGER [vw_upd_JZDZJVIEW] INSTEAD OF UPDATE OF [Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry] ON [JZDZJVIEW] BEGIN  Update [JZDZJ] SET [Id]=NEW.[Id], [GLYSBH]=NEW.[GLYSBH], [YSDM]=NEW.[YSDM], [ZJNR]=NEW.[ZJNR], [ZT]=NEW.[ZT], [YS]=NEW.[YS], [BS]=NEW.[BS], [XZ]=NEW.[XZ], [XHX]=NEW.[XHX], [KD]=NEW.[KD], [GD]=NEW.[GD], [ZJDZXJXZB]=NEW.[ZJDZXJXZB], [ZJDZXJYZB]=NEW.[ZJDZXJYZB], [ZJFX]=NEW.[ZJFX], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
-        
-        private string CREATE_DELETE_TRIGGER_JZDZJ="CREATE TRIGGER vw_del_JZDZJVIEW INSTEAD OF DELETE ON JZDZJVIEW BEGIN DELETE FROM JZDZJ WHERE ROWID=OLD.ROWID;END";
-         
-        private string GEOMETRY_REGISTER_JZDZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzdzjview','geometry','rowid','jzdzj','geometry',0)";
-        private string SELECT_JZDZJ = "select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZDZJ Where [FLAGS] < 3";
-        
-        private string CREATE_VIEW_JZX="CREATE VIEW JZXVIEW AS select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,geometry from JZX Where [FLAGS] < 3;";
-        
-        private string CREATE_INSERT_TRIGGER_JZX="CREATE TRIGGER [vw_ins_JZXVIEW] INSTEAD OF INSERT ON [JZXVIEW] BEGIN  INSERT OR REPLACE INTO [JZX] ([Id], [ZDZHDM], [YSDM], [JZXGZBH], [JZXCD], [JZXLB], [JZXWZ], [JXXZ], [QSJXXYSBH], [QSJXXYS], [QSZYYYSBH], [QSZYYYS], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [QSJZDBH], [JZJZDBH], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[ZDZHDM], NEW.[YSDM], NEW.[JZXGZBH], NEW.[JZXCD], NEW.[JZXLB], NEW.[JZXWZ], NEW.[JXXZ], NEW.[QSJXXYSBH], NEW.[QSJXXYS], NEW.[QSZYYYSBH], NEW.[QSZYYYS], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[QSJZDBH], NEW.[JZJZDBH], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
-        
-        private string CREATE_UPDATE_TRIGGER_JZX="CREATE TRIGGER [vw_upd_JZXVIEW] INSTEAD OF UPDATE OF [Id], [ZDZHDM], [YSDM], [JZXGZBH], [JZXCD], [JZXLB], [JZXWZ], [JXXZ], [QSJXXYSBH], [QSJXXYS], [QSZYYYSBH], [QSZYYYS], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [QSJZDBH], [JZJZDBH], [DatabaseId], [FLAGS], [geometry] ON [JZXVIEW] BEGIN  Update [JZX] SET [Id]=NEW.[Id], [ZDZHDM]=NEW.[ZDZHDM], [YSDM]=NEW.[YSDM], [JZXGZBH]=NEW.[JZXGZBH], [JZXCD]=NEW.[JZXCD], [JZXLB]=NEW.[JZXLB], [JZXWZ]=NEW.[JZXWZ], [JXXZ]=NEW.[JXXZ], [QSJXXYSBH]=NEW.[QSJXXYSBH], [QSJXXYS]=NEW.[QSJXXYS], [QSZYYYSBH]=NEW.[QSZYYYSBH], [QSZYYYS]=NEW.[QSZYYYS], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [QSJZDBH]=NEW.[QSJZDBH], [JZJZDBH]=NEW.[JZJZDBH], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
-        
-        private string CREATE_DELETE_TRIGGER_JZX="CREATE TRIGGER vw_del_JZXVIEW INSTEAD OF DELETE ON JZXVIEW BEGIN DELETE FROM JZX WHERE ROWID=OLD.ROWID;END";
-         
-        private string GEOMETRY_REGISTER_JZXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzxview','geometry','rowid','jzx','geometry',0)";
-        private string SELECT_JZX = "select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,geometry from JZX Where [FLAGS] < 3";
-        
-        private string CREATE_VIEW_JZXZJ="CREATE VIEW JZXZJVIEW AS select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZXZJ Where [FLAGS] < 3;";
-        
-        private string CREATE_INSERT_TRIGGER_JZXZJ="CREATE TRIGGER [vw_ins_JZXZJVIEW] INSTEAD OF INSERT ON [JZXZJVIEW] BEGIN  INSERT OR REPLACE INTO [JZXZJ] ([Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[GLYSBH], NEW.[YSDM], NEW.[ZJNR], NEW.[ZT], NEW.[YS], NEW.[BS], NEW.[XZ], NEW.[XHX], NEW.[KD], NEW.[GD], NEW.[ZJDZXJXZB], NEW.[ZJDZXJYZB], NEW.[ZJFX], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
-        
-        private string CREATE_UPDATE_TRIGGER_JZXZJ="CREATE TRIGGER [vw_upd_JZXZJVIEW] INSTEAD OF UPDATE OF [Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry] ON [JZXZJVIEW] BEGIN  Update [JZXZJ] SET [Id]=NEW.[Id], [GLYSBH]=NEW.[GLYSBH], [YSDM]=NEW.[YSDM], [ZJNR]=NEW.[ZJNR], [ZT]=NEW.[ZT], [YS]=NEW.[YS], [BS]=NEW.[BS], [XZ]=NEW.[XZ], [XHX]=NEW.[XHX], [KD]=NEW.[KD], [GD]=NEW.[GD], [ZJDZXJXZB]=NEW.[ZJDZXJXZB], [ZJDZXJYZB]=NEW.[ZJDZXJYZB], [ZJFX]=NEW.[ZJFX], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
-        
-        private string CREATE_DELETE_TRIGGER_JZXZJ="CREATE TRIGGER vw_del_JZXZJVIEW INSTEAD OF DELETE ON JZXZJVIEW BEGIN DELETE FROM JZXZJ WHERE ROWID=OLD.ROWID;END";
-         
-        private string GEOMETRY_REGISTER_JZXZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzxzjview','geometry','rowid','jzxzj','geometry',0)";
-        private string SELECT_JZXZJ = "select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZXZJ Where [FLAGS] < 3";
-        
         private string CREATE_VIEW_XZQ="CREATE VIEW XZQVIEW AS select Id,YSDM,XZQDM,XZQMC,XZQMJ,DatabaseId,FLAGS,geometry from XZQ Where [FLAGS] < 3;";
         
         private string CREATE_INSERT_TRIGGER_XZQ="CREATE TRIGGER [vw_ins_XZQVIEW] INSTEAD OF INSERT ON [XZQVIEW] BEGIN  INSERT OR REPLACE INTO [XZQ] ([Id], [YSDM], [XZQDM], [XZQMC], [XZQMJ], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[YSDM], NEW.[XZQDM], NEW.[XZQMC], NEW.[XZQMJ], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
@@ -106,14 +40,27 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         private string GEOMETRY_REGISTER_XZQJXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('xzqjxview','geometry','rowid','xzqjx','geometry',0)";
         private string SELECT_XZQJX = "select Id,YSDM,JXLX,JXXZ,JXSM,DatabaseId,FLAGS,geometry from XZQJX Where [FLAGS] < 3";
         
-        private string CREATE_VIEW_ZDBHQK="CREATE VIEW ZDBHQKVIEW AS select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK Where [FLAGS] < 3;";
+        private string CREATE_VIEW_DJQ="CREATE VIEW DJQVIEW AS select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJQ Where [FLAGS] < 3;";
         
-        private string CREATE_INSERT_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_ins_ZDBHQKVIEW] INSTEAD OF INSERT ON [ZDBHQKVIEW] BEGIN  INSERT OR REPLACE INTO [ZDBHQK] ([Id], [ZDDM], [BHYY], [BHNR], [DJSJ], [DBR], [FJ], [DatabaseId], [FLAGS]) VALUES ( NEW.[Id], NEW.[ZDDM], NEW.[BHYY], NEW.[BHNR], NEW.[DJSJ], NEW.[DBR], NEW.[FJ], NEW.[DatabaseId], NEW.[FLAGS]); END";
+        private string CREATE_INSERT_TRIGGER_DJQ="CREATE TRIGGER [vw_ins_DJQVIEW] INSTEAD OF INSERT ON [DJQVIEW] BEGIN  INSERT OR REPLACE INTO [DJQ] ([Id], [YSDM], [DJQDM], [DJQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[YSDM], NEW.[DJQDM], NEW.[DJQMC], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
         
-        private string CREATE_UPDATE_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_upd_ZDBHQKVIEW] INSTEAD OF UPDATE OF [Id], [ZDDM], [BHYY], [BHNR], [DJSJ], [DBR], [FJ], [DatabaseId], [FLAGS] ON [ZDBHQKVIEW] BEGIN  Update [ZDBHQK] SET [Id]=NEW.[Id], [ZDDM]=NEW.[ZDDM], [BHYY]=NEW.[BHYY], [BHNR]=NEW.[BHNR], [DJSJ]=NEW.[DJSJ], [DBR]=NEW.[DBR], [FJ]=NEW.[FJ], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS] WHERE ROWID=OLD.ROWID;END";
+        private string CREATE_UPDATE_TRIGGER_DJQ="CREATE TRIGGER [vw_upd_DJQVIEW] INSTEAD OF UPDATE OF [Id], [YSDM], [DJQDM], [DJQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry] ON [DJQVIEW] BEGIN  Update [DJQ] SET [Id]=NEW.[Id], [YSDM]=NEW.[YSDM], [DJQDM]=NEW.[DJQDM], [DJQMC]=NEW.[DJQMC], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
         
-        private string CREATE_DELETE_TRIGGER_ZDBHQK="CREATE TRIGGER vw_del_ZDBHQKVIEW INSTEAD OF DELETE ON ZDBHQKVIEW BEGIN DELETE FROM ZDBHQK WHERE ROWID=OLD.ROWID;END";
-        private string SELECT_ZDBHQK = "select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK Where [FLAGS] < 3";
+        private string CREATE_DELETE_TRIGGER_DJQ="CREATE TRIGGER vw_del_DJQVIEW INSTEAD OF DELETE ON DJQVIEW BEGIN DELETE FROM DJQ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DJQVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('djqview','geometry','rowid','djq','geometry',0)";
+        private string SELECT_DJQ = "select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJQ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_DJZQ="CREATE VIEW DJZQVIEW AS select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJZQ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_DJZQ="CREATE TRIGGER [vw_ins_DJZQVIEW] INSTEAD OF INSERT ON [DJZQVIEW] BEGIN  INSERT OR REPLACE INTO [DJZQ] ([Id], [YSDM], [DJZQDM], [DJZQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[YSDM], NEW.[DJZQDM], NEW.[DJZQMC], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_DJZQ="CREATE TRIGGER [vw_upd_DJZQVIEW] INSTEAD OF UPDATE OF [Id], [YSDM], [DJZQDM], [DJZQMC], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry] ON [DJZQVIEW] BEGIN  Update [DJZQ] SET [Id]=NEW.[Id], [YSDM]=NEW.[YSDM], [DJZQDM]=NEW.[DJZQDM], [DJZQMC]=NEW.[DJZQMC], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_DJZQ="CREATE TRIGGER vw_del_DJZQVIEW INSTEAD OF DELETE ON DJZQVIEW BEGIN DELETE FROM DJZQ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_DJZQVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('djzqview','geometry','rowid','djzq','geometry',0)";
+        private string SELECT_DJZQ = "select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from DJZQ Where [FLAGS] < 3";
         
         private string CREATE_VIEW_ZDJBXX="CREATE VIEW ZDJBXXVIEW AS select Id,YSDM,ZDDM,BDCDYH,ZDTZM,ZL,ZDMJ,MJDW,YT,DJ,JG,QLLX,QLXZ,QLSDFS,RJL,JZMD,JZXG,ZDSZD,ZDSZN,ZDSZX,ZDSZB,ZDT,TFH,DJH,DAH,BZ,ZT,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from ZDJBXX Where [FLAGS] < 3;";
         
@@ -126,6 +73,28 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         private string GEOMETRY_REGISTER_ZDJBXXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('zdjbxxview','geometry','rowid','zdjbxx','geometry',0)";
         private string SELECT_ZDJBXX = "select Id,YSDM,ZDDM,BDCDYH,ZDTZM,ZL,ZDMJ,MJDW,YT,DJ,JG,QLLX,QLXZ,QLSDFS,RJL,JZMD,JZXG,ZDSZD,ZDSZN,ZDSZX,ZDSZB,ZDT,TFH,DJH,DAH,BZ,ZT,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from ZDJBXX Where [FLAGS] < 3";
         
+        private string CREATE_VIEW_JZD="CREATE VIEW JZDVIEW AS select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from JZD Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_JZD="CREATE TRIGGER [vw_ins_JZDVIEW] INSTEAD OF INSERT ON [JZDVIEW] BEGIN  INSERT OR REPLACE INTO [JZD] ([Id], [ZDZHDM], [YSDM], [JZDH], [JZDGZBH], [SXH], [JBLX], [JZDLX], [XZBZ], [YZBZ], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[ZDZHDM], NEW.[YSDM], NEW.[JZDH], NEW.[JZDGZBH], NEW.[SXH], NEW.[JBLX], NEW.[JZDLX], NEW.[XZBZ], NEW.[YZBZ], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_JZD="CREATE TRIGGER [vw_upd_JZDVIEW] INSTEAD OF UPDATE OF [Id], [ZDZHDM], [YSDM], [JZDH], [JZDGZBH], [SXH], [JBLX], [JZDLX], [XZBZ], [YZBZ], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [DatabaseId], [FLAGS], [geometry] ON [JZDVIEW] BEGIN  Update [JZD] SET [Id]=NEW.[Id], [ZDZHDM]=NEW.[ZDZHDM], [YSDM]=NEW.[YSDM], [JZDH]=NEW.[JZDH], [JZDGZBH]=NEW.[JZDGZBH], [SXH]=NEW.[SXH], [JBLX]=NEW.[JBLX], [JZDLX]=NEW.[JZDLX], [XZBZ]=NEW.[XZBZ], [YZBZ]=NEW.[YZBZ], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_JZD="CREATE TRIGGER vw_del_JZDVIEW INSTEAD OF DELETE ON JZDVIEW BEGIN DELETE FROM JZD WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_JZDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzdview','geometry','rowid','jzd','geometry',0)";
+        private string SELECT_JZD = "select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,geometry from JZD Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_JZX="CREATE VIEW JZXVIEW AS select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,geometry from JZX Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_JZX="CREATE TRIGGER [vw_ins_JZXVIEW] INSTEAD OF INSERT ON [JZXVIEW] BEGIN  INSERT OR REPLACE INTO [JZX] ([Id], [ZDZHDM], [YSDM], [JZXGZBH], [JZXCD], [JZXLB], [JZXWZ], [JXXZ], [QSJXXYSBH], [QSJXXYS], [QSZYYYSBH], [QSZYYYS], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [QSJZDBH], [JZJZDBH], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[ZDZHDM], NEW.[YSDM], NEW.[JZXGZBH], NEW.[JZXCD], NEW.[JZXLB], NEW.[JZXWZ], NEW.[JXXZ], NEW.[QSJXXYSBH], NEW.[QSJXXYS], NEW.[QSZYYYSBH], NEW.[QSZYYYS], NEW.[WX_DCY], NEW.[WX_DCSJ], NEW.[WX_CLY], NEW.[WX_CLSJ], NEW.[WX_ZTY], NEW.[WX_ZTSJ], NEW.[WX_ZJY], NEW.[WX_ZJSJ], NEW.[WX_WYDM], NEW.[QSJZDBH], NEW.[JZJZDBH], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_JZX="CREATE TRIGGER [vw_upd_JZXVIEW] INSTEAD OF UPDATE OF [Id], [ZDZHDM], [YSDM], [JZXGZBH], [JZXCD], [JZXLB], [JZXWZ], [JXXZ], [QSJXXYSBH], [QSJXXYS], [QSZYYYSBH], [QSZYYYS], [WX_DCY], [WX_DCSJ], [WX_CLY], [WX_CLSJ], [WX_ZTY], [WX_ZTSJ], [WX_ZJY], [WX_ZJSJ], [WX_WYDM], [QSJZDBH], [JZJZDBH], [DatabaseId], [FLAGS], [geometry] ON [JZXVIEW] BEGIN  Update [JZX] SET [Id]=NEW.[Id], [ZDZHDM]=NEW.[ZDZHDM], [YSDM]=NEW.[YSDM], [JZXGZBH]=NEW.[JZXGZBH], [JZXCD]=NEW.[JZXCD], [JZXLB]=NEW.[JZXLB], [JZXWZ]=NEW.[JZXWZ], [JXXZ]=NEW.[JXXZ], [QSJXXYSBH]=NEW.[QSJXXYSBH], [QSJXXYS]=NEW.[QSJXXYS], [QSZYYYSBH]=NEW.[QSZYYYSBH], [QSZYYYS]=NEW.[QSZYYYS], [WX_DCY]=NEW.[WX_DCY], [WX_DCSJ]=NEW.[WX_DCSJ], [WX_CLY]=NEW.[WX_CLY], [WX_CLSJ]=NEW.[WX_CLSJ], [WX_ZTY]=NEW.[WX_ZTY], [WX_ZTSJ]=NEW.[WX_ZTSJ], [WX_ZJY]=NEW.[WX_ZJY], [WX_ZJSJ]=NEW.[WX_ZJSJ], [WX_WYDM]=NEW.[WX_WYDM], [QSJZDBH]=NEW.[QSJZDBH], [JZJZDBH]=NEW.[JZJZDBH], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_JZX="CREATE TRIGGER vw_del_JZXVIEW INSTEAD OF DELETE ON JZXVIEW BEGIN DELETE FROM JZX WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_JZXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzxview','geometry','rowid','jzx','geometry',0)";
+        private string SELECT_JZX = "select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,geometry from JZX Where [FLAGS] < 3";
+        
         private string CREATE_VIEW_ZDJBXXZJ="CREATE VIEW ZDJBXXZJVIEW AS select Id,GLYSDM,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from ZDJBXXZJ Where [FLAGS] < 3;";
         
         private string CREATE_INSERT_TRIGGER_ZDJBXXZJ="CREATE TRIGGER [vw_ins_ZDJBXXZJVIEW] INSTEAD OF INSERT ON [ZDJBXXZJVIEW] BEGIN  INSERT OR REPLACE INTO [ZDJBXXZJ] ([Id], [GLYSDM], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[GLYSDM], NEW.[YSDM], NEW.[ZJNR], NEW.[ZT], NEW.[YS], NEW.[BS], NEW.[XZ], NEW.[XHX], NEW.[KD], NEW.[GD], NEW.[ZJDZXJXZB], NEW.[ZJDZXJYZB], NEW.[ZJFX], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
@@ -137,6 +106,37 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         private string GEOMETRY_REGISTER_ZDJBXXZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('zdjbxxzjview','geometry','rowid','zdjbxxzj','geometry',0)";
         private string SELECT_ZDJBXXZJ = "select Id,GLYSDM,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from ZDJBXXZJ Where [FLAGS] < 3";
         
+        private string CREATE_VIEW_JZDZJ="CREATE VIEW JZDZJVIEW AS select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZDZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_JZDZJ="CREATE TRIGGER [vw_ins_JZDZJVIEW] INSTEAD OF INSERT ON [JZDZJVIEW] BEGIN  INSERT OR REPLACE INTO [JZDZJ] ([Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[GLYSBH], NEW.[YSDM], NEW.[ZJNR], NEW.[ZT], NEW.[YS], NEW.[BS], NEW.[XZ], NEW.[XHX], NEW.[KD], NEW.[GD], NEW.[ZJDZXJXZB], NEW.[ZJDZXJYZB], NEW.[ZJFX], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_JZDZJ="CREATE TRIGGER [vw_upd_JZDZJVIEW] INSTEAD OF UPDATE OF [Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry] ON [JZDZJVIEW] BEGIN  Update [JZDZJ] SET [Id]=NEW.[Id], [GLYSBH]=NEW.[GLYSBH], [YSDM]=NEW.[YSDM], [ZJNR]=NEW.[ZJNR], [ZT]=NEW.[ZT], [YS]=NEW.[YS], [BS]=NEW.[BS], [XZ]=NEW.[XZ], [XHX]=NEW.[XHX], [KD]=NEW.[KD], [GD]=NEW.[GD], [ZJDZXJXZB]=NEW.[ZJDZXJXZB], [ZJDZXJYZB]=NEW.[ZJDZXJYZB], [ZJFX]=NEW.[ZJFX], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_JZDZJ="CREATE TRIGGER vw_del_JZDZJVIEW INSTEAD OF DELETE ON JZDZJVIEW BEGIN DELETE FROM JZDZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_JZDZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzdzjview','geometry','rowid','jzdzj','geometry',0)";
+        private string SELECT_JZDZJ = "select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZDZJ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_JZXZJ="CREATE VIEW JZXZJVIEW AS select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZXZJ Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_JZXZJ="CREATE TRIGGER [vw_ins_JZXZJVIEW] INSTEAD OF INSERT ON [JZXZJVIEW] BEGIN  INSERT OR REPLACE INTO [JZXZJ] ([Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry]) VALUES ( NEW.[Id], NEW.[GLYSBH], NEW.[YSDM], NEW.[ZJNR], NEW.[ZT], NEW.[YS], NEW.[BS], NEW.[XZ], NEW.[XHX], NEW.[KD], NEW.[GD], NEW.[ZJDZXJXZB], NEW.[ZJDZXJYZB], NEW.[ZJFX], NEW.[DatabaseId], NEW.[FLAGS], NEW.[geometry]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_JZXZJ="CREATE TRIGGER [vw_upd_JZXZJVIEW] INSTEAD OF UPDATE OF [Id], [GLYSBH], [YSDM], [ZJNR], [ZT], [YS], [BS], [XZ], [XHX], [KD], [GD], [ZJDZXJXZB], [ZJDZXJYZB], [ZJFX], [DatabaseId], [FLAGS], [geometry] ON [JZXZJVIEW] BEGIN  Update [JZXZJ] SET [Id]=NEW.[Id], [GLYSBH]=NEW.[GLYSBH], [YSDM]=NEW.[YSDM], [ZJNR]=NEW.[ZJNR], [ZT]=NEW.[ZT], [YS]=NEW.[YS], [BS]=NEW.[BS], [XZ]=NEW.[XZ], [XHX]=NEW.[XHX], [KD]=NEW.[KD], [GD]=NEW.[GD], [ZJDZXJXZB]=NEW.[ZJDZXJXZB], [ZJDZXJYZB]=NEW.[ZJDZXJYZB], [ZJFX]=NEW.[ZJFX], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS], [geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_JZXZJ="CREATE TRIGGER vw_del_JZXZJVIEW INSTEAD OF DELETE ON JZXZJVIEW BEGIN DELETE FROM JZXZJ WHERE ROWID=OLD.ROWID;END";
+         
+        private string GEOMETRY_REGISTER_JZXZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('jzxzjview','geometry','rowid','jzxzj','geometry',0)";
+        private string SELECT_JZXZJ = "select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,geometry from JZXZJ Where [FLAGS] < 3";
+        
+        private string CREATE_VIEW_ZDBHQK="CREATE VIEW ZDBHQKVIEW AS select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK Where [FLAGS] < 3;";
+        
+        private string CREATE_INSERT_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_ins_ZDBHQKVIEW] INSTEAD OF INSERT ON [ZDBHQKVIEW] BEGIN  INSERT OR REPLACE INTO [ZDBHQK] ([Id], [ZDDM], [BHYY], [BHNR], [DJSJ], [DBR], [FJ], [DatabaseId], [FLAGS]) VALUES ( NEW.[Id], NEW.[ZDDM], NEW.[BHYY], NEW.[BHNR], NEW.[DJSJ], NEW.[DBR], NEW.[FJ], NEW.[DatabaseId], NEW.[FLAGS]); END";
+        
+        private string CREATE_UPDATE_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_upd_ZDBHQKVIEW] INSTEAD OF UPDATE OF [Id], [ZDDM], [BHYY], [BHNR], [DJSJ], [DBR], [FJ], [DatabaseId], [FLAGS] ON [ZDBHQKVIEW] BEGIN  Update [ZDBHQK] SET [Id]=NEW.[Id], [ZDDM]=NEW.[ZDDM], [BHYY]=NEW.[BHYY], [BHNR]=NEW.[BHNR], [DJSJ]=NEW.[DJSJ], [DBR]=NEW.[DBR], [FJ]=NEW.[FJ], [DatabaseId]=NEW.[DatabaseId], [FLAGS]=NEW.[FLAGS] WHERE ROWID=OLD.ROWID;END";
+        
+        private string CREATE_DELETE_TRIGGER_ZDBHQK="CREATE TRIGGER vw_del_ZDBHQKVIEW INSTEAD OF DELETE ON ZDBHQKVIEW BEGIN DELETE FROM ZDBHQK WHERE ROWID=OLD.ROWID;END";
+        private string SELECT_ZDBHQK = "select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK Where [FLAGS] < 3";
+        
         private string SELECT_ZDTOJZD = "select Id,ZD_WYDM,JZD_WYDM,SXH from ZDTOJZD";
         
         private string SELECT_ZDTOJZX = "select Id,ZD_WYDM,JZX_WYDM,SXH from ZDTOJZX";
@@ -145,17 +145,17 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         public ZdDaoImpl(): base()
         {
             _entityNames=new Dictionary<string, string>();
-            _entityNames.Add("DJQ","地籍区");
-            _entityNames.Add("DJZQ","地籍子区");
-            _entityNames.Add("JZD","界址点");
-            _entityNames.Add("JZDZJ","界址点注记");
-            _entityNames.Add("JZX","界址线");
-            _entityNames.Add("JZXZJ","界址线注记");
             _entityNames.Add("XZQ","");
             _entityNames.Add("XZQJX","");
-            _entityNames.Add("ZDBHQK","");
+            _entityNames.Add("DJQ","地籍区");
+            _entityNames.Add("DJZQ","地籍子区");
             _entityNames.Add("ZDJBXX","宗地");
+            _entityNames.Add("JZD","界址点");
+            _entityNames.Add("JZX","界址线");
             _entityNames.Add("ZDJBXXZJ","宗地注记");
+            _entityNames.Add("JZDZJ","界址点注记");
+            _entityNames.Add("JZXZJ","界址线注记");
+            _entityNames.Add("ZDBHQK","");
             _entityNames.Add("ZDTOJZD","");
             _entityNames.Add("ZDTOJZX","");
         }
@@ -168,7 +168,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             remove { this.entityChanged -= value; }
         }
 
-        protected virtual void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
+        public  void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
         {
             if (this.entityChanged != null)
             {
@@ -184,492 +184,6 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             else
                 return "";
         }
-        
-        ///Djq函数
-        public Djq GetDjq(long id)
-        {
-            string sql="select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from DJQ" + " where id="+id.ToString();
-            IEnumerable<Djq> djqs=connection.Query<Djq>(sql);
-            if(djqs != null && djqs.Count()>0)
-            {
-                return djqs.First();
-            }
-            return null;
-        }
-        
-        public IEnumerable<Djq> GetDjqs(string filter)
-        {
-            string sql="select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from DJQ" + " where "+filter;
-            var djqs=connection.Query<Djq>(sql);
-            
-            return djqs;
-        }
-        
-        public bool SaveDjq(Djq djq)
-        {
-            bool retVal= djq.Save(connection,GetSRID());
-            if(retVal)
-            {
-                OnEntityChanged("djq",GetLayerName("DJQ"),EntityOperationType.Save,new List<long>{djq.ID});
-            }
-            return retVal;
-        }
-        
-        public void SaveDjqs(List<Djq> djqs)
-        {
-            SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in djqs)
-            {
-                rec.Save(connection,GetSRID());
-            }
-            tran.Commit();
-            tran.Dispose();
-            List<long> ids=djqs.Select(a => a.ID).ToList(); 
-            OnEntityChanged("djq",GetLayerName("DJQ"),EntityOperationType.Save,ids);
-        }
-        
-        public void DeleteDjq(Djq record)
-        {
-            record.Delete(connection);
-            OnEntityChanged("djq",GetLayerName("DJQ"),EntityOperationType.Delete,new List<long>{record.ID});
-        }
-        
-        public void DeleteDjq(long id)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                Djq row=this.GetDjq(id);
-                if(row.DatabaseID ==0)
-                {
-                    command.CommandText="delete from DJQ where Id=" + id.ToString();
-                }
-                else
-                {
-                    command.CommandText="update DJQ set Flags=3 where Id=" + id.ToString();
-                }
-                command.ExecuteNonQuery();
-                OnEntityChanged("djq",GetLayerName("DJQ"),EntityOperationType.Delete,new List<long>{id});
-            }
-        }
-        
-        public void DeleteDjq(string filter)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                IEnumerable<Djq> rows=GetDjqs(filter);
-                foreach(Djq row in rows)
-                {
-                    row.Delete(connection);
-                }
-                OnEntityChanged("djq",GetLayerName("DJQ"),EntityOperationType.Delete,null);
-            }
-        }
-        
-        
-        ///Djzq函数
-        public Djzq GetDjzq(long id)
-        {
-            string sql="select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from DJZQ" + " where id="+id.ToString();
-            IEnumerable<Djzq> djzqs=connection.Query<Djzq>(sql);
-            if(djzqs != null && djzqs.Count()>0)
-            {
-                return djzqs.First();
-            }
-            return null;
-        }
-        
-        public IEnumerable<Djzq> GetDjzqs(string filter)
-        {
-            string sql="select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from DJZQ" + " where "+filter;
-            var djzqs=connection.Query<Djzq>(sql);
-            
-            return djzqs;
-        }
-        
-        public bool SaveDjzq(Djzq djzq)
-        {
-            bool retVal= djzq.Save(connection,GetSRID());
-            if(retVal)
-            {
-                OnEntityChanged("djzq",GetLayerName("DJZQ"),EntityOperationType.Save,new List<long>{djzq.ID});
-            }
-            return retVal;
-        }
-        
-        public void SaveDjzqs(List<Djzq> djzqs)
-        {
-            SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in djzqs)
-            {
-                rec.Save(connection,GetSRID());
-            }
-            tran.Commit();
-            tran.Dispose();
-            List<long> ids=djzqs.Select(a => a.ID).ToList(); 
-            OnEntityChanged("djzq",GetLayerName("DJZQ"),EntityOperationType.Save,ids);
-        }
-        
-        public void DeleteDjzq(Djzq record)
-        {
-            record.Delete(connection);
-            OnEntityChanged("djzq",GetLayerName("DJZQ"),EntityOperationType.Delete,new List<long>{record.ID});
-        }
-        
-        public void DeleteDjzq(long id)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                Djzq row=this.GetDjzq(id);
-                if(row.DatabaseID ==0)
-                {
-                    command.CommandText="delete from DJZQ where Id=" + id.ToString();
-                }
-                else
-                {
-                    command.CommandText="update DJZQ set Flags=3 where Id=" + id.ToString();
-                }
-                command.ExecuteNonQuery();
-                OnEntityChanged("djzq",GetLayerName("DJZQ"),EntityOperationType.Delete,new List<long>{id});
-            }
-        }
-        
-        public void DeleteDjzq(string filter)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                IEnumerable<Djzq> rows=GetDjzqs(filter);
-                foreach(Djzq row in rows)
-                {
-                    row.Delete(connection);
-                }
-                OnEntityChanged("djzq",GetLayerName("DJZQ"),EntityOperationType.Delete,null);
-            }
-        }
-        
-        
-        ///Jzd函数
-        public Jzd GetJzd(long id)
-        {
-            string sql="select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZD" + " where id="+id.ToString();
-            IEnumerable<Jzd> jzds=connection.Query<Jzd>(sql);
-            if(jzds != null && jzds.Count()>0)
-            {
-                return jzds.First();
-            }
-            return null;
-        }
-        
-        public IEnumerable<Jzd> GetJzds(string filter)
-        {
-            string sql="select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZD" + " where "+filter;
-            var jzds=connection.Query<Jzd>(sql);
-            
-            return jzds;
-        }
-        
-        public bool SaveJzd(Jzd jzd)
-        {
-            bool retVal= jzd.Save(connection,GetSRID());
-            if(retVal)
-            {
-                OnEntityChanged("jzd",GetLayerName("JZD"),EntityOperationType.Save,new List<long>{jzd.ID});
-            }
-            return retVal;
-        }
-        
-        public void SaveJzds(List<Jzd> jzds)
-        {
-            SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in jzds)
-            {
-                rec.Save(connection,GetSRID());
-            }
-            tran.Commit();
-            tran.Dispose();
-            List<long> ids=jzds.Select(a => a.ID).ToList(); 
-            OnEntityChanged("jzd",GetLayerName("JZD"),EntityOperationType.Save,ids);
-        }
-        
-        public void DeleteJzd(Jzd record)
-        {
-            record.Delete(connection);
-            OnEntityChanged("jzd",GetLayerName("JZD"),EntityOperationType.Delete,new List<long>{record.ID});
-        }
-        
-        public void DeleteJzd(long id)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                Jzd row=this.GetJzd(id);
-                if(row.DatabaseID ==0)
-                {
-                    command.CommandText="delete from JZD where Id=" + id.ToString();
-                }
-                else
-                {
-                    command.CommandText="update JZD set Flags=3 where Id=" + id.ToString();
-                }
-                command.ExecuteNonQuery();
-                OnEntityChanged("jzd",GetLayerName("JZD"),EntityOperationType.Delete,new List<long>{id});
-            }
-        }
-        
-        public void DeleteJzd(string filter)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                IEnumerable<Jzd> rows=GetJzds(filter);
-                foreach(Jzd row in rows)
-                {
-                    row.Delete(connection);
-                }
-                OnEntityChanged("jzd",GetLayerName("JZD"),EntityOperationType.Delete,null);
-            }
-        }
-        
-        
-        ///Jzdzj函数
-        public Jzdzj GetJzdzj(long id)
-        {
-            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZDZJ" + " where id="+id.ToString();
-            IEnumerable<Jzdzj> jzdzjs=connection.Query<Jzdzj>(sql);
-            if(jzdzjs != null && jzdzjs.Count()>0)
-            {
-                return jzdzjs.First();
-            }
-            return null;
-        }
-        
-        public IEnumerable<Jzdzj> GetJzdzjs(string filter)
-        {
-            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZDZJ" + " where "+filter;
-            var jzdzjs=connection.Query<Jzdzj>(sql);
-            
-            return jzdzjs;
-        }
-        
-        public bool SaveJzdzj(Jzdzj jzdzj)
-        {
-            bool retVal= jzdzj.Save(connection,GetSRID());
-            if(retVal)
-            {
-                OnEntityChanged("jzdzj",GetLayerName("JZDZJ"),EntityOperationType.Save,new List<long>{jzdzj.ID});
-            }
-            return retVal;
-        }
-        
-        public void SaveJzdzjs(List<Jzdzj> jzdzjs)
-        {
-            SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in jzdzjs)
-            {
-                rec.Save(connection,GetSRID());
-            }
-            tran.Commit();
-            tran.Dispose();
-            List<long> ids=jzdzjs.Select(a => a.ID).ToList(); 
-            OnEntityChanged("jzdzj",GetLayerName("JZDZJ"),EntityOperationType.Save,ids);
-        }
-        
-        public void DeleteJzdzj(Jzdzj record)
-        {
-            record.Delete(connection);
-            OnEntityChanged("jzdzj",GetLayerName("JZDZJ"),EntityOperationType.Delete,new List<long>{record.ID});
-        }
-        
-        public void DeleteJzdzj(long id)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                Jzdzj row=this.GetJzdzj(id);
-                if(row.DatabaseID ==0)
-                {
-                    command.CommandText="delete from JZDZJ where Id=" + id.ToString();
-                }
-                else
-                {
-                    command.CommandText="update JZDZJ set Flags=3 where Id=" + id.ToString();
-                }
-                command.ExecuteNonQuery();
-                OnEntityChanged("jzdzj",GetLayerName("JZDZJ"),EntityOperationType.Delete,new List<long>{id});
-            }
-        }
-        
-        public void DeleteJzdzj(string filter)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                IEnumerable<Jzdzj> rows=GetJzdzjs(filter);
-                foreach(Jzdzj row in rows)
-                {
-                    row.Delete(connection);
-                }
-                OnEntityChanged("jzdzj",GetLayerName("JZDZJ"),EntityOperationType.Delete,null);
-            }
-        }
-        
-        
-        ///Jzx函数
-        public Jzx GetJzx(long id)
-        {
-            string sql="select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZX" + " where id="+id.ToString();
-            IEnumerable<Jzx> jzxs=connection.Query<Jzx>(sql);
-            if(jzxs != null && jzxs.Count()>0)
-            {
-                return jzxs.First();
-            }
-            return null;
-        }
-        
-        public IEnumerable<Jzx> GetJzxs(string filter)
-        {
-            string sql="select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZX" + " where "+filter;
-            var jzxs=connection.Query<Jzx>(sql);
-            
-            return jzxs;
-        }
-        
-        public bool SaveJzx(Jzx jzx)
-        {
-            bool retVal= jzx.Save(connection,GetSRID());
-            if(retVal)
-            {
-                OnEntityChanged("jzx",GetLayerName("JZX"),EntityOperationType.Save,new List<long>{jzx.ID});
-            }
-            return retVal;
-        }
-        
-        public void SaveJzxs(List<Jzx> jzxs)
-        {
-            SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in jzxs)
-            {
-                rec.Save(connection,GetSRID());
-            }
-            tran.Commit();
-            tran.Dispose();
-            List<long> ids=jzxs.Select(a => a.ID).ToList(); 
-            OnEntityChanged("jzx",GetLayerName("JZX"),EntityOperationType.Save,ids);
-        }
-        
-        public void DeleteJzx(Jzx record)
-        {
-            record.Delete(connection);
-            OnEntityChanged("jzx",GetLayerName("JZX"),EntityOperationType.Delete,new List<long>{record.ID});
-        }
-        
-        public void DeleteJzx(long id)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                Jzx row=this.GetJzx(id);
-                if(row.DatabaseID ==0)
-                {
-                    command.CommandText="delete from JZX where Id=" + id.ToString();
-                }
-                else
-                {
-                    command.CommandText="update JZX set Flags=3 where Id=" + id.ToString();
-                }
-                command.ExecuteNonQuery();
-                OnEntityChanged("jzx",GetLayerName("JZX"),EntityOperationType.Delete,new List<long>{id});
-            }
-        }
-        
-        public void DeleteJzx(string filter)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                IEnumerable<Jzx> rows=GetJzxs(filter);
-                foreach(Jzx row in rows)
-                {
-                    row.Delete(connection);
-                }
-                OnEntityChanged("jzx",GetLayerName("JZX"),EntityOperationType.Delete,null);
-            }
-        }
-        
-        
-        ///Jzxzj函数
-        public Jzxzj GetJzxzj(long id)
-        {
-            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZXZJ" + " where id="+id.ToString();
-            IEnumerable<Jzxzj> jzxzjs=connection.Query<Jzxzj>(sql);
-            if(jzxzjs != null && jzxzjs.Count()>0)
-            {
-                return jzxzjs.First();
-            }
-            return null;
-        }
-        
-        public IEnumerable<Jzxzj> GetJzxzjs(string filter)
-        {
-            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZXZJ" + " where "+filter;
-            var jzxzjs=connection.Query<Jzxzj>(sql);
-            
-            return jzxzjs;
-        }
-        
-        public bool SaveJzxzj(Jzxzj jzxzj)
-        {
-            bool retVal= jzxzj.Save(connection,GetSRID());
-            if(retVal)
-            {
-                OnEntityChanged("jzxzj",GetLayerName("JZXZJ"),EntityOperationType.Save,new List<long>{jzxzj.ID});
-            }
-            return retVal;
-        }
-        
-        public void SaveJzxzjs(List<Jzxzj> jzxzjs)
-        {
-            SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in jzxzjs)
-            {
-                rec.Save(connection,GetSRID());
-            }
-            tran.Commit();
-            tran.Dispose();
-            List<long> ids=jzxzjs.Select(a => a.ID).ToList(); 
-            OnEntityChanged("jzxzj",GetLayerName("JZXZJ"),EntityOperationType.Save,ids);
-        }
-        
-        public void DeleteJzxzj(Jzxzj record)
-        {
-            record.Delete(connection);
-            OnEntityChanged("jzxzj",GetLayerName("JZXZJ"),EntityOperationType.Delete,new List<long>{record.ID});
-        }
-        
-        public void DeleteJzxzj(long id)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                Jzxzj row=this.GetJzxzj(id);
-                if(row.DatabaseID ==0)
-                {
-                    command.CommandText="delete from JZXZJ where Id=" + id.ToString();
-                }
-                else
-                {
-                    command.CommandText="update JZXZJ set Flags=3 where Id=" + id.ToString();
-                }
-                command.ExecuteNonQuery();
-                OnEntityChanged("jzxzj",GetLayerName("JZXZJ"),EntityOperationType.Delete,new List<long>{id});
-            }
-        }
-        
-        public void DeleteJzxzj(string filter)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                IEnumerable<Jzxzj> rows=GetJzxzjs(filter);
-                foreach(Jzxzj row in rows)
-                {
-                    row.Delete(connection);
-                }
-                OnEntityChanged("jzxzj",GetLayerName("JZXZJ"),EntityOperationType.Delete,null);
-            }
-        }
-        
         
         ///Xzq函数
         public Xzq GetXzq(long id)
@@ -833,83 +347,164 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         }
         
         
-        ///Zdbhqk函数
-        public Zdbhqk GetZdbhqk(long id)
+        ///Djq函数
+        public Djq GetDjq(long id)
         {
-            string sql="select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK" + " where id="+id.ToString();
-            IEnumerable<Zdbhqk> zdbhqks=connection.Query<Zdbhqk>(sql);
-            if(zdbhqks != null && zdbhqks.Count()>0)
+            string sql="select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from DJQ" + " where id="+id.ToString();
+            IEnumerable<Djq> djqs=connection.Query<Djq>(sql);
+            if(djqs != null && djqs.Count()>0)
             {
-                return zdbhqks.First();
+                return djqs.First();
             }
             return null;
         }
         
-        public IEnumerable<Zdbhqk> GetZdbhqks(string filter)
+        public IEnumerable<Djq> GetDjqs(string filter)
         {
-            string sql="select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK" + " where "+filter;
-            var zdbhqks=connection.Query<Zdbhqk>(sql);
+            string sql="select Id,YSDM,DJQDM,DJQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from DJQ" + " where "+filter;
+            var djqs=connection.Query<Djq>(sql);
             
-            return zdbhqks;
+            return djqs;
         }
         
-        public bool SaveZdbhqk(Zdbhqk zdbhqk)
+        public bool SaveDjq(Djq djq)
         {
-            bool retVal= zdbhqk.Save(connection,GetSRID());
+            bool retVal= djq.Save(connection,GetSRID());
             if(retVal)
             {
-                OnEntityChanged("zdbhqk",GetLayerName("ZDBHQK"),EntityOperationType.Save,new List<long>{zdbhqk.ID});
+                OnEntityChanged("djq",GetLayerName("DJQ"),EntityOperationType.Save,new List<long>{djq.ID});
             }
             return retVal;
         }
         
-        public void SaveZdbhqks(List<Zdbhqk> zdbhqks)
+        public void SaveDjqs(List<Djq> djqs)
         {
             SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in zdbhqks)
+            foreach(var rec in djqs)
             {
                 rec.Save(connection,GetSRID());
             }
             tran.Commit();
             tran.Dispose();
-            List<long> ids=zdbhqks.Select(a => a.ID).ToList(); 
-            OnEntityChanged("zdbhqk",GetLayerName("ZDBHQK"),EntityOperationType.Save,ids);
+            List<long> ids=djqs.Select(a => a.ID).ToList(); 
+            OnEntityChanged("djq",GetLayerName("DJQ"),EntityOperationType.Save,ids);
         }
         
-        public void DeleteZdbhqk(Zdbhqk record)
+        public void DeleteDjq(Djq record)
         {
             record.Delete(connection);
-            OnEntityChanged("zdbhqk",GetLayerName("ZDBHQK"),EntityOperationType.Delete,new List<long>{record.ID});
+            OnEntityChanged("djq",GetLayerName("DJQ"),EntityOperationType.Delete,new List<long>{record.ID});
         }
         
-        public void DeleteZdbhqk(long id)
+        public void DeleteDjq(long id)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                Zdbhqk row=this.GetZdbhqk(id);
+                Djq row=this.GetDjq(id);
                 if(row.DatabaseID ==0)
                 {
-                    command.CommandText="delete from ZDBHQK where Id=" + id.ToString();
+                    command.CommandText="delete from DJQ where Id=" + id.ToString();
                 }
                 else
                 {
-                    command.CommandText="update ZDBHQK set Flags=3 where Id=" + id.ToString();
+                    command.CommandText="update DJQ set Flags=3 where Id=" + id.ToString();
                 }
                 command.ExecuteNonQuery();
-                OnEntityChanged("zdbhqk",GetLayerName("ZDBHQK"),EntityOperationType.Delete,new List<long>{id});
+                OnEntityChanged("djq",GetLayerName("DJQ"),EntityOperationType.Delete,new List<long>{id});
             }
         }
         
-        public void DeleteZdbhqk(string filter)
+        public void DeleteDjq(string filter)
         {
             using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                IEnumerable<Zdbhqk> rows=GetZdbhqks(filter);
-                foreach(Zdbhqk row in rows)
+                IEnumerable<Djq> rows=GetDjqs(filter);
+                foreach(Djq row in rows)
                 {
                     row.Delete(connection);
                 }
-                OnEntityChanged("zdbhqk",GetLayerName("ZDBHQK"),EntityOperationType.Delete,null);
+                OnEntityChanged("djq",GetLayerName("DJQ"),EntityOperationType.Delete,null);
+            }
+        }
+        
+        
+        ///Djzq函数
+        public Djzq GetDjzq(long id)
+        {
+            string sql="select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from DJZQ" + " where id="+id.ToString();
+            IEnumerable<Djzq> djzqs=connection.Query<Djzq>(sql);
+            if(djzqs != null && djzqs.Count()>0)
+            {
+                return djzqs.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<Djzq> GetDjzqs(string filter)
+        {
+            string sql="select Id,YSDM,DJZQDM,DJZQMC,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from DJZQ" + " where "+filter;
+            var djzqs=connection.Query<Djzq>(sql);
+            
+            return djzqs;
+        }
+        
+        public bool SaveDjzq(Djzq djzq)
+        {
+            bool retVal= djzq.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("djzq",GetLayerName("DJZQ"),EntityOperationType.Save,new List<long>{djzq.ID});
+            }
+            return retVal;
+        }
+        
+        public void SaveDjzqs(List<Djzq> djzqs)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in djzqs)
+            {
+                rec.Save(connection,GetSRID());
+            }
+            tran.Commit();
+            tran.Dispose();
+            List<long> ids=djzqs.Select(a => a.ID).ToList(); 
+            OnEntityChanged("djzq",GetLayerName("DJZQ"),EntityOperationType.Save,ids);
+        }
+        
+        public void DeleteDjzq(Djzq record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("djzq",GetLayerName("DJZQ"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
+        
+        public void DeleteDjzq(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                Djzq row=this.GetDjzq(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from DJZQ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update DJZQ set Flags=3 where Id=" + id.ToString();
+                }
+                command.ExecuteNonQuery();
+                OnEntityChanged("djzq",GetLayerName("DJZQ"),EntityOperationType.Delete,new List<long>{id});
+            }
+        }
+        
+        public void DeleteDjzq(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                IEnumerable<Djzq> rows=GetDjzqs(filter);
+                foreach(Djzq row in rows)
+                {
+                    row.Delete(connection);
+                }
+                OnEntityChanged("djzq",GetLayerName("DJZQ"),EntityOperationType.Delete,null);
             }
         }
         
@@ -995,6 +590,168 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         }
         
         
+        ///Jzd函数
+        public Jzd GetJzd(long id)
+        {
+            string sql="select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZD" + " where id="+id.ToString();
+            IEnumerable<Jzd> jzds=connection.Query<Jzd>(sql);
+            if(jzds != null && jzds.Count()>0)
+            {
+                return jzds.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<Jzd> GetJzds(string filter)
+        {
+            string sql="select Id,ZDZHDM,YSDM,JZDH,JZDGZBH,SXH,JBLX,JZDLX,XZBZ,YZBZ,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZD" + " where "+filter;
+            var jzds=connection.Query<Jzd>(sql);
+            
+            return jzds;
+        }
+        
+        public bool SaveJzd(Jzd jzd)
+        {
+            bool retVal= jzd.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("jzd",GetLayerName("JZD"),EntityOperationType.Save,new List<long>{jzd.ID});
+            }
+            return retVal;
+        }
+        
+        public void SaveJzds(List<Jzd> jzds)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in jzds)
+            {
+                rec.Save(connection,GetSRID());
+            }
+            tran.Commit();
+            tran.Dispose();
+            List<long> ids=jzds.Select(a => a.ID).ToList(); 
+            OnEntityChanged("jzd",GetLayerName("JZD"),EntityOperationType.Save,ids);
+        }
+        
+        public void DeleteJzd(Jzd record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("jzd",GetLayerName("JZD"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
+        
+        public void DeleteJzd(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                Jzd row=this.GetJzd(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from JZD where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update JZD set Flags=3 where Id=" + id.ToString();
+                }
+                command.ExecuteNonQuery();
+                OnEntityChanged("jzd",GetLayerName("JZD"),EntityOperationType.Delete,new List<long>{id});
+            }
+        }
+        
+        public void DeleteJzd(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                IEnumerable<Jzd> rows=GetJzds(filter);
+                foreach(Jzd row in rows)
+                {
+                    row.Delete(connection);
+                }
+                OnEntityChanged("jzd",GetLayerName("JZD"),EntityOperationType.Delete,null);
+            }
+        }
+        
+        
+        ///Jzx函数
+        public Jzx GetJzx(long id)
+        {
+            string sql="select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZX" + " where id="+id.ToString();
+            IEnumerable<Jzx> jzxs=connection.Query<Jzx>(sql);
+            if(jzxs != null && jzxs.Count()>0)
+            {
+                return jzxs.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<Jzx> GetJzxs(string filter)
+        {
+            string sql="select Id,ZDZHDM,YSDM,JZXGZBH,JZXCD,JZXLB,JZXWZ,JXXZ,QSJXXYSBH,QSJXXYS,QSZYYYSBH,QSZYYYS,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,QSJZDBH,JZJZDBH,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZX" + " where "+filter;
+            var jzxs=connection.Query<Jzx>(sql);
+            
+            return jzxs;
+        }
+        
+        public bool SaveJzx(Jzx jzx)
+        {
+            bool retVal= jzx.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("jzx",GetLayerName("JZX"),EntityOperationType.Save,new List<long>{jzx.ID});
+            }
+            return retVal;
+        }
+        
+        public void SaveJzxs(List<Jzx> jzxs)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in jzxs)
+            {
+                rec.Save(connection,GetSRID());
+            }
+            tran.Commit();
+            tran.Dispose();
+            List<long> ids=jzxs.Select(a => a.ID).ToList(); 
+            OnEntityChanged("jzx",GetLayerName("JZX"),EntityOperationType.Save,ids);
+        }
+        
+        public void DeleteJzx(Jzx record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("jzx",GetLayerName("JZX"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
+        
+        public void DeleteJzx(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                Jzx row=this.GetJzx(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from JZX where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update JZX set Flags=3 where Id=" + id.ToString();
+                }
+                command.ExecuteNonQuery();
+                OnEntityChanged("jzx",GetLayerName("JZX"),EntityOperationType.Delete,new List<long>{id});
+            }
+        }
+        
+        public void DeleteJzx(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                IEnumerable<Jzx> rows=GetJzxs(filter);
+                foreach(Jzx row in rows)
+                {
+                    row.Delete(connection);
+                }
+                OnEntityChanged("jzx",GetLayerName("JZX"),EntityOperationType.Delete,null);
+            }
+        }
+        
+        
         ///Zdjbxxzj函数
         public Zdjbxxzj GetZdjbxxzj(long id)
         {
@@ -1076,6 +833,249 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         }
         
         
+        ///Jzdzj函数
+        public Jzdzj GetJzdzj(long id)
+        {
+            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZDZJ" + " where id="+id.ToString();
+            IEnumerable<Jzdzj> jzdzjs=connection.Query<Jzdzj>(sql);
+            if(jzdzjs != null && jzdzjs.Count()>0)
+            {
+                return jzdzjs.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<Jzdzj> GetJzdzjs(string filter)
+        {
+            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZDZJ" + " where "+filter;
+            var jzdzjs=connection.Query<Jzdzj>(sql);
+            
+            return jzdzjs;
+        }
+        
+        public bool SaveJzdzj(Jzdzj jzdzj)
+        {
+            bool retVal= jzdzj.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("jzdzj",GetLayerName("JZDZJ"),EntityOperationType.Save,new List<long>{jzdzj.ID});
+            }
+            return retVal;
+        }
+        
+        public void SaveJzdzjs(List<Jzdzj> jzdzjs)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in jzdzjs)
+            {
+                rec.Save(connection,GetSRID());
+            }
+            tran.Commit();
+            tran.Dispose();
+            List<long> ids=jzdzjs.Select(a => a.ID).ToList(); 
+            OnEntityChanged("jzdzj",GetLayerName("JZDZJ"),EntityOperationType.Save,ids);
+        }
+        
+        public void DeleteJzdzj(Jzdzj record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("jzdzj",GetLayerName("JZDZJ"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
+        
+        public void DeleteJzdzj(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                Jzdzj row=this.GetJzdzj(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from JZDZJ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update JZDZJ set Flags=3 where Id=" + id.ToString();
+                }
+                command.ExecuteNonQuery();
+                OnEntityChanged("jzdzj",GetLayerName("JZDZJ"),EntityOperationType.Delete,new List<long>{id});
+            }
+        }
+        
+        public void DeleteJzdzj(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                IEnumerable<Jzdzj> rows=GetJzdzjs(filter);
+                foreach(Jzdzj row in rows)
+                {
+                    row.Delete(connection);
+                }
+                OnEntityChanged("jzdzj",GetLayerName("JZDZJ"),EntityOperationType.Delete,null);
+            }
+        }
+        
+        
+        ///Jzxzj函数
+        public Jzxzj GetJzxzj(long id)
+        {
+            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZXZJ" + " where id="+id.ToString();
+            IEnumerable<Jzxzj> jzxzjs=connection.Query<Jzxzj>(sql);
+            if(jzxzjs != null && jzxzjs.Count()>0)
+            {
+                return jzxzjs.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<Jzxzj> GetJzxzjs(string filter)
+        {
+            string sql="select Id,YSDM,ZJNR,ZT,YS,BS,XZ,XHX,KD,GD,ZJDZXJXZB,ZJDZXJYZB,ZJFX,DatabaseId,FLAGS,AsText(geometry) as Wkt from JZXZJ" + " where "+filter;
+            var jzxzjs=connection.Query<Jzxzj>(sql);
+            
+            return jzxzjs;
+        }
+        
+        public bool SaveJzxzj(Jzxzj jzxzj)
+        {
+            bool retVal= jzxzj.Save(connection,GetSRID());
+            if(retVal)
+            {
+                OnEntityChanged("jzxzj",GetLayerName("JZXZJ"),EntityOperationType.Save,new List<long>{jzxzj.ID});
+            }
+            return retVal;
+        }
+        
+        public void SaveJzxzjs(List<Jzxzj> jzxzjs)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in jzxzjs)
+            {
+                rec.Save(connection,GetSRID());
+            }
+            tran.Commit();
+            tran.Dispose();
+            List<long> ids=jzxzjs.Select(a => a.ID).ToList(); 
+            OnEntityChanged("jzxzj",GetLayerName("JZXZJ"),EntityOperationType.Save,ids);
+        }
+        
+        public void DeleteJzxzj(Jzxzj record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("jzxzj",GetLayerName("JZXZJ"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
+        
+        public void DeleteJzxzj(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                Jzxzj row=this.GetJzxzj(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from JZXZJ where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update JZXZJ set Flags=3 where Id=" + id.ToString();
+                }
+                command.ExecuteNonQuery();
+                OnEntityChanged("jzxzj",GetLayerName("JZXZJ"),EntityOperationType.Delete,new List<long>{id});
+            }
+        }
+        
+        public void DeleteJzxzj(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                IEnumerable<Jzxzj> rows=GetJzxzjs(filter);
+                foreach(Jzxzj row in rows)
+                {
+                    row.Delete(connection);
+                }
+                OnEntityChanged("jzxzj",GetLayerName("JZXZJ"),EntityOperationType.Delete,null);
+            }
+        }
+        
+        
+        ///Zdbhqk函数
+        public Zdbhqk GetZdbhqk(long id)
+        {
+            string sql="select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK" + " where id="+id.ToString();
+            IEnumerable<Zdbhqk> zdbhqks=connection.Query<Zdbhqk>(sql);
+            if(zdbhqks != null && zdbhqks.Count()>0)
+            {
+                return zdbhqks.First();
+            }
+            return null;
+        }
+        
+        public IEnumerable<Zdbhqk> GetZdbhqks(string filter)
+        {
+            string sql="select Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS from ZDBHQK" + " where "+filter;
+            var zdbhqks=connection.Query<Zdbhqk>(sql);
+            
+            return zdbhqks;
+        }
+        
+        public bool SaveZdbhqk(Zdbhqk zdbhqk)
+        {
+            bool retVal= zdbhqk.Save(connection);
+            if(retVal)
+            {
+                OnEntityChanged("zdbhqk",GetLayerName("ZDBHQK"),EntityOperationType.Save,new List<long>{zdbhqk.ID});
+            }
+            return retVal;
+        }
+        
+        public void SaveZdbhqks(List<Zdbhqk> zdbhqks)
+        {
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in zdbhqks)
+            {
+                rec.Save(connection);
+            }
+            tran.Commit();
+            tran.Dispose();
+            List<long> ids=zdbhqks.Select(a => a.ID).ToList(); 
+            OnEntityChanged("zdbhqk",GetLayerName("ZDBHQK"),EntityOperationType.Save,ids);
+        }
+        
+        public void DeleteZdbhqk(Zdbhqk record)
+        {
+            record.Delete(connection);
+            OnEntityChanged("zdbhqk",GetLayerName("ZDBHQK"),EntityOperationType.Delete,new List<long>{record.ID});
+        }
+        
+        public void DeleteZdbhqk(long id)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                Zdbhqk row=this.GetZdbhqk(id);
+                if(row.DatabaseID ==0)
+                {
+                    command.CommandText="delete from ZDBHQK where Id=" + id.ToString();
+                }
+                else
+                {
+                    command.CommandText="update ZDBHQK set Flags=3 where Id=" + id.ToString();
+                }
+                command.ExecuteNonQuery();
+                OnEntityChanged("zdbhqk",GetLayerName("ZDBHQK"),EntityOperationType.Delete,new List<long>{id});
+            }
+        }
+        
+        public void DeleteZdbhqk(string filter)
+        {
+            using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                IEnumerable<Zdbhqk> rows=GetZdbhqks(filter);
+                foreach(Zdbhqk row in rows)
+                {
+                    row.Delete(connection);
+                }
+                OnEntityChanged("zdbhqk",GetLayerName("ZDBHQK"),EntityOperationType.Delete,null);
+            }
+        }
+        
+        
         ///Zdtojzd函数
         public Zdtojzd GetZdtojzd(long id)
         {
@@ -1098,7 +1098,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveZdtojzd(Zdtojzd zdtojzd)
         {
-            bool retVal= zdtojzd.Save(connection,GetSRID());
+            bool retVal= zdtojzd.Save(connection);
             if(retVal)
             {
                 OnEntityChanged("zdtojzd",GetLayerName("ZDTOJZD"),EntityOperationType.Save,new List<long>{zdtojzd.ID});
@@ -1111,7 +1111,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             SQLiteTransaction tran = connection.BeginTransaction();
             foreach(var rec in zdtojzds)
             {
-                rec.Save(connection,GetSRID());
+                rec.Save(connection);
             }
             tran.Commit();
             tran.Dispose();
@@ -1171,7 +1171,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public bool SaveZdtojzx(Zdtojzx zdtojzx)
         {
-            bool retVal= zdtojzx.Save(connection,GetSRID());
+            bool retVal= zdtojzx.Save(connection);
             if(retVal)
             {
                 OnEntityChanged("zdtojzx",GetLayerName("ZDTOJZX"),EntityOperationType.Save,new List<long>{zdtojzx.ID});
@@ -1184,7 +1184,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             SQLiteTransaction tran = connection.BeginTransaction();
             foreach(var rec in zdtojzxs)
             {
-                rec.Save(connection,GetSRID());
+                rec.Save(connection);
             }
             tran.Commit();
             tran.Dispose();

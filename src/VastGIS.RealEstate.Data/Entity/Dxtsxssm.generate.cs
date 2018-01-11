@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
-    public partial class Dxtsxssm:INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity,IBasemapPolygon
+    public partial class Dxtsxssm:INotifyPropertyChanging, INotifyPropertyChanged,IBasemapPolygon
     {
         #region 表结构
         public const string TABLE_NAME = "DXTSXSSM";
+        public string ObjectName
+        {
+         get{
+                return "DXTSXSSM";
+               }
+        }
+        public string EntityName{
+            get{
+                return "BasemapPolygon";
+               }
+        }       
         public const string LAYER_NAME="水系设施面";
 	    public const string COL_ID = "Id";
 	    public const string COL_TC = "TC";
@@ -261,7 +271,6 @@ namespace VastGIS.RealEstate.Data.Entity
         }
         
         
-        
         public bool Create(SQLiteConnection connection,int srid)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_DXTSXSSM,connection))
@@ -310,7 +319,8 @@ namespace VastGIS.RealEstate.Data.Entity
                 return Update(connection,srid);
             }
             
-        }
+        }        
+        
 
 		public bool Delete(SQLiteConnection connection)
         {

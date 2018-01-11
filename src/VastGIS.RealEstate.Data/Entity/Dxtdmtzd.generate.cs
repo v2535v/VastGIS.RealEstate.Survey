@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
-    public partial class Dxtdmtzd:INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity,IBasemapPoint
+    public partial class Dxtdmtzd:INotifyPropertyChanging, INotifyPropertyChanged,IBasemapPoint
     {
         #region 表结构
         public const string TABLE_NAME = "DXTDMTZD";
+        public string ObjectName
+        {
+         get{
+                return "DXTDMTZD";
+               }
+        }
+        public string EntityName{
+            get{
+                return "BasemapPoint";
+               }
+        }       
         public const string LAYER_NAME="地貌土质点";
 	    public const string COL_ID = "Id";
 	    public const string COL_TC = "TC";
@@ -306,7 +316,6 @@ namespace VastGIS.RealEstate.Data.Entity
         }
         
         
-        
         public bool Create(SQLiteConnection connection,int srid)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_DXTDMTZD,connection))
@@ -361,7 +370,8 @@ namespace VastGIS.RealEstate.Data.Entity
                 return Update(connection,srid);
             }
             
-        }
+        }        
+        
 
 		public bool Delete(SQLiteConnection connection)
         {

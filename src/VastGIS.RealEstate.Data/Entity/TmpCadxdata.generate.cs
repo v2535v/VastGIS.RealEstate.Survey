@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
     public partial class TmpCadxdata:INotifyPropertyChanging, INotifyPropertyChanged
     {
         #region 表结构
         public const string TABLE_NAME = "TmpCadxdata";
+        public string ObjectName
+        {
+         get{
+                return "TmpCadxdata";
+               }
+        }
+        public string EntityName{
+            get{
+                return "TmpCadxdata";
+               }
+        }
         public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_HANDLE = "Handle";
@@ -286,60 +296,56 @@ namespace VastGIS.RealEstate.Data.Entity
             return hashCode;          
         }
         
-        
-        
-        public bool Create(SQLiteConnection connection,int srid)
+        public bool Create(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_TMPCADXDATA,connection))
             {	
-                 command.Parameters.AddWithValue(PARAM_HANDLE,this.Handle);    				
-                 command.Parameters.AddWithValue(PARAM_TC,this.Tc);    				
-                 command.Parameters.AddWithValue(PARAM_WBNR,this.Wbnr);    				
-                 command.Parameters.AddWithValue(PARAM_CASSDM,this.Cassdm);    				
-                 command.Parameters.AddWithValue(PARAM_FSXX1,this.Fsxx1);    				
-                 command.Parameters.AddWithValue(PARAM_FSXX2,this.Fsxx2);    				
-                 command.Parameters.AddWithValue(PARAM_XZJD,this.Xzjd);    				
-                 command.Parameters.AddWithValue(PARAM_FH,this.Fh);    				
-                 command.Parameters.AddWithValue(PARAM_FHDX,this.Fhdx);    				
-                 command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);    				
-                 command.Parameters.AddWithValue(PARAM_FILENAME,this.FileName);    				
+                 command.Parameters.AddWithValue(PARAM_HANDLE,this.Handle); 
+                 command.Parameters.AddWithValue(PARAM_TC,this.Tc); 
+                 command.Parameters.AddWithValue(PARAM_WBNR,this.Wbnr); 
+                 command.Parameters.AddWithValue(PARAM_CASSDM,this.Cassdm); 
+                 command.Parameters.AddWithValue(PARAM_FSXX1,this.Fsxx1); 
+                 command.Parameters.AddWithValue(PARAM_FSXX2,this.Fsxx2); 
+                 command.Parameters.AddWithValue(PARAM_XZJD,this.Xzjd); 
+                 command.Parameters.AddWithValue(PARAM_FH,this.Fh); 
+                 command.Parameters.AddWithValue(PARAM_FHDX,this.Fhdx); 
+                 command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm); 
+                 command.Parameters.AddWithValue(PARAM_FILENAME,this.FileName); 
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return true;
             }
         }
 
-		public bool Update(SQLiteConnection connection,int srid)
+		public bool Update(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_TMPCADXDATA,connection))
             {							
-				command.Parameters.AddWithValue(PARAM_ID,this.ID);  
-				command.Parameters.AddWithValue(PARAM_HANDLE,this.Handle);  
-				command.Parameters.AddWithValue(PARAM_TC,this.Tc);  
-				command.Parameters.AddWithValue(PARAM_WBNR,this.Wbnr);  
-				command.Parameters.AddWithValue(PARAM_CASSDM,this.Cassdm);  
-				command.Parameters.AddWithValue(PARAM_FSXX1,this.Fsxx1);  
-				command.Parameters.AddWithValue(PARAM_FSXX2,this.Fsxx2);  
-				command.Parameters.AddWithValue(PARAM_XZJD,this.Xzjd);  
-				command.Parameters.AddWithValue(PARAM_FH,this.Fh);  
-				command.Parameters.AddWithValue(PARAM_FHDX,this.Fhdx);  
-				command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm);  
-				command.Parameters.AddWithValue(PARAM_FILENAME,this.FileName);  
-			
+				command.Parameters.AddWithValue(PARAM_ID,this.ID); 
+				command.Parameters.AddWithValue(PARAM_HANDLE,this.Handle); 
+				command.Parameters.AddWithValue(PARAM_TC,this.Tc); 
+				command.Parameters.AddWithValue(PARAM_WBNR,this.Wbnr); 
+				command.Parameters.AddWithValue(PARAM_CASSDM,this.Cassdm); 
+				command.Parameters.AddWithValue(PARAM_FSXX1,this.Fsxx1); 
+				command.Parameters.AddWithValue(PARAM_FSXX2,this.Fsxx2); 
+				command.Parameters.AddWithValue(PARAM_XZJD,this.Xzjd); 
+				command.Parameters.AddWithValue(PARAM_FH,this.Fh); 
+				command.Parameters.AddWithValue(PARAM_FHDX,this.Fhdx); 
+				command.Parameters.AddWithValue(PARAM_YSDM,this.Ysdm); 
+				command.Parameters.AddWithValue(PARAM_FILENAME,this.FileName); 
                 return (command.ExecuteNonQuery() == 1);
             }
         }
         
-        public bool Save(SQLiteConnection connection,int srid)
+        public bool Save(SQLiteConnection connection)
         {
             if(this.id == default(long))
             {
-                return Create(connection,srid);
+                return Create(connection);
             }
             else
             {
-                return Update(connection,srid);
-            }
-            
+                return Update(connection);
+            }            
         }
 
 		public bool Delete(SQLiteConnection connection)

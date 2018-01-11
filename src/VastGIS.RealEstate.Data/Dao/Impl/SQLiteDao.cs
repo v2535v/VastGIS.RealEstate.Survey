@@ -42,6 +42,45 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
         }
 
+        public void RegisterGroup(string groupName)
+        {
+            using (SQLiteCommand command = new SQLiteCommand( connection))
+            {
+                command.CommandText = "insert into vg_classgroup([GroupName]) values('" + groupName + "');";
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public string GetRegisterGroupSql(string groupName)
+        {
+            return "insert into vg_classgroup ([GroupName]) values('" + groupName + "');";
+        }
+
+        public string GetRegisterClassSql(string groupName, string className, string interfaceName = "", bool createImpl = false)
+        {
+            
+                int boImpl = createImpl ? 1 : 0;
+               string sql =
+                    string.Format(
+                        "insert into vg_classdetail([GroupName],[TableName],[InterfaceName],[CreateImpl]) values('{0}','{1}','{2}',{3});",
+                        groupName, className, interfaceName, boImpl);
+            return sql;
+      
+        }
+
+        public void RegisterClass(string groupName,string className, string interfaceName="", bool createImpl=false)
+        {
+            using (SQLiteCommand command = new SQLiteCommand(connection))
+            {
+                int boImpl = createImpl ? 1 : 0;
+                command.CommandText =
+                    string.Format(
+                        "insert into vg_classdetail([GroupName],[TableName],[InterfaceName],[CreateImpl]) values('{0}','{1}','{2}',{3});",
+                        groupName, className, interfaceName, boImpl);
+                command.ExecuteNonQuery();
+            }
+        }
+
         public int GetSRID()
         {
             if (_srid > 0) return _srid;

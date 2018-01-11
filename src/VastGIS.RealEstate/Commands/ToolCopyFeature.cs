@@ -19,15 +19,18 @@ namespace VastGIS.Plugins.RealEstate.Commands
     {
         private IAppContext _context;
         private IEditForm _editForm;
+        private RealEstateEditor _plugin;
 
-        public ToolCopyFeature(IAppContext context)
+        public ToolCopyFeature(IAppContext context, RealEstateEditor plugin)
         {
+            _plugin = plugin;
             _context = context;
             base._text = "要素拷贝";
             base._key = MenuKeys.CopyFeature;
             base._icon = Resources.LayerTool32;
             base._headerName = "tabFile";
             base._toolStripExName = "toolStripExPrepare";
+
         }
 
         public override void OnClick()

@@ -21,7 +21,7 @@ using VastGIS.RealEstate.Data.Settings;
 namespace VastGIS.RealEstate.Data.Dao.Impl
 {
 
-    public partial class SystemDaoImpl:SQLiteDao
+    public partial class SystemDaoImpl
     {
         protected const string VG_OBJECTYSDM =
                 "CREATE TABLE[vg_objectysdm] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, [YSDM] CHAR(10),[YSMC] NCHAR(50),[XSSX] INTEGER DEFAULT 0,[QSBG] CHAR(50),[QSFH] NCHAR,[SFKJ] BOOLEAN NOT NULL DEFAULT 1);"
@@ -38,7 +38,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             "CREATE TABLE [vg_settings] ( [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,  [CSMC] NCHAR(30),   [CSZ] NVARCHAR);";
 
         protected const string VG_OBJECTCLASSES =
-                "CREATE TABLE [vg_objectclasses] (   [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   [MC] NCHAR(30),   [DXLX] INT NOT NULL DEFAULT 0,   [ZWMC] NCHAR(30),   [FBMC] NCHAR(30),   [XHZDMC] NCHAR(30),   [TXZDMC] NCHAR(30),   [TXLX] INT NOT NULL DEFAULT 0,   [IDENTIFY] BOOLEAN NOT NULL DEFAULT 1,   [EDITABLE] BOOLEAN NOT NULL DEFAULT 1,   [QUERYABLE] BOOLEAN NOT NULL DEFAULT 1,   [SNAPABLE] BOOLEAN NOT NULL DEFAULT 1,   [VISIBLE] BOOLEAN NOT NULL DEFAULT 1,   [XSSX] INTEGER NOT NULL DEFAULT 0,   [FILTER] NVARCHAR,[QSDM] CHAR(10));"
+                "CREATE TABLE [vg_objectclasses] (   [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   [MC] NCHAR(30),   [DXLX] INT NOT NULL DEFAULT 0,   [ZWMC] NCHAR(30),   [FBMC] NCHAR(30),   [XHZDMC] NCHAR(30),   [TXZDMC] NCHAR(30),   [TXLX] INT NOT NULL DEFAULT 0,   [IDENTIFY] BOOLEAN NOT NULL DEFAULT 1,   [EDITABLE] BOOLEAN NOT NULL DEFAULT 1,   [QUERYABLE] BOOLEAN NOT NULL DEFAULT 1,   [SNAPABLE] BOOLEAN NOT NULL DEFAULT 1,   [VISIBLE] BOOLEAN NOT NULL DEFAULT 1,   [XSSX] INTEGER NOT NULL DEFAULT 0,   [FILTER] NVARCHAR,[QSDM] CHAR(10),[BJCT] CHAR(100));"
             ;
 
         protected const string VG_AREACODES =
@@ -47,6 +47,18 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
         protected const string VG_UPDATEYSDM =
                 "update [vg_objectclasses] set [QSDM]=(select [vg_objectysdm].[YSDM] from  [vg_objectclasses] inner join [vg_objectysdm] on [vg_objectysdm].[QSBG]=[vg_objectclasses].MC);"
+            ;
+
+        protected const string VG_CLASSGROUP =
+                "CREATE TABLE [vg_classdetail] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[GroupName] NCHAR(100), [TableName] NCHAR(100), [CreateImpl] Boolean DEFAULT 0,[InterfaceName] CHAR(30) DEFAULT \"\");"
+            ;
+        
+        protected const string VG_CLASSDETAIL =
+                "CREATE TABLE [vg_classgroup] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[GroupName] NCHAR(100), [CreateImpl] Boolean Default 0);"
+            ;
+
+        protected const string VG_FIELDINFO =
+                "CREATE TABLE [vg_fieldinfo] ( [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,  [BM] CHAR(8),   [BNSX] INTEGER,   [ZDZWMC] CHAR(13),   [ZDMC] CHAR(10),   [ZDLX] CHAR(7),   [ZDCD] INTEGER,   [ZDXSWS] INTEGER,   [SYZD] CHAR(12),   [YS] CHAR(1),[SYZDYW] CHAR(50));"
             ;
         //public SystemDaoImpl():base()
         //{
@@ -78,6 +90,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.ExecuteNonQuery();
 
                     command.CommandText = VG_LAYERGROUPDETAIL;
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = VG_CLASSGROUP;
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = VG_CLASSDETAIL;
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = VG_FIELDINFO;
                     command.ExecuteNonQuery();
 
                 }
@@ -125,13 +146,50 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         cmd.ExecuteNonQuery();
                     }
                     reader.Close();
+
+                    dataFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                        "Templates\\Zdxx.sql");
+
+                    reader = File.OpenText(dataFile);
+                    while (reader.Peek() > -1)
+                    {
+                        string line = reader.ReadLine().Trim();
+                        if (string.IsNullOrEmpty(line)) continue;
+                        cmd.CommandText = line;
+                        cmd.ExecuteNonQuery();
+                    }
+                    reader.Close();
                 }
                 trans.Commit();
                 using (SQLiteCommand cmd = new SQLiteCommand(connection))
                 {
                     cmd.CommandText = VG_UPDATEYSDM;
                     cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterGroupSql("System");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_objectclasses");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_settings");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_cadcodes");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_areacodes");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_objectysdm");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_layergroup");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_layergroupdetail");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_classgroup");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_classdetail");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_fieldinfo");
+                    cmd.ExecuteNonQuery();
+
                 }
+                
             }
             return true;
         }
@@ -196,6 +254,14 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     command.CommandText = VG_LAYERGROUPDETAIL;
                     command.ExecuteNonQuery();
 
+                    command.CommandText = VG_CLASSGROUP;
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = VG_CLASSDETAIL;
+                    command.ExecuteNonQuery();
+                    command.CommandText = VG_FIELDINFO;
+                    command.ExecuteNonQuery();
+
                 }
                 trans.Commit();
             }
@@ -233,6 +299,32 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     cmd.CommandText = VG_UPDATEYSDM;
                     cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = Properties.Resources.Zdxx;
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = GetRegisterGroupSql("System");
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = GetRegisterClassSql("System","vg_objectclasses");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_settings");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_cadcodes");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_areacodes");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_objectysdm");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_layergroup");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_layergroupdetail");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_classgroup");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_classdetail");
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_fieldinfo");
+                    cmd.ExecuteNonQuery();
                 }
                 trans.Commit();
             }

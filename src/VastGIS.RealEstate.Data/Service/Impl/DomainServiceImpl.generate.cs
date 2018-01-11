@@ -21,7 +21,7 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             remove { this.entityChanged -= value; }
         }
 
-        protected virtual void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
+        public  void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
         {
             if (this.entityChanged != null)
             {

@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
-    public partial class Dxtdldwzj:INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity,IBasemapText
+    public partial class Dxtdldwzj:INotifyPropertyChanging, INotifyPropertyChanged,IBasemapText
     {
         #region 表结构
         public const string TABLE_NAME = "DXTDLDWZJ";
+        public string ObjectName
+        {
+         get{
+                return "DXTDLDWZJ";
+               }
+        }
+        public string EntityName{
+            get{
+                return "BasemapText";
+               }
+        }       
         public const string LAYER_NAME="独立地物注记";
 	    public const string COL_ID = "Id";
 	    public const string COL_WBNR = "WBNR";
@@ -291,7 +301,6 @@ namespace VastGIS.RealEstate.Data.Entity
         }
         
         
-        
         public bool Create(SQLiteConnection connection,int srid)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_DXTDLDWZJ,connection))
@@ -344,7 +353,8 @@ namespace VastGIS.RealEstate.Data.Entity
                 return Update(connection,srid);
             }
             
-        }
+        }        
+        
 
 		public bool Delete(SQLiteConnection connection)
         {

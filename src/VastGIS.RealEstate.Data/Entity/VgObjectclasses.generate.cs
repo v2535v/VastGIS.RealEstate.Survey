@@ -12,11 +12,21 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-
     public partial class VgObjectclasses:INotifyPropertyChanging, INotifyPropertyChanged
     {
         #region 表结构
         public const string TABLE_NAME = "vg_objectclasses";
+        public string ObjectName
+        {
+         get{
+                return "vg_objectclasses";
+               }
+        }
+        public string EntityName{
+            get{
+                return "VgObjectclasses";
+               }
+        }
         public const string LAYER_NAME="";
 	    public const string COL_ID = "Id";
 	    public const string COL_MC = "MC";
@@ -34,6 +44,7 @@ namespace VastGIS.RealEstate.Data.Entity
 	    public const string COL_XSSX = "XSSX";
 	    public const string COL_FILTER = "FILTER";
 	    public const string COL_QSDM = "QSDM";
+	    public const string COL_BJCT = "BJCT";
 	
         public const string PARAM_ID = "@Id";
         public const string PARAM_MC = "@MC";
@@ -51,14 +62,15 @@ namespace VastGIS.RealEstate.Data.Entity
         public const string PARAM_XSSX = "@XSSX";
         public const string PARAM_FILTER = "@FILTER";
         public const string PARAM_QSDM = "@QSDM";
+        public const string PARAM_BJCT = "@BJCT";
 	
         #endregion
         
         #region 查询
 	
-	    private const string SQL_INSERT_VG_OBJECTCLASSES = "INSERT INTO vg_objectclasses (MC, DXLX, ZWMC, FBMC, XHZDMC, TXZDMC, TXLX, IDENTIFY, EDITABLE, QUERYABLE, SNAPABLE, VISIBLE, XSSX, FILTER, QSDM) VALUES ( @MC, @DXLX, @ZWMC, @FBMC, @XHZDMC, @TXZDMC, @TXLX, @IDENTIFY, @EDITABLE, @QUERYABLE, @SNAPABLE, @VISIBLE, @XSSX, @FILTER, @QSDM);" + " SELECT last_insert_rowid();";
+	    private const string SQL_INSERT_VG_OBJECTCLASSES = "INSERT INTO vg_objectclasses (MC, DXLX, ZWMC, FBMC, XHZDMC, TXZDMC, TXLX, IDENTIFY, EDITABLE, QUERYABLE, SNAPABLE, VISIBLE, XSSX, FILTER, QSDM, BJCT) VALUES ( @MC, @DXLX, @ZWMC, @FBMC, @XHZDMC, @TXZDMC, @TXLX, @IDENTIFY, @EDITABLE, @QUERYABLE, @SNAPABLE, @VISIBLE, @XSSX, @FILTER, @QSDM, @BJCT);" + " SELECT last_insert_rowid();";
 	
-	    private const string SQL_UPDATE_VG_OBJECTCLASSES = "UPDATE vg_objectclasses SET MC = @MC, DXLX = @DXLX, ZWMC = @ZWMC, FBMC = @FBMC, XHZDMC = @XHZDMC, TXZDMC = @TXZDMC, TXLX = @TXLX, IDENTIFY = @IDENTIFY, EDITABLE = @EDITABLE, QUERYABLE = @QUERYABLE, SNAPABLE = @SNAPABLE, VISIBLE = @VISIBLE, XSSX = @XSSX, FILTER = @FILTER, QSDM = @QSDM WHERE Id = @Id";
+	    private const string SQL_UPDATE_VG_OBJECTCLASSES = "UPDATE vg_objectclasses SET MC = @MC, DXLX = @DXLX, ZWMC = @ZWMC, FBMC = @FBMC, XHZDMC = @XHZDMC, TXZDMC = @TXZDMC, TXLX = @TXLX, IDENTIFY = @IDENTIFY, EDITABLE = @EDITABLE, QUERYABLE = @QUERYABLE, SNAPABLE = @SNAPABLE, VISIBLE = @VISIBLE, XSSX = @XSSX, FILTER = @FILTER, QSDM = @QSDM, BJCT = @BJCT WHERE Id = @Id";
 	
 	    private const string SQL_DELETE_VG_OBJECTCLASSES = "DELETE FROM vg_objectclasses WHERE  Id = @Id ";
         
@@ -83,6 +95,7 @@ namespace VastGIS.RealEstate.Data.Entity
 		protected long xssx = default(long);
 		protected string filter = default(string);
 		protected string qsdm = default(string);
+		protected string bjct = default(string);
         
         private event PropertyChangingEventHandler propertyChanging;            
         private event PropertyChangedEventHandler propertyChanged;
@@ -294,6 +307,18 @@ namespace VastGIS.RealEstate.Data.Entity
                     }   
                 }
         }	
+        public string Bjct 
+        {
+            get { return this.bjct; }
+			set	{ 
+                  if(this.bjct != value)
+                    {
+                        this.OnPropertyChanging("Bjct");  
+                        this.bjct = value;                        
+                        this.OnPropertyChanged("Bjct");
+                    }   
+                }
+        }	
         
         public string SimpleLabelString
         {
@@ -346,68 +371,66 @@ namespace VastGIS.RealEstate.Data.Entity
             return hashCode;          
         }
         
-        
-        
-        public bool Create(SQLiteConnection connection,int srid)
+        public bool Create(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_VG_OBJECTCLASSES,connection))
             {	
-                 command.Parameters.AddWithValue(PARAM_MC,this.Mc);    				
-                 command.Parameters.AddWithValue(PARAM_DXLX,this.Dxlx);    				
-                 command.Parameters.AddWithValue(PARAM_ZWMC,this.Zwmc);    				
-                 command.Parameters.AddWithValue(PARAM_FBMC,this.Fbmc);    				
-                 command.Parameters.AddWithValue(PARAM_XHZDMC,this.Xhzdmc);    				
-                 command.Parameters.AddWithValue(PARAM_TXZDMC,this.Txzdmc);    				
-                 command.Parameters.AddWithValue(PARAM_TXLX,this.Txlx);    				
-                 command.Parameters.AddWithValue(PARAM_IDENTIFY,this.Identify);    				
-                 command.Parameters.AddWithValue(PARAM_EDITABLE,this.Editable);    				
-                 command.Parameters.AddWithValue(PARAM_QUERYABLE,this.Queryable);    				
-                 command.Parameters.AddWithValue(PARAM_SNAPABLE,this.Snapable);    				
-                 command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible);    				
-                 command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx);    				
-                 command.Parameters.AddWithValue(PARAM_FILTER,this.Filter);    				
-                 command.Parameters.AddWithValue(PARAM_QSDM,this.Qsdm);    				
+                 command.Parameters.AddWithValue(PARAM_MC,this.Mc); 
+                 command.Parameters.AddWithValue(PARAM_DXLX,this.Dxlx); 
+                 command.Parameters.AddWithValue(PARAM_ZWMC,this.Zwmc); 
+                 command.Parameters.AddWithValue(PARAM_FBMC,this.Fbmc); 
+                 command.Parameters.AddWithValue(PARAM_XHZDMC,this.Xhzdmc); 
+                 command.Parameters.AddWithValue(PARAM_TXZDMC,this.Txzdmc); 
+                 command.Parameters.AddWithValue(PARAM_TXLX,this.Txlx); 
+                 command.Parameters.AddWithValue(PARAM_IDENTIFY,this.Identify); 
+                 command.Parameters.AddWithValue(PARAM_EDITABLE,this.Editable); 
+                 command.Parameters.AddWithValue(PARAM_QUERYABLE,this.Queryable); 
+                 command.Parameters.AddWithValue(PARAM_SNAPABLE,this.Snapable); 
+                 command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible); 
+                 command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx); 
+                 command.Parameters.AddWithValue(PARAM_FILTER,this.Filter); 
+                 command.Parameters.AddWithValue(PARAM_QSDM,this.Qsdm); 
+                 command.Parameters.AddWithValue(PARAM_BJCT,this.Bjct); 
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return true;
             }
         }
 
-		public bool Update(SQLiteConnection connection,int srid)
+		public bool Update(SQLiteConnection connection)
         {
             using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_VG_OBJECTCLASSES,connection))
             {							
-				command.Parameters.AddWithValue(PARAM_ID,this.ID);  
-				command.Parameters.AddWithValue(PARAM_MC,this.Mc);  
-				command.Parameters.AddWithValue(PARAM_DXLX,this.Dxlx);  
-				command.Parameters.AddWithValue(PARAM_ZWMC,this.Zwmc);  
-				command.Parameters.AddWithValue(PARAM_FBMC,this.Fbmc);  
-				command.Parameters.AddWithValue(PARAM_XHZDMC,this.Xhzdmc);  
-				command.Parameters.AddWithValue(PARAM_TXZDMC,this.Txzdmc);  
-				command.Parameters.AddWithValue(PARAM_TXLX,this.Txlx);  
-				command.Parameters.AddWithValue(PARAM_IDENTIFY,this.Identify);  
-				command.Parameters.AddWithValue(PARAM_EDITABLE,this.Editable);  
-				command.Parameters.AddWithValue(PARAM_QUERYABLE,this.Queryable);  
-				command.Parameters.AddWithValue(PARAM_SNAPABLE,this.Snapable);  
-				command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible);  
-				command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx);  
-				command.Parameters.AddWithValue(PARAM_FILTER,this.Filter);  
-				command.Parameters.AddWithValue(PARAM_QSDM,this.Qsdm);  
-			
+				command.Parameters.AddWithValue(PARAM_ID,this.ID); 
+				command.Parameters.AddWithValue(PARAM_MC,this.Mc); 
+				command.Parameters.AddWithValue(PARAM_DXLX,this.Dxlx); 
+				command.Parameters.AddWithValue(PARAM_ZWMC,this.Zwmc); 
+				command.Parameters.AddWithValue(PARAM_FBMC,this.Fbmc); 
+				command.Parameters.AddWithValue(PARAM_XHZDMC,this.Xhzdmc); 
+				command.Parameters.AddWithValue(PARAM_TXZDMC,this.Txzdmc); 
+				command.Parameters.AddWithValue(PARAM_TXLX,this.Txlx); 
+				command.Parameters.AddWithValue(PARAM_IDENTIFY,this.Identify); 
+				command.Parameters.AddWithValue(PARAM_EDITABLE,this.Editable); 
+				command.Parameters.AddWithValue(PARAM_QUERYABLE,this.Queryable); 
+				command.Parameters.AddWithValue(PARAM_SNAPABLE,this.Snapable); 
+				command.Parameters.AddWithValue(PARAM_VISIBLE,this.Visible); 
+				command.Parameters.AddWithValue(PARAM_XSSX,this.Xssx); 
+				command.Parameters.AddWithValue(PARAM_FILTER,this.Filter); 
+				command.Parameters.AddWithValue(PARAM_QSDM,this.Qsdm); 
+				command.Parameters.AddWithValue(PARAM_BJCT,this.Bjct); 
                 return (command.ExecuteNonQuery() == 1);
             }
         }
         
-        public bool Save(SQLiteConnection connection,int srid)
+        public bool Save(SQLiteConnection connection)
         {
             if(this.id == default(long))
             {
-                return Create(connection,srid);
+                return Create(connection);
             }
             else
             {
-                return Update(connection,srid);
-            }
-            
+                return Update(connection);
+            }            
         }
 
 		public bool Delete(SQLiteConnection connection)
