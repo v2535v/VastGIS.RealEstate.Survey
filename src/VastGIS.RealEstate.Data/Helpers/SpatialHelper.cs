@@ -241,7 +241,22 @@ namespace VastGIS.RealEstate.Data.Helpers
             }
         }
 
-
+        public static string SearchSQLBuilder(string tableName, int[] ids)
+        {
+            string sql =
+                string.Format("Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Id in (",
+                    tableName);
+            for (int i = 0; i < ids.Length; i++)
+            {
+                if (i == 0) sql += i.ToString();
+                else
+                {
+                    sql += "," + i.ToString();
+                }
+            }
+            sql += ");";
+            return sql;
+        }
         public static string SearchSQLBuilder(
             string tableName,
             GeometryType geometryType,
@@ -259,14 +274,14 @@ namespace VastGIS.RealEstate.Data.Helpers
             else if (geometryType == GeometryType.Polyline)
             {
                 sql = string.Format(
-                    "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Intersects( GeomFromText('{1}'),geometry);", tableName,
-                    GeometryHelper.CreateCircularWkt(dx,dy,radius));
+                    "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Intersects( GeomFromText('{1}'),geometry)=1;", tableName,
+                    GeometryHelper.CreateRectangleWkt(dx,dy,radius));
             }
             else if (geometryType == GeometryType.Point || geometryType == GeometryType.TextPoint)
             {
                 sql = string.Format(
-                    "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Within( geometry,GeomFromText('{1}'));", tableName,
-                    GeometryHelper.CreateCircularWkt(dx, dy, radius));
+                    "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Within(geometry,GeomFromText('{1}'))=1;", tableName,
+                    GeometryHelper.CreateRectangleWkt(dx, dy, radius));
             }
             return sql;
         }

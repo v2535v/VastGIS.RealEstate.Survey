@@ -1,7 +1,7 @@
 ﻿insert into [vg_dictoryname]('ZDMC','ZDSM') values('JXLXZD', '界线类型字典表');
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('JXXZZD', '界线性质字典表');
-insert into [vg_dictoryname]('ZDMC','ZDSM') values('JZXWZZD', '界址线位置');
-insert into [vg_dictoryname]('ZDMC','ZDSM') values('JBLXZD', '界标类型');
+insert into [vg_dictoryname]('ZDMC','ZDSM') values('JZXWZZD', '界址线位置字典表');
+insert into [vg_dictoryname]('ZDMC','ZDSM') values('JBLXZD', '界标类型字典表');
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('JZDLXZD', '界址点类型字典表');
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('SFZD', '是否字典表');
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('MJDWZD', '面积单位字典表');
@@ -50,7 +50,6 @@ insert into [vg_dictoryname]('ZDMC','ZDSM') values('TDDJZD', '土地等级字典
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('YHFSZD', '用海方式字典表');
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('QYZD', '起源字典表');
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('WJMHDYTZD', '无居民海岛用途字典表');
-
 insert into [vg_dictionary]('ZDMC','ZDZ','ZDSM','SFQS','PX') values('ZDZHTZMZD', 'A', '集体土地所有权宗地', 0, 0);
 insert into [vg_dictionary]('ZDMC','ZDZ','ZDSM','SFQS','PX') values('ZDZHTZMZD', 'B', '建设用地使用权宗地（地表）', 0, 0);
 insert into [vg_dictionary]('ZDMC','ZDZ','ZDSM','SFQS','PX') values('ZDZHTZMZD', 'S', '建设用地使用权宗地（地上）', 0, 0);

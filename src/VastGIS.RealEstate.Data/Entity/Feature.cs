@@ -77,6 +77,8 @@ namespace VastGIS.RealEstate.Data.Entity
 
         public string TableName { get; set; }
 
+        public string TableChineseName { get; set; }
+
         public string SimpleLabelString
         {
             get { return string.Format("{0} {1} ({2})", TableName, _id, _ysdm); }
@@ -84,7 +86,7 @@ namespace VastGIS.RealEstate.Data.Entity
 
         public string FullLabelString
         {
-            get { return string.Format("{0} {1} ({2})", TableName, _id, _ysdm); }
+            get { return string.Format("{0} {1} ({2})", TableChineseName, _id, _ysdm); }
         }
 
         public override bool Equals(object obj)

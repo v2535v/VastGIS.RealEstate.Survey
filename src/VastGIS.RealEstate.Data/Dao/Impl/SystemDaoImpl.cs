@@ -52,7 +52,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         protected const string VG_CLASSGROUP =
                 "CREATE TABLE [vg_classdetail] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[GroupName] NCHAR(100), [TableName] NCHAR(100), [CreateImpl] Boolean DEFAULT 0,[InterfaceName] CHAR(30) DEFAULT \"\");"
             ;
-        
+
         protected const string VG_CLASSDETAIL =
                 "CREATE TABLE [vg_classgroup] ([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[GroupName] NCHAR(100), [CreateImpl] Boolean Default 0);"
             ;
@@ -68,7 +68,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             using (SQLiteTransaction trans = connection.BeginTransaction())
             {
-               // int srid = GetSRID();
+                // int srid = GetSRID();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText = VG_OBJECTCLASSES;
@@ -189,7 +189,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     cmd.ExecuteNonQuery();
 
                 }
-                
+
             }
             return true;
         }
@@ -199,19 +199,19 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             List<VgObjectclasses> objectclasseses = connection
                 .Query<VgObjectclasses>("select * from vg_objectclasses").ToList();
             if (isDeep == false) return objectclasseses;
-            
-                List<VgObjectclasses> list = objectclasseses.FindAll(c => c.Fbmc == null || c.Fbmc=="").OrderBy(c=>c.Xssx).ToList();
-                List<VgObjectclasses> newList = new List<VgObjectclasses>(list);
-                foreach (VgObjectclasses objectClass in newList)
+
+            List<VgObjectclasses> list = objectclasseses.FindAll(c => c.Fbmc == null || c.Fbmc == "").OrderBy(c => c.Xssx).ToList();
+            List<VgObjectclasses> newList = new List<VgObjectclasses>(list);
+            foreach (VgObjectclasses objectClass in newList)
+            {
+                List<VgObjectclasses> children = FindChildClasses(objectclasseses, objectClass.Mc);
+                if (children != null && children.Count > 0)
                 {
-                    List<VgObjectclasses> children = FindChildClasses(objectclasseses, objectClass.Mc);
-                    if (children != null && children.Count > 0)
-                    {
-                        objectClass.SubClasses = children;
-                    }
+                    objectClass.SubClasses = children;
                 }
-                return newList;
-           
+            }
+            return newList;
+
         }
 
         public void CreateEmptyDatabase(string dbName)
@@ -269,10 +269,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             {
                 using (SQLiteCommand cmd = new SQLiteCommand(connection))
                 {
-                 
-                        cmd.CommandText = Properties.Resources.Casscodes;
-                        cmd.ExecuteNonQuery();
-                   
+
+                    cmd.CommandText = Properties.Resources.Casscodes;
+                    cmd.ExecuteNonQuery();
+
 
                 }
                 trans.Commit();
@@ -281,7 +281,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             {
                 using (SQLiteCommand cmd = new SQLiteCommand(connection))
                 {
-                    
+
                     cmd.CommandText = Properties.Resources.Areacodes;
                     cmd.ExecuteNonQuery();
 
@@ -305,7 +305,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     cmd.CommandText = GetRegisterGroupSql("System");
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = GetRegisterClassSql("System","vg_objectclasses");
+                    cmd.CommandText = GetRegisterClassSql("System", "vg_objectclasses");
                     cmd.ExecuteNonQuery();
                     cmd.CommandText = GetRegisterClassSql("System", "vg_settings");
                     cmd.ExecuteNonQuery();
@@ -333,14 +333,14 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
         private List<VgObjectclasses> FindChildClasses(List<VgObjectclasses> objectClasses, string key)
         {
-            List<VgObjectclasses> list = objectClasses.FindAll(c => c.Fbmc == key).OrderBy(c=>c.Xssx).ToList();
+            List<VgObjectclasses> list = objectClasses.FindAll(c => c.Fbmc == key).OrderBy(c => c.Xssx).ToList();
             List<VgObjectclasses> tmpList = new List<VgObjectclasses>(list);
             foreach (VgObjectclasses objectClass in tmpList)
             {
                 List<VgObjectclasses> tmpChildren = FindChildClasses(objectClasses, objectClass.Mc);
                 if (tmpChildren != null && tmpChildren.Count > 0)
                 {
-                    objectClass.SubClasses= tmpChildren;
+                    objectClass.SubClasses = tmpChildren;
                 }
             }
             return list;
@@ -351,7 +351,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             connection.Close();
         }
-       
+
         public int GetGeometryColumnSRID(string tableName, string columnName)
         {
             using (SQLiteCommand command = new SQLiteCommand(DbConnection.GetConnection()))
@@ -458,10 +458,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
         public List<SearchFeature> FindRecords(string[] layers, double dx, double dy)
         {
-           
+
             try
             {
-                List<SearchFeature> features=new List<SearchFeature>();
+                List<SearchFeature> features = new List<SearchFeature>();
                 for (int i = 0; i < layers.Length; i++)
                 {
                     string sql =
@@ -471,7 +471,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     var findfeatures = connection.Query<SearchFeature>(sql).ToList();
                     if (findfeatures != null && findfeatures.Count() > 0)
                     {
-                         features.AddRange(findfeatures);
+                        features.AddRange(findfeatures);
                     }
 
                 }
@@ -500,7 +500,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     List<string> targetColumns = GetAllColumns(targetTable);
                     Dictionary<string, string> mappingColumns = SQLiteHelper.AutoMappingColumn(sourceColumns, targetColumns);
                     StringBuilder builder = new StringBuilder();
-                    if(targetColumns.Contains("wx_wydm"))
+                    if (targetColumns.Contains("wx_wydm"))
                         builder.Append("insert into " + targetTable + "(wx_wydm, geometry");
                     else
                         builder.Append("insert into " + targetTable + "(geometry");
@@ -510,7 +510,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         builder.Append("," + mappingColumn.Value);
                     }
                     if (targetColumns.Contains("wx_wydm"))
-                        builder.Append(") SELECT '"+ Guid.NewGuid().ToString()+"', geometry");
+                        builder.Append(") SELECT '" + Guid.NewGuid().ToString() + "', geometry");
                     else
                         builder.Append(") SELECT geometry");
                     foreach (var mappingColumn in mappingColumns)
@@ -518,11 +518,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         if (mappingColumn.Value.ToLower().Equals("geometry")) continue;
                         builder.Append("," + mappingColumn.Value);
                     }
-                    
+
                     builder.Append(" from " + sourceTable + " where Id=" + id.ToString());
                     command.CommandText = builder.ToString();
                     command.ExecuteNonQuery();
-                    OnEntityChanged(targetTable,GetLayerNameFromTable(targetTable),EntityOperationType.Save, null);
+                    OnEntityChanged(targetTable, GetLayerNameFromTable(targetTable), EntityOperationType.Save, null);
                     if (isDelete)
                     {
                         //command.CommandText = "delete from " + sourceTable + " where Id=" + id.ToString();
@@ -541,7 +541,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
         }
 
-       
+
 
 
         private bool IsNumberic(string oText)
@@ -558,7 +558,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         }
 
 
-        
+
         public bool SaveVgSettings2(VgSettings setting)
         {
             VgSettings oldSetting = this.GetVgSettings(setting.Csmc);
@@ -576,13 +576,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
         public bool SaveVgSettings2(string csmc, string csz)
         {
-            VgSettings settings=new VgSettings() {Csmc = csmc,Csz=csz};
+            VgSettings settings = new VgSettings() { Csmc = csmc, Csz = csz };
             return SaveVgSettings2(settings);
         }
 
         public VgSettings GetVgSettings(string csmc)
         {
-            string sql = "select Id,CSMC,CSZ from vg_settings" + " where Csmc='" + csmc+"'";
+            string sql = "select Id,CSMC,CSZ from vg_settings" + " where Csmc='" + csmc + "'";
             IEnumerable<VgSettings> vgSettings = connection.Query<VgSettings>(sql);
             if (vgSettings != null && vgSettings.Count() > 0)
             {
@@ -593,9 +593,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
         public void InitSettings()
         {
-            VgSettings settings = new VgSettings() { Csmc =SettingKeyHelper.SpatialReferenceID, Csz = "4539" };
+            VgSettings settings = new VgSettings() { Csmc = SettingKeyHelper.SpatialReferenceID, Csz = "4539" };
             SaveVgSettings2(settings);
-          
+
             settings = new VgSettings() { Csmc = SettingKeyHelper.XingZhengQuHuaDaiMa, Csz = "320200" };
             SaveVgSettings2(settings);
 
@@ -624,7 +624,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         }
 
 
-        public  IEnumerable<VgAreacodes> GetAreaCodesByJB(string parentCode, int jb = 1)
+        public IEnumerable<VgAreacodes> GetAreaCodesByJB(string parentCode, int jb = 1)
         {
             string sql = "";
             if (jb <= 1)
@@ -668,7 +668,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 {
                     string sql =
                         SpatialHelper.SearchSQLBuilder(classes[i].Mc, (GeometryType)classes[i].Txlx, dx, dy, 2);
-                       
+
                     var findfeatures = connection.Query<SearchFeature>(sql).ToList();
                     if (findfeatures != null && findfeatures.Count() > 0)
                     {
@@ -703,33 +703,33 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 {
                     command.CommandText = string.Format("select databaseId from {0} where id={1}", sourceTable, id);
                     object dbRet = command.ExecuteScalar();
-                    
-                        
-                        if (dbRet == null)
+
+
+                    if (dbRet == null)
+                    {
+                        sql = string.Format("delete from {0} where id={1} ", sourceTable, id);
+                    }
+                    else
+                    {
+                        long olddbId = Convert.ToInt64(dbRet);
+                        if (olddbId == 0)
                         {
                             sql = string.Format("delete from {0} where id={1} ", sourceTable, id);
                         }
                         else
                         {
-                            long olddbId = Convert.ToInt64(dbRet);
-                            if (olddbId == 0)
+                            if (!hasBackFields)
                             {
-                                sql = string.Format("delete from {0} where id={1} ", sourceTable, id);
+                                sql = string.Format("update {0} set Flags=3 where id={1} ", sourceTable, id);
                             }
                             else
                             {
-                                if (!hasBackFields)
-                                {
-                                    sql = string.Format("update {0} set Flags=3 where id={1} ", sourceTable, id);
-                                }
-                                else
-                                {
-                                sql = string.Format("update {0} set Flags=3,WX_dcsj='{2}' where id={1} ", sourceTable, id,DateTime.Now.ToString());
-                            }
+                                sql = string.Format("update {0} set Flags=3,WX_dcsj='{2}' where id={1} ", sourceTable, id, DateTime.Now.ToString());
                             }
                         }
-                    
-                    
+                    }
+
+
                 }
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
@@ -771,14 +771,40 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 command.CommandText = builder.ToString();
                 if (sourceColumns.Contains("wx_wydm"))
                     command.Parameters.AddWithValue("@wx_wydm", Guid.NewGuid());
-                command.Parameters.AddWithValue("@wkt",feature.Wkt);
+                command.Parameters.AddWithValue("@wkt", feature.Wkt);
                 command.Parameters.AddWithValue("@ysdm", feature.Ysdm);
                 command.Parameters.AddWithValue("@SRID", GetSRID());
                 long rowid = Convert.ToInt64(command.ExecuteScalar());
                 feature.ID = rowid;
-                OnEntityChanged(feature.TableName, GetLayerNameFromTable(feature.TableName), EntityOperationType.Delete, new List<long>() {rowid});
+                OnEntityChanged(feature.TableName, GetLayerNameFromTable(feature.TableName), EntityOperationType.Delete, new List<long>() { rowid });
                 return rowid;
             }
+        }
+
+        public List<SearchFeature> FindRecords(VgObjectclasses objectclass, int[] ids)
+        {
+            try
+            {
+                List<SearchFeature> features = new List<SearchFeature>();
+
+                string sql =
+                    SpatialHelper.SearchSQLBuilder(objectclass.Mc, ids);
+
+                var findfeatures = connection.Query<SearchFeature>(sql).ToList();
+                if (findfeatures != null && findfeatures.Count() > 0)
+                {
+                    features.AddRange(findfeatures);
+                }
+
+
+                return features;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning(ex.Message);
+                return null;
+            }
+            return null;
         }
     }
 }

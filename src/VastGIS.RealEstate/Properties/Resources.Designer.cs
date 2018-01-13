@@ -73,6 +73,16 @@ namespace VastGIS.Plugins.RealEstate.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clearlist {
+            get {
+                object obj = ResourceManager.GetObject("clearlist", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DatabaseServersFolder32 {
             get {
                 object obj = ResourceManager.GetObject("DatabaseServersFolder32", resourceCulture);
@@ -263,6 +273,66 @@ namespace VastGIS.Plugins.RealEstate.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_select {
+            get {
+                object obj = ResourceManager.GetObject("icon_select", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_select_all_24 {
+            get {
+                object obj = ResourceManager.GetObject("icon_select_all_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_select_by_polygon {
+            get {
+                object obj = ResourceManager.GetObject("icon_select_by_polygon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_select_clear_24 {
+            get {
+                object obj = ResourceManager.GetObject("icon_select_clear_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_select_reserve_24 {
+            get {
+                object obj = ResourceManager.GetObject("icon_select_reserve_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_select_unselect_24 {
+            get {
+                object obj = ResourceManager.GetObject("icon_select_unselect_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_vertex_editor {
             get {
                 object obj = ResourceManager.GetObject("icon_vertex_editor", resourceCulture);
@@ -306,6 +376,36 @@ namespace VastGIS.Plugins.RealEstate.Properties {
         internal static System.Drawing.Bitmap LayerTool32 {
             get {
                 object obj = ResourceManager.GetObject("LayerTool32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap selectall2 {
+            get {
+                object obj = ResourceManager.GetObject("selectall2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap selectclear {
+            get {
+                object obj = ResourceManager.GetObject("selectclear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap selectreserve {
+            get {
+                object obj = ResourceManager.GetObject("selectreserve", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -193,4 +193,34 @@
   <data name="img_shape_editor32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_shape_editor32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="clearlist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clearlist.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_all_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_all_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_by_polygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_by_polygon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_clear_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_clear_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_reserve_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_reserve_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_unselect_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_unselect_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="selectall2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\selectall2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="selectclear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\selectclear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="selectreserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\selectreserve.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

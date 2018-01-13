@@ -484,6 +484,12 @@ namespace VastGIS.Plugins.Concrete
         [DataMember]
         public double RealEstateTolerance { get; set; }
 
+        [DataMember]
+        public Color RealEstateSelectedColor { get; set; }
+
+        [DataMember]
+        public Color RealEstateActivedColor { get; set; }
+
         public void AddRecentProject(string path)
         {
             path = path.ToLower();
@@ -629,6 +635,8 @@ namespace VastGIS.Plugins.Concrete
             ZoomBoxStyle = ZoomBoxStyle.Blue;
             DefaultProjectPath   = @".\Projects";
             RealEstateTolerance = 1.0;
+            RealEstateSelectedColor = Color.IndianRed;
+            RealEstateActivedColor = Color.DodgerBlue;
             Logger.Current.Trace("End AppConfig.SetDefaults()");
         }
 

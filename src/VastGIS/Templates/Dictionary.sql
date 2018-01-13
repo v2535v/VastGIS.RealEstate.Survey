@@ -1,7 +1,7 @@
 ﻿insert into [vg_dictoryname]('ZDMC','ZDSM') values('JXLXZD', '界线类型字典表');
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('JXXZZD', '界线性质字典表');
-insert into [vg_dictoryname]('ZDMC','ZDSM') values('JZXWZZD', '界址线位置');
-insert into [vg_dictoryname]('ZDMC','ZDSM') values('JBLXZD', '界标类型');
+insert into [vg_dictoryname]('ZDMC','ZDSM') values('JZXWZZD', '界址线位置字典表');
+insert into [vg_dictoryname]('ZDMC','ZDSM') values('JBLXZD', '界标类型字典表');
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('JZDLXZD', '界址点类型字典表');
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('SFZD', '是否字典表');
 insert into [vg_dictoryname]('ZDMC','ZDSM') values('MJDWZD', '面积单位字典表');

@@ -34,6 +34,8 @@ namespace VastGIS.RealEstate.Data.Service
         List<SearchFeature> FindRecords(string[] layers, double dx, double dy);
 
         List<SearchFeature> FindRecords(List<VgObjectclasses> classes, double dx, double dy);
+
+        List<SearchFeature> FindRecords(VgObjectclasses classes, int[] ids);
         /// <summary>
         /// 复制要素到另外一个表
         /// </summary>
@@ -67,6 +69,7 @@ namespace VastGIS.RealEstate.Data.Service
         void RecalculateDBExtent(out double xmin, out double ymin, out double xmax, out double ymax);
 
         long SaveSearchFeature(SearchFeature feature);
+       
     }
 }
 

@@ -1,13 +1,20 @@
-﻿namespace VastGIS.Plugins.RealEstate.Attribute
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+using System.Data.SQLite;
+using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Interface;
+namespace VastGIS.Plugins.RealEstate.Attribute
 {
     partial class frmJZD
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,21 +27,16 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
+        #region Component Designer generated code
         private void InitializeComponent()
-        {
+        {        
             this.tabAttribute = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.pageMain = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.pageWXInfo = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.ucWXInfo1 = new VastGIS.Plugins.RealEstate.DataControls.ucWXInfo();
-            this.ucJZD1 = new VastGIS.Plugins.RealEstate.DataControls.ucJZD();
+            this.ucLinkObject = new VastGIS.Plugins.RealEstate.DataControls.ucJZD();
             ((System.ComponentModel.ISupportInitialize)(this.tabAttribute)).BeginInit();
             this.tabAttribute.SuspendLayout();
             this.pageMain.SuspendLayout();
@@ -60,7 +62,7 @@
             // 
             // pageMain
             // 
-            this.pageMain.Controls.Add(this.ucJZD1);
+            this.pageMain.Controls.Add(this.ucLinkObject);
             this.pageMain.Image = null;
             this.pageMain.ImageSize = new System.Drawing.Size(16, 16);
             this.pageMain.Location = new System.Drawing.Point(1, 24);
@@ -115,10 +117,10 @@
             // 
             // ucJZD1
             // 
-            this.ucJZD1.Location = new System.Drawing.Point(0, 0);
-            this.ucJZD1.Name = "ucJZD1";
-            this.ucJZD1.Size = new System.Drawing.Size(260, 380);
-            this.ucJZD1.TabIndex = 0;
+            this.ucLinkObject.Location = new System.Drawing.Point(0, 0);
+            this.ucLinkObject.Name = "ucLinkObject";
+            this.ucLinkObject.Size = new System.Drawing.Size(260, 380);
+            this.ucLinkObject.TabIndex = 0;
             // 
             // frmJZD
             // 
@@ -137,17 +139,16 @@
             this.pageMain.ResumeLayout(false);
             this.pageWXInfo.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
-
         #endregion
-
+        
         private Syncfusion.Windows.Forms.Tools.TabControlAdv tabAttribute;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv pageMain;
-        private Syncfusion.Windows.Forms.Tools.TabPageAdv pageWXInfo;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv pageWXInfo;        
         private DataControls.ucWXInfo ucWXInfo1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
-        private DataControls.ucJZD ucJZD1;
+        private DataControls.ucJZD ucLinkObject;
     }
+
 }

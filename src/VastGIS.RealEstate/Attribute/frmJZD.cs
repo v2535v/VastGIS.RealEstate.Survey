@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.SQLite;
 using System.Windows.Forms;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.RealEstate.Api.Interface;
@@ -14,7 +12,7 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.Attribute
 {
-    public partial class frmJZD : Form,IReAttributeForm
+    public partial class frmJZD:Form,IReAttributeForm
     {
         private string _objectKey;
         private Jzd _linkedObject;
@@ -27,13 +25,16 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             InitializeComponent();
             _objectKey = "JZD";
             _formName = "frmJZD";
+
         }
-
-
         public IAppContext Context
         {
             get { return _context; }
-            set { _context = value; _database = ((IRealEstateContext)_context).RealEstateDatabase; }
+            set
+            {
+                _context = value;
+                _database = ((IRealEstateContext)_context).RealEstateDatabase;
+            }
         }
         public string ObjectKey
         {
@@ -43,9 +44,15 @@ namespace VastGIS.Plugins.RealEstate.Attribute
 
         public IEntity LinkedObject
         {
-            get { return _linkedObject; }
+            get { return _linkedObject as IEntity; }
         }
 
+        public string FormName
+        {
+            get { return _formName; }
+            set { _formName = value; }
+        }
+        
         public void LoadEntity(string tableName, string entityName, long id)
         {
             _linkedObject = _database.ZdService.GetJzd(id);
@@ -54,25 +61,22 @@ namespace VastGIS.Plugins.RealEstate.Attribute
 
         private  void LinkObject()
         {
-            ((INotifyPropertyChanged)_linkedObject).PropertyChanged +=jzd_PropertyChanged;
-            ucJZD1.LinkObject(_linkedObject);
-            ucWXInfo1.LinkObject(_linkedObject);
+            ((INotifyPropertyChanged)_linkedObject).PropertyChanged +=linkedObject_PropertyChanged;
+            ucLinkObject.LinkObject(_database,_linkedObject);
+            ucWXInfo1.LinkObject(_linkedObject as IBackEntity);
         }
 
-        private void jzd_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void linkedObject_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             btnSave.Enabled = true;
         }
 
-        public string FormName
-        {
-            get { return _formName; }
-            set { _formName = value; }
-        }
+        
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             _database.ZdService.SaveJzd(_linkedObject as Jzd);
         }
     }
+
 }

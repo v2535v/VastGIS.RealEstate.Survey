@@ -72,6 +72,11 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             return _systemDao.FindRecords(classes, dx, dy);
         }
 
+        public List<SearchFeature> FindRecords(VgObjectclasses classes, int[] ids)
+        {
+            return _systemDao.FindRecords(classes, ids);
+        }
+
         public bool CopyFeature(
             string sourceTable,
             long id,

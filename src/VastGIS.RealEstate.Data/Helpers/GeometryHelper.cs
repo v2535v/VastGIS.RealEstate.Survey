@@ -85,7 +85,42 @@ namespace VastGIS.RealEstate.Data.Helpers
             }
             return null;
         }
+        public static string CreateRectangleWkt(double centerX, double centerY, double distance)
+        {
+            double xx1 = centerX - distance;
+            double yy1 = centerY - distance;
 
+            double xx2 = centerX - distance;
+            double yy2 = centerY + distance;
+
+            double xx3 = centerX + distance;
+            double yy3 = centerY + distance;
+
+            double xx4 = centerX + distance;
+            double yy4 = centerY - distance;
+            string wkt = string.Format("POLYGON(({0} {1},{2} {3},{4} {5},{6} {7},{0} {1}))", xx1, yy1, xx2, yy2,
+                xx3, yy3, xx4, yy4);
+           
+            return wkt;
+        }
+        public static DbGeometry CreateRectangleString(double centerX, double centerY, double distance)
+        {
+            double xx1 = centerX - distance;
+            double yy1 = centerY - distance;
+
+            double xx2 = centerX - distance;
+            double yy2 = centerY + distance;
+
+            double xx3 = centerX + distance;
+            double yy3 = centerY + distance;
+
+            double xx4 = centerX + distance;
+            double yy4 = centerY - distance;
+            string wkt = string.Format("POLYGON(({0} {1},{2} {3},{4} {5},{6} {7},{0} {1}))", xx1, yy1, xx2, yy2,
+                xx3, yy3, xx4, yy4);
+            DbGeometry geometry = DbGeometry.FromText(wkt);
+            return geometry;
+        }
         public static DbGeometry CreateCircularString(double centerX, double centerY, double distance)
         {
             double xx1 = centerX - distance;
