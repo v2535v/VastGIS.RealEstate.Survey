@@ -1,24 +1,30 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Syncfusion.Windows.Forms.Tools;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
-
-    public partial class ucJZD:UserControl
-    {
+    public partial class ucJzd:UserControl,IEntityControl
+    {	
+        #region 变量
         private Dictionary<string,string> _dictionaryNames;
         private Jzd _jzd;
         private IREDatabase _database;
+        private bool _hasChanged = false;
+        #endregion
         
-        public ucJZD()
+        public ucJzd()
         {
             InitializeComponent();
             _dictionaryNames = new Dictionary<string, string>();
-            _dictionaryNames.Add("JBLX", "JBLXZD");
-            _dictionaryNames.Add("JZDLX", "JZDLXZD");
+            _dictionaryNames.Add("Jblx", "JBLXZD");
+            _dictionaryNames.Add("Jzdlx", "JZDLXZD");
+             intID.Enabled = false;
+            _hasChanged=false;
         }
         
         private void InitDictionaries()
@@ -27,42 +33,83 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             {
                 string dName = onepair.Key;
                 string dValue = onepair.Value;
-                List<VgDictionary> _dicts = _database.DomainService.GetDictionaryByName(dName);
-                ComboBoxAdv combo = this.Controls["cmb" + onepair.Key] as ComboBoxAdv;
+                List<VgDictionary> _dicts = _database.DomainService.GetDictionaryByName(dValue);
+                ComboBoxAdv combo = FindControl(this,"cmb" + onepair.Key) as ComboBoxAdv;
                 combo.DataSource = _dicts;
-                combo.DisplayMember = _dicts[0].Zdsm;
-                combo.ValueMember = _dicts[0].Zdz;
+                combo.DisplayMember ="Zdsm";
+                combo.ValueMember ="Zdz";
             }
         }
-        public void LinkObject(IREDatabase database,Jzd jzd)
+        
+        private Control FindControl(Control control, string controlName)
         {
-            _database = database;
+            Control c1;
+            foreach (Control c in control.Controls)
+            {
+                if (c.Name == controlName)
+                {
+                    return c;
+                }
+                else if (c.Controls.Count > 0)
+                {
+                    c1 = FindControl(c, controlName);
+                    if (c1 != null)
+                    {
+                        return c1;
+                    }
+                }
+            }
+            return null;
+        }
+        
+        public void LinkObject(IREDatabase database,IEntity entity)
+        {
+            _database = database; 
             if(_dictionaryNames != null && _dictionaryNames.Count > 0)
             {
                 InitDictionaries();
             }
+            _jzd=entity as Jzd;
             intID.DataBindings.Clear();
-            intID.DataBindings.Add("IntegerValue",jzd,"ID");
-            txtZDZHDM.DataBindings.Clear();
-            txtZDZHDM.DataBindings.Add("Text",jzd,"Zdzhdm");
-            txtYSDM.DataBindings.Clear();
-            txtYSDM.DataBindings.Add("Text",jzd,"Ysdm");
-            txtJZDH.DataBindings.Clear();
-            txtJZDH.DataBindings.Add("Text",jzd,"Jzdh");
-            txtJZDGZBH.DataBindings.Clear();
-            txtJZDGZBH.DataBindings.Add("Text",jzd,"Jzdgzbh");
-            intSXH.DataBindings.Clear();
-            intSXH.DataBindings.Add("IntegerValue",jzd,"Sxh");
-            cmbJBLX.DataBindings.Clear();
-            cmbJBLX.DataBindings.Add("SelectedValue",jzd,"Jblx");
-            cmbJZDLX.DataBindings.Clear();
-            cmbJZDLX.DataBindings.Add("SelectedValue",jzd,"Jzdlx");
-            dblXZBZ.DataBindings.Clear();
-            dblXZBZ.DataBindings.Add("DoubleValue",jzd,"Xzbz");
-            dblYZBZ.DataBindings.Clear();
-            dblYZBZ.DataBindings.Add("DoubleValue",jzd,"Yzbz");
+            intID.DataBindings.Add("IntegerValue",_jzd,"ID",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtZdzhdm.DataBindings.Clear();
+            txtZdzhdm.DataBindings.Add("Text",_jzd,"Zdzhdm",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtYsdm.DataBindings.Clear();
+            txtYsdm.DataBindings.Add("Text",_jzd,"Ysdm",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtJzdh.DataBindings.Clear();
+            txtJzdh.DataBindings.Add("Text",_jzd,"Jzdh",true,DataSourceUpdateMode.OnPropertyChanged);
+            intSxh.DataBindings.Clear();
+            intSxh.DataBindings.Add("IntegerValue",_jzd,"Sxh",true,DataSourceUpdateMode.OnPropertyChanged);
+            cmbJblx.DataBindings.Clear();
+            cmbJblx.DataBindings.Add("SelectedValue",_jzd,"Jblx",true,DataSourceUpdateMode.OnPropertyChanged);
+            cmbJzdlx.DataBindings.Clear();
+            cmbJzdlx.DataBindings.Add("SelectedValue",_jzd,"Jzdlx",true,DataSourceUpdateMode.OnPropertyChanged);
+            dblXzbz.DataBindings.Clear();
+            dblXzbz.DataBindings.Add("DoubleValue",_jzd,"Xzbz",true,DataSourceUpdateMode.OnPropertyChanged);
+            dblYzbz.DataBindings.Clear();
+            dblYzbz.DataBindings.Add("DoubleValue",_jzd,"Yzbz",true,DataSourceUpdateMode.OnPropertyChanged);
+            
+            ((INotifyPropertyChanged)_jzd).PropertyChanged += Entity_PropertyChanged;
+            _hasChanged=false;
+        }
+
+        private void Entity_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            _hasChanged=true;
         }
         
+        #region IEntityControl接口
+        public bool HasChanged{get{return _hasChanged;}}
+        public bool Save()
+        {
+            return _database.SystemService.Save((IEntity)_jzd);
+        }
+        public void Delete()
+        {
+            _database.SystemService.Delete((IEntity)_jzd);
+        }        
+        #endregion
+        
+        
     }
-
 }

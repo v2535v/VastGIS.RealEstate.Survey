@@ -16,7 +16,11 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         {
             return _zdDao.InitTables();
         }
-        
+
+        public long GetMaxID(string tableName)
+        {
+            return _zdDao.GetMaxID(tableName);
+        }
     }
 }
 

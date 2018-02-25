@@ -4,30 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VastGIS.RealEstate.Data.Enums;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Events
 {
     public class EntityChanedEventArgs
     {
-        private List<long> _ids;
+        private List<IEntity> _entities;
         public EntityChanedEventArgs()
         {
-            _ids=new List<long>();
+            _entities = new List<IEntity>();
         }
-
-        public EntityChanedEventArgs(string tableName,string layerName, EntityOperationType operationType,List<long> ids)
+        public EntityChanedEventArgs(EntityOperationType operationType, IEntity entity)
         {
-            _ids = new List<long>();
-            TableName = tableName;
-            LayerName = layerName;
+            _entities = new List<IEntity>();
             OperationType = operationType;
-            if(ids!=null && ids.Count>0)
-            _ids.AddRange(ids);
+            _entities.Add(entity);
         }
-        public string TableName { get; set; }
-        public string LayerName { get; set; }
-        public EntityOperationType OperationType { get; set; }
-        public List<long> Ids { get; set; }
+        public EntityChanedEventArgs(EntityOperationType operationType,List<IEntity> entities)
+        {
+            _entities = new List<IEntity>();
+            OperationType = operationType;
+            _entities.AddRange(entities);
+        }
+       public EntityOperationType OperationType { get; set; }
+        public List<IEntity> Entities { get { return _entities; } set { _entities = value; } }
+       
     }
 
     public delegate void EntityChangedEventHandler(object sender, EntityChanedEventArgs e);

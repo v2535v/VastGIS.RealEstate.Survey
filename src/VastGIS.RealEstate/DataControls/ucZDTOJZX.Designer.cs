@@ -6,10 +6,11 @@ using System.Data.SQLite;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Interface;
 
+
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
-    partial class ucZDTOJZX
-    {
+    partial class ucZdtojzx
+    {	
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -27,151 +28,183 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             }
             base.Dispose(disposing);
         }
-
+        
         #region Component Designer generated code
         private void InitializeComponent()
-        {
-            this.intID = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+        {            
             this.lblID = new System.Windows.Forms.Label();
-            this.txtZD_WYDM = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblZD_WYDM = new System.Windows.Forms.Label();
-            this.txtJZX_WYDM = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblJZX_WYDM = new System.Windows.Forms.Label();
-            this.txtSXH = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblSXH = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtZD_WYDM)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtJZX_WYDM)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtSXH)).BeginInit();           
+            this.intID = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.lblZdWydm = new System.Windows.Forms.Label();
+            this.txtZdWydm = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblJzxWydm = new System.Windows.Forms.Label();
+            this.txtJzxWydm = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblSxh = new System.Windows.Forms.Label();
+            this.intSxh = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();            
+            ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZdWydm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtJzxWydm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intSxh)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // intID
-            // 
-            this.intID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.intID.EnableTouchMode = true;
-            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.intID.Location = new System.Drawing.Point(100, 20);
-            this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.intID.Name = "intID";           
-            this.intID.Size = new System.Drawing.Size(152, 21);
-            this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.intID.TabIndex = 1;
-            this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.intID.Text = "1.00";           
-            this.intID.NullString = "";
+            
             // 
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(10, 24);
+            this.lblID.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblID.Location = new System.Drawing.Point(0,0);
+            this.lblID.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(65, 12);
-            this.lblID.TabIndex = 2;
-            this.lblID.Text = "ID";
+            this.lblID.Size = new System.Drawing.Size(41, 20);
+            this.lblID.TabIndex = 1;
+            this.lblID.Text = "标识码";
             // 
-            // txtZD_WYDM
+            // intID
             // 
-            this.txtZD_WYDM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtZD_WYDM.EnableTouchMode = true;
-            this.txtZD_WYDM.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtZD_WYDM.Location = new System.Drawing.Point(100, 55);
-            this.txtZD_WYDM.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtZD_WYDM.Name = "txtZD_WYDM";           
-            this.txtZD_WYDM.Size = new System.Drawing.Size(152, 21);
-            this.txtZD_WYDM.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtZD_WYDM.TabIndex = 3;
-            this.txtZD_WYDM.Text = "";   
+            this.intID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intID.EnableTouchMode = true;
+            this.intID.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intID.IntegerValue = ((long)(0));
+            this.intID.Location = new System.Drawing.Point(0,0);
+            this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.intID.Name = "intID";
+            this.intID.NullString = "";
+            this.intID.Size = new System.Drawing.Size(152, 28);
+            this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.intID.TabIndex = 2;
+            this.intID.Text = "0";
             // 
-            // lblZD_WYDM
+            // lblID
             // 
-            this.lblZD_WYDM.AutoSize = true;
-            this.lblZD_WYDM.Location = new System.Drawing.Point(10, 59);
-            this.lblZD_WYDM.Name = "lblZD_WYDM";
-            this.lblZD_WYDM.Size = new System.Drawing.Size(65, 12);
-            this.lblZD_WYDM.TabIndex = 4;
-            this.lblZD_WYDM.Text = "ZD_WYDM";
+            this.lblZdWydm.AutoSize = true;
+            this.lblZdWydm.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblZdWydm.Location = new System.Drawing.Point(0,0);
+            this.lblZdWydm.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblZdWydm.Name = "lblZdWydm";
+            this.lblZdWydm.Size = new System.Drawing.Size(41, 20);
+            this.lblZdWydm.TabIndex = 3;
+            this.lblZdWydm.Text = "宗地唯一代码";
             // 
-            // txtJZX_WYDM
+            // txtZdWydm
             // 
-            this.txtJZX_WYDM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtJZX_WYDM.EnableTouchMode = true;
-            this.txtJZX_WYDM.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtJZX_WYDM.Location = new System.Drawing.Point(100, 90);
-            this.txtJZX_WYDM.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtJZX_WYDM.Name = "txtJZX_WYDM";           
-            this.txtJZX_WYDM.Size = new System.Drawing.Size(152, 21);
-            this.txtJZX_WYDM.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtJZX_WYDM.TabIndex = 5;
-            this.txtJZX_WYDM.Text = "";   
+            this.txtZdWydm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtZdWydm.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZdWydm.EnableTouchMode = true;
+            this.txtZdWydm.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtZdWydm.Location =  new System.Drawing.Point(0,0);
+            this.txtZdWydm.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtZdWydm.Name = "txtZdWydm";
+            this.txtZdWydm.Size = new System.Drawing.Size(152, 28);
+            this.txtZdWydm.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtZdWydm.TabIndex = 4;
             // 
-            // lblJZX_WYDM
+            // lblID
             // 
-            this.lblJZX_WYDM.AutoSize = true;
-            this.lblJZX_WYDM.Location = new System.Drawing.Point(10, 94);
-            this.lblJZX_WYDM.Name = "lblJZX_WYDM";
-            this.lblJZX_WYDM.Size = new System.Drawing.Size(65, 12);
-            this.lblJZX_WYDM.TabIndex = 6;
-            this.lblJZX_WYDM.Text = "JZX_WYDM";
+            this.lblJzxWydm.AutoSize = true;
+            this.lblJzxWydm.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblJzxWydm.Location = new System.Drawing.Point(0,0);
+            this.lblJzxWydm.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblJzxWydm.Name = "lblJzxWydm";
+            this.lblJzxWydm.Size = new System.Drawing.Size(41, 20);
+            this.lblJzxWydm.TabIndex = 5;
+            this.lblJzxWydm.Text = "界址线唯一代码";
             // 
-            // txtSXH
+            // txtJzxWydm
             // 
-            this.txtSXH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtSXH.EnableTouchMode = true;
-            this.txtSXH.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtSXH.Location = new System.Drawing.Point(100, 125);
-            this.txtSXH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtSXH.Name = "txtSXH";           
-            this.txtSXH.Size = new System.Drawing.Size(152, 21);
-            this.txtSXH.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtSXH.TabIndex = 7;
-            this.txtSXH.Text = "";   
+            this.txtJzxWydm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtJzxWydm.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtJzxWydm.EnableTouchMode = true;
+            this.txtJzxWydm.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtJzxWydm.Location =  new System.Drawing.Point(0,0);
+            this.txtJzxWydm.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtJzxWydm.Name = "txtJzxWydm";
+            this.txtJzxWydm.Size = new System.Drawing.Size(152, 28);
+            this.txtJzxWydm.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtJzxWydm.TabIndex = 6;
             // 
-            // lblSXH
+            // lblID
             // 
-            this.lblSXH.AutoSize = true;
-            this.lblSXH.Location = new System.Drawing.Point(10, 129);
-            this.lblSXH.Name = "lblSXH";
-            this.lblSXH.Size = new System.Drawing.Size(65, 12);
-            this.lblSXH.TabIndex = 8;
-            this.lblSXH.Text = "SXH";
-            
+            this.lblSxh.AutoSize = true;
+            this.lblSxh.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblSxh.Location = new System.Drawing.Point(0,0);
+            this.lblSxh.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblSxh.Name = "lblSxh";
+            this.lblSxh.Size = new System.Drawing.Size(41, 20);
+            this.lblSxh.TabIndex = 7;
+            this.lblSxh.Text = "顺序号";
             // 
-            // ucZDTOJZX
+            // intSxh
+            // 
+            this.intSxh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.intSxh.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.intSxh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intSxh.EnableTouchMode = true;
+            this.intSxh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intSxh.IntegerValue = ((long)(0));
+            this.intSxh.Location = new System.Drawing.Point(0,0);
+            this.intSxh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.intSxh.Name = "intSxh";
+            this.intSxh.NullString = "";
+            this.intSxh.Size = new System.Drawing.Size(152, 28);
+            this.intSxh.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.intSxh.TabIndex = 8;
+            this.intSxh.Text = "0";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.intID, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblZdWydm, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtZdWydm, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblJzxWydm, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtJzxWydm, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblSxh, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.intSxh, 1, 3);
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);            
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";            
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(317, 364);
+            this.tableLayoutPanel1.TabIndex = 9; 
+            //
+            // ucZdtojzx
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.intID);                
-            this.Controls.Add(this.lblID);            
-            this.Controls.Add(this.txtZD_WYDM);                
-            this.Controls.Add(this.lblZD_WYDM);            
-            this.Controls.Add(this.txtJZX_WYDM);                
-            this.Controls.Add(this.lblJZX_WYDM);            
-            this.Controls.Add(this.txtSXH);                
-            this.Controls.Add(this.lblSXH);            
-            this.Name = "ucZDTOJZX";
-            this.Size = new System.Drawing.Size(260, 170);
-            
-            ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtZD_WYDM)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtJZX_WYDM)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtSXH)).EndInit();           
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Name = "ucZdtojzx";
+            this.Size = new System.Drawing.Size(250, 156);            
+            ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZdWydm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtJzxWydm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intSxh)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
         #endregion
         
-        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intID; 
-        private System.Windows.Forms.Label lblID; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtZD_WYDM; 
-        private System.Windows.Forms.Label lblZD_WYDM; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtJZX_WYDM; 
-        private System.Windows.Forms.Label lblJZX_WYDM; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSXH; 
-        private System.Windows.Forms.Label lblSXH; 
+        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intID;	
+        private System.Windows.Forms.Label lblID;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtZdWydm;	
+        private System.Windows.Forms.Label lblZdWydm;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtJzxWydm;	
+        private System.Windows.Forms.Label lblJzxWydm;
+        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intSxh;	
+        private System.Windows.Forms.Label lblSxh;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        
     }
-
 }

@@ -6,7 +6,7 @@ namespace VastGIS.RealEstate.Data.Interface
 {
     public interface IBasemapPolyline
     {
-        long ID { get; set; }
+      
 
         string Tc { get; set; }
 
@@ -20,24 +20,10 @@ namespace VastGIS.RealEstate.Data.Interface
 
         string Fsxx2 { get; set; }
 
-        string Ysdm { get; set; }
 
-        long? DatabaseID { get; set; }
 
-        short? Flags { get; set; }
+     
 
-        IGeometry Geometry { get; set; }
-
-        GeometryType GeometryType { get; set; }
-
-        string Wkt { get; set; }
-
-        bool Create(SQLiteConnection connection,int srid);
-
-        bool Update(SQLiteConnection connection,int srid);
-
-        bool Save(SQLiteConnection connection,int srid);
-
-        bool Delete(SQLiteConnection connection);
+  
     }
 }

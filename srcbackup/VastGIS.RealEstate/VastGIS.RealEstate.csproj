@@ -1,0 +1,1256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props" Condition="Exists('..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A5D79F1-FBAF-4C8D-9CBB-FFF27C06E300}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VastGIS.Plugins.RealEstate</RootNamespace>
+    <AssemblyName>VastGIS.RealEstate</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\VastGIS\bin\x86\Debug\Plugins\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Camera_NET">
+      <HintPath>..\Libraries\Camera_NET.dll</HintPath>
+    </Reference>
+    <Reference Include="DirectShowLib-2010">
+      <HintPath>..\Libraries\DirectShowLib-2010.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="GeoAPI, Version=1.7.4.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <HintPath>..\packages\GeoAPI.1.7.4\lib\net45\GeoAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="netDxf, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\netDXF.2.0.2\lib\net45\netDxf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetTopologySuite, Version=1.14.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetTopologySuite.1.14\lib\net45\NetTopologySuite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net40\OpenCvSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.Blob">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net40\OpenCvSharp.Blob.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net40\OpenCvSharp.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.UserInterface">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net40\OpenCvSharp.UserInterface.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PowerCollections, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2573bf8a1bdddcd5, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetTopologySuite.1.14\lib\net45\PowerCollections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.GridConverter.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.GridHelperClasses.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.106.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attribute\frmDJQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmDJQ.Designer.cs">
+      <DependentUpon>frmDJQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmBasemapPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmBasemapPoint.Designer.cs">
+      <DependentUpon>frmBasemapPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmBasemapPolygon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmBasemapPolygon.Designer.cs">
+      <DependentUpon>frmBasemapPolygon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmBasemapPolyline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmBasemapPolyline.Designer.cs">
+      <DependentUpon>frmBasemapPolyline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmBasemapText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmBasemapText.Designer.cs">
+      <DependentUpon>frmBasemapText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmJZD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmJZD.Designer.cs">
+      <DependentUpon>frmJZD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmDJZQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmDJZQ.Designer.cs">
+      <DependentUpon>frmDJZQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmJZDZJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmJZDZJ.Designer.cs">
+      <DependentUpon>frmJZDZJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmJZX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmJZX.Designer.cs">
+      <DependentUpon>frmJZX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmJZXZJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmJZXZJ.Designer.cs">
+      <DependentUpon>frmJZXZJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmTMPCADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmTMPCADD.Designer.cs">
+      <DependentUpon>frmTMPCADD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmTMPCADM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmTMPCADM.Designer.cs">
+      <DependentUpon>frmTMPCADM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmTMPCADX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmTMPCADX.Designer.cs">
+      <DependentUpon>frmTMPCADX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmTMPCADXDATA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmTMPCADXDATA.Designer.cs">
+      <DependentUpon>frmTMPCADXDATA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmTMPCADZJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmTMPCADZJ.Designer.cs">
+      <DependentUpon>frmTMPCADZJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGAREACODE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGAREACODE.Designer.cs">
+      <DependentUpon>frmVGAREACODE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGATTACHMENT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGATTACHMENT.Designer.cs">
+      <DependentUpon>frmVGATTACHMENT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGCADCODE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGCADCODE.Designer.cs">
+      <DependentUpon>frmVGCADCODE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGCLASSDETAIL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGCLASSDETAIL.Designer.cs">
+      <DependentUpon>frmVGCLASSDETAIL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGCLASSGROUP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGCLASSGROUP.Designer.cs">
+      <DependentUpon>frmVGCLASSGROUP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGDICTIONARY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGDICTIONARY.Designer.cs">
+      <DependentUpon>frmVGDICTIONARY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGDICTORYNAME.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGDICTORYNAME.Designer.cs">
+      <DependentUpon>frmVGDICTORYNAME.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGFIELDINFO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGFIELDINFO.Designer.cs">
+      <DependentUpon>frmVGFIELDINFO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGLAYERGROUP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGLAYERGROUP.Designer.cs">
+      <DependentUpon>frmVGLAYERGROUP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGLAYERGROUPDETAIL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGLAYERGROUPDETAIL.Designer.cs">
+      <DependentUpon>frmVGLAYERGROUPDETAIL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGOBJECTCLASS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGOBJECTCLASS.Designer.cs">
+      <DependentUpon>frmVGOBJECTCLASS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGOBJECTYSDM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGOBJECTYSDM.Designer.cs">
+      <DependentUpon>frmVGOBJECTYSDM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmVGSETTING.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmVGSETTING.Designer.cs">
+      <DependentUpon>frmVGSETTING.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmXZQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmXZQ.Designer.cs">
+      <DependentUpon>frmXZQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmXZQJX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmXZQJX.Designer.cs">
+      <DependentUpon>frmXZQJX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmZDBHQK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmZDBHQK.Designer.cs">
+      <DependentUpon>frmZDBHQK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmZDJBXX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmZDJBXX.Designer.cs">
+      <DependentUpon>frmZDJBXX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmZDJBXXZJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmZDJBXXZJ.Designer.cs">
+      <DependentUpon>frmZDJBXXZJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmZDTOJZD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmZDTOJZD.Designer.cs">
+      <DependentUpon>frmZDTOJZD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\frmZDTOJZX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmZDTOJZX.Designer.cs">
+      <DependentUpon>frmZDTOJZX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CmdAssignCADText.cs" />
+    <Compile Include="Commands\CmdCreateREProject.cs" />
+    <Compile Include="Commands\CmdLayerManagement.cs" />
+    <Compile Include="Commands\CmdResetLayers.cs" />
+    <Compile Include="Commands\CmdSplitCAD.cs" />
+    <Compile Include="Commands\CmdImportDXF.cs" />
+    <Compile Include="Commands\CmdNewJZD.cs" />
+    <Compile Include="Commands\CmdTestOgrChinese.cs" />
+    <Compile Include="Commands\ToolCopyFeature.cs" />
+    <Compile Include="Commands\ToolCreateJZDByPolygon.cs" />
+    <Compile Include="Commands\ToolDeleteFeature.cs" />
+    <Compile Include="Commands\ToolDistanceToDistanceConstructor.cs" />
+    <Compile Include="Commands\ToolEditFeature.cs" />
+    <Compile Include="Commands\ToolMoveFeature.cs" />
+    <Compile Include="Commands\ToolNewFeature.cs" />
+    <Compile Include="Commands\ToolSelectFeatureByPoint.cs" />
+    <Compile Include="Commands\TooUnionFeature.cs" />
+    <Compile Include="Commands\TooWYGZFeature.cs" />
+    <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Config\VGLayer.cs" />
+    <Compile Include="Config\VGLayerConfig.cs" />
+    <Compile Include="DataControls\SnapCheckbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataControls\SnapCheckbox.Designer.cs">
+      <DependentUpon>SnapCheckbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucCoordinateList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucCoordinateList.Designer.cs">
+      <DependentUpon>ucCoordinateList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucEdgeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucEdgeList.Designer.cs">
+      <DependentUpon>ucEdgeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucAttachmentList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucAttachmentList.Designer.cs">
+      <DependentUpon>ucAttachmentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGAREACODE.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGAREACODE.Designer.cs">
+      <DependentUpon>ucVGAREACODE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGATTACHMENT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGATTACHMENT.Designer.cs">
+      <DependentUpon>ucVGATTACHMENT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGCADCODE.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGCADCODE.Designer.cs">
+      <DependentUpon>ucVGCADCODE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGOBJECTCLASS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGOBJECTCLASS.Designer.cs">
+      <DependentUpon>ucVGOBJECTCLASS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGSETTING.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGSETTING.Designer.cs">
+      <DependentUpon>ucVGSETTING.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events\ObjectClassEventArgs.cs" />
+    <Compile Include="DataControls\ucDJQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucDJQ.Designer.cs">
+      <DependentUpon>ucDJQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucDJZQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucDJZQ.Designer.cs">
+      <DependentUpon>ucDJZQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucBasemapPoint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucBasemapPoint.Designer.cs">
+      <DependentUpon>ucBasemapPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucBasemapPolygon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucBasemapPolygon.Designer.cs">
+      <DependentUpon>ucBasemapPolygon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucBasemapPolyline.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucBasemapPolyline.Designer.cs">
+      <DependentUpon>ucBasemapPolyline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucBasemapText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucBasemapText.Designer.cs">
+      <DependentUpon>ucBasemapText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucFeatureLists.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucFeatureLists.Designer.cs">
+      <DependentUpon>ucFeatureLists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucJZD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucJZD.Designer.cs">
+      <DependentUpon>ucJZD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucJZDZJ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucJZDZJ.Designer.cs">
+      <DependentUpon>ucJZDZJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucJZX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucJZX.Designer.cs">
+      <DependentUpon>ucJZX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucJZXZJ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucJZXZJ.Designer.cs">
+      <DependentUpon>ucJZXZJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucSelectLayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucSelectLayer.Designer.cs">
+      <DependentUpon>ucSelectLayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucTMPCADD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucTMPCADD.Designer.cs">
+      <DependentUpon>ucTMPCADD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucTMPCADM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucTMPCADM.Designer.cs">
+      <DependentUpon>ucTMPCADM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucTMPCADX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucTMPCADX.Designer.cs">
+      <DependentUpon>ucTMPCADX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucTMPCADXDATA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucTMPCADXDATA.Designer.cs">
+      <DependentUpon>ucTMPCADXDATA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucTMPCADZJ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucTMPCADZJ.Designer.cs">
+      <DependentUpon>ucTMPCADZJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGCLASSDETAIL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGCLASSDETAIL.Designer.cs">
+      <DependentUpon>ucVGCLASSDETAIL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGCLASSGROUP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGCLASSGROUP.Designer.cs">
+      <DependentUpon>ucVGCLASSGROUP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGDICTIONARY.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGDICTIONARY.Designer.cs">
+      <DependentUpon>ucVGDICTIONARY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGDICTORYNAME.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGDICTORYNAME.Designer.cs">
+      <DependentUpon>ucVGDICTORYNAME.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGFIELDINFO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGFIELDINFO.Designer.cs">
+      <DependentUpon>ucVGFIELDINFO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGLAYERGROUP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGLAYERGROUP.Designer.cs">
+      <DependentUpon>ucVGLAYERGROUP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGLAYERGROUPDETAIL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGLAYERGROUPDETAIL.Designer.cs">
+      <DependentUpon>ucVGLAYERGROUPDETAIL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucVGOBJECTYSDM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucVGOBJECTYSDM.Designer.cs">
+      <DependentUpon>ucVGOBJECTYSDM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucWXInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucWXInfo.Designer.cs">
+      <DependentUpon>ucWXInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucXZQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucXZQ.Designer.cs">
+      <DependentUpon>ucXZQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucXZQJX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucXZQJX.Designer.cs">
+      <DependentUpon>ucXZQJX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucZDBHQK.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucZDBHQK.Designer.cs">
+      <DependentUpon>ucZDBHQK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucZDJBXX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucZDJBXX.Designer.cs">
+      <DependentUpon>ucZDJBXX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucZDJBXXZJ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucZDJBXXZJ.Designer.cs">
+      <DependentUpon>ucZDJBXXZJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucZDTOJZD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucZDTOJZD.Designer.cs">
+      <DependentUpon>ucZDTOJZD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucZDTOJZX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucZDTOJZX.Designer.cs">
+      <DependentUpon>ucZDTOJZX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSettings\EditingCreateJZDByPolygon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSettings\EditingCreateJZDByPolygon.Designer.cs">
+      <DependentUpon>EditingCreateJZDByPolygon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Attribute\IReAttributeForm.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Forms\EditSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditSettingForm.Designer.cs">
+      <DependentUpon>EditSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAssignText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAssignText.Designer.cs">
+      <DependentUpon>frmAssignText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCameraCapture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCameraCapture.Designer.cs">
+      <DependentUpon>frmCameraCapture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCopyFeature2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCopyFeature2.Designer.cs">
+      <DependentUpon>frmCopyFeature2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCreateDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCreateDB.Designer.cs">
+      <DependentUpon>frmCreateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDeleteFeature2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDeleteFeature2.Designer.cs">
+      <DependentUpon>frmDeleteFeature2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDistanceIntersection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDistanceIntersection.Designer.cs">
+      <DependentUpon>frmDistanceIntersection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEditFeature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditFeature.Designer.cs">
+      <DependentUpon>frmEditFeature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmImportDXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmImportDXF.Designer.cs">
+      <DependentUpon>frmImportDXF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLayerManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLayerManagement.Designer.cs">
+      <DependentUpon>frmLayerManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmNewFeature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmNewFeature.Designer.cs">
+      <DependentUpon>frmNewFeature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSelectFeatures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSelectFeatures.Designer.cs">
+      <DependentUpon>frmSelectFeatures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSelectLayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSelectLayer.Designer.cs">
+      <DependentUpon>frmSelectLayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSplitCAD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSplitCAD.Designer.cs">
+      <DependentUpon>frmSplitCAD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTestOgrChinese.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTestOgrChinese.Designer.cs">
+      <DependentUpon>frmTestOgrChinese.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUnionGeometry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUnionGeometry.Designer.cs">
+      <DependentUpon>frmUnionGeometry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWYGZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWYGZ.designer.cs">
+      <DependentUpon>frmWYGZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\IEditForm.cs" />
+    <Compile Include="frmSelectEditDatabase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectEditDatabase.Designer.cs">
+      <DependentUpon>frmSelectEditDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DatabaseHelper.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="MapListener.cs" />
+    <Compile Include="Menu\MenuCommands.cs" />
+    <Compile Include="Menu\MenuGenerator.cs" />
+    <Compile Include="Menu\MenuKeys.cs" />
+    <Compile Include="Menu\MenuListener.cs" />
+    <Compile Include="Model\AssignConfigure.cs" />
+    <Compile Include="Model\SelectLayerConfigure.cs" />
+    <Compile Include="Model\SplitLayerConfigure.cs" />
+    <Compile Include="PluginConfig.cs" />
+    <Compile Include="ProjectListener.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RealEstateEditor.cs" />
+    <Compile Include="Services\IRealEstateEditingService.cs" />
+    <Compile Include="Services\RealEstateEditingService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\gdalwrapper\gdalwrapper.csproj">
+      <Project>{845110c4-43e3-4e96-8588-731008ae502a}</Project>
+      <Name>gdalwrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Api\VastGIS.Api.csproj">
+      <Project>{8aad34b3-8ef3-485f-a04d-ed2c07d8f1df}</Project>
+      <Name>VastGIS.Api</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Plugins\VastGIS.Plugins.csproj">
+      <Project>{76644cdf-5165-428d-8419-93c1e978db1b}</Project>
+      <Name>VastGIS.Plugins</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Projections\VastGIS.Projections.csproj">
+      <Project>{DD259453-611A-4AD5-878E-385CB2C89DF5}</Project>
+      <Name>VastGIS.Projections</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.RealEastate.Api\VastGIS.RealEstate.Api.csproj">
+      <Project>{9609A967-A37F-45A1-AD60-79E92BDBCE68}</Project>
+      <Name>VastGIS.RealEstate.Api</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.RealEstate.Data\VastGIS.RealEstate.Data.csproj">
+      <Project>{135434DE-E426-4D69-B1D7-DF45A1A3C5BC}</Project>
+      <Name>VastGIS.RealEstate.Data</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Services\VastGIS.Services.csproj">
+      <Project>{54BB55DA-DBDC-47E5-8DEC-DE325F35F074}</Project>
+      <Name>VastGIS.Services</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Shared\VastGIS.Shared.csproj">
+      <Project>{79400594-DE0D-4FFD-B115-AF2AEAC79CD9}</Project>
+      <Name>VastGIS.Shared</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Tools\VastGIS.Tools.csproj">
+      <Project>{fb836bb0-2668-41e6-a4ad-7798b13c327f}</Project>
+      <Name>VastGIS.Tools</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.UI\VastGIS.UI.csproj">
+      <Project>{784A24F2-9A57-46EE-8945-D87869595216}</Project>
+      <Name>VastGIS.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Attribute\frmDJQ.resx">
+      <DependentUpon>frmDJQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmBasemapPoint.resx">
+      <DependentUpon>frmBasemapPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmBasemapPolygon.resx">
+      <DependentUpon>frmBasemapPolygon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmBasemapPolyline.resx">
+      <DependentUpon>frmBasemapPolyline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmBasemapText.resx">
+      <DependentUpon>frmBasemapText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmJZD.resx">
+      <DependentUpon>frmJZD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmDJZQ.resx">
+      <DependentUpon>frmDJZQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmJZDZJ.resx">
+      <DependentUpon>frmJZDZJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmJZX.resx">
+      <DependentUpon>frmJZX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmJZXZJ.resx">
+      <DependentUpon>frmJZXZJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmTMPCADD.resx">
+      <DependentUpon>frmTMPCADD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmTMPCADM.resx">
+      <DependentUpon>frmTMPCADM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmTMPCADX.resx">
+      <DependentUpon>frmTMPCADX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmTMPCADXDATA.resx">
+      <DependentUpon>frmTMPCADXDATA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmTMPCADZJ.resx">
+      <DependentUpon>frmTMPCADZJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGAREACODE.resx">
+      <DependentUpon>frmVGAREACODE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGATTACHMENT.resx">
+      <DependentUpon>frmVGATTACHMENT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGCADCODE.resx">
+      <DependentUpon>frmVGCADCODE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGCLASSDETAIL.resx">
+      <DependentUpon>frmVGCLASSDETAIL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGCLASSGROUP.resx">
+      <DependentUpon>frmVGCLASSGROUP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGDICTIONARY.resx">
+      <DependentUpon>frmVGDICTIONARY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGDICTORYNAME.resx">
+      <DependentUpon>frmVGDICTORYNAME.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGFIELDINFO.resx">
+      <DependentUpon>frmVGFIELDINFO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGLAYERGROUP.resx">
+      <DependentUpon>frmVGLAYERGROUP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGLAYERGROUPDETAIL.resx">
+      <DependentUpon>frmVGLAYERGROUPDETAIL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGOBJECTCLASS.resx">
+      <DependentUpon>frmVGOBJECTCLASS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGOBJECTYSDM.resx">
+      <DependentUpon>frmVGOBJECTYSDM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmVGSETTING.resx">
+      <DependentUpon>frmVGSETTING.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmXZQ.resx">
+      <DependentUpon>frmXZQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmXZQJX.resx">
+      <DependentUpon>frmXZQJX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmZDBHQK.resx">
+      <DependentUpon>frmZDBHQK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmZDJBXX.resx">
+      <DependentUpon>frmZDJBXX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmZDJBXXZJ.resx">
+      <DependentUpon>frmZDJBXXZJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmZDTOJZD.resx">
+      <DependentUpon>frmZDTOJZD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmZDTOJZX.resx">
+      <DependentUpon>frmZDTOJZX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucCoordinateList.resx">
+      <DependentUpon>ucCoordinateList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucDJQ.resx">
+      <DependentUpon>ucDJQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucDJZQ.resx">
+      <DependentUpon>ucDJZQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucBasemapPoint.resx">
+      <DependentUpon>ucBasemapPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucBasemapPolygon.resx">
+      <DependentUpon>ucBasemapPolygon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucBasemapPolyline.resx">
+      <DependentUpon>ucBasemapPolyline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucBasemapText.resx">
+      <DependentUpon>ucBasemapText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucFeatureLists.resx">
+      <DependentUpon>ucFeatureLists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucJZD.resx">
+      <DependentUpon>ucJZD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucJZDZJ.resx">
+      <DependentUpon>ucJZDZJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucJZX.resx">
+      <DependentUpon>ucJZX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucJZXZJ.resx">
+      <DependentUpon>ucJZXZJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucAttachmentList.resx">
+      <DependentUpon>ucAttachmentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucSelectLayer.resx">
+      <DependentUpon>ucSelectLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucTMPCADD.resx">
+      <DependentUpon>ucTMPCADD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucTMPCADM.resx">
+      <DependentUpon>ucTMPCADM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucTMPCADX.resx">
+      <DependentUpon>ucTMPCADX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucTMPCADXDATA.resx">
+      <DependentUpon>ucTMPCADXDATA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucTMPCADZJ.resx">
+      <DependentUpon>ucTMPCADZJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucEdgeList.resx">
+      <DependentUpon>ucEdgeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGAREACODE.resx">
+      <DependentUpon>ucVGAREACODE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGATTACHMENT.resx">
+      <DependentUpon>ucVGATTACHMENT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGCADCODE.resx">
+      <DependentUpon>ucVGCADCODE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGCLASSDETAIL.resx">
+      <DependentUpon>ucVGCLASSDETAIL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGCLASSGROUP.resx">
+      <DependentUpon>ucVGCLASSGROUP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGDICTIONARY.resx">
+      <DependentUpon>ucVGDICTIONARY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGDICTORYNAME.resx">
+      <DependentUpon>ucVGDICTORYNAME.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGFIELDINFO.resx">
+      <DependentUpon>ucVGFIELDINFO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGLAYERGROUP.resx">
+      <DependentUpon>ucVGLAYERGROUP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGLAYERGROUPDETAIL.resx">
+      <DependentUpon>ucVGLAYERGROUPDETAIL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGOBJECTCLASS.resx">
+      <DependentUpon>ucVGOBJECTCLASS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGOBJECTYSDM.resx">
+      <DependentUpon>ucVGOBJECTYSDM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucVGSETTING.resx">
+      <DependentUpon>ucVGSETTING.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucWXInfo.resx">
+      <DependentUpon>ucWXInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucXZQ.resx">
+      <DependentUpon>ucXZQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucXZQJX.resx">
+      <DependentUpon>ucXZQJX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucZDBHQK.resx">
+      <DependentUpon>ucZDBHQK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucZDJBXX.resx">
+      <DependentUpon>ucZDJBXX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucZDJBXXZJ.resx">
+      <DependentUpon>ucZDJBXXZJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucZDTOJZD.resx">
+      <DependentUpon>ucZDTOJZD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucZDTOJZX.resx">
+      <DependentUpon>ucZDTOJZX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSettings\EditingCreateJZDByPolygon.resx">
+      <DependentUpon>EditingCreateJZDByPolygon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAssignText.resx">
+      <DependentUpon>frmAssignText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCameraCapture.resx">
+      <DependentUpon>frmCameraCapture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCopyFeature2.resx">
+      <DependentUpon>frmCopyFeature2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCreateDB.resx">
+      <DependentUpon>frmCreateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDeleteFeature2.resx">
+      <DependentUpon>frmDeleteFeature2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDistanceIntersection.resx">
+      <DependentUpon>frmDistanceIntersection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditFeature.resx">
+      <DependentUpon>frmEditFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmImportDXF.resx">
+      <DependentUpon>frmImportDXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLayerManagement.resx">
+      <DependentUpon>frmLayerManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmNewFeature.resx">
+      <DependentUpon>frmNewFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelectFeatures.resx">
+      <DependentUpon>frmSelectFeatures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelectLayer.resx">
+      <DependentUpon>frmSelectLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSplitCAD.resx">
+      <DependentUpon>frmSplitCAD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTestOgrChinese.resx">
+      <DependentUpon>frmTestOgrChinese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUnionGeometry.resx">
+      <DependentUpon>frmUnionGeometry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWYGZ.resx">
+      <DependentUpon>frmWYGZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectEditDatabase.resx">
+      <DependentUpon>frmSelectEditDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\editlayer.png" />
+    <None Include="Styles\Layers\TmpCadd.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCaddView.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadm.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadmView.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadx.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadxView.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadzj.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\TmpCadzjView.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\XZQ.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\survey.vglayers">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayerTool32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DatabaseServersFolder32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditingSelectedGeodatabase32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chinese.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxMapWinGIS">
+      <Guid>{C368D713-CC5F-40ED-9F53-F84FE197B96A}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MapWinGIS">
+      <Guid>{C368D713-CC5F-40ED-9F53-F84FE197B96A}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayerManagement.png" />
+    <None Include="Resources\icon_edit_copy.png" />
+    <None Include="Resources\icon_edit_cut.png" />
+    <None Include="Resources\icon_edit_paste.png" />
+    <None Include="Resources\icon_edit_redo.png" />
+    <None Include="Resources\icon_edit_undo.png" />
+    <None Include="Resources\icon_geometry_attributes.png" />
+    <None Include="Resources\icon_geometry_create.png" />
+    <None Include="Resources\icon_geometry_erase_by_polygon.png" />
+    <None Include="Resources\icon_geometry_merge.png" />
+    <None Include="Resources\icon_geometry_move.png" />
+    <None Include="Resources\icon_geometry_rotate.png" />
+    <None Include="Resources\icon_geometry_split.png" />
+    <None Include="Resources\icon_geometry_split_by_polyline.png" />
+    <None Include="Resources\icon_layer_create.png" />
+    <None Include="Resources\icon_layer_edit.png" />
+    <None Include="Resources\icon_layer_save.png" />
+    <None Include="Resources\icon_vertex_editor.png" />
+    <None Include="Resources\img_delete_selected.png" />
+    <None Include="Resources\img_shape_editor32.png" />
+    <None Include="Resources\clearlist.png" />
+    <None Include="Resources\selectall2.png" />
+    <None Include="Resources\selectclear.png" />
+    <None Include="Resources\selectreserve.png" />
+    <None Include="Resources\icon_select_all_24.png" />
+    <None Include="Resources\icon_select_clear_24.png" />
+    <None Include="Resources\icon_select_reserve_24.png" />
+    <None Include="Resources\icon_select_unselect_24.png" />
+    <None Include="Resources\icon_select.png" />
+    <None Include="Resources\icon_select_by_polygon.png" />
+    <None Include="Resources\FeatureC.png" />
+    <None Include="Resources\FeatureCopy.png" />
+    <None Include="Resources\FeatureDelete.png" />
+    <None Include="Resources\FeatureFW.png" />
+    <None Include="Resources\FeatureJC.png" />
+    <None Include="Resources\FeatureJZD.png" />
+    <None Include="Resources\FeatureJZX.png" />
+    <None Include="Resources\FeatureMove.png" />
+    <None Include="Resources\FeatureNew.png" />
+    <None Include="Resources\FeatureSX.png" />
+    <None Include="Resources\FeatureZD.png" />
+    <None Include="Resources\FeaturePick.png" />
+    <None Include="Resources\FeatureUpdate.png" />
+    <None Include="Resources\FeatureUnion.png" />
+    <None Include="Resources\FeatureWYGZ.png" />
+    <None Include="Resources\AttchmentDelete.png" />
+    <None Include="Resources\AttchmentNew.png" />
+    <None Include="Resources\AttchmentSaveAs.png" />
+    <None Include="Resources\AttchmentView.png" />
+    <None Include="Resources\AttachmentAudio.png" />
+    <None Include="Resources\AttachmentVideo.png" />
+    <None Include="Resources\img_dxf.png" />
+    <Content Include="Sql\createretables.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

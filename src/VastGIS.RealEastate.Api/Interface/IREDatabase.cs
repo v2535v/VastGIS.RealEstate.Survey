@@ -41,6 +41,14 @@ namespace VastGIS.RealEstate.Api.Interface
         void LoadDataToMap(IMuteMap contextMap);
 
         IEnvelope GetDatabaseEnvelope();
+
+        string CreateAttachmentName();
+
+        string GetRelativePath(string fileName);
+
+        string GetAbsolutePath(string fileName);
+
+        string GetAttachmentPath();
     }
 
    

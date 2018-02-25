@@ -13,9 +13,7 @@ using VastGIS.Services.Config;
 using VastGIS.Shared;
 using VastGIS.UI.Controls;
 using VastGIS.UI.Helpers;
-using Syncfusion.Grouping;
-using Syncfusion.Windows.Forms.Grid;
-using Syncfusion.Windows.Forms.Grid.Grouping;
+
 
 namespace VastGIS.Configuration
 {

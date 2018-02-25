@@ -157,7 +157,8 @@ namespace VastGIS.Services.Concrete
             foreach (var xmlLayer in project.Layers)
             {
                 step++;
-                FireProgressChanged(step, count, "Loading layer: " + xmlLayer.Name);
+                string lyrName = StringHelper.UnicodeToString(xmlLayer.Name);
+                FireProgressChanged(step, count, "Loading layer: " + lyrName);
 
                 if (xmlLayer.SkipLoading)
                 {

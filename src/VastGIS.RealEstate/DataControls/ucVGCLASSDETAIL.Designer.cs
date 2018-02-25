@@ -6,10 +6,11 @@ using System.Data.SQLite;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Interface;
 
+
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
-    partial class ucVGCLASSDETAIL
-    {
+    partial class ucVgClassdetail
+    {	
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -27,183 +28,212 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             }
             base.Dispose(disposing);
         }
-
+        
         #region Component Designer generated code
         private void InitializeComponent()
-        {
-            this.intID = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+        {            
             this.lblID = new System.Windows.Forms.Label();
-            this.txtGROUPNAME = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblGROUPNAME = new System.Windows.Forms.Label();
-            this.txtTABLENAME = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblTABLENAME = new System.Windows.Forms.Label();
-            this.chkCREATEIMPL = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
-            this.lblCREATEIMPL = new System.Windows.Forms.Label();
-            this.txtINTERFACENAME = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblINTERFACENAME = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtGROUPNAME)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtTABLENAME)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkCREATEIMPL)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtINTERFACENAME)).BeginInit();           
+            this.intID = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.lblGroupName = new System.Windows.Forms.Label();
+            this.txtGroupName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblObjectTableName = new System.Windows.Forms.Label();
+            this.txtObjectTableName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblCreateImpl = new System.Windows.Forms.Label();
+            this.txtCreateImpl = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblInterfaceName = new System.Windows.Forms.Label();
+            this.txtInterfaceName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();            
+            ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGroupName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtObjectTableName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCreateImpl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInterfaceName)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // intID
-            // 
-            this.intID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.intID.EnableTouchMode = true;
-            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.intID.Location = new System.Drawing.Point(100, 20);
-            this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.intID.Name = "intID";           
-            this.intID.Size = new System.Drawing.Size(152, 21);
-            this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.intID.TabIndex = 1;
-            this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.intID.Text = "1.00";           
-            this.intID.NullString = "";
+            
             // 
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(10, 24);
+            this.lblID.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblID.Location = new System.Drawing.Point(0,0);
+            this.lblID.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(65, 12);
-            this.lblID.TabIndex = 2;
-            this.lblID.Text = "ID";
+            this.lblID.Size = new System.Drawing.Size(41, 20);
+            this.lblID.TabIndex = 1;
+            this.lblID.Text = "标识码";
             // 
-            // txtGROUPNAME
+            // intID
             // 
-            this.txtGROUPNAME.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtGROUPNAME.EnableTouchMode = true;
-            this.txtGROUPNAME.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtGROUPNAME.Location = new System.Drawing.Point(100, 55);
-            this.txtGROUPNAME.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtGROUPNAME.Name = "txtGROUPNAME";           
-            this.txtGROUPNAME.Size = new System.Drawing.Size(152, 21);
-            this.txtGROUPNAME.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtGROUPNAME.TabIndex = 3;
-            this.txtGROUPNAME.Text = "";   
+            this.intID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intID.EnableTouchMode = true;
+            this.intID.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intID.IntegerValue = ((long)(0));
+            this.intID.Location = new System.Drawing.Point(0,0);
+            this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.intID.Name = "intID";
+            this.intID.NullString = "";
+            this.intID.Size = new System.Drawing.Size(152, 28);
+            this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.intID.TabIndex = 2;
+            this.intID.Text = "0";
             // 
-            // lblGROUPNAME
+            // lblID
             // 
-            this.lblGROUPNAME.AutoSize = true;
-            this.lblGROUPNAME.Location = new System.Drawing.Point(10, 59);
-            this.lblGROUPNAME.Name = "lblGROUPNAME";
-            this.lblGROUPNAME.Size = new System.Drawing.Size(65, 12);
-            this.lblGROUPNAME.TabIndex = 4;
-            this.lblGROUPNAME.Text = "GROUPNAME";
+            this.lblGroupName.AutoSize = true;
+            this.lblGroupName.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblGroupName.Location = new System.Drawing.Point(0,0);
+            this.lblGroupName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblGroupName.Name = "lblGroupName";
+            this.lblGroupName.Size = new System.Drawing.Size(41, 20);
+            this.lblGroupName.TabIndex = 3;
+            this.lblGroupName.Text = "组名";
             // 
-            // txtTABLENAME
+            // txtGroupName
             // 
-            this.txtTABLENAME.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtTABLENAME.EnableTouchMode = true;
-            this.txtTABLENAME.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtTABLENAME.Location = new System.Drawing.Point(100, 90);
-            this.txtTABLENAME.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtTABLENAME.Name = "txtTABLENAME";           
-            this.txtTABLENAME.Size = new System.Drawing.Size(152, 21);
-            this.txtTABLENAME.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtTABLENAME.TabIndex = 5;
-            this.txtTABLENAME.Text = "";   
+            this.txtGroupName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtGroupName.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtGroupName.EnableTouchMode = true;
+            this.txtGroupName.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtGroupName.Location =  new System.Drawing.Point(0,0);
+            this.txtGroupName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtGroupName.Name = "txtGroupName";
+            this.txtGroupName.Size = new System.Drawing.Size(152, 28);
+            this.txtGroupName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtGroupName.TabIndex = 4;
             // 
-            // lblTABLENAME
+            // lblID
             // 
-            this.lblTABLENAME.AutoSize = true;
-            this.lblTABLENAME.Location = new System.Drawing.Point(10, 94);
-            this.lblTABLENAME.Name = "lblTABLENAME";
-            this.lblTABLENAME.Size = new System.Drawing.Size(65, 12);
-            this.lblTABLENAME.TabIndex = 6;
-            this.lblTABLENAME.Text = "TABLENAME";
+            this.lblObjectTableName.AutoSize = true;
+            this.lblObjectTableName.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblObjectTableName.Location = new System.Drawing.Point(0,0);
+            this.lblObjectTableName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblObjectTableName.Name = "lblObjectTableName";
+            this.lblObjectTableName.Size = new System.Drawing.Size(41, 20);
+            this.lblObjectTableName.TabIndex = 5;
+            this.lblObjectTableName.Text = "对象名称";
             // 
-            // chkCREATEIMPL
+            // txtObjectTableName
             // 
-            this.chkCREATEIMPL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.chkCREATEIMPL.EnableTouchMode = true;
-            this.chkCREATEIMPL.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.chkCREATEIMPL.Location = new System.Drawing.Point(100, 125);
-            this.chkCREATEIMPL.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkCREATEIMPL.Name = "chkCREATEIMPL";           
-            this.chkCREATEIMPL.Size = new System.Drawing.Size(152, 21);
-            this.chkCREATEIMPL.TabIndex = 7;
-            this.chkCREATEIMPL.Text = "";  
-            this.chkCREATEIMPL.ThemesEnabled = false;
-             this.chkCREATEIMPL.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.txtObjectTableName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtObjectTableName.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtObjectTableName.EnableTouchMode = true;
+            this.txtObjectTableName.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtObjectTableName.Location =  new System.Drawing.Point(0,0);
+            this.txtObjectTableName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtObjectTableName.Name = "txtObjectTableName";
+            this.txtObjectTableName.Size = new System.Drawing.Size(152, 28);
+            this.txtObjectTableName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtObjectTableName.TabIndex = 6;
             // 
-            // lblCREATEIMPL
+            // lblID
             // 
-            this.lblCREATEIMPL.AutoSize = true;
-            this.lblCREATEIMPL.Location = new System.Drawing.Point(10, 129);
-            this.lblCREATEIMPL.Name = "lblCREATEIMPL";
-            this.lblCREATEIMPL.Size = new System.Drawing.Size(65, 12);
-            this.lblCREATEIMPL.TabIndex = 8;
-            this.lblCREATEIMPL.Text = "CREATEIMPL";
+            this.lblCreateImpl.AutoSize = true;
+            this.lblCreateImpl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblCreateImpl.Location = new System.Drawing.Point(0,0);
+            this.lblCreateImpl.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblCreateImpl.Name = "lblCreateImpl";
+            this.lblCreateImpl.Size = new System.Drawing.Size(41, 20);
+            this.lblCreateImpl.TabIndex = 7;
+            this.lblCreateImpl.Text = "是否实体";
             // 
-            // txtINTERFACENAME
+            // txtCreateImpl
             // 
-            this.txtINTERFACENAME.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtINTERFACENAME.EnableTouchMode = true;
-            this.txtINTERFACENAME.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtINTERFACENAME.Location = new System.Drawing.Point(100, 160);
-            this.txtINTERFACENAME.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtINTERFACENAME.Name = "txtINTERFACENAME";           
-            this.txtINTERFACENAME.Size = new System.Drawing.Size(152, 21);
-            this.txtINTERFACENAME.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtINTERFACENAME.TabIndex = 9;
-            this.txtINTERFACENAME.Text = "";   
+            this.txtCreateImpl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCreateImpl.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtCreateImpl.EnableTouchMode = true;
+            this.txtCreateImpl.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtCreateImpl.Location =  new System.Drawing.Point(0,0);
+            this.txtCreateImpl.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtCreateImpl.Name = "txtCreateImpl";
+            this.txtCreateImpl.Size = new System.Drawing.Size(152, 28);
+            this.txtCreateImpl.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtCreateImpl.TabIndex = 8;
             // 
-            // lblINTERFACENAME
+            // lblID
             // 
-            this.lblINTERFACENAME.AutoSize = true;
-            this.lblINTERFACENAME.Location = new System.Drawing.Point(10, 164);
-            this.lblINTERFACENAME.Name = "lblINTERFACENAME";
-            this.lblINTERFACENAME.Size = new System.Drawing.Size(65, 12);
-            this.lblINTERFACENAME.TabIndex = 10;
-            this.lblINTERFACENAME.Text = "INTERFACENAME";
-            
+            this.lblInterfaceName.AutoSize = true;
+            this.lblInterfaceName.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblInterfaceName.Location = new System.Drawing.Point(0,0);
+            this.lblInterfaceName.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblInterfaceName.Name = "lblInterfaceName";
+            this.lblInterfaceName.Size = new System.Drawing.Size(41, 20);
+            this.lblInterfaceName.TabIndex = 9;
+            this.lblInterfaceName.Text = "接口名称";
             // 
-            // ucVG_CLASSDETAIL
+            // txtInterfaceName
+            // 
+            this.txtInterfaceName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtInterfaceName.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtInterfaceName.EnableTouchMode = true;
+            this.txtInterfaceName.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtInterfaceName.Location =  new System.Drawing.Point(0,0);
+            this.txtInterfaceName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtInterfaceName.Name = "txtInterfaceName";
+            this.txtInterfaceName.Size = new System.Drawing.Size(152, 28);
+            this.txtInterfaceName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtInterfaceName.TabIndex = 10;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.intID, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblGroupName, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtGroupName, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblObjectTableName, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtObjectTableName, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblCreateImpl, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtCreateImpl, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblInterfaceName, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtInterfaceName, 1, 4);
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);            
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";            
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(317, 364);
+            this.tableLayoutPanel1.TabIndex = 11; 
+            //
+            // ucVgClassdetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.intID);                
-            this.Controls.Add(this.lblID);            
-            this.Controls.Add(this.txtGROUPNAME);                
-            this.Controls.Add(this.lblGROUPNAME);            
-            this.Controls.Add(this.txtTABLENAME);                
-            this.Controls.Add(this.lblTABLENAME);            
-            this.Controls.Add(this.chkCREATEIMPL);                
-            this.Controls.Add(this.lblCREATEIMPL);            
-            this.Controls.Add(this.txtINTERFACENAME);                
-            this.Controls.Add(this.lblINTERFACENAME);            
-            this.Name = "ucVG_CLASSDETAIL";
-            this.Size = new System.Drawing.Size(260, 205);
-            
-            ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtGROUPNAME)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtTABLENAME)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkCREATEIMPL)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtINTERFACENAME)).EndInit();           
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Name = "ucVgClassdetail";
+            this.Size = new System.Drawing.Size(250, 191);            
+            ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGroupName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtObjectTableName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCreateImpl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInterfaceName)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
         #endregion
         
-        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intID; 
-        private System.Windows.Forms.Label lblID; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtGROUPNAME; 
-        private System.Windows.Forms.Label lblGROUPNAME; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtTABLENAME; 
-        private System.Windows.Forms.Label lblTABLENAME; 
-        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkCREATEIMPL; 
-        private System.Windows.Forms.Label lblCREATEIMPL; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtINTERFACENAME; 
-        private System.Windows.Forms.Label lblINTERFACENAME; 
+        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intID;	
+        private System.Windows.Forms.Label lblID;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtGroupName;	
+        private System.Windows.Forms.Label lblGroupName;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtObjectTableName;	
+        private System.Windows.Forms.Label lblObjectTableName;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtCreateImpl;	
+        private System.Windows.Forms.Label lblCreateImpl;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtInterfaceName;	
+        private System.Windows.Forms.Label lblInterfaceName;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        
     }
-
 }

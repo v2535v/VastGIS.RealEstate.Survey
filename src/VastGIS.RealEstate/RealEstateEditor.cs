@@ -24,7 +24,7 @@ namespace VastGIS.Plugins.RealEstate
         private ProjectListener _projectListener;
         // private MenuUpdater _menuUpdater;
         private List<ICommand> _commands;
-        private VgObjectclasses _currentObjectClasses;
+        private PluginConfig _config;
 
         protected override void RegisterServices(IApplicationContainer container)
         {
@@ -43,6 +43,7 @@ namespace VastGIS.Plugins.RealEstate
             _projectListener = container.GetInstance<ProjectListener>();
             // _menuUpdater = container.GetInstance<MenuUpdater>();
             _commands.AddRange(_menuGenerator.MenuCommands.GetCommands());
+            _config=new PluginConfig();
         }
 
         public void LoadAttributeForm(string objectName,string formName,long id)
@@ -64,10 +65,13 @@ namespace VastGIS.Plugins.RealEstate
             set { _mapListener = value; }
         }
 
-        public VgObjectclasses CurrentObjectclass { get; set; }
+        #region 插件配置
+
+        public PluginConfig Config { get { return _config; } }
         //public override IEnumerable<IConfigPage> ConfigPages
         //{
         //    get { yield return _context.Container.GetInstance<RealEstateEditorConfigPage>(); }
         //}
+        #endregion
     }
 }

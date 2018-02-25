@@ -19,6 +19,11 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _systemDao.CreateEmptyDatabase(dbName);
         }
 
+        public void InitializeDatabase(int srid)
+        {
+            _systemDao.InitializeDatabase(srid);
+        }
+
         public void InternalInitTables()
         {
             _systemDao.InternalInitTables();
@@ -55,61 +60,26 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         {
             _systemDao.AssignTextToPolygon(assignType, polyTable, polyFieldName, textTable, textFieldName, whereClause, values);
         }
+      
 
-
-        public IFeature FindFirstRecord(string[] getSearchLayers, double dx, double dy)
+        public List<VgObjectclass> GetObjectclasses(bool isDeep = true)
         {
-            return _systemDao.FindFirstRecord(getSearchLayers, dx, dy);
+            return _systemDao.GetObjectclasses(isDeep);
         }
 
-        public List<SearchFeature> FindRecords(string[] layers, double dx, double dy)
+        public bool SaveVgSetting2(VgSetting setting)
         {
-            return _systemDao.FindRecords(layers, dx, dy);
+            return _systemDao.SaveVgSetting2(setting);
         }
 
-        public List<SearchFeature> FindRecords(List<VgObjectclasses> classes, double dx, double dy)
+        public bool SaveVgSetting2(string csmc, string csz)
         {
-            return _systemDao.FindRecords(classes, dx, dy);
+            return _systemDao.SaveVgSetting2(csmc,csz);
         }
 
-        public List<SearchFeature> FindRecords(VgObjectclasses classes, int[] ids)
+        public VgSetting GetVgSettingByName(string csmc)
         {
-            return _systemDao.FindRecords(classes, ids);
-        }
-
-        public bool CopyFeature(
-            string sourceTable,
-            long id,
-            string targetTable,
-            bool isDelete = false,
-            bool isAttributeAutoTransform = true)
-        {
-            return _systemDao.CopyFeature(sourceTable, id, targetTable, isDelete, isAttributeAutoTransform);
-        }
-
-        public bool DeleteFeature(string sourceTable, long id)
-        {
-            return _systemDao.DeleteFeature(sourceTable, id);
-        }
-
-        public List<VgObjectclasses> GetObjectclasseses(bool isDeep = true)
-        {
-            return _systemDao.GetObjectclasseses(isDeep);
-        }
-
-        public bool SaveVgSettings2(VgSettings setting)
-        {
-            return _systemDao.SaveVgSettings2(setting);
-        }
-
-        public bool SaveVgSettings2(string csmc, string csz)
-        {
-            return _systemDao.SaveVgSettings2(csmc,csz);
-        }
-
-        public VgSettings GetVgSettings(string csmc)
-        {
-            return _systemDao.GetVgSettings(csmc);
+            return _systemDao.GetVgSettingByName(csmc);
         }
 
         public void InitSettings()
@@ -117,7 +87,7 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             _systemDao.InitSettings();
         }
 
-        public IEnumerable<VgAreacodes> GetAreaCodesByJB(string parentCode, int jb = 1)
+        public IEnumerable<VgAreacode> GetAreaCodesByJB(string parentCode, int jb = 1)
         {
             return _systemDao.GetAreaCodesByJB(parentCode, jb);
         }
@@ -126,10 +96,25 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         {
              _systemDao.RecalculateDBExtent(out xmin, out ymin, out xmax, out ymax);
         }
+       
 
-        public long SaveSearchFeature(SearchFeature feature)
+        public IEnumerable<VgAttachment> GetVgAttachmentsByWydm(string wydm)
         {
-            return _systemDao.SaveSearchFeature(feature);
+            return _systemDao.GetVgAttachmentsByWydm(wydm);
+        }
+
+        public IEnumerable<VgAttachment> GetVgAttachmentsByWydm(Guid wydm)
+        {
+            return _systemDao.GetVgAttachmentsByWydm(wydm);
+        }
+
+        public VgClassdetail GetVgClassdetailByTableName(string tbName)
+        {
+            return _systemDao.GetVgClassdetailByTableName(tbName);
+        }
+        public string GetTemporaryAttachmentName()
+        {
+            return _systemDao.GetTemporaryAttachmentName();
         }
     }
 }

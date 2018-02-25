@@ -5,12 +5,12 @@ using System.Data;
 using System.Data.SQLite;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
-
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Service
 {
 
-    public partial interface DomainService
+    public partial interface DomainService 
     {
         void InternalInitTables();
         bool InitTables();

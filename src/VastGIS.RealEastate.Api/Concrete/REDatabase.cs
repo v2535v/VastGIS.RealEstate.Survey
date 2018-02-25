@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using VastGIS.Api.Concrete;
 using VastGIS.Api.Enums;
 using VastGIS.Api.Helpers;
@@ -44,6 +46,8 @@ namespace VastGIS.RealEstate.Api.Concrete
             }
             InitService();
         }
+
+        
         public ReDatabase(string databaseName,int epsgCode)
         {
             _databaseName = databaseName;
@@ -69,11 +73,11 @@ namespace VastGIS.RealEstate.Api.Concrete
             remove { this.entityChanged -= value; }
         }
 
-        protected virtual void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
+        protected virtual void OnEntityChanged(EntityOperationType operationType, List<IEntity> entities)
         {
             if (this.entityChanged != null)
             {
-                this.entityChanged(this, new EntityChanedEventArgs(tableName, layerName, operationType, ids));
+                this.entityChanged(this, new EntityChanedEventArgs( operationType, entities));
             }
         }
 
@@ -106,6 +110,37 @@ namespace VastGIS.RealEstate.Api.Concrete
         {
             get { return _databaseName.Length == 0; }
         }
+        public string GetAttachmentPath()
+        {
+            string dbPath = Path.GetDirectoryName(Path.GetDirectoryName(_databaseName));
+            string path = Path.Combine(dbPath, @"Attachments");
+            return path;
+        }
+        public string CreateAttachmentName()
+        {
+            string dbPath = Path.GetDirectoryName(Path.GetDirectoryName(_databaseName));
+            string fileName = "J" + DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            string path = Path.Combine(dbPath, @"Attachments\", fileName);
+            return path;
+        }
+
+        public string GetRelativePath(string fileName)
+        {
+            string dbPath = Path.GetDirectoryName(Path.GetDirectoryName(_databaseName));
+           
+
+                Uri fromUri = new Uri(DatabaseName);
+                Uri toUri = new Uri(fileName);
+
+                Uri relativeUri = fromUri.MakeRelativeUri(toUri);
+                var relativePath = Uri.UnescapeDataString(relativeUri.ToString());
+                return relativePath.Replace('/', Path.DirectorySeparatorChar);
+    }
+
+        public string GetAbsolutePath(string fileName)
+        {
+           return Path.Combine(Path.GetDirectoryName(_databaseName),fileName);
+        }
 
         private void InitService()
         {
@@ -116,16 +151,16 @@ namespace VastGIS.RealEstate.Api.Concrete
             _basemapService = new BasemapServiceImpl(new BasemapDaoImpl());
             _systemService = new SystemServiceImpl(new SystemDaoImpl());
             _domainService = new DomainServiceImpl(new DomainDaoImpl());
-            ((IEntityChanged)_cadService).EntityChanged += ReDatabase_EntityChanged;
-            ((IEntityChanged)_zdService).EntityChanged += ReDatabase_EntityChanged;
-            ((IEntityChanged)_basemapService).EntityChanged += ReDatabase_EntityChanged;
-            ((IEntityChanged)_systemService).EntityChanged += ReDatabase_EntityChanged;
-            ((IEntityChanged)_domainService).EntityChanged += ReDatabase_EntityChanged;
+            ((ISQLiteService)_cadService).EntityChanged += ReDatabase_EntityChanged;
+            ((ISQLiteService)_zdService).EntityChanged += ReDatabase_EntityChanged;
+            ((ISQLiteService)_basemapService).EntityChanged += ReDatabase_EntityChanged;
+            (_systemService).EntityChanged += ReDatabase_EntityChanged;
+            ((ISQLiteService)_domainService).EntityChanged += ReDatabase_EntityChanged;
         }
 
         private void ReDatabase_EntityChanged(object sender, EntityChanedEventArgs e)
         {
-            OnEntityChanged(e.TableName,e.LayerName,e.OperationType,e.Ids);
+            OnEntityChanged(e.OperationType,e.Entities);
         }
 
         private void ClearService()
@@ -182,20 +217,23 @@ namespace VastGIS.RealEstate.Api.Concrete
                 fileInfo.CopyTo(_databaseName);
             }
             DbConnection.SetDatabaseName(_databaseName);
-            //_systemService.InitTables();
-            _systemService.InternalInitTables();
-            _systemService.InitSettings();
-            _systemService.SaveVgSettings2(SettingKeyHelper.SpatialReferenceID, epsgCode.ToString());
-            //_domainService.InitTables();
-            _domainService.InternalInitTables();
-            _cadService.InitTables();
-            _basemapService.InitTables();
-            _zdService.InitTables();
+            _systemService.InitializeDatabase(epsgCode);
+
+            ///统一为一次性初始化
+            ////_systemService.InitTables();
+            //_systemService.InternalInitTables();
+            //_systemService.InitSettings();
+            //_systemService.SaveVgSetting2(SettingKeyHelper.SpatialReferenceID, epsgCode.ToString());
+            ////_domainService.InitTables();
+            //_domainService.InternalInitTables();
+            //_cadService.InitTables();
+            //_basemapService.InitTables();
+            //_zdService.InitTables();
         }
 
         public void LoadDataToMap(IMuteMap contextMap)
         {
-            List<VgObjectclasses> dataClasses = _systemService.GetObjectclasseses(true).OrderBy(c=>c.Xssx).ToList();
+            List<VgObjectclass> dataClasses = _systemService.GetObjectclasses(true).OrderBy(c=>c.Xssx).ToList();
             string connectionString = "Data Source=" + _databaseName;
             foreach (var dataClass in dataClasses)
             {
@@ -215,7 +253,7 @@ namespace VastGIS.RealEstate.Api.Concrete
             return envelope;
         }
 
-        private void LoadDataToMap(IMuteMap contextMap, VgObjectclasses dataClass)
+        private void LoadDataToMap(IMuteMap contextMap, VgObjectclass dataClass)
         {
             string connectionString = "Data Source=" + _databaseName;
             if (dataClass.Dxlx == 0)

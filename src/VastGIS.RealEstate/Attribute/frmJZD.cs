@@ -1,32 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
-using System.Data;
-using System.Data.SQLite;
 using System.Windows.Forms;
+using Syncfusion.Windows.Forms.Tools;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.Plugins.RealEstate.DataControls;
 using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.Attribute
 {
-    public partial class frmJZD:Form,IReAttributeForm
-    {
+    public partial class frmJzd:Form,IReAttributeForm
+    {	
+        #region 变量
         private string _objectKey;
-        private Jzd _linkedObject;
         private string _formName;
+        private Jzd _linkedObject;        
         private IAppContext _context;
         private IREDatabase _database;
-
-        public frmJZD()
+        #endregion
+        
+        public frmJzd()
         {
             InitializeComponent();
-            _objectKey = "JZD";
-            _formName = "frmJZD";
-
+             _objectKey = "Jzd";
+            _formName = "frmJzd";
         }
+        
         public IAppContext Context
         {
             get { return _context; }
@@ -45,6 +46,10 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         public IEntity LinkedObject
         {
             get { return _linkedObject as IEntity; }
+            set{
+                _linkedObject=value as Jzd;
+                LinkObject();
+            }            
         }
 
         public string FormName
@@ -58,25 +63,47 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             _linkedObject = _database.ZdService.GetJzd(id);
             LinkObject();
         }
-
         private  void LinkObject()
         {
             ((INotifyPropertyChanged)_linkedObject).PropertyChanged +=linkedObject_PropertyChanged;
-            ucLinkObject.LinkObject(_database,_linkedObject);
-            ucWXInfo1.LinkObject(_linkedObject as IBackEntity);
+            ucLinkObject.LinkObject(_database,(IEntity)_linkedObject);
+            ucWXInfo1.LinkObject(_linkedObject as ISurveyEntity);
+            ucAttachmentList1.BindContext(_context);
+            ucAttachmentList1.LinkObject(_linkedObject as IGlobalEntity);
+            if(_linkedObject.ID<=0)
+            {
+                btnSave.Text="新建";
+            }
+            else
+                btnSave.Text="保存";
         }
 
         private void linkedObject_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            btnSave.Enabled = true;
-        }
-
-        
+            btnSave.Enabled = true;           
+        }        
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             _database.ZdService.SaveJzd(_linkedObject as Jzd);
+            if(_linkedObject.ID > 0)
+            {
+                DialogResult=DialogResult.OK;
+                return;
+            }
+            else
+            {
+                MessageBox.Show("对象未能正确保存!","警告",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+            }
         }
+        
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            DialogResult=DialogResult.Cancel;
+        }
+        
+        public bool HasPropertyChanged { get { return ucLinkObject.HasChanged; }}
+        
     }
-
 }

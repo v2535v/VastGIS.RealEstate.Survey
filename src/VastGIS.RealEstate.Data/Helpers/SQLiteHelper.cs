@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 
 namespace VastGIS.RealEstate.Data.Helpers
 {
@@ -35,6 +36,8 @@ namespace VastGIS.RealEstate.Data.Helpers
                     if (source.ToUpper().StartsWith("WX_")) continue;
                     if (source.ToUpper().Equals("DATABASEID")) continue;
                     if (source.ToUpper().Equals("FLAGS")) continue;
+                    if (source.ToUpper().Equals("XGR")) continue;
+                    if (source.ToUpper().Equals("XGSJ")) continue;
                 }
                 //if (source.ToUpper().Equals("GEOMETRY")) continue;
                 if (targets.Contains(source))
@@ -213,6 +216,40 @@ namespace VastGIS.RealEstate.Data.Helpers
                 result.Add(dr["name"].ToString().ToLower());
             }
             return result;
+        }
+
+        public static byte[] GetBytes(SQLiteDataReader reader, string indexName)
+        {
+            return GetBytes(reader, reader.GetOrdinal(indexName));
+        }
+
+        public static byte[] GetBytes(SQLiteDataReader reader, int i)
+        {
+            const int CHUNK_SIZE = 2 * 1024;
+            byte[] buffer = new byte[CHUNK_SIZE];
+            long bytesRead;
+            long fieldOffset = 0;
+            using (MemoryStream stream = new MemoryStream())
+            {
+                while ((bytesRead = reader.GetBytes(i, fieldOffset, buffer, 0, buffer.Length)) > 0)
+                {
+                    stream.Write(buffer, 0, (int)bytesRead);
+                    fieldOffset += bytesRead;
+                }
+                return stream.ToArray();
+            }
+        }
+
+        public static bool IsRESystemProperty(string propName)
+        {
+            propName = propName.ToUpper();
+            if (propName == "ID") return true;
+            if (propName == "DATABASEID") return true;
+            if (propName == "FLAGS") return true;
+            if (propName == "XGR") return true;
+            if (propName == "XGSJ") return true;
+            if (propName == "WXWYDM") return true;
+            return false;
         }
     }
 }

@@ -14,7 +14,6 @@ namespace VastGIS.Plugins.RealEstate.Menu
     /// </summary>
     public class MenuKeys
     {
-
         public const string TestOgrChinese= "re_TestOgrChinese";
         public const string NewREProject = "re_NewRealEstateProject";
         public const string ImportDXF = "re_ImportDXF";
@@ -23,10 +22,21 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public const string CreateJZDByPolygon = "re_CreateJZDByPolygon";
         public const string ReOrginzeLayers = "re_ReOrginzeLayers";
         public const string LayerManagement = "re_LayerManagement";
-        public const string CopyFeature = "re_CopyFeature";
-        public const string DeleteFeature = "re_DeleteFeature";
         public const string TwoDistanceConstructor = "re_TwoDistanceConstructor";
         public const string SelectFeatureByPoint = "re_SelectFeatureByPoint";
+        public const string NewFeature = "re_NewFeature";
+        public const string CopyFeature = "re_CopyFeature";
+        public const string MoveFeature = "re_MoveFeature";
+        public const string EditFeature = "re_EditFeature";
+        public const string DeleteFeature = "re_DeleteFeature";
+        public const string UnionFeature = "re_UnionFeature";
+        public const string WYGZFeature = "re_WYGZFeature";
+        public const string SplitPolygon = "re_SplitPolygon";
+        public const string ZoomToDbMax = "re_ZoomToDbMax";
+        public const string EditGeometry = "re_EditGeometry";
+        public const string OpenTable = "re_OpenTable";
+        public const string CreateJZDByZD = "re_CreateJZDByZD";
+
         #region Constants
 
         /// <summary>

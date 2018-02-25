@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using VastGIS.Api.Concrete;
@@ -18,6 +19,7 @@ using VastGIS.Plugins.Services;
 using VastGIS.RealEstate.Api.Helpers;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate
 {
@@ -29,6 +31,7 @@ namespace VastGIS.Plugins.RealEstate
         private ILayerService _olayerService;
         private SynchronizationContext _syncContext;
         private ISpatialReference _spatialReference;
+        private List<VgObjectclass> _classes;
 
         public ProjectListener(IAppContext context, RealEstateEditor plugin, IRealEstateEditingService layerService,ILayerService oLayerService)
         {
@@ -45,7 +48,7 @@ namespace VastGIS.Plugins.RealEstate
         }
 
         /// <summary>
-        /// 只是动态的加载了图层，暂时没有用组的方式，请修改，而且在已有项目打开的情况下项目新建还是有问题。
+        /// 只支持两层结构
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -60,9 +63,10 @@ namespace VastGIS.Plugins.RealEstate
 
                     ((IRealEstateContext)_context).RealEstateDatabase.DatabaseName =
                         ReProjectHelper.GetProjectDatabase(_context.Project.Filename);
-
-                    List<VgObjectclasses> classes = ((IRealEstateContext)_context).RealEstateDatabase.SystemService
-                        .GetObjectclasseses(true);
+                    _classes = ((IRealEstateContext)_context).RealEstateDatabase.SystemService
+                        .GetObjectclasses(false);
+                    List<VgObjectclass> classes = ((IRealEstateContext)_context).RealEstateDatabase.SystemService
+                        .GetObjectclasses(true);
                     int srid = ((IRealEstateContext)_context).RealEstateDatabase.SystemService.GetSystemSRID();
                     _spatialReference = new SpatialReference();
                     _spatialReference.ImportFromEpsg(srid);
@@ -78,8 +82,11 @@ namespace VastGIS.Plugins.RealEstate
                             {
                                 if (oneclass.Dxlx == 0)
                                 {
-                                    ILegendGroup legendGroup = _context.Legend.Groups.Add(oneclass.Zwmc);
+                                    //检查该对象下面有没有图层，如果没有就不再加载
                                     if (oneclass.SubClasses == null) continue;
+                                    //检查该对象下面是否只有表，而无空间数据
+                                    if (oneclass.SubClasses.FirstOrDefault(c => c.Dxlx == 1) == null) continue;
+                                    ILegendGroup legendGroup = _context.Legend.Groups.Add(oneclass.Zwmc);
                                     foreach (var subClass in oneclass.SubClasses)
                                     {
                                         LoadDataToMap(connectionString, subClass, legendGroup);
@@ -101,33 +108,37 @@ namespace VastGIS.Plugins.RealEstate
 
         private void RealEstateDatabase_EntityChanged(object sender, VastGIS.RealEstate.Data.Events.EntityChanedEventArgs e)
         {
-            if (string.IsNullOrEmpty(e.LayerName)) return;
-            string targetLayer = e.TableName.ToUpper();
-            for (int i = 0; i < _context.Map.Layers.Count; i++)
+            if (e.Entities==null || e.Entities.Count<1) return;
+            if (e.Entities[0].HasGeometry == false) return;
+            ILayer pLayer = _context.Map.Layers.FirstOrDefault(c => c.Name.ToUpper() ==e.Entities[0].LayerName);
+            if (pLayer == null)
             {
-                ILayer pLayer = _context.Map.Layers[i];
-                string lyrName = pLayer.Name.ToUpper();
-                if (targetLayer == lyrName || e.LayerName == lyrName)
+                VgObjectclass oneclass=_classes.FirstOrDefault(c => c.Mc.ToUpper() == e.Entities[0].TableName);
+                if (oneclass != null)
                 {
-                    if (pLayer.IsVector)
-                    {
-                        pLayer.VectorSource.ReloadFromSource();
-                        _context.Map.Redraw(RedrawType.Minimal);
-                    }
-                    return;
+                    pLayer = _context.Map.Layers.FirstOrDefault(c => c.Name == oneclass.Zwmc);
+                }
+            }
+            if (pLayer != null)
+            {
+                if (pLayer.IsVector)
+                {
+                    pLayer.VectorSource.ReloadFromSource();
+                    _context.Map.Redraw(RedrawType.All);
                 }
             }
         }
 
-        private void ReorderLayers(List<VgObjectclasses> classes)
+        private void ReorderLayers(List<VgObjectclass> classes)
         {
             foreach (var oneclass in classes)
             {
                 if (oneclass.Dxlx > 0) continue;
+                if (oneclass.SubClasses == null) continue;
                 int groupHandle = FindGroupHandle(oneclass.Zwmc);
                 foreach (var subClass in oneclass.SubClasses)
                 {
-                   
+                    if (subClass.Dxlx != 1) continue;
                     int subHandle = FindLayerHandle(subClass.Zwmc);
                     if (groupHandle > -1 && subHandle > -1)
                     {
@@ -162,7 +173,7 @@ namespace VastGIS.Plugins.RealEstate
             return -1;
         }
 
-        private void LoadDataToMap(string connectionString, VgObjectclasses oneclass,ILegendGroup parentGroup)
+        private void LoadDataToMap(string connectionString, VgObjectclass oneclass,ILegendGroup parentGroup)
         {
             string stepMsg = "";
             try
@@ -171,15 +182,16 @@ namespace VastGIS.Plugins.RealEstate
                 {
                     if (oneclass.SubClasses == null) return;
                     ILegendGroup legendGroup = _context.Legend.Groups.Add(oneclass.Zwmc);
-                    
                     stepMsg = oneclass.Zwmc;
                     foreach (var subClass in oneclass.SubClasses)
                     {
                         LoadDataToMap(connectionString, subClass, legendGroup);
                     }
                 }
-                else
+                else if (oneclass.Dxlx == 2) return;
+                else if(oneclass.Dxlx==1)
                 {
+                    
                     stepMsg = oneclass.Zwmc;
                     var vectorLayer = new VectorLayer();
                     vectorLayer.DynamicLoading = true;

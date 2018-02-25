@@ -42,7 +42,7 @@ namespace VastGIS.Services.Serialization
 
             Settings = new XmlProjectSettings { SavedAsFilename = filename };
 
-            if (!context.Locator.Empty)
+            if (context.Locator!= null && !context.Locator.Empty)
             {
                 var service = context.Container.GetInstance<ImageSerializationService>();
                 Locator = new XmlMapLocator(context.Locator, service);

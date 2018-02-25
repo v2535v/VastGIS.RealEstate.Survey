@@ -18,21 +18,29 @@ namespace VastGIS.RealEstate.Data.Service.Impl.Tests
     [TestClass()]
     public class SystemServiceImplTests
     {
+        private string dbName = @"H:\redatabase2023.db";
 
         [TestMethod()] //测试通过，新建空数据库，因为涉及到坐标系初始化等工作，耗时很长，所以一般情况不用该功能
         public void CreateEmptyTableTest()
         {
-            SQLiteHelper.CreateEmptyDatabase(@"H:\redatabase2.db");
-            DbConnection.SetDatabaseName(@"H:\redatabase2.db");
+            SQLiteHelper.CreateEmptyDatabase(dbName);
+            DbConnection.SetDatabaseName(dbName);
             SystemService service = ServiceFactory.GetSystemService();
+        }
 
-
+        [TestMethod()] //测试通过,初始化系统表，在这儿系统表的原始数据有dll来初始化，一般情况不用该功能
+        public void InitializeDatabaseTest()
+        {
+            SQLiteHelper.CreateEmptyDatabase(dbName);
+            DbConnection.SetDatabaseName(dbName);
+            SystemService service = ServiceFactory.GetSystemService();
+            service.InitializeDatabase(4539);
         }
 
         [TestMethod()] //测试通过,初始化系统表，在这儿系统表的原始数据有dll来初始化，一般情况不用该功能
         public void InitTablesTest()
         {
-            DbConnection.SetDatabaseName(@"H:\redatabase2.db");
+            DbConnection.SetDatabaseName(dbName);
             SystemService service = ServiceFactory.GetSystemService();
             service.InternalInitTables();
         }
@@ -40,22 +48,22 @@ namespace VastGIS.RealEstate.Data.Service.Impl.Tests
         [TestMethod()]//测试通过,1-省级；2-地市级；3-县级
         public void QueryAreaCodes()
         {
-            DbConnection.SetDatabaseName(@"H:\redatabase2.db");
+            DbConnection.SetDatabaseName(dbName);
             SystemService service = ServiceFactory.GetSystemService();
-            IEnumerable<VgAreacodes> codes = service.GetAreaCodesByJB("", 1);
-            foreach (VgAreacodes areacodes in codes)
+            IEnumerable<VgAreacode> codes = service.GetAreaCodesByJB("", 1);
+            foreach (VgAreacode areacodes in codes)
             {
                 Console.WriteLine("{0}  {1}",areacodes.Xzqhmc,areacodes.Xzqhdm);
             }
 
             codes = service.GetAreaCodesByJB("130000", 2);
-            foreach (VgAreacodes areacodes in codes)
+            foreach (VgAreacode areacodes in codes)
             {
                 Console.WriteLine("{0}  {1}", areacodes.Xzqhmc, areacodes.Xzqhdm);
             }
 
             codes = service.GetAreaCodesByJB("130100", 3);
-            foreach (VgAreacodes areacodes in codes)
+            foreach (VgAreacode areacodes in codes)
             {
                 Console.WriteLine("{0}  {1}", areacodes.Xzqhmc, areacodes.Xzqhdm);
             }
@@ -65,29 +73,29 @@ namespace VastGIS.RealEstate.Data.Service.Impl.Tests
         [TestMethod()]//测试通过,不会重复写入设置参数
         public void InsertSettingsTest()
         {
-            DbConnection.SetDatabaseName(@"H:\redatabase2.db");
+            DbConnection.SetDatabaseName(dbName);
             SystemService service = ServiceFactory.GetSystemService();
-            VgSettings settings = new VgSettings() { Csmc = "SRID", Csz = "4539" };
-            service.SaveVgSettings2(settings);
-            service.SaveVgSettings2("SRID", "4539");
-            settings = new VgSettings() { Csmc = "SRID", Csz = "4539" };
-            service.SaveVgSettings2(settings);
+            VgSetting settings = new VgSetting() { Csmc = "SRID", Csz = "4539" };
+            service.SaveVgSetting2(settings);
+            service.SaveVgSetting2("SRID", "4539");
+            settings = new VgSetting() { Csmc = "SRID", Csz = "4539" };
+            service.SaveVgSetting2(settings);
 
-            settings = new VgSettings() { Csmc = "XZQHDM", Csz = "320200" };
-            service.SaveVgSettings2(settings);
+            settings = new VgSetting() { Csmc = "XZQHDM", Csz = "320200" };
+            service.SaveVgSetting2(settings);
 
-            settings = new VgSettings() { Csmc = "WXDCY", Csz = "王先生" };
-            service.SaveVgSettings2(settings);
+            settings = new VgSetting() { Csmc = "WXDCY", Csz = "王先生" };
+            service.SaveVgSetting2(settings);
 
-            settings = new VgSettings() { Csmc = "WXCLY", Csz = "张先生" };
-            service.SaveVgSettings2(settings);
+            settings = new VgSetting() { Csmc = "WXCLY", Csz = "张先生" };
+            service.SaveVgSetting2(settings);
 
         }
 
         [TestMethod()]//测试通过,
         public void SaveTextAssignConfigTest()
         {
-            DbConnection.SetDatabaseName(@"H:\redatabase2.db");
+            DbConnection.SetDatabaseName(dbName);
             SystemService service = ServiceFactory.GetSystemService();
             List<TextAssignConfig> configs = new List<TextAssignConfig>();
             TextAssignConfig config = new TextAssignConfig("居民地楼层识别", "DXTJMDM", "FSXX1", AssignTextType.Integer, null);
@@ -103,17 +111,17 @@ namespace VastGIS.RealEstate.Data.Service.Impl.Tests
             configs.Add(config);
 
             string configStr = JsonConvert.SerializeObject(configs);
-            VgSettings setting = new VgSettings() { Csmc = "DXTWZSXSB", Csz = configStr };
-            service.SaveVgSettings2(setting);
+            VgSetting setting = new VgSetting() { Csmc = "DXTWZSXSB", Csz = configStr };
+            service.SaveVgSetting2(setting);
         }
 
 
         [TestMethod()]//测试通过,
         public void LoadTextAssignConfigTest()
         {
-            DbConnection.SetDatabaseName(@"H:\redatabase2.db");
+            DbConnection.SetDatabaseName(dbName);
             SystemService service = ServiceFactory.GetSystemService();
-            VgSettings setting = service.GetVgSettings("DXTWZSXSB");
+            VgSetting setting = service.GetVgSettingByName("DXTWZSXSB");
             List<TextAssignConfig> configs = JsonConvert.DeserializeObject<List<TextAssignConfig>>(setting.Csz);
 
             foreach (TextAssignConfig config in configs)
@@ -128,7 +136,7 @@ namespace VastGIS.RealEstate.Data.Service.Impl.Tests
         [TestMethod()]
         public void CopyFeatureToAnotherTest()
         {
-            DbConnection.SetDatabaseName(@"H:\redatabase2.db");
+            DbConnection.SetDatabaseName(dbName);
             SystemService service = ServiceFactory.GetSystemService();
             bool retVal=SpatialHelper.CopyFeature(DbConnection.GetConnection(), "DXTQTM", 1, "DJZQ", true, true);
             Assert.AreNotEqual(true,retVal);
@@ -189,9 +197,9 @@ namespace VastGIS.RealEstate.Data.Service.Impl.Tests
         [TestMethod()]
         public void GetObjectclassesesTest()
         {
-            DbConnection.SetDatabaseName(@"H:\redatabase.db");
+            DbConnection.SetDatabaseName(dbName);
             SystemService service = ServiceFactory.GetSystemService();
-            List<VgObjectclasses> classes = service.GetObjectclasseses(true);
+            List<VgObjectclass> classes = service.GetObjectclasses(true);
             foreach (var classname in classes)
             {
                 DisplayInformation(classname,0);
@@ -199,7 +207,7 @@ namespace VastGIS.RealEstate.Data.Service.Impl.Tests
             CollectionAssert.AllItemsAreUnique(classes);
         }
 
-        private void DisplayInformation(VgObjectclasses oneclass,int step)
+        private void DisplayInformation(VgObjectclass oneclass,int step)
         {
             if (oneclass.Dxlx == 0)
             {

@@ -6,10 +6,11 @@ using System.Data.SQLite;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Interface;
 
+
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
-    partial class ucJZXZJ
-    {
+    partial class ucJzxzj
+    {	
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -27,478 +28,529 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             }
             base.Dispose(disposing);
         }
-
+        
         #region Component Designer generated code
         private void InitializeComponent()
-        {
-            this.intID = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+        {            
             this.lblID = new System.Windows.Forms.Label();
-            this.txtGLYSBH = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblGLYSBH = new System.Windows.Forms.Label();
-            this.txtYSDM = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblYSDM = new System.Windows.Forms.Label();
-            this.txtZJNR = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblZJNR = new System.Windows.Forms.Label();
-            this.txtZT = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblZT = new System.Windows.Forms.Label();
-            this.txtYS = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblYS = new System.Windows.Forms.Label();
-            this.intBS = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
-            this.lblBS = new System.Windows.Forms.Label();
-            this.txtXZ = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblXZ = new System.Windows.Forms.Label();
-            this.txtXHX = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblXHX = new System.Windows.Forms.Label();
-            this.dblKD = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
-            this.lblKD = new System.Windows.Forms.Label();
-            this.dblGD = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
-            this.lblGD = new System.Windows.Forms.Label();
-            this.dblZJDZXJXZB = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
-            this.lblZJDZXJXZB = new System.Windows.Forms.Label();
-            this.dblZJDZXJYZB = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
-            this.lblZJDZXJYZB = new System.Windows.Forms.Label();
-            this.dblZJFX = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
-            this.lblZJFX = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtGLYSBH)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtYSDM)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtZJNR)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtZT)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtYS)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.intBS)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtXZ)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtXHX)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblKD)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblGD)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblZJDZXJXZB)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblZJDZXJYZB)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblZJFX)).BeginInit();           
+            this.intID = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.lblGlysbh = new System.Windows.Forms.Label();
+            this.txtGlysbh = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblYsdm = new System.Windows.Forms.Label();
+            this.txtYsdm = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblZjnr = new System.Windows.Forms.Label();
+            this.txtZjnr = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblZt = new System.Windows.Forms.Label();
+            this.txtZt = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblYs = new System.Windows.Forms.Label();
+            this.txtYs = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblBs = new System.Windows.Forms.Label();
+            this.intBs = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.lblXz = new System.Windows.Forms.Label();
+            this.txtXz = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblXhx = new System.Windows.Forms.Label();
+            this.txtXhx = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblKd = new System.Windows.Forms.Label();
+            this.dblKd = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
+            this.lblGd = new System.Windows.Forms.Label();
+            this.dblGd = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
+            this.lblZjdzxjxzb = new System.Windows.Forms.Label();
+            this.dblZjdzxjxzb = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
+            this.lblZjdzxjyzb = new System.Windows.Forms.Label();
+            this.dblZjdzxjyzb = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
+            this.lblZjfx = new System.Windows.Forms.Label();
+            this.dblZjfx = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();            
+            ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGlysbh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYsdm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZjnr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtXz)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtXhx)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblKd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblGd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblZjdzxjxzb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblZjdzxjyzb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblZjfx)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // intID
-            // 
-            this.intID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.intID.EnableTouchMode = true;
-            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.intID.Location = new System.Drawing.Point(100, 20);
-            this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.intID.Name = "intID";           
-            this.intID.Size = new System.Drawing.Size(152, 21);
-            this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.intID.TabIndex = 1;
-            this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.intID.Text = "1.00";           
-            this.intID.NullString = "";
+            
             // 
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(10, 24);
+            this.lblID.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblID.Location = new System.Drawing.Point(0,0);
+            this.lblID.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(65, 12);
-            this.lblID.TabIndex = 2;
-            this.lblID.Text = "ID";
+            this.lblID.Size = new System.Drawing.Size(41, 20);
+            this.lblID.TabIndex = 1;
+            this.lblID.Text = "标识码";
             // 
-            // txtGLYSBH
+            // intID
             // 
-            this.txtGLYSBH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtGLYSBH.EnableTouchMode = true;
-            this.txtGLYSBH.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtGLYSBH.Location = new System.Drawing.Point(100, 55);
-            this.txtGLYSBH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtGLYSBH.Name = "txtGLYSBH";           
-            this.txtGLYSBH.Size = new System.Drawing.Size(152, 21);
-            this.txtGLYSBH.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtGLYSBH.TabIndex = 3;
-            this.txtGLYSBH.Text = "";   
+            this.intID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intID.EnableTouchMode = true;
+            this.intID.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intID.IntegerValue = ((long)(0));
+            this.intID.Location = new System.Drawing.Point(0,0);
+            this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.intID.Name = "intID";
+            this.intID.NullString = "";
+            this.intID.Size = new System.Drawing.Size(152, 28);
+            this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.intID.TabIndex = 2;
+            this.intID.Text = "0";
             // 
-            // lblGLYSBH
+            // lblID
             // 
-            this.lblGLYSBH.AutoSize = true;
-            this.lblGLYSBH.Location = new System.Drawing.Point(10, 59);
-            this.lblGLYSBH.Name = "lblGLYSBH";
-            this.lblGLYSBH.Size = new System.Drawing.Size(65, 12);
-            this.lblGLYSBH.TabIndex = 4;
-            this.lblGLYSBH.Text = "GLYSBH";
+            this.lblGlysbh.AutoSize = true;
+            this.lblGlysbh.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblGlysbh.Location = new System.Drawing.Point(0,0);
+            this.lblGlysbh.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblGlysbh.Name = "lblGlysbh";
+            this.lblGlysbh.Size = new System.Drawing.Size(41, 20);
+            this.lblGlysbh.TabIndex = 3;
+            this.lblGlysbh.Text = "内部要素编号";
             // 
-            // txtYSDM
+            // txtGlysbh
             // 
-            this.txtYSDM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtYSDM.EnableTouchMode = true;
-            this.txtYSDM.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtYSDM.Location = new System.Drawing.Point(100, 90);
-            this.txtYSDM.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtYSDM.Name = "txtYSDM";           
-            this.txtYSDM.Size = new System.Drawing.Size(152, 21);
-            this.txtYSDM.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtYSDM.TabIndex = 5;
-            this.txtYSDM.Text = "";   
+            this.txtGlysbh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtGlysbh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtGlysbh.EnableTouchMode = true;
+            this.txtGlysbh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtGlysbh.Location =  new System.Drawing.Point(0,0);
+            this.txtGlysbh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtGlysbh.Name = "txtGlysbh";
+            this.txtGlysbh.Size = new System.Drawing.Size(152, 28);
+            this.txtGlysbh.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtGlysbh.TabIndex = 4;
             // 
-            // lblYSDM
+            // lblID
             // 
-            this.lblYSDM.AutoSize = true;
-            this.lblYSDM.Location = new System.Drawing.Point(10, 94);
-            this.lblYSDM.Name = "lblYSDM";
-            this.lblYSDM.Size = new System.Drawing.Size(65, 12);
-            this.lblYSDM.TabIndex = 6;
-            this.lblYSDM.Text = "YSDM";
+            this.lblYsdm.AutoSize = true;
+            this.lblYsdm.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblYsdm.Location = new System.Drawing.Point(0,0);
+            this.lblYsdm.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblYsdm.Name = "lblYsdm";
+            this.lblYsdm.Size = new System.Drawing.Size(41, 20);
+            this.lblYsdm.TabIndex = 5;
+            this.lblYsdm.Text = "要素代码";
             // 
-            // txtZJNR
+            // txtYsdm
             // 
-            this.txtZJNR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtZJNR.EnableTouchMode = true;
-            this.txtZJNR.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtZJNR.Location = new System.Drawing.Point(100, 125);
-            this.txtZJNR.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtZJNR.Name = "txtZJNR";           
-            this.txtZJNR.Size = new System.Drawing.Size(152, 21);
-            this.txtZJNR.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtZJNR.TabIndex = 7;
-            this.txtZJNR.Text = "";   
+            this.txtYsdm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtYsdm.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtYsdm.EnableTouchMode = true;
+            this.txtYsdm.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtYsdm.Location =  new System.Drawing.Point(0,0);
+            this.txtYsdm.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtYsdm.Name = "txtYsdm";
+            this.txtYsdm.Size = new System.Drawing.Size(152, 28);
+            this.txtYsdm.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtYsdm.TabIndex = 6;
             // 
-            // lblZJNR
+            // lblID
             // 
-            this.lblZJNR.AutoSize = true;
-            this.lblZJNR.Location = new System.Drawing.Point(10, 129);
-            this.lblZJNR.Name = "lblZJNR";
-            this.lblZJNR.Size = new System.Drawing.Size(65, 12);
-            this.lblZJNR.TabIndex = 8;
-            this.lblZJNR.Text = "ZJNR";
+            this.lblZjnr.AutoSize = true;
+            this.lblZjnr.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblZjnr.Location = new System.Drawing.Point(0,0);
+            this.lblZjnr.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblZjnr.Name = "lblZjnr";
+            this.lblZjnr.Size = new System.Drawing.Size(41, 20);
+            this.lblZjnr.TabIndex = 7;
+            this.lblZjnr.Text = "注记内容";
             // 
-            // txtZT
+            // txtZjnr
             // 
-            this.txtZT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtZT.EnableTouchMode = true;
-            this.txtZT.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtZT.Location = new System.Drawing.Point(100, 160);
-            this.txtZT.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtZT.Name = "txtZT";           
-            this.txtZT.Size = new System.Drawing.Size(152, 21);
-            this.txtZT.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtZT.TabIndex = 9;
-            this.txtZT.Text = "";   
+            this.txtZjnr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtZjnr.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZjnr.EnableTouchMode = true;
+            this.txtZjnr.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtZjnr.Location =  new System.Drawing.Point(0,0);
+            this.txtZjnr.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtZjnr.Name = "txtZjnr";
+            this.txtZjnr.Size = new System.Drawing.Size(152, 28);
+            this.txtZjnr.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtZjnr.TabIndex = 8;
             // 
-            // lblZT
+            // lblID
             // 
-            this.lblZT.AutoSize = true;
-            this.lblZT.Location = new System.Drawing.Point(10, 164);
-            this.lblZT.Name = "lblZT";
-            this.lblZT.Size = new System.Drawing.Size(65, 12);
-            this.lblZT.TabIndex = 10;
-            this.lblZT.Text = "ZT";
+            this.lblZt.AutoSize = true;
+            this.lblZt.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblZt.Location = new System.Drawing.Point(0,0);
+            this.lblZt.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblZt.Name = "lblZt";
+            this.lblZt.Size = new System.Drawing.Size(41, 20);
+            this.lblZt.TabIndex = 9;
+            this.lblZt.Text = "字体";
             // 
-            // txtYS
+            // txtZt
             // 
-            this.txtYS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtYS.EnableTouchMode = true;
-            this.txtYS.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtYS.Location = new System.Drawing.Point(100, 195);
-            this.txtYS.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtYS.Name = "txtYS";           
-            this.txtYS.Size = new System.Drawing.Size(152, 21);
-            this.txtYS.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtYS.TabIndex = 11;
-            this.txtYS.Text = "";   
+            this.txtZt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtZt.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZt.EnableTouchMode = true;
+            this.txtZt.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtZt.Location =  new System.Drawing.Point(0,0);
+            this.txtZt.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtZt.Name = "txtZt";
+            this.txtZt.Size = new System.Drawing.Size(152, 28);
+            this.txtZt.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtZt.TabIndex = 10;
             // 
-            // lblYS
+            // lblID
             // 
-            this.lblYS.AutoSize = true;
-            this.lblYS.Location = new System.Drawing.Point(10, 199);
-            this.lblYS.Name = "lblYS";
-            this.lblYS.Size = new System.Drawing.Size(65, 12);
-            this.lblYS.TabIndex = 12;
-            this.lblYS.Text = "YS";
+            this.lblYs.AutoSize = true;
+            this.lblYs.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblYs.Location = new System.Drawing.Point(0,0);
+            this.lblYs.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblYs.Name = "lblYs";
+            this.lblYs.Size = new System.Drawing.Size(41, 20);
+            this.lblYs.TabIndex = 11;
+            this.lblYs.Text = "颜色";
             // 
-            // intBS
+            // txtYs
             // 
-            this.intBS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.intBS.EnableTouchMode = true;
-            this.intBS.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.intBS.Location = new System.Drawing.Point(100, 230);
-            this.intBS.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.intBS.Name = "intBS";           
-            this.intBS.Size = new System.Drawing.Size(152, 21);
-            this.intBS.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.intBS.TabIndex = 13;
-            this.intBS.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.intBS.Text = "1.00";           
-            this.intBS.NullString = "";
+            this.txtYs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtYs.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtYs.EnableTouchMode = true;
+            this.txtYs.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtYs.Location =  new System.Drawing.Point(0,0);
+            this.txtYs.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtYs.Name = "txtYs";
+            this.txtYs.Size = new System.Drawing.Size(152, 28);
+            this.txtYs.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtYs.TabIndex = 12;
             // 
-            // lblBS
+            // lblID
             // 
-            this.lblBS.AutoSize = true;
-            this.lblBS.Location = new System.Drawing.Point(10, 234);
-            this.lblBS.Name = "lblBS";
-            this.lblBS.Size = new System.Drawing.Size(65, 12);
-            this.lblBS.TabIndex = 14;
-            this.lblBS.Text = "BS";
+            this.lblBs.AutoSize = true;
+            this.lblBs.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblBs.Location = new System.Drawing.Point(0,0);
+            this.lblBs.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblBs.Name = "lblBs";
+            this.lblBs.Size = new System.Drawing.Size(41, 20);
+            this.lblBs.TabIndex = 13;
+            this.lblBs.Text = "磅数";
             // 
-            // txtXZ
+            // intBs
             // 
-            this.txtXZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtXZ.EnableTouchMode = true;
-            this.txtXZ.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtXZ.Location = new System.Drawing.Point(100, 265);
-            this.txtXZ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtXZ.Name = "txtXZ";           
-            this.txtXZ.Size = new System.Drawing.Size(152, 21);
-            this.txtXZ.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtXZ.TabIndex = 15;
-            this.txtXZ.Text = "";   
+            this.intBs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.intBs.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.intBs.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intBs.EnableTouchMode = true;
+            this.intBs.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intBs.IntegerValue = ((long)(0));
+            this.intBs.Location = new System.Drawing.Point(0,0);
+            this.intBs.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.intBs.Name = "intBs";
+            this.intBs.NullString = "";
+            this.intBs.Size = new System.Drawing.Size(152, 28);
+            this.intBs.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.intBs.TabIndex = 14;
+            this.intBs.Text = "0";
             // 
-            // lblXZ
+            // lblID
             // 
-            this.lblXZ.AutoSize = true;
-            this.lblXZ.Location = new System.Drawing.Point(10, 269);
-            this.lblXZ.Name = "lblXZ";
-            this.lblXZ.Size = new System.Drawing.Size(65, 12);
-            this.lblXZ.TabIndex = 16;
-            this.lblXZ.Text = "XZ";
+            this.lblXz.AutoSize = true;
+            this.lblXz.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblXz.Location = new System.Drawing.Point(0,0);
+            this.lblXz.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblXz.Name = "lblXz";
+            this.lblXz.Size = new System.Drawing.Size(41, 20);
+            this.lblXz.TabIndex = 15;
+            this.lblXz.Text = "形状";
             // 
-            // txtXHX
+            // txtXz
             // 
-            this.txtXHX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtXHX.EnableTouchMode = true;
-            this.txtXHX.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtXHX.Location = new System.Drawing.Point(100, 300);
-            this.txtXHX.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtXHX.Name = "txtXHX";           
-            this.txtXHX.Size = new System.Drawing.Size(152, 21);
-            this.txtXHX.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtXHX.TabIndex = 17;
-            this.txtXHX.Text = "";   
+            this.txtXz.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtXz.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtXz.EnableTouchMode = true;
+            this.txtXz.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtXz.Location =  new System.Drawing.Point(0,0);
+            this.txtXz.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtXz.Name = "txtXz";
+            this.txtXz.Size = new System.Drawing.Size(152, 28);
+            this.txtXz.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtXz.TabIndex = 16;
             // 
-            // lblXHX
+            // lblID
             // 
-            this.lblXHX.AutoSize = true;
-            this.lblXHX.Location = new System.Drawing.Point(10, 304);
-            this.lblXHX.Name = "lblXHX";
-            this.lblXHX.Size = new System.Drawing.Size(65, 12);
-            this.lblXHX.TabIndex = 18;
-            this.lblXHX.Text = "XHX";
+            this.lblXhx.AutoSize = true;
+            this.lblXhx.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblXhx.Location = new System.Drawing.Point(0,0);
+            this.lblXhx.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblXhx.Name = "lblXhx";
+            this.lblXhx.Size = new System.Drawing.Size(41, 20);
+            this.lblXhx.TabIndex = 17;
+            this.lblXhx.Text = "下划线";
             // 
-            // dblKD
+            // txtXhx
             // 
-            this.dblKD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.dblKD.EnableTouchMode = true;
-            this.dblKD.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.dblKD.Location = new System.Drawing.Point(100, 335);
-            this.dblKD.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.dblKD.Name = "dblKD";           
-            this.dblKD.Size = new System.Drawing.Size(152, 21);
-            this.dblKD.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.dblKD.TabIndex = 19;
-            this.dblKD.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblKD.Text = "1.00";
-            this.dblKD.DoubleValue = 1D;
-            this.dblKD.NullString = "";
+            this.txtXhx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtXhx.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtXhx.EnableTouchMode = true;
+            this.txtXhx.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtXhx.Location =  new System.Drawing.Point(0,0);
+            this.txtXhx.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtXhx.Name = "txtXhx";
+            this.txtXhx.Size = new System.Drawing.Size(152, 28);
+            this.txtXhx.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtXhx.TabIndex = 18;
             // 
-            // lblKD
+            // lblID
             // 
-            this.lblKD.AutoSize = true;
-            this.lblKD.Location = new System.Drawing.Point(10, 339);
-            this.lblKD.Name = "lblKD";
-            this.lblKD.Size = new System.Drawing.Size(65, 12);
-            this.lblKD.TabIndex = 20;
-            this.lblKD.Text = "KD";
+            this.lblKd.AutoSize = true;
+            this.lblKd.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblKd.Location = new System.Drawing.Point(0,0);
+            this.lblKd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblKd.Name = "lblKd";
+            this.lblKd.Size = new System.Drawing.Size(41, 20);
+            this.lblKd.TabIndex = 19;
+            this.lblKd.Text = "宽度";
             // 
-            // dblGD
+            // dblKd
             // 
-            this.dblGD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.dblGD.EnableTouchMode = true;
-            this.dblGD.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.dblGD.Location = new System.Drawing.Point(100, 370);
-            this.dblGD.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.dblGD.Name = "dblGD";           
-            this.dblGD.Size = new System.Drawing.Size(152, 21);
-            this.dblGD.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.dblGD.TabIndex = 21;
-            this.dblGD.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblGD.Text = "1.00";
-            this.dblGD.DoubleValue = 1D;
-            this.dblGD.NullString = "";
+            this.dblKd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dblKd.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.dblKd.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblKd.DoubleValue = 1D;
+            this.dblKd.EnableTouchMode = true;
+            this.dblKd.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblKd.Location =  new System.Drawing.Point(0,0);
+            this.dblKd.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.dblKd.Name = "dblKd";
+            this.dblKd.NullString = "";
+            this.dblKd.Size = new System.Drawing.Size(152, 28);
+            this.dblKd.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.dblKd.TabIndex = 20;
+            this.dblKd.Text = "1.00";
             // 
-            // lblGD
+            // lblID
             // 
-            this.lblGD.AutoSize = true;
-            this.lblGD.Location = new System.Drawing.Point(10, 374);
-            this.lblGD.Name = "lblGD";
-            this.lblGD.Size = new System.Drawing.Size(65, 12);
-            this.lblGD.TabIndex = 22;
-            this.lblGD.Text = "GD";
+            this.lblGd.AutoSize = true;
+            this.lblGd.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblGd.Location = new System.Drawing.Point(0,0);
+            this.lblGd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblGd.Name = "lblGd";
+            this.lblGd.Size = new System.Drawing.Size(41, 20);
+            this.lblGd.TabIndex = 21;
+            this.lblGd.Text = "高度";
             // 
-            // dblZJDZXJXZB
+            // dblGd
             // 
-            this.dblZJDZXJXZB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.dblZJDZXJXZB.EnableTouchMode = true;
-            this.dblZJDZXJXZB.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.dblZJDZXJXZB.Location = new System.Drawing.Point(100, 405);
-            this.dblZJDZXJXZB.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.dblZJDZXJXZB.Name = "dblZJDZXJXZB";           
-            this.dblZJDZXJXZB.Size = new System.Drawing.Size(152, 21);
-            this.dblZJDZXJXZB.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.dblZJDZXJXZB.TabIndex = 23;
-            this.dblZJDZXJXZB.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblZJDZXJXZB.Text = "1.00";
-            this.dblZJDZXJXZB.DoubleValue = 1D;
-            this.dblZJDZXJXZB.NullString = "";
+            this.dblGd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dblGd.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.dblGd.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblGd.DoubleValue = 1D;
+            this.dblGd.EnableTouchMode = true;
+            this.dblGd.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblGd.Location =  new System.Drawing.Point(0,0);
+            this.dblGd.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.dblGd.Name = "dblGd";
+            this.dblGd.NullString = "";
+            this.dblGd.Size = new System.Drawing.Size(152, 28);
+            this.dblGd.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.dblGd.TabIndex = 22;
+            this.dblGd.Text = "1.00";
             // 
-            // lblZJDZXJXZB
+            // lblID
             // 
-            this.lblZJDZXJXZB.AutoSize = true;
-            this.lblZJDZXJXZB.Location = new System.Drawing.Point(10, 409);
-            this.lblZJDZXJXZB.Name = "lblZJDZXJXZB";
-            this.lblZJDZXJXZB.Size = new System.Drawing.Size(65, 12);
-            this.lblZJDZXJXZB.TabIndex = 24;
-            this.lblZJDZXJXZB.Text = "ZJDZXJXZB";
+            this.lblZjdzxjxzb.AutoSize = true;
+            this.lblZjdzxjxzb.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblZjdzxjxzb.Location = new System.Drawing.Point(0,0);
+            this.lblZjdzxjxzb.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblZjdzxjxzb.Name = "lblZjdzxjxzb";
+            this.lblZjdzxjxzb.Size = new System.Drawing.Size(41, 20);
+            this.lblZjdzxjxzb.TabIndex = 23;
+            this.lblZjdzxjxzb.Text = "注记点左下角X坐标";
             // 
-            // dblZJDZXJYZB
+            // dblZjdzxjxzb
             // 
-            this.dblZJDZXJYZB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.dblZJDZXJYZB.EnableTouchMode = true;
-            this.dblZJDZXJYZB.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.dblZJDZXJYZB.Location = new System.Drawing.Point(100, 440);
-            this.dblZJDZXJYZB.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.dblZJDZXJYZB.Name = "dblZJDZXJYZB";           
-            this.dblZJDZXJYZB.Size = new System.Drawing.Size(152, 21);
-            this.dblZJDZXJYZB.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.dblZJDZXJYZB.TabIndex = 25;
-            this.dblZJDZXJYZB.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblZJDZXJYZB.Text = "1.00";
-            this.dblZJDZXJYZB.DoubleValue = 1D;
-            this.dblZJDZXJYZB.NullString = "";
+            this.dblZjdzxjxzb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dblZjdzxjxzb.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.dblZjdzxjxzb.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblZjdzxjxzb.DoubleValue = 1D;
+            this.dblZjdzxjxzb.EnableTouchMode = true;
+            this.dblZjdzxjxzb.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblZjdzxjxzb.Location =  new System.Drawing.Point(0,0);
+            this.dblZjdzxjxzb.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.dblZjdzxjxzb.Name = "dblZjdzxjxzb";
+            this.dblZjdzxjxzb.NullString = "";
+            this.dblZjdzxjxzb.Size = new System.Drawing.Size(152, 28);
+            this.dblZjdzxjxzb.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.dblZjdzxjxzb.TabIndex = 24;
+            this.dblZjdzxjxzb.Text = "1.00";
             // 
-            // lblZJDZXJYZB
+            // lblID
             // 
-            this.lblZJDZXJYZB.AutoSize = true;
-            this.lblZJDZXJYZB.Location = new System.Drawing.Point(10, 444);
-            this.lblZJDZXJYZB.Name = "lblZJDZXJYZB";
-            this.lblZJDZXJYZB.Size = new System.Drawing.Size(65, 12);
-            this.lblZJDZXJYZB.TabIndex = 26;
-            this.lblZJDZXJYZB.Text = "ZJDZXJYZB";
+            this.lblZjdzxjyzb.AutoSize = true;
+            this.lblZjdzxjyzb.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblZjdzxjyzb.Location = new System.Drawing.Point(0,0);
+            this.lblZjdzxjyzb.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblZjdzxjyzb.Name = "lblZjdzxjyzb";
+            this.lblZjdzxjyzb.Size = new System.Drawing.Size(41, 20);
+            this.lblZjdzxjyzb.TabIndex = 25;
+            this.lblZjdzxjyzb.Text = "注记点左下角Y坐标";
             // 
-            // dblZJFX
+            // dblZjdzxjyzb
             // 
-            this.dblZJFX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.dblZJFX.EnableTouchMode = true;
-            this.dblZJFX.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.dblZJFX.Location = new System.Drawing.Point(100, 475);
-            this.dblZJFX.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.dblZJFX.Name = "dblZJFX";           
-            this.dblZJFX.Size = new System.Drawing.Size(152, 21);
-            this.dblZJFX.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.dblZJFX.TabIndex = 27;
-            this.dblZJFX.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblZJFX.Text = "1.00";
-            this.dblZJFX.DoubleValue = 1D;
-            this.dblZJFX.NullString = "";
+            this.dblZjdzxjyzb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dblZjdzxjyzb.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.dblZjdzxjyzb.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblZjdzxjyzb.DoubleValue = 1D;
+            this.dblZjdzxjyzb.EnableTouchMode = true;
+            this.dblZjdzxjyzb.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblZjdzxjyzb.Location =  new System.Drawing.Point(0,0);
+            this.dblZjdzxjyzb.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.dblZjdzxjyzb.Name = "dblZjdzxjyzb";
+            this.dblZjdzxjyzb.NullString = "";
+            this.dblZjdzxjyzb.Size = new System.Drawing.Size(152, 28);
+            this.dblZjdzxjyzb.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.dblZjdzxjyzb.TabIndex = 26;
+            this.dblZjdzxjyzb.Text = "1.00";
             // 
-            // lblZJFX
+            // lblID
             // 
-            this.lblZJFX.AutoSize = true;
-            this.lblZJFX.Location = new System.Drawing.Point(10, 479);
-            this.lblZJFX.Name = "lblZJFX";
-            this.lblZJFX.Size = new System.Drawing.Size(65, 12);
-            this.lblZJFX.TabIndex = 28;
-            this.lblZJFX.Text = "ZJFX";
-            
+            this.lblZjfx.AutoSize = true;
+            this.lblZjfx.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblZjfx.Location = new System.Drawing.Point(0,0);
+            this.lblZjfx.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblZjfx.Name = "lblZjfx";
+            this.lblZjfx.Size = new System.Drawing.Size(41, 20);
+            this.lblZjfx.TabIndex = 27;
+            this.lblZjfx.Text = "注记方向";
             // 
-            // ucJZXZJ
+            // dblZjfx
+            // 
+            this.dblZjfx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dblZjfx.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.dblZjfx.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblZjfx.DoubleValue = 1D;
+            this.dblZjfx.EnableTouchMode = true;
+            this.dblZjfx.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblZjfx.Location =  new System.Drawing.Point(0,0);
+            this.dblZjfx.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.dblZjfx.Name = "dblZjfx";
+            this.dblZjfx.NullString = "";
+            this.dblZjfx.Size = new System.Drawing.Size(152, 28);
+            this.dblZjfx.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.dblZjfx.TabIndex = 28;
+            this.dblZjfx.Text = "1.00";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.intID, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblGlysbh, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtGlysbh, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblYsdm, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtYsdm, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblZjnr, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtZjnr, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblZt, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtZt, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblYs, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.txtYs, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblBs, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.intBs, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lblXz, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtXz, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblXhx, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtXhx, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblKd, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.dblKd, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblGd, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.dblGd, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblZjdzxjxzb, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.dblZjdzxjxzb, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblZjdzxjyzb, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dblZjdzxjyzb, 4, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblZjfx, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.dblZjfx, 4, 6);
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);            
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";            
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(317, 364);
+            this.tableLayoutPanel1.TabIndex = 29; 
+            //
+            // ucJzxzj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.intID);                
-            this.Controls.Add(this.lblID);            
-            this.Controls.Add(this.txtGLYSBH);                
-            this.Controls.Add(this.lblGLYSBH);            
-            this.Controls.Add(this.txtYSDM);                
-            this.Controls.Add(this.lblYSDM);            
-            this.Controls.Add(this.txtZJNR);                
-            this.Controls.Add(this.lblZJNR);            
-            this.Controls.Add(this.txtZT);                
-            this.Controls.Add(this.lblZT);            
-            this.Controls.Add(this.txtYS);                
-            this.Controls.Add(this.lblYS);            
-            this.Controls.Add(this.intBS);                
-            this.Controls.Add(this.lblBS);            
-            this.Controls.Add(this.txtXZ);                
-            this.Controls.Add(this.lblXZ);            
-            this.Controls.Add(this.txtXHX);                
-            this.Controls.Add(this.lblXHX);            
-            this.Controls.Add(this.dblKD);                
-            this.Controls.Add(this.lblKD);            
-            this.Controls.Add(this.dblGD);                
-            this.Controls.Add(this.lblGD);            
-            this.Controls.Add(this.dblZJDZXJXZB);                
-            this.Controls.Add(this.lblZJDZXJXZB);            
-            this.Controls.Add(this.dblZJDZXJYZB);                
-            this.Controls.Add(this.lblZJDZXJYZB);            
-            this.Controls.Add(this.dblZJFX);                
-            this.Controls.Add(this.lblZJFX);            
-            this.Name = "ucJZXZJ";
-            this.Size = new System.Drawing.Size(260, 520);
-            
-            ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtGLYSBH)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtYSDM)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtZJNR)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtZT)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtYS)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.intBS)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtXZ)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtXHX)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblKD)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblGD)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblZJDZXJXZB)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblZJDZXJYZB)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblZJFX)).EndInit();           
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Name = "ucJzxzj";
+            this.Size = new System.Drawing.Size(500, 261);            
+            ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGlysbh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYsdm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZjnr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.intBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtXz)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtXhx)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblKd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblGd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblZjdzxjxzb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblZjdzxjyzb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblZjfx)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
         #endregion
         
-        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intID; 
-        private System.Windows.Forms.Label lblID; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtGLYSBH; 
-        private System.Windows.Forms.Label lblGLYSBH; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtYSDM; 
-        private System.Windows.Forms.Label lblYSDM; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtZJNR; 
-        private System.Windows.Forms.Label lblZJNR; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtZT; 
-        private System.Windows.Forms.Label lblZT; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtYS; 
-        private System.Windows.Forms.Label lblYS; 
-        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intBS; 
-        private System.Windows.Forms.Label lblBS; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtXZ; 
-        private System.Windows.Forms.Label lblXZ; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtXHX; 
-        private System.Windows.Forms.Label lblXHX; 
-        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblKD; 
-        private System.Windows.Forms.Label lblKD; 
-        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblGD; 
-        private System.Windows.Forms.Label lblGD; 
-        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblZJDZXJXZB; 
-        private System.Windows.Forms.Label lblZJDZXJXZB; 
-        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblZJDZXJYZB; 
-        private System.Windows.Forms.Label lblZJDZXJYZB; 
-        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblZJFX; 
-        private System.Windows.Forms.Label lblZJFX; 
+        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intID;	
+        private System.Windows.Forms.Label lblID;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtGlysbh;	
+        private System.Windows.Forms.Label lblGlysbh;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtYsdm;	
+        private System.Windows.Forms.Label lblYsdm;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtZjnr;	
+        private System.Windows.Forms.Label lblZjnr;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtZt;	
+        private System.Windows.Forms.Label lblZt;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtYs;	
+        private System.Windows.Forms.Label lblYs;
+        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intBs;	
+        private System.Windows.Forms.Label lblBs;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtXz;	
+        private System.Windows.Forms.Label lblXz;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtXhx;	
+        private System.Windows.Forms.Label lblXhx;
+        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblKd;	
+        private System.Windows.Forms.Label lblKd;
+        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblGd;	
+        private System.Windows.Forms.Label lblGd;
+        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblZjdzxjxzb;	
+        private System.Windows.Forms.Label lblZjdzxjxzb;
+        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblZjdzxjyzb;	
+        private System.Windows.Forms.Label lblZjdzxjyzb;
+        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblZjfx;	
+        private System.Windows.Forms.Label lblZjfx;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        
     }
-
 }

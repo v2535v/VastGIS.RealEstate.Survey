@@ -1,32 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
-using System.Data;
-using System.Data.SQLite;
 using System.Windows.Forms;
+using Syncfusion.Windows.Forms.Tools;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.Plugins.RealEstate.DataControls;
 using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.Attribute
 {
     public partial class frmBasemapPolyline:Form,IReAttributeForm
-    {
+    {	
+        #region 变量
         private string _objectKey;
-        private Dxtdldwx _linkedObject;
         private string _formName;
+        private IReFeature _linkedObject;        
         private IAppContext _context;
         private IREDatabase _database;
-
+        #endregion
+        
         public frmBasemapPolyline()
         {
             InitializeComponent();
-            _objectKey = "DXTDLDWX";
-            _formName = "frmDXTDLDWX";
-
+             _objectKey = "BasemapPolyline";
+            _formName = "frmBasemapPolyline";
         }
+        
         public IAppContext Context
         {
             get { return _context; }
@@ -45,6 +46,10 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         public IEntity LinkedObject
         {
             get { return _linkedObject as IEntity; }
+            set{
+                _linkedObject=value as IReFeature;
+                LinkObject();
+            }            
         }
 
         public string FormName
@@ -55,27 +60,47 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         
         public void LoadEntity(string tableName, string entityName, long id)
         {
-            _linkedObject = _database.BasemapService.GetDxtdldwx(id);
+            _linkedObject = _database.BasemapService.GetBasemapPolyline(tableName,id) as IReFeature;
             LinkObject();
         }
-
         private  void LinkObject()
         {
             ((INotifyPropertyChanged)_linkedObject).PropertyChanged +=linkedObject_PropertyChanged;
-            ucLinkObject.LinkObject(_database,_linkedObject);
+            ucLinkObject.LinkObject(_database,(IEntity)_linkedObject);
+            if(_linkedObject.ID<=0)
+            {
+                btnSave.Text="新建";
+            }
+            else
+                btnSave.Text="保存";
         }
 
         private void linkedObject_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            btnSave.Enabled = true;
-        }
-
-        
+            btnSave.Enabled = true;           
+        }        
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _database.BasemapService.SaveDxtdldwx(_linkedObject as Dxtdldwx);
+            _database.BasemapService.SaveBasemapPolyline(_linkedObject as IBasemapPolyline);
+            if(_linkedObject.ID > 0)
+            {
+                DialogResult=DialogResult.OK;
+                return;
+            }
+            else
+            {
+                MessageBox.Show("对象未能正确保存!","警告",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+            }
         }
+        
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            DialogResult=DialogResult.Cancel;
+        }
+        
+        public bool HasPropertyChanged { get { return ucLinkObject.HasChanged; }}
+        
     }
-
 }

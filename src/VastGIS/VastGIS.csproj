@@ -96,27 +96,17 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Grid.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Syncfusion.Grid.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Syncfusion.GridHelperClasses.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Syncfusion.Grouping.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Syncfusion.Shared.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Syncfusion.Shared.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Tools.Base, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Tools.Windows, Version=15.1450.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
+    <Reference Include="Syncfusion.Grid.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Grouping.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.GridHelperClasses.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grouping.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grouping.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -167,6 +157,8 @@
     <Compile Include="Commands\View\CmdMeasureArea.cs" />
     <Compile Include="Commands\View\CmdMeasureDistance.cs" />
     <Compile Include="Commands\View\CmdPan.cs" />
+    <Compile Include="Commands\View\CmdZoomCenter.cs" />
+    <Compile Include="Commands\View\CmdZoomInBox.cs" />
     <Compile Include="Commands\View\CmdZoomToBaseLayer.cs" />
     <Compile Include="Commands\View\CmdSelectByPolygon.cs" />
     <Compile Include="Commands\View\CmdSelectByRectangle.cs" />
@@ -420,9 +412,7 @@
     </Compile>
     <Compile Include="Views\WelcomeViewModel.cs" />
     <None Include="Templates\Zdxx.sql" />
-    <None Include="Templates\Ysdm.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Templates\Ysdm.sql" />
     <EmbeddedResource Include="Configuration\DataFormatsConfigPage.resx">
       <DependentUpon>DataFormatsConfigPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -1119,21 +1109,30 @@
     <None Include="Resources\logo.png" />
     <None Include="Resources\logo2.png" />
     <None Include="Resources\img_logo24.png" />
-    <Content Include="Templates\Areacodes.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Casscodes.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Dictionary.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Templates\Areacode.sql" />
+    <None Include="Templates\Casscode.sql" />
+    <None Include="Templates\Dictionary.sql" />
+    <None Include="Resources\img_zoominbox.png" />
+    <None Include="Resources\img_fullextent.png" />
+    <None Include="Resources\img_nextview.png" />
+    <None Include="Resources\img_pan.png" />
+    <None Include="Resources\img_preview.png" />
+    <None Include="Resources\img_scaleview.png" />
+    <None Include="Resources\img_zoomin.png" />
+    <None Include="Resources\img_zoomout.png" />
+    <None Include="Resources\img_zoomcenter.png" />
+    <EmbeddedResource Include="Resources\Cursor\targetcenter.cur" />
+    <EmbeddedResource Include="Resources\Cursor\ZoomIn.cur" />
+    <None Include="Templates\Bdcysdm.sql" />
+    <None Include="Templates\Szcsh.sql" />
     <Content Include="Templates\vastgis.sqlite">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\gdalwrapper\gdalwrapper.csproj">

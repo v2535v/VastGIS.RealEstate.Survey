@@ -6,10 +6,11 @@ using System.Data.SQLite;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Interface;
 
+
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
-    partial class ucVGLAYERGROUPDETAIL
-    {
+    partial class ucVgLayergroupdetail
+    {	
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -27,280 +28,311 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             }
             base.Dispose(disposing);
         }
-
+        
         #region Component Designer generated code
         private void InitializeComponent()
-        {
-            this.intID = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+        {            
             this.lblID = new System.Windows.Forms.Label();
-            this.txtZM = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblZM = new System.Windows.Forms.Label();
-            this.txtMC = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblMC = new System.Windows.Forms.Label();
-            this.chkIDENTIFY = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
-            this.lblIDENTIFY = new System.Windows.Forms.Label();
-            this.chkEDITABLE = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
-            this.lblEDITABLE = new System.Windows.Forms.Label();
-            this.chkQUERYABLE = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
-            this.lblQUERYABLE = new System.Windows.Forms.Label();
-            this.chkSNAPABLE = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
-            this.lblSNAPABLE = new System.Windows.Forms.Label();
-            this.chkVISIBLE = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
-            this.lblVISIBLE = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtZM)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtMC)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkIDENTIFY)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkEDITABLE)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkQUERYABLE)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkSNAPABLE)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkVISIBLE)).BeginInit();           
+            this.intID = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.lblZm = new System.Windows.Forms.Label();
+            this.txtZm = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblMc = new System.Windows.Forms.Label();
+            this.txtMc = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblIdentify = new System.Windows.Forms.Label();
+            this.txtIdentify = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblEditable = new System.Windows.Forms.Label();
+            this.txtEditable = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblQueryable = new System.Windows.Forms.Label();
+            this.txtQueryable = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblSnapable = new System.Windows.Forms.Label();
+            this.txtSnapable = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblVisible = new System.Windows.Forms.Label();
+            this.txtVisible = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();            
+            ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdentify)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEditable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQueryable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSnapable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisible)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // intID
-            // 
-            this.intID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.intID.EnableTouchMode = true;
-            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.intID.Location = new System.Drawing.Point(100, 20);
-            this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.intID.Name = "intID";           
-            this.intID.Size = new System.Drawing.Size(152, 21);
-            this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.intID.TabIndex = 1;
-            this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.intID.Text = "1.00";           
-            this.intID.NullString = "";
+            
             // 
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(10, 24);
+            this.lblID.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblID.Location = new System.Drawing.Point(0,0);
+            this.lblID.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(65, 12);
-            this.lblID.TabIndex = 2;
-            this.lblID.Text = "ID";
+            this.lblID.Size = new System.Drawing.Size(41, 20);
+            this.lblID.TabIndex = 1;
+            this.lblID.Text = "标识码";
             // 
-            // txtZM
+            // intID
             // 
-            this.txtZM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtZM.EnableTouchMode = true;
-            this.txtZM.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtZM.Location = new System.Drawing.Point(100, 55);
-            this.txtZM.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtZM.Name = "txtZM";           
-            this.txtZM.Size = new System.Drawing.Size(152, 21);
-            this.txtZM.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtZM.TabIndex = 3;
-            this.txtZM.Text = "";   
+            this.intID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intID.EnableTouchMode = true;
+            this.intID.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intID.IntegerValue = ((long)(0));
+            this.intID.Location = new System.Drawing.Point(0,0);
+            this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.intID.Name = "intID";
+            this.intID.NullString = "";
+            this.intID.Size = new System.Drawing.Size(152, 28);
+            this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.intID.TabIndex = 2;
+            this.intID.Text = "0";
             // 
-            // lblZM
+            // lblID
             // 
-            this.lblZM.AutoSize = true;
-            this.lblZM.Location = new System.Drawing.Point(10, 59);
-            this.lblZM.Name = "lblZM";
-            this.lblZM.Size = new System.Drawing.Size(65, 12);
-            this.lblZM.TabIndex = 4;
-            this.lblZM.Text = "ZM";
+            this.lblZm.AutoSize = true;
+            this.lblZm.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblZm.Location = new System.Drawing.Point(0,0);
+            this.lblZm.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblZm.Name = "lblZm";
+            this.lblZm.Size = new System.Drawing.Size(41, 20);
+            this.lblZm.TabIndex = 3;
+            this.lblZm.Text = "组名";
             // 
-            // txtMC
+            // txtZm
             // 
-            this.txtMC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtMC.EnableTouchMode = true;
-            this.txtMC.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtMC.Location = new System.Drawing.Point(100, 90);
-            this.txtMC.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtMC.Name = "txtMC";           
-            this.txtMC.Size = new System.Drawing.Size(152, 21);
-            this.txtMC.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtMC.TabIndex = 5;
-            this.txtMC.Text = "";   
+            this.txtZm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtZm.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZm.EnableTouchMode = true;
+            this.txtZm.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtZm.Location =  new System.Drawing.Point(0,0);
+            this.txtZm.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtZm.Name = "txtZm";
+            this.txtZm.Size = new System.Drawing.Size(152, 28);
+            this.txtZm.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtZm.TabIndex = 4;
             // 
-            // lblMC
+            // lblID
             // 
-            this.lblMC.AutoSize = true;
-            this.lblMC.Location = new System.Drawing.Point(10, 94);
-            this.lblMC.Name = "lblMC";
-            this.lblMC.Size = new System.Drawing.Size(65, 12);
-            this.lblMC.TabIndex = 6;
-            this.lblMC.Text = "MC";
+            this.lblMc.AutoSize = true;
+            this.lblMc.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblMc.Location = new System.Drawing.Point(0,0);
+            this.lblMc.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblMc.Name = "lblMc";
+            this.lblMc.Size = new System.Drawing.Size(41, 20);
+            this.lblMc.TabIndex = 5;
+            this.lblMc.Text = "名称";
             // 
-            // chkIDENTIFY
+            // txtMc
             // 
-            this.chkIDENTIFY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.chkIDENTIFY.EnableTouchMode = true;
-            this.chkIDENTIFY.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.chkIDENTIFY.Location = new System.Drawing.Point(100, 125);
-            this.chkIDENTIFY.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkIDENTIFY.Name = "chkIDENTIFY";           
-            this.chkIDENTIFY.Size = new System.Drawing.Size(152, 21);
-            this.chkIDENTIFY.TabIndex = 7;
-            this.chkIDENTIFY.Text = "";  
-            this.chkIDENTIFY.ThemesEnabled = false;
-             this.chkIDENTIFY.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.txtMc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMc.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtMc.EnableTouchMode = true;
+            this.txtMc.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtMc.Location =  new System.Drawing.Point(0,0);
+            this.txtMc.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtMc.Name = "txtMc";
+            this.txtMc.Size = new System.Drawing.Size(152, 28);
+            this.txtMc.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtMc.TabIndex = 6;
             // 
-            // lblIDENTIFY
+            // lblID
             // 
-            this.lblIDENTIFY.AutoSize = true;
-            this.lblIDENTIFY.Location = new System.Drawing.Point(10, 129);
-            this.lblIDENTIFY.Name = "lblIDENTIFY";
-            this.lblIDENTIFY.Size = new System.Drawing.Size(65, 12);
-            this.lblIDENTIFY.TabIndex = 8;
-            this.lblIDENTIFY.Text = "IDENTIFY";
+            this.lblIdentify.AutoSize = true;
+            this.lblIdentify.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblIdentify.Location = new System.Drawing.Point(0,0);
+            this.lblIdentify.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblIdentify.Name = "lblIdentify";
+            this.lblIdentify.Size = new System.Drawing.Size(41, 20);
+            this.lblIdentify.TabIndex = 7;
+            this.lblIdentify.Text = "可检索";
             // 
-            // chkEDITABLE
+            // txtIdentify
             // 
-            this.chkEDITABLE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.chkEDITABLE.EnableTouchMode = true;
-            this.chkEDITABLE.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.chkEDITABLE.Location = new System.Drawing.Point(100, 160);
-            this.chkEDITABLE.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkEDITABLE.Name = "chkEDITABLE";           
-            this.chkEDITABLE.Size = new System.Drawing.Size(152, 21);
-            this.chkEDITABLE.TabIndex = 9;
-            this.chkEDITABLE.Text = "";  
-            this.chkEDITABLE.ThemesEnabled = false;
-             this.chkEDITABLE.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.txtIdentify.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtIdentify.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtIdentify.EnableTouchMode = true;
+            this.txtIdentify.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtIdentify.Location =  new System.Drawing.Point(0,0);
+            this.txtIdentify.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtIdentify.Name = "txtIdentify";
+            this.txtIdentify.Size = new System.Drawing.Size(152, 28);
+            this.txtIdentify.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtIdentify.TabIndex = 8;
             // 
-            // lblEDITABLE
+            // lblID
             // 
-            this.lblEDITABLE.AutoSize = true;
-            this.lblEDITABLE.Location = new System.Drawing.Point(10, 164);
-            this.lblEDITABLE.Name = "lblEDITABLE";
-            this.lblEDITABLE.Size = new System.Drawing.Size(65, 12);
-            this.lblEDITABLE.TabIndex = 10;
-            this.lblEDITABLE.Text = "EDITABLE";
+            this.lblEditable.AutoSize = true;
+            this.lblEditable.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblEditable.Location = new System.Drawing.Point(0,0);
+            this.lblEditable.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblEditable.Name = "lblEditable";
+            this.lblEditable.Size = new System.Drawing.Size(41, 20);
+            this.lblEditable.TabIndex = 9;
+            this.lblEditable.Text = "可编辑";
             // 
-            // chkQUERYABLE
+            // txtEditable
             // 
-            this.chkQUERYABLE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.chkQUERYABLE.EnableTouchMode = true;
-            this.chkQUERYABLE.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.chkQUERYABLE.Location = new System.Drawing.Point(100, 195);
-            this.chkQUERYABLE.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkQUERYABLE.Name = "chkQUERYABLE";           
-            this.chkQUERYABLE.Size = new System.Drawing.Size(152, 21);
-            this.chkQUERYABLE.TabIndex = 11;
-            this.chkQUERYABLE.Text = "";  
-            this.chkQUERYABLE.ThemesEnabled = false;
-             this.chkQUERYABLE.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.txtEditable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtEditable.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtEditable.EnableTouchMode = true;
+            this.txtEditable.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtEditable.Location =  new System.Drawing.Point(0,0);
+            this.txtEditable.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtEditable.Name = "txtEditable";
+            this.txtEditable.Size = new System.Drawing.Size(152, 28);
+            this.txtEditable.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtEditable.TabIndex = 10;
             // 
-            // lblQUERYABLE
+            // lblID
             // 
-            this.lblQUERYABLE.AutoSize = true;
-            this.lblQUERYABLE.Location = new System.Drawing.Point(10, 199);
-            this.lblQUERYABLE.Name = "lblQUERYABLE";
-            this.lblQUERYABLE.Size = new System.Drawing.Size(65, 12);
-            this.lblQUERYABLE.TabIndex = 12;
-            this.lblQUERYABLE.Text = "QUERYABLE";
+            this.lblQueryable.AutoSize = true;
+            this.lblQueryable.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblQueryable.Location = new System.Drawing.Point(0,0);
+            this.lblQueryable.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblQueryable.Name = "lblQueryable";
+            this.lblQueryable.Size = new System.Drawing.Size(41, 20);
+            this.lblQueryable.TabIndex = 11;
+            this.lblQueryable.Text = "可查询";
             // 
-            // chkSNAPABLE
+            // txtQueryable
             // 
-            this.chkSNAPABLE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.chkSNAPABLE.EnableTouchMode = true;
-            this.chkSNAPABLE.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.chkSNAPABLE.Location = new System.Drawing.Point(100, 230);
-            this.chkSNAPABLE.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkSNAPABLE.Name = "chkSNAPABLE";           
-            this.chkSNAPABLE.Size = new System.Drawing.Size(152, 21);
-            this.chkSNAPABLE.TabIndex = 13;
-            this.chkSNAPABLE.Text = "";  
-            this.chkSNAPABLE.ThemesEnabled = false;
-             this.chkSNAPABLE.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.txtQueryable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtQueryable.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtQueryable.EnableTouchMode = true;
+            this.txtQueryable.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQueryable.Location =  new System.Drawing.Point(0,0);
+            this.txtQueryable.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtQueryable.Name = "txtQueryable";
+            this.txtQueryable.Size = new System.Drawing.Size(152, 28);
+            this.txtQueryable.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtQueryable.TabIndex = 12;
             // 
-            // lblSNAPABLE
+            // lblID
             // 
-            this.lblSNAPABLE.AutoSize = true;
-            this.lblSNAPABLE.Location = new System.Drawing.Point(10, 234);
-            this.lblSNAPABLE.Name = "lblSNAPABLE";
-            this.lblSNAPABLE.Size = new System.Drawing.Size(65, 12);
-            this.lblSNAPABLE.TabIndex = 14;
-            this.lblSNAPABLE.Text = "SNAPABLE";
+            this.lblSnapable.AutoSize = true;
+            this.lblSnapable.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblSnapable.Location = new System.Drawing.Point(0,0);
+            this.lblSnapable.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblSnapable.Name = "lblSnapable";
+            this.lblSnapable.Size = new System.Drawing.Size(41, 20);
+            this.lblSnapable.TabIndex = 13;
+            this.lblSnapable.Text = "可捕捉";
             // 
-            // chkVISIBLE
+            // txtSnapable
             // 
-            this.chkVISIBLE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.chkVISIBLE.EnableTouchMode = true;
-            this.chkVISIBLE.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.chkVISIBLE.Location = new System.Drawing.Point(100, 265);
-            this.chkVISIBLE.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.chkVISIBLE.Name = "chkVISIBLE";           
-            this.chkVISIBLE.Size = new System.Drawing.Size(152, 21);
-            this.chkVISIBLE.TabIndex = 15;
-            this.chkVISIBLE.Text = "";  
-            this.chkVISIBLE.ThemesEnabled = false;
-             this.chkVISIBLE.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.txtSnapable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSnapable.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtSnapable.EnableTouchMode = true;
+            this.txtSnapable.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtSnapable.Location =  new System.Drawing.Point(0,0);
+            this.txtSnapable.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtSnapable.Name = "txtSnapable";
+            this.txtSnapable.Size = new System.Drawing.Size(152, 28);
+            this.txtSnapable.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtSnapable.TabIndex = 14;
             // 
-            // lblVISIBLE
+            // lblID
             // 
-            this.lblVISIBLE.AutoSize = true;
-            this.lblVISIBLE.Location = new System.Drawing.Point(10, 269);
-            this.lblVISIBLE.Name = "lblVISIBLE";
-            this.lblVISIBLE.Size = new System.Drawing.Size(65, 12);
-            this.lblVISIBLE.TabIndex = 16;
-            this.lblVISIBLE.Text = "VISIBLE";
-            
+            this.lblVisible.AutoSize = true;
+            this.lblVisible.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblVisible.Location = new System.Drawing.Point(0,0);
+            this.lblVisible.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblVisible.Name = "lblVisible";
+            this.lblVisible.Size = new System.Drawing.Size(41, 20);
+            this.lblVisible.TabIndex = 15;
+            this.lblVisible.Text = "可显示";
             // 
-            // ucVG_LAYERGROUPDETAIL
+            // txtVisible
+            // 
+            this.txtVisible.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtVisible.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtVisible.EnableTouchMode = true;
+            this.txtVisible.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtVisible.Location =  new System.Drawing.Point(0,0);
+            this.txtVisible.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtVisible.Name = "txtVisible";
+            this.txtVisible.Size = new System.Drawing.Size(152, 28);
+            this.txtVisible.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtVisible.TabIndex = 16;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.intID, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblZm, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtZm, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblMc, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtMc, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblIdentify, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtIdentify, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblEditable, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtEditable, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblQueryable, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.txtQueryable, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblSnapable, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.txtSnapable, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lblVisible, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.txtVisible, 1, 7);
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);            
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";            
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(317, 364);
+            this.tableLayoutPanel1.TabIndex = 17; 
+            //
+            // ucVgLayergroupdetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.intID);                
-            this.Controls.Add(this.lblID);            
-            this.Controls.Add(this.txtZM);                
-            this.Controls.Add(this.lblZM);            
-            this.Controls.Add(this.txtMC);                
-            this.Controls.Add(this.lblMC);            
-            this.Controls.Add(this.chkIDENTIFY);                
-            this.Controls.Add(this.lblIDENTIFY);            
-            this.Controls.Add(this.chkEDITABLE);                
-            this.Controls.Add(this.lblEDITABLE);            
-            this.Controls.Add(this.chkQUERYABLE);                
-            this.Controls.Add(this.lblQUERYABLE);            
-            this.Controls.Add(this.chkSNAPABLE);                
-            this.Controls.Add(this.lblSNAPABLE);            
-            this.Controls.Add(this.chkVISIBLE);                
-            this.Controls.Add(this.lblVISIBLE);            
-            this.Name = "ucVG_LAYERGROUPDETAIL";
-            this.Size = new System.Drawing.Size(260, 310);
-            
-            ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtZM)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtMC)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkIDENTIFY)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkEDITABLE)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkQUERYABLE)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkSNAPABLE)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.chkVISIBLE)).EndInit();           
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Name = "ucVgLayergroupdetail";
+            this.Size = new System.Drawing.Size(250, 296);            
+            ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdentify)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEditable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQueryable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSnapable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisible)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
         #endregion
         
-        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intID; 
-        private System.Windows.Forms.Label lblID; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtZM; 
-        private System.Windows.Forms.Label lblZM; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtMC; 
-        private System.Windows.Forms.Label lblMC; 
-        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkIDENTIFY; 
-        private System.Windows.Forms.Label lblIDENTIFY; 
-        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkEDITABLE; 
-        private System.Windows.Forms.Label lblEDITABLE; 
-        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkQUERYABLE; 
-        private System.Windows.Forms.Label lblQUERYABLE; 
-        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkSNAPABLE; 
-        private System.Windows.Forms.Label lblSNAPABLE; 
-        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkVISIBLE; 
-        private System.Windows.Forms.Label lblVISIBLE; 
+        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intID;	
+        private System.Windows.Forms.Label lblID;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtZm;	
+        private System.Windows.Forms.Label lblZm;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtMc;	
+        private System.Windows.Forms.Label lblMc;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtIdentify;	
+        private System.Windows.Forms.Label lblIdentify;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtEditable;	
+        private System.Windows.Forms.Label lblEditable;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtQueryable;	
+        private System.Windows.Forms.Label lblQueryable;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSnapable;	
+        private System.Windows.Forms.Label lblSnapable;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtVisible;	
+        private System.Windows.Forms.Label lblVisible;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        
     }
-
 }

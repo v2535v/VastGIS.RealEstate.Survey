@@ -6,10 +6,11 @@ using System.Data.SQLite;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Interface;
 
+
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
-    partial class ucJZX
-    {
+    partial class ucJzx
+    {	
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -27,458 +28,409 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             }
             base.Dispose(disposing);
         }
-
+        
         #region Component Designer generated code
         private void InitializeComponent()
-        {
-            this.intID = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+        {            
             this.lblID = new System.Windows.Forms.Label();
-            this.txtZDZHDM = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblZDZHDM = new System.Windows.Forms.Label();
-            this.txtYSDM = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblYSDM = new System.Windows.Forms.Label();
-            this.txtJZXGZBH = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblJZXGZBH = new System.Windows.Forms.Label();
-            this.dblJZXCD = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
-            this.lblJZXCD = new System.Windows.Forms.Label();
-            this.cmbJZXLB = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.lblJZXLB = new System.Windows.Forms.Label();
-            this.cmbJZXWZ = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.lblJZXWZ = new System.Windows.Forms.Label();
-            this.cmbJXXZ = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.lblJXXZ = new System.Windows.Forms.Label();
-            this.txtQSJXXYSBH = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblQSJXXYSBH = new System.Windows.Forms.Label();
-            this.txtQSJXXYS = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblQSJXXYS = new System.Windows.Forms.Label();
-            this.txtQSZYYYSBH = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblQSZYYYSBH = new System.Windows.Forms.Label();
-            this.txtQSZYYYS = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblQSZYYYS = new System.Windows.Forms.Label();
-            this.txtQSJZDBH = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblQSJZDBH = new System.Windows.Forms.Label();
-            this.txtJZJZDBH = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.lblJZJZDBH = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtZDZHDM)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtYSDM)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtJZXGZBH)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblJZXCD)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.cmbJZXLB)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.cmbJZXWZ)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.cmbJXXZ)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtQSJXXYSBH)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtQSJXXYS)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtQSZYYYSBH)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtQSZYYYS)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtQSJZDBH)).BeginInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtJZJZDBH)).BeginInit();           
+            this.intID = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.lblZdzhdm = new System.Windows.Forms.Label();
+            this.txtZdzhdm = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblYsdm = new System.Windows.Forms.Label();
+            this.txtYsdm = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblJzxcd = new System.Windows.Forms.Label();
+            this.dblJzxcd = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
+            this.lblJzxlb = new System.Windows.Forms.Label();
+            this.cmbJzxlb = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.lblJzxwz = new System.Windows.Forms.Label();
+            this.cmbJzxwz = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.lblJxxz = new System.Windows.Forms.Label();
+            this.cmbJxxz = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.lblQsjxxysbh = new System.Windows.Forms.Label();
+            this.txtQsjxxysbh = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblQsjxxys = new System.Windows.Forms.Label();
+            this.txtQsjxxys = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblQszyyysbh = new System.Windows.Forms.Label();
+            this.txtQszyyysbh = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.lblQszyyys = new System.Windows.Forms.Label();
+            this.txtQszyyys = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();            
+            ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZdzhdm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYsdm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblJzxcd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbJzxlb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbJzxwz)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbJxxz)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQsjxxysbh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQsjxxys)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQszyyysbh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQszyyys)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // intID
-            // 
-            this.intID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.intID.EnableTouchMode = true;
-            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.intID.Location = new System.Drawing.Point(100, 20);
-            this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.intID.Name = "intID";           
-            this.intID.Size = new System.Drawing.Size(152, 21);
-            this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.intID.TabIndex = 1;
-            this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.intID.Text = "1.00";           
-            this.intID.NullString = "";
+            
             // 
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(10, 24);
+            this.lblID.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblID.Location = new System.Drawing.Point(0,0);
+            this.lblID.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(65, 12);
-            this.lblID.TabIndex = 2;
-            this.lblID.Text = "ID";
+            this.lblID.Size = new System.Drawing.Size(41, 20);
+            this.lblID.TabIndex = 1;
+            this.lblID.Text = "标识码";
             // 
-            // txtZDZHDM
+            // intID
             // 
-            this.txtZDZHDM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtZDZHDM.EnableTouchMode = true;
-            this.txtZDZHDM.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtZDZHDM.Location = new System.Drawing.Point(100, 55);
-            this.txtZDZHDM.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtZDZHDM.Name = "txtZDZHDM";           
-            this.txtZDZHDM.Size = new System.Drawing.Size(152, 21);
-            this.txtZDZHDM.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtZDZHDM.TabIndex = 3;
-            this.txtZDZHDM.Text = "";   
+            this.intID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intID.EnableTouchMode = true;
+            this.intID.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intID.IntegerValue = ((long)(0));
+            this.intID.Location = new System.Drawing.Point(0,0);
+            this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.intID.Name = "intID";
+            this.intID.NullString = "";
+            this.intID.Size = new System.Drawing.Size(152, 28);
+            this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.intID.TabIndex = 2;
+            this.intID.Text = "0";
             // 
-            // lblZDZHDM
+            // lblID
             // 
-            this.lblZDZHDM.AutoSize = true;
-            this.lblZDZHDM.Location = new System.Drawing.Point(10, 59);
-            this.lblZDZHDM.Name = "lblZDZHDM";
-            this.lblZDZHDM.Size = new System.Drawing.Size(65, 12);
-            this.lblZDZHDM.TabIndex = 4;
-            this.lblZDZHDM.Text = "宗地/宗海代码";
+            this.lblZdzhdm.AutoSize = true;
+            this.lblZdzhdm.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblZdzhdm.Location = new System.Drawing.Point(0,0);
+            this.lblZdzhdm.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblZdzhdm.Name = "lblZdzhdm";
+            this.lblZdzhdm.Size = new System.Drawing.Size(41, 20);
+            this.lblZdzhdm.TabIndex = 3;
+            this.lblZdzhdm.Text = "宗地/宗海代码";
             // 
-            // txtYSDM
+            // txtZdzhdm
             // 
-            this.txtYSDM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtYSDM.EnableTouchMode = true;
-            this.txtYSDM.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtYSDM.Location = new System.Drawing.Point(100, 90);
-            this.txtYSDM.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtYSDM.Name = "txtYSDM";           
-            this.txtYSDM.Size = new System.Drawing.Size(152, 21);
-            this.txtYSDM.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtYSDM.TabIndex = 5;
-            this.txtYSDM.Text = "";   
+            this.txtZdzhdm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtZdzhdm.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZdzhdm.EnableTouchMode = true;
+            this.txtZdzhdm.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtZdzhdm.Location =  new System.Drawing.Point(0,0);
+            this.txtZdzhdm.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtZdzhdm.Name = "txtZdzhdm";
+            this.txtZdzhdm.Size = new System.Drawing.Size(152, 28);
+            this.txtZdzhdm.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtZdzhdm.TabIndex = 4;
             // 
-            // lblYSDM
+            // lblID
             // 
-            this.lblYSDM.AutoSize = true;
-            this.lblYSDM.Location = new System.Drawing.Point(10, 94);
-            this.lblYSDM.Name = "lblYSDM";
-            this.lblYSDM.Size = new System.Drawing.Size(65, 12);
-            this.lblYSDM.TabIndex = 6;
-            this.lblYSDM.Text = "要素代码";
+            this.lblYsdm.AutoSize = true;
+            this.lblYsdm.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblYsdm.Location = new System.Drawing.Point(0,0);
+            this.lblYsdm.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblYsdm.Name = "lblYsdm";
+            this.lblYsdm.Size = new System.Drawing.Size(41, 20);
+            this.lblYsdm.TabIndex = 5;
+            this.lblYsdm.Text = "要素代码";
             // 
-            // txtJZXGZBH
+            // txtYsdm
             // 
-            this.txtJZXGZBH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtJZXGZBH.EnableTouchMode = true;
-            this.txtJZXGZBH.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtJZXGZBH.Location = new System.Drawing.Point(100, 125);
-            this.txtJZXGZBH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtJZXGZBH.Name = "txtJZXGZBH";           
-            this.txtJZXGZBH.Size = new System.Drawing.Size(152, 21);
-            this.txtJZXGZBH.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtJZXGZBH.TabIndex = 7;
-            this.txtJZXGZBH.Text = "";   
+            this.txtYsdm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtYsdm.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtYsdm.EnableTouchMode = true;
+            this.txtYsdm.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtYsdm.Location =  new System.Drawing.Point(0,0);
+            this.txtYsdm.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtYsdm.Name = "txtYsdm";
+            this.txtYsdm.Size = new System.Drawing.Size(152, 28);
+            this.txtYsdm.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtYsdm.TabIndex = 6;
             // 
-            // lblJZXGZBH
+            // lblID
             // 
-            this.lblJZXGZBH.AutoSize = true;
-            this.lblJZXGZBH.Location = new System.Drawing.Point(10, 129);
-            this.lblJZXGZBH.Name = "lblJZXGZBH";
-            this.lblJZXGZBH.Size = new System.Drawing.Size(65, 12);
-            this.lblJZXGZBH.TabIndex = 8;
-            this.lblJZXGZBH.Text = "JZXGZBH";
+            this.lblJzxcd.AutoSize = true;
+            this.lblJzxcd.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblJzxcd.Location = new System.Drawing.Point(0,0);
+            this.lblJzxcd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblJzxcd.Name = "lblJzxcd";
+            this.lblJzxcd.Size = new System.Drawing.Size(41, 20);
+            this.lblJzxcd.TabIndex = 7;
+            this.lblJzxcd.Text = "界址线长度";
             // 
-            // dblJZXCD
+            // dblJzxcd
             // 
-            this.dblJZXCD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.dblJZXCD.EnableTouchMode = true;
-            this.dblJZXCD.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.dblJZXCD.Location = new System.Drawing.Point(100, 160);
-            this.dblJZXCD.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.dblJZXCD.Name = "dblJZXCD";           
-            this.dblJZXCD.Size = new System.Drawing.Size(152, 21);
-            this.dblJZXCD.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.dblJZXCD.TabIndex = 9;
-            this.dblJZXCD.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblJZXCD.Text = "1.00";
-            this.dblJZXCD.DoubleValue = 1D;
-            this.dblJZXCD.NullString = "";
+            this.dblJzxcd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dblJzxcd.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.dblJzxcd.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblJzxcd.DoubleValue = 1D;
+            this.dblJzxcd.EnableTouchMode = true;
+            this.dblJzxcd.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblJzxcd.Location =  new System.Drawing.Point(0,0);
+            this.dblJzxcd.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.dblJzxcd.Name = "dblJzxcd";
+            this.dblJzxcd.NullString = "";
+            this.dblJzxcd.Size = new System.Drawing.Size(152, 28);
+            this.dblJzxcd.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.dblJzxcd.TabIndex = 8;
+            this.dblJzxcd.Text = "1.00";
             // 
-            // lblJZXCD
+            // lblID
             // 
-            this.lblJZXCD.AutoSize = true;
-            this.lblJZXCD.Location = new System.Drawing.Point(10, 164);
-            this.lblJZXCD.Name = "lblJZXCD";
-            this.lblJZXCD.Size = new System.Drawing.Size(65, 12);
-            this.lblJZXCD.TabIndex = 10;
-            this.lblJZXCD.Text = "界址线长度";
+            this.lblJzxlb.AutoSize = true;
+            this.lblJzxlb.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblJzxlb.Location = new System.Drawing.Point(0,0);
+            this.lblJzxlb.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblJzxlb.Name = "lblJzxlb";
+            this.lblJzxlb.Size = new System.Drawing.Size(41, 20);
+            this.lblJzxlb.TabIndex = 9;
+            this.lblJzxlb.Text = "界址线类别";
             // 
-            // cmbJZXLB
+            // cmbJzxlb
             // 
-            this.cmbJZXLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.cmbJZXLB.EnableTouchMode = true;
-            this.cmbJZXLB.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.cmbJZXLB.Location = new System.Drawing.Point(100, 195);
-            this.cmbJZXLB.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbJZXLB.Name = "cmbJZXLB";           
-            this.cmbJZXLB.Size = new System.Drawing.Size(152, 21);
-            this.cmbJZXLB.TabIndex = 11;
+            this.cmbJzxlb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbJzxlb.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbJzxlb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbJzxlb.EnableTouchMode = true;
+            this.cmbJzxlb.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbJzxlb.Location =  new System.Drawing.Point(0,0);
+            this.cmbJzxlb.Name = "cmbJzxlb";
+            this.cmbJzxlb.Size = new System.Drawing.Size(152, 20);
+            this.cmbJzxlb.TabIndex =  10;            
             // 
-            // lblJZXLB
+            // lblID
             // 
-            this.lblJZXLB.AutoSize = true;
-            this.lblJZXLB.Location = new System.Drawing.Point(10, 199);
-            this.lblJZXLB.Name = "lblJZXLB";
-            this.lblJZXLB.Size = new System.Drawing.Size(65, 12);
-            this.lblJZXLB.TabIndex = 12;
-            this.lblJZXLB.Text = "界址线类别";
+            this.lblJzxwz.AutoSize = true;
+            this.lblJzxwz.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblJzxwz.Location = new System.Drawing.Point(0,0);
+            this.lblJzxwz.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblJzxwz.Name = "lblJzxwz";
+            this.lblJzxwz.Size = new System.Drawing.Size(41, 20);
+            this.lblJzxwz.TabIndex = 11;
+            this.lblJzxwz.Text = "界址线位置";
             // 
-            // cmbJZXWZ
+            // cmbJzxwz
             // 
-            this.cmbJZXWZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.cmbJZXWZ.EnableTouchMode = true;
-            this.cmbJZXWZ.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.cmbJZXWZ.Location = new System.Drawing.Point(100, 230);
-            this.cmbJZXWZ.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbJZXWZ.Name = "cmbJZXWZ";           
-            this.cmbJZXWZ.Size = new System.Drawing.Size(152, 21);
-            this.cmbJZXWZ.TabIndex = 13;
+            this.cmbJzxwz.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbJzxwz.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbJzxwz.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbJzxwz.EnableTouchMode = true;
+            this.cmbJzxwz.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbJzxwz.Location =  new System.Drawing.Point(0,0);
+            this.cmbJzxwz.Name = "cmbJzxwz";
+            this.cmbJzxwz.Size = new System.Drawing.Size(152, 20);
+            this.cmbJzxwz.TabIndex =  12;            
             // 
-            // lblJZXWZ
+            // lblID
             // 
-            this.lblJZXWZ.AutoSize = true;
-            this.lblJZXWZ.Location = new System.Drawing.Point(10, 234);
-            this.lblJZXWZ.Name = "lblJZXWZ";
-            this.lblJZXWZ.Size = new System.Drawing.Size(65, 12);
-            this.lblJZXWZ.TabIndex = 14;
-            this.lblJZXWZ.Text = "界址线位置";
+            this.lblJxxz.AutoSize = true;
+            this.lblJxxz.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblJxxz.Location = new System.Drawing.Point(0,0);
+            this.lblJxxz.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblJxxz.Name = "lblJxxz";
+            this.lblJxxz.Size = new System.Drawing.Size(41, 20);
+            this.lblJxxz.TabIndex = 13;
+            this.lblJxxz.Text = "界线性质";
             // 
-            // cmbJXXZ
+            // cmbJxxz
             // 
-            this.cmbJXXZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.cmbJXXZ.EnableTouchMode = true;
-            this.cmbJXXZ.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.cmbJXXZ.Location = new System.Drawing.Point(100, 265);
-            this.cmbJXXZ.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbJXXZ.Name = "cmbJXXZ";           
-            this.cmbJXXZ.Size = new System.Drawing.Size(152, 21);
-            this.cmbJXXZ.TabIndex = 15;
+            this.cmbJxxz.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbJxxz.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbJxxz.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbJxxz.EnableTouchMode = true;
+            this.cmbJxxz.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbJxxz.Location =  new System.Drawing.Point(0,0);
+            this.cmbJxxz.Name = "cmbJxxz";
+            this.cmbJxxz.Size = new System.Drawing.Size(152, 20);
+            this.cmbJxxz.TabIndex =  14;            
             // 
-            // lblJXXZ
+            // lblID
             // 
-            this.lblJXXZ.AutoSize = true;
-            this.lblJXXZ.Location = new System.Drawing.Point(10, 269);
-            this.lblJXXZ.Name = "lblJXXZ";
-            this.lblJXXZ.Size = new System.Drawing.Size(65, 12);
-            this.lblJXXZ.TabIndex = 16;
-            this.lblJXXZ.Text = "界线性质";
+            this.lblQsjxxysbh.AutoSize = true;
+            this.lblQsjxxysbh.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblQsjxxysbh.Location = new System.Drawing.Point(0,0);
+            this.lblQsjxxysbh.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblQsjxxysbh.Name = "lblQsjxxysbh";
+            this.lblQsjxxysbh.Size = new System.Drawing.Size(41, 20);
+            this.lblQsjxxysbh.TabIndex = 15;
+            this.lblQsjxxysbh.Text = "权属界线协议书编号";
             // 
-            // txtQSJXXYSBH
+            // txtQsjxxysbh
             // 
-            this.txtQSJXXYSBH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtQSJXXYSBH.EnableTouchMode = true;
-            this.txtQSJXXYSBH.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtQSJXXYSBH.Location = new System.Drawing.Point(100, 300);
-            this.txtQSJXXYSBH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtQSJXXYSBH.Name = "txtQSJXXYSBH";           
-            this.txtQSJXXYSBH.Size = new System.Drawing.Size(152, 21);
-            this.txtQSJXXYSBH.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtQSJXXYSBH.TabIndex = 17;
-            this.txtQSJXXYSBH.Text = "";   
+            this.txtQsjxxysbh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtQsjxxysbh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtQsjxxysbh.EnableTouchMode = true;
+            this.txtQsjxxysbh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQsjxxysbh.Location =  new System.Drawing.Point(0,0);
+            this.txtQsjxxysbh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtQsjxxysbh.Name = "txtQsjxxysbh";
+            this.txtQsjxxysbh.Size = new System.Drawing.Size(152, 28);
+            this.txtQsjxxysbh.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtQsjxxysbh.TabIndex = 16;
             // 
-            // lblQSJXXYSBH
+            // lblID
             // 
-            this.lblQSJXXYSBH.AutoSize = true;
-            this.lblQSJXXYSBH.Location = new System.Drawing.Point(10, 304);
-            this.lblQSJXXYSBH.Name = "lblQSJXXYSBH";
-            this.lblQSJXXYSBH.Size = new System.Drawing.Size(65, 12);
-            this.lblQSJXXYSBH.TabIndex = 18;
-            this.lblQSJXXYSBH.Text = "权属界线协议书编号";
+            this.lblQsjxxys.AutoSize = true;
+            this.lblQsjxxys.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblQsjxxys.Location = new System.Drawing.Point(0,0);
+            this.lblQsjxxys.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblQsjxxys.Name = "lblQsjxxys";
+            this.lblQsjxxys.Size = new System.Drawing.Size(41, 20);
+            this.lblQsjxxys.TabIndex = 17;
+            this.lblQsjxxys.Text = "权属界线协议书";
             // 
-            // txtQSJXXYS
+            // txtQsjxxys
             // 
-            this.txtQSJXXYS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtQSJXXYS.EnableTouchMode = true;
-            this.txtQSJXXYS.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtQSJXXYS.Location = new System.Drawing.Point(100, 335);
-            this.txtQSJXXYS.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtQSJXXYS.Name = "txtQSJXXYS";           
-            this.txtQSJXXYS.Size = new System.Drawing.Size(152, 21);
-            this.txtQSJXXYS.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtQSJXXYS.TabIndex = 19;
-            this.txtQSJXXYS.Text = "";   
+            this.txtQsjxxys.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtQsjxxys.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtQsjxxys.EnableTouchMode = true;
+            this.txtQsjxxys.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQsjxxys.Location =  new System.Drawing.Point(0,0);
+            this.txtQsjxxys.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtQsjxxys.Name = "txtQsjxxys";
+            this.txtQsjxxys.Size = new System.Drawing.Size(152, 28);
+            this.txtQsjxxys.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtQsjxxys.TabIndex = 18;
             // 
-            // lblQSJXXYS
+            // lblID
             // 
-            this.lblQSJXXYS.AutoSize = true;
-            this.lblQSJXXYS.Location = new System.Drawing.Point(10, 339);
-            this.lblQSJXXYS.Name = "lblQSJXXYS";
-            this.lblQSJXXYS.Size = new System.Drawing.Size(65, 12);
-            this.lblQSJXXYS.TabIndex = 20;
-            this.lblQSJXXYS.Text = "权属界线协议书";
+            this.lblQszyyysbh.AutoSize = true;
+            this.lblQszyyysbh.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblQszyyysbh.Location = new System.Drawing.Point(0,0);
+            this.lblQszyyysbh.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblQszyyysbh.Name = "lblQszyyysbh";
+            this.lblQszyyysbh.Size = new System.Drawing.Size(41, 20);
+            this.lblQszyyysbh.TabIndex = 19;
+            this.lblQszyyysbh.Text = "权属争议原由书编号";
             // 
-            // txtQSZYYYSBH
+            // txtQszyyysbh
             // 
-            this.txtQSZYYYSBH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtQSZYYYSBH.EnableTouchMode = true;
-            this.txtQSZYYYSBH.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtQSZYYYSBH.Location = new System.Drawing.Point(100, 370);
-            this.txtQSZYYYSBH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtQSZYYYSBH.Name = "txtQSZYYYSBH";           
-            this.txtQSZYYYSBH.Size = new System.Drawing.Size(152, 21);
-            this.txtQSZYYYSBH.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtQSZYYYSBH.TabIndex = 21;
-            this.txtQSZYYYSBH.Text = "";   
+            this.txtQszyyysbh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtQszyyysbh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtQszyyysbh.EnableTouchMode = true;
+            this.txtQszyyysbh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQszyyysbh.Location =  new System.Drawing.Point(0,0);
+            this.txtQszyyysbh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtQszyyysbh.Name = "txtQszyyysbh";
+            this.txtQszyyysbh.Size = new System.Drawing.Size(152, 28);
+            this.txtQszyyysbh.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtQszyyysbh.TabIndex = 20;
             // 
-            // lblQSZYYYSBH
+            // lblID
             // 
-            this.lblQSZYYYSBH.AutoSize = true;
-            this.lblQSZYYYSBH.Location = new System.Drawing.Point(10, 374);
-            this.lblQSZYYYSBH.Name = "lblQSZYYYSBH";
-            this.lblQSZYYYSBH.Size = new System.Drawing.Size(65, 12);
-            this.lblQSZYYYSBH.TabIndex = 22;
-            this.lblQSZYYYSBH.Text = "权属争议原由书编号";
+            this.lblQszyyys.AutoSize = true;
+            this.lblQszyyys.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblQszyyys.Location = new System.Drawing.Point(0,0);
+            this.lblQszyyys.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblQszyyys.Name = "lblQszyyys";
+            this.lblQszyyys.Size = new System.Drawing.Size(41, 20);
+            this.lblQszyyys.TabIndex = 21;
+            this.lblQszyyys.Text = "权属争议原由书";
             // 
-            // txtQSZYYYS
+            // txtQszyyys
             // 
-            this.txtQSZYYYS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtQSZYYYS.EnableTouchMode = true;
-            this.txtQSZYYYS.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtQSZYYYS.Location = new System.Drawing.Point(100, 405);
-            this.txtQSZYYYS.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtQSZYYYS.Name = "txtQSZYYYS";           
-            this.txtQSZYYYS.Size = new System.Drawing.Size(152, 21);
-            this.txtQSZYYYS.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtQSZYYYS.TabIndex = 23;
-            this.txtQSZYYYS.Text = "";   
+            this.txtQszyyys.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtQszyyys.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtQszyyys.EnableTouchMode = true;
+            this.txtQszyyys.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQszyyys.Location =  new System.Drawing.Point(0,0);
+            this.txtQszyyys.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtQszyyys.Name = "txtQszyyys";
+            this.txtQszyyys.Size = new System.Drawing.Size(152, 28);
+            this.txtQszyyys.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtQszyyys.TabIndex = 22;
             // 
-            // lblQSZYYYS
+            // tableLayoutPanel1
             // 
-            this.lblQSZYYYS.AutoSize = true;
-            this.lblQSZYYYS.Location = new System.Drawing.Point(10, 409);
-            this.lblQSZYYYS.Name = "lblQSZYYYS";
-            this.lblQSZYYYS.Size = new System.Drawing.Size(65, 12);
-            this.lblQSZYYYS.TabIndex = 24;
-            this.lblQSZYYYS.Text = "权属争议原由书";
-            // 
-            // txtQSJZDBH
-            // 
-            this.txtQSJZDBH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtQSJZDBH.EnableTouchMode = true;
-            this.txtQSJZDBH.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtQSJZDBH.Location = new System.Drawing.Point(100, 755);
-            this.txtQSJZDBH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtQSJZDBH.Name = "txtQSJZDBH";           
-            this.txtQSJZDBH.Size = new System.Drawing.Size(152, 21);
-            this.txtQSJZDBH.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtQSJZDBH.TabIndex = 43;
-            this.txtQSJZDBH.Text = "";   
-            // 
-            // lblQSJZDBH
-            // 
-            this.lblQSJZDBH.AutoSize = true;
-            this.lblQSJZDBH.Location = new System.Drawing.Point(10, 759);
-            this.lblQSJZDBH.Name = "lblQSJZDBH";
-            this.lblQSJZDBH.Size = new System.Drawing.Size(65, 12);
-            this.lblQSJZDBH.TabIndex = 44;
-            this.lblQSJZDBH.Text = "QSJZDBH";
-            // 
-            // txtJZJZDBH
-            // 
-            this.txtJZJZDBH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));  
-            this.txtJZJZDBH.EnableTouchMode = true;
-            this.txtJZJZDBH.BeforeTouchSize = new System.Drawing.Size(152, 21);   
-            this.txtJZJZDBH.Location = new System.Drawing.Point(100, 790);
-            this.txtJZJZDBH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.txtJZJZDBH.Name = "txtJZJZDBH";           
-            this.txtJZJZDBH.Size = new System.Drawing.Size(152, 21);
-            this.txtJZJZDBH.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
-            this.txtJZJZDBH.TabIndex = 45;
-            this.txtJZJZDBH.Text = "";   
-            // 
-            // lblJZJZDBH
-            // 
-            this.lblJZJZDBH.AutoSize = true;
-            this.lblJZJZDBH.Location = new System.Drawing.Point(10, 794);
-            this.lblJZJZDBH.Name = "lblJZJZDBH";
-            this.lblJZJZDBH.Size = new System.Drawing.Size(65, 12);
-            this.lblJZJZDBH.TabIndex = 46;
-            this.lblJZJZDBH.Text = "JZJZDBH";
-            
-            // 
-            // ucJZX
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.intID, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblZdzhdm, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtZdzhdm, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblYsdm, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtYsdm, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblJzxcd, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.dblJzxcd, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblJzxlb, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cmbJzxlb, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblJzxwz, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.cmbJzxwz, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lblJxxz, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cmbJxxz, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblQsjxxysbh, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtQsjxxysbh, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblQsjxxys, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtQsjxxys, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblQszyyysbh, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtQszyyysbh, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblQszyyys, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtQszyyys, 4, 4);
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);            
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";            
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(317, 364);
+            this.tableLayoutPanel1.TabIndex = 23; 
+            //
+            // ucJzx
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.intID);                
-            this.Controls.Add(this.lblID);            
-            this.Controls.Add(this.txtZDZHDM);                
-            this.Controls.Add(this.lblZDZHDM);            
-            this.Controls.Add(this.txtYSDM);                
-            this.Controls.Add(this.lblYSDM);            
-            this.Controls.Add(this.txtJZXGZBH);                
-            this.Controls.Add(this.lblJZXGZBH);            
-            this.Controls.Add(this.dblJZXCD);                
-            this.Controls.Add(this.lblJZXCD);            
-            this.Controls.Add(this.cmbJZXLB);                
-            this.Controls.Add(this.lblJZXLB);            
-            this.Controls.Add(this.cmbJZXWZ);                
-            this.Controls.Add(this.lblJZXWZ);            
-            this.Controls.Add(this.cmbJXXZ);                
-            this.Controls.Add(this.lblJXXZ);            
-            this.Controls.Add(this.txtQSJXXYSBH);                
-            this.Controls.Add(this.lblQSJXXYSBH);            
-            this.Controls.Add(this.txtQSJXXYS);                
-            this.Controls.Add(this.lblQSJXXYS);            
-            this.Controls.Add(this.txtQSZYYYSBH);                
-            this.Controls.Add(this.lblQSZYYYSBH);            
-            this.Controls.Add(this.txtQSZYYYS);                
-            this.Controls.Add(this.lblQSZYYYS);            
-            this.Controls.Add(this.txtQSJZDBH);                
-            this.Controls.Add(this.lblQSJZDBH);            
-            this.Controls.Add(this.txtJZJZDBH);                
-            this.Controls.Add(this.lblJZJZDBH);            
-            this.Name = "ucJZX";
-            this.Size = new System.Drawing.Size(260, 520);
-            
-            ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtZDZHDM)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtYSDM)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtJZXGZBH)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.dblJZXCD)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.cmbJZXLB)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.cmbJZXWZ)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.cmbJXXZ)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtQSJXXYSBH)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtQSJXXYS)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtQSZYYYSBH)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtQSZYYYS)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtQSJZDBH)).EndInit();           
-            ((System.ComponentModel.ISupportInitialize)(this.txtJZJZDBH)).EndInit();           
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Name = "ucJzx";
+            this.Size = new System.Drawing.Size(500, 226);            
+            ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZdzhdm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYsdm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblJzxcd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbJzxlb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbJzxwz)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbJxxz)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQsjxxysbh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQsjxxys)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQszyyysbh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQszyyys)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
         #endregion
         
-        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intID; 
-        private System.Windows.Forms.Label lblID; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtZDZHDM; 
-        private System.Windows.Forms.Label lblZDZHDM; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtYSDM; 
-        private System.Windows.Forms.Label lblYSDM; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtJZXGZBH; 
-        private System.Windows.Forms.Label lblJZXGZBH; 
-        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblJZXCD; 
-        private System.Windows.Forms.Label lblJZXCD; 
-        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbJZXLB; 
-        private System.Windows.Forms.Label lblJZXLB; 
-        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbJZXWZ; 
-        private System.Windows.Forms.Label lblJZXWZ; 
-        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbJXXZ; 
-        private System.Windows.Forms.Label lblJXXZ; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtQSJXXYSBH; 
-        private System.Windows.Forms.Label lblQSJXXYSBH; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtQSJXXYS; 
-        private System.Windows.Forms.Label lblQSJXXYS; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtQSZYYYSBH; 
-        private System.Windows.Forms.Label lblQSZYYYSBH; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtQSZYYYS; 
-        private System.Windows.Forms.Label lblQSZYYYS; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtQSJZDBH; 
-        private System.Windows.Forms.Label lblQSJZDBH; 
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtJZJZDBH; 
-        private System.Windows.Forms.Label lblJZJZDBH; 
+        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intID;	
+        private System.Windows.Forms.Label lblID;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtZdzhdm;	
+        private System.Windows.Forms.Label lblZdzhdm;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtYsdm;	
+        private System.Windows.Forms.Label lblYsdm;
+        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblJzxcd;	
+        private System.Windows.Forms.Label lblJzxcd;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbJzxlb;	
+        private System.Windows.Forms.Label lblJzxlb;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbJzxwz;	
+        private System.Windows.Forms.Label lblJzxwz;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbJxxz;	
+        private System.Windows.Forms.Label lblJxxz;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtQsjxxysbh;	
+        private System.Windows.Forms.Label lblQsjxxysbh;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtQsjxxys;	
+        private System.Windows.Forms.Label lblQsjxxys;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtQszyyysbh;	
+        private System.Windows.Forms.Label lblQszyyysbh;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtQszyyys;	
+        private System.Windows.Forms.Label lblQszyyys;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        
     }
-
 }

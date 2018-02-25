@@ -1,51 +1,33 @@
 ﻿using System;
+using Dapper;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-using Dapper;
-using System.Linq;
 using System.Data.SQLite;
-using VastGIS.RealEstate.Data.Dao;
+using System.Linq;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 using VastGIS.RealEstate.Data.Events;
-
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Dao.Impl
 {
-
-    public partial class DomainDaoImpl:SQLiteDao,DomainDao
-    {
-        public Dictionary<string, string> _entityNames;
-        //private DomainDao _domainDao;
-        private string SELECT_VG_DICTIONARY = "select Id,ZDZ,ZDSM,SFQS,PX from vg_dictionary";
-        
-        private string SELECT_VG_DICTORYNAME = "select Id,ZDMC,ZDSM from vg_dictoryname";
+    public partial class DomainDaoImpl : SQLiteDao,DomainDao
+    {	
+        public Dictionary<string,string> _entityNames;        
         
         
-        public DomainDaoImpl(): base()
+        #region 初始化
+        public DomainDaoImpl():base()
         {
             _entityNames=new Dictionary<string, string>();
-            _entityNames.Add("VG_DICTIONARY","");
-            _entityNames.Add("VG_DICTORYNAME","");
+            _entityNames.Add("vg_dictionary","字典内容");
+            _entityNames.Add("vg_dictoryname","字典");
+             //RebuildSelectDictionary();
         }
+        #endregion
         
-        private event EntityChangedEventHandler entityChanged;
-
-        public event EntityChangedEventHandler EntityChanged
-        {
-            add { this.entityChanged += value; }
-            remove { this.entityChanged -= value; }
-        }
-
-        public  void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
-        {
-            if (this.entityChanged != null)
-            {
-                this.entityChanged(this, new EntityChanedEventArgs(tableName, layerName, operationType, ids));
-            }
-        }
-        
+                
         public string GetLayerName(string tableName)
         {
             tableName=tableName.ToUpper();
@@ -55,156 +37,150 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 return "";
         }
         
-        ///VgDictionary函数
+       
+        
+        #region VgDictionary方法
         public VgDictionary GetVgDictionary(long id)
         {
-            string sql="select Id,ZDZ,ZDSM,SFQS,PX from vg_dictionary" + " where id="+id.ToString();
-            IEnumerable<VgDictionary> vgDictionarys=connection.Query<VgDictionary>(sql);
-            if(vgDictionarys != null && vgDictionarys.Count()>0)
+            string sql="SELECT  Id As ID,ZDMC As Zdmc,ZDZ As Zdz,ZDSM As Zdsm,SFQS As Sfqs,PX As Px FROM vg_dictionary " + " where id="+id.ToString();
+            IEnumerable<VgDictionary> records=connection.Query<VgDictionary>(sql);
+            if(records != null && records.Count()>0)
             {
-                return vgDictionarys.First();
+                return records.First();
             }
             return null;
         }
         
-        public IEnumerable<VgDictionary> GetVgDictionarys(string filter)
+        public IEnumerable<VgDictionary> GetVgDictionaries(string filter)
         {
-            string sql="select Id,ZDZ,ZDSM,SFQS,PX from vg_dictionary" + " where "+filter;
-            var vgDictionarys=connection.Query<VgDictionary>(sql);
-            
-            return vgDictionarys;
+            string sql="SELECT  Id As ID,ZDMC As Zdmc,ZDZ As Zdz,ZDSM As Zdsm,SFQS As Sfqs,PX As Px FROM vg_dictionary " + " where "+filter;
+            var records=connection.Query<VgDictionary>(sql);            
+            return records;
         }
-        
-        public bool SaveVgDictionary(VgDictionary vgDictionary)
+        public bool SaveVgDictionary(VgDictionary record)
         {
-            bool retVal= vgDictionary.Save(connection);
+            bool retVal= record.Save(this);
             if(retVal)
             {
-                OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Save,new List<long>{vgDictionary.ID});
+                OnEntityChanged(EntityOperationType.Save, record as IEntity);
+                
             }
             return retVal;
         }
-        
-        public void SaveVgDictionarys(List<VgDictionary> vgDictionarys)
+        public void SaveVgDictionaries(List<VgDictionary> records)
         {
+            List<IEntity> backList=new List<IEntity>();
             SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in vgDictionarys)
+            foreach(var rec in records)
             {
-                rec.Save(connection);
+                rec.Save(this);
+                backList.Add(rec as IEntity);
             }
             tran.Commit();
             tran.Dispose();
-            List<long> ids=vgDictionarys.Select(a => a.ID).ToList(); 
-            OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Save,ids);
+            OnEntityChanged(EntityOperationType.Save, backList);    
         }
-        
         public void DeleteVgDictionary(VgDictionary record)
         {
-            record.Delete(connection);
-            OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Delete,new List<long>{record.ID});
+            record.Delete(this);
+            OnEntityChanged(EntityOperationType.Delete, record as IEntity); 
         }
-        
         public void DeleteVgDictionary(long id)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                command.CommandText="delete from vg_dictionary where Id=" + id.ToString();
-                command.ExecuteNonQuery();
-                OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Delete,new List<long>{id});
-            }
+           VgDictionary record=GetVgDictionary(id);
+           if(record !=null)
+           DeleteVgDictionary(record);        
         }
-        
         public void DeleteVgDictionary(string filter)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
+           using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from vg_dictionary";
-                else
-                    command.CommandText="delete from vg_dictionary where " + filter;
-                command.ExecuteNonQuery();
-                OnEntityChanged("vg_dictionary",GetLayerName("vg_dictionary"),EntityOperationType.Delete,null);
-            }
+                List<IEntity> backList=new List<IEntity>();
+                IEnumerable<VgDictionary> records=GetVgDictionaries(filter);
+                if(records!=null && records.Count()>0)
+                {
+                    foreach(VgDictionary record in records)
+                    {
+                        record.Delete(this);
+                        backList.Add(record as IEntity);
+                    }
+                    OnEntityChanged(EntityOperationType.Delete, backList); 
+                }
+            } 
         }
+        #endregion
         
-        
-        ///VgDictoryname函数
+        #region VgDictoryname方法
         public VgDictoryname GetVgDictoryname(long id)
         {
-            string sql="select Id,ZDMC,ZDSM from vg_dictoryname" + " where id="+id.ToString();
-            IEnumerable<VgDictoryname> vgDictorynames=connection.Query<VgDictoryname>(sql);
-            if(vgDictorynames != null && vgDictorynames.Count()>0)
+            string sql="SELECT  Id As ID,ZDMC As Zdmc,ZDSM As Zdsm FROM vg_dictoryname " + " where id="+id.ToString();
+            IEnumerable<VgDictoryname> records=connection.Query<VgDictoryname>(sql);
+            if(records != null && records.Count()>0)
             {
-                return vgDictorynames.First();
+                return records.First();
             }
             return null;
         }
         
         public IEnumerable<VgDictoryname> GetVgDictorynames(string filter)
         {
-            string sql="select Id,ZDMC,ZDSM from vg_dictoryname" + " where "+filter;
-            var vgDictorynames=connection.Query<VgDictoryname>(sql);
-            
-            return vgDictorynames;
+            string sql="SELECT  Id As ID,ZDMC As Zdmc,ZDSM As Zdsm FROM vg_dictoryname " + " where "+filter;
+            var records=connection.Query<VgDictoryname>(sql);            
+            return records;
         }
-        
-        public bool SaveVgDictoryname(VgDictoryname vgDictoryname)
+        public bool SaveVgDictoryname(VgDictoryname record)
         {
-            bool retVal= vgDictoryname.Save(connection);
+            bool retVal= record.Save(this);
             if(retVal)
             {
-                OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Save,new List<long>{vgDictoryname.ID});
+                OnEntityChanged(EntityOperationType.Save, record as IEntity);
+                
             }
             return retVal;
         }
-        
-        public void SaveVgDictorynames(List<VgDictoryname> vgDictorynames)
+        public void SaveVgDictorynames(List<VgDictoryname> records)
         {
+            List<IEntity> backList=new List<IEntity>();
             SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in vgDictorynames)
+            foreach(var rec in records)
             {
-                rec.Save(connection);
+                rec.Save(this);
+                backList.Add(rec as IEntity);
             }
             tran.Commit();
             tran.Dispose();
-            List<long> ids=vgDictorynames.Select(a => a.ID).ToList(); 
-            OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Save,ids);
+            OnEntityChanged(EntityOperationType.Save, backList);    
         }
-        
         public void DeleteVgDictoryname(VgDictoryname record)
         {
-            record.Delete(connection);
-            OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Delete,new List<long>{record.ID});
+            record.Delete(this);
+            OnEntityChanged(EntityOperationType.Delete, record as IEntity); 
         }
-        
         public void DeleteVgDictoryname(long id)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                command.CommandText="delete from vg_dictoryname where Id=" + id.ToString();
-                command.ExecuteNonQuery();
-                OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Delete,new List<long>{id});
-            }
+           VgDictoryname record=GetVgDictoryname(id);
+           if(record !=null)
+           DeleteVgDictoryname(record);        
         }
-        
         public void DeleteVgDictoryname(string filter)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
+           using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from vg_dictoryname";
-                else
-                    command.CommandText="delete from vg_dictoryname where " + filter;
-                command.ExecuteNonQuery();
-                OnEntityChanged("vg_dictoryname",GetLayerName("vg_dictoryname"),EntityOperationType.Delete,null);
-            }
+                List<IEntity> backList=new List<IEntity>();
+                IEnumerable<VgDictoryname> records=GetVgDictorynames(filter);
+                if(records!=null && records.Count()>0)
+                {
+                    foreach(VgDictoryname record in records)
+                    {
+                        record.Delete(this);
+                        backList.Add(record as IEntity);
+                    }
+                    OnEntityChanged(EntityOperationType.Delete, backList); 
+                }
+            } 
         }
-        
-        
+        #endregion
         
         
     }
 }
-
-
-

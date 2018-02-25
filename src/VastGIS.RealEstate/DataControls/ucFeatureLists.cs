@@ -11,13 +11,14 @@ using VastGIS.Api.Enums;
 using VastGIS.Api.Interfaces;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
     public partial class ucFeatureLists : UserControl
     {
         private IMuteMap _map;
-        private BindingList<SearchFeature> _features;
+        private BindingList<IEntity> _features;
         private bool _canMultiSelected;
         private bool _isDraw = true;
         private IAppContext _context;
@@ -31,19 +32,19 @@ namespace VastGIS.Plugins.RealEstate.DataControls
 
         private void ucFeatureLists_Resize(object sender, EventArgs e)
         {
-            int btnWidth = (this.Width - 30) /4;
-            btnSelectAll.Width = btnWidth;
-            btnSelectReserve.Width = btnWidth;
-            btnSelectClear.Width = btnWidth;
-            btnSelectUnAll.Width = btnWidth;
-            chkLstFeatures.Height = this.Height - 57;
-            lstFeatures.Height = this.Height - 57;
+            //int btnWidth = (this.Width - 30) /4;
+            //btnSelectAll.Width = btnWidth;
+            //btnSelectReserve.Width = btnWidth;
+            //btnSelectClear.Width = btnWidth;
+            //btnSelectUnAll.Width = btnWidth;
+            //chkLstFeatures.Height = this.Height - 57;
+            //lstFeatures.Height = this.Height - 57;
         }
 
         public void BindContext(IAppContext context)
         {
             _context = context;
-            _map = context.Map;
+            BindMap(_context.Map);
         }
 
         public void BindMap(IMuteMap pMap)
@@ -66,7 +67,8 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         {
             if (_features == null)
             {
-                _features=new BindingList<SearchFeature>();
+                _features=new BindingList<IEntity>();
+                return;
             }
             if (_canMultiSelected)
             {
@@ -124,29 +126,66 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             _features.Clear();
         }
 
-        public void AddFeature(SearchFeature pFeature,List<VgObjectclasses> classes)
+        public void AddFeature(IReFeature pFeature,List<VgObjectclass> classes)
         {
+            bool isFirst = false;
             if (_features == null)
             {
-                _features=new BindingList<SearchFeature>();
+                _features=new BindingList<IEntity>();
             }
+            if (_features.Count == 0) isFirst = true;
+            PrepareLayer();
             if (_features.FirstOrDefault(c => c.TableName == pFeature.TableName && c.ID == pFeature.ID) != null) return;
-            VgObjectclasses vgObjectclasses = classes.FirstOrDefault(c => c.Mc == pFeature.TableName);
-            if (vgObjectclasses != null)
-            {
-                pFeature.TableChineseName = vgObjectclasses.Zwmc;
-            }
+            VgObjectclass vgObjectclasses = classes.FirstOrDefault(c => c.Mc == pFeature.TableName);
+            //if (vgObjectclasses != null)
+            //{
+            //    pFeature.TableChineseName = vgObjectclasses.Zwmc;
+            //}
             _features.Add(pFeature);
-        }
+          //  if(isFirst) FeatureBind();
+            FlashGeometry(pFeature.Geometry);
 
-        public void AddFeatures(List<SearchFeature> pFeatureList, List<VgObjectclasses> classes)
+           // lstFeatures.Items.Add(pFeature.FullLabelString);
+        }
+        private void FeatureBind()
         {
+            if (_canMultiSelected)
+            {
+                chkLstFeatures.Visible = true;
+                chkLstFeatures.DataSource = _features;
+                chkLstFeatures.DisplayMember = "FullLabelString";
+                chkLstFeatures.ValueMember = "ID";
+                lstFeatures.DataSource = null;
+                lstFeatures.Visible = false;
+                btnSelectAll.Enabled = true;
+                btnSelectReserve.Enabled = true;
+                btnSelectUnAll.Enabled = true;
+            }
+            else
+            {
+
+                lstFeatures.Visible = true;
+                lstFeatures.DataSource = _features;
+                lstFeatures.DisplayMember = "FullLabelString";
+                lstFeatures.ValueMember = "ID";
+                chkLstFeatures.DataSource = null;
+                chkLstFeatures.Visible = false;
+                btnSelectAll.Enabled = false;
+                btnSelectReserve.Enabled = false;
+                btnSelectUnAll.Enabled = false;
+            }
+        }
+        public void AddFeatures(List<IReFeature> pFeatureList, List<VgObjectclass> classes)
+        {
+            bool isFirst = false;
             if (_features == null)
             {
-                _features = new BindingList<SearchFeature>();
+                _features = new BindingList<IEntity>();
             }
+            if (_features.Count == 0) isFirst = true;
+            PrepareLayer();
             string oldTableName = "";
-            VgObjectclasses vgObjectclasses = null;
+            VgObjectclass vgObjectclasses = null;
             foreach (var pFeature in pFeatureList)
             {
                 if(_features.FirstOrDefault(c => c.TableName == pFeature.TableName && c.ID == pFeature.ID) != null)
@@ -155,13 +194,15 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 {
                     vgObjectclasses = classes.FirstOrDefault(c => c.Mc == pFeature.TableName);
                 }
-                if (vgObjectclasses != null)
-                {
-                    pFeature.TableChineseName = vgObjectclasses.Zwmc;
-                }
+                //if (vgObjectclasses != null)
+                //{
+                //    pFeature.TableChineseName = vgObjectclasses.Zwmc;
+                //}
                 _features.Add(pFeature);
+                FlashGeometry(pFeature.Geometry);
                 oldTableName = pFeature.TableName;
             }
+          //  if (isFirst) FeatureBind();
         }
 
         public bool IsDraw
@@ -176,7 +217,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             if (_map == null) return;
             PrepareLayer();
             if (lstFeatures.SelectedIndex < 0) return;
-            SearchFeature pFeature = lstFeatures.SelectedItem as SearchFeature;
+            IReFeature pFeature = lstFeatures.SelectedItem as IReFeature;
             DrawSelectFeature(pFeature.Geometry);
         }
 
@@ -187,14 +228,26 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             PrepareLayer();
             foreach (var selectedItem in chkLstFeatures.CheckedItems)
             {
-                SearchFeature pFeature = selectedItem as SearchFeature;
+                IReFeature pFeature = selectedItem as IReFeature;
                 DrawSelectFeature(pFeature.Geometry);
             }
             if (chkLstFeatures.SelectedIndex < 0) return;
-            SearchFeature pSelectFeature = chkLstFeatures.SelectedItem as SearchFeature;
+            IReFeature pSelectFeature = chkLstFeatures.SelectedItem as IReFeature;
             DrawActiveFeature(pSelectFeature.Geometry);
         }
 
+        public void DrawTempGeometry(IGeometry pGeometry)
+        {
+            PrepareLayer();
+            Color color = _context.Config.RealEstateActivedColor;
+            DrawGeometry(pGeometry, color);
+        }
+
+        private void FlashGeometry(IGeometry pGeometry)
+        {
+            Color color = Color.Yellow;
+            DrawGeometry(pGeometry, color);
+        }
         private void PrepareLayer()
         {
             if (_layerHandle >= 0)
@@ -223,23 +276,30 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             double y2 = 0.0;
             if (geometry.GeometryType == GeometryType.Polyline)
             {
-                for (int i = 0; i < geometry.Points.Count - 1; i++)
+                for (int j = 0; j < geometry.Parts.Count; j++)
                 {
-                    x1 = geometry.Points[i].X;
-                    y1 = geometry.Points[i].Y;
-                    x2 = geometry.Points[i+1].X;
-                    y2 = geometry.Points[i+1].Y;
-                    _map.Drawing.DrawLine(_layerHandle,x1,y1,x2,y2,3,color);
+                    for (int i = 0; i < geometry.Parts[j].Points.Count - 1; i++)
+                    {
+                        x1 = geometry.Parts[j].Points[i].X;
+                        y1 = geometry.Parts[j].Points[i].Y;
+                        x2 = geometry.Parts[j].Points[i + 1].X;
+                        y2 = geometry.Parts[j].Points[i + 1].Y;
+                        _map.Drawing.DrawLine(_layerHandle, x1, y1, x2, y2, 3, color);
+                    }
                 }
                 return;
             }
             else if (geometry.GeometryType == GeometryType.Polygon)
             {
-                double[] xs = geometry.Points.Select(c => c.X).ToArray();
-                double[] ys = geometry.Points.Select(c => c.Y).ToArray();
-                object xsObject = xs as object;
-                object ysObject = ys as object;
-                _map.Drawing.DrawPolygon(_layerHandle, ref xsObject, ref ysObject, geometry.Points.Count,color,true,1);
+                for (int j = 0; j < geometry.Parts.Count; j++)
+                {
+                    double[] xs = geometry.Parts[j].Points.Select(c => c.X).ToArray();
+                    double[] ys = geometry.Parts[j].Points.Select(c => c.Y).ToArray();
+                    object xsObject = xs as object;
+                    object ysObject = ys as object;
+                    _map.Drawing.DrawPolygon(_layerHandle, ref xsObject, ref ysObject, geometry.Parts[j].Points.Count, color,
+                        true, 1);
+                }
                 return;
             }
             else if (geometry.GeometryType == GeometryType.Point)
@@ -252,21 +312,21 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             }
         }
 
-        public List<SearchFeature> GetSelectedFeatures()
+        public List<IReFeature> GetSelectedFeatures()
         {
-            List<SearchFeature> features = new List<SearchFeature>();
+            List<IReFeature> features = new List<IReFeature>();
             if (_canMultiSelected)
             {
                 foreach (var feature in chkLstFeatures.CheckedItems)
                 {
-                    features.Add(feature as SearchFeature);
+                    features.Add(feature as IReFeature);
                 }
             }
             else
             {
                 if (lstFeatures.SelectedIndex >= 0)
                 {
-                    features.Add(lstFeatures.SelectedItem as SearchFeature);
+                    features.Add(lstFeatures.SelectedItem as IReFeature);
                 }
             }
             return features;
@@ -293,6 +353,64 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             {
                 _context.Map.Drawing.RemoveLayer(_layerHandle);
             }
+        }
+
+        public void ClearList()
+        {
+            _features.Clear();
+        }
+
+        public void Redraw()
+        {
+            if (_map == null) return;
+            PrepareLayer();
+            if (_canMultiSelected == true)
+            {
+                foreach (var selectedItem in chkLstFeatures.CheckedItems)
+                {
+                    IReFeature pFeature = selectedItem as IReFeature;
+                    DrawSelectFeature(pFeature.Geometry);
+                }
+                if (chkLstFeatures.SelectedIndex < 0) return;
+                IReFeature pSelectFeature = chkLstFeatures.SelectedItem as IReFeature;
+                DrawActiveFeature(pSelectFeature.Geometry);
+            }
+            else
+            {
+                foreach (var selectedItem in lstFeatures.Items)
+                {
+                    IReFeature pFeature = selectedItem as IReFeature;
+                    DrawSelectFeature(pFeature.Geometry);
+                }
+                if (lstFeatures.SelectedIndex < 0) return;
+                IReFeature pSelectFeature = lstFeatures.SelectedItem as IReFeature;
+                DrawActiveFeature(pSelectFeature.Geometry);
+            }
+            
+        }
+
+        public bool IsCurrentSelectedIsChecked()
+        {
+            if (chkLstFeatures.SelectedIndex < 0) return false;
+            if (chkLstFeatures.GetItemChecked(chkLstFeatures.SelectedIndex) == false) return false;
+            return true;
+        }
+
+        public IReFeature GetCurrentSelectedAndCheckedFeature()
+        {
+            if (chkLstFeatures.SelectedIndex < 0) return null;
+            if (chkLstFeatures.GetItemChecked(chkLstFeatures.SelectedIndex) == false) return null;
+            return chkLstFeatures.SelectedItem as IReFeature;
+        }
+
+        public List<IGeometry> GetSelectedGeometries()
+        {
+            List < IGeometry > geometries=new List<IGeometry>();
+            foreach (IReFeature item in chkLstFeatures.CheckedItems)
+            {
+                geometries.Add(item.Geometry);
+            }
+            return geometries;
         }
     }
 }

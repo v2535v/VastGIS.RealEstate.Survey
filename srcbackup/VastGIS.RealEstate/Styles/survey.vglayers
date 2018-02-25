@@ -1,0 +1,31 @@
+﻿<VGLayer>
+  <Groups>
+    <XmlGroup position="3">
+      <Expanded>true</Expanded>
+      <Name>地籍区</Name>
+      <Layers>
+        <Layer name="DJZQ" position="1"/>
+      </Layers>
+    </XmlGroup>
+    <XmlGroup position="2">
+      <Expanded>true</Expanded>
+      <Name>宗地数据</Name>
+      <Layers>
+        <Layer name="JZD" position="5"/>
+        <Layer name="JZDZJ" position="4"/>
+        <Layer name="JZX" position="3"/>
+        <Layer name="JZXZJ" position="2"/>
+        <Layer name="ZDJBXX" position="1"/>
+        <Layer name="ZDJBXXZJ" position="0"/>
+      </Layers>
+    </XmlGroup>
+    <XmlGroup position="1">
+      <Expanded>true</Expanded>
+      <Name>基础底图数据</Name>
+      <Layers>
+        <Layer name="DXTJMDM" position="1"/>
+        <Layer name="DXTDLSSM" position="0"/>
+      </Layers>
+    </XmlGroup>
+  </Groups>
+</VGLayer>

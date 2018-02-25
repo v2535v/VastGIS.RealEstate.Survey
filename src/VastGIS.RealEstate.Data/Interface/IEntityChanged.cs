@@ -13,9 +13,7 @@ namespace VastGIS.RealEstate.Data.Interface
         event EntityChangedEventHandler EntityChanged;
 
         void OnEntityChanged(
-            string tableName,
-            string layerName,
             EntityOperationType operationType,
-            List<long> ids);
+            List<IEntity> entities);
     }
 }

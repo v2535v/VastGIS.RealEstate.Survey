@@ -173,7 +173,7 @@ namespace VastGIS.UI.Menu
                 return;
             }
 
-            _progressMessage.Text = message;
+           // _progressMessage.Text = message;
 
             if (percent > _progressBar.Maximum || percent < _progressBar.Minimum)
             {
@@ -183,6 +183,7 @@ namespace VastGIS.UI.Menu
 
             System.Action action = () =>
             {
+                _progressMessage.Text = message;
                 _progressBar.Value = percent;
                 if (!_progressMessage.Visible)
                 {

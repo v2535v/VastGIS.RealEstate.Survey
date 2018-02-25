@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB836BB0-2668-41E6-A4AD-7798B13C327F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VastGIS.Tools</RootNamespace>
+    <AssemblyName>VastGIS.Tools</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionItems\SolutionInfoCore.cs">
+      <Link>Properties\SolutionInfoCore.cs</Link>
+    </Compile>
+    <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\FieldOperationGridAdapter.cs" />
+    <Compile Include="Controls\FieldOperationGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FieldOperationGrid.Designer.cs">
+      <DependentUpon>FieldOperationGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InputFilenameGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\InputFilenameGrid.Designer.cs">
+      <DependentUpon>InputFilenameGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InputFilenameGridAdapter.cs" />
+    <Compile Include="Controls\Parameters\Input\BatchFilenameParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\Input\BatchFilenameParameterControl.Designer.cs">
+      <DependentUpon>BatchFilenameParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\Input\FilenameParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\Input\FilenameParameterControl.Designer.cs">
+      <DependentUpon>FilenameParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\FieldOperationParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\FieldOperationParameterControl.Designer.cs">
+      <DependentUpon>FieldOperationParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\Input\InputParameterControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\Input\InputParameterControlBase.Designer.cs">
+      <DependentUpon>InputParameterControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\Interfaces\IInputListener.cs" />
+    <Compile Include="Controls\Parameters\Interfaces\IInputParameterControl.cs" />
+    <Compile Include="Controls\Parameters\Interfaces\IOptionsParameterControl.cs" />
+    <Compile Include="Controls\Parameters\Interfaces\IOuputputParameterControl.cs" />
+    <Compile Include="Controls\Parameters\OutputLayerParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\OutputLayerParameterControl.Designer.cs">
+      <DependentUpon>OutputLayerParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InputLayerGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\InputLayerGrid.Designer.cs">
+      <DependentUpon>InputLayerGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\Input\BatchLayerParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\Input\BatchLayerParameterControl.Designer.cs">
+      <DependentUpon>BatchLayerParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\FieldParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\FieldParameterControl.Designer.cs">
+      <DependentUpon>FieldParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\OutputNameParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\OutputNameParameterControl.Designer.cs">
+      <DependentUpon>OutputNameParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\ProjectionParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\ProjectionParameterControl.Designer.cs">
+      <DependentUpon>ProjectionParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProgressBarWrapper.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ProgressBarWrapper.Designer.cs">
+      <DependentUpon>ProgressBarWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\Converters.cs" />
+    <Compile Include="Helpers\BatchExecutionHelper.cs" />
+    <Compile Include="Helpers\ControlsHelper.cs" />
+    <Compile Include="Helpers\DriverConfigHelper.cs" />
+    <Compile Include="Helpers\DocumentationHelper.cs" />
+    <Compile Include="Helpers\GroupOperationHelper.cs" />
+    <Compile Include="Helpers\InputHelper.cs" />
+    <Compile Include="Helpers\PanelHelper.cs" />
+    <Compile Include="Helpers\ParameterControlHelper.cs" />
+    <Compile Include="Helpers\ToolDialogHelper.cs" />
+    <Compile Include="Helpers\ToolHelper.cs" />
+    <Compile Include="Helpers\ToolIdentification.cs" />
+    <Compile Include="Helpers\ToolRerunHelper.cs" />
+    <Compile Include="Helpers\ParameterSerialization.cs" />
+    <Compile Include="Helpers\TabControlHelper.cs" />
+    <Compile Include="Helpers\TemplateNameResolver.cs" />
+    <Compile Include="Helpers\ToolConfigHelper.cs" />
+    <Compile Include="Helpers\ToolTipHelper.cs" />
+    <Compile Include="Helpers\ValidationHelper.cs" />
+    <Compile Include="Model\AppendModeGisTool.cs" />
+    <Compile Include="Model\ErrorInfo.cs" />
+    <Compile Include="Model\FieldWrapper.cs" />
+    <Compile Include="Model\IGdalTool.cs" />
+    <Compile Include="Model\IParametrizedTool.cs" />
+    <Compile Include="Model\Layers\CachedInput.cs" />
+    <Compile Include="Model\Layers\IDatasourceInput.cs" />
+    <Compile Include="Controls\InputLayerGridAdapter.cs" />
+    <Compile Include="Model\Layers\IRasterInput.cs" />
+    <Compile Include="Model\Layers\IVectorInput.cs" />
+    <Compile Include="Model\Layers\DatasourceInput.cs" />
+    <Compile Include="Model\OutputLayerAttribute.cs" />
+    <Compile Include="Model\DataTypeHintAttribute.cs" />
+    <Compile Include="Model\Parameters\ExtentsParameter.cs" />
+    <Compile Include="Model\Parameters\FilenameParameter.cs" />
+    <Compile Include="Model\Parameters\FieldOperationParameter.cs" />
+    <Compile Include="Model\Parameters\IInputParameter.cs" />
+    <Compile Include="Model\Parameters\IOutputParameter.cs" />
+    <Compile Include="Model\Parameters\ISupportsValidation.cs" />
+    <Compile Include="Model\Layers\RasterInput.cs" />
+    <Compile Include="Model\ControlHintAttribute.cs" />
+    <Compile Include="Model\Parameters\MultiFilenameParameter.cs" />
+    <Compile Include="Model\Parameters\OutputNameParameter.cs" />
+    <Compile Include="Model\Parameters\GeoProjectionParameter.cs" />
+    <Compile Include="Model\Range.cs" />
+    <Compile Include="Model\ToolBase.cs" />
+    <Compile Include="Services\EmptyTaskHandle.cs" />
+    <Compile Include="Services\ParameterControlEventArgs.cs" />
+    <Compile Include="Services\ParameterControlGenerator.cs" />
+    <Compile Include="Helpers\TaskHelper.cs" />
+    <Compile Include="Helpers\TempDatasourceHelper.cs" />
+    <Compile Include="Model\Distance.cs" />
+    <Compile Include="Model\GisTask.cs" />
+    <Compile Include="Model\OutputAttribute.cs" />
+    <Compile Include="Model\Parameters\DistanceParameter.cs" />
+    <Compile Include="Model\Parameters\FieldParameter.cs" />
+    <Compile Include="Services\ParameterFactory.cs" />
+    <Compile Include="Model\TaskCollection.cs" />
+    <Compile Include="Model\Layers\LayerInput.cs" />
+    <Compile Include="Model\OutputLayerInfo.cs" />
+    <Compile Include="Model\InputAttribute.cs" />
+    <Compile Include="Model\Parameters\DoubleParameter.cs" />
+    <Compile Include="Model\Parameters\IntegerParameter.cs" />
+    <Compile Include="Model\Parameters\Layers\GenericLayerParameter.cs" />
+    <Compile Include="Model\Parameters\NumericParameter.cs" />
+    <Compile Include="Model\Parameters\OutputLayerParameter.cs" />
+    <Compile Include="Model\Parameters\Layers\RasterLayerParameter.cs" />
+    <Compile Include="Model\Parameters\Layers\VectorLayerParameter.cs" />
+    <Compile Include="Model\TaskHandle.cs" />
+    <Compile Include="Model\Layers\VectorInput.cs" />
+    <Compile Include="Services\EmptyProgress.cs" />
+    <Compile Include="Services\EventProgress.cs" />
+    <Compile Include="Model\ParameterCollection.cs" />
+    <Compile Include="Services\InputLayerEventArgs.cs" />
+    <Compile Include="Services\OutputManager.cs" />
+    <Compile Include="Services\TaskProgressBase.cs" />
+    <Compile Include="Services\ToolConfigurationManager.cs" />
+    <Compile Include="Services\ToolConfiguration.cs" />
+    <Compile Include="Services\EventManager.cs" />
+    <Compile Include="Services\ToolLogger.cs" />
+    <Compile Include="Services\CallbackProgress.cs" />
+    <Compile Include="Toolbox\ToolboxDockPanel.Designer.cs">
+      <DependentUpon>ToolboxDockPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Toolbox\ToolboxGroupMetadata.cs" />
+    <Compile Include="Toolbox\ToolboxPresenter.cs" />
+    <Compile Include="Toolbox\ToolboxToolItem.cs" />
+    <Compile Include="Toolbox\ToolboxTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\BooleanParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\BooleanParameterControl.Designer.cs">
+      <DependentUpon>BooleanParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\ComboParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\ComboParameterControl.Designer.cs">
+      <DependentUpon>ComboParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\DistanceParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\DistanceParameterControl.Designer.cs">
+      <DependentUpon>DistanceParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\IntegerParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\IntegerParameterControl.Designer.cs">
+      <DependentUpon>IntegerParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\Input\LayerParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\Input\LayerParameterControl.Designer.cs">
+      <DependentUpon>LayerParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\BatchOutputParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\BatchOutputParameterControl.Designer.cs">
+      <DependentUpon>BatchOutputParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\ParameterControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\ParameterControlBase.Designer.cs">
+      <DependentUpon>ParameterControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ParameterControlFactory.cs" />
+    <Compile Include="Controls\Parameters\DoubleParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\DoubleParameterControl.Designer.cs">
+      <DependentUpon>DoubleParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Parameters\StringParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Parameters\StringParameterControl.Designer.cs">
+      <DependentUpon>StringParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Model\Parameters\BooleanParameter.cs" />
+    <Compile Include="Model\GisToolAttribute.cs" />
+    <Compile Include="Model\GisTool.cs" />
+    <Compile Include="Model\Parameters\Layers\LayerParameterBase.cs" />
+    <Compile Include="Model\Parameters\OptionsParameter.cs" />
+    <Compile Include="Model\Parameters\StringParameter.cs" />
+    <Compile Include="Model\Parameters\BaseParameter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Database\ImportLayerTool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools\Fake\LongExecutionTool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools\Attributes\CalculateAreaTool.cs" />
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\ConvertTo2DTool.cs" />
+    <Compile Include="Tools\Attributes\AggregateShapesTool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\BufferTool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\CentroidTool.cs" />
+    <Compile Include="Tools\Attributes\DissolveTool.cs" />
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\ExplodeShapesTool.cs" />
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\ExportSelectionTool.cs" />
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\FixShapefileTool.cs" />
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\InteractiveClippingTool.cs" />
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\MergeShapefilesTool.cs" />
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\OverlayTool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\RandomPointsTool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\SimplifyLinesTool.cs" />
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\SortShapefileTool.cs" />
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\SpatialQueryTool.cs" />
+    <Compile Include="Tools\Geoprocessing\VectorGeometryTools\ValidateShapefileTool.cs" />
+    <Compile Include="Tools\Projections\IdentifyProjectionTool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools\Projections\ReprojectTool.cs" />
+    <Compile Include="Tools\Raster\ClipGridWithPolygonTool.cs" />
+    <Compile Include="Tools\Raster\CreateGridProxyTool.cs" />
+    <Compile Include="Tools\Raster\PolygonizeGridTool.cs" />
+    <Compile Include="Tools\Raster\ZonalStatisticsTool.cs" />
+    <Compile Include="Views\Custom\Abstract\ILongExecutionView.cs" />
+    <Compile Include="Views\Custom\Abstract\IRandomPointsView.cs" />
+    <Compile Include="Views\Custom\LongExecutionPresenter.cs" />
+    <Compile Include="Views\Custom\RandomPointsPresenter.cs" />
+    <Compile Include="Views\Custom\LongExecutionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Custom\LongExecutionView.Designer.cs">
+      <DependentUpon>LongExecutionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Custom\RandomPointsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Custom\RandomPointsView.Designer.cs">
+      <DependentUpon>RandomPointsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Abstract\ITaskLogView.cs" />
+    <Compile Include="Views\TaskNodeWrapper.cs" />
+    <Compile Include="Views\TaskLogPresenter.cs" />
+    <Compile Include="Views\TaskLogView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TaskLogView.Designer.cs">
+      <DependentUpon>TaskLogView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolPresenter.cs" />
+    <Compile Include="Views\ToolView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolView.Designer.cs">
+      <DependentUpon>ToolView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Abstract\IToolView.cs" />
+    <Compile Include="Toolbox\ToolboxDockPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Toolbox\ToolboxGroup.cs" />
+    <Compile Include="Toolbox\ToolboxGroupCollection.cs" />
+    <Compile Include="Toolbox\ToolboxToolCollection.cs" />
+    <Compile Include="Views\TasksDockPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\TasksDockPanel.Designer.cs">
+      <DependentUpon>TasksDockPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TasksPresenter.cs" />
+    <Compile Include="Views\TasksTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\TasksTreeView.Designer.cs">
+      <DependentUpon>TasksTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VastGIS.Api\VastGIS.Api.csproj">
+      <Project>{8AAD34B3-8EF3-485F-A04D-ED2C07D8F1DF}</Project>
+      <Name>VastGIS.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Plugins\VastGIS.Plugins.csproj">
+      <Project>{76644CDF-5165-428D-8419-93C1E978DB1B}</Project>
+      <Name>VastGIS.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Projections\VastGIS.Projections.csproj">
+      <Project>{DD259453-611A-4AD5-878E-385CB2C89DF5}</Project>
+      <Name>VastGIS.Projections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Services\VastGIS.Services.csproj">
+      <Project>{54BB55DA-DBDC-47E5-8DEC-DE325F35F074}</Project>
+      <Name>VastGIS.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Shared\VastGIS.Shared.csproj">
+      <Project>{79400594-DE0D-4FFD-B115-AF2AEAC79CD9}</Project>
+      <Name>VastGIS.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.UI\VastGIS.UI.csproj">
+      <Project>{784A24F2-9A57-46EE-8945-D87869595216}</Project>
+      <Name>VastGIS.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\Parameters\Input\BatchLayerParameterControl.resx">
+      <DependentUpon>BatchLayerParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\BooleanParameterControl.resx">
+      <DependentUpon>BooleanParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\ComboParameterControl.resx">
+      <DependentUpon>ComboParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\DistanceParameterControl.resx">
+      <DependentUpon>DistanceParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\Input\BatchFilenameParameterControl.resx">
+      <DependentUpon>BatchFilenameParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\Input\FilenameParameterControl.resx">
+      <DependentUpon>FilenameParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\FieldOperationParameterControl.resx">
+      <DependentUpon>FieldOperationParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\IntegerParameterControl.resx">
+      <DependentUpon>IntegerParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\FieldParameterControl.resx">
+      <DependentUpon>FieldParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\Input\LayerParameterControl.resx">
+      <DependentUpon>LayerParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\BatchOutputParameterControl.resx">
+      <DependentUpon>BatchOutputParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\DoubleParameterControl.resx">
+      <DependentUpon>DoubleParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\OutputLayerParameterControl.resx">
+      <DependentUpon>OutputLayerParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\OutputNameParameterControl.resx">
+      <DependentUpon>OutputNameParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\ProjectionParameterControl.resx">
+      <DependentUpon>ProjectionParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Parameters\StringParameterControl.resx">
+      <DependentUpon>StringParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ProgressBarWrapper.resx">
+      <DependentUpon>ProgressBarWrapper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Toolbox\ToolboxDockPanel.resx">
+      <DependentUpon>ToolboxDockPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Custom\LongExecutionView.resx">
+      <DependentUpon>LongExecutionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Custom\RandomPointsView.resx">
+      <DependentUpon>RandomPointsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TaskLogView.resx">
+      <DependentUpon>TaskLogView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolView.resx">
+      <DependentUpon>ToolView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TasksDockPanel.resx">
+      <DependentUpon>TasksDockPanel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Manuals\fonts\glyphicons-halflings-regular.eot">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Manuals\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Manuals\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Manuals\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\img_folder_closed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_folder_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_help24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_log24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_options24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_tools24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_tool16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_toolbox16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Manuals\css\bootstrap-3.3.5.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\css\mw5.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\fonts\glyphicons-halflings-regular.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\img\bufferdistance_optional.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\img\bufferdistance_required.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\img\LogoMapWindow_5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\img\randompoints_required.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\img\randompoints_result.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\img\randompoints_task.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\js\bootstrap-3.3.5.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\js\jquery-1.11.3.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\js\mw5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\BufferTool.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Manuals\Template.html" />
+    <Content Include="Manuals\RandomPointsTool.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\img_run24.png" />
+    <None Include="Resources\img_run_batch24.png" />
+    <None Include="Resources\img_clock16.png" />
+    <None Include="Resources\img_advanced24.png" />
+    <None Include="Resources\img_driver24.png" />
+    <None Include="Resources\img_console24.png" />
+    <None Include="Resources\img_save_24.png" />
+    <None Include="Resources\img_Pensil24.png" />
+    <None Include="Resources\img_notepad_24.png" />
+    <None Include="Resources\img_file24.png" />
+    <None Include="Resources\img_file_explorer24.png" />
+    <None Include="Resources\img_tasks16.png" />
+    <None Include="Resources\img_info20.png" />
+    <None Include="Resources\img_info16.png" />
+    <None Include="Resources\img_remove16_3.png" />
+    <None Include="Resources\img_clear16_2.png" />
+    <None Include="Resources\img_remove16_2.png" />
+    <None Include="Resources\img_clear16.png" />
+    <None Include="Resources\img_remove16.png" />
+    <None Include="Resources\img_add16.png" />
+    <None Include="Resources\img_database16_2.png" />
+    <None Include="Resources\img_pause16.png" />
+    <None Include="Resources\img_success32.png" />
+    <None Include="Resources\img_error32.png" />
+    <None Include="Resources\img_cancel32.png" />
+    <None Include="Resources\img_cancel16.png" />
+    <None Include="Resources\img_error16.png" />
+    <None Include="Resources\img_warning16.png" />
+    <None Include="Resources\img_wait16.png" />
+    <None Include="Resources\img_result16.png" />
+    <None Include="Resources\img_ok16.png" />
+    <None Include="Resources\img_database16.png" />
+    <None Include="Resources\img_raster.png" />
+    <None Include="Resources\img_polygon.png" />
+    <None Include="Resources\img_point.png" />
+    <None Include="Resources\img_line.png" />
+    <None Include="Resources\img_geometry.png" />
+    <None Include="Resources\img_clear24.png" />
+    <None Include="Resources\img_group24.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

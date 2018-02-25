@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Data.Entity.Spatial;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Linq;
 using netDxf;
 using netDxf.Collections;
@@ -13,6 +14,7 @@ using OSGeo.OGR;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 using VastGIS.RealEstate.Data.Helpers;
+using VastGIS.RealEstate.Data.Interface;
 using VastGIS.RealEstate.Data.Service;
 using VastGIS.Shared;
 using Geometry = VastGIS.Api.Concrete.Geometry;
@@ -41,7 +43,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             ;
 
         protected const string CREATE_TEMPCADXDATA =
-                "CREATE TABLE [TmpCadxdata] (   [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   [Handle] CHAR(20),   [Tc] NCHAR(100),   [Wbnr] NCHAR(200),   [Cassdm] NCHAR(20),   [Fsxx1] NCHAR(200),   [Fsxx2] NCHAR(200),   [Xzjd] FLOAT,   [Fh] NCHAR(100),   [Fhdx] Float,   [Ysdm] CHAR(10),   [FileName] NCHAR(200));"
+                "CREATE TABLE [TmpCadxdata] (   [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,   [Handle] CHAR(20),   [Tc] NCHAR(100),   [Wbnr] NCHAR(200),   [Cassdm] CHAR(20),   [Fsxx1] NCHAR(200),   [Fsxx2] NCHAR(200),   [Xzjd] FLOAT,   [Fh] NCHAR(100),   [Fhdx] Float,   [Ysdm] CHAR(10),   [FileName] NCHAR(200));"
             ;
 
         protected const string CREATE_TEMPCADDVIEW =
@@ -129,19 +131,19 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
                     command.CommandText = GetRegisterGroupSql("Cad");
                     command.ExecuteNonQuery();
-                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadd");
+                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadd","IReFeature");
                     command.ExecuteNonQuery();
 
-                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadm");
+                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadm", "IReFeature");
                     command.ExecuteNonQuery();
 
-                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadx");
+                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadx", "IReFeature");
                     command.ExecuteNonQuery();
 
-                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadzj");
+                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadzj", "IReFeature");
                     command.ExecuteNonQuery();
 
-                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadxdata");
+                    command.CommandText = GetRegisterClassSql("Cad", "TmpCadxdata","IEntity");
                     command.ExecuteNonQuery();
                    
                 }
@@ -158,7 +160,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             using (SQLiteCommand command = new SQLiteCommand(connection))
             {
                 command.CommandText =
-                    "update TmpCadxdata set Ysdm=(select vg_cadcodes.Ysdm from vg_cadcodes where vg_cadcodes.Cassdm=TmpCadxdata.Cassdm and vg_cadcodes.Tc=TmpCadxdata.Tc limit 1)";
+                    "update TmpCadxdata set Ysdm=(select vg_cadcode.Ysdm from vg_cadcode where vg_cadcode.Cassdm=TmpCadxdata.Cassdm and vg_cadcode.Tc=TmpCadxdata.Tc limit 1)";
                 command.ExecuteNonQuery();
                 command.CommandText= "update TmpCadxdata set YSDM = Replace(YSDM, \"'\", \"\")";
                 command.ExecuteNonQuery();
@@ -365,7 +367,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             try
             {
-                dxfName = StringHelper.StringToUtf8(dxfName, System.Text.Encoding.Default.BodyName);
+                Debug.Print(dxfName);
+                //dxfName = StringHelper.String2Unicode(dxfName);
                 errorMsg = "";
                 DxfDocument doc = DxfDocument.Load(dxfName);
                 string xodePage = "";
@@ -374,12 +377,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 xodePage = Encoding.GetEncoding(codenum).BodyName;
 
                 int srid = GetSystemSRID();
-
-                DeleteTmpCadd("FileName='" + dxfName + "'");
-                DeleteTmpCadx("FileName='" + dxfName + "'");
-                DeleteTmpCadm("FileName='" + dxfName + "'");
-                DeleteTmpCadzj("FileName='" + dxfName + "'");
-                DeleteTmpCadxdata("FileName='" + dxfName + "'");
+                string dxfUniocde = dxfName;
+                DeleteTmpCadd("FileName='" + dxfUniocde + "'");
+                DeleteTmpCadx("FileName='" + dxfUniocde + "'");
+                DeleteTmpCadm("FileName='" + dxfUniocde + "'");
+                DeleteTmpCadzj("FileName='" + dxfUniocde + "'");
+                DeleteTmpCadxdata("FileName='" + dxfUniocde + "'");
 
                 List<TmpCadd> cadds = new List<TmpCadd>();
                 List<TmpCadx> cadxs = new List<TmpCadx>();
@@ -496,8 +499,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
                     TmpCadxdata cadxdata = new TmpCadxdata();
                     cadxdata.Handle = insert.Handle;
-                    cadxdata.Tc = StringHelper.StringToUtf8(insert.Layer.Name, xodePage);
-                    cadxdata.Fh = StringHelper.StringToUtf8(insert.Block.Name, xodePage);
+                    cadxdata.Tc =insert.Layer.Name;
+                    cadxdata.Fh = insert.Block.Name;
                     cadxdata.Fhdx = insert.Scale.X;
                     cadxdata.Xzjd = insert.Rotation;
                     cadxdata.FileName = dxfName;
@@ -511,11 +514,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
                     TmpCadxdata cadxdata = new TmpCadxdata();
                     cadxdata.Handle = insert.Handle;
-                    cadxdata.Tc = StringHelper.StringToUtf8(insert.Layer.Name, xodePage);
-                    cadxdata.Fh = StringHelper.StringToUtf8(insert.Style.FontFamilyName, xodePage);
+                    cadxdata.Tc = insert.Layer.Name;
+                    cadxdata.Fh = insert.Style.FontFamilyName;
                     cadxdata.Fhdx = insert.Height;
                     cadxdata.Xzjd = insert.Rotation;
-                    cadxdata.Wbnr = StringHelper.StringToUtf8(insert.Value, xodePage);
+                    cadxdata.Wbnr = insert.Value;
                     cadxdata.FileName = dxfName;
                     cadxdata = ReadXData(cadxdata, insert.XData, xodePage);
                     cadxdatas.Add(cadxdata);
@@ -527,7 +530,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
                     TmpCadxdata cadxdata = new TmpCadxdata();
                     cadxdata.Handle = insert.Handle;
-                    cadxdata.Tc = StringHelper.StringToUtf8(insert.Layer.Name, xodePage);
+                    cadxdata.Tc = insert.Layer.Name;
                     cadxdata.Fh = insert.Linetype.Name;
                     cadxdata.Fhdx = insert.LinetypeScale;
                     cadxdata.Xzjd = 0.0;
@@ -543,8 +546,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
                     TmpCadxdata cadxdata = new TmpCadxdata();
                     cadxdata.Handle = insert.Handle;
-                    cadxdata.Tc = StringHelper.StringToUtf8(insert.Layer.Name, xodePage);
-                    cadxdata.Fh = StringHelper.StringToUtf8(insert.Linetype.Name, xodePage);
+                    cadxdata.Tc = insert.Layer.Name;
+                    cadxdata.Fh = insert.Linetype.Name;
                     cadxdata.Fhdx = insert.LinetypeScale;
                     cadxdata.Xzjd = 0.0;
                     cadxdata.Wbnr = "";
@@ -559,8 +562,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
 
                     TmpCadxdata cadxdata = new TmpCadxdata();
                     cadxdata.Handle = insert.Handle;
-                    cadxdata.Tc = StringHelper.StringToUtf8(insert.Layer.Name);
-                    cadxdata.Fh = StringHelper.StringToUtf8(insert.Linetype.Name);
+                    cadxdata.Tc = insert.Layer.Name;
+                    cadxdata.Fh = insert.Linetype.Name;
                     cadxdata.Fhdx = insert.LinetypeScale;
                     cadxdata.Xzjd = 0.0;
                     cadxdata.Wbnr = "";
@@ -568,9 +571,9 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                     cadxdata = ReadXData(cadxdata, insert.XData, xodePage);
                     cadxdatas.Add(cadxdata);
                 }
-
+               // Gdal.SetConfigOption("SHAPE_ENCODING", "CP936");
                 SaveTmpCadds(cadds);
-                SaveTmpCadxs(cadxs);
+                SaveTmpCadxes(cadxs);
                 SaveTmpCadms(cadms);
                 SaveTmpCadzjs(cadzjs);
                 SaveTmpCadxdatas(cadxdatas);
@@ -602,11 +605,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         continue;
                     }
                     ImportTmpCaddToBasemap(tcName,  fileName, isClearBasemap);
-                    OnEntityChanged(baseName+"D", GetLayerNameFromTable(baseName + "D"),EntityOperationType.Save, null);
+                    string objectName = "VastGIS.RealEstate.Data.Entity." + StringUtil.GetEntityName(baseName+"D");
+                    Type entityType = Type.GetType(objectName);
+                    IEntity pEntity = Activator.CreateInstance(entityType) as IEntity;
+                    OnEntityChanged(EntityOperationType.Save, pEntity);
                 }
                 reader.Close();
                 ImportTmpCaddToBasemap("", fileName, isClearBasemap);
-                OnEntityChanged("DXTQTD", GetLayerNameFromTable("DXTQTD"), EntityOperationType.Save, null);
+                Dxtqtd tmpD= new Dxtqtd();
+                OnEntityChanged(EntityOperationType.Save, tmpD);
 
                 command.CommandText = "SELECT DISTINCT TC FROM TmpCadxView";
                 reader = command.ExecuteReader();
@@ -621,11 +628,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         continue;
                     }
                     ImportTmpCadxToBasemap(tcName, fileName, isClearBasemap);
-                    OnEntityChanged(baseName + "X", GetLayerNameFromTable(baseName + "X"), EntityOperationType.Save, null);
+                    string objectName = "VastGIS.RealEstate.Data.Entity." + StringUtil.GetEntityName(baseName+"X");
+                    Type entityType = Type.GetType(objectName);
+                    IEntity pEntity = Activator.CreateInstance(entityType) as IEntity;
+                    OnEntityChanged(EntityOperationType.Save, pEntity);
                 }
                 reader.Close();
                 ImportTmpCadxToBasemap("", fileName, isClearBasemap);
-                OnEntityChanged("DXTQTX", GetLayerNameFromTable("DXTQTX"), EntityOperationType.Save, null);
+                Dxtqtx tmpX=new Dxtqtx();
+                OnEntityChanged(EntityOperationType.Save, tmpX);
 
                 command.CommandText = "SELECT DISTINCT TC FROM TmpCadmView";
                 reader = command.ExecuteReader();
@@ -640,11 +651,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         continue;
                     }
                     ImportTmpCadmToBasemap(tcName, fileName, isClearBasemap);
-                    OnEntityChanged(baseName + "M", GetLayerNameFromTable(baseName + "M"), EntityOperationType.Save, null);
+                    string objectName = "VastGIS.RealEstate.Data.Entity." + StringUtil.GetEntityName(baseName+"M");
+                    Type entityType = Type.GetType(objectName);
+                    IEntity pEntity = Activator.CreateInstance(entityType) as IEntity;
+                    OnEntityChanged(EntityOperationType.Save, pEntity);
                 }
                 reader.Close();
                 ImportTmpCadmToBasemap("", fileName, isClearBasemap);
-                OnEntityChanged("DXTQTM", GetLayerNameFromTable("DXTQTM"), EntityOperationType.Save, null);
+                Dxtqtm tmpM = new Dxtqtm();
+                OnEntityChanged(EntityOperationType.Save, tmpM);
 
                 command.CommandText = "SELECT DISTINCT TC FROM TmpCadzjView";
                 reader = command.ExecuteReader();
@@ -659,11 +674,15 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                         continue;
                     }
                     ImportTmpCadzjToBasemap(tcName, fileName, isClearBasemap);
-                    OnEntityChanged(baseName + "ZJ", GetLayerNameFromTable(baseName + "ZJ"), EntityOperationType.Save, null);
+                    string objectName = "VastGIS.RealEstate.Data.Entity." + StringUtil.GetEntityName(baseName+"ZJ");
+                    Type entityType = Type.GetType(objectName);
+                    IEntity pEntity = Activator.CreateInstance(entityType) as IEntity;
+                    OnEntityChanged(EntityOperationType.Save, pEntity);
                 }
                 reader.Close();
                 ImportTmpCadzjToBasemap("", fileName, isClearBasemap);
-                OnEntityChanged("DXTQTZJ", GetLayerNameFromTable("DXTQTZJ"), EntityOperationType.Save, null);
+                Dxtqtzj tmpZJ= new Dxtqtzj();
+                OnEntityChanged(EntityOperationType.Save, tmpZJ);
             }
             return true;
         }
@@ -907,8 +926,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 }
             }
             cadxdata.Cassdm = attrs.Count > 0 ? attrs[0] : "";
-            cadxdata.Fsxx1 = attrs.Count > 1 ? StringHelper.StringToUtf8(attrs[1], codePage) : "";
-            cadxdata.Fsxx2 = attrs.Count > 2 ? StringHelper.StringToUtf8(attrs[2], codePage) : "";
+            cadxdata.Fsxx1 = attrs.Count > 1 ? attrs[1] : "";
+            cadxdata.Fsxx2 = attrs.Count > 2 ? attrs[2] : "";
             return cadxdata;
         }
     }

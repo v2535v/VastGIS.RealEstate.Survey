@@ -108,6 +108,7 @@
     <Compile Include="Dao\Impl\DomainDaoImpl.cs" />
     <Compile Include="Dao\Impl\DomainDaoImpl.generate.cs" />
     <Compile Include="Dao\Impl\SQLiteDao.cs" />
+    <Compile Include="Dao\Impl\SystemDaoImp.Initialize.cs" />
     <Compile Include="Dao\Impl\SystemDaoImpl.cs" />
     <Compile Include="Dao\Impl\SystemDaoImpl.generate.cs" />
     <Compile Include="Dao\Impl\ZdDaoImpl.cs" />
@@ -116,9 +117,9 @@
     <Compile Include="Dao\SystemDao.generate.cs" />
     <Compile Include="Dao\ZdDao.cs" />
     <Compile Include="Dao\ZdDao.generate.cs" />
-    <Compile Include="Entity\BackEntity.cs" />
-    <Compile Include="Entity\BackFeature.cs" />
+    <Compile Include="Entity\C.generate.cs" />
     <Compile Include="Entity\CadLayerPair.cs" />
+    <Compile Include="Entity\Cfdj.generate.cs" />
     <Compile Include="Entity\ColumnMapping.cs" />
     <Compile Include="Entity\Djq.cs" />
     <Compile Include="Entity\Djq.generate.cs" />
@@ -188,35 +189,86 @@
     <Compile Include="Entity\Dxtzjx.generate.cs" />
     <Compile Include="Entity\Dxtzjzj.cs" />
     <Compile Include="Entity\Dxtzjzj.generate.cs" />
-    <Compile Include="Entity\Feature.cs" />
-    <Compile Include="Entity\SimpleDatabaseFeature.cs" />
-    <Compile Include="Entity\VgAreacodes.cs" />
-    <Compile Include="Entity\VgAreacodes.generate.cs" />
+    <Compile Include="Entity\Dyaq.generate.cs" />
+    <Compile Include="Entity\Dyiq.generate.cs" />
+    <Compile Include="Entity\Dzdzw.generate.cs" />
+    <Compile Include="Entity\Fdcq1.generate.cs" />
+    <Compile Include="Entity\Fdcq2.generate.cs" />
+    <Compile Include="Entity\Fdcq3.generate.cs" />
+    <Compile Include="Entity\Fdcqxm.generate.cs" />
+    <Compile Include="Entity\Fz.generate.cs" />
+    <Compile Include="Entity\Gd.generate.cs" />
+    <Compile Include="Entity\Gjzwsyq.generate.cs" />
+    <Compile Include="Entity\Gzw.generate.cs" />
+    <Compile Include="Entity\H.generate.cs" />
+    <Compile Include="Entity\Hysyq.generate.cs" />
+    <Compile Include="Entity\Jsydsyq.generate.cs" />
+    <Compile Include="Entity\Ljz.generate.cs" />
+    <Compile Include="Entity\Lq.generate.cs" />
+    <Compile Include="Entity\Mzdzw.generate.cs" />
+    <Compile Include="Entity\Nydsyq.generate.cs" />
+    <Compile Include="Entity\Qlr.generate.cs" />
+    <Compile Include="Entity\Qtxgql.generate.cs" />
+    <Compile Include="Entity\Qxzd.generate.cs" />
+    <Compile Include="Entity\R.generate.cs" />
+    <Compile Include="Entity\ReEdge.cs" />
+    <Compile Include="Entity\ReVertex.cs" />
+    <Compile Include="Entity\Sf.generate.cs" />
+    <Compile Include="Entity\Sgsj.generate.cs" />
+    <Compile Include="Entity\Sh.generate.cs" />
+    <Compile Include="Entity\Sj.generate.cs" />
+    <Compile Include="Entity\Slsq.generate.cs" />
+    <Compile Include="Entity\Sqr.generate.cs" />
+    <Compile Include="Entity\Sz.generate.cs" />
+    <Compile Include="Entity\Tdsyq.generate.cs" />
+    <Compile Include="Entity\VgAreacode.generate.cs" />
+    <Compile Include="Entity\VgAreacode.cs" />
+    <Compile Include="Entity\VgAttachment.cs" />
+    <Compile Include="Entity\VgAttachment.generate.cs" />
+    <Compile Include="Entity\VgCadcode.generate.cs" />
     <Compile Include="Entity\VgClassdetail.cs" />
     <Compile Include="Entity\VgClassdetail.generate.cs" />
     <Compile Include="Entity\VgClassgroup.cs" />
     <Compile Include="Entity\VgClassgroup.generate.cs" />
+    <Compile Include="Entity\VgClassrelation.generate.cs" />
     <Compile Include="Entity\VgFieldinfo.generate.cs" />
     <Compile Include="Entity\VgLayergroup.cs" />
     <Compile Include="Entity\VgLayergroup.generate.cs" />
     <Compile Include="Entity\VgLayergroupdetail.cs" />
     <Compile Include="Entity\VgLayergroupdetail.generate.cs" />
+    <Compile Include="Entity\VgObjectclass.generate.cs" />
+    <Compile Include="Entity\VgObjectitem.generate.cs" />
     <Compile Include="Entity\VgObjectysdm.cs" />
     <Compile Include="Entity\VgObjectysdm.generate.cs" />
+    <Compile Include="Entity\VgSetting.generate.cs" />
+    <Compile Include="Entity\Xzdzw.generate.cs" />
+    <Compile Include="Entity\Xzqzj.generate.cs" />
+    <Compile Include="Entity\Ygdj.generate.cs" />
+    <Compile Include="Entity\Yhydzb.generate.cs" />
+    <Compile Include="Entity\Yhzk.generate.cs" />
+    <Compile Include="Entity\Yydj.generate.cs" />
+    <Compile Include="Entity\Zhbhqk.generate.cs" />
+    <Compile Include="Entity\Zhjbxx.generate.cs" />
+    <Compile Include="Entity\Zj.generate.cs" />
+    <Compile Include="Entity\Zrz.generate.cs" />
     <Compile Include="Events\EntityChanedEventArgs.cs" />
+    <Compile Include="Helpers\FileExtensionHelper.cs" />
     <Compile Include="Helpers\GeometryHelper.cs" />
     <Compile Include="Helpers\NumberHelper.cs" />
+    <Compile Include="Helpers\ProjectHelper.cs" />
+    <Compile Include="Helpers\Reflection.cs" />
     <Compile Include="Helpers\SettingKeyHelper.cs" />
     <Compile Include="Helpers\SpatialHelper.cs" />
+    <Compile Include="Helpers\SQLHelper.generate.cs" />
+    <Compile Include="Helpers\StringHelper.cs" />
+    <Compile Include="Helpers\WktHelper.cs" />
     <Compile Include="Interface\IBasemapPoint.cs" />
     <Compile Include="Interface\IBasemapPolyline.cs" />
     <Compile Include="Interface\IBasemapText.cs" />
-    <Compile Include="Interface\IBackEntity.cs" />
     <Compile Include="Interface\IBasemapPolygon.cs" />
     <Compile Include="Interface\IDatabaseEntity.cs" />
+    <Compile Include="Interface\IDatabaseFeature.cs" />
     <Compile Include="Interface\IEntity.cs" />
-    <Compile Include="Interface\IEntityChanged.cs" />
-    <Compile Include="Interface\IFeature.cs" />
     <Compile Include="Entity\Jzd.cs" />
     <Compile Include="Entity\Jzd.generate.cs" />
     <Compile Include="Entity\Jzdzj.cs" />
@@ -235,16 +287,13 @@
     <Compile Include="Entity\TmpCadxdata.generate.cs" />
     <Compile Include="Entity\TmpCadzj.cs" />
     <Compile Include="Entity\TmpCadzj.generate.cs" />
-    <Compile Include="Entity\VgCadcodes.cs" />
-    <Compile Include="Entity\VgCadcodes.generate.cs" />
+    <Compile Include="Entity\VgCadcode.cs" />
     <Compile Include="Entity\VgDictionary.cs" />
     <Compile Include="Entity\VgDictionary.generate.cs" />
     <Compile Include="Entity\VgDictoryname.cs" />
     <Compile Include="Entity\VgDictoryname.generate.cs" />
-    <Compile Include="Entity\VgObjectclasses.cs" />
-    <Compile Include="Entity\VgObjectclasses.generate.cs" />
-    <Compile Include="Entity\VgSettings.cs" />
-    <Compile Include="Entity\VgSettings.generate.cs" />
+    <Compile Include="Entity\VgObjectclass.cs" />
+    <Compile Include="Entity\VgSetting.cs" />
     <Compile Include="Entity\Xzq.cs" />
     <Compile Include="Entity\Xzq.generate.cs" />
     <Compile Include="Entity\Xzqjx.cs" />
@@ -260,6 +309,12 @@
     <Compile Include="Entity\Zdtojzx.cs" />
     <Compile Include="Entity\Zdtojzx.generate.cs" />
     <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Interface\IGlobalEntity.cs" />
+    <Compile Include="Interface\IReFeature.cs" />
+    <Compile Include="Interface\ISQLiteService.cs" />
+    <Compile Include="Interface\ISurveyEntity.cs" />
+    <Compile Include="Interface\ISurveyFeature.cs" />
+    <Compile Include="Interface\IYsdmEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -305,32 +360,41 @@
     <ProjectReference Include="..\VastGIS.Api\VastGIS.Api.csproj">
       <Project>{8aad34b3-8ef3-485f-a04d-ed2c07d8f1df}</Project>
       <Name>VastGIS.Api</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.Shared\VastGIS.Shared.csproj">
       <Project>{79400594-de0d-4ffd-b115-af2aeac79cd9}</Project>
       <Name>VastGIS.Shared</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Casscodes.sql" />
+    <None Include="Resources\Casscode.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dictionary.sql" />
+    <None Include="Resources\Zdxx.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Areacodes.sql" />
+    <None Include="Resources\Szcsh.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Areacode.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Ysdm.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Zdxx.sql" />
+    <None Include="Resources\Bdcysdm.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dictionary.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.106.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.106.0\build\net45\System.Data.SQLite.Core.targets')" />

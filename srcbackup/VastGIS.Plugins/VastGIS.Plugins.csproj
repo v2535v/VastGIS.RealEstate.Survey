@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{76644CDF-5165-428D-8419-93C1E978DB1B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VastGIS.Plugins</RootNamespace>
+    <AssemblyName>VastGIS.Plugins</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionItems\SolutionInfoCore.cs">
+      <Link>Properties\SolutionInfoCore.cs</Link>
+    </Compile>
+    <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Concrete\AppConfig.cs" />
+    <Compile Include="Concrete\BaseCommand.cs" />
+    <Compile Include="Concrete\BasePlugin.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Concrete\LayerMetadataBase.cs" />
+    <Compile Include="Concrete\MainPlugin.cs" />
+    <Compile Include="Concrete\WmsServer.cs" />
+    <Compile Include="Enums\Converters.cs" />
+    <Compile Include="Enums\GroupKeys.cs" />
+    <Compile Include="Events\ConnectionEventArgs.cs" />
+    <Compile Include="Concrete\DatabaseConnection.cs" />
+    <Compile Include="Events\DockPanelCancelEventArgs.cs" />
+    <Compile Include="Events\DockPanelEventArgs.cs" />
+    <Compile Include="Events\ExtentsEventArgs.cs" />
+    <Compile Include="Events\FolderEventArgs.cs" />
+    <Compile Include="Events\LayerCancelEventArgs.cs" />
+    <Compile Include="Concrete\MenuCommand.cs" />
+    <Compile Include="Concrete\CommandProviderBase.cs" />
+    <Compile Include="Concrete\MenuItemCollectionMetadata.cs" />
+    <Compile Include="Events\MenuEventArgs.cs" />
+    <Compile Include="Events\MenuItemEventArgs.cs" />
+    <Compile Include="Events\PluginEventArgs.cs" />
+    <Compile Include="Concrete\PluginIdentity.cs" />
+    <Compile Include="Events\PluginMessageEventArgs.cs" />
+    <Compile Include="Events\ProgressEventArgs.cs" />
+    <Compile Include="Events\RenderedEventArgs.cs" />
+    <Compile Include="Events\RepositoryListEventArgs.cs" />
+    <Compile Include="Events\StringValueChangedEventArgs.cs" />
+    <Compile Include="Events\TaskStatusChangedEventArgs.cs" />
+    <Compile Include="Events\TaskEventArgs.cs" />
+    <Compile Include="Events\TileProviderArgs.cs" />
+    <Compile Include="Events\ToolboxGroupEventArgs.cs" />
+    <Compile Include="Events\ToolboxToolEventArgs.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Helpers\AppContextHelper.cs" />
+    <Compile Include="Helpers\ConfigPathHelper.cs" />
+    <Compile Include="Helpers\LoadedAssemblyChecker.cs" />
+    <Compile Include="Helpers\PluginIdentityHelper.cs" />
+    <Compile Include="Helpers\ResourcePathHelper.cs" />
+    <Compile Include="Interfaces\IComboBoxMenuItem.cs" />
+    <Compile Include="Interfaces\IConfigPage.cs" />
+    <Compile Include="Interfaces\IDockPanelView.cs" />
+    <Compile Include="Interfaces\IAppView.cs" />
+    <Compile Include="Interfaces\IDockPanel.cs" />
+    <Compile Include="Interfaces\IDockPanelCollection.cs" />
+    <Compile Include="Interfaces\IDockPanelPresenter.cs" />
+    <Compile Include="Interfaces\IGisTask.cs" />
+    <Compile Include="Interfaces\IGisTool.cs" />
+    <Compile Include="Interfaces\IMapTool.cs" />
+    <Compile Include="Interfaces\IMenu.cs" />
+    <Compile Include="Interfaces\IMenuEx.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IToolBoxToolItem.cs" />
+    <Compile Include="Interfaces\RepositoryListBase.cs" />
+    <Compile Include="Interfaces\ITaskHandle.cs" />
+    <Compile Include="Interfaces\IToolbarCollectionEx.cs" />
+    <Compile Include="Interfaces\IToolbarCollection.cs" />
+    <Compile Include="Interfaces\IToolBox.cs" />
+    <Compile Include="Interfaces\IMainView.cs" />
+    <Compile Include="Interfaces\ILocator.cs" />
+    <Compile Include="Interfaces\IMenuIndex.cs" />
+    <Compile Include="Interfaces\IProject.cs" />
+    <Compile Include="Interfaces\IStatusItemCollection.cs" />
+    <Compile Include="Interfaces\IToolboxGroups.cs" />
+    <Compile Include="Interfaces\ITool.cs" />
+    <Compile Include="Interfaces\ITaskCollection.cs" />
+    <Compile Include="Interfaces\IToolCollection.cs" />
+    <Compile Include="Interfaces\ITaskProgress.cs" />
+    <Compile Include="Interfaces\IToolLogger.cs" />
+    <Compile Include="Interfaces\Projections\IProjectionDatabase.cs" />
+    <Compile Include="Interfaces\IStatusBar.cs" />
+    <Compile Include="Interfaces\Projections\ICoordinateSystem.cs" />
+    <Compile Include="Interfaces\Projections\ICountry.cs" />
+    <Compile Include="Interfaces\Projections\IGeogrpahicCs.cs" />
+    <Compile Include="Interfaces\Projections\IProjectedCs.cs" />
+    <Compile Include="Interfaces\Projections\IRegion.cs" />
+    <Compile Include="Interfaces\Projections\ITerritory.cs" />
+    <Compile Include="Interfaces\IToolboxGroup.cs" />
+    <Compile Include="Menu\MenuKeys.cs" />
+    <Compile Include="Model\RepositoryGroup.cs" />
+    <Compile Include="Model\RepositoryGroupList.cs" />
+    <Compile Include="Model\TmsProvider.cs" />
+    <Compile Include="Model\TmsProviderList.cs" />
+    <Compile Include="Mvp\AppViewFactory.cs" />
+    <Compile Include="Mvp\BasePresenter.cs" />
+    <Compile Include="Mvp\CommandDispatcher.cs" />
+    <Compile Include="Mvp\CommandDispatcher2.cs" />
+    <Compile Include="Mvp\ComplexPresenter.cs" />
+    <Compile Include="Mvp\IApplicationContainer.cs" />
+    <Compile Include="Concrete\MenuIcon.cs" />
+    <Compile Include="Interfaces\IMenuBase.cs" />
+    <Compile Include="Interfaces\IMenuIcon.cs" />
+    <Compile Include="Interfaces\IMenuItem.cs" />
+    <Compile Include="Interfaces\IMenuItemCollection.cs" />
+    <Compile Include="Interfaces\IDropDownMenuItem.cs" />
+    <Compile Include="Interfaces\IToolbar.cs" />
+    <Compile Include="Interfaces\IToolbarCollectionBase.cs" />
+    <Compile Include="Mvp\IComplexView.cs" />
+    <Compile Include="Mvp\IPresenter.cs" />
+    <Compile Include="Mvp\ISubView.cs" />
+    <Compile Include="Mvp\IView.cs" />
+    <Compile Include="Mvp\IMenuProvider.cs" />
+    <Compile Include="Mvp\IViewInternal.cs" />
+    <Compile Include="Mvp\SubViewBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mvp\SubViewPresenter.cs" />
+    <Compile Include="Mvp\ViewStyle.cs" />
+    <Compile Include="PluginBroadcaster.cs" />
+    <Compile Include="Interfaces\IAppContext.cs" />
+    <Compile Include="Interfaces\IPlugin.cs" />
+    <Compile Include="Mef\IPluginMetadata.cs" />
+    <Compile Include="Mef\MapWindowPluginAttribute.cs" />
+    <Compile Include="PluginManager.cs" />
+    <Compile Include="PluginMessages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IConfigService.cs" />
+    <Compile Include="Services\IBroadcasterService.cs" />
+    <Compile Include="Services\IFileDialogService.cs" />
+    <Compile Include="Services\IGeoDatabaseService.cs" />
+    <Compile Include="Services\IGeoLocationService.cs" />
+    <Compile Include="Services\IGeoprocessingService.cs" />
+    <Compile Include="Services\ILayerEditingService.cs" />
+    <Compile Include="Services\ILayerService.cs" />
+    <Compile Include="Services\IMessageService.cs" />
+    <Compile Include="Services\IPluginManager.cs" />
+    <Compile Include="Services\IProjectService.cs" />
+    <Compile Include="Services\ITempFileService.cs" />
+    <Compile Include="Services\ISelectLayerService.cs" />
+    <Compile Include="Services\MessageService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VastGIS.Api\VastGIS.Api.csproj">
+      <Project>{8aad34b3-8ef3-485f-a04d-ed2c07d8f1df}</Project>
+      <Name>VastGIS.Api</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Shared\VastGIS.Shared.csproj">
+      <Project>{79400594-DE0D-4FFD-B115-AF2AEAC79CD9}</Project>
+      <Name>VastGIS.Shared</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

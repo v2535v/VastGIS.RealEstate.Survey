@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
@@ -8,56 +9,53 @@ using System.ComponentModel;
 using VastGIS.Api.Concrete;
 using VastGIS.Api.Enums;
 using VastGIS.Api.Interfaces;
+using VastGIS.RealEstate.Data.Helpers;
 using VastGIS.RealEstate.Data.Interface;
+using VastGIS.Shared;
+
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-    public partial class VgLayergroup:INotifyPropertyChanging, INotifyPropertyChanged
-    {
-        #region 表结构
-        public const string TABLE_NAME = "vg_layergroup";
-        public string ObjectName
-        {
-         get{
-                return "vg_layergroup";
-               }
-        }
-        public string EntityName{
-            get{
-                return "VgLayergroup";
-               }
-        }
-        public const string LAYER_NAME="";
-	    public const string COL_ID = "Id";
-	    public const string COL_ZM = "ZM";
-	
-        public const string PARAM_ID = "@Id";
-        public const string PARAM_ZM = "@ZM";
-	
+    public partial class VgLayergroup : INotifyPropertyChanging, INotifyPropertyChanged,IEntity
+    {		
+		#region 表结构		
+        public const string TABLE_NAME = "vg_layergroup";	
+        public const string LAYER_NAME = "图层组";	
+        public const GeometryType GEOMETRY_TYPE=GeometryType.None;
+     
+		public const string COL_ID = "Id";
+		public const string COL_ZM = "ZM";
+		
+        public const string PARAM_ID = "@Id";	
+        public const string PARAM_ZM = "@ZM";	
+		
         #endregion
+		
+		#region SQL语句
+		private const string SQL_QUERY_VG_LAYERGROUP ="SELECT  Id,ZM FROM vg_layergroup ";
         
-        #region 查询
-	
-	    private const string SQL_INSERT_VG_LAYERGROUP = "INSERT INTO vg_layergroup (ZM) VALUES ( @ZM);" + " SELECT last_insert_rowid();";
-	
-	    private const string SQL_UPDATE_VG_LAYERGROUP = "UPDATE vg_layergroup SET ZM = @ZM WHERE Id = @Id";
-	
-	    private const string SQL_DELETE_VG_LAYERGROUP = "DELETE FROM vg_layergroup WHERE  Id = @Id ";
-        
-	
-        #endregion            
-        
-        #region 声明
-
+		private const string SQL_INSERT_VG_LAYERGROUP = "INSERT INTO [vg_layergroup] (ZM) VALUES ( @ZM);" + " SELECT last_insert_rowid();";
+		
+		private const string SQL_UPDATE_VG_LAYERGROUP = "UPDATE [vg_layergroup] SET ZM = @ZM WHERE Id = @Id";
+		
+		private const string SQL_DELETE_VG_LAYERGROUP = "DELETE FROM [vg_layergroup] WHERE  Id = @Id ";
+		
+        #endregion
+        	  	
+        #region 变量声明
+		
+        ///标识码
 		protected long id = default(long);
+        ///组名
 		protected string zm = default(string);
         
-        private event PropertyChangingEventHandler propertyChanging;            
+        private event PropertyChangingEventHandler propertyChanging;
+        
         private event PropertyChangedEventHandler propertyChanged;
         #endregion
+
+ 		#region 事件属性
         
-        #region 属性
-    
         event PropertyChangingEventHandler INotifyPropertyChanging.PropertyChanging
         {
             add { this.propertyChanging += value; }
@@ -69,32 +67,29 @@ namespace VastGIS.RealEstate.Data.Entity
             add { this.propertyChanged += value; }
             remove { this.propertyChanged -= value; }
         }
+        #endregion
         
-        public long ID 
+        #region IEntity 属性
+         //对应数据库内表名称
+        public string ObjectName
         {
-            get { return this.id; }
-			set	{ 
-                  if(this.id != value)
-                    {
-                        this.OnPropertyChanging("ID");  
-                        this.id = value;                        
-                        this.OnPropertyChanged("ID");
-                    }   
-                }
-        }	
-        public string Zm 
+            get{return "VgLayergroup";}
+        }
+         public string LayerName
         {
-            get { return this.zm; }
-			set	{ 
-                  if(this.zm != value)
-                    {
-                        this.OnPropertyChanging("Zm");  
-                        this.zm = value;                        
-                        this.OnPropertyChanged("Zm");
-                    }   
-                }
-        }	
-        
+            get{return "图层组";}
+        }
+        public string EntityName{
+            get{return "IEntity";}
+        }       
+        public string TableName{get{return TABLE_NAME;}}
+        public string[] NoCopyName{get{return new string[]{"ID","Geometry","DatabaseID","Flags","Xgr","Xgsj","WxWydm"};}}
+        public bool HasFlag{get{return false;}}
+        public bool HasGlobal{get{return false;}}
+        public bool HasYsdm{get{return false;}}
+        public bool HasGeometry{get{return false;}}
+        public bool HasSurvey{get{return false;}}
+        ///简化提示信息，用于绑定到列表时候的DisplayMember
         public string SimpleLabelString
         {
             get
@@ -102,29 +97,65 @@ namespace VastGIS.RealEstate.Data.Entity
                 return string.Format("{0} {1} ","vg_layergroup",this.id);
             }
         }
-        
+        ///提示信息，用于绑定到列表时候的DisplayMember
         public string FullLabelString
         {
             get
             {
-                return string.Format("{0} {1} ","vg_layergroup",this.id);
+                return string.Format("{0} {1} ","层组",this.id);
             }
+        }        
+        #endregion
+        
+        #region 对象属性
+        ///标识码
+        ///[Column(COL_ID, PARAM_ID, default(long))]
+        public virtual long ID 
+        {
+            get { return this.id; }
+			set	{ 
+                  if(this.id != value)
+                    {
+                        this.OnPropertyChanging("ID"); 
+                        this.id = value;                        
+                        this.OnPropertyChanged("ID");
+                    }   
+                }
+        }	
+		
+        ///组名
+        ///[Column(COL_ZM, PARAM_ZM )]
+        public virtual string Zm 
+        {
+            get { return this.zm; }
+			set	{ 
+                  if(this.zm != value)
+                    {
+                        this.OnPropertyChanging("Zm"); 
+                        this.zm = value;                        
+                        this.OnPropertyChanged("Zm");
+                    }   
+                }
+        }	
+		
+      
+       ///图形类型
+        public GeometryType GeometryType
+        {
+            get{return GEOMETRY_TYPE;}            
         }
-        
-        
-        
-        #endregion     
+        #endregion        
         
         #region 创建方法
-        public  VgLayergroup()
+        public VgLayergroup()
         {
-            
-            
+            this.id=0;
+            this.zm="";
         }
         #endregion
         
-        #region 方法           
-    
+        #region 方法
+        
         public override bool Equals(object obj)
         {
             VgLayergroup record = obj as VgLayergroup;           
@@ -146,47 +177,75 @@ namespace VastGIS.RealEstate.Data.Entity
             return hashCode;          
         }
         
-        public bool Create(SQLiteConnection connection)
+		
+		
+		public long Create(ISQLiteService dao)
         {
-            using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_VG_LAYERGROUP,connection))
-            {	
-                 command.Parameters.AddWithValue(PARAM_ZM,this.Zm); 
+            using(SQLiteCommand command  = new SQLiteCommand(SQL_INSERT_VG_LAYERGROUP,dao.Connection))
+            {
+            
+				command.Parameters.AddWithValue(PARAM_ZM, this.Zm);
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
-                return true;
+                return this.ID;
             }
         }
 
-		public bool Update(SQLiteConnection connection)
+		public bool Update(ISQLiteService dao)
         {
-            using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_VG_LAYERGROUP,connection))
-            {							
-				command.Parameters.AddWithValue(PARAM_ID,this.ID); 
-				command.Parameters.AddWithValue(PARAM_ZM,this.Zm); 
+            using(SQLiteCommand command  = new SQLiteCommand(SQL_UPDATE_VG_LAYERGROUP,dao.Connection))
+            {
+            						
+				command.Parameters.AddWithValue(PARAM_ID, this.ID);
+				command.Parameters.AddWithValue(PARAM_ZM, this.Zm);
+			   
                 return (command.ExecuteNonQuery() == 1);
             }
         }
         
-        public bool Save(SQLiteConnection connection)
+         public bool Save(ISQLiteService dao)
         {
             if(this.id == default(long))
             {
-                return Create(connection);
+                return Create(dao)>0;
             }
             else
             {
-                return Update(connection);
-            }            
-        }
-
-		public bool Delete(SQLiteConnection connection)
+                return Update(dao);
+            }
+            
+        }  
+        
+        public bool Delete(ISQLiteService dao)
         {
-            using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_VG_LAYERGROUP,connection))
-            {
-               
+            using(SQLiteCommand command  = new SQLiteCommand(SQL_DELETE_VG_LAYERGROUP,dao.Connection))
+            {                   
 				command.Parameters.AddWithValue(PARAM_ID, this.ID);
                 return (command.ExecuteNonQuery() == 1);
             }
         }
+        
+        public void  LoadFromReader(SQLiteDataReader reader)
+        {
+			if (!reader.IsDBNull(0)) id = reader.GetInt64(0);
+			if (!reader.IsDBNull(1)) zm = reader.GetString(1);
+        }
+        
+        #region 拷贝
+        public IEntity Copy()
+        {
+            VgLayergroup target=new VgLayergroup();
+            target.ID=0;
+            target.Zm=this.Zm;
+            return target as IEntity;
+           
+        }
+        ///从另外一个不知名的Entity中获得属性字段
+        public void CopyProperties(IEntity sourceEntity)
+        {
+            Reflection.CopyProperties(sourceEntity,this);
+        }
+        #endregion
+		
         
         protected virtual void OnPropertyChanging(string propertyName)
         {
@@ -199,10 +258,9 @@ namespace VastGIS.RealEstate.Data.Entity
             if(this.propertyChanged != null)
                 this.propertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-        
-        
-        #endregion
-       
-    }
 
+        #endregion
+        
+        
+    }
 }

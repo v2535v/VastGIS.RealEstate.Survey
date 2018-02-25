@@ -27,8 +27,9 @@ namespace VastGIS.Plugins.RealEstate.Commands
     {
         private IAppContext _context;
         private ILayerService _layerService;
+        private RealEstateEditor _plugin;
         public CmdResetLayers(IAppContext context)
-        {
+        { 
             base._text = "重新引导图层";
             base._key = MenuKeys.ReOrginzeLayers;
             base._icon = Resources.DatabaseServersFolder32;

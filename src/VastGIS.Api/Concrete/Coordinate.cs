@@ -127,8 +127,8 @@ namespace VastGIS.Api.Concrete
         /// </summary>
         public string Tag
         {
-            get { throw new NotSupportedException(); }
-            set { throw new NotSupportedException(); }
+            get;
+            set;
         }
 
         public override string ToString()

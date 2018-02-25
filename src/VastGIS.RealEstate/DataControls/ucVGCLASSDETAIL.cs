@@ -1,22 +1,28 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Syncfusion.Windows.Forms.Tools;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
-
-    public partial class ucVGCLASSDETAIL:UserControl
-    {
+    public partial class ucVgClassdetail:UserControl,IEntityControl
+    {	
+        #region 变量
         private Dictionary<string,string> _dictionaryNames;
-        private VgClassdetail _vgclassdetail;
+        private VgClassdetail _vgClassdetail;
         private IREDatabase _database;
+        private bool _hasChanged = false;
+        #endregion
         
-        public ucVGCLASSDETAIL()
+        public ucVgClassdetail()
         {
             InitializeComponent();
             _dictionaryNames = new Dictionary<string, string>();
+             intID.Enabled = false;
+            _hasChanged=false;
         }
         
         private void InitDictionaries()
@@ -25,32 +31,75 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             {
                 string dName = onepair.Key;
                 string dValue = onepair.Value;
-                List<VgDictionary> _dicts = _database.DomainService.GetDictionaryByName(dName);
-                ComboBoxAdv combo = this.Controls["cmb" + onepair.Key] as ComboBoxAdv;
+                List<VgDictionary> _dicts = _database.DomainService.GetDictionaryByName(dValue);
+                ComboBoxAdv combo = FindControl(this,"cmb" + onepair.Key) as ComboBoxAdv;
                 combo.DataSource = _dicts;
-                combo.DisplayMember = _dicts[0].Zdsm;
-                combo.ValueMember = _dicts[0].Zdz;
+                combo.DisplayMember ="Zdsm";
+                combo.ValueMember ="Zdz";
             }
         }
-        public void LinkObject(IREDatabase database,VgClassdetail vg_classdetail)
+        
+        private Control FindControl(Control control, string controlName)
         {
-            _database = database;
+            Control c1;
+            foreach (Control c in control.Controls)
+            {
+                if (c.Name == controlName)
+                {
+                    return c;
+                }
+                else if (c.Controls.Count > 0)
+                {
+                    c1 = FindControl(c, controlName);
+                    if (c1 != null)
+                    {
+                        return c1;
+                    }
+                }
+            }
+            return null;
+        }
+        
+        public void LinkObject(IREDatabase database,IEntity entity)
+        {
+            _database = database; 
             if(_dictionaryNames != null && _dictionaryNames.Count > 0)
             {
                 InitDictionaries();
             }
+            _vgClassdetail=entity as VgClassdetail;
             intID.DataBindings.Clear();
-            intID.DataBindings.Add("IntegerValue",vg_classdetail,"ID");
-            txtGROUPNAME.DataBindings.Clear();
-            txtGROUPNAME.DataBindings.Add("Text",vg_classdetail,"GroupName");
-            txtTABLENAME.DataBindings.Clear();
-            txtTABLENAME.DataBindings.Add("Text",vg_classdetail,"TableName");
-            chkCREATEIMPL.DataBindings.Clear();
-            chkCREATEIMPL.DataBindings.Add("Checked",vg_classdetail,"CreateImpl");
-            txtINTERFACENAME.DataBindings.Clear();
-            txtINTERFACENAME.DataBindings.Add("Text",vg_classdetail,"InterfaceName");
+            intID.DataBindings.Add("IntegerValue",_vgClassdetail,"ID",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtGroupName.DataBindings.Clear();
+            txtGroupName.DataBindings.Add("Text",_vgClassdetail,"GroupName",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtObjectTableName.DataBindings.Clear();
+            txtObjectTableName.DataBindings.Add("Text",_vgClassdetail,"ObjectTableName",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtCreateImpl.DataBindings.Clear();
+            txtCreateImpl.DataBindings.Add("Text",_vgClassdetail,"CreateImpl",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtInterfaceName.DataBindings.Clear();
+            txtInterfaceName.DataBindings.Add("Text",_vgClassdetail,"InterfaceName",true,DataSourceUpdateMode.OnPropertyChanged);
+            
+            ((INotifyPropertyChanged)_vgClassdetail).PropertyChanged += Entity_PropertyChanged;
+            _hasChanged=false;
+        }
+
+        private void Entity_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            _hasChanged=true;
         }
         
+        #region IEntityControl接口
+        public bool HasChanged{get{return _hasChanged;}}
+        public bool Save()
+        {
+            return _database.SystemService.Save((IEntity)_vgClassdetail);
+        }
+        public void Delete()
+        {
+            _database.SystemService.Delete((IEntity)_vgClassdetail);
+        }        
+        #endregion
+        
+        
     }
-
 }

@@ -61,46 +61,68 @@ namespace VastGIS.RealEstate.Data.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to insert into [vg_areacodes] values(2, &apos;北京市&apos;, &apos;110000&apos;, 1);
-        ///insert into [vg_areacodes] values(3, &apos;市辖区&apos;, &apos;110100&apos;, 2);
-        ///insert into [vg_areacodes] values(4, &apos;东城区&apos;, &apos;110101&apos;, 3);
-        ///insert into [vg_areacodes] values(5, &apos;西城区&apos;, &apos;110102&apos;, 3);
-        ///insert into [vg_areacodes] values(6, &apos;朝阳区&apos;, &apos;110105&apos;, 3);
-        ///insert into [vg_areacodes] values(7, &apos;丰台区&apos;, &apos;110106&apos;, 3);
-        ///insert into [vg_areacodes] values(8, &apos;石景山区&apos;, &apos;110107&apos;, 3);
-        ///insert into [vg_areacodes] values(9, &apos;海淀区&apos;, &apos;110108&apos;, 3);
-        ///insert into [vg_areacodes] values(10, &apos; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to insert into [vg_areacode] values(2, &apos;北京市&apos;, &apos;110000&apos;, 1);
+        ///insert into [vg_areacode] values(3, &apos;市辖区&apos;, &apos;110100&apos;, 2);
+        ///insert into [vg_areacode] values(4, &apos;东城区&apos;, &apos;110101&apos;, 3);
+        ///insert into [vg_areacode] values(5, &apos;西城区&apos;, &apos;110102&apos;, 3);
+        ///insert into [vg_areacode] values(6, &apos;朝阳区&apos;, &apos;110105&apos;, 3);
+        ///insert into [vg_areacode] values(7, &apos;丰台区&apos;, &apos;110106&apos;, 3);
+        ///insert into [vg_areacode] values(8, &apos;石景山区&apos;, &apos;110107&apos;, 3);
+        ///insert into [vg_areacode] values(9, &apos;海淀区&apos;, &apos;110108&apos;, 3);
+        ///insert into [vg_areacode] values(10, &apos;门头沟区&apos;, &apos;1 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Areacodes {
+        internal static string Areacode {
             get {
-                return ResourceManager.GetString("Areacodes", resourceCulture);
+                return ResourceManager.GetString("Areacode", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO &quot;vg_cadcodes&quot; (&quot;id&quot;, &quot;xh&quot;, &quot;sfcy&quot;, &quot;tc&quot;, &quot;cassdm&quot;, &quot;txlx&quot;, &quot;xtc&quot;, &quot;ysdm&quot;, &quot;yslx&quot;, &quot;yszl&quot;) VALUES (1, &apos;C000&apos;, 1, &apos;KZD&apos;, &apos;C11233&apos;, &apos;INSERT&apos;, &apos;控制点&apos;, &apos;C00101010&apos;, &apos;点&apos;, 0);
-        ///INSERT INTO &quot;vg_cadcodes&quot; (&quot;id&quot;, &quot;xh&quot;, &quot;sfcy&quot;, &quot;tc&quot;, &quot;cassdm&quot;, &quot;txlx&quot;, &quot;xtc&quot;, &quot;ysdm&quot;, &quot;yslx&quot;, &quot;yszl&quot;) VALUES (2, &apos;C182&apos;, 1, &apos;KZD&apos;, &apos;131100&apos;, &apos;INSERT&apos;, &apos;控制点&apos;, &apos;11010211&apos;, &apos;点&apos;, 0);
-        ///INSERT INTO &quot;vg_cadcodes&quot; (&quot;id&quot;, &quot;xh&quot;, &quot;sfcy&quot;, &quot;tc&quot;, &quot;cassdm&quot;, &quot;txlx&quot;, &quot;xtc&quot;, &quot;ysdm&quot;, &quot;yslx&quot;, &quot;yszl&quot;) VALUES (3, &apos;C183&apos;, 1, &apos;KZD&apos;, &apos;131200&apos;, &apos;INSERT&apos;, &....
+        ///   Looks up a localized string similar to INSERT INTO [vg_objectitem] ([YSDM], [YSMC], [YSBM], [SFKJ], [YSLX], [SM]) VALUES (&apos;1000000000&apos;, &apos;基础地理信息要素&apos;, &apos;&apos;, 1, &apos;&apos;, &apos;&apos;);
+        ///INSERT INTO [vg_objectitem] ([YSDM], [YSMC], [YSBM], [SFKJ], [YSLX], [SM]) VALUES (&apos;1001000000&apos;, &apos;境界与政区&apos;, &apos;&apos;, 1, &apos;&apos;, &apos;&apos;);
+        ///INSERT INTO [vg_objectitem] ([YSDM], [YSMC], [YSBM], [SFKJ], [YSLX], [SM]) VALUES (&apos;1001010000&apos;, &apos;行政区&apos;, &apos;XZQ&apos;, 0, &apos;空间&apos;, &apos;《基础地理信息要素分类与代码》（GB/T13923－2006）的扩展&apos;);
+        ///INSERT INTO [vg_objectitem] ([YSDM], [YSMC], [YSBM], [SFKJ], [YSLX], [SM]) VALUES (&apos;1001020000&apos;, &apos;行政区界线 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Casscodes {
+        internal static string Bdcysdm {
             get {
-                return ResourceManager.GetString("Casscodes", resourceCulture);
+                return ResourceManager.GetString("Bdcysdm", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to insert into [vg_dictoryname](&apos;ZDMC&apos;,&apos;ZDSM&apos;) values(&apos;JXLXZD&apos;, &apos;界线类型字典表&apos;);
-        ///insert into [vg_dictoryname](&apos;ZDMC&apos;,&apos;ZDSM&apos;) values(&apos;JXXZZD&apos;, &apos;界线性质字典表&apos;);
-        ///insert into [vg_dictoryname](&apos;ZDMC&apos;,&apos;ZDSM&apos;) values(&apos;JZXWZZD&apos;, &apos;界址线位置&apos;);
-        ///insert into [vg_dictoryname](&apos;ZDMC&apos;,&apos;ZDSM&apos;) values(&apos;JBLXZD&apos;, &apos;界标类型&apos;);
-        ///insert into [vg_dictoryname](&apos;ZDMC&apos;,&apos;ZDSM&apos;) values(&apos;JZDLXZD&apos;, &apos;界址点类型字典表&apos;);
-        ///insert into [vg_dictoryname](&apos;ZDMC&apos;,&apos;ZDSM&apos;) values(&apos;SFZD&apos;, &apos;是否字典表&apos;);
-        ///insert into [vg_dictoryname](&apos;ZDMC&apos;,&apos;ZDSM&apos;) values(&apos;MJDWZD&apos;, &apos;面积单位字典表&apos;);
-        /// [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to INSERT INTO &quot;vg_cadcode&quot; (&quot;id&quot;, &quot;xh&quot;, &quot;sfcy&quot;, &quot;tc&quot;, &quot;cassdm&quot;, &quot;txlx&quot;, &quot;xtc&quot;, &quot;ysdm&quot;, &quot;yslx&quot;, &quot;yszl&quot;) VALUES (1, &apos;C000&apos;, 1, &apos;KZD&apos;, &apos;C11233&apos;, &apos;INSERT&apos;, &apos;控制点&apos;, &apos;C00101010&apos;, &apos;点&apos;, 0);
+        ///INSERT INTO &quot;vg_cadcode&quot; (&quot;id&quot;, &quot;xh&quot;, &quot;sfcy&quot;, &quot;tc&quot;, &quot;cassdm&quot;, &quot;txlx&quot;, &quot;xtc&quot;, &quot;ysdm&quot;, &quot;yslx&quot;, &quot;yszl&quot;) VALUES (2, &apos;C182&apos;, 1, &apos;KZD&apos;, &apos;131100&apos;, &apos;INSERT&apos;, &apos;控制点&apos;, &apos;11010211&apos;, &apos;点&apos;, 0);
+        ///INSERT INTO &quot;vg_cadcode&quot; (&quot;id&quot;, &quot;xh&quot;, &quot;sfcy&quot;, &quot;tc&quot;, &quot;cassdm&quot;, &quot;txlx&quot;, &quot;xtc&quot;, &quot;ysdm&quot;, &quot;yslx&quot;, &quot;yszl&quot;) VALUES (3, &apos;C183&apos;, 1, &apos;KZD&apos;, &apos;131200&apos;, &apos;INSERT&apos;, &apo....
+        /// </summary>
+        internal static string Casscode {
+            get {
+                return ResourceManager.GetString("Casscode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (1, &apos;JXLXZD&apos;, &apos;界线类型字典表&apos;);
+        ///INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (2, &apos;JXXZZD&apos;, &apos;界线性质字典表&apos;);
+        ///INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (3, &apos;JZXWZZD&apos;, &apos;界址线位置字典表&apos;);
+        ///INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (4, &apos;JBLXZD&apos;, &apos;界标类型字典表&apos;);
+        ///INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (5, &apos;JZDLXZD&apos;, &apos;界址点类型字典表&apos;);
+        ///INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (6, &apos;SFZD&apos;, &apos;是否字典表&apos; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Dictionary {
             get {
                 return ResourceManager.GetString("Dictionary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO [vg_setting] ([Id], [CSMC], [CSZ]) VALUES (2, &apos;XZQHDM&apos;, &apos;320200&apos;);
+        ///INSERT INTO [vg_setting] ([Id], [CSMC], [CSZ]) VALUES (3, &apos;WXDCY&apos;, &apos;未见空间&apos;);
+        ///INSERT INTO [vg_setting] ([Id], [CSMC], [CSZ]) VALUES (4, &apos;WXCLY&apos;, &apos;未见空间&apos;);
+        ///INSERT INTO [vg_setting] ([Id], [CSMC], [CSZ]) VALUES (5, &apos;DXTWZSXSB&apos;, &apos;[{&quot;name&quot;:&quot;居民地楼层识别&quot;,&quot;assigntype&quot;:&quot;Integer&quot;,&quot;assigntable&quot;:&quot;DXTJMDM&quot;,&quot;assignfield&quot;:&quot;FSXX1&quot;,&quot;texttable&quot;:&quot;DXTZJZJ&quot;,&quot;textfield&quot;:&quot;Wbnr&quot;,&quot;whereclause&quot;:&quot;[a].TC=&apos;&apos;ZJ&apos;&apos;&quot;,&quot;assignvalues&quot;:null},{&quot;name&quot;:&quot;居民地材质识别&quot;,&quot;assignt [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Szcsh {
+            get {
+                return ResourceManager.GetString("Szcsh", resourceCulture);
             }
         }
         
@@ -120,12 +142,12 @@ namespace VastGIS.RealEstate.Data.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to insert into [vg_fieldinfo] values(1, &apos;XZQ&apos;, 1, &apos;标识码&apos;, &apos;BSM&apos;, &apos;Int&apos;, 10, null, null, &apos;M&apos;, null);
-        ///insert into [vg_fieldinfo] values(2, &apos;XZQ&apos;, 2, &apos;要素代码&apos;, &apos;YSDM&apos;, &apos;Char&apos;, 10, null, null, &apos;M&apos;, null);
-        ///insert into [vg_fieldinfo] values(3, &apos;XZQ&apos;, 3, &apos;行政区代码&apos;, &apos;XZQDM&apos;, &apos;Char&apos;, 12, null, null, &apos;M&apos;, null);
-        ///insert into [vg_fieldinfo] values(4, &apos;XZQ&apos;, 4, &apos;行政区名称&apos;, &apos;XZQMC&apos;, &apos;Char&apos;, 100, null, null, &apos;M&apos;, null);
-        ///insert into [vg_fieldinfo] values(5, &apos;XZQ&apos;, 5, &apos;行政区面积&apos;, &apos;XZQMJ&apos;, &apos;Float&apos;, 15, 2, null, &apos;C&apos;, null);
-        ///insert int [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to insert into [vg_fieldinfo] values(1, &apos;XZQ&apos;, 1, &apos;标识码&apos;, &apos;ID&apos;, &apos;Int&apos;, 10, 0, &apos;&apos;, &apos;M&apos;, &apos;&apos;);
+        ///insert into [vg_fieldinfo] values(2, &apos;XZQ&apos;, 2, &apos;要素代码&apos;, &apos;YSDM&apos;, &apos;Char&apos;, 10, 0, &apos;&apos;, &apos;M&apos;, &apos;&apos;);
+        ///insert into [vg_fieldinfo] values(3, &apos;XZQ&apos;, 3, &apos;行政区代码&apos;, &apos;XZQDM&apos;, &apos;Char&apos;, 12, 0, &apos;&apos;, &apos;M&apos;, &apos;&apos;);
+        ///insert into [vg_fieldinfo] values(4, &apos;XZQ&apos;, 4, &apos;行政区名称&apos;, &apos;XZQMC&apos;, &apos;Char&apos;, 100, 0, &apos;&apos;, &apos;M&apos;, &apos;&apos;);
+        ///insert into [vg_fieldinfo] values(5, &apos;XZQ&apos;, 5, &apos;行政区面积&apos;, &apos;XZQMJ&apos;, &apos;Float&apos;, 15, 2, &apos;&apos;, &apos;C&apos;, &apos;&apos;);
+        ///insert into [vg_fieldinfo] values(6, &apos;XZQJX [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Zdxx {
             get {

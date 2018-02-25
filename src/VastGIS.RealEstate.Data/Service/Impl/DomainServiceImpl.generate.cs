@@ -1,16 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+using System.Data.SQLite;
 using VastGIS.RealEstate.Data.Dao;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
+using VastGIS.RealEstate.Data.Interface;
 using VastGIS.RealEstate.Data.Events;
-
 
 namespace VastGIS.RealEstate.Data.Service.Impl
 {
-
-    public partial class DomainServiceImpl:DomainService
-    {
+    public partial class DomainServiceImpl : DomainService
+    {	
         private DomainDao _domainDao;
         
         private event EntityChangedEventHandler entityChanged;
@@ -21,11 +23,11 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             remove { this.entityChanged -= value; }
         }
 
-        public  void OnEntityChanged(string tableName, string layerName,EntityOperationType operationType,List<long> ids)
+        public  void OnEntityChanged(EntityOperationType operationType,List<IEntity> entities)
         {
             if (this.entityChanged != null)
             {
-                this.entityChanged(this, new EntityChanedEventArgs(tableName, layerName, operationType,ids));
+                this.entityChanged(this, new EntityChanedEventArgs( operationType,entities));
             }
         }
         
@@ -37,38 +39,93 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         
         private void DomainDao_EntityChanged(object sender, EntityChanedEventArgs e)
         {
-            OnEntityChanged(e.TableName,e.LayerName,e.OperationType,e.Ids);
+            OnEntityChanged(e.OperationType,e.Entities);
         }
         
+        #region ISQLiteService接口实现
+        public int GetSRID()
+        {
+            return ((ISQLiteService)_domainDao).GetSRID();
+        }
+
+        public SQLiteConnection Connection { get { return ((ISQLiteService)_domainDao).Connection; } }
+
+        public string CurrentUser { get { return _domainDao.CurrentUser; } set { _domainDao.CurrentUser = value; } }
+
+        public bool Save(IEntity entity){return _domainDao.Save(entity);}
+        public void Delete(IEntity entity){ _domainDao.Delete(entity);}
+        public bool Save(List<IEntity> entities){return _domainDao.Save(entities);}
+        public void Delete(List<IEntity> entities){ _domainDao.Delete(entities);}
+                
+        public bool CopyEntities(
+            VgObjectclass targetClass,
+            List<IEntity> sourceEntities,
+            bool isDelete = false,
+            bool isAttributeAutoTransform = true){
+            return _domainDao.CopyEntities(targetClass,sourceEntities,isDelete,isAttributeAutoTransform);
+        }
+        public IEntity CreateEntity(VgObjectclass currentClass)
+        {
+            return _domainDao.CreateEntity(currentClass);
+        }
+        public IEntity GetEntity(VgObjectclass currentClass, long id)
+        {
+            return _domainDao.GetEntity(currentClass, id);
+        }
+
+        public List<IEntity> GetEntities(VgObjectclass currentClass, string queryFilter)
+        {
+            return _domainDao.GetEntities(currentClass, queryFilter);
+        }
+
+        public bool ReorderAllPolygon(string tableName)
+        {
+            return _domainDao.ReorderAllPolygon(tableName);
+        }
+
+        public List<IReFeature> FindFeatures(VgObjectclass objectClass, double x, double y)
+        {
+            return _domainDao.FindFeatures(objectClass, x, y);
+        }
+        public List<IReFeature> FindFeatures(List<VgObjectclass> objectClasses, double x, double y)
+        {
+            return _domainDao.FindFeatures(objectClasses, x, y);
+        }
+        #endregion
+        
+        #region VgDictionary方法
         public VgDictionary GetVgDictionary(long id)
         {
             return _domainDao.GetVgDictionary(id);
         }
         
-        public IEnumerable<VgDictionary> GetVgDictionarys(string filter)
+        public IEnumerable<VgDictionary> GetVgDictionaries(string filter)
         {
-            return _domainDao.GetVgDictionarys(filter);
+            return _domainDao.GetVgDictionaries(filter);
         }
         public bool SaveVgDictionary(VgDictionary vgDictionary)
         {
-            bool retVal=_domainDao.SaveVgDictionary(vgDictionary);
-            return retVal;
+            return _domainDao.SaveVgDictionary(vgDictionary);
         }
-        public void SaveVgDictionarys(List<VgDictionary> vgDictionarys)
+        public void SaveVgDictionaries(List<VgDictionary> vgDictionaries)
         {
-            _domainDao.SaveVgDictionarys(vgDictionarys);
-            
+            _domainDao.SaveVgDictionaries(vgDictionaries);        
+        }
+        public void DeleteVgDictionary(VgDictionary rec)
+        {
+            _domainDao.DeleteVgDictionary(rec);
         }
         public void DeleteVgDictionary(long id)
         {
             _domainDao.DeleteVgDictionary(id);
-            
         }
         public void DeleteVgDictionary(string filter)
         {
             _domainDao.DeleteVgDictionary(filter);
-            
         }
+        #endregion
+        
+        #region VgDictoryname方法
         public VgDictoryname GetVgDictoryname(long id)
         {
             return _domainDao.GetVgDictoryname(id);
@@ -80,27 +137,30 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         }
         public bool SaveVgDictoryname(VgDictoryname vgDictoryname)
         {
-            bool retVal=_domainDao.SaveVgDictoryname(vgDictoryname);
-            return retVal;
+            return _domainDao.SaveVgDictoryname(vgDictoryname);
         }
         public void SaveVgDictorynames(List<VgDictoryname> vgDictorynames)
         {
-            _domainDao.SaveVgDictorynames(vgDictorynames);
-            
+            _domainDao.SaveVgDictorynames(vgDictorynames);        
+        }
+        public void DeleteVgDictoryname(VgDictoryname rec)
+        {
+            _domainDao.DeleteVgDictoryname(rec);
         }
         public void DeleteVgDictoryname(long id)
         {
             _domainDao.DeleteVgDictoryname(id);
-            
         }
         public void DeleteVgDictoryname(string filter)
         {
             _domainDao.DeleteVgDictoryname(filter);
-            
         }
+        #endregion
+        
+        
+       
+        
+       
+        
     }
-
 }
-
-
-

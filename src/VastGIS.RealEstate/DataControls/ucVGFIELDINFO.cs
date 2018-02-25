@@ -1,22 +1,28 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Syncfusion.Windows.Forms.Tools;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
-
-    public partial class ucVGFIELDINFO:UserControl
-    {
+    public partial class ucVgFieldinfo:UserControl,IEntityControl
+    {	
+        #region 变量
         private Dictionary<string,string> _dictionaryNames;
-        private VgFieldinfo _vgfieldinfo;
+        private VgFieldinfo _vgFieldinfo;
         private IREDatabase _database;
+        private bool _hasChanged = false;
+        #endregion
         
-        public ucVGFIELDINFO()
+        public ucVgFieldinfo()
         {
             InitializeComponent();
             _dictionaryNames = new Dictionary<string, string>();
+             intID.Enabled = false;
+            _hasChanged=false;
         }
         
         private void InitDictionaries()
@@ -25,44 +31,87 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             {
                 string dName = onepair.Key;
                 string dValue = onepair.Value;
-                List<VgDictionary> _dicts = _database.DomainService.GetDictionaryByName(dName);
-                ComboBoxAdv combo = this.Controls["cmb" + onepair.Key] as ComboBoxAdv;
+                List<VgDictionary> _dicts = _database.DomainService.GetDictionaryByName(dValue);
+                ComboBoxAdv combo = FindControl(this,"cmb" + onepair.Key) as ComboBoxAdv;
                 combo.DataSource = _dicts;
-                combo.DisplayMember = _dicts[0].Zdsm;
-                combo.ValueMember = _dicts[0].Zdz;
+                combo.DisplayMember ="Zdsm";
+                combo.ValueMember ="Zdz";
             }
         }
-        public void LinkObject(IREDatabase database,VgFieldinfo vg_fieldinfo)
+        
+        private Control FindControl(Control control, string controlName)
         {
-            _database = database;
+            Control c1;
+            foreach (Control c in control.Controls)
+            {
+                if (c.Name == controlName)
+                {
+                    return c;
+                }
+                else if (c.Controls.Count > 0)
+                {
+                    c1 = FindControl(c, controlName);
+                    if (c1 != null)
+                    {
+                        return c1;
+                    }
+                }
+            }
+            return null;
+        }
+        
+        public void LinkObject(IREDatabase database,IEntity entity)
+        {
+            _database = database; 
             if(_dictionaryNames != null && _dictionaryNames.Count > 0)
             {
                 InitDictionaries();
             }
+            _vgFieldinfo=entity as VgFieldinfo;
             intID.DataBindings.Clear();
-            intID.DataBindings.Add("IntegerValue",vg_fieldinfo,"ID");
-            txtBM.DataBindings.Clear();
-            txtBM.DataBindings.Add("Text",vg_fieldinfo,"Bm");
-            intBNSX.DataBindings.Clear();
-            intBNSX.DataBindings.Add("IntegerValue",vg_fieldinfo,"Bnsx");
-            txtZDZWMC.DataBindings.Clear();
-            txtZDZWMC.DataBindings.Add("Text",vg_fieldinfo,"Zdzwmc");
-            txtZDMC.DataBindings.Clear();
-            txtZDMC.DataBindings.Add("Text",vg_fieldinfo,"Zdmc");
-            txtZDLX.DataBindings.Clear();
-            txtZDLX.DataBindings.Add("Text",vg_fieldinfo,"Zdlx");
-            intZDCD.DataBindings.Clear();
-            intZDCD.DataBindings.Add("IntegerValue",vg_fieldinfo,"Zdcd");
-            intZDXSWS.DataBindings.Clear();
-            intZDXSWS.DataBindings.Add("IntegerValue",vg_fieldinfo,"Zdxsws");
-            txtSYZD.DataBindings.Clear();
-            txtSYZD.DataBindings.Add("Text",vg_fieldinfo,"Syzd");
-            txtYS.DataBindings.Clear();
-            txtYS.DataBindings.Add("Text",vg_fieldinfo,"Ys");
-            txtSYZDYW.DataBindings.Clear();
-            txtSYZDYW.DataBindings.Add("Text",vg_fieldinfo,"Syzdyw");
+            intID.DataBindings.Add("IntegerValue",_vgFieldinfo,"ID",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtBm.DataBindings.Clear();
+            txtBm.DataBindings.Add("Text",_vgFieldinfo,"Bm",true,DataSourceUpdateMode.OnPropertyChanged);
+            intBnsx.DataBindings.Clear();
+            intBnsx.DataBindings.Add("IntegerValue",_vgFieldinfo,"Bnsx",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtZdzwmc.DataBindings.Clear();
+            txtZdzwmc.DataBindings.Add("Text",_vgFieldinfo,"Zdzwmc",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtZdmc.DataBindings.Clear();
+            txtZdmc.DataBindings.Add("Text",_vgFieldinfo,"Zdmc",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtZdlx.DataBindings.Clear();
+            txtZdlx.DataBindings.Add("Text",_vgFieldinfo,"Zdlx",true,DataSourceUpdateMode.OnPropertyChanged);
+            intZdcd.DataBindings.Clear();
+            intZdcd.DataBindings.Add("IntegerValue",_vgFieldinfo,"Zdcd",true,DataSourceUpdateMode.OnPropertyChanged);
+            intZdxsws.DataBindings.Clear();
+            intZdxsws.DataBindings.Add("IntegerValue",_vgFieldinfo,"Zdxsws",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtSyzd.DataBindings.Clear();
+            txtSyzd.DataBindings.Add("Text",_vgFieldinfo,"Syzd",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtYs.DataBindings.Clear();
+            txtYs.DataBindings.Add("Text",_vgFieldinfo,"Ys",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtSyzdyw.DataBindings.Clear();
+            txtSyzdyw.DataBindings.Add("Text",_vgFieldinfo,"Syzdyw",true,DataSourceUpdateMode.OnPropertyChanged);
+            
+            ((INotifyPropertyChanged)_vgFieldinfo).PropertyChanged += Entity_PropertyChanged;
+            _hasChanged=false;
+        }
+
+        private void Entity_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            _hasChanged=true;
         }
         
+        #region IEntityControl接口
+        public bool HasChanged{get{return _hasChanged;}}
+        public bool Save()
+        {
+            return _database.SystemService.Save((IEntity)_vgFieldinfo);
+        }
+        public void Delete()
+        {
+            _database.SystemService.Delete((IEntity)_vgFieldinfo);
+        }        
+        #endregion
+        
+        
     }
-
 }

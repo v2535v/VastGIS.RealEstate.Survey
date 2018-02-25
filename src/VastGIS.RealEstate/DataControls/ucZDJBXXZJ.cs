@@ -1,22 +1,28 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Syncfusion.Windows.Forms.Tools;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
-
-    public partial class ucZDJBXXZJ:UserControl
-    {
+    public partial class ucZdjbxxzj:UserControl,IEntityControl
+    {	
+        #region 变量
         private Dictionary<string,string> _dictionaryNames;
         private Zdjbxxzj _zdjbxxzj;
         private IREDatabase _database;
+        private bool _hasChanged = false;
+        #endregion
         
-        public ucZDJBXXZJ()
+        public ucZdjbxxzj()
         {
             InitializeComponent();
             _dictionaryNames = new Dictionary<string, string>();
+             intID.Enabled = false;
+            _hasChanged=false;
         }
         
         private void InitDictionaries()
@@ -25,50 +31,93 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             {
                 string dName = onepair.Key;
                 string dValue = onepair.Value;
-                List<VgDictionary> _dicts = _database.DomainService.GetDictionaryByName(dName);
-                ComboBoxAdv combo = this.Controls["cmb" + onepair.Key] as ComboBoxAdv;
+                List<VgDictionary> _dicts = _database.DomainService.GetDictionaryByName(dValue);
+                ComboBoxAdv combo = FindControl(this,"cmb" + onepair.Key) as ComboBoxAdv;
                 combo.DataSource = _dicts;
-                combo.DisplayMember = _dicts[0].Zdsm;
-                combo.ValueMember = _dicts[0].Zdz;
+                combo.DisplayMember ="Zdsm";
+                combo.ValueMember ="Zdz";
             }
         }
-        public void LinkObject(IREDatabase database,Zdjbxxzj zdjbxxzj)
+        
+        private Control FindControl(Control control, string controlName)
         {
-            _database = database;
+            Control c1;
+            foreach (Control c in control.Controls)
+            {
+                if (c.Name == controlName)
+                {
+                    return c;
+                }
+                else if (c.Controls.Count > 0)
+                {
+                    c1 = FindControl(c, controlName);
+                    if (c1 != null)
+                    {
+                        return c1;
+                    }
+                }
+            }
+            return null;
+        }
+        
+        public void LinkObject(IREDatabase database,IEntity entity)
+        {
+            _database = database; 
             if(_dictionaryNames != null && _dictionaryNames.Count > 0)
             {
                 InitDictionaries();
             }
+            _zdjbxxzj=entity as Zdjbxxzj;
             intID.DataBindings.Clear();
-            intID.DataBindings.Add("IntegerValue",zdjbxxzj,"ID");
-            txtGLYSDM.DataBindings.Clear();
-            txtGLYSDM.DataBindings.Add("Text",zdjbxxzj,"Glysdm");
-            txtYSDM.DataBindings.Clear();
-            txtYSDM.DataBindings.Add("Text",zdjbxxzj,"Ysdm");
-            txtZJNR.DataBindings.Clear();
-            txtZJNR.DataBindings.Add("Text",zdjbxxzj,"Zjnr");
-            txtZT.DataBindings.Clear();
-            txtZT.DataBindings.Add("Text",zdjbxxzj,"Zt");
-            txtYS.DataBindings.Clear();
-            txtYS.DataBindings.Add("Text",zdjbxxzj,"Ys");
-            intBS.DataBindings.Clear();
-            intBS.DataBindings.Add("IntegerValue",zdjbxxzj,"Bs");
-            txtXZ.DataBindings.Clear();
-            txtXZ.DataBindings.Add("Text",zdjbxxzj,"Xz");
-            txtXHX.DataBindings.Clear();
-            txtXHX.DataBindings.Add("Text",zdjbxxzj,"Xhx");
-            dblKD.DataBindings.Clear();
-            dblKD.DataBindings.Add("DoubleValue",zdjbxxzj,"Kd");
-            dblGD.DataBindings.Clear();
-            dblGD.DataBindings.Add("DoubleValue",zdjbxxzj,"Gd");
-            dblZJDZXJXZB.DataBindings.Clear();
-            dblZJDZXJXZB.DataBindings.Add("DoubleValue",zdjbxxzj,"Zjdzxjxzb");
-            dblZJDZXJYZB.DataBindings.Clear();
-            dblZJDZXJYZB.DataBindings.Add("DoubleValue",zdjbxxzj,"Zjdzxjyzb");
-            dblZJFX.DataBindings.Clear();
-            dblZJFX.DataBindings.Add("DoubleValue",zdjbxxzj,"Zjfx");
+            intID.DataBindings.Add("IntegerValue",_zdjbxxzj,"ID",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtGlysdm.DataBindings.Clear();
+            txtGlysdm.DataBindings.Add("Text",_zdjbxxzj,"Glysdm",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtYsdm.DataBindings.Clear();
+            txtYsdm.DataBindings.Add("Text",_zdjbxxzj,"Ysdm",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtZjnr.DataBindings.Clear();
+            txtZjnr.DataBindings.Add("Text",_zdjbxxzj,"Zjnr",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtZt.DataBindings.Clear();
+            txtZt.DataBindings.Add("Text",_zdjbxxzj,"Zt",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtYs.DataBindings.Clear();
+            txtYs.DataBindings.Add("Text",_zdjbxxzj,"Ys",true,DataSourceUpdateMode.OnPropertyChanged);
+            intBs.DataBindings.Clear();
+            intBs.DataBindings.Add("IntegerValue",_zdjbxxzj,"Bs",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtXz.DataBindings.Clear();
+            txtXz.DataBindings.Add("Text",_zdjbxxzj,"Xz",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtXhx.DataBindings.Clear();
+            txtXhx.DataBindings.Add("Text",_zdjbxxzj,"Xhx",true,DataSourceUpdateMode.OnPropertyChanged);
+            dblKd.DataBindings.Clear();
+            dblKd.DataBindings.Add("DoubleValue",_zdjbxxzj,"Kd",true,DataSourceUpdateMode.OnPropertyChanged);
+            dblGd.DataBindings.Clear();
+            dblGd.DataBindings.Add("DoubleValue",_zdjbxxzj,"Gd",true,DataSourceUpdateMode.OnPropertyChanged);
+            dblZjdzxjxzb.DataBindings.Clear();
+            dblZjdzxjxzb.DataBindings.Add("DoubleValue",_zdjbxxzj,"Zjdzxjxzb",true,DataSourceUpdateMode.OnPropertyChanged);
+            dblZjdzxjyzb.DataBindings.Clear();
+            dblZjdzxjyzb.DataBindings.Add("DoubleValue",_zdjbxxzj,"Zjdzxjyzb",true,DataSourceUpdateMode.OnPropertyChanged);
+            dblZjfx.DataBindings.Clear();
+            dblZjfx.DataBindings.Add("DoubleValue",_zdjbxxzj,"Zjfx",true,DataSourceUpdateMode.OnPropertyChanged);
+            
+            ((INotifyPropertyChanged)_zdjbxxzj).PropertyChanged += Entity_PropertyChanged;
+            _hasChanged=false;
+        }
+
+        private void Entity_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            _hasChanged=true;
         }
         
+        #region IEntityControl接口
+        public bool HasChanged{get{return _hasChanged;}}
+        public bool Save()
+        {
+            return _database.SystemService.Save((IEntity)_zdjbxxzj);
+        }
+        public void Delete()
+        {
+            _database.SystemService.Delete((IEntity)_zdjbxxzj);
+        }        
+        #endregion
+        
+        
     }
-
 }

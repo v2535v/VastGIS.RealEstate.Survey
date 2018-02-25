@@ -8,51 +8,60 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Dao
 {
-
-    public partial interface CadDao:IEntityChanged
-    {
+    public partial interface CadDao : ISQLiteService
+    {	
         string GetLayerName(string tableName);
-        ///TmpCadd函数
+        
+        #region TmpCadd方法
         TmpCadd GetTmpCadd(long id);
         IEnumerable<TmpCadd> GetTmpCadds(string filter);
         bool SaveTmpCadd(TmpCadd tmpcadd);
-        void SaveTmpCadds(List<TmpCadd> tmpcadds);
+        void SaveTmpCadds(List<TmpCadd> tmpCadds);
+        void DeleteTmpCadd(TmpCadd rec);
         void DeleteTmpCadd(long id);
         void DeleteTmpCadd(string filter);
-            
-        ///TmpCadm函数
+        #endregion
+        
+        #region TmpCadm方法
         TmpCadm GetTmpCadm(long id);
         IEnumerable<TmpCadm> GetTmpCadms(string filter);
         bool SaveTmpCadm(TmpCadm tmpcadm);
-        void SaveTmpCadms(List<TmpCadm> tmpcadms);
+        void SaveTmpCadms(List<TmpCadm> tmpCadms);
+        void DeleteTmpCadm(TmpCadm rec);
         void DeleteTmpCadm(long id);
         void DeleteTmpCadm(string filter);
-            
-        ///TmpCadx函数
+        #endregion
+        
+        #region TmpCadx方法
         TmpCadx GetTmpCadx(long id);
-        IEnumerable<TmpCadx> GetTmpCadxs(string filter);
+        IEnumerable<TmpCadx> GetTmpCadxes(string filter);
         bool SaveTmpCadx(TmpCadx tmpcadx);
-        void SaveTmpCadxs(List<TmpCadx> tmpcadxs);
+        void SaveTmpCadxes(List<TmpCadx> tmpCadxes);
+        void DeleteTmpCadx(TmpCadx rec);
         void DeleteTmpCadx(long id);
         void DeleteTmpCadx(string filter);
-            
-        ///TmpCadzj函数
-        TmpCadzj GetTmpCadzj(long id);
-        IEnumerable<TmpCadzj> GetTmpCadzjs(string filter);
-        bool SaveTmpCadzj(TmpCadzj tmpcadzj);
-        void SaveTmpCadzjs(List<TmpCadzj> tmpcadzjs);
-        void DeleteTmpCadzj(long id);
-        void DeleteTmpCadzj(string filter);
-            
-        ///TmpCadxdata函数
+        #endregion
+        
+        #region TmpCadxdata方法
         TmpCadxdata GetTmpCadxdata(long id);
         IEnumerable<TmpCadxdata> GetTmpCadxdatas(string filter);
         bool SaveTmpCadxdata(TmpCadxdata tmpcadxdatum);
-        void SaveTmpCadxdatas(List<TmpCadxdata> tmpcadxdatums);
+        void SaveTmpCadxdatas(List<TmpCadxdata> tmpCadxdatas);
+        void DeleteTmpCadxdata(TmpCadxdata rec);
         void DeleteTmpCadxdata(long id);
         void DeleteTmpCadxdata(string filter);
-            
+        #endregion
+        
+        #region TmpCadzj方法
+        TmpCadzj GetTmpCadzj(long id);
+        IEnumerable<TmpCadzj> GetTmpCadzjs(string filter);
+        bool SaveTmpCadzj(TmpCadzj tmpcadzj);
+        void SaveTmpCadzjs(List<TmpCadzj> tmpCadzjs);
+        void DeleteTmpCadzj(TmpCadzj rec);
+        void DeleteTmpCadzj(long id);
+        void DeleteTmpCadzj(string filter);
+        #endregion
+        
+        
     }
-
 }
-

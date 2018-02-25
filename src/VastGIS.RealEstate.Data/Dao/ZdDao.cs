@@ -13,7 +13,8 @@ namespace VastGIS.RealEstate.Data.Dao
     public partial interface ZdDao
     {      
         bool InitTables();
-        
+
+        long GetMaxID(string tableName);
     }
 }
 

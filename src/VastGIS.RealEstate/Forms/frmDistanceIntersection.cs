@@ -11,10 +11,12 @@ using VastGIS.Api.Concrete;
 using VastGIS.Api.Enums;
 using VastGIS.Api.Interfaces;
 using VastGIS.Plugins.Interfaces;
+using VastGIS.Plugins.RealEstate.Helpers;
 using VastGIS.Plugins.Services;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Helpers;
+using VastGIS.RealEstate.Data.Interface;
 using VastGIS.UI.Forms;
 
 namespace VastGIS.Plugins.RealEstate.Forms
@@ -22,7 +24,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
     public partial class frmDistanceIntersection : MapEditingForm,IEditForm
     {
         private IREDatabase _database;
-        private List<VgObjectclasses> _classes;
+        private List<VgObjectclass> _classes;
         private bool _isFirst = true;
         private ICoordinate _point1;
         private ICoordinate _point2;
@@ -33,7 +35,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
         {
             InitializeComponent();
             _database = ((IRealEstateContext)_context).RealEstateDatabase;
-            List<VgObjectclasses> classes = _database.SystemService.GetVgObjectclassess(" Editable = 1 And Txlx=1 ").ToList();
+            List<VgObjectclass> classes = _database.SystemService.GetVgObjectclasses(" Editable = 1 And Txlx=1 ").ToList();
             ucSelectLayer1.SetClasses(classes);
             _classes = classes;
             ucSelectLayer1.GeometryType= GeometryType.Point;
@@ -43,7 +45,21 @@ namespace VastGIS.Plugins.RealEstate.Forms
             distPoint1.MinValue = 0;
             distPoint2.MinValue = 0;
             _plugin = plugin;
-
+            if (_plugin == null)
+            {
+                _plugin = _context.Container.GetInstance<RealEstateEditor>();
+            }
+            VgObjectclass currentObjectclass = LayerHelper.GetVgObjectClassByLegend(classes, _context.Legend);
+            if (_plugin.Config.EditingClass!= null && _plugin.Config.EditingClass.Txlx==1)
+            {
+                //ucSelectLayer1.GeometryType = (GeometryType)_plugin.Config.EditingClass.Txlx;
+                //selTargetLayer.SetCurrentClass(_plugin.Config.EditingClass);
+                ucSelectLayer1.SelectedClass = _plugin.Config.EditingClass;
+            }
+            else if (currentObjectclass != null && currentObjectclass.Txlx == 1)
+            {
+                ucSelectLayer1.SelectedClass = currentObjectclass;
+            }
             distPoint1.TextChanged += distPoint_TextChanged;
             distPoint2.TextChanged += distPoint_TextChanged;
         }
@@ -190,24 +206,12 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 lblInfo.Text = "交点二不存在";
                 return;
             }
-            SearchFeature feature;
-            if (chkCreate1.Checked)
-                feature = new SearchFeature()
-                                      {
-                                          Wkt=string.Format("POINT({0} {1})",_respoint1.X,_respoint1.Y),
-                                          TableName=ucSelectLayer1.SelectedClass.Mc,
-                                          Ysdm = ucSelectLayer1.SelectedClass.Qsdm
-                                      };
-            else
-                feature = new SearchFeature()
-                              {
-                                  Wkt = string.Format("POINT({0} {1})", _respoint2.X, _respoint2.Y),
-                                  TableName = ucSelectLayer1.SelectedClass.Mc,
-                                  Ysdm = ucSelectLayer1.SelectedClass.Qsdm
-                };
+            IReFeature feature = _database.SystemService.CreateEntity(ucSelectLayer1.SelectedClass) as IReFeature;
+            if (chkCreate1.Checked) feature.Wkt = string.Format("POINT({0} {1})", _respoint1.X, _respoint1.Y);
+            else feature.Wkt = string.Format("POINT({0} {1})", _respoint2.X, _respoint2.Y);
 
-            long rowId=_database.SystemService.SaveSearchFeature(feature);
-            if (rowId > 0)
+            bool retVal=_database.SystemService.Save(feature);
+            if (retVal  && feature.ID>0)
             {
                 if (MessageService.Current.Ask("编辑该对象属性吗?") == false)
                 {
@@ -216,7 +220,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 }
                 else
                 {
-                    _plugin.LoadAttributeForm(ucSelectLayer1.SelectedClass.Mc, ucSelectLayer1.SelectedClass.Bjct,rowId);
+                    _plugin.LoadAttributeForm(ucSelectLayer1.SelectedClass.Mc, ucSelectLayer1.SelectedClass.Bjct, feature.ID);
                 }
             }
         }

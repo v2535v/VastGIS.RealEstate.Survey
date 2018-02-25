@@ -144,7 +144,7 @@ namespace VastGIS.Services.Concrete
 
                     if (!string.IsNullOrWhiteSpace(_filename))
                     {
-                        prompt = string.Format("Save the project: {0}?", Path.GetFileName(_filename));
+                        prompt = string.Format("保存本项目: {0}吗?", Path.GetFileName(_filename));
                     }
 
                     var result = MessageService.Current.AskWithCancel(prompt);
@@ -284,7 +284,7 @@ namespace VastGIS.Services.Concrete
             // let's redraw map before hiding the progress
             _loadingForm.ShowProgress(100, "加载数据图层");
             _context.Map.Redraw();
-            _context.View.Unlock();
+           // _context.View.Unlock();
 
             //Application.DoEvents();
 
@@ -405,7 +405,7 @@ namespace VastGIS.Services.Concrete
 
                 if (!silent)
                 {
-                    MessageService.Current.Info("项目已经引导: " + filename);
+                    //MessageService.Current.Info("项目已经引导: " + filename);
                 }
 
                 Logger.Current.Info("项目已经引导: " + filename);

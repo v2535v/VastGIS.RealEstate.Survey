@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{135434DE-E426-4D69-B1D7-DF45A1A3C5BC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VastGIS.RealEstate.Data</RootNamespace>
+    <AssemblyName>VastGIS.RealEstate.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GeoAPI, Version=1.7.4.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <HintPath>..\packages\GeoAPI.1.7.4\lib\net45\GeoAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="netDxf, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\netDXF.2.0.2\lib\net45\netDxf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetTopologySuite, Version=1.14.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetTopologySuite.1.14\lib\net45\NetTopologySuite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PowerCollections, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2573bf8a1bdddcd5, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetTopologySuite.1.14\lib\net45\PowerCollections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.106.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.106.0\lib\net45\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.106.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.106.0\lib\net45\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.106.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.106.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Async\AbortableBackgroundWorker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dao\BasemapDao.cs" />
+    <Compile Include="Dao\BasemapDao.generate.cs" />
+    <Compile Include="Dao\CadDao.cs" />
+    <Compile Include="Dao\CadDao.generate.cs" />
+    <Compile Include="Dao\DomainDao.cs" />
+    <Compile Include="Dao\DomainDao.generate.cs" />
+    <Compile Include="Dao\Impl\BasemapDaoImpl.cs" />
+    <Compile Include="Dao\Impl\BasemapDaoImpl.generate.cs" />
+    <Compile Include="Dao\Impl\CadDaoImpl.cs" />
+    <Compile Include="Dao\Impl\CadDaoImpl.generate.cs" />
+    <Compile Include="Dao\Impl\DbConnection.cs" />
+    <Compile Include="Dao\Impl\DomainDaoImpl.cs" />
+    <Compile Include="Dao\Impl\DomainDaoImpl.generate.cs" />
+    <Compile Include="Dao\Impl\SQLiteDao.cs" />
+    <Compile Include="Dao\Impl\SystemDaoImpl.cs" />
+    <Compile Include="Dao\Impl\SystemDaoImpl.generate.cs" />
+    <Compile Include="Dao\Impl\ZdDaoImpl.cs" />
+    <Compile Include="Dao\Impl\ZdDaoImpl.generate.cs" />
+    <Compile Include="Dao\SystemDao.cs" />
+    <Compile Include="Dao\SystemDao.generate.cs" />
+    <Compile Include="Dao\ZdDao.cs" />
+    <Compile Include="Dao\ZdDao.generate.cs" />
+    <Compile Include="Entity\BackEntity.cs" />
+    <Compile Include="Entity\BackFeature.cs" />
+    <Compile Include="Entity\CadLayerPair.cs" />
+    <Compile Include="Entity\ColumnMapping.cs" />
+    <Compile Include="Entity\Djq.cs" />
+    <Compile Include="Entity\Djq.generate.cs" />
+    <Compile Include="Entity\Djzq.cs" />
+    <Compile Include="Entity\Djzq.generate.cs" />
+    <Compile Include="Entity\DxtDldwd.cs" />
+    <Compile Include="Entity\Dxtdldwd.generate.cs" />
+    <Compile Include="Entity\Dxtdldwm.cs" />
+    <Compile Include="Entity\Dxtdldwm.generate.cs" />
+    <Compile Include="Entity\Dxtdldwx.cs" />
+    <Compile Include="Entity\Dxtdldwx.generate.cs" />
+    <Compile Include="Entity\Dxtdldwzj.cs" />
+    <Compile Include="Entity\Dxtdldwzj.generate.cs" />
+    <Compile Include="Entity\Dxtdlssd.cs" />
+    <Compile Include="Entity\Dxtdlssd.generate.cs" />
+    <Compile Include="Entity\Dxtdlssm.cs" />
+    <Compile Include="Entity\Dxtdlssm.generate.cs" />
+    <Compile Include="Entity\Dxtdlssx.cs" />
+    <Compile Include="Entity\Dxtdlssx.generate.cs" />
+    <Compile Include="Entity\Dxtdlsszj.cs" />
+    <Compile Include="Entity\Dxtdlsszj.generate.cs" />
+    <Compile Include="Entity\Dxtdmtzd.cs" />
+    <Compile Include="Entity\Dxtdmtzd.generate.cs" />
+    <Compile Include="Entity\Dxtdmtzm.cs" />
+    <Compile Include="Entity\Dxtdmtzm.generate.cs" />
+    <Compile Include="Entity\Dxtdmtzx.cs" />
+    <Compile Include="Entity\Dxtdmtzx.generate.cs" />
+    <Compile Include="Entity\Dxtdmtzzj.cs" />
+    <Compile Include="Entity\Dxtdmtzzj.generate.cs" />
+    <Compile Include="Entity\Dxtjmdd.cs" />
+    <Compile Include="Entity\Dxtjmdd.generate.cs" />
+    <Compile Include="Entity\Dxtjmdm.cs" />
+    <Compile Include="Entity\Dxtjmdm.generate.cs" />
+    <Compile Include="Entity\Dxtjmdx.cs" />
+    <Compile Include="Entity\Dxtjmdx.generate.cs" />
+    <Compile Include="Entity\Dxtjmdzj.cs" />
+    <Compile Include="Entity\Dxtjmdzj.generate.cs" />
+    <Compile Include="Entity\Dxtkzdd.cs" />
+    <Compile Include="Entity\Dxtkzdd.generate.cs" />
+    <Compile Include="Entity\Dxtkzdm.cs" />
+    <Compile Include="Entity\Dxtkzdm.generate.cs" />
+    <Compile Include="Entity\Dxtkzdx.cs" />
+    <Compile Include="Entity\Dxtkzdx.generate.cs" />
+    <Compile Include="Entity\Dxtkzdzj.cs" />
+    <Compile Include="Entity\Dxtkzdzj.generate.cs" />
+    <Compile Include="Entity\Dxtqtd.cs" />
+    <Compile Include="Entity\Dxtqtd.generate.cs" />
+    <Compile Include="Entity\Dxtqtm.cs" />
+    <Compile Include="Entity\Dxtqtm.generate.cs" />
+    <Compile Include="Entity\Dxtqtx.cs" />
+    <Compile Include="Entity\Dxtqtx.generate.cs" />
+    <Compile Include="Entity\Dxtqtzj.cs" />
+    <Compile Include="Entity\Dxtqtzj.generate.cs" />
+    <Compile Include="Entity\Dxtsxssd.cs" />
+    <Compile Include="Entity\Dxtsxssd.generate.cs" />
+    <Compile Include="Entity\Dxtsxssm.cs" />
+    <Compile Include="Entity\Dxtsxssm.generate.cs" />
+    <Compile Include="Entity\Dxtsxssx.cs" />
+    <Compile Include="Entity\Dxtsxssx.generate.cs" />
+    <Compile Include="Entity\Dxtsxsszj.cs" />
+    <Compile Include="Entity\Dxtsxsszj.generate.cs" />
+    <Compile Include="Entity\Dxtzjd.cs" />
+    <Compile Include="Entity\Dxtzjd.generate.cs" />
+    <Compile Include="Entity\Dxtzjm.cs" />
+    <Compile Include="Entity\Dxtzjm.generate.cs" />
+    <Compile Include="Entity\Dxtzjx.cs" />
+    <Compile Include="Entity\Dxtzjx.generate.cs" />
+    <Compile Include="Entity\Dxtzjzj.cs" />
+    <Compile Include="Entity\Dxtzjzj.generate.cs" />
+    <Compile Include="Entity\Feature.cs" />
+    <Compile Include="Entity\ReEdge.cs" />
+    <Compile Include="Entity\ReVertex.cs" />
+    <Compile Include="Entity\SearchFeature.cs" />
+    <Compile Include="Entity\SimpleDatabaseFeature.cs" />
+    <Compile Include="Entity\VgAreacode.generate.cs" />
+    <Compile Include="Entity\VgAreacode.cs" />
+    <Compile Include="Entity\VgAttachment.generate.cs" />
+    <Compile Include="Entity\VgCadcode.generate.cs" />
+    <Compile Include="Entity\VgClassdetail.cs" />
+    <Compile Include="Entity\VgClassdetail.generate.cs" />
+    <Compile Include="Entity\VgClassgroup.cs" />
+    <Compile Include="Entity\VgClassgroup.generate.cs" />
+    <Compile Include="Entity\VgFieldinfo.generate.cs" />
+    <Compile Include="Entity\VgLayergroup.cs" />
+    <Compile Include="Entity\VgLayergroup.generate.cs" />
+    <Compile Include="Entity\VgLayergroupdetail.cs" />
+    <Compile Include="Entity\VgLayergroupdetail.generate.cs" />
+    <Compile Include="Entity\VgObjectclass.generate.cs" />
+    <Compile Include="Entity\VgObjectysdm.cs" />
+    <Compile Include="Entity\VgObjectysdm.generate.cs" />
+    <Compile Include="Entity\VgSetting.generate.cs" />
+    <Compile Include="Events\EntityChanedEventArgs.cs" />
+    <Compile Include="Helpers\GeometryHelper.cs" />
+    <Compile Include="Helpers\NumberHelper.cs" />
+    <Compile Include="Helpers\SettingKeyHelper.cs" />
+    <Compile Include="Helpers\SpatialHelper.cs" />
+    <Compile Include="Helpers\WktHelper.cs" />
+    <Compile Include="Interface\IBasemapPoint.cs" />
+    <Compile Include="Interface\IBasemapPolyline.cs" />
+    <Compile Include="Interface\IBasemapText.cs" />
+    <Compile Include="Interface\IBackEntity.cs" />
+    <Compile Include="Interface\IBasemapPolygon.cs" />
+    <Compile Include="Interface\IDatabaseEntity.cs" />
+    <Compile Include="Interface\IEntity.cs" />
+    <Compile Include="Interface\IEntityChanged.cs" />
+    <Compile Include="Interface\IFeature.cs" />
+    <Compile Include="Entity\Jzd.cs" />
+    <Compile Include="Entity\Jzd.generate.cs" />
+    <Compile Include="Entity\Jzdzj.cs" />
+    <Compile Include="Entity\Jzdzj.generate.cs" />
+    <Compile Include="Entity\JZX.cs" />
+    <Compile Include="Entity\Jzx.generate.cs" />
+    <Compile Include="Entity\Jzxzj.cs" />
+    <Compile Include="Entity\Jzxzj.generate.cs" />
+    <Compile Include="Entity\TmpCadd.cs" />
+    <Compile Include="Entity\TmpCadd.generate.cs" />
+    <Compile Include="Entity\TmpCadm.cs" />
+    <Compile Include="Entity\TmpCadm.generate.cs" />
+    <Compile Include="Entity\TmpCadx.cs" />
+    <Compile Include="Entity\TmpCadx.generate.cs" />
+    <Compile Include="Entity\TmpCadxdata.cs" />
+    <Compile Include="Entity\TmpCadxdata.generate.cs" />
+    <Compile Include="Entity\TmpCadzj.cs" />
+    <Compile Include="Entity\TmpCadzj.generate.cs" />
+    <Compile Include="Entity\VgCadcode.cs" />
+    <Compile Include="Entity\VgDictionary.cs" />
+    <Compile Include="Entity\VgDictionary.generate.cs" />
+    <Compile Include="Entity\VgDictoryname.cs" />
+    <Compile Include="Entity\VgDictoryname.generate.cs" />
+    <Compile Include="Entity\VgObjectclass.cs" />
+    <Compile Include="Entity\VgSetting.cs" />
+    <Compile Include="Entity\Xzq.cs" />
+    <Compile Include="Entity\Xzq.generate.cs" />
+    <Compile Include="Entity\Xzqjx.cs" />
+    <Compile Include="Entity\Xzqjx.generate.cs" />
+    <Compile Include="Entity\Zdbhqk.cs" />
+    <Compile Include="Entity\Zdbhqk.generate.cs" />
+    <Compile Include="Entity\Zdjbxx.cs" />
+    <Compile Include="Entity\Zdjbxx.generate.cs" />
+    <Compile Include="Entity\Zdjbxxzj.cs" />
+    <Compile Include="Entity\Zdjbxxzj.generate.cs" />
+    <Compile Include="Entity\Zdtojzd.cs" />
+    <Compile Include="Entity\Zdtojzd.generate.cs" />
+    <Compile Include="Entity\Zdtojzx.cs" />
+    <Compile Include="Entity\Zdtojzx.generate.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\BasemapService.cs" />
+    <Compile Include="Service\BasemapService.generate.cs" />
+    <Compile Include="Service\CadService.cs" />
+    <Compile Include="Service\CadService.generate.cs" />
+    <Compile Include="Service\DomainService.cs" />
+    <Compile Include="Service\DomainService.generate.cs" />
+    <Compile Include="Service\Impl\BasemapServiceImpl.cs" />
+    <Compile Include="Service\Impl\BasemapServiceImpl.generate.cs" />
+    <Compile Include="Service\Impl\CadServiceImpl.cs" />
+    <Compile Include="Service\Impl\CadServiceImpl.generate.cs" />
+    <Compile Include="Service\Impl\DomainServiceImpl.cs" />
+    <Compile Include="Service\Impl\DomainServiceImpl.generate.cs" />
+    <Compile Include="Service\Impl\SystemServiceImpl.cs" />
+    <Compile Include="Service\Impl\SystemServiceImpl.generate.cs" />
+    <Compile Include="Service\Impl\ZdServiceImpl.cs" />
+    <Compile Include="Service\Impl\ZdServiceImpl.generate.cs" />
+    <Compile Include="Service\ServiceFactory.cs" />
+    <Compile Include="Service\SystemService.cs" />
+    <Compile Include="Service\SystemService.generate.cs" />
+    <Compile Include="Service\ZdService.cs" />
+    <Compile Include="Service\ZdService.generate.cs" />
+    <Compile Include="Helpers\SQLiteHelper.cs" />
+    <Compile Include="Settings\TextAssignConfig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\gdalwrapper\gdalwrapper.csproj">
+      <Project>{845110c4-43e3-4e96-8588-731008ae502a}</Project>
+      <Name>gdalwrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Api\VastGIS.Api.csproj">
+      <Project>{8aad34b3-8ef3-485f-a04d-ed2c07d8f1df}</Project>
+      <Name>VastGIS.Api</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\VastGIS.Shared\VastGIS.Shared.csproj">
+      <Project>{79400594-de0d-4ffd-b115-af2aeac79cd9}</Project>
+      <Name>VastGIS.Shared</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Casscode.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Areacode.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ysdm.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dictionary.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zdxx.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.106.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.106.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.106.0\build\net45\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.106.0\build\net45\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

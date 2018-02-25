@@ -159,6 +159,20 @@ namespace VastGIS.Api.Concrete
             return new Geometry(_shape.Clone());
         }
 
+        public void AddPart(int partIndex, IGeometry part)
+        {
+            //获取当前所有分段总数
+            int i = _shape.NumParts;
+            int pntCount = _shape.numPoints;
+            _shape.InsertPart(pntCount, ref i);
+
+            for (int j = 0; j < part.Points.Count; j++)
+            {
+                _shape.AddPoint(part.Points[j].X, part.Points[j].Y);
+            }
+            
+        }
+
         /// <summary>
         /// Clones points and parts but allows to set different geometry type.
         /// The method doesn't check if the result geometry is valid.
@@ -218,7 +232,7 @@ namespace VastGIS.Api.Concrete
         {
             return _shape.Distance(g.GetInternal());
         }
-
+        
         public IEnumerable<IGeometry> Explode()
         {
             object o = null;
@@ -354,14 +368,15 @@ namespace VastGIS.Api.Concrete
             object o = null;
             if (_shape.SplitByPolyline(polyline.GetInternal(), ref o))
             {
-                var shapes = o as Shape[];
+                var shapes = o as object[];
                 if (shapes != null)
                 {
                     foreach (var shp in shapes)
                     {
-                        yield return new Geometry(shp);
+                        yield return new Geometry(shp as Shape);
                     }
                 }
+
             }
         }
 

@@ -66,13 +66,28 @@ namespace VastGIS.Plugins.RealEstate.Menu
         private void InitRibbonMenu(IAppContext context, PluginIdentity identity)
         {
             RibbonMenu menu = context.RibbonMenu as RibbonMenu;
-            menu.AddToolStripEx("toolStripExPrepare", "前期准备", "tabFile");
-            
+            menu.AddHeaderTab("tabZD", "数据采集");
+            menu.AddToolStripEx("toolStripExZDCommon", "数据编辑", "tabZD");
+
             menu.AddButton(_commands[MenuKeys.NewREProject]);
             menu.AddButton(_commands[MenuKeys.ImportDXF]);
-            menu.AddButton(_commands[MenuKeys.TestOgrChinese]);
-            menu.AddButton(_commands[MenuKeys.SplitCAD]);
-            menu.AddButton(_commands[MenuKeys.AssignCADText]);
+
+            menu.AddButton(_commands[MenuKeys.ZoomToDbMax]);
+            menu.AddButton(_commands[MenuKeys.NewFeature]);
+            menu.AddButton(_commands[MenuKeys.CopyFeature]);
+            menu.AddButton(_commands[MenuKeys.DeleteFeature]);
+            menu.AddButton(_commands[MenuKeys.EditFeature]);
+            menu.AddButton(_commands[MenuKeys.EditGeometry]);
+            menu.AddButton(_commands[MenuKeys.UnionFeature]);
+            menu.AddButton(_commands[MenuKeys.SplitPolygon]);
+            menu.AddButton(_commands[MenuKeys.WYGZFeature]);
+            menu.AddButton(_commands[MenuKeys.TwoDistanceConstructor]);
+            menu.AddButton(_commands[MenuKeys.CreateJZDByZD]);
+
+            menu.AddToolStripEx("toolStripExZDTable", "属性表编辑", "tabZD");
+            menu.AddButton(_commands[MenuKeys.OpenTable]);
+
+
         }
 
         public MenuCommands MenuCommands { get { return _commands; } }

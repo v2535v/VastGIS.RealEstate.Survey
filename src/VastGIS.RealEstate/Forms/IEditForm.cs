@@ -9,7 +9,6 @@ namespace VastGIS.Plugins.RealEstate.Forms
     {
         void SetQueryPoint(double dx, double dy);
         bool Visible { get;set; }
-
         bool IsDisposed { get; }
     }
 }

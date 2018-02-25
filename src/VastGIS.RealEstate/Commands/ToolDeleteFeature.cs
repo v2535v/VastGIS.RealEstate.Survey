@@ -18,16 +18,18 @@ namespace VastGIS.Plugins.RealEstate.Commands
     public class ToolDeleteFeature : BaseTool
     {
         private readonly IAppContext _context;
+        private RealEstateEditor _plugin;
         private IEditForm _editForm;
 
-        public ToolDeleteFeature(IAppContext context)
+        public ToolDeleteFeature(IAppContext context,RealEstateEditor plugin)
         {
             _context = context;
             _text = "要素删除";
             _key = MenuKeys.DeleteFeature;
-            _icon = Resources.LayerTool32;
-            _headerName = "tabFile";
-            _toolStripExName = "toolStripExPrepare";
+            _icon = Resources.FeatureDelete;
+            _headerName = "tabZD";
+            _toolStripExName = "toolStripExZDCommon";
+            _plugin = plugin;
         }
 
         public override void Activiate()
@@ -36,7 +38,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
             map.MapCursor = MapCursor.None;
             if ((_editForm == null) || ((Form)_editForm).IsDisposed)
             {
-                _editForm = new frmDeleteFeature(_context);
+                _editForm = new frmDeleteFeature2(_context,_plugin);
 
                 map.MouseUp += Map_MouseUp;
             }

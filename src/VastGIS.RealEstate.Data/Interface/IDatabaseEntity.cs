@@ -1,9 +1,12 @@
 ﻿namespace VastGIS.RealEstate.Data.Interface
 {
-    public interface IDatabaseEntity
+    public interface IDatabaseEntity:IEntity
     {
-        long ID { get; set; }
+    
         long? DatabaseID { get; set; }
         short? Flags { get; set; }
+        string Xgr { get; set; }
+        System.DateTime? Xgsj { get; set; }
+
     }
 }

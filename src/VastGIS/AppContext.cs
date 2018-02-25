@@ -154,8 +154,10 @@ namespace VastGIS
             get { return _currentTool; }
             set
             {
+                
                 if (_currentTool == value)
                 {
+                    if (value == null) return;
                     _currentTool.Activiate();
                     return;
                 }
@@ -167,6 +169,7 @@ namespace VastGIS
                 _currentTool?.Activiate();
             }
         }
+      
 
         public bool SetCurrentTool(IMapTool tool)
         {
@@ -271,8 +274,8 @@ namespace VastGIS
             }
 
             //获得当前的Ogr的编码
-            string defaultEncoding = OSGeo.GDAL.Gdal.GetConfigOption("SHAPE_ENCODING", "");
-            OSGeo.GDAL.Gdal.GetConfigOption("SHAPE_ENCODING", "gb2312");
+            //string defaultEncoding = OSGeo.GDAL.Gdal.GetConfigOption("SHAPE_ENCODING", "");
+            //OSGeo.GDAL.Gdal.SetConfigOption("SHAPE_ENCODING", "gb2312");
             // it's expected here that we are on the UI thread
             SynchronizationContext = SynchronizationContext.Current;
 
@@ -310,9 +313,10 @@ namespace VastGIS
             // comment this line to prevent locator loading            
             // may be useful for ocx debugging to not create additional 
             // instance of map
-            _locator = new LocatorPresenter(_map);
+            //_locator = new LocatorPresenter(_map);
             this.InitDocking();
             Initialized = true;
+            
             Logger.Current.Trace("End AppContext.Init()");
         }
 

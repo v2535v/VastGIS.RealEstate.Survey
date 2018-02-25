@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>..\..\..\bin\x86\Release\Plugins\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\..\VastGIS\bin\x86\Debug\Plugins\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{207ACB9D-605C-4FB0-8BFE-3E07FBA93188}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VastGIS.Plugins.TableEditor</RootNamespace>
+    <AssemblyName>VastGIS.TableEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OutputPath>..\..\..\bin\$(Platform)\$(Configuration)\Plugins\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <OutputPath>..\..\..\bin\x64\Debug\Plugins\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\SolutionItems\SolutionInfoPlugins.cs">
+      <Link>Properties\SolutionInfoPlugins.cs</Link>
+    </Compile>
+    <Compile Include="Commands\CreateShowAttributeTable.cs" />
+    <Compile Include="Controls\FieldStatsGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FieldStatsGrid.Designer.cs">
+      <DependentUpon>FieldStatsGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FieldsListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FieldsListView.Designer.cs">
+      <DependentUpon>FieldsListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FunctionTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FunctionTreeView.Designer.cs">
+      <DependentUpon>FunctionTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RecalculateFieldsGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\RecalculateFieldsGrid.Designer.cs">
+      <DependentUpon>RecalculateFieldsGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\ColumnEventArgs.cs" />
+    <Compile Include="Editor\SortItem.cs" />
+    <Compile Include="Helpers\ShapefileExportHelper.cs" />
+    <Compile Include="Model\FieldStat.cs" />
+    <Compile Include="Model\FindReplaceFieldWrapper.cs" />
+    <Compile Include="Model\ITablePanel.cs" />
+    <Compile Include="Model\MeasurementInfo.cs" />
+    <Compile Include="Model\RecalculateFieldWrapper.cs" />
+    <Compile Include="Model\SearchInfo.cs" />
+    <Compile Include="Model\TablePanel.cs" />
+    <Compile Include="Model\TablePanelCancelEventArgs.cs" />
+    <Compile Include="Model\TablePanelCollection.cs" />
+    <Compile Include="Model\DockPanelMetadata.cs" />
+    <Compile Include="Model\TablePanelEventArgs.cs" />
+    <Compile Include="Model\TablePanelInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\DockPanelService.cs" />
+    <Compile Include="Views\Abstract\IFieldCalculatorView.cs" />
+    <Compile Include="Views\Abstract\IFieldPropertiesView.cs" />
+    <Compile Include="Views\Abstract\IFieldStatsView.cs" />
+    <Compile Include="Views\Abstract\IFindReplaceView.cs" />
+    <Compile Include="Views\Abstract\IJoinsView.cs" />
+    <Compile Include="Views\Abstract\IRecalculateFieldsView.cs" />
+    <Compile Include="Views\Abstract\IUpdateMeasurements.cs" />
+    <Compile Include="Views\DeleteFieldsPresenter.cs" />
+    <Compile Include="Views\DeleteFieldsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DeleteFieldsView.Designer.cs">
+      <DependentUpon>DeleteFieldsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Abstract\IDeleteFieldsView.cs" />
+    <Compile Include="Views\Abstract\IRenameFieldView.cs" />
+    <Compile Include="Views\Abstract\ITableEditorView.cs" />
+    <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Editor\RowInfo.cs" />
+    <Compile Include="Editor\RowManager.cs" />
+    <Compile Include="Editor\TableEditorGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\FieldCalculatorModel.cs" />
+    <Compile Include="Views\FieldCalculatorPresenter.cs" />
+    <Compile Include="Views\FieldCalculatorView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FieldCalculatorView.Designer.cs">
+      <DependentUpon>FieldCalculatorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FieldPropertiesModel.cs" />
+    <Compile Include="Views\FieldPropertiesPresenter.cs" />
+    <Compile Include="Views\FieldPropertiesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FieldPropertiesView.Designer.cs">
+      <DependentUpon>FieldPropertiesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FieldStatsModel.cs" />
+    <Compile Include="Views\FieldStatsPresenter.cs" />
+    <Compile Include="Views\FieldStatsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FieldStatsView.Designer.cs">
+      <DependentUpon>FieldStatsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FindReplaceModel.cs" />
+    <Compile Include="Views\FindReplacePresenter.cs" />
+    <Compile Include="Views\JoinsPresenter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\JoinsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\JoinsView.Designer.cs">
+      <DependentUpon>JoinsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FindReplaceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FindReplaceView.Designer.cs">
+      <DependentUpon>FindReplaceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RecalculateFieldsPresenter.cs" />
+    <Compile Include="Views\RecalculateFieldsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RecalculateFieldsView.Designer.cs">
+      <DependentUpon>RecalculateFieldsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TableEditorView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\TableEditorView.Designer.cs">
+      <DependentUpon>TableEditorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\VirtualGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helpers\EnumConverters.cs" />
+    <Compile Include="MapListener.cs" />
+    <Compile Include="Menu\MenuCommands.cs" />
+    <Compile Include="Menu\MenuGenerator.cs" />
+    <Compile Include="Menu\MenuKeys.cs" />
+    <Compile Include="Menu\MenuListener.cs" />
+    <Compile Include="Views\TableEditorPresenter.cs" />
+    <Compile Include="ProjectListener.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableEditorPlugin.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Helpers\FormHelper.cs" />
+    <Compile Include="Views\UpdateMeasurementsPresenter.cs" />
+    <Compile Include="Views\UpdateMeasurementsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UpdateMeasurementsView.Designer.cs">
+      <DependentUpon>UpdateMeasurementsView.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DeleteFieldsView.resx">
+      <DependentUpon>DeleteFieldsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FieldCalculatorView.resx">
+      <DependentUpon>FieldCalculatorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FieldPropertiesView.resx">
+      <DependentUpon>FieldPropertiesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FieldStatsView.resx">
+      <DependentUpon>FieldStatsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FindReplaceView.resx">
+      <DependentUpon>FindReplaceView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\JoinsView.resx">
+      <DependentUpon>JoinsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RecalculateFieldsView.resx">
+      <DependentUpon>RecalculateFieldsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TableEditorView.resx">
+      <DependentUpon>TableEditorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UpdateMeasurementsView.resx">
+      <DependentUpon>UpdateMeasurementsView.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table_editor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\VastGIS.Api\VastGIS.Api.csproj">
+      <Project>{8AAD34B3-8EF3-485F-A04D-ED2C07D8F1DF}</Project>
+      <Name>VastGIS.Api</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.Attributes\VastGIS.Attributes.csproj">
+      <Project>{6AF734F1-2CD0-4636-88E2-EF2DAFA241F8}</Project>
+      <Name>VastGIS.Attributes</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.Data\VastGIS.Data.csproj">
+      <Project>{12476697-03B6-4944-92C1-AE7214A13F0B}</Project>
+      <Name>VastGIS.Data</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.Plugins\VastGIS.Plugins.csproj">
+      <Project>{76644cdf-5165-428d-8419-93c1e978db1b}</Project>
+      <Name>VastGIS.Plugins</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.Shared\VastGIS.Shared.csproj">
+      <Project>{79400594-DE0D-4FFD-B115-AF2AEAC79CD9}</Project>
+      <Name>VastGIS.Shared</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VastGIS.UI\VastGIS.UI.csproj">
+      <Project>{784A24F2-9A57-46EE-8945-D87869595216}</Project>
+      <Name>VastGIS.UI</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_layer_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Legacy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_table24.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_save1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_geometry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_folder_open32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_folder_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_sort_asc16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_sort_desc16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_calculate16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_remove16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_search16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_join16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_measure16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_refresh16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_zoom_selection24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_clear_selection24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_wand16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_select_none16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_zoom_to_cursor16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_download3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_select_yellow_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_field_add16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_vertical16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_horizontal_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_tabbed16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_error16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_ok16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_warning16.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

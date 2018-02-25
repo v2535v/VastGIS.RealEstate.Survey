@@ -29,4 +29,16 @@ namespace VastGIS.RealEstate.Data.Enums
         Save,
         Delete
     }
+
+    public enum AttachmentFileType
+    {
+        Unknown,
+        Image,
+        Video,
+        Audio,
+        Docx,
+        Pdf,
+        Excel,
+        Zip
+    }
 }

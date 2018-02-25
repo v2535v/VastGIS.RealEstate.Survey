@@ -53,10 +53,12 @@
             this.txtWXDCY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtWXDCY.BeforeTouchSize = new System.Drawing.Size(146, 21);
+            this.txtWXDCY.EnableTouchMode = true;
+            this.txtWXDCY.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtWXDCY.Location = new System.Drawing.Point(71, 7);
             this.txtWXDCY.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtWXDCY.Name = "txtWXDCY";
-            this.txtWXDCY.Size = new System.Drawing.Size(146, 21);
+            this.txtWXDCY.Size = new System.Drawing.Size(146, 28);
             this.txtWXDCY.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtWXDCY.TabIndex = 5;
             // 
@@ -90,6 +92,7 @@
             this.datWXDCSJ.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.datWXDCSJ.CalendarTitleForeColor = System.Drawing.SystemColors.ControlText;
             this.datWXDCSJ.DropDownImage = null;
+            this.datWXDCSJ.DropDownNormalColor = System.Drawing.SystemColors.Control;
             this.datWXDCSJ.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.datWXDCSJ.Location = new System.Drawing.Point(73, 41);
             this.datWXDCSJ.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
@@ -114,6 +117,7 @@
             this.datWXCLSJ.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.datWXCLSJ.CalendarTitleForeColor = System.Drawing.SystemColors.ControlText;
             this.datWXCLSJ.DropDownImage = null;
+            this.datWXCLSJ.DropDownNormalColor = System.Drawing.SystemColors.Control;
             this.datWXCLSJ.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.datWXCLSJ.Location = new System.Drawing.Point(73, 108);
             this.datWXCLSJ.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
@@ -140,10 +144,12 @@
             this.txtWXCLY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtWXCLY.BeforeTouchSize = new System.Drawing.Size(146, 21);
+            this.txtWXCLY.EnableTouchMode = true;
+            this.txtWXCLY.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtWXCLY.Location = new System.Drawing.Point(71, 74);
             this.txtWXCLY.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtWXCLY.Name = "txtWXCLY";
-            this.txtWXCLY.Size = new System.Drawing.Size(146, 21);
+            this.txtWXCLY.Size = new System.Drawing.Size(147, 28);
             this.txtWXCLY.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtWXCLY.TabIndex = 9;
             // 
@@ -168,6 +174,7 @@
             this.datWXZTSJ.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.datWXZTSJ.CalendarTitleForeColor = System.Drawing.SystemColors.ControlText;
             this.datWXZTSJ.DropDownImage = null;
+            this.datWXZTSJ.DropDownNormalColor = System.Drawing.SystemColors.Control;
             this.datWXZTSJ.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.datWXZTSJ.Location = new System.Drawing.Point(73, 175);
             this.datWXZTSJ.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
@@ -194,10 +201,12 @@
             this.txtWXZTY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtWXZTY.BeforeTouchSize = new System.Drawing.Size(146, 21);
+            this.txtWXZTY.EnableTouchMode = true;
+            this.txtWXZTY.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtWXZTY.Location = new System.Drawing.Point(71, 141);
             this.txtWXZTY.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtWXZTY.Name = "txtWXZTY";
-            this.txtWXZTY.Size = new System.Drawing.Size(146, 21);
+            this.txtWXZTY.Size = new System.Drawing.Size(147, 28);
             this.txtWXZTY.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtWXZTY.TabIndex = 13;
             // 

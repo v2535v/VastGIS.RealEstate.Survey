@@ -257,6 +257,34 @@ namespace VastGIS.RealEstate.Data.Helpers
             sql += ");";
             return sql;
         }
+
+        public static string SearchActualSQLBuilder(
+            string sql,
+            GeometryType geometryType,
+            double dx,
+            double dy,
+            double radius = 2.0)
+        {
+            string lineSql = "";
+            bool containWhere = sql.Contains(" WHERE ");
+
+            string wherePre = containWhere ? "AND" : " WHERE ";
+            if (geometryType == GeometryType.Polygon)
+            {
+                lineSql = string.Format("{0} {3}  Within( GeomFromText('POINT({1} {2})'),geometry);", sql,dx, dy,wherePre);
+            }
+            else if (geometryType == GeometryType.Polyline)
+            {
+                lineSql = string.Format("{0} {2}  Intersects( GeomFromText('{1}'),geometry)=1;", sql, GeometryHelper.CreateRectangleWkt(dx, dy, radius),wherePre);
+               
+            }
+            else if (geometryType == GeometryType.Point || geometryType == GeometryType.TextPoint)
+            {
+                lineSql = string.Format("{0} {2}  Within(geometry,GeomFromText('{1}'))=1;", sql, GeometryHelper.CreateRectangleWkt(dx, dy, radius), wherePre);
+            }
+            return lineSql;
+
+        }
         public static string SearchSQLBuilder(
             string tableName,
             GeometryType geometryType,
@@ -284,6 +312,22 @@ namespace VastGIS.RealEstate.Data.Helpers
                     GeometryHelper.CreateRectangleWkt(dx, dy, radius));
             }
             return sql;
+        }
+
+        public static string SearchActualSQLBuilder(string sqlSource, string queryFilter)
+        {
+            if (string.IsNullOrEmpty(queryFilter))
+            {
+                return sqlSource;
+            }
+            if (sqlSource.Contains(" WHERE "))
+            {
+                return sqlSource += " AND " + queryFilter;
+            }
+            else
+            {
+                return sqlSource += " WHERE  " + queryFilter;
+            }
         }
     }
 }

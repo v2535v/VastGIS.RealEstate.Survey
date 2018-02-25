@@ -14,6 +14,7 @@ using VastGIS.Api.Interfaces;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.Forms
 {
@@ -22,7 +23,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private IAppContext _context;
         private RealEstateEditor _plugin;
         private IREDatabase _database;
-        private List<VgObjectclasses> _classes;
+        private List<VgObjectclass> _classes;
 
         public frmSelectFeature()
         {
@@ -34,8 +35,12 @@ namespace VastGIS.Plugins.RealEstate.Forms
             InitializeComponent();
             _context = context;
             _plugin = plugin;
+            if (_plugin == null)
+            {
+                _plugin = _context.Container.GetInstance<RealEstateEditor>();
+            }
             _database = ((IRealEstateContext)_context).RealEstateDatabase;
-            List<VgObjectclasses> classes = _database.SystemService.GetVgObjectclassess(" Identify = 1 And DXLX=1").ToList();
+            List<VgObjectclass> classes = _database.SystemService.GetVgObjectclasses(" Identify = 1 And DXLX=1").ToList();
             ucSelectLayer1.SetClasses(classes);
             _classes = classes;
             ucSelectLayer1.Label = "选择图层";
@@ -43,6 +48,12 @@ namespace VastGIS.Plugins.RealEstate.Forms
             ucSelectLayer1.GeometryType =GeometryType.None;
             ucFeatureLists1.CanMultiSelect = true;
             ucFeatureLists1.BindContext(context);
+            ucSelectLayer1.ucSelectedClassChanged += UcSelectLayer1_ucSelectedClassChanged;
+        }
+
+        private void UcSelectLayer1_ucSelectedClassChanged(object sender, Events.ObjectClassEventArgs e)
+        {
+            ucFeatureLists1.ClearList();
         }
 
         public void SetQueryPoint(double x, double y)
@@ -53,22 +64,10 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 return;
             }
 
-            List<SearchFeature> features = _database.SystemService.FindRecords(ucSelectLayer1.SelectedClasses, x, y);
+            List<IReFeature> features = _database.SystemService.FindFeatures(ucSelectLayer1.SelectedClasses, x, y);
             if (features != null && features.Count > 0)
             { ucFeatureLists1.AddFeatures(features, ucSelectLayer1.SelectedClasses); }
 
-            //IEnvelope pEnvelope=new Envelope(x-2,x+2,y-2,y+2);
-            //foreach (VgObjectclasses objectclasses in ucSelectLayer1.SelectedClasses)
-            //{
-            //    ILayer pLayer = _context.Map.Layers.FirstOrDefault(c => c.Name == objectclasses.Zwmc);
-            //    IEnumerable<IFeature> selectFeatures=pLayer.FeatureSet.SelectShapes(pEnvelope, 10, MapSelectionMode.Intersection);
-            //    if (selectFeatures != null)
-            //    {
-            //        int[] ids = selectFeatures.Select(c => c.Index).ToArray();
-            //        List<SearchFeature> searchFeatures = _database.SystemService.FindRecords(objectclasses, ids);
-            //        ucFeatureLists1.AddFeatures(searchFeatures, ucSelectLayer1.SelectedClasses);
-            //    }
-            //}
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
@@ -81,7 +80,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            List<SearchFeature> features = ucFeatureLists1.GetSelectedFeatures();
+            List<IReFeature> features = ucFeatureLists1.GetSelectedFeatures();
             if (features == null || features.Count == 0)
             {
                 lblInfo.Text = "请先选择要素!";
@@ -89,7 +88,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             }
             string oldLayerName = "";
             ILayer pLayer = null;
-            foreach (SearchFeature feature in features)
+            foreach (IReFeature feature in features)
             {
                 string layerName = feature.TableName;
                 if (oldLayerName != layerName)
@@ -98,10 +97,16 @@ namespace VastGIS.Plugins.RealEstate.Forms
                     pLayer = _context.Map.Layers.FirstOrDefault(c => c.Name == zwmc);
                 }
                 if (pLayer == null) continue;
-                pLayer.FeatureSet.SelectedIndices.Add((int)feature.ID);
-
+                int[] result = null;
+                string errorString = string.Empty;
+                bool success = pLayer.FeatureSet.Table.Query("ID=" + feature.ID.ToString(), out result, out errorString);
+                if(result !=null )
+                    pLayer.FeatureSet.FeatureSelected(result[0], true);
+                //pLayer.FeatureSet.SelectedIndices.Add((int)feature.ID);
+                
                 oldLayerName = layerName;
             }
+            _context.Map.Redraw(RedrawType.All);
         }
     }
 }

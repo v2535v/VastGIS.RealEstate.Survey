@@ -1,22 +1,28 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Syncfusion.Windows.Forms.Tools;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.DataControls
 {
-
-    public partial class ucXZQ:UserControl
-    {
+    public partial class ucXzq:UserControl,IEntityControl
+    {	
+        #region 变量
         private Dictionary<string,string> _dictionaryNames;
         private Xzq _xzq;
         private IREDatabase _database;
+        private bool _hasChanged = false;
+        #endregion
         
-        public ucXZQ()
+        public ucXzq()
         {
             InitializeComponent();
             _dictionaryNames = new Dictionary<string, string>();
+             intID.Enabled = false;
+            _hasChanged=false;
         }
         
         private void InitDictionaries()
@@ -25,32 +31,75 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             {
                 string dName = onepair.Key;
                 string dValue = onepair.Value;
-                List<VgDictionary> _dicts = _database.DomainService.GetDictionaryByName(dName);
-                ComboBoxAdv combo = this.Controls["cmb" + onepair.Key] as ComboBoxAdv;
+                List<VgDictionary> _dicts = _database.DomainService.GetDictionaryByName(dValue);
+                ComboBoxAdv combo = FindControl(this,"cmb" + onepair.Key) as ComboBoxAdv;
                 combo.DataSource = _dicts;
-                combo.DisplayMember = _dicts[0].Zdsm;
-                combo.ValueMember = _dicts[0].Zdz;
+                combo.DisplayMember ="Zdsm";
+                combo.ValueMember ="Zdz";
             }
         }
-        public void LinkObject(IREDatabase database,Xzq xzq)
+        
+        private Control FindControl(Control control, string controlName)
         {
-            _database = database;
+            Control c1;
+            foreach (Control c in control.Controls)
+            {
+                if (c.Name == controlName)
+                {
+                    return c;
+                }
+                else if (c.Controls.Count > 0)
+                {
+                    c1 = FindControl(c, controlName);
+                    if (c1 != null)
+                    {
+                        return c1;
+                    }
+                }
+            }
+            return null;
+        }
+        
+        public void LinkObject(IREDatabase database,IEntity entity)
+        {
+            _database = database; 
             if(_dictionaryNames != null && _dictionaryNames.Count > 0)
             {
                 InitDictionaries();
             }
+            _xzq=entity as Xzq;
             intID.DataBindings.Clear();
-            intID.DataBindings.Add("IntegerValue",xzq,"ID");
-            txtYSDM.DataBindings.Clear();
-            txtYSDM.DataBindings.Add("Text",xzq,"Ysdm");
-            txtXZQDM.DataBindings.Clear();
-            txtXZQDM.DataBindings.Add("Text",xzq,"Xzqdm");
-            txtXZQMC.DataBindings.Clear();
-            txtXZQMC.DataBindings.Add("Text",xzq,"Xzqmc");
-            dblXZQMJ.DataBindings.Clear();
-            dblXZQMJ.DataBindings.Add("DoubleValue",xzq,"Xzqmj");
+            intID.DataBindings.Add("IntegerValue",_xzq,"ID",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtYsdm.DataBindings.Clear();
+            txtYsdm.DataBindings.Add("Text",_xzq,"Ysdm",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtXzqdm.DataBindings.Clear();
+            txtXzqdm.DataBindings.Add("Text",_xzq,"Xzqdm",true,DataSourceUpdateMode.OnPropertyChanged);
+            txtXzqmc.DataBindings.Clear();
+            txtXzqmc.DataBindings.Add("Text",_xzq,"Xzqmc",true,DataSourceUpdateMode.OnPropertyChanged);
+            dblXzqmj.DataBindings.Clear();
+            dblXzqmj.DataBindings.Add("DoubleValue",_xzq,"Xzqmj",true,DataSourceUpdateMode.OnPropertyChanged);
+            
+            ((INotifyPropertyChanged)_xzq).PropertyChanged += Entity_PropertyChanged;
+            _hasChanged=false;
+        }
+
+        private void Entity_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            _hasChanged=true;
         }
         
+        #region IEntityControl接口
+        public bool HasChanged{get{return _hasChanged;}}
+        public bool Save()
+        {
+            return _database.SystemService.Save((IEntity)_xzq);
+        }
+        public void Delete()
+        {
+            _database.SystemService.Delete((IEntity)_xzq);
+        }        
+        #endregion
+        
+        
     }
-
 }

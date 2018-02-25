@@ -114,7 +114,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             _loadingForm.ShowProgress(80, "对文本属性进行识别处理");
             ((IRealEstateContext)_context).RealEstateDatabase.BasemapService.AssignTextToAttribute();
             _loadingForm.ShowProgress(90, "对多边形数据进行排序处理");
-            ((IRealEstateContext)_context).RealEstateDatabase.BasemapService.ReorderAllPolygon();
+            ((IRealEstateContext)_context).RealEstateDatabase.BasemapService.ReorderAllPolygon("DXTJMDM");
             _context.View.Unlock();
             _loadingForm.Close();
             _loadingForm.Dispose();

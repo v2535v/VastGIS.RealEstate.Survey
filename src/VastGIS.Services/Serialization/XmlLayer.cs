@@ -69,6 +69,7 @@ namespace VastGIS.Services.Serialization
             if (OcxLayer != null)
             {
                 layer.Deserialize(OcxLayer.OuterXml);
+                layer.Name = layer.Name;// StringHelper.UnicodeToString(layer.Name);
             }
             else
             {
@@ -87,7 +88,7 @@ namespace VastGIS.Services.Serialization
 
             RestoreCustomObjects(layer);
 
-            layer.Name = Name;
+            layer.Name = StringHelper.UnicodeToString(Name);
             layer.Expanded = Expanded;
             layer.HideFromLegend = HideFromLegend;
             layer.SymbologyCaption = ColorSchemeCaption;
@@ -145,6 +146,8 @@ namespace VastGIS.Services.Serialization
 
         private XmlElement LayerToXmlElement(ILegendLayer layer)
         {
+           string layName = StringHelper.StringToUnicode(layer.Name);
+            layer.Name = layName;
             string xml = layer.Serialize();
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);

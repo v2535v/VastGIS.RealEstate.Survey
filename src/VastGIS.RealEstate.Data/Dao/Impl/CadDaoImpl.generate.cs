@@ -1,68 +1,86 @@
 ﻿using System;
+using Dapper;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-using Dapper;
-using System.Linq;
 using System.Data.SQLite;
-using VastGIS.RealEstate.Data.Dao;
+using System.Linq;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 using VastGIS.RealEstate.Data.Events;
-
+using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.RealEstate.Data.Dao.Impl
 {
-
-    public partial class CadDaoImpl:SQLiteDao,CadDao
-    {
-        public Dictionary<string, string> _entityNames;
-        //private CadDao _cadDao;
-         
-        private string GEOMETRY_REGISTER_TmpCaddVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcaddview','geometry','rowid','tmpcadd','geometry',0)";
-        private string SELECT_TMPCADD = "select Id,EntityType,Handle,FileName,geometry from TmpCadd";
-        
-         
-        private string GEOMETRY_REGISTER_TmpCadmVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadmview','geometry','rowid','tmpcadm','geometry',0)";
-        private string SELECT_TMPCADM = "select Id,EntityType,Handle,FileName,geometry from TmpCadm";
-        
-         
-        private string GEOMETRY_REGISTER_TmpCadxVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadxview','geometry','rowid','tmpcadx','geometry',0)";
-        private string SELECT_TMPCADX = "select Id,EntityType,Handle,FileName,geometry from TmpCadx";
-        
-         
-        private string GEOMETRY_REGISTER_TmpCadzjVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadzjview','geometry','rowid','tmpcadzj','geometry',0)";
-        private string SELECT_TMPCADZJ = "select Id,EntityType,Handle,FileName,geometry from TmpCadzj";
-        
-        private string SELECT_TMPCADXDATA = "select Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName from TmpCadxdata";
+    public partial class CadDaoImpl : SQLiteDao,CadDao
+    {	
+        public Dictionary<string,string> _entityNames;        
         
         
-        public CadDaoImpl(): base()
+        #region TMPCADD SQL语句
+        private string CREATE_VIEW_TMPCADD="CREATE VIEW TMPCADDVIEW AS SELECT  Id,EntityType,Handle,FileName,DatabaseId,FLAGS,XGR,XGSJ,geometry FROM TmpCadd WHERE [FLAGS] < 3;";
+        private string INSERT_TRIGGER_TMPCADD="CREATE TRIGGER [vw_ins_TMPCADDVIEW] INSTEAD OF INSERT ON [TMPCADDVIEW] BEGIN INSERT OR REPLACE INTO [TMPCADD] ([Id],[EntityType],[Handle],[FileName],[DatabaseId],[FLAGS],[XGR],[XGSJ],[geometry])  VALUES (NEW.[Id],NEW.[EntityType],NEW.[Handle],NEW.[FileName],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ],NEW.[geometry]);END";
+        private string UPDATE_TRIGGER_TMPCADD="CREATE TRIGGER [vw_upd_TMPCADDVIEW] INSTEAD OF UPDATE OF [Id],[EntityType],[Handle],[FileName],[DatabaseId],[FLAGS],[XGR],[XGSJ],[geometry] ON [TMPCADDVIEW] BEGIN UPDATE [TMPCADD] SET [Id]=NEW.[Id],[EntityType]=NEW.[EntityType],[Handle]=NEW.[Handle],[FileName]=NEW.[FileName],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ],[geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID; END";
+        private string DELETE_TRIGGER_TMPCADD="CREATE TRIGGER [vw_del_TMPCADDVIEW] INSTEAD OF DELETE ON [TMPCADDVIEW] BEGIN DELETE FROM [TmpCadd] WHERE ROWID=OLD.ROWID;END";
+        private string SELECT_TMPCADD="SELECT  Id,EntityType,Handle,FileName,DatabaseId,FLAGS,XGR,XGSJ,geometry FROM TmpCadd WHERE [FLAGS] < 3;";  
+        private string REGISTER_GEOMETRY_TMPCADDVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcaddview','geometry','rowid','tmpcadd','geometry',0)";
+        #endregion        
+        
+        
+        #region TMPCADM SQL语句
+        private string CREATE_VIEW_TMPCADM="CREATE VIEW TMPCADMVIEW AS SELECT  Id,EntityType,Handle,FileName,DatabaseId,FLAGS,XGR,XGSJ,geometry FROM TmpCadm WHERE [FLAGS] < 3;";
+        private string INSERT_TRIGGER_TMPCADM="CREATE TRIGGER [vw_ins_TMPCADMVIEW] INSTEAD OF INSERT ON [TMPCADMVIEW] BEGIN INSERT OR REPLACE INTO [TMPCADM] ([Id],[EntityType],[Handle],[FileName],[DatabaseId],[FLAGS],[XGR],[XGSJ],[geometry])  VALUES (NEW.[Id],NEW.[EntityType],NEW.[Handle],NEW.[FileName],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ],NEW.[geometry]);END";
+        private string UPDATE_TRIGGER_TMPCADM="CREATE TRIGGER [vw_upd_TMPCADMVIEW] INSTEAD OF UPDATE OF [Id],[EntityType],[Handle],[FileName],[DatabaseId],[FLAGS],[XGR],[XGSJ],[geometry] ON [TMPCADMVIEW] BEGIN UPDATE [TMPCADM] SET [Id]=NEW.[Id],[EntityType]=NEW.[EntityType],[Handle]=NEW.[Handle],[FileName]=NEW.[FileName],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ],[geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID; END";
+        private string DELETE_TRIGGER_TMPCADM="CREATE TRIGGER [vw_del_TMPCADMVIEW] INSTEAD OF DELETE ON [TMPCADMVIEW] BEGIN DELETE FROM [TmpCadm] WHERE ROWID=OLD.ROWID;END";
+        private string SELECT_TMPCADM="SELECT  Id,EntityType,Handle,FileName,DatabaseId,FLAGS,XGR,XGSJ,geometry FROM TmpCadm WHERE [FLAGS] < 3;";  
+        private string REGISTER_GEOMETRY_TMPCADMVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadmview','geometry','rowid','tmpcadm','geometry',0)";
+        #endregion        
+        
+        
+        #region TMPCADX SQL语句
+        private string CREATE_VIEW_TMPCADX="CREATE VIEW TMPCADXVIEW AS SELECT  Id,EntityType,Handle,FileName,DatabaseId,FLAGS,XGR,XGSJ,geometry FROM TmpCadx WHERE [FLAGS] < 3;";
+        private string INSERT_TRIGGER_TMPCADX="CREATE TRIGGER [vw_ins_TMPCADXVIEW] INSTEAD OF INSERT ON [TMPCADXVIEW] BEGIN INSERT OR REPLACE INTO [TMPCADX] ([Id],[EntityType],[Handle],[FileName],[DatabaseId],[FLAGS],[XGR],[XGSJ],[geometry])  VALUES (NEW.[Id],NEW.[EntityType],NEW.[Handle],NEW.[FileName],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ],NEW.[geometry]);END";
+        private string UPDATE_TRIGGER_TMPCADX="CREATE TRIGGER [vw_upd_TMPCADXVIEW] INSTEAD OF UPDATE OF [Id],[EntityType],[Handle],[FileName],[DatabaseId],[FLAGS],[XGR],[XGSJ],[geometry] ON [TMPCADXVIEW] BEGIN UPDATE [TMPCADX] SET [Id]=NEW.[Id],[EntityType]=NEW.[EntityType],[Handle]=NEW.[Handle],[FileName]=NEW.[FileName],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ],[geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID; END";
+        private string DELETE_TRIGGER_TMPCADX="CREATE TRIGGER [vw_del_TMPCADXVIEW] INSTEAD OF DELETE ON [TMPCADXVIEW] BEGIN DELETE FROM [TmpCadx] WHERE ROWID=OLD.ROWID;END";
+        private string SELECT_TMPCADX="SELECT  Id,EntityType,Handle,FileName,DatabaseId,FLAGS,XGR,XGSJ,geometry FROM TmpCadx WHERE [FLAGS] < 3;";  
+        private string REGISTER_GEOMETRY_TMPCADXVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadxview','geometry','rowid','tmpcadx','geometry',0)";
+        #endregion        
+        
+        
+        #region TMPCADXDATA SQL语句
+        private string CREATE_VIEW_TMPCADXDATA="CREATE VIEW TMPCADXDATAVIEW AS SELECT  Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName,DatabaseId,FLAGS,XGR,XGSJ FROM TmpCadxdata WHERE [FLAGS] < 3;";
+        private string INSERT_TRIGGER_TMPCADXDATA="CREATE TRIGGER [vw_ins_TMPCADXDATAVIEW] INSTEAD OF INSERT ON [TMPCADXDATAVIEW] BEGIN INSERT OR REPLACE INTO [TMPCADXDATA] ([Id],[Handle],[Tc],[Wbnr],[Cassdm],[Fsxx1],[Fsxx2],[Xzjd],[Fh],[Fhdx],[Ysdm],[FileName],[DatabaseId],[FLAGS],[XGR],[XGSJ])  VALUES (NEW.[Id],NEW.[Handle],NEW.[Tc],NEW.[Wbnr],NEW.[Cassdm],NEW.[Fsxx1],NEW.[Fsxx2],NEW.[Xzjd],NEW.[Fh],NEW.[Fhdx],NEW.[Ysdm],NEW.[FileName],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ]);END";
+        private string UPDATE_TRIGGER_TMPCADXDATA="CREATE TRIGGER [vw_upd_TMPCADXDATAVIEW] INSTEAD OF UPDATE OF [Id],[Handle],[Tc],[Wbnr],[Cassdm],[Fsxx1],[Fsxx2],[Xzjd],[Fh],[Fhdx],[Ysdm],[FileName],[DatabaseId],[FLAGS],[XGR],[XGSJ] ON [TMPCADXDATAVIEW] BEGIN UPDATE [TMPCADXDATA] SET [Id]=NEW.[Id],[Handle]=NEW.[Handle],[Tc]=NEW.[Tc],[Wbnr]=NEW.[Wbnr],[Cassdm]=NEW.[Cassdm],[Fsxx1]=NEW.[Fsxx1],[Fsxx2]=NEW.[Fsxx2],[Xzjd]=NEW.[Xzjd],[Fh]=NEW.[Fh],[Fhdx]=NEW.[Fhdx],[Ysdm]=NEW.[Ysdm],[FileName]=NEW.[FileName],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ] WHERE ROWID=OLD.ROWID; END";
+        private string DELETE_TRIGGER_TMPCADXDATA="CREATE TRIGGER [vw_del_TMPCADXDATAVIEW] INSTEAD OF DELETE ON [TMPCADXDATAVIEW] BEGIN DELETE FROM [TmpCadxdata] WHERE ROWID=OLD.ROWID;END";
+        private string SELECT_TMPCADXDATA="SELECT  Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName,DatabaseId,FLAGS,XGR,XGSJ FROM TmpCadxdata WHERE [FLAGS] < 3;";  
+        private string REGISTER_GEOMETRY_TMPCADXDATAVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadxdataview','geometry','rowid','tmpcadxdata','geometry',0)";
+        #endregion        
+        
+        
+        #region TMPCADZJ SQL语句
+        private string CREATE_VIEW_TMPCADZJ="CREATE VIEW TMPCADZJVIEW AS SELECT  Id,EntityType,Handle,FileName,DatabaseId,FLAGS,XGR,XGSJ,geometry FROM TmpCadzj WHERE [FLAGS] < 3;";
+        private string INSERT_TRIGGER_TMPCADZJ="CREATE TRIGGER [vw_ins_TMPCADZJVIEW] INSTEAD OF INSERT ON [TMPCADZJVIEW] BEGIN INSERT OR REPLACE INTO [TMPCADZJ] ([Id],[EntityType],[Handle],[FileName],[DatabaseId],[FLAGS],[XGR],[XGSJ],[geometry])  VALUES (NEW.[Id],NEW.[EntityType],NEW.[Handle],NEW.[FileName],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ],NEW.[geometry]);END";
+        private string UPDATE_TRIGGER_TMPCADZJ="CREATE TRIGGER [vw_upd_TMPCADZJVIEW] INSTEAD OF UPDATE OF [Id],[EntityType],[Handle],[FileName],[DatabaseId],[FLAGS],[XGR],[XGSJ],[geometry] ON [TMPCADZJVIEW] BEGIN UPDATE [TMPCADZJ] SET [Id]=NEW.[Id],[EntityType]=NEW.[EntityType],[Handle]=NEW.[Handle],[FileName]=NEW.[FileName],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ],[geometry]=NEW.[geometry] WHERE ROWID=OLD.ROWID; END";
+        private string DELETE_TRIGGER_TMPCADZJ="CREATE TRIGGER [vw_del_TMPCADZJVIEW] INSTEAD OF DELETE ON [TMPCADZJVIEW] BEGIN DELETE FROM [TmpCadzj] WHERE ROWID=OLD.ROWID;END";
+        private string SELECT_TMPCADZJ="SELECT  Id,EntityType,Handle,FileName,DatabaseId,FLAGS,XGR,XGSJ,geometry FROM TmpCadzj WHERE [FLAGS] < 3;";  
+        private string REGISTER_GEOMETRY_TMPCADZJVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('tmpcadzjview','geometry','rowid','tmpcadzj','geometry',0)";
+        #endregion        
+        
+        
+        #region 初始化
+        public CadDaoImpl():base()
         {
             _entityNames=new Dictionary<string, string>();
-            _entityNames.Add("TMPCADD","");
-            _entityNames.Add("TMPCADM","");
-            _entityNames.Add("TMPCADX","");
-            _entityNames.Add("TMPCADZJ","");
-            _entityNames.Add("TMPCADXDATA","");
+            _entityNames.Add("TmpCadd","");
+            _entityNames.Add("TmpCadm","");
+            _entityNames.Add("TmpCadx","");
+            _entityNames.Add("TmpCadxdata","临时交换数据附加属性");
+            _entityNames.Add("TmpCadzj","");
+             //RebuildSelectDictionary();
         }
+        #endregion
         
-        private event EntityChangedEventHandler entityChanged;
-
-        public event EntityChangedEventHandler EntityChanged
-        {
-            add { this.entityChanged += value; }
-            remove { this.entityChanged -= value; }
-        }
-
-        public  void OnEntityChanged(string tableName, string layerName, EntityOperationType operationType, List<long> ids)
-        {
-            if (this.entityChanged != null)
-            {
-                this.entityChanged(this, new EntityChanedEventArgs(tableName, layerName, operationType, ids));
-            }
-        }
-        
+                
         public string GetLayerName(string tableName)
         {
             tableName=tableName.ToUpper();
@@ -72,375 +90,363 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 return "";
         }
         
-        ///TmpCadd函数
+       
+        
+        #region TmpCadd方法
         public TmpCadd GetTmpCadd(long id)
         {
-            string sql="select Id,EntityType,Handle,FileName,AsText(geometry) as Wkt from TmpCadd" + " where id="+id.ToString();
-            IEnumerable<TmpCadd> tmpcadds=connection.Query<TmpCadd>(sql);
-            if(tmpcadds != null && tmpcadds.Count()>0)
+            string sql="SELECT  Id As ID,EntityType As EntityType,Handle As Handle,FileName As FileName,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,AsText(geometry) as Wkt  FROM TmpCadd " + " where id="+id.ToString();
+            IEnumerable<TmpCadd> records=connection.Query<TmpCadd>(sql);
+            if(records != null && records.Count()>0)
             {
-                return tmpcadds.First();
+                return records.First();
             }
             return null;
         }
         
         public IEnumerable<TmpCadd> GetTmpCadds(string filter)
         {
-            string sql="select Id,EntityType,Handle,FileName,AsText(geometry) as Wkt from TmpCadd" + " where "+filter;
-            var tmpcadds=connection.Query<TmpCadd>(sql);
-            
-            return tmpcadds;
+            string sql="SELECT  Id As ID,EntityType As EntityType,Handle As Handle,FileName As FileName,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,AsText(geometry) as Wkt  FROM TmpCadd " + " where "+filter;
+            var records=connection.Query<TmpCadd>(sql);            
+            return records;
         }
-        
-        public bool SaveTmpCadd(TmpCadd tmpcadd)
+        public bool SaveTmpCadd(TmpCadd record)
         {
-            bool retVal= tmpcadd.Save(connection,GetSRID());
+            bool retVal= record.Save(this);
             if(retVal)
             {
-                OnEntityChanged("tmpcadd",GetLayerName("TmpCadd"),EntityOperationType.Save,new List<long>{tmpcadd.ID});
+                OnEntityChanged(EntityOperationType.Save, record as IEntity);
+                
             }
             return retVal;
         }
-        
-        public void SaveTmpCadds(List<TmpCadd> tmpcadds)
+        public void SaveTmpCadds(List<TmpCadd> records)
         {
+            List<IEntity> backList=new List<IEntity>();
             SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in tmpcadds)
+            foreach(var rec in records)
             {
-                rec.Save(connection,GetSRID());
+                rec.Save(this);
+                backList.Add(rec as IEntity);
             }
             tran.Commit();
             tran.Dispose();
-            List<long> ids=tmpcadds.Select(a => a.ID).ToList(); 
-            OnEntityChanged("tmpcadd",GetLayerName("TmpCadd"),EntityOperationType.Save,ids);
+            OnEntityChanged(EntityOperationType.Save, backList);    
         }
-        
         public void DeleteTmpCadd(TmpCadd record)
         {
-            record.Delete(connection);
-            OnEntityChanged("tmpcadd",GetLayerName("TmpCadd"),EntityOperationType.Delete,new List<long>{record.ID});
+            record.Delete(this);
+            OnEntityChanged(EntityOperationType.Delete, record as IEntity); 
         }
-        
         public void DeleteTmpCadd(long id)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                command.CommandText="delete from TmpCadd where Id=" + id.ToString();
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadd",GetLayerName("TmpCadd"),EntityOperationType.Delete,new List<long>{id});
-            }
+           TmpCadd record=GetTmpCadd(id);
+           if(record !=null)
+           DeleteTmpCadd(record);        
         }
-        
         public void DeleteTmpCadd(string filter)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
+           using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from TmpCadd";
-                else
-                    command.CommandText="delete from TmpCadd where " + filter;
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadd",GetLayerName("TmpCadd"),EntityOperationType.Delete,null);
-            }
+                List<IEntity> backList=new List<IEntity>();
+                IEnumerable<TmpCadd> records=GetTmpCadds(filter);
+                if(records!=null && records.Count()>0)
+                {
+                    foreach(TmpCadd record in records)
+                    {
+                        record.Delete(this);
+                        backList.Add(record as IEntity);
+                    }
+                    OnEntityChanged(EntityOperationType.Delete, backList); 
+                }
+            } 
         }
+        #endregion
         
-        
-        ///TmpCadm函数
+        #region TmpCadm方法
         public TmpCadm GetTmpCadm(long id)
         {
-            string sql="select Id,EntityType,Handle,FileName,AsText(geometry) as Wkt from TmpCadm" + " where id="+id.ToString();
-            IEnumerable<TmpCadm> tmpcadms=connection.Query<TmpCadm>(sql);
-            if(tmpcadms != null && tmpcadms.Count()>0)
+            string sql="SELECT  Id As ID,EntityType As EntityType,Handle As Handle,FileName As FileName,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,AsText(geometry) as Wkt  FROM TmpCadm " + " where id="+id.ToString();
+            IEnumerable<TmpCadm> records=connection.Query<TmpCadm>(sql);
+            if(records != null && records.Count()>0)
             {
-                return tmpcadms.First();
+                return records.First();
             }
             return null;
         }
         
         public IEnumerable<TmpCadm> GetTmpCadms(string filter)
         {
-            string sql="select Id,EntityType,Handle,FileName,AsText(geometry) as Wkt from TmpCadm" + " where "+filter;
-            var tmpcadms=connection.Query<TmpCadm>(sql);
-            
-            return tmpcadms;
+            string sql="SELECT  Id As ID,EntityType As EntityType,Handle As Handle,FileName As FileName,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,AsText(geometry) as Wkt  FROM TmpCadm " + " where "+filter;
+            var records=connection.Query<TmpCadm>(sql);            
+            return records;
         }
-        
-        public bool SaveTmpCadm(TmpCadm tmpcadm)
+        public bool SaveTmpCadm(TmpCadm record)
         {
-            bool retVal= tmpcadm.Save(connection,GetSRID());
+            bool retVal= record.Save(this);
             if(retVal)
             {
-                OnEntityChanged("tmpcadm",GetLayerName("TmpCadm"),EntityOperationType.Save,new List<long>{tmpcadm.ID});
+                OnEntityChanged(EntityOperationType.Save, record as IEntity);
+                
             }
             return retVal;
         }
-        
-        public void SaveTmpCadms(List<TmpCadm> tmpcadms)
+        public void SaveTmpCadms(List<TmpCadm> records)
         {
+            List<IEntity> backList=new List<IEntity>();
             SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in tmpcadms)
+            foreach(var rec in records)
             {
-                rec.Save(connection,GetSRID());
+                rec.Save(this);
+                backList.Add(rec as IEntity);
             }
             tran.Commit();
             tran.Dispose();
-            List<long> ids=tmpcadms.Select(a => a.ID).ToList(); 
-            OnEntityChanged("tmpcadm",GetLayerName("TmpCadm"),EntityOperationType.Save,ids);
+            OnEntityChanged(EntityOperationType.Save, backList);    
         }
-        
         public void DeleteTmpCadm(TmpCadm record)
         {
-            record.Delete(connection);
-            OnEntityChanged("tmpcadm",GetLayerName("TmpCadm"),EntityOperationType.Delete,new List<long>{record.ID});
+            record.Delete(this);
+            OnEntityChanged(EntityOperationType.Delete, record as IEntity); 
         }
-        
         public void DeleteTmpCadm(long id)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                command.CommandText="delete from TmpCadm where Id=" + id.ToString();
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadm",GetLayerName("TmpCadm"),EntityOperationType.Delete,new List<long>{id});
-            }
+           TmpCadm record=GetTmpCadm(id);
+           if(record !=null)
+           DeleteTmpCadm(record);        
         }
-        
         public void DeleteTmpCadm(string filter)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
+           using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from TmpCadm";
-                else
-                    command.CommandText="delete from TmpCadm where " + filter;
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadm",GetLayerName("TmpCadm"),EntityOperationType.Delete,null);
-            }
+                List<IEntity> backList=new List<IEntity>();
+                IEnumerable<TmpCadm> records=GetTmpCadms(filter);
+                if(records!=null && records.Count()>0)
+                {
+                    foreach(TmpCadm record in records)
+                    {
+                        record.Delete(this);
+                        backList.Add(record as IEntity);
+                    }
+                    OnEntityChanged(EntityOperationType.Delete, backList); 
+                }
+            } 
         }
+        #endregion
         
-        
-        ///TmpCadx函数
+        #region TmpCadx方法
         public TmpCadx GetTmpCadx(long id)
         {
-            string sql="select Id,EntityType,Handle,FileName,AsText(geometry) as Wkt from TmpCadx" + " where id="+id.ToString();
-            IEnumerable<TmpCadx> tmpcadxs=connection.Query<TmpCadx>(sql);
-            if(tmpcadxs != null && tmpcadxs.Count()>0)
+            string sql="SELECT  Id As ID,EntityType As EntityType,Handle As Handle,FileName As FileName,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,AsText(geometry) as Wkt  FROM TmpCadx " + " where id="+id.ToString();
+            IEnumerable<TmpCadx> records=connection.Query<TmpCadx>(sql);
+            if(records != null && records.Count()>0)
             {
-                return tmpcadxs.First();
+                return records.First();
             }
             return null;
         }
         
-        public IEnumerable<TmpCadx> GetTmpCadxs(string filter)
+        public IEnumerable<TmpCadx> GetTmpCadxes(string filter)
         {
-            string sql="select Id,EntityType,Handle,FileName,AsText(geometry) as Wkt from TmpCadx" + " where "+filter;
-            var tmpcadxs=connection.Query<TmpCadx>(sql);
-            
-            return tmpcadxs;
+            string sql="SELECT  Id As ID,EntityType As EntityType,Handle As Handle,FileName As FileName,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,AsText(geometry) as Wkt  FROM TmpCadx " + " where "+filter;
+            var records=connection.Query<TmpCadx>(sql);            
+            return records;
         }
-        
-        public bool SaveTmpCadx(TmpCadx tmpcadx)
+        public bool SaveTmpCadx(TmpCadx record)
         {
-            bool retVal= tmpcadx.Save(connection,GetSRID());
+            bool retVal= record.Save(this);
             if(retVal)
             {
-                OnEntityChanged("tmpcadx",GetLayerName("TmpCadx"),EntityOperationType.Save,new List<long>{tmpcadx.ID});
+                OnEntityChanged(EntityOperationType.Save, record as IEntity);
+                
             }
             return retVal;
         }
-        
-        public void SaveTmpCadxs(List<TmpCadx> tmpcadxs)
+        public void SaveTmpCadxes(List<TmpCadx> records)
         {
+            List<IEntity> backList=new List<IEntity>();
             SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in tmpcadxs)
+            foreach(var rec in records)
             {
-                rec.Save(connection,GetSRID());
+                rec.Save(this);
+                backList.Add(rec as IEntity);
             }
             tran.Commit();
             tran.Dispose();
-            List<long> ids=tmpcadxs.Select(a => a.ID).ToList(); 
-            OnEntityChanged("tmpcadx",GetLayerName("TmpCadx"),EntityOperationType.Save,ids);
+            OnEntityChanged(EntityOperationType.Save, backList);    
         }
-        
         public void DeleteTmpCadx(TmpCadx record)
         {
-            record.Delete(connection);
-            OnEntityChanged("tmpcadx",GetLayerName("TmpCadx"),EntityOperationType.Delete,new List<long>{record.ID});
+            record.Delete(this);
+            OnEntityChanged(EntityOperationType.Delete, record as IEntity); 
         }
-        
         public void DeleteTmpCadx(long id)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                command.CommandText="delete from TmpCadx where Id=" + id.ToString();
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadx",GetLayerName("TmpCadx"),EntityOperationType.Delete,new List<long>{id});
-            }
+           TmpCadx record=GetTmpCadx(id);
+           if(record !=null)
+           DeleteTmpCadx(record);        
         }
-        
         public void DeleteTmpCadx(string filter)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
+           using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from TmpCadx";
-                else
-                    command.CommandText="delete from TmpCadx where " + filter;
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadx",GetLayerName("TmpCadx"),EntityOperationType.Delete,null);
-            }
+                List<IEntity> backList=new List<IEntity>();
+                IEnumerable<TmpCadx> records=GetTmpCadxes(filter);
+                if(records!=null && records.Count()>0)
+                {
+                    foreach(TmpCadx record in records)
+                    {
+                        record.Delete(this);
+                        backList.Add(record as IEntity);
+                    }
+                    OnEntityChanged(EntityOperationType.Delete, backList); 
+                }
+            } 
         }
+        #endregion
         
-        
-        ///TmpCadzj函数
-        public TmpCadzj GetTmpCadzj(long id)
-        {
-            string sql="select Id,EntityType,Handle,FileName,AsText(geometry) as Wkt from TmpCadzj" + " where id="+id.ToString();
-            IEnumerable<TmpCadzj> tmpcadzjs=connection.Query<TmpCadzj>(sql);
-            if(tmpcadzjs != null && tmpcadzjs.Count()>0)
-            {
-                return tmpcadzjs.First();
-            }
-            return null;
-        }
-        
-        public IEnumerable<TmpCadzj> GetTmpCadzjs(string filter)
-        {
-            string sql="select Id,EntityType,Handle,FileName,AsText(geometry) as Wkt from TmpCadzj" + " where "+filter;
-            var tmpcadzjs=connection.Query<TmpCadzj>(sql);
-            
-            return tmpcadzjs;
-        }
-        
-        public bool SaveTmpCadzj(TmpCadzj tmpcadzj)
-        {
-            bool retVal= tmpcadzj.Save(connection,GetSRID());
-            if(retVal)
-            {
-                OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Save,new List<long>{tmpcadzj.ID});
-            }
-            return retVal;
-        }
-        
-        public void SaveTmpCadzjs(List<TmpCadzj> tmpcadzjs)
-        {
-            SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in tmpcadzjs)
-            {
-                rec.Save(connection,GetSRID());
-            }
-            tran.Commit();
-            tran.Dispose();
-            List<long> ids=tmpcadzjs.Select(a => a.ID).ToList(); 
-            OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Save,ids);
-        }
-        
-        public void DeleteTmpCadzj(TmpCadzj record)
-        {
-            record.Delete(connection);
-            OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Delete,new List<long>{record.ID});
-        }
-        
-        public void DeleteTmpCadzj(long id)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                command.CommandText="delete from TmpCadzj where Id=" + id.ToString();
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Delete,new List<long>{id});
-            }
-        }
-        
-        public void DeleteTmpCadzj(string filter)
-        {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from TmpCadzj";
-                else
-                    command.CommandText="delete from TmpCadzj where " + filter;
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadzj",GetLayerName("TmpCadzj"),EntityOperationType.Delete,null);
-            }
-        }
-        
-        
-        ///TmpCadxdata函数
+        #region TmpCadxdata方法
         public TmpCadxdata GetTmpCadxdata(long id)
         {
-            string sql="select Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName from TmpCadxdata" + " where id="+id.ToString();
-            IEnumerable<TmpCadxdata> tmpcadxdatums=connection.Query<TmpCadxdata>(sql);
-            if(tmpcadxdatums != null && tmpcadxdatums.Count()>0)
+            string sql="SELECT  Id As ID,Handle As Handle,Tc As Tc,Wbnr As Wbnr,Cassdm As Cassdm,Fsxx1 As Fsxx1,Fsxx2 As Fsxx2,Xzjd As Xzjd,Fh As Fh,Fhdx As Fhdx,Ysdm As Ysdm,FileName As FileName,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj FROM TmpCadxdata " + " where id="+id.ToString();
+            IEnumerable<TmpCadxdata> records=connection.Query<TmpCadxdata>(sql);
+            if(records != null && records.Count()>0)
             {
-                return tmpcadxdatums.First();
+                return records.First();
             }
             return null;
         }
         
         public IEnumerable<TmpCadxdata> GetTmpCadxdatas(string filter)
         {
-            string sql="select Id,Handle,Tc,Wbnr,Cassdm,Fsxx1,Fsxx2,Xzjd,Fh,Fhdx,Ysdm,FileName from TmpCadxdata" + " where "+filter;
-            var tmpcadxdatums=connection.Query<TmpCadxdata>(sql);
-            
-            return tmpcadxdatums;
+            string sql="SELECT  Id As ID,Handle As Handle,Tc As Tc,Wbnr As Wbnr,Cassdm As Cassdm,Fsxx1 As Fsxx1,Fsxx2 As Fsxx2,Xzjd As Xzjd,Fh As Fh,Fhdx As Fhdx,Ysdm As Ysdm,FileName As FileName,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj FROM TmpCadxdata " + " where "+filter;
+            var records=connection.Query<TmpCadxdata>(sql);            
+            return records;
         }
-        
-        public bool SaveTmpCadxdata(TmpCadxdata tmpcadxdatum)
+        public bool SaveTmpCadxdata(TmpCadxdata record)
         {
-            bool retVal= tmpcadxdatum.Save(connection);
+            bool retVal= record.Save(this);
             if(retVal)
             {
-                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Save,new List<long>{tmpcadxdatum.ID});
+                OnEntityChanged(EntityOperationType.Save, record as IEntity);
+                
             }
             return retVal;
         }
-        
-        public void SaveTmpCadxdatas(List<TmpCadxdata> tmpcadxdatums)
+        public void SaveTmpCadxdatas(List<TmpCadxdata> records)
         {
+            List<IEntity> backList=new List<IEntity>();
             SQLiteTransaction tran = connection.BeginTransaction();
-            foreach(var rec in tmpcadxdatums)
+            foreach(var rec in records)
             {
-                rec.Save(connection);
+                rec.Save(this);
+                backList.Add(rec as IEntity);
             }
             tran.Commit();
             tran.Dispose();
-            List<long> ids=tmpcadxdatums.Select(a => a.ID).ToList(); 
-            OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Save,ids);
+            OnEntityChanged(EntityOperationType.Save, backList);    
         }
-        
         public void DeleteTmpCadxdata(TmpCadxdata record)
         {
-            record.Delete(connection);
-            OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,new List<long>{record.ID});
+            record.Delete(this);
+            OnEntityChanged(EntityOperationType.Delete, record as IEntity); 
         }
-        
         public void DeleteTmpCadxdata(long id)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
-            {
-                command.CommandText="delete from TmpCadxdata where Id=" + id.ToString();
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,new List<long>{id});
-            }
+           TmpCadxdata record=GetTmpCadxdata(id);
+           if(record !=null)
+           DeleteTmpCadxdata(record);        
         }
-        
         public void DeleteTmpCadxdata(string filter)
         {
-            using(SQLiteCommand command=new SQLiteCommand(connection))
+           using(SQLiteCommand command=new SQLiteCommand(connection))
             {
-                if(string.IsNullOrEmpty(filter))
-                    command.CommandText="delete from TmpCadxdata";
-                else
-                    command.CommandText="delete from TmpCadxdata where " + filter;
-                command.ExecuteNonQuery();
-                OnEntityChanged("tmpcadxdata",GetLayerName("TmpCadxdata"),EntityOperationType.Delete,null);
+                List<IEntity> backList=new List<IEntity>();
+                IEnumerable<TmpCadxdata> records=GetTmpCadxdatas(filter);
+                if(records!=null && records.Count()>0)
+                {
+                    foreach(TmpCadxdata record in records)
+                    {
+                        record.Delete(this);
+                        backList.Add(record as IEntity);
+                    }
+                    OnEntityChanged(EntityOperationType.Delete, backList); 
+                }
+            } 
+        }
+        #endregion
+        
+        #region TmpCadzj方法
+        public TmpCadzj GetTmpCadzj(long id)
+        {
+            string sql="SELECT  Id As ID,EntityType As EntityType,Handle As Handle,FileName As FileName,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,AsText(geometry) as Wkt  FROM TmpCadzj " + " where id="+id.ToString();
+            IEnumerable<TmpCadzj> records=connection.Query<TmpCadzj>(sql);
+            if(records != null && records.Count()>0)
+            {
+                return records.First();
             }
+            return null;
         }
         
-        
+        public IEnumerable<TmpCadzj> GetTmpCadzjs(string filter)
+        {
+            string sql="SELECT  Id As ID,EntityType As EntityType,Handle As Handle,FileName As FileName,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,AsText(geometry) as Wkt  FROM TmpCadzj " + " where "+filter;
+            var records=connection.Query<TmpCadzj>(sql);            
+            return records;
+        }
+        public bool SaveTmpCadzj(TmpCadzj record)
+        {
+            bool retVal= record.Save(this);
+            if(retVal)
+            {
+                OnEntityChanged(EntityOperationType.Save, record as IEntity);
+                
+            }
+            return retVal;
+        }
+        public void SaveTmpCadzjs(List<TmpCadzj> records)
+        {
+            List<IEntity> backList=new List<IEntity>();
+            SQLiteTransaction tran = connection.BeginTransaction();
+            foreach(var rec in records)
+            {
+                rec.Save(this);
+                backList.Add(rec as IEntity);
+            }
+            tran.Commit();
+            tran.Dispose();
+            OnEntityChanged(EntityOperationType.Save, backList);    
+        }
+        public void DeleteTmpCadzj(TmpCadzj record)
+        {
+            record.Delete(this);
+            OnEntityChanged(EntityOperationType.Delete, record as IEntity); 
+        }
+        public void DeleteTmpCadzj(long id)
+        {
+           TmpCadzj record=GetTmpCadzj(id);
+           if(record !=null)
+           DeleteTmpCadzj(record);        
+        }
+        public void DeleteTmpCadzj(string filter)
+        {
+           using(SQLiteCommand command=new SQLiteCommand(connection))
+            {
+                List<IEntity> backList=new List<IEntity>();
+                IEnumerable<TmpCadzj> records=GetTmpCadzjs(filter);
+                if(records!=null && records.Count()>0)
+                {
+                    foreach(TmpCadzj record in records)
+                    {
+                        record.Delete(this);
+                        backList.Add(record as IEntity);
+                    }
+                    OnEntityChanged(EntityOperationType.Delete, backList); 
+                }
+            } 
+        }
+        #endregion
         
         
     }
 }
-
-
-

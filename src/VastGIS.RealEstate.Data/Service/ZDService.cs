@@ -13,7 +13,9 @@ namespace VastGIS.RealEstate.Data.Service
     public partial interface ZdService
     {      
         bool InitTables();
-        
+
+        long GetMaxID(string tableName);
+
     }
 }
 
