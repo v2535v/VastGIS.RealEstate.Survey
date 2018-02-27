@@ -105,6 +105,10 @@ namespace VastGIS.Shared
                 bytes[0] = byte.Parse(int.Parse(str.Substring(2, 2), System.Globalization.NumberStyles.HexNumber).ToString());
                 dst += Encoding.Unicode.GetString(bytes);
             }
+            while (dst.Contains("\\u"))
+            {
+                dst = UnicodeToString(dst);
+            }
             return dst;
         }
     }
