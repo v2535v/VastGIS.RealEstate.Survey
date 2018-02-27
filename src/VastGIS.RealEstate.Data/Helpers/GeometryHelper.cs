@@ -52,13 +52,15 @@ namespace VastGIS.RealEstate.Data.Helpers
             double endx = 0.0;
             double endy = 0.0;
 
-            bool retVal=firstEdge.QueryPoint(dist,out endx, out endy);
-            if (retVal == false) return null;
+            //bool retVal=firstEdge.QueryPoint(dist,out endx, out endy);
+            //if (retVal == false) return null;
             double newDist = endEdge.Length - dist;
             double startx = 0.0;
             double starty = 0.0;
-            retVal = endEdge.QueryPoint(newDist,out startx, out starty);
+            bool retVal = endEdge.QueryPoint(newDist,out startx, out starty);
 
+            endx = edges[edgeIndex].X2 + startx - edges[edgeIndex].X1;
+            endy= edges[edgeIndex].Y2 + starty - edges[edgeIndex].Y1;
             edges[edgeIndex].X1 = startx;
             edges[edgeIndex].Y1 = starty;
             edges[edgeIndex].X2 = endx;
@@ -230,6 +232,7 @@ namespace VastGIS.RealEstate.Data.Helpers
             foreach (IGeometry geometry in geometries)
             {
                 GeoAPI.Geometries.IGeometry newGeom= reader.Read(geometry.ExportToWkt());
+                
                 if (unionall == null)
                 {
                     unionall = newGeom.Clone() as GeoAPI.Geometries.IGeometry;
@@ -373,6 +376,7 @@ namespace VastGIS.RealEstate.Data.Helpers
                 if (editGeometries.Count == 1)
                 {
                     editGeometry = editGeometries[0];
+                    
                 }
                 else
                 {
@@ -380,6 +384,7 @@ namespace VastGIS.RealEstate.Data.Helpers
                 }
 
             }
+            
             IGeometry newGeometry = new Api.Concrete.Geometry(GeometryType.Polygon, ZValueType.None);
             newGeometry.ImportFromWkt(editGeometry.AsText());
             return newGeometry;

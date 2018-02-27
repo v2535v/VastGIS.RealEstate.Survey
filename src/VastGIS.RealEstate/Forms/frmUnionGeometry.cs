@@ -64,7 +64,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 }
                 
             }
-
+            ucSelectLayer1.LimitedGeometryType = GeometryType.None;
             ucFeatureLists1.BindContext(_context);
             ucFeatureLists1.CanMultiSelect = true;
             ucSelectLayer1.ucSelectedClassChanged += UcSelectLayer1_ucSelectedClassChanged;

@@ -22,6 +22,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         private VgObjectclass _selectedClass;
         private List<VgObjectclass> _selectedClasses;
         private bool _isSingle;
+        private GeometryType _limitedGeometryType;
 
         public delegate void SelectedClassChanged(object sender, ObjectClassEventArgs e);
 
@@ -32,6 +33,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         {
             InitializeComponent();
             _selectedClass = null;
+            _limitedGeometryType=GeometryType.None;
         }
 
         public void SetClasses(List<VgObjectclass> sourceClasses)
@@ -65,21 +67,27 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             set
             {
                 _geometryType = value;
-                CheckValues();
+               
             }
+        }
+
+        public GeometryType LimitedGeometryType
+        {
+            get { return _limitedGeometryType; }
+            set { _limitedGeometryType = value; CheckValues(); }
         }
 
         private void CheckValues()
         {
-            if (_geometryType != GeometryType.None)
+            if (_limitedGeometryType != GeometryType.None)
             {
                 if (_selectedClass != null)
                 {
-                    if (_selectedClass.Txlx != (int)_geometryType) _selectedClass = null;
+                    if (_selectedClass.Txlx != (int)_limitedGeometryType) _selectedClass = null;
                 }
                 if (_selectedClasses != null)
                 {
-                    List<VgObjectclass> classes = _selectedClasses.Where(c => c.Txlx == (int)_geometryType).ToList();
+                    List<VgObjectclass> classes = _selectedClasses.Where(c => c.Txlx == (int)_limitedGeometryType).ToList();
                     _selectedClasses = classes;
                 }
 
@@ -106,7 +114,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
 
         private void btnTargetLayer_Click(object sender, EventArgs e)
         {
-            frmSelectLayer frmSelected=new frmSelectLayer(_sourceClasses,_geometryType);
+            frmSelectLayer frmSelected=new frmSelectLayer(_sourceClasses, _limitedGeometryType);
             if (_isSingle) frmSelected.SelectionMode = SelectionMode.One;
             else frmSelected.SelectionMode = SelectionMode.MultiExtended;
 

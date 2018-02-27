@@ -54,7 +54,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             {
                 ucSelectLayer1.SetCurrentClass(_plugin.Config.EditingClass);
             }
-            
+            ucSelectLayer1.LimitedGeometryType = GeometryType.None;
             ucCoordinateList1.GeometryType = ucSelectLayer1.GeometryType;
             ucSelectLayer1.ucSelectedClassChanged += UcSelectLayer1_ucSelectedClassChanged;
         }

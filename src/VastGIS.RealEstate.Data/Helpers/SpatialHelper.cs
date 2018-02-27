@@ -162,6 +162,10 @@ namespace VastGIS.RealEstate.Data.Helpers
         /// <returns></returns>
         public static IGeometry ReorderPolygonVertex(IGeometry geometry)
         {
+            if (geometry.PartIsClockWise(0)==false)
+            {
+                geometry.PartReserveOrder(0);
+            }
             double xMin = geometry.Extents.MinX;
             double yMax = geometry.Extents.MaxY;
             int startIndex = -1;

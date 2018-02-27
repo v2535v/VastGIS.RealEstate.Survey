@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Syncfusion.Windows.Forms.Tools.ToolTipInfo toolTipInfo1 = new Syncfusion.Windows.Forms.Tools.ToolTipInfo();
+            Syncfusion.Windows.Forms.Tools.ToolTipInfo toolTipInfo2 = new Syncfusion.Windows.Forms.Tools.ToolTipInfo();
             this.lblList = new System.Windows.Forms.Label();
             this.dblX = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,6 +48,7 @@
             this.btnSelectUnAll = new System.Windows.Forms.Button();
             this.btnSelectReserve = new System.Windows.Forms.Button();
             this.btnSelectAll = new System.Windows.Forms.Button();
+            this.superToolTip1 = new Syncfusion.Windows.Forms.Tools.SuperToolTip(null);
             ((System.ComponentModel.ISupportInitialize)(this.dblX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dblY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridPoints)).BeginInit();
@@ -211,6 +214,11 @@
             this.btnVertexUpdate.PushButton = true;
             this.btnVertexUpdate.Size = new System.Drawing.Size(32, 26);
             this.btnVertexUpdate.TabIndex = 20;
+            toolTipInfo1.Body.Size = new System.Drawing.Size(20, 20);
+            toolTipInfo1.Body.Text = "更新节点";
+            toolTipInfo1.Footer.Size = new System.Drawing.Size(20, 20);
+            toolTipInfo1.Header.Size = new System.Drawing.Size(20, 20);
+            this.superToolTip1.SetToolTip(this.btnVertexUpdate, toolTipInfo1);
             this.btnVertexUpdate.Click += new System.EventHandler(this.btnVertexUpdate_Click);
             // 
             // btnVertexPick
@@ -226,6 +234,12 @@
             this.btnVertexPick.PushButton = true;
             this.btnVertexPick.Size = new System.Drawing.Size(32, 26);
             this.btnVertexPick.TabIndex = 19;
+            toolTipInfo2.Body.Size = new System.Drawing.Size(20, 20);
+            toolTipInfo2.Body.Text = "在图形窗口点击位置获取坐标";
+            toolTipInfo2.Footer.Size = new System.Drawing.Size(20, 20);
+            toolTipInfo2.Header.Size = new System.Drawing.Size(20, 20);
+            toolTipInfo2.Header.Text = "坐标获取";
+            this.superToolTip1.SetToolTip(this.btnVertexPick, toolTipInfo2);
             this.btnVertexPick.Click += new System.EventHandler(this.btnVertexPick_Click);
             // 
             // btnRemoveVertex
@@ -298,6 +312,10 @@
             this.btnSelectAll.UseVisualStyleBackColor = true;
             this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
+            // superToolTip1
+            // 
+            this.superToolTip1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(158)))), ((int)(((byte)(218)))));
+            // 
             // ucCoordinateList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -332,5 +350,6 @@
         private Syncfusion.Windows.Forms.ButtonAdv btnInsertVertex;
         private Syncfusion.Windows.Forms.ButtonAdv btnRemoveVertex;
         private Syncfusion.Windows.Forms.ButtonAdv btnVertexUp;
+        private Syncfusion.Windows.Forms.Tools.SuperToolTip superToolTip1;
     }
 }

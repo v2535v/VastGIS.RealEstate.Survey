@@ -60,6 +60,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                     ucCoordinateList1.GeometryType = (GeometryType)currentObjectclass.Txlx;
                 }
             }
+            ucSelectLayer1.LimitedGeometryType=GeometryType.None;
             ucSelectLayer1.Label = "编辑图层";
             ucSelectLayer1.SingleSelect = true;
             ucSelectLayer1.ucSelectedClassChanged += UcSelectLayer1_ucSelectedClassChanged;
@@ -171,6 +172,33 @@ namespace VastGIS.Plugins.RealEstate.Forms
             if (Validate() == false) return;
            ucCoordinateList1.DrawPoints();
         }
-        
+
+        private void btnReorder_Click(object sender, EventArgs e)
+        {
+            if (Validate() == false) return;
+            IGeometry newGeometry = ucCoordinateList1.GetGeometry();
+            if (newGeometry.IsEmpty == true)
+            {
+                lblInfo.Text = "当前坐标不能生成正确图形!";
+                return;
+            }
+            if (newGeometry.GeometryType != GeometryType.Polygon)
+            {
+                lblInfo.Text = "排序功能只针对多边形!";
+            }
+            //if (newGeometry.IsValid == false)
+            //{
+            //    lblInfo.Text = "错误:" + newGeometry.IsValidReason;
+            //    return;
+            //}
+            IGeometry newGeometry2 = SpatialHelper.ReorderPolygonVertex(newGeometry);
+            if (newGeometry2 != null)
+            {
+                ucCoordinateList1.ClearList();
+                ucCoordinateList1.ClearDrawing();
+                ucCoordinateList1.AddGeometry(newGeometry2);
+            }
+            
+        }
     }
 }
