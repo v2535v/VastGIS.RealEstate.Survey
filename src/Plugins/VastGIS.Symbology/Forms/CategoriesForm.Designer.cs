@@ -95,7 +95,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.dgvCategories.RowHeadersWidth = 15;
             this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvCategories.ShowCellErrors = false;
-            this.dgvCategories.Size = new System.Drawing.Size(498, 324);
+            this.dgvCategories.Size = new System.Drawing.Size(498, 299);
             this.dgvCategories.TabIndex = 83;
             this.dgvCategories.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvCategories_CellBeginEdit);
             this.dgvCategories.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnGridCellDoubleClick);
@@ -148,11 +148,11 @@ namespace VastGIS.Plugins.Symbology.Forms
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(427, 346);
+            this.btnOk.Location = new System.Drawing.Point(427, 319);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(85, 26);
+            this.btnOk.Size = new System.Drawing.Size(85, 24);
             this.btnOk.TabIndex = 88;
-            this.btnOk.Text = "Ok";
+            this.btnOk.Text = "确定";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.OnOkButtonClicked);
             // 
@@ -160,77 +160,77 @@ namespace VastGIS.Plugins.Symbology.Forms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(518, 346);
+            this.btnCancel.Location = new System.Drawing.Point(518, 319);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(91, 26);
+            this.btnCancel.Size = new System.Drawing.Size(91, 24);
             this.btnCancel.TabIndex = 89;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.OnCancelButtonClicked);
             // 
             // btnCategoryStyle
             // 
             this.btnCategoryStyle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCategoryStyle.Location = new System.Drawing.Point(518, 46);
+            this.btnCategoryStyle.Location = new System.Drawing.Point(518, 42);
             this.btnCategoryStyle.Name = "btnCategoryStyle";
-            this.btnCategoryStyle.Size = new System.Drawing.Size(91, 26);
+            this.btnCategoryStyle.Size = new System.Drawing.Size(91, 24);
             this.btnCategoryStyle.TabIndex = 8;
-            this.btnCategoryStyle.Text = "Style...";
+            this.btnCategoryStyle.Text = "符号配置...";
             this.btnCategoryStyle.UseVisualStyleBackColor = true;
             this.btnCategoryStyle.Click += new System.EventHandler(this.btnCategoryStyle_Click);
             // 
             // btnCategoryRemove
             // 
             this.btnCategoryRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCategoryRemove.Location = new System.Drawing.Point(518, 182);
+            this.btnCategoryRemove.Location = new System.Drawing.Point(518, 168);
             this.btnCategoryRemove.Name = "btnCategoryRemove";
-            this.btnCategoryRemove.Size = new System.Drawing.Size(91, 26);
+            this.btnCategoryRemove.Size = new System.Drawing.Size(91, 24);
             this.btnCategoryRemove.TabIndex = 103;
-            this.btnCategoryRemove.Text = "Remove";
+            this.btnCategoryRemove.Text = "移除";
             this.btnCategoryRemove.UseVisualStyleBackColor = true;
             this.btnCategoryRemove.Click += new System.EventHandler(this.btnCategoriesRemove_Click);
             // 
             // btnEditExpression
             // 
             this.btnEditExpression.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditExpression.Location = new System.Drawing.Point(518, 80);
+            this.btnEditExpression.Location = new System.Drawing.Point(518, 74);
             this.btnEditExpression.Name = "btnEditExpression";
-            this.btnEditExpression.Size = new System.Drawing.Size(91, 26);
+            this.btnEditExpression.Size = new System.Drawing.Size(91, 24);
             this.btnEditExpression.TabIndex = 108;
-            this.btnEditExpression.Text = "Expression...";
+            this.btnEditExpression.Text = "计算公式...";
             this.btnEditExpression.UseVisualStyleBackColor = true;
             this.btnEditExpression.Click += new System.EventHandler(this.btnEditExpression_Click);
             // 
             // btnCategoryMoveDown
             // 
             this.btnCategoryMoveDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCategoryMoveDown.Location = new System.Drawing.Point(518, 148);
+            this.btnCategoryMoveDown.Location = new System.Drawing.Point(518, 137);
             this.btnCategoryMoveDown.Name = "btnCategoryMoveDown";
-            this.btnCategoryMoveDown.Size = new System.Drawing.Size(91, 26);
+            this.btnCategoryMoveDown.Size = new System.Drawing.Size(91, 24);
             this.btnCategoryMoveDown.TabIndex = 105;
-            this.btnCategoryMoveDown.Text = "Down";
+            this.btnCategoryMoveDown.Text = "下移";
             this.btnCategoryMoveDown.UseVisualStyleBackColor = true;
             this.btnCategoryMoveDown.Click += new System.EventHandler(this.btnCategoryMoveDown_Click);
             // 
             // btnGenerate
             // 
             this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerate.Location = new System.Drawing.Point(518, 12);
+            this.btnGenerate.Location = new System.Drawing.Point(518, 11);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(91, 26);
+            this.btnGenerate.Size = new System.Drawing.Size(91, 24);
             this.btnGenerate.TabIndex = 100;
-            this.btnGenerate.Text = "Generate";
+            this.btnGenerate.Text = "创建";
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // btnCategoryMoveUp
             // 
             this.btnCategoryMoveUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCategoryMoveUp.Location = new System.Drawing.Point(518, 114);
+            this.btnCategoryMoveUp.Location = new System.Drawing.Point(518, 105);
             this.btnCategoryMoveUp.Name = "btnCategoryMoveUp";
-            this.btnCategoryMoveUp.Size = new System.Drawing.Size(91, 26);
+            this.btnCategoryMoveUp.Size = new System.Drawing.Size(91, 24);
             this.btnCategoryMoveUp.TabIndex = 104;
-            this.btnCategoryMoveUp.Text = "Up";
+            this.btnCategoryMoveUp.Text = "上移";
             this.btnCategoryMoveUp.UseVisualStyleBackColor = true;
             this.btnCategoryMoveUp.Click += new System.EventHandler(this.btnCategoryMoveUp_Click);
             // 
@@ -238,11 +238,11 @@ namespace VastGIS.Plugins.Symbology.Forms
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnApply.Enabled = false;
-            this.btnApply.Location = new System.Drawing.Point(336, 346);
+            this.btnApply.Location = new System.Drawing.Point(336, 319);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(85, 26);
+            this.btnApply.Size = new System.Drawing.Size(85, 24);
             this.btnApply.TabIndex = 111;
-            this.btnApply.Text = "Apply";
+            this.btnApply.Text = "应用";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.OnApplyButtonClicked);
             // 
@@ -255,11 +255,11 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.toolStripEx1.Image = null;
             this.toolStripEx1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStyle});
-            this.toolStripEx1.Location = new System.Drawing.Point(12, 347);
+            this.toolStripEx1.Location = new System.Drawing.Point(12, 318);
             this.toolStripEx1.Name = "toolStripEx1";
             this.toolStripEx1.Office12Mode = false;
             this.toolStripEx1.ShowCaption = false;
-            this.toolStripEx1.Size = new System.Drawing.Size(67, 25);
+            this.toolStripEx1.Size = new System.Drawing.Size(103, 25);
             this.toolStripEx1.TabIndex = 168;
             this.toolStripEx1.Text = "Style";
             this.toolStripEx1.VisualStyle = Syncfusion.Windows.Forms.Tools.ToolStripExStyle.Metro;
@@ -275,14 +275,14 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.toolStyle.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.icon_settings;
             this.toolStyle.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStyle.Name = "toolStyle";
-            this.toolStyle.Size = new System.Drawing.Size(64, 22);
+            this.toolStyle.Size = new System.Drawing.Size(69, 22);
             this.toolStyle.Text = "More";
             // 
             // toolAddRange
             // 
             this.toolAddRange.Name = "toolAddRange";
             this.toolAddRange.Size = new System.Drawing.Size(157, 22);
-            this.toolAddRange.Text = "Add Range...";
+            this.toolAddRange.Text = "添加取值范围...";
             this.toolAddRange.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // toolStripSeparator5
@@ -295,7 +295,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.toolSaveCategories.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.icon_save1;
             this.toolSaveCategories.Name = "toolSaveCategories";
             this.toolSaveCategories.Size = new System.Drawing.Size(157, 22);
-            this.toolSaveCategories.Text = "Save categories";
+            this.toolSaveCategories.Text = "保存类目";
             this.toolSaveCategories.Click += new System.EventHandler(this.toolSaveCategories_Click);
             // 
             // toolRemoveStyle
@@ -303,7 +303,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.toolRemoveStyle.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.img_folder_open;
             this.toolRemoveStyle.Name = "toolRemoveStyle";
             this.toolRemoveStyle.Size = new System.Drawing.Size(157, 22);
-            this.toolRemoveStyle.Text = "Load categories";
+            this.toolRemoveStyle.Text = "加载类目";
             this.toolRemoveStyle.Click += new System.EventHandler(this.toolRemoveStyle_Click);
             // 
             // lblEmpty
@@ -311,7 +311,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.lblEmpty.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblEmpty.Location = new System.Drawing.Point(0, 0);
             this.lblEmpty.Name = "lblEmpty";
-            this.lblEmpty.Size = new System.Drawing.Size(498, 324);
+            this.lblEmpty.Size = new System.Drawing.Size(498, 299);
             this.lblEmpty.TabIndex = 169;
             this.lblEmpty.Text = "There are no categories for this layer yet.";
             this.lblEmpty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -325,29 +325,29 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.gradientPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gradientPanel1.Controls.Add(this.lblEmpty);
             this.gradientPanel1.Controls.Add(this.dgvCategories);
-            this.gradientPanel1.Location = new System.Drawing.Point(12, 12);
+            this.gradientPanel1.Location = new System.Drawing.Point(12, 11);
             this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.Size = new System.Drawing.Size(500, 326);
+            this.gradientPanel1.Size = new System.Drawing.Size(500, 301);
             this.gradientPanel1.TabIndex = 171;
             // 
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(518, 216);
+            this.btnClear.Location = new System.Drawing.Point(518, 199);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(91, 26);
+            this.btnClear.Size = new System.Drawing.Size(91, 24);
             this.btnClear.TabIndex = 172;
-            this.btnClear.Text = "Clear";
+            this.btnClear.Text = "清空";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.OnCategoriesClearClick);
             // 
             // CategoriesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(615, 379);
+            this.ClientSize = new System.Drawing.Size(615, 350);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.gradientPanel1);
             this.Controls.Add(this.toolStripEx1);
@@ -360,11 +360,11 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.Controls.Add(this.btnCategoryMoveDown);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.btnCategoryMoveUp);
-            this.MinimumSize = new System.Drawing.Size(470, 350);
+            this.MinimumSize = new System.Drawing.Size(470, 326);
             this.Name = "CategoriesForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Layer Categories";
+            this.Text = "图层类目管理";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnCategoriesFormClosing);
             this.Load += new System.EventHandler(this.CategoriesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).EndInit();

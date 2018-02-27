@@ -54,7 +54,6 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.cboLineType = new System.Windows.Forms.ComboBox();
             this.tabVertices = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.udVerticesSize = new VastGIS.Plugins.Symbology.Controls.NumericUpDownEx(this.components);
             this.chkVerticesFillVisible = new System.Windows.Forms.CheckBox();
             this.label29 = new System.Windows.Forms.Label();
             this.cboVerticesType = new System.Windows.Forms.ComboBox();
@@ -65,7 +64,6 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnRemoveStyle = new System.Windows.Forms.Button();
             this.btnAddStyle = new System.Windows.Forms.Button();
-            this.linePatternControl1 = new VastGIS.Plugins.Symbology.Controls.ListControls.LinePatternControl();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -74,20 +72,22 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.groupMarker = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.udMarkerOffset = new VastGIS.Plugins.Symbology.Controls.NumericUpDownEx(this.components);
             this.clpMarkerOutline = new VastGIS.UI.Controls.Office2007ColorPicker(this.components);
             this.label6 = new System.Windows.Forms.Label();
-            this.udMarkerSize = new VastGIS.Plugins.Symbology.Controls.NumericUpDownEx(this.components);
             this.cboOrientation = new System.Windows.Forms.ComboBox();
-            this.pointSymbolControl1 = new VastGIS.Plugins.Symbology.Controls.ListControls.SymbolControl();
             this.clpMarkerFill = new VastGIS.UI.Controls.Office2007ColorPicker(this.components);
-            this.udMarkerInterval = new VastGIS.Plugins.Symbology.Controls.NumericUpDownEx(this.components);
             this.chkMarkerFlipFirst = new System.Windows.Forms.CheckBox();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnMoveDown = new System.Windows.Forms.Button();
             this.btnMoveUp = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.udMarkerOffset = new VastGIS.Plugins.Symbology.Controls.NumericUpDownEx(this.components);
+            this.udMarkerSize = new VastGIS.Plugins.Symbology.Controls.NumericUpDownEx(this.components);
+            this.pointSymbolControl1 = new VastGIS.Plugins.Symbology.Controls.ListControls.SymbolControl();
+            this.udMarkerInterval = new VastGIS.Plugins.Symbology.Controls.NumericUpDownEx(this.components);
+            this.udVerticesSize = new VastGIS.Plugins.Symbology.Controls.NumericUpDownEx(this.components);
+            this.linePatternControl1 = new VastGIS.Plugins.Symbology.Controls.ListControls.LinePatternControl();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -97,12 +97,12 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.groupLine.SuspendLayout();
             this.tabVertices.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.udVerticesSize)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupMarker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udMarkerOffset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udMarkerSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udMarkerInterval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udVerticesSize)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -110,18 +110,18 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.groupBox1.Controls.Add(this.pctPreview);
             this.groupBox1.Location = new System.Drawing.Point(12, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(176, 142);
+            this.groupBox1.Size = new System.Drawing.Size(176, 131);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Preview";
+            this.groupBox1.Text = "预览";
             // 
             // pctPreview
             // 
             this.pctPreview.BackColor = System.Drawing.Color.Transparent;
             this.pctPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pctPreview.Location = new System.Drawing.Point(3, 16);
+            this.pctPreview.Location = new System.Drawing.Point(3, 17);
             this.pctPreview.Name = "pctPreview";
-            this.pctPreview.Size = new System.Drawing.Size(170, 123);
+            this.pctPreview.Size = new System.Drawing.Size(170, 111);
             this.pctPreview.TabIndex = 0;
             this.pctPreview.TabStop = false;
             // 
@@ -140,7 +140,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.Column2});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.GridColor = System.Drawing.SystemColors.Control;
-            this.dgv.Location = new System.Drawing.Point(3, 16);
+            this.dgv.Location = new System.Drawing.Point(3, 17);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
@@ -148,7 +148,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.dgv.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dgv.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(170, 147);
+            this.dgv.Size = new System.Drawing.Size(170, 133);
             this.dgv.TabIndex = 7;
             this.dgv.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
             this.dgv.SelectionChanged += new System.EventHandler(this.dgv_SelectionChanged);
@@ -169,22 +169,22 @@ namespace VastGIS.Plugins.Symbology.Forms
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgv);
-            this.groupBox2.Location = new System.Drawing.Point(12, 149);
+            this.groupBox2.Location = new System.Drawing.Point(12, 138);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(176, 166);
+            this.groupBox2.Size = new System.Drawing.Size(176, 153);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Layers";
+            this.groupBox2.Text = "层";
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabLine);
             this.tabControl1.Controls.Add(this.tabVertices);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(194, 12);
+            this.tabControl1.Location = new System.Drawing.Point(194, 11);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(419, 341);
+            this.tabControl1.Size = new System.Drawing.Size(419, 315);
             this.tabControl1.TabIndex = 9;
             // 
             // tabLine
@@ -195,19 +195,19 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.tabLine.Controls.Add(this.cboLineType);
             this.tabLine.Location = new System.Drawing.Point(4, 22);
             this.tabLine.Name = "tabLine";
-            this.tabLine.Size = new System.Drawing.Size(411, 315);
+            this.tabLine.Size = new System.Drawing.Size(411, 289);
             this.tabLine.TabIndex = 4;
-            this.tabLine.Text = "Lines";
+            this.tabLine.Text = "线";
             this.tabLine.UseVisualStyleBackColor = true;
             // 
             // transparencyControl1
             // 
             this.transparencyControl1.BandColor = System.Drawing.Color.Empty;
-            this.transparencyControl1.Location = new System.Drawing.Point(210, 21);
-            this.transparencyControl1.MaximumSize = new System.Drawing.Size(1024, 32);
-            this.transparencyControl1.MinimumSize = new System.Drawing.Size(128, 32);
+            this.transparencyControl1.Location = new System.Drawing.Point(210, 19);
+            this.transparencyControl1.MaximumSize = new System.Drawing.Size(1024, 30);
+            this.transparencyControl1.MinimumSize = new System.Drawing.Size(128, 30);
             this.transparencyControl1.Name = "transparencyControl1";
-            this.transparencyControl1.Size = new System.Drawing.Size(190, 32);
+            this.transparencyControl1.Size = new System.Drawing.Size(190, 30);
             this.transparencyControl1.TabIndex = 143;
             this.transparencyControl1.Value = ((byte)(255));
             this.transparencyControl1.ValueChanged += new VastGIS.UI.Controls.TransparencyControl.ValueChangedDeleg(this.transparencyControl1_ValueChanged);
@@ -220,9 +220,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.groupLine.Controls.Add(this.icbLineType);
             this.groupLine.Controls.Add(this.label22);
             this.groupLine.Controls.Add(this.label23);
-            this.groupLine.Location = new System.Drawing.Point(12, 58);
+            this.groupLine.Location = new System.Drawing.Point(12, 54);
             this.groupLine.Name = "groupLine";
-            this.groupLine.Size = new System.Drawing.Size(390, 109);
+            this.groupLine.Size = new System.Drawing.Size(390, 101);
             this.groupLine.TabIndex = 140;
             this.groupLine.TabStop = false;
             // 
@@ -234,21 +234,21 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.icbLineWidth.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.icbLineWidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.icbLineWidth.FormattingEnabled = true;
-            this.icbLineWidth.Location = new System.Drawing.Point(236, 29);
+            this.icbLineWidth.Location = new System.Drawing.Point(236, 27);
             this.icbLineWidth.Name = "icbLineWidth";
             this.icbLineWidth.OutlineColor = System.Drawing.Color.Black;
-            this.icbLineWidth.Size = new System.Drawing.Size(74, 21);
+            this.icbLineWidth.Size = new System.Drawing.Size(74, 22);
             this.icbLineWidth.TabIndex = 138;
             this.icbLineWidth.SelectedIndexChanged += new System.EventHandler(this.Ui2Options);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(19, 34);
+            this.label21.Location = new System.Drawing.Point(19, 31);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(31, 13);
+            this.label21.Size = new System.Drawing.Size(29, 12);
             this.label21.TabIndex = 139;
-            this.label21.Text = "Color";
+            this.label21.Text = "颜色";
             // 
             // clpOutline
             // 
@@ -260,9 +260,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.clpOutline.IntegralHeight = false;
             this.clpOutline.Items.AddRange(new object[] {
             "Color"});
-            this.clpOutline.Location = new System.Drawing.Point(60, 29);
+            this.clpOutline.Location = new System.Drawing.Point(60, 27);
             this.clpOutline.Name = "clpOutline";
-            this.clpOutline.Size = new System.Drawing.Size(74, 21);
+            this.clpOutline.Size = new System.Drawing.Size(74, 22);
             this.clpOutline.TabIndex = 136;
             this.clpOutline.SelectedColorChanged += new System.EventHandler(this.Ui2Options);
             // 
@@ -274,47 +274,47 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.icbLineType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.icbLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.icbLineType.FormattingEnabled = true;
-            this.icbLineType.Location = new System.Drawing.Point(60, 66);
+            this.icbLineType.Location = new System.Drawing.Point(60, 61);
             this.icbLineType.Name = "icbLineType";
             this.icbLineType.OutlineColor = System.Drawing.Color.Black;
-            this.icbLineType.Size = new System.Drawing.Size(74, 21);
+            this.icbLineType.Size = new System.Drawing.Size(74, 22);
             this.icbLineType.TabIndex = 137;
             this.icbLineType.SelectedIndexChanged += new System.EventHandler(this.Ui2Options);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(184, 32);
+            this.label22.Location = new System.Drawing.Point(184, 30);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(35, 13);
+            this.label22.Size = new System.Drawing.Size(29, 12);
             this.label22.TabIndex = 135;
-            this.label22.Text = "Width";
+            this.label22.Text = "宽度";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(20, 69);
+            this.label23.Location = new System.Drawing.Point(20, 64);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(30, 13);
+            this.label23.Size = new System.Drawing.Size(29, 12);
             this.label23.TabIndex = 134;
-            this.label23.Text = "Style";
+            this.label23.Text = "样式";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 24);
+            this.label5.Location = new System.Drawing.Point(22, 22);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 13);
+            this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 127;
-            this.label5.Text = "Line type";
+            this.label5.Text = "线形";
             // 
             // cboLineType
             // 
             this.cboLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLineType.FormattingEnabled = true;
-            this.cboLineType.Location = new System.Drawing.Point(84, 21);
+            this.cboLineType.Location = new System.Drawing.Point(84, 19);
             this.cboLineType.Name = "cboLineType";
-            this.cboLineType.Size = new System.Drawing.Size(85, 21);
+            this.cboLineType.Size = new System.Drawing.Size(85, 20);
             this.cboLineType.TabIndex = 126;
             // 
             // tabVertices
@@ -323,9 +323,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.tabVertices.Controls.Add(this.chkVerticesVisible);
             this.tabVertices.Location = new System.Drawing.Point(4, 22);
             this.tabVertices.Name = "tabVertices";
-            this.tabVertices.Size = new System.Drawing.Size(411, 315);
+            this.tabVertices.Size = new System.Drawing.Size(411, 289);
             this.tabVertices.TabIndex = 3;
-            this.tabVertices.Text = "Vertices";
+            this.tabVertices.Text = "端点";
             this.tabVertices.UseVisualStyleBackColor = true;
             // 
             // groupBox3
@@ -337,64 +337,57 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.groupBox3.Controls.Add(this.label28);
             this.groupBox3.Controls.Add(this.label27);
             this.groupBox3.Controls.Add(this.clpVerticesColor);
-            this.groupBox3.Location = new System.Drawing.Point(12, 58);
+            this.groupBox3.Location = new System.Drawing.Point(12, 54);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(386, 122);
+            this.groupBox3.Size = new System.Drawing.Size(386, 113);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
-            // 
-            // udVerticesSize
-            // 
-            this.udVerticesSize.Location = new System.Drawing.Point(248, 32);
-            this.udVerticesSize.Name = "udVerticesSize";
-            this.udVerticesSize.Size = new System.Drawing.Size(57, 20);
-            this.udVerticesSize.TabIndex = 9;
             // 
             // chkVerticesFillVisible
             // 
             this.chkVerticesFillVisible.AutoSize = true;
-            this.chkVerticesFillVisible.Location = new System.Drawing.Point(199, 78);
+            this.chkVerticesFillVisible.Location = new System.Drawing.Point(199, 72);
             this.chkVerticesFillVisible.Name = "chkVerticesFillVisible";
-            this.chkVerticesFillVisible.Size = new System.Drawing.Size(70, 17);
+            this.chkVerticesFillVisible.Size = new System.Drawing.Size(72, 16);
             this.chkVerticesFillVisible.TabIndex = 8;
-            this.chkVerticesFillVisible.Text = "Fill visible";
+            this.chkVerticesFillVisible.Text = "填充显示";
             this.chkVerticesFillVisible.UseVisualStyleBackColor = true;
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(196, 34);
+            this.label29.Location = new System.Drawing.Point(196, 31);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(27, 13);
+            this.label29.Size = new System.Drawing.Size(29, 12);
             this.label29.TabIndex = 6;
-            this.label29.Text = "Size";
+            this.label29.Text = "尺寸";
             // 
             // cboVerticesType
             // 
             this.cboVerticesType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVerticesType.FormattingEnabled = true;
-            this.cboVerticesType.Location = new System.Drawing.Point(61, 76);
+            this.cboVerticesType.Location = new System.Drawing.Point(61, 70);
             this.cboVerticesType.Name = "cboVerticesType";
-            this.cboVerticesType.Size = new System.Drawing.Size(72, 21);
+            this.cboVerticesType.Size = new System.Drawing.Size(72, 20);
             this.cboVerticesType.TabIndex = 5;
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(15, 79);
+            this.label28.Location = new System.Drawing.Point(15, 73);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(31, 13);
+            this.label28.Size = new System.Drawing.Size(29, 12);
             this.label28.TabIndex = 4;
-            this.label28.Text = "Type";
+            this.label28.Text = "类型";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(15, 34);
+            this.label27.Location = new System.Drawing.Point(15, 31);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(31, 13);
+            this.label27.Size = new System.Drawing.Size(29, 12);
             this.label27.TabIndex = 3;
-            this.label27.Text = "Color";
+            this.label27.Text = "颜色";
             // 
             // clpVerticesColor
             // 
@@ -406,19 +399,19 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.clpVerticesColor.IntegralHeight = false;
             this.clpVerticesColor.Items.AddRange(new object[] {
             "Color"});
-            this.clpVerticesColor.Location = new System.Drawing.Point(61, 31);
+            this.clpVerticesColor.Location = new System.Drawing.Point(61, 29);
             this.clpVerticesColor.Name = "clpVerticesColor";
-            this.clpVerticesColor.Size = new System.Drawing.Size(74, 21);
+            this.clpVerticesColor.Size = new System.Drawing.Size(74, 22);
             this.clpVerticesColor.TabIndex = 2;
             // 
             // chkVerticesVisible
             // 
             this.chkVerticesVisible.AutoSize = true;
-            this.chkVerticesVisible.Location = new System.Drawing.Point(30, 23);
+            this.chkVerticesVisible.Location = new System.Drawing.Point(30, 21);
             this.chkVerticesVisible.Name = "chkVerticesVisible";
-            this.chkVerticesVisible.Size = new System.Drawing.Size(64, 17);
+            this.chkVerticesVisible.Size = new System.Drawing.Size(72, 16);
             this.chkVerticesVisible.TabIndex = 0;
-            this.chkVerticesVisible.Text = "Vertices";
+            this.chkVerticesVisible.Text = "绘制端点";
             this.chkVerticesVisible.UseVisualStyleBackColor = true;
             // 
             // tabPage1
@@ -428,81 +421,64 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.tabPage1.Controls.Add(this.linePatternControl1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(411, 315);
+            this.tabPage1.Size = new System.Drawing.Size(411, 289);
             this.tabPage1.TabIndex = 5;
-            this.tabPage1.Text = "Styles";
+            this.tabPage1.Text = "样式";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnRemoveStyle
             // 
-            this.btnRemoveStyle.Location = new System.Drawing.Point(326, 48);
+            this.btnRemoveStyle.Location = new System.Drawing.Point(326, 44);
             this.btnRemoveStyle.Name = "btnRemoveStyle";
-            this.btnRemoveStyle.Size = new System.Drawing.Size(75, 26);
+            this.btnRemoveStyle.Size = new System.Drawing.Size(75, 24);
             this.btnRemoveStyle.TabIndex = 2;
-            this.btnRemoveStyle.Text = "Remove";
+            this.btnRemoveStyle.Text = "移除";
             this.btnRemoveStyle.UseVisualStyleBackColor = true;
             this.btnRemoveStyle.Click += new System.EventHandler(this.btnRemoveStyle_Click);
             // 
             // btnAddStyle
             // 
-            this.btnAddStyle.Location = new System.Drawing.Point(326, 16);
+            this.btnAddStyle.Location = new System.Drawing.Point(326, 15);
             this.btnAddStyle.Name = "btnAddStyle";
-            this.btnAddStyle.Size = new System.Drawing.Size(75, 26);
+            this.btnAddStyle.Size = new System.Drawing.Size(75, 24);
             this.btnAddStyle.TabIndex = 1;
-            this.btnAddStyle.Text = "Add";
+            this.btnAddStyle.Text = "增加";
             this.btnAddStyle.UseVisualStyleBackColor = true;
             this.btnAddStyle.Click += new System.EventHandler(this.btnAddStyle_Click);
-            // 
-            // linePatternControl1
-            // 
-            this.linePatternControl1.BackColor = System.Drawing.Color.Transparent;
-            this.linePatternControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.linePatternControl1.CellHeight = 24;
-            this.linePatternControl1.CellWidth = 72;
-            this.linePatternControl1.Font = new System.Drawing.Font("Arial", 25.6F);
-            this.linePatternControl1.GridColor = System.Drawing.Color.Gray;
-            this.linePatternControl1.GridVisible = true;
-            this.linePatternControl1.ItemCount = 1;
-            this.linePatternControl1.Location = new System.Drawing.Point(19, 16);
-            this.linePatternControl1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.linePatternControl1.Name = "linePatternControl1";
-            this.linePatternControl1.SelectedIndex = -1;
-            this.linePatternControl1.Size = new System.Drawing.Size(299, 279);
-            this.linePatternControl1.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 27);
+            this.label2.Location = new System.Drawing.Point(19, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 123;
             this.label2.Text = "Size";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(178, 64);
+            this.label1.Location = new System.Drawing.Point(178, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 122;
             this.label1.Text = "Fill color";
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(19, 63);
+            this.label30.Location = new System.Drawing.Point(19, 58);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(42, 13);
+            this.label30.Size = new System.Drawing.Size(53, 12);
             this.label30.TabIndex = 1;
             this.label30.Text = "Interval";
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(512, 355);
+            this.btnCancel.Location = new System.Drawing.Point(512, 328);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(95, 26);
+            this.btnCancel.Size = new System.Drawing.Size(95, 24);
             this.btnCancel.TabIndex = 41;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -510,9 +486,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(411, 355);
+            this.btnOk.Location = new System.Drawing.Point(411, 328);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(95, 26);
+            this.btnOk.Size = new System.Drawing.Size(95, 24);
             this.btnOk.TabIndex = 40;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -533,37 +509,29 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.groupMarker.Controls.Add(this.clpMarkerFill);
             this.groupMarker.Controls.Add(this.udMarkerInterval);
             this.groupMarker.Controls.Add(this.label30);
-            this.groupMarker.Location = new System.Drawing.Point(635, 34);
+            this.groupMarker.Location = new System.Drawing.Point(635, 31);
             this.groupMarker.Name = "groupMarker";
-            this.groupMarker.Size = new System.Drawing.Size(390, 224);
+            this.groupMarker.Size = new System.Drawing.Size(390, 207);
             this.groupMarker.TabIndex = 128;
             this.groupMarker.TabStop = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 99);
+            this.label7.Location = new System.Drawing.Point(19, 91);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 132;
             this.label7.Text = "Offset";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(178, 97);
+            this.label4.Location = new System.Drawing.Point(178, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.Size = new System.Drawing.Size(83, 12);
             this.label4.TabIndex = 127;
             this.label4.Text = "Outline color";
-            // 
-            // udMarkerOffset
-            // 
-            this.udMarkerOffset.Location = new System.Drawing.Point(93, 93);
-            this.udMarkerOffset.Name = "udMarkerOffset";
-            this.udMarkerOffset.Size = new System.Drawing.Size(57, 20);
-            this.udMarkerOffset.TabIndex = 131;
-            this.udMarkerOffset.ValueChanged += new System.EventHandler(this.Ui2Options);
             // 
             // clpMarkerOutline
             // 
@@ -575,55 +543,30 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.clpMarkerOutline.IntegralHeight = false;
             this.clpMarkerOutline.Items.AddRange(new object[] {
             "Color"});
-            this.clpMarkerOutline.Location = new System.Drawing.Point(259, 93);
+            this.clpMarkerOutline.Location = new System.Drawing.Point(259, 86);
             this.clpMarkerOutline.Name = "clpMarkerOutline";
-            this.clpMarkerOutline.Size = new System.Drawing.Size(74, 21);
+            this.clpMarkerOutline.Size = new System.Drawing.Size(74, 22);
             this.clpMarkerOutline.TabIndex = 126;
             this.clpMarkerOutline.SelectedColorChanged += new System.EventHandler(this.Ui2Options);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(178, 29);
+            this.label6.Location = new System.Drawing.Point(178, 27);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.Size = new System.Drawing.Size(71, 12);
             this.label6.TabIndex = 130;
             this.label6.Text = "Orientation";
-            // 
-            // udMarkerSize
-            // 
-            this.udMarkerSize.Location = new System.Drawing.Point(93, 25);
-            this.udMarkerSize.Name = "udMarkerSize";
-            this.udMarkerSize.Size = new System.Drawing.Size(57, 20);
-            this.udMarkerSize.TabIndex = 124;
-            this.udMarkerSize.ValueChanged += new System.EventHandler(this.Ui2Options);
             // 
             // cboOrientation
             // 
             this.cboOrientation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOrientation.FormattingEnabled = true;
-            this.cboOrientation.Location = new System.Drawing.Point(259, 25);
+            this.cboOrientation.Location = new System.Drawing.Point(259, 23);
             this.cboOrientation.Name = "cboOrientation";
-            this.cboOrientation.Size = new System.Drawing.Size(95, 21);
+            this.cboOrientation.Size = new System.Drawing.Size(95, 20);
             this.cboOrientation.TabIndex = 129;
             this.cboOrientation.SelectedIndexChanged += new System.EventHandler(this.Ui2Options);
-            // 
-            // pointSymbolControl1
-            // 
-            this.pointSymbolControl1.BackColor = System.Drawing.Color.White;
-            this.pointSymbolControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pointSymbolControl1.CellHeight = 24;
-            this.pointSymbolControl1.CellWidth = 24;
-            this.pointSymbolControl1.Font = new System.Drawing.Font("Arial", 25.6F);
-            this.pointSymbolControl1.GridColor = System.Drawing.Color.Black;
-            this.pointSymbolControl1.GridVisible = false;
-            this.pointSymbolControl1.ItemCount = 17;
-            this.pointSymbolControl1.Location = new System.Drawing.Point(13, 141);
-            this.pointSymbolControl1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.pointSymbolControl1.Name = "pointSymbolControl1";
-            this.pointSymbolControl1.SelectedIndex = -1;
-            this.pointSymbolControl1.Size = new System.Drawing.Size(364, 54);
-            this.pointSymbolControl1.TabIndex = 13;
             // 
             // clpMarkerFill
             // 
@@ -635,26 +578,18 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.clpMarkerFill.IntegralHeight = false;
             this.clpMarkerFill.Items.AddRange(new object[] {
             "Color"});
-            this.clpMarkerFill.Location = new System.Drawing.Point(259, 59);
+            this.clpMarkerFill.Location = new System.Drawing.Point(259, 54);
             this.clpMarkerFill.Name = "clpMarkerFill";
-            this.clpMarkerFill.Size = new System.Drawing.Size(74, 21);
+            this.clpMarkerFill.Size = new System.Drawing.Size(74, 22);
             this.clpMarkerFill.TabIndex = 121;
             this.clpMarkerFill.SelectedColorChanged += new System.EventHandler(this.Ui2Options);
-            // 
-            // udMarkerInterval
-            // 
-            this.udMarkerInterval.Location = new System.Drawing.Point(93, 59);
-            this.udMarkerInterval.Name = "udMarkerInterval";
-            this.udMarkerInterval.Size = new System.Drawing.Size(57, 20);
-            this.udMarkerInterval.TabIndex = 12;
-            this.udMarkerInterval.ValueChanged += new System.EventHandler(this.Ui2Options);
             // 
             // chkMarkerFlipFirst
             // 
             this.chkMarkerFlipFirst.AutoSize = true;
-            this.chkMarkerFlipFirst.Location = new System.Drawing.Point(648, 288);
+            this.chkMarkerFlipFirst.Location = new System.Drawing.Point(648, 266);
             this.chkMarkerFlipFirst.Name = "chkMarkerFlipFirst";
-            this.chkMarkerFlipFirst.Size = new System.Drawing.Size(93, 17);
+            this.chkMarkerFlipFirst.Size = new System.Drawing.Size(102, 16);
             this.chkMarkerFlipFirst.TabIndex = 0;
             this.chkMarkerFlipFirst.Text = "Rotate marker";
             this.chkMarkerFlipFirst.UseVisualStyleBackColor = true;
@@ -662,9 +597,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             // btnApply
             // 
             this.btnApply.Enabled = false;
-            this.btnApply.Location = new System.Drawing.Point(310, 355);
+            this.btnApply.Location = new System.Drawing.Point(310, 328);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(95, 26);
+            this.btnApply.Size = new System.Drawing.Size(95, 24);
             this.btnApply.TabIndex = 129;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -673,9 +608,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             // btnMoveDown
             // 
             this.btnMoveDown.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.Arrow2___Down;
-            this.btnMoveDown.Location = new System.Drawing.Point(153, 321);
+            this.btnMoveDown.Location = new System.Drawing.Point(153, 296);
             this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new System.Drawing.Size(32, 32);
+            this.btnMoveDown.Size = new System.Drawing.Size(32, 30);
             this.btnMoveDown.TabIndex = 13;
             this.btnMoveDown.UseVisualStyleBackColor = true;
             this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
@@ -683,9 +618,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             // btnMoveUp
             // 
             this.btnMoveUp.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.Arrow2___Up;
-            this.btnMoveUp.Location = new System.Drawing.Point(115, 321);
+            this.btnMoveUp.Location = new System.Drawing.Point(115, 296);
             this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new System.Drawing.Size(32, 32);
+            this.btnMoveUp.Size = new System.Drawing.Size(32, 30);
             this.btnMoveUp.TabIndex = 12;
             this.btnMoveUp.UseVisualStyleBackColor = true;
             this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
@@ -693,9 +628,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             // btnRemove
             // 
             this.btnRemove.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.Minus;
-            this.btnRemove.Location = new System.Drawing.Point(54, 321);
+            this.btnRemove.Location = new System.Drawing.Point(54, 296);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(32, 32);
+            this.btnRemove.Size = new System.Drawing.Size(32, 30);
             this.btnRemove.TabIndex = 11;
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
@@ -703,20 +638,85 @@ namespace VastGIS.Plugins.Symbology.Forms
             // btnAdd
             // 
             this.btnAdd.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.Plus_orange;
-            this.btnAdd.Location = new System.Drawing.Point(16, 321);
+            this.btnAdd.Location = new System.Drawing.Point(16, 296);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(32, 32);
+            this.btnAdd.Size = new System.Drawing.Size(32, 30);
             this.btnAdd.TabIndex = 10;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // udMarkerOffset
+            // 
+            this.udMarkerOffset.Location = new System.Drawing.Point(93, 86);
+            this.udMarkerOffset.Name = "udMarkerOffset";
+            this.udMarkerOffset.Size = new System.Drawing.Size(57, 21);
+            this.udMarkerOffset.TabIndex = 131;
+            this.udMarkerOffset.ValueChanged += new System.EventHandler(this.Ui2Options);
+            // 
+            // udMarkerSize
+            // 
+            this.udMarkerSize.Location = new System.Drawing.Point(93, 23);
+            this.udMarkerSize.Name = "udMarkerSize";
+            this.udMarkerSize.Size = new System.Drawing.Size(57, 21);
+            this.udMarkerSize.TabIndex = 124;
+            this.udMarkerSize.ValueChanged += new System.EventHandler(this.Ui2Options);
+            // 
+            // pointSymbolControl1
+            // 
+            this.pointSymbolControl1.BackColor = System.Drawing.Color.White;
+            this.pointSymbolControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pointSymbolControl1.CellHeight = 24;
+            this.pointSymbolControl1.CellWidth = 24;
+            this.pointSymbolControl1.Font = new System.Drawing.Font("Arial", 25.6F);
+            this.pointSymbolControl1.GridColor = System.Drawing.Color.Black;
+            this.pointSymbolControl1.GridVisible = false;
+            this.pointSymbolControl1.ItemCount = 17;
+            this.pointSymbolControl1.Location = new System.Drawing.Point(13, 130);
+            this.pointSymbolControl1.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.pointSymbolControl1.Name = "pointSymbolControl1";
+            this.pointSymbolControl1.SelectedIndex = -1;
+            this.pointSymbolControl1.Size = new System.Drawing.Size(364, 50);
+            this.pointSymbolControl1.TabIndex = 13;
+            // 
+            // udMarkerInterval
+            // 
+            this.udMarkerInterval.Location = new System.Drawing.Point(93, 54);
+            this.udMarkerInterval.Name = "udMarkerInterval";
+            this.udMarkerInterval.Size = new System.Drawing.Size(57, 21);
+            this.udMarkerInterval.TabIndex = 12;
+            this.udMarkerInterval.ValueChanged += new System.EventHandler(this.Ui2Options);
+            // 
+            // udVerticesSize
+            // 
+            this.udVerticesSize.Location = new System.Drawing.Point(248, 30);
+            this.udVerticesSize.Name = "udVerticesSize";
+            this.udVerticesSize.Size = new System.Drawing.Size(57, 21);
+            this.udVerticesSize.TabIndex = 9;
+            // 
+            // linePatternControl1
+            // 
+            this.linePatternControl1.BackColor = System.Drawing.Color.Transparent;
+            this.linePatternControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.linePatternControl1.CellHeight = 24;
+            this.linePatternControl1.CellWidth = 72;
+            this.linePatternControl1.Font = new System.Drawing.Font("Arial", 25.6F);
+            this.linePatternControl1.GridColor = System.Drawing.Color.Gray;
+            this.linePatternControl1.GridVisible = true;
+            this.linePatternControl1.ItemCount = 1;
+            this.linePatternControl1.Location = new System.Drawing.Point(19, 15);
+            this.linePatternControl1.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.linePatternControl1.Name = "linePatternControl1";
+            this.linePatternControl1.SelectedIndex = -1;
+            this.linePatternControl1.Size = new System.Drawing.Size(299, 258);
+            this.linePatternControl1.TabIndex = 0;
+            // 
             // LinesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(615, 385);
+            this.ClientSize = new System.Drawing.Size(615, 356);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.groupMarker);
             this.Controls.Add(this.btnCancel);
@@ -733,7 +733,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.Name = "LinesForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Polyline Style";
+            this.Text = "线样式";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLines_FormClosing);
             this.Load += new System.EventHandler(this.LinesForm_Load);
             this.groupBox1.ResumeLayout(false);
@@ -749,13 +749,13 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.tabVertices.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.udVerticesSize)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.groupMarker.ResumeLayout(false);
             this.groupMarker.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udMarkerOffset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udMarkerSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udMarkerInterval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udVerticesSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

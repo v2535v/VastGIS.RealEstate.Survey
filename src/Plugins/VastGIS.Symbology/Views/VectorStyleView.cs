@@ -105,7 +105,7 @@ namespace VastGIS.Plugins.Symbology.Views
 
             MapConfig.ForceHideLabels = true;
 
-            Text = "Layer properties: " + Model.Name;
+            Text = "图层属性: " + Model.Name;
 
             _initState = SaveState();
 
@@ -168,12 +168,12 @@ namespace VastGIS.Plugins.Symbology.Views
         private void AddTooltips()
         {
             // general tab
-            toolTip1.SetToolTip(txtLayerName, "The name of layer. \nEditable. Can be different from the name of the source file.");
-            toolTip1.SetToolTip(chkLayerVisible, "Toggles the visibility of the layer.");
-            toolTip1.SetToolTip(btnOk, "Closes the window. Saves the settings.");
+            toolTip1.SetToolTip(txtLayerName, "图层名称. \n可编辑.");
+            toolTip1.SetToolTip(chkLayerVisible, "图层显示开关");
+            toolTip1.SetToolTip(btnOk, "关闭窗口并保存设置.");
 
             // appearance tab
-            toolTip1.SetToolTip(pictureBox1, "Symbology used for the shapes which don't fall into any category.");
+            toolTip1.SetToolTip(pictureBox1, "所配置的符号不能被纳入对应目录.");
         }
 
         /// <summary>

@@ -57,11 +57,11 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.door_open;
-            this.btnClose.Location = new System.Drawing.Point(543, 325);
+            this.btnClose.Location = new System.Drawing.Point(543, 300);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(81, 41);
+            this.btnClose.Size = new System.Drawing.Size(81, 38);
             this.btnClose.TabIndex = 19;
-            this.btnClose.Text = "Close dialog";
+            this.btnClose.Text = "关闭窗口";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnClose.UseVisualStyleBackColor = true;
@@ -79,7 +79,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(160, 358);
+            this.listView1.Size = new System.Drawing.Size(160, 330);
             this.listView1.TabIndex = 28;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -95,7 +95,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.txtDescription});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 371);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 341);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(630, 22);
             this.statusStrip1.TabIndex = 29;
@@ -126,7 +126,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listView1);
-            this.splitContainer1.Size = new System.Drawing.Size(530, 360);
+            this.splitContainer1.Size = new System.Drawing.Size(530, 332);
             this.splitContainer1.SplitterDistance = 364;
             this.splitContainer1.TabIndex = 31;
             // 
@@ -135,7 +135,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.axMap1.AllowDrop = true;
             this.axMap1.AnimationOnZooming = VastGIS.Api.Enums.AutoToggle.Auto;
             this.axMap1.BackgroundColor = System.Drawing.Color.White;
-            this.axMap1.CurrentScale = 17.10495014402257D;
+            this.axMap1.CurrentScale = 20.049313209566265D;
             this.axMap1.CurrentZoom = -1;
             this.axMap1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.axMap1.ExpandLayersOnAdding = true;
@@ -164,7 +164,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.axMap1.ShowCoordinatesFormat = VastGIS.Api.Enums.AngleFormat.Degrees;
             this.axMap1.ShowRedrawTime = false;
             this.axMap1.ShowVersionNumber = false;
-            this.axMap1.Size = new System.Drawing.Size(362, 358);
+            this.axMap1.Size = new System.Drawing.Size(362, 330);
             this.axMap1.SystemCursor = VastGIS.Api.Enums.SystemCursor.MapDefault;
             this.axMap1.TabIndex = 1;
             this.axMap1.Tag = "";
@@ -180,11 +180,11 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.btnMakDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMakDefault.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.application_link;
             this.btnMakDefault.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMakDefault.Location = new System.Drawing.Point(543, 146);
+            this.btnMakDefault.Location = new System.Drawing.Point(543, 135);
             this.btnMakDefault.Name = "btnMakDefault";
-            this.btnMakDefault.Size = new System.Drawing.Size(81, 41);
+            this.btnMakDefault.Size = new System.Drawing.Size(81, 38);
             this.btnMakDefault.TabIndex = 26;
-            this.btnMakDefault.Text = "Make default";
+            this.btnMakDefault.Text = "设为默认";
             this.btnMakDefault.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMakDefault.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMakDefault.UseVisualStyleBackColor = true;
@@ -194,11 +194,11 @@ namespace VastGIS.Plugins.Symbology.Forms
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnApply.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.ok2;
-            this.btnApply.Location = new System.Drawing.Point(543, 278);
+            this.btnApply.Location = new System.Drawing.Point(543, 257);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(81, 41);
+            this.btnApply.Size = new System.Drawing.Size(81, 38);
             this.btnApply.TabIndex = 23;
-            this.btnApply.Text = "Apply options";
+            this.btnApply.Text = "应用配置";
             this.btnApply.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnApply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnApply.UseVisualStyleBackColor = true;
@@ -210,9 +210,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.btnSave.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.application_add;
             this.btnSave.Location = new System.Drawing.Point(543, 6);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(81, 40);
+            this.btnSave.Size = new System.Drawing.Size(81, 37);
             this.btnSave.TabIndex = 21;
-            this.btnSave.Text = "Add current";
+            this.btnSave.Text = "添加当前";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -221,11 +221,11 @@ namespace VastGIS.Plugins.Symbology.Forms
             // 
             this.btnRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRename.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.application_edit;
-            this.btnRename.Location = new System.Drawing.Point(543, 99);
+            this.btnRename.Location = new System.Drawing.Point(543, 91);
             this.btnRename.Name = "btnRename";
-            this.btnRename.Size = new System.Drawing.Size(81, 41);
+            this.btnRename.Size = new System.Drawing.Size(81, 38);
             this.btnRename.TabIndex = 18;
-            this.btnRename.Text = "Rename";
+            this.btnRename.Text = "重命名";
             this.btnRename.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRename.UseVisualStyleBackColor = true;
             this.btnRename.Click += new System.EventHandler(this.btnRename_Click);
@@ -234,22 +234,22 @@ namespace VastGIS.Plugins.Symbology.Forms
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemove.Image = global::VastGIS.Plugins.Symbology.Properties.Resources.application_delete;
-            this.btnRemove.Location = new System.Drawing.Point(542, 52);
+            this.btnRemove.Location = new System.Drawing.Point(542, 48);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(82, 41);
+            this.btnRemove.Size = new System.Drawing.Size(82, 38);
             this.btnRemove.TabIndex = 17;
-            this.btnRemove.Text = "Remove";
+            this.btnRemove.Text = "移除";
             this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // OptionsManagerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(630, 393);
+            this.ClientSize = new System.Drawing.Size(630, 363);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnMakDefault);
@@ -262,7 +262,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.Name = "OptionsManagerForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Symbology manager";
+            this.Text = "符号管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmOptionsManager_FormClosed);
             this.Load += new System.EventHandler(this.OptionsManagerForm_Load);
             this.statusStrip1.ResumeLayout(false);

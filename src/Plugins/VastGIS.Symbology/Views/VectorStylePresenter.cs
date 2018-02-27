@@ -64,7 +64,7 @@ namespace VastGIS.Plugins.Symbology.Views
                     }
                     break;
                 case VectorStyleCommand.ClearLabels:
-                    if (MessageService.Current.Ask("Do you want to remove labels?"))
+                    if (MessageService.Current.Ask("你确定移除所有标注吗?"))
                     {
                         FeatureSet.Labels.Items.Clear();
                         FeatureSet.Labels.Expression = "";
@@ -79,7 +79,7 @@ namespace VastGIS.Plugins.Symbology.Views
                     View.RefreshLabels();
                     break;
                 case VectorStyleCommand.ClearCharts:
-                    if (MessageService.Current.Ask("Do you want to remove charts?"))
+                    if (MessageService.Current.Ask("你确定移除图表吗?"))
                     {
                         FeatureSet.Diagrams.Fields.Clear();
                         FeatureSet.Diagrams.Clear();
@@ -94,7 +94,7 @@ namespace VastGIS.Plugins.Symbology.Views
                     }
                     else
                     {
-                        MessageService.Current.Info("Can't find the datasource.");
+                        MessageService.Current.Info("找不到数据源.");
                     }
                     break;
                 case VectorStyleCommand.SaveStyle:
@@ -150,11 +150,11 @@ namespace VastGIS.Plugins.Symbology.Views
                     bool result = spatialIndex.CreateDiskIndex();
                     if (result)
                     {
-                        MessageService.Current.Info("Spatial index was successfully created.");
+                        MessageService.Current.Info("成功建立空间索引.");
                     }
                     else
                     {
-                        MessageService.Current.Warn("Failed to create spatial index");
+                        MessageService.Current.Warn("空间索引创建失败");
                     }
                 }
                 finally

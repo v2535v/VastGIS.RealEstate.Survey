@@ -40,9 +40,9 @@ namespace VastGIS.Plugins.Symbology.Forms
 
             if (_shapefile.GeometryType == GeometryType.Polygon)
             {
-                optPosition1.Text = "Center";
-                optPosition2.Text = "Centroid";
-                optPosition3.Text = "Interior point";
+                optPosition1.Text = "中心";
+                optPosition2.Text = "重心";
+                optPosition3.Text = "内部点";
                 optPosition4.Visible = false;
 
                 optPosition1.Tag = LabelPosition.Center;
@@ -56,10 +56,10 @@ namespace VastGIS.Plugins.Symbology.Forms
             }
             else if (_shapefile.GeometryType == GeometryType.Polyline)
             {
-                optPosition1.Text = "First segment";
-                optPosition2.Text = "Last segment";
-                optPosition3.Text = "Middle segment";
-                optPosition4.Text = "Longest segment";
+                optPosition1.Text = "第一部分";
+                optPosition2.Text = "结束部分";
+                optPosition3.Text = "中间部分";
+                optPosition4.Text = "最长部分";
 
                 optPosition1.Tag = LabelPosition.FirstSegment;
                 optPosition2.Tag = LabelPosition.LastSegment;

@@ -38,45 +38,49 @@
             // 
             this.chkVisibility.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkVisibility.AutoSize = true;
-            this.chkVisibility.Location = new System.Drawing.Point(6, 361);
+            this.chkVisibility.Location = new System.Drawing.Point(6, 333);
             this.chkVisibility.Name = "chkVisibility";
-            this.chkVisibility.Size = new System.Drawing.Size(105, 17);
+            this.chkVisibility.Size = new System.Drawing.Size(126, 16);
             this.chkVisibility.TabIndex = 41;
-            this.chkVisibility.Text = "Check all / none";
+            this.chkVisibility.Text = "全部检查 / 不检查";
             this.chkVisibility.UseVisualStyleBackColor = true;
             this.chkVisibility.CheckedChanged += new System.EventHandler(this.OnVisibilityCheckedChanged);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Location = new System.Drawing.Point(3, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(449, 35);
+            this.label1.Size = new System.Drawing.Size(449, 32);
             this.label1.TabIndex = 42;
-            this.label1.Text = "Note: please use table editor to add, remove and modify fields. Only alias and vi" +
-    "sibility can be changed here.";
+            this.label1.Text = "注意：使用表格编辑去增加、删除和修改字段，在这儿尽支持进行别名和可见性修改";
             // 
             // attributeGrid1
             // 
+            this.attributeGrid1.ActivateCurrentCellBehavior = Syncfusion.Windows.Forms.Grid.GridCellActivateAction.DblClickOnCell;
+            this.attributeGrid1.AlphaBlendSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
             this.attributeGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.attributeGrid1.BackColor = System.Drawing.SystemColors.Window;
-            this.attributeGrid1.FreezeCaption = false;
-            this.attributeGrid1.Location = new System.Drawing.Point(4, 46);
+            this.attributeGrid1.GridLineColor = System.Drawing.Color.White;
+            this.attributeGrid1.Location = new System.Drawing.Point(4, 42);
             this.attributeGrid1.Name = "attributeGrid1";
-            this.attributeGrid1.Size = new System.Drawing.Size(448, 305);
+            this.attributeGrid1.ShowCurrentCellBorderBehavior = Syncfusion.Windows.Forms.Grid.GridShowCurrentCellBorder.HideAlways;
+            this.attributeGrid1.ShowRowHeaders = false;
+            this.attributeGrid1.Size = new System.Drawing.Size(448, 282);
             this.attributeGrid1.TabIndex = 0;
+            this.attributeGrid1.UseRightToLeftCompatibleTextBox = true;
             this.attributeGrid1.WrapWithPanel = true;
             // 
             // AttributesControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkVisibility);
             this.Controls.Add(this.attributeGrid1);
             this.Name = "AttributesControl";
-            this.Size = new System.Drawing.Size(455, 383);
+            this.Size = new System.Drawing.Size(455, 354);
             ((System.ComponentModel.ISupportInitialize)(this.attributeGrid1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
