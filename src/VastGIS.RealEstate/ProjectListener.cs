@@ -32,6 +32,7 @@ namespace VastGIS.Plugins.RealEstate
         private SynchronizationContext _syncContext;
         private ISpatialReference _spatialReference;
         private List<VgObjectclass> _classes;
+        private VGLayerConfig _layerConfig;
 
         public ProjectListener(IAppContext context, RealEstateEditor plugin, IRealEstateEditingService layerService,ILayerService oLayerService)
         {
@@ -54,12 +55,13 @@ namespace VastGIS.Plugins.RealEstate
         /// <param name="e"></param>
         private void Plugin_ProjectChanged(object sender, EventArgs e)
         {
-            if (_context.Map.Layers.Count <= 0)
-            {
+            //if (_context.Map.Layers.Count <= 0)
+            //{
                 if (string.IsNullOrEmpty(_context.Project.Filename) == false)
                 {
                     //VGLayerConfig config = new VGLayerConfig(_context, _plugin);
                     //config.AddLayersFromDb();
+                    _layerConfig = new VGLayerConfig(_context, _plugin);
 
                     ((IRealEstateContext)_context).RealEstateDatabase.DatabaseName =
                         ReProjectHelper.GetProjectDatabase(_context.Project.Filename);
@@ -103,7 +105,7 @@ namespace VastGIS.Plugins.RealEstate
                         }, TaskScheduler.FromCurrentSynchronizationContext());
                 }
                 
-            }
+            //}
         }
 
         private void RealEstateDatabase_EntityChanged(object sender, VastGIS.RealEstate.Data.Events.EntityChanedEventArgs e)
@@ -124,6 +126,7 @@ namespace VastGIS.Plugins.RealEstate
                 if (pLayer.IsVector)
                 {
                     pLayer.VectorSource.ReloadFromSource();
+                    _layerConfig.Restore(pLayer.Handle);
                     _context.Map.Redraw(RedrawType.All);
                 }
             }
@@ -142,6 +145,7 @@ namespace VastGIS.Plugins.RealEstate
                     int subHandle = FindLayerHandle(subClass.Zwmc);
                     if (groupHandle > -1 && subHandle > -1)
                     {
+                        _layerConfig.Restore(subHandle);
                         _context.Legend.Layers.MoveLayer(subHandle, groupHandle);
                     }
                 }

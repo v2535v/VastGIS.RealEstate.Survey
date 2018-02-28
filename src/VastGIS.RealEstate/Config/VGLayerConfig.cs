@@ -16,79 +16,43 @@ using VastGIS.Api.Map;
 using VastGIS.Plugins.Interfaces;
 using VastGIS.Plugins.Services;
 using VastGIS.Services.Serialization;
+using VastGIS.Shared;
 
 namespace VastGIS.Plugins.RealEstate.Config
 {
     public class VGLayerConfig
     {
-        private VGLayer _vgLayer;
         private string _folder;
         private IAppContext _context;
-        private ILayerService _layerService;
         private RealEstateEditor _plugin;
+
         public VGLayerConfig(IAppContext context, RealEstateEditor plugin)
         {
             _context = context;
             _plugin = plugin;
             _folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string fileName = string.Format("{0}\\Styles\\survey.vglayers", _folder);
-            if (!File.Exists(fileName))
-                return;
-            _vgLayer = new VGLayer();
-            _vgLayer.LoadFromXml(fileName, Path.GetDirectoryName(_context.Project.Filename));
         }
 
-        public void AddLayersFromDb()
+        public void Restore(int layerHandle)
         {
-            string dbPath = string.Format("{0}\\Database\\redatabase.db", Path.GetDirectoryName(_context.Project.Filename));
-            if (!File.Exists(dbPath))
-                return;
-            _layerService = _context.Container.GetSingleton<ILayerService>();
-            _layerService.AddLayersFromFilename(dbPath);
-
-            foreach (VGXmlGroup layerGroup in _vgLayer.Groups)
+            ILegendLayer legendLayer = _context.Legend.Layers.ItemByHandle(layerHandle);
+            string filename = string.Format("{0}\\Styles\\Layers\\{1}.vglayer", _folder, legendLayer.Identity.Query);
+            if (string.IsNullOrWhiteSpace(filename) || !File.Exists(filename)) return;
+            try
             {
-                ILegendGroup legendGroup = _context.Legend.Groups.Add(layerGroup.Name, layerGroup.Position);
-                layerGroup.Handle = legendGroup.Handle;
-            }
-
-            for (int i = _context.Legend.Layers.Count - 1; i >= 0; i--)
-            {
-                ILegendLayer legendLayer = _context.Legend.Layers[i];
-                VGXmlGroup xmlGroup = _vgLayer.Groups.FirstOrDefault(c => c.Layers.Any(d => d.Name.ToUpper() == legendLayer.Name.ToUpper()));
-
-                if (xmlGroup == null)
+                using (var reader = new StreamReader(filename))
                 {
-                    _context.Map.Layers.Remove(legendLayer.Handle);
-                }
-                else
-                {
-                    VGXmlLayer vgXmlLayer = xmlGroup.Layers.FirstOrDefault(c => c.Name.ToUpper() == legendLayer.Name.ToUpper());
-                    if (vgXmlLayer == null)
-                    {
-                        _context.Map.Layers.Remove(legendLayer.Handle);
-                    }
-                    else
-                    {
-                        vgXmlLayer.XmlLayer.RestoreLayer(legendLayer, _plugin.MapListener.Broadcaster);
-                        _context.Layers.MoveLayer(legendLayer.Handle, xmlGroup.Handle, vgXmlLayer.Position);
-                    }
+                    string xml = reader.ReadToEnd();
+                    xml = xml.Replace("{ProjectPath}", Path.GetDirectoryName(_context.Project.Filename));
+                    XmlLayer xmlLayer = xml.Deserialize<XmlLayer>();
+                    xmlLayer.RestoreLayer(legendLayer, _plugin.MapListener.Broadcaster);
+                    legendLayer.Name = xmlLayer.Name;
                 }
             }
-
-
-            for (int i = _context.Legend.Groups.Count - 1; i >= 0; i--)
+            catch (Exception ex)
             {
-                ILegendGroup legendGroup = _context.Legend.Groups[i];
-                VGXmlGroup xmlGroup = _vgLayer.Groups.FirstOrDefault(c => c.Name.ToUpper() == legendGroup.Text.ToUpper());
-                if (xmlGroup == null)
-                {
-                    _context.Legend.Groups.Remove(legendGroup.Handle);
-                }
-                else
-                {
-                    _context.Legend.Groups.MoveGroup(legendGroup.Handle, xmlGroup.Position);
-                }
+                const string msg = "Failed to deserialize layer";
+                Logger.Current.Warn(msg, ex);
             }
         }
     }

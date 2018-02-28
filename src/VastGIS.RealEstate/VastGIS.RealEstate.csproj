@@ -736,7 +736,6 @@
     <Compile Include="Commands\ToolUnionFeature.cs" />
     <Compile Include="Commands\ToolWYGZFeature.cs" />
     <Compile Include="CompositionRoot.cs" />
-    <Compile Include="Config\VGLayer.cs" />
     <Compile Include="Config\VGLayerConfig.cs" />
     <Compile Include="DataControls\IEntityControl.cs" />
     <Compile Include="DataControls\SnapCheckbox.cs">
@@ -2159,7 +2158,7 @@
     <None Include="Styles\Layers\XZQ.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Styles\survey.vglayers">
+    <None Include="Styles\Layers\DJZQVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
