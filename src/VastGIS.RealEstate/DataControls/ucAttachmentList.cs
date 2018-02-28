@@ -132,25 +132,26 @@ namespace VastGIS.Plugins.RealEstate.DataControls
            mainTd.Columns["Fjlj"].Width = 0;
            mainTd.Columns["Fjsm"].HeaderText = "说明";
            mainTd.Columns["Fjsm"].Width = 0;
-           mainTd.Columns["ObjectName"].Width = 0;
-           mainTd.Columns["TableName"].Width = 0;
-           mainTd.Columns["EntityName"].Width = 0;
-           mainTd.Columns["SimpleLabelString"].Width = 0;
-           mainTd.Columns["FullLabelString"].Width = 0;
-           mainTd.Columns["WxWydm"].Width = 0;
-           mainTd.Columns["DatabaseID"].Width = 0;
-           mainTd.Columns["Flags"].Width = 0;
-           mainTd.Columns["Xgr"].Width = 0;
-           mainTd.Columns["Xgsj"].Width = 0;
-           mainTd.Columns["HasFlag"].Width = 0;
-           mainTd.Columns["HasGlobal"].Width = 0;
-           mainTd.Columns["HasYsdm"].Width = 0;
-           mainTd.Columns["HasSurvey"].Width = 0;
-           mainTd.Columns["HasGeometry"].Width = 0;
-           mainTd.Columns["GeometryType"].Width = 0;
-            mainTd.Columns["FileType"].Width = 0;
-            mainTd.Columns["NoCopyName_Length"].Width = 0;
-            mainTd.Columns["LayerName"].Width = 0;
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["TableName"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["ObjectName"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["EntityName"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["SimpleLabelString"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["FullLabelString"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["WxWydm"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["DatabaseID"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["Flags"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["Xgr"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["Xgsj"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["HasFlag"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["HasGlobal"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["HasYsdm"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["HasSurvey"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["HasGeometry"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["GeometryType"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["FileType"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["NoCopyName_Length"]);
+            mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["LayerName"]);
+           
 
             this.gridAttachments.TopLevelGroupOptions.ShowAddNewRecordBeforeDetails = false;
             //Used for disabling Caption

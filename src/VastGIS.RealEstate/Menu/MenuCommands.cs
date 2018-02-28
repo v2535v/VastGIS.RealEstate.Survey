@@ -77,7 +77,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
-            command = new CmdImportDXF(_context);
+            command = new CmdImportDXF(_context,_plugin);
             command.PluginIdentity = _identity;
             _commands.Add(command);
 

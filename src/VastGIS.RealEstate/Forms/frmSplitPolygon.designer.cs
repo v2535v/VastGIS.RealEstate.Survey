@@ -96,6 +96,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucSelectLayer1.GeometryType = VastGIS.Api.Enums.GeometryType.None;
             this.ucSelectLayer1.Label = "目标图层";
+            this.ucSelectLayer1.LimitedGeometryType = VastGIS.Api.Enums.GeometryType.None;
             this.ucSelectLayer1.Location = new System.Drawing.Point(5, 3);
             this.ucSelectLayer1.Name = "ucSelectLayer1";
             this.ucSelectLayer1.SelectedClass = null;

@@ -127,14 +127,10 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             InitializeComponent();
             //setting metro theme to the grid.
             this.gridPoints.GridVisualStyles = Syncfusion.Windows.Forms.GridVisualStyles.Metro;
-
             this.gridPoints.TableOptions.ListBoxSelectionMode = SelectionMode.One;
-
             //to set proportional column resizing to grid.
             this.gridPoints.AllowProportionalColumnSizing = true;
-
-            this.gridPoints.TopLevelGroupOptions.ShowCaption = false;
-
+            
             //to hide Caption.
             this.gridPoints.TopLevelGroupOptions.ShowCaption = false;
             this.gridPoints.ChildGroupOptions.ShowCaption = false;

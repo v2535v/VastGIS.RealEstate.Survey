@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +9,85 @@ using NetTopologySuite.Geometries;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-    public class ReEdge
+    public class ReEdge : INotifyPropertyChanging, INotifyPropertyChanged
     {
-        public int Id { get; set; }
-        public double X1 { get; set; }
-        public double Y1 { get; set; }
-        public double X2 { get; set; }
-        public double Y2 { get; set; }
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                if (this._id != value)
+                {
+                    this.OnPropertyChanging("Id");
+                    this._id = value;
+                    this.OnPropertyChanged("Id");
+                }
+            }
+        }
+
+        public double X1
+        {
+            get { return _x1; }
+            set
+            {
+                if (this._x1 != value)
+                {
+                    this.OnPropertyChanging("X1");
+                    this._x1 = value;
+                    this.OnPropertyChanged("X1");
+                }
+            }
+        }
+
+        public double Y1
+        {
+            get { return _y1; }
+            set
+            {
+                if (this._y1 != value)
+                {
+                    this.OnPropertyChanging("Y1");
+                    this._y1 = value;
+                    this.OnPropertyChanged("Y1");
+                }
+            }
+        }
+
+        public double X2
+        {
+            get { return _x2; }
+            set
+            {
+                if (this._x2 != value)
+                {
+                    this.OnPropertyChanging("X2");
+                    this._x2 = value;
+                    this.OnPropertyChanged("X2");
+                }
+            }
+        }
+
+        public double Y2
+
+        {
+            get { return _y2; }
+            set
+            {
+                if (this._y2 != value)
+                {
+                    this.OnPropertyChanging("Y2");
+                    this._y2 = value;
+                    this.OnPropertyChanged("Y2");
+                }
+            }
+        }
 
         private GeoAPI.Geometries.ILineString lineString;
+        private int _id;
+        private double _x1;
+        private double _y1;
+        private double _x2;
+        private double _y2;
 
         public ReEdge(int id, double x1, double y1, double x2, double y2)
         {
@@ -77,6 +148,32 @@ namespace VastGIS.RealEstate.Data.Entity
         public double CenterY
         {
             get { return (Y1 + Y2) / 2.0; }
+        }
+
+        private event PropertyChangingEventHandler propertyChanging;
+
+        private event PropertyChangedEventHandler propertyChanged;
+        event PropertyChangingEventHandler INotifyPropertyChanging.PropertyChanging
+        {
+            add { this.propertyChanging += value; }
+            remove { this.propertyChanging -= value; }
+        }
+
+        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        {
+            add { this.propertyChanged += value; }
+            remove { this.propertyChanged -= value; }
+        }
+        protected virtual void OnPropertyChanging(string propertyName)
+        {
+            if (this.propertyChanging != null)
+                this.propertyChanging(this, new PropertyChangingEventArgs(propertyName));
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            if (this.propertyChanged != null)
+                this.propertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

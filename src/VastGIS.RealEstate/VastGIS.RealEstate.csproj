@@ -1318,6 +1318,8 @@
     <Compile Include="Forms\frmSplitPolygon.designer.cs">
       <DependentUpon>frmSplitPolygon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\JzdInfo.cs" />
+    <Compile Include="Forms\JzxInfo.cs" />
     <Compile Include="Helpers\LayerHelper.cs" />
     <Compile Include="Viewer\frmAudioViewer.cs">
       <SubType>Form</SubType>
