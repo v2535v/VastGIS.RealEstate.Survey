@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,40 @@ using VastGIS.Api.Interfaces;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-    public class ReVertex
+    public class ReVertex : INotifyPropertyChanging, INotifyPropertyChanged
     {
+        private bool _checked;
+        private int _id;
+        private double _x;
+        private double _y;
+        private int _part;
+
+        private event PropertyChangingEventHandler propertyChanging;
+
+        private event PropertyChangedEventHandler propertyChanged;
+        event PropertyChangingEventHandler INotifyPropertyChanging.PropertyChanging
+        {
+            add { this.propertyChanging += value; }
+            remove { this.propertyChanging -= value; }
+        }
+
+        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        {
+            add { this.propertyChanged += value; }
+            remove { this.propertyChanged -= value; }
+        }
+        protected virtual void OnPropertyChanging(string propertyName)
+        {
+            if (this.propertyChanging != null)
+                this.propertyChanging(this, new PropertyChangingEventArgs(propertyName));
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            if (this.propertyChanged != null)
+                this.propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public ReVertex(int id, double x, double y,bool used=true)
         {
             ID = id;
@@ -27,13 +60,77 @@ namespace VastGIS.RealEstate.Data.Entity
             Checked = used;
             Part = part;
         }
-        public bool Checked { get; set; }
-        public int ID { get; set; }
-        public double X { get; set; }
-        public double Y { get; set; }
-        public int Part { get; set; }
 
-        
+        public bool Checked
+        {
+            get { return _checked; }
+            set
+            {
+                if (this._checked != value)
+                {
+                    this.OnPropertyChanging("Checked");
+                    this._checked = value;
+                    this.OnPropertyChanged("Checked");
+                }
+            }
+        }
+
+        public int ID
+        {
+            get { return _id; }
+            set
+            {
+                if (this._id != value)
+                {
+                    this.OnPropertyChanging("ID");
+                    this._id = value;
+                    this.OnPropertyChanged("ID");
+                }
+            }
+        }
+
+        public double X
+        {
+            get { return _x; }
+            set
+            {
+                if (this._x != value)
+                {
+                    this.OnPropertyChanging("X");
+                    this._x = value;
+                    this.OnPropertyChanged("X");
+                }
+            }
+        }
+
+        public double Y
+        {
+            get { return _y; }
+            set
+            {
+                if (this._y != value)
+                {
+                    this.OnPropertyChanging("Y");
+                    this._y = value;
+                    this.OnPropertyChanged("Y");
+                }
+            }
+        }
+
+        public int Part
+        {
+            get { return _part; }
+            set
+            {
+                if (this._part != value)
+                {
+                    this.OnPropertyChanging("Part");
+                    this._part = value;
+                    this.OnPropertyChanged("Part");
+                }
+            }
+        }
+
         public IGeometry GetGeometry()
         {
             

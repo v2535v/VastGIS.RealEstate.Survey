@@ -19,14 +19,13 @@ using VastGIS.Plugins.RealEstate.Helpers;
 using VastGIS.Plugins.Services;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
-using VastGIS.RealEstate.Data.Helpers;
 using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.Forms
 {
-	
-    public partial class frmCreateJZDByZD:Form,IEditForm
-    {	
+
+    public partial class frmCreateJZDByZD : Form, IEditForm
+    {
         #region 变量
         private IAppContext _context;
         private RealEstateEditor _plugin;
@@ -47,7 +46,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
         public frmCreateJZDByZD(IAppContext context, RealEstateEditor plugin)
         {
             InitializeComponent();
-             _context = context;
+            _context = context;
             _plugin = plugin;
             if (_plugin == null)
             {
@@ -58,8 +57,8 @@ namespace VastGIS.Plugins.RealEstate.Forms
             _zdClass = classes.First(c => c.Mc == "ZDJBXX");
             _jzdClass = classes.First(c => c.Mc == "JZD");
             _jzxClass = classes.First(c => c.Mc == "JZX");
-            _jzdInfos=new BindingList<JzdInfo>();
-            _jzxInfos=new BindingList<JzxInfo>();
+            _jzdInfos = new BindingList<JzdInfo>();
+            _jzxInfos = new BindingList<JzxInfo>();
             InitDictionaries();
             InitJzdGrid();
             InitJzxGrid();
@@ -97,7 +96,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             {
                 _jzxInfos = new BindingList<JzxInfo>();
             }
-          
+
 
             this.gridJzxs.GridVisualStyles = Syncfusion.Windows.Forms.GridVisualStyles.Metro;
             this.gridJzxs.TableOptions.ListBoxSelectionMode = SelectionMode.One;
@@ -119,60 +118,46 @@ namespace VastGIS.Plugins.RealEstate.Forms
             this.gridJzxs.DataSource = _jzxInfos;
             this.gridJzxs.AllowProportionalColumnSizing = false;
             GridTableDescriptor mainTd = gridJzxs.TableDescriptor;
-            //DataTable jzxlbTable = ConvertDictionaryToDataTable(_jzxlbDict);
-            //DataTable jzxwzTable = ConvertDictionaryToDataTable(_jzxwzDict);
-            //DataTable jxxzTable = ConvertDictionaryToDataTable(_jxxzDict);
-            //this.gridJzxs.Engine.SourceListSet.Add("JzxlbSet", jzxlbTable.DefaultView);
-            //this.gridJzxs.Engine.SourceListSet.Add("JzxwzSet", jzxwzTable.DefaultView);
-            //this.gridJzxs.Engine.SourceListSet.Add("JxxzSet", jxxzTable.DefaultView);
-            //GridRelationDescriptor typesRd = new GridRelationDescriptor();
-            //typesRd.Name = "Jzxlb";
-            //typesRd.RelationKind = RelationKind.ForeignKeyReference;
-            //typesRd.ChildTableName = "JzxlbSet";
-            //typesRd.RelationKeys.Add("Jzxlb", "Zdz");
-            //typesRd.ChildTableDescriptor.SortedColumns.Add("Zdz");
-            //typesRd.ChildTableDescriptor.AllowEdit = false;
-            //typesRd.ChildTableDescriptor.AllowNew = false;  // Make pencil icon disappear, users can't modify states.
-            //mainTd.Relations.Add(typesRd);
+            DataTable jzxlbTable = ConvertDictionaryToDataTable(_jzxlbDict);
+            DataTable jzxwzTable = ConvertDictionaryToDataTable(_jzxwzDict);
+            DataTable jxxzTable = ConvertDictionaryToDataTable(_jxxzDict);
 
-            //typesRd = new GridRelationDescriptor();
-            //typesRd.Name = "Jzxwz";
-            //typesRd.RelationKind = RelationKind.ForeignKeyReference;
-            //typesRd.ChildTableName = "JzxwzSet";
-            //typesRd.RelationKeys.Add("Jzxwz", "Zdz");
-            //typesRd.ChildTableDescriptor.SortedColumns.Add("Zdz");
-            //typesRd.ChildTableDescriptor.AllowEdit = false;
-            //typesRd.ChildTableDescriptor.AllowNew = false;  // Make pencil icon disappear, users can't modify states.
-            //mainTd.Relations.Add(typesRd);
+            mainTd.Columns["Jzxlb"].Appearance.AnyRecordFieldCell.CellType = "ComboBox";
+            mainTd.Columns["Jzxlb"].Appearance.AnyRecordFieldCell.DataSource = _jzxlbDict;
+            mainTd.Columns["Jzxlb"].Appearance.AnyRecordFieldCell.DisplayMember = "Zdsm";
+            mainTd.Columns["Jzxlb"].Appearance.AnyRecordFieldCell.ValueMember = "Zdz";
 
-            //typesRd = new GridRelationDescriptor();
-            //typesRd.Name = "Jxxz";
-            //typesRd.RelationKind = RelationKind.ForeignKeyReference;
-            //typesRd.ChildTableName = "JxxzSet";
-            //typesRd.RelationKeys.Add("Jxxz", "Zdz");
-            //typesRd.ChildTableDescriptor.SortedColumns.Add("Zdz");
-            //typesRd.ChildTableDescriptor.AllowEdit = false;
-            //typesRd.ChildTableDescriptor.AllowNew = false;  // Make pencil icon disappear, users can't modify states.
-            //mainTd.Relations.Add(typesRd);
+            mainTd.Columns["Jzxwz"].Appearance.AnyRecordFieldCell.CellType = "ComboBox";
+            mainTd.Columns["Jzxwz"].Appearance.AnyRecordFieldCell.DataSource = _jzxwzDict;
+            mainTd.Columns["Jzxwz"].Appearance.AnyRecordFieldCell.DisplayMember = "Zdsm";
+            mainTd.Columns["Jzxwz"].Appearance.AnyRecordFieldCell.ValueMember = "Zdz";
+
+            mainTd.Columns["Jxxz"].Appearance.AnyRecordFieldCell.CellType = "ComboBox";
+            mainTd.Columns["Jxxz"].Appearance.AnyRecordFieldCell.DataSource = _jxxzDict;
+            mainTd.Columns["Jxxz"].Appearance.AnyRecordFieldCell.DisplayMember = "Zdsm";
+            mainTd.Columns["Jxxz"].Appearance.AnyRecordFieldCell.ValueMember = "Zdz";
+
 
             string columns = ",Selected::40,Zdnsxh:宗地内序号:40,ID:序号:40,Jzxlb:类别:120,Jzxwz:位置:80,Jxxz:性质:80,";
-
-            foreach (GridColumnDescriptor descriptor in mainTd.Columns)
+            int visibleCount = mainTd.VisibleColumns.Count;
+            for (int i = visibleCount - 1; i >= 0; i--)
             {
+                GridVisibleColumnDescriptor descriptor = mainTd.VisibleColumns[i];
                 string pName = descriptor.Name;
                 int start = columns.IndexOf("," + pName + ":");
                 if (start < 0)
                 {
-                    descriptor.Width = 0;
+                    mainTd.VisibleColumns.RemoveAt(i);
                     continue;
                 }
                 int end = columns.IndexOf(",", start + 1);
                 string pDef = columns.Substring(start + 1, end - start - 1);
                 string[] pDefs = pDef.Split(':');
-                descriptor.HeaderText = pDefs[1];
-                descriptor.Width = Convert.ToInt32(pDefs[2]);
+                mainTd.Columns[pName].HeaderText = pDefs[1];
+                mainTd.Columns[pName].Width = Convert.ToInt32(pDefs[2]);
             }
-           
+
+
 
             this.gridJzxs.TopLevelGroupOptions.ShowAddNewRecordBeforeDetails = false;
             //Used for disabling Caption
@@ -211,19 +196,19 @@ namespace VastGIS.Plugins.RealEstate.Forms
 
         public void InitJzdGrid()
         {
-            
+
             if (_jzdInfos == null)
             {
                 _jzdInfos = new BindingList<JzdInfo>();
             }
-       
-            
+
+
             this.gridJzds.GridVisualStyles = Syncfusion.Windows.Forms.GridVisualStyles.Metro;
             this.gridJzds.TableOptions.ListBoxSelectionMode = SelectionMode.One;
-       
+
             this.gridJzds.AllowProportionalColumnSizing = true;
             this.gridJzds.TopLevelGroupOptions.ShowCaption = false;
-       
+
             this.gridJzds.TopLevelGroupOptions.ShowCaption = false;
             this.gridJzds.ChildGroupOptions.ShowCaption = false;
             this.gridJzds.NestedTableGroupOptions.ShowCaption = false;
@@ -238,48 +223,40 @@ namespace VastGIS.Plugins.RealEstate.Forms
             this.gridJzds.DataSource = _jzdInfos;
             this.gridJzds.AllowProportionalColumnSizing = false;
             GridTableDescriptor mainTd = gridJzds.TableDescriptor;
-            //DataTable jblxTable = ConvertDictionaryToDataTable(_jblxDict);
-            //DataTable jzdlxTable = ConvertDictionaryToDataTable(_jzdlxDict);
-            //this.gridJzds.Engine.SourceListSet.Add("JblxSet", jblxTable.DefaultView);
-            //this.gridJzds.Engine.SourceListSet.Add("JzdlxSet", jzdlxTable.DefaultView);
-            //GridRelationDescriptor typesRd = new GridRelationDescriptor();
-            //typesRd.Name = "Jblx";
-            //typesRd.RelationKind = RelationKind.ForeignKeyReference;
-            //typesRd.ChildTableName = "JblxSet";
-            //typesRd.RelationKeys.Add("Jblx", "Zdz");
-            //typesRd.ChildTableDescriptor.SortedColumns.Add("Zdz");
-            //typesRd.ChildTableDescriptor.AllowEdit = false;
-            //typesRd.ChildTableDescriptor.AllowNew = false;  // Make pencil icon disappear, users can't modify states.
-            //mainTd.Relations.Add(typesRd);
+            DataTable jblxTable = ConvertDictionaryToDataTable(_jblxDict);
+            DataTable jzdlxTable = ConvertDictionaryToDataTable(_jzdlxDict);
+            mainTd.Columns["Jblx"].Appearance.AnyRecordFieldCell.CellType = "ComboBox";
+            mainTd.Columns["Jblx"].Appearance.AnyRecordFieldCell.DataSource = _jblxDict;
+            mainTd.Columns["Jblx"].Appearance.AnyRecordFieldCell.DisplayMember = "Zdsm";
+            mainTd.Columns["Jblx"].Appearance.AnyRecordFieldCell.ValueMember = "Zdz";
 
-            //typesRd = new GridRelationDescriptor();
-            //typesRd.Name = "Jzdlx";
-            //typesRd.RelationKind = RelationKind.ForeignKeyReference;
-            //typesRd.ChildTableName = "JzdlxSet";
-            //typesRd.RelationKeys.Add("Jzdlx", "Zdz");
-            //typesRd.ChildTableDescriptor.SortedColumns.Add("Zdz");
-            //typesRd.ChildTableDescriptor.AllowEdit = false;
-            //typesRd.ChildTableDescriptor.AllowNew = false;  // Make pencil icon disappear, users can't modify states.
-            //mainTd.Relations.Add(typesRd);
+            mainTd.Columns["Jzdlx"].Appearance.AnyRecordFieldCell.CellType = "ComboBox";
+            mainTd.Columns["Jzdlx"].Appearance.AnyRecordFieldCell.DataSource = _jzdlxDict;
+            mainTd.Columns["Jzdlx"].Appearance.AnyRecordFieldCell.DisplayMember = "Zdsm";
+            mainTd.Columns["Jzdlx"].Appearance.AnyRecordFieldCell.ValueMember = "Zdz";
+
 
             string columns = ",Selected::40,Zdnsxh:宗地内序号:40,ID:序号:40,Jzdh:界址点号:120,Jblx:界标类型:80,Jzdlx:界址点类型:80,";
 
-            foreach (GridColumnDescriptor descriptor in mainTd.Columns)
+            int visibleCount = mainTd.VisibleColumns.Count;
+            for (int i = visibleCount - 1; i >= 0; i--)
             {
+                GridVisibleColumnDescriptor descriptor = mainTd.VisibleColumns[i];
                 string pName = descriptor.Name;
                 int start = columns.IndexOf("," + pName + ":");
-                if (start<0)
+                if (start < 0)
                 {
-                    descriptor.Width = 0;
+                    mainTd.VisibleColumns.RemoveAt(i);
                     continue;
                 }
-                int end = columns.IndexOf(",", start+1);
-                string pDef = columns.Substring(start+1, end - start-1);
+                int end = columns.IndexOf(",", start + 1);
+                string pDef = columns.Substring(start + 1, end - start - 1);
                 string[] pDefs = pDef.Split(':');
-                descriptor.HeaderText = pDefs[1];
-                descriptor.Width = Convert.ToInt32(pDefs[2]);
+                mainTd.Columns[pName].HeaderText = pDefs[1];
+                mainTd.Columns[pName].Width = Convert.ToInt32(pDefs[2]);
             }
-          
+
+
 
             this.gridJzds.TopLevelGroupOptions.ShowAddNewRecordBeforeDetails = false;
             //Used for disabling Caption
@@ -319,8 +296,8 @@ namespace VastGIS.Plugins.RealEstate.Forms
         public void SetQueryPoint(double dx, double dy)
         {
             if (!chkSelFeature.Checked) return;
-            List<IReFeature> features = _database.SystemService.FindFeatures(_zdClass, dx, dy,0.05);
-            if (features != null && features.Count>0)
+            List<IReFeature> features = _database.SystemService.FindFeatures(_zdClass, dx, dy, 0.05);
+            if (features != null && features.Count > 0)
             {
                 _feature = features[0];
                 LoadJzdAndJzx();
@@ -339,30 +316,30 @@ namespace VastGIS.Plugins.RealEstate.Forms
             }
             else
             {
-                _jzdInfos=new BindingList<JzdInfo>();
-                _jzxInfos=new BindingList<JzxInfo>();
+                _jzdInfos = new BindingList<JzdInfo>();
+                _jzxInfos = new BindingList<JzxInfo>();
             }
 
             IGeometry geometry = _feature.Geometry;
             int i = 0;
             int pntCount = _feature.Geometry.Points.Count;
             double px, py;
-            for (int j=0;j<pntCount-1;j++)
+            for (int j = 0; j < pntCount - 1; j++)
             {
                 ICoordinate point = _feature.Geometry.Points[j];
                 px = point.X;
                 py = point.Y;
                 JzdInfo jzd;
                 i++;
-                List<IReFeature> findPnts = _database.SystemService.FindFeatures(_jzdClass, px, py,0.05);
+                List<IReFeature> findPnts = _database.SystemService.FindFeatures(_jzdClass, px, py, 0.05);
                 if (findPnts != null && findPnts.Count == 1)
                 {
-                   jzd =new JzdInfo( findPnts[0] as Jzd);
+                    jzd = new JzdInfo(findPnts[0] as Jzd);
                     jzd.Selected = false;
                 }
                 else
                 {
-                    jzd=new JzdInfo();
+                    jzd = new JzdInfo();
                     jzd.Selected = true;
                     jzd.Xzbz = px;
                     jzd.Yzbz = py;
@@ -379,14 +356,14 @@ namespace VastGIS.Plugins.RealEstate.Forms
             for (i = 0; i < count - 1; i++)
             {
                 _feature.Geometry.GetPoint(i, out px, out py);
-                _feature.Geometry.GetPoint(i+1, out px2, out py2);
-                double xx =(px+px2)/2.0;
-                double yy = (py+py2) / 2.0;
+                _feature.Geometry.GetPoint(i + 1, out px2, out py2);
+                double xx = (px + px2) / 2.0;
+                double yy = (py + py2) / 2.0;
 
-                List<IReFeature> findLines = _database.SystemService.FindFeatures(_jzxClass, xx, yy,0.2);
+                List<IReFeature> findLines = _database.SystemService.FindFeatures(_jzxClass, xx, yy, 0.2);
                 if (findLines != null && findLines.Count == 1)
                 {
-                    jzx =new JzxInfo(findLines[0] as Jzx);
+                    jzx = new JzxInfo(findLines[0] as Jzx);
                     jzx.Selected = false;
                 }
                 else
@@ -394,7 +371,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                     jzx = new JzxInfo();
                     jzx.Selected = true;
                 }
-                jzx.Zdnsxh = i+1;
+                jzx.Zdnsxh = i + 1;
                 jzx.CenterX = xx;
                 jzx.CenterY = yy;
                 jzx.StartX = px;
@@ -424,8 +401,8 @@ namespace VastGIS.Plugins.RealEstate.Forms
         {
             for (int i = 0; i < _jzdInfos.Count; i++)
             {
-                if(_jzdInfos[i].ID<0)
-                _jzdInfos[i].Selected = true;
+                if (_jzdInfos[i].ID < 0)
+                    _jzdInfos[i].Selected = true;
             }
         }
 
@@ -438,14 +415,14 @@ namespace VastGIS.Plugins.RealEstate.Forms
             for (int i = 0; i < _jzdInfos.Count; i++)
             {
                 if (_jzdInfos[i].Selected == false) continue;
-                if (_jzdInfos[i].ID >0) continue;
+                if (_jzdInfos[i].ID > 0) continue;
                 Jzd jzd = _jzdInfos[i].GetJzd();
                 jzd.Jzdh = "J" + maxId.ToString();
                 maxId++;
                 _database.ZdService.SaveJzd(jzd);
                 _jzdInfos[i].LoadJzd(jzd);
                 _jzdInfos[i].Selected = false;
-                
+
             }
             gridJzds.UseOldListChangedHandler = false;
             gridJzds.Refresh();
@@ -482,7 +459,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             int recIndex = gridJzds.Table.SelectedRecords[0].GetSourcePosition();
             JzdInfo jzdInfo = _jzdInfos[recIndex];
             Jzd jzd = jzdInfo.GetJzd();
-            frmJzd frm=new frmJzd();
+            frmJzd frm = new frmJzd();
             frm.Context = _context;
             frm.LinkedObject = jzd;
             frm.ShowDialog();
@@ -503,7 +480,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             IEnvelope env = _context.Map.Extents;
             env.MoveCenterTo(jzdInfo.Xzbz, jzdInfo.Yzbz);
             _context.Map.ZoomToExtents(env);
-          
+
         }
 
         private void btnSelectAllJzx_Click(object sender, EventArgs e)
@@ -527,17 +504,17 @@ namespace VastGIS.Plugins.RealEstate.Forms
         {
             if (MessageBox.Show("你确认将创建所有选择的界址线吗?", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) !=
                 DialogResult.Yes) return;
-          
+
             for (int i = 0; i < _jzxInfos.Count; i++)
             {
                 if (_jzxInfos[i].Selected == false) continue;
                 if (_jzxInfos[i].ID > 0) continue;
                 Jzx jzx = _jzxInfos[i].GetJzx();
-               
+
                 _database.ZdService.SaveJzx(jzx);
                 _jzxInfos[i].LoadJzx(jzx);
                 _jzxInfos[i].Selected = false;
-                
+
             }
             gridJzxs.Refresh();
         }
@@ -590,136 +567,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             IEnvelope env = _context.Map.Extents;
             env.MoveCenterTo(jzxInfo.CenterX, jzxInfo.CenterY);
             _context.Map.ZoomToExtents(env);
-           
-        }
-    }
 
-
-    internal class JzdInfo
-    {
-        private Jzd _jzd;
-
-
-        public bool Selected { get; set; }
-        public int Zdnsxh { get; set; }
-        public long ID { get; set; }
-        public string Jzdh { get; set; }
-        public string Jblx { get; set; }
-        public string Jzdlx { get; set; }
-        public double Xzbz { get; set; }
-        public double Yzbz { get; set; }
-        public JzdInfo(Jzd jzd)
-        {
-            ID = jzd.ID;
-            Jzdh = jzd.Jzdh;
-            Jblx = jzd.Jblx;
-            Jzdlx = jzd.Jzdlx;
-            Xzbz = jzd.Geometry.Points[0].X;
-            Yzbz = jzd.Geometry.Points[0].Y;
-            Selected = false;
-            _jzd = jzd;
-        }
-
-        public JzdInfo()
-        {
-            Selected = true;
-            ID = -1;
-            _jzd = new Jzd();
-        }
-
-        public void LoadJzd(Jzd jzd)
-        {
-            ID = jzd.ID;
-            Jzdh = jzd.Jzdh;
-            Jblx = jzd.Jblx;
-            Jzdlx = jzd.Jzdlx;
-            Xzbz = jzd.Geometry.Points[0].X;
-            Yzbz = jzd.Geometry.Points[0].Y;
-            Selected = false;
-            _jzd = jzd;
-        }
-
-        public Jzd GetJzd()
-        {
-            if (_jzd.ID <= 0)
-            {
-                _jzd.Jzdh = Jzdh;
-                _jzd.Jblx = Jblx;
-                _jzd.Jzdlx = Jzdlx;
-                _jzd.Geometry = GeometryHelper.CreatePoint(Xzbz, Yzbz);
-                _jzd.Xzbz = Xzbz;
-                _jzd.Yzbz = Yzbz;
-            }
-            return _jzd;
-        }
-    }
-
-    internal class JzxInfo
-    {
-        private Jzx _jzx;
-        public bool Selected { get; set; }
-        public int Zdnsxh { get; set; }
-        public long ID { get; set; }
-        public string Jzxlb { get; set; }
-        public string Jzxwz { get; set; }
-        public string Jxxz { get; set; }
-        public double CenterX { get; set; }
-        public double CenterY { get; set; }
-        public double StartX { get; set; }
-        public double StartY { get; set; }
-        public double EndX { get; set; }
-        public double EndY { get; set; }
-        public JzxInfo(Jzx jzx)
-        {
-            ID = jzx.ID;
-            Jzxlb = jzx.Jzxlb;
-            Jzxwz = jzx.Jzxwz;
-            Jxxz = jzx.Jxxz;
-            Selected = false;
-            StartX = jzx.Geometry.Points[0].X;
-            StartY = jzx.Geometry.Points[0].Y;
-            EndX = jzx.Geometry.Points[1].X;
-            EndY = jzx.Geometry.Points[1].Y;
-            CenterX = (StartX + EndX) / 2.0;
-            CenterY = (StartY + EndY) / 2.0;
-            _jzx = jzx;
-        }
-
-        public void LoadJzx(Jzx jzx)
-        {
-            ID = jzx.ID;
-            Jzxlb = jzx.Jzxlb;
-            Jzxwz = jzx.Jzxwz;
-            Jxxz = jzx.Jxxz;
-            Selected = false;
-            StartX = jzx.Geometry.Points[0].X;
-            StartY = jzx.Geometry.Points[0].Y;
-            EndX = jzx.Geometry.Points[1].X;
-            EndY = jzx.Geometry.Points[1].Y;
-            CenterX = (StartX + EndX) / 2.0;
-            CenterY = (StartY + EndY) / 2.0;
-            _jzx = jzx;
-        }
-
-        public JzxInfo()
-        {
-            Selected = true;
-            ID = -1;
-            _jzx = new Jzx();
-        }
-
-        public Jzx GetJzx()
-        {
-            if (_jzx.ID <= 0)
-            {
-                _jzx.Jzxwz = Jzxwz;
-                _jzx.Jxxz  = Jxxz;
-                _jzx.Jzxlb = Jzxlb;
-                _jzx.Geometry = GeometryHelper.CreateLine(StartX, StartY,EndX,EndY);
-                _jzx.Jzxcd = Math.Sqrt((StartX - EndX) * (StartX - EndX) + (StartY - EndY) * (StartY - EndY));
-
-            }
-            return _jzx;
         }
     }
 }

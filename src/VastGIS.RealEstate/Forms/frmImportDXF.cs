@@ -22,11 +22,21 @@ using VastGIS.Shared;
 
 namespace VastGIS.Plugins.RealEstate.Forms
 {
-    public partial class frmImportDXF : MapEditingForm
+    public partial class frmImportDXF : Form
     {
-        public frmImportDXF(IAppContext context):base(context)
+        private IAppContext _context;
+        private RealEstateEditor _plugin;
+        private IREDatabase _database;
+        public frmImportDXF(IAppContext context, RealEstateEditor plugin)
         {
             InitializeComponent();
+            _context = context;
+            _plugin = plugin;
+            if (_plugin == null)
+            {
+                _plugin = _context.Container.GetInstance<RealEstateEditor>();
+            }
+            _database = ((IRealEstateContext)_context).RealEstateDatabase;
             cmbCodepages.SelectedIndex = 0;
             cmbInsertMethod.SelectedIndex = 0;
         }
@@ -34,7 +44,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private void btnDXF_Click(object sender, EventArgs e)
         {
             string fileName;
-            
+
             bool returnBack = FileHelper.OpenFile("选择DXF文件", "DXF文件(*.dxf)|*.dxf", 0, _context.View as IMainView,
                 out fileName);
             if (!returnBack) return;
@@ -56,7 +66,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             IRealEstateContext reContext = ((IRealEstateContext)_context);
             IREDatabase database = reContext.RealEstateDatabase;
 
-            bool hasData= reContext.RealEstateDatabase.CadService.HasCADData(fileName);
+            bool hasData = reContext.RealEstateDatabase.CadService.HasCADData(fileName);
             if (hasData)
             {
                 lblCAD.Text = "数据库里有该DXF文件数据";
@@ -65,7 +75,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult=DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -91,23 +101,23 @@ namespace VastGIS.Plugins.RealEstate.Forms
             {
                 ((IRealEstateContext)_context).CheckDatabase();
             }
-            
+
             ProjectLoadingView _loadingForm;
             _loadingForm = new ProjectLoadingView("导入DXF操作:" + fileName);
             _context.View.ShowChildView(_loadingForm, false);
             Application.DoEvents();
             _context.View.Lock();
             string errMsg = "";
-            bool retVal=((IRealEstateContext)_context).RealEstateDatabase.CadService.ImportDxfDrawing(fileName,out errMsg);
+            bool retVal = ((IRealEstateContext)_context).RealEstateDatabase.CadService.ImportDxfDrawing(fileName, out errMsg);
             if (retVal == false)
             {
-                MessageService.Current.Warn("导入CAD发生错误，"+errMsg);
+                MessageService.Current.Warn("导入CAD发生错误，" + errMsg);
                 _context.View.Unlock();
                 _loadingForm.Close();
                 _loadingForm.Dispose();
                 return;
             }
-            _loadingForm.ShowProgress(50,"对导入数据进行分层处理");
+            _loadingForm.ShowProgress(50, "对导入数据进行分层处理");
             bool isDelete = cmbInsertMethod.SelectedIndex > 1 ? false : true;
             string deleteFileName = cmbInsertMethod.SelectedIndex == 1 ? "" : fileName;
             ((IRealEstateContext)_context).RealEstateDatabase.CadService.ImportTmpCadToBasemap(isDelete, deleteFileName);
@@ -120,7 +130,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             _loadingForm.Dispose();
             IEnvelope envelope = ((IRealEstateContext)_context).RealEstateDatabase.GetDatabaseEnvelope();
             _context.Map.ZoomToExtents(envelope);
-            DialogResult =DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
     }
 }

@@ -91,7 +91,7 @@
             this.mnuProperties});
             this.contextMenuLayer.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(236)))), ((int)(((byte)(249)))));
             this.contextMenuLayer.Name = "contextMenuStripEx1";
-            this.contextMenuLayer.Size = new System.Drawing.Size(206, 204);
+            this.contextMenuLayer.Size = new System.Drawing.Size(206, 226);
             this.contextMenuLayer.Style = Syncfusion.Windows.Forms.Tools.ContextMenuStripEx.ContextMenuStyle.Metro;
             this.contextMenuLayer.Opening += new System.ComponentModel.CancelEventHandler(this.OnContextMenuLayerOpening);
             // 
@@ -111,6 +111,7 @@
             this.toolTableEditor.Name = "toolTableEditor";
             this.toolTableEditor.Size = new System.Drawing.Size(205, 22);
             this.toolTableEditor.Text = "属性表编辑（不推荐）...";
+            this.toolTableEditor.Visible = false;
             // 
             // toolLabels
             // 
@@ -175,47 +176,47 @@
             this.mnuGroupProperties});
             this.contextMenuGroup.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(236)))), ((int)(((byte)(249)))));
             this.contextMenuGroup.Name = "contextMenuGroup";
-            this.contextMenuGroup.Size = new System.Drawing.Size(153, 148);
+            this.contextMenuGroup.Size = new System.Drawing.Size(149, 126);
             this.contextMenuGroup.Style = Syncfusion.Windows.Forms.Tools.ContextMenuStripEx.ContextMenuStyle.Default;
             // 
             // mnuAddGroup
             // 
             this.mnuAddGroup.Name = "mnuAddGroup";
-            this.mnuAddGroup.Size = new System.Drawing.Size(152, 22);
+            this.mnuAddGroup.Size = new System.Drawing.Size(148, 22);
             this.mnuAddGroup.Text = "增加图层组";
             // 
             // mnuAddLayer
             // 
             this.mnuAddLayer.Name = "mnuAddLayer";
-            this.mnuAddLayer.Size = new System.Drawing.Size(152, 22);
+            this.mnuAddLayer.Size = new System.Drawing.Size(148, 22);
             this.mnuAddLayer.Text = "增加图层";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(145, 6);
             // 
             // mnuZoomToGroup
             // 
             this.mnuZoomToGroup.Name = "mnuZoomToGroup";
-            this.mnuZoomToGroup.Size = new System.Drawing.Size(152, 22);
+            this.mnuZoomToGroup.Size = new System.Drawing.Size(148, 22);
             this.mnuZoomToGroup.Text = "放大到图层组";
             // 
             // mnuRemoveGroup
             // 
             this.mnuRemoveGroup.Name = "mnuRemoveGroup";
-            this.mnuRemoveGroup.Size = new System.Drawing.Size(152, 22);
+            this.mnuRemoveGroup.Size = new System.Drawing.Size(148, 22);
             this.mnuRemoveGroup.Text = "移除图层组";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(145, 6);
             // 
             // mnuGroupProperties
             // 
             this.mnuGroupProperties.Name = "mnuGroupProperties";
-            this.mnuGroupProperties.Size = new System.Drawing.Size(152, 22);
+            this.mnuGroupProperties.Size = new System.Drawing.Size(148, 22);
             this.mnuGroupProperties.Text = "属性";
             // 
             // LegendDockPanel
