@@ -34,14 +34,14 @@ namespace VastGIS.Shared
             return Enumerable.Range(0, count).Aggregate(string.Empty, (current, item) => current + pattern);
         }
 
-        public  static string StringToUtf8(string str,string fromEncoding="CP936")
+        public static string StringToUtf8(string str, string fromEncoding = "CP936")
         {
             Encoding utf8;
             Encoding cp936;
             utf8 = Encoding.GetEncoding("UTF-8");
             cp936 = System.Text.Encoding.GetEncoding(fromEncoding);
             byte[] gb = System.Text.Encoding.Default.GetBytes(str);
-            byte[]  gb2 = Encoding.Convert(cp936, utf8, gb);
+            byte[] gb2 = Encoding.Convert(cp936, utf8, gb);
             return utf8.GetString(gb2);
         }
         /// 字符串转Unicode  
@@ -50,7 +50,7 @@ namespace VastGIS.Shared
         /// <returns>Unicode编码后的字符串</returns>  
         public static string String2Unicode(string source)
         {
-            
+
             var bytes = Encoding.Unicode.GetBytes(source);
             var stringBuilder = new StringBuilder();
             for (var i = 0; i < bytes.Length; i += 2)
@@ -74,7 +74,7 @@ namespace VastGIS.Shared
             //encoder.close();
             //return new String(bos.toByteArray(), "UTF-8");
 
-          
+
             char[] charbuffers = s.ToCharArray();
             byte[] buffer;
             StringBuilder sb = new StringBuilder();
@@ -92,6 +92,7 @@ namespace VastGIS.Shared
         /// <returns></returns>    
         public static string UnicodeToString(string srcText)
         {
+            if (!srcText.Contains("\\u")) return srcText;
             string dst = "";
             string src = srcText;
             int len = srcText.Length / 6;
@@ -105,10 +106,7 @@ namespace VastGIS.Shared
                 bytes[0] = byte.Parse(int.Parse(str.Substring(2, 2), System.Globalization.NumberStyles.HexNumber).ToString());
                 dst += Encoding.Unicode.GetString(bytes);
             }
-            while (dst.Contains("\\u"))
-            {
-                dst = UnicodeToString(dst);
-            }
+            dst = UnicodeToString(dst);
             return dst;
         }
     }
