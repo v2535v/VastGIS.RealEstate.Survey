@@ -53,6 +53,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             {
                 ucSelectLayer1.SetCurrentClass(currentObjectclass);
             }
+            ucSelectLayer1.LimitedGeometryType= GeometryType.None;
             ucSelectLayer1.ucSelectedClassChanged += UcSelectLayer1_ucSelectedClassChanged;
         }
 

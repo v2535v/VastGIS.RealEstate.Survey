@@ -57,6 +57,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 selTargetLayer.GeometryType = (GeometryType)_plugin.Config.EditingClass.Txlx;
                selTargetLayer.SelectedClass = _plugin.Config.EditingClass;
             }
+            selTargetLayer.LimitedGeometryType= GeometryType.None;
             _editableclasses = classes;
 
             List<VgObjectclass> sourceclasses = _database.SystemService.GetVgObjectclasses(" IDENTIFY = 1 And DXLX=1").ToList();
@@ -73,7 +74,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             }
             else
             {
-                selSourceLayer.GeometryType = (GeometryType)_plugin.Config.EditingClass.Txlx;
+                selSourceLayer.LimitedGeometryType = (GeometryType)_plugin.Config.EditingClass.Txlx;
                 if (_plugin.Config.SelectableClasses != null)
                 {
                     selSourceLayer.SelectedClasses = _plugin.Config.SelectableClasses
@@ -93,7 +94,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private void SelTargetLayer_ucSelectedClassChanged(object sender, ObjectClassEventArgs e)
         {
             ucFeatureLists1.ClearList();
-            selSourceLayer.GeometryType = selTargetLayer.GeometryType;
+            selSourceLayer.LimitedGeometryType = selTargetLayer.GeometryType;
             _plugin.Config.EditingClass = selTargetLayer.SelectedClass;
             selSourceLayer.SelectedClasses = _plugin.Config.SelectableClasses;
         }

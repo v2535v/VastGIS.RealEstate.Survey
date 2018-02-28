@@ -39,7 +39,7 @@ namespace VastGIS.Plugins.Symbology.Forms
 
             if (sf == null)
             {
-                throw new Exception("AddLabelsForm: Unexpected null parameter");
+                throw new Exception("标注生成：参数错误");
             }
 
             _alignment = alignment;
@@ -49,9 +49,9 @@ namespace VastGIS.Plugins.Symbology.Forms
 
             if (_shapefile.IsPolygon)
             {
-                optPosition1.Text = "Center";
-                optPosition2.Text = "Centroid";
-                optPosition3.Text = "Interior point";
+                optPosition1.Text = "中心点";
+                optPosition2.Text = "重心点";
+                optPosition3.Text = "内部点";
                 optPosition4.Visible = false;
 
                 optPosition1.Tag = LabelPosition.Center;
@@ -66,10 +66,10 @@ namespace VastGIS.Plugins.Symbology.Forms
             }
             else if (_shapefile.IsPolyline)
             {
-                optPosition1.Text = "First segment";
-                optPosition2.Text = "Last segment";
-                optPosition3.Text = "Middle segment";
-                optPosition4.Text = "The longest segment";
+                optPosition1.Text = "第一分段";
+                optPosition2.Text = "最后分段";
+                optPosition3.Text = "中间分段";
+                optPosition4.Text = "最长分段";
 
                 optPosition1.Tag = LabelPosition.FirstSegment;
                 optPosition2.Tag = LabelPosition.LastSegment;
@@ -104,9 +104,9 @@ namespace VastGIS.Plugins.Symbology.Forms
 
             // line orientation
             cboLineOrientation.Items.Clear();
-            cboLineOrientation.Items.Add("Horizontal");
-            cboLineOrientation.Items.Add("Parallel");
-            cboLineOrientation.Items.Add("Perpendicular");
+            cboLineOrientation.Items.Add("水平");
+            cboLineOrientation.Items.Add("平行");
+            cboLineOrientation.Items.Add("垂直");
             cboLineOrientation.SelectedIndex = 1;
         }
 

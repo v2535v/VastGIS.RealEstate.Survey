@@ -83,13 +83,13 @@ namespace VastGIS.RealEstate.Data.Service.Impl
             return _zdDao.ReorderAllPolygon(tableName);
         }
 
-        public List<IReFeature> FindFeatures(VgObjectclass objectClass, double x, double y)
+        public List<IReFeature> FindFeatures(VgObjectclass objectClass, double x, double y,double torenlance=1.0)
         {
-            return _zdDao.FindFeatures(objectClass, x, y);
+            return _zdDao.FindFeatures(objectClass, x, y,torenlance);
         }
-        public List<IReFeature> FindFeatures(List<VgObjectclass> objectClasses, double x, double y)
+        public List<IReFeature> FindFeatures(List<VgObjectclass> objectClasses, double x, double y,double torenlance=1.0)
         {
-            return _zdDao.FindFeatures(objectClasses, x, y);
+            return _zdDao.FindFeatures(objectClasses, x, y,torenlance);
         }
         #endregion
         

@@ -319,7 +319,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
         public void SetQueryPoint(double dx, double dy)
         {
             if (!chkSelFeature.Checked) return;
-            List<IReFeature> features = _database.SystemService.FindFeatures(_zdClass, dx, dy);
+            List<IReFeature> features = _database.SystemService.FindFeatures(_zdClass, dx, dy,0.05);
             if (features != null && features.Count>0)
             {
                 _feature = features[0];
@@ -354,7 +354,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 py = point.Y;
                 JzdInfo jzd;
                 i++;
-                List<IReFeature> findPnts = _database.SystemService.FindFeatures(_jzdClass, px, py);
+                List<IReFeature> findPnts = _database.SystemService.FindFeatures(_jzdClass, px, py,0.05);
                 if (findPnts != null && findPnts.Count == 1)
                 {
                    jzd =new JzdInfo( findPnts[0] as Jzd);
@@ -383,7 +383,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 double xx =(px+px2)/2.0;
                 double yy = (py+py2) / 2.0;
 
-                List<IReFeature> findLines = _database.SystemService.FindFeatures(_jzxClass, xx, yy);
+                List<IReFeature> findLines = _database.SystemService.FindFeatures(_jzxClass, xx, yy,0.2);
                 if (findLines != null && findLines.Count == 1)
                 {
                     jzx =new JzxInfo(findLines[0] as Jzx);
@@ -447,6 +447,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 _jzdInfos[i].Selected = false;
                 
             }
+            gridJzds.UseOldListChangedHandler = false;
             gridJzds.Refresh();
         }
 

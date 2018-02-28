@@ -50,6 +50,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 if (currentObjectclass != null && currentObjectclass.Txlx == 3)
                     ucSelectLayer1.SelectedClass = currentObjectclass;
             }
+            ucSelectLayer1.LimitedGeometryType= GeometryType.Polygon;
             ucEdgeList1.BindContext(_context);
 
             cmbModifyType.SelectedIndex = 0;

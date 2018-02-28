@@ -254,11 +254,11 @@ namespace VastGIS.Plugins.Symbology.Controls
 
             if (mode == DynamicVisibilityMode.Scale)
             {
-                lblCurrent.Text = "Current scale: " + (int)CurrentScale;
+                lblCurrent.Text = "当前比例尺: " + (int)CurrentScale;
             }
             else
             {
-                lblCurrent.Text = "Current zoom: " + CurrentZoom;
+                lblCurrent.Text = "当前显示级别: " + CurrentZoom;
             }
         }
 

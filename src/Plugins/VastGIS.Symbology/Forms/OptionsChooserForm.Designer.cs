@@ -50,21 +50,21 @@ namespace VastGIS.Plugins.Symbology.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(303, 13);
+            this.label1.Size = new System.Drawing.Size(197, 12);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Choose the set of visualization options to use for the new layer:";
+            this.label1.Text = "选择可视化参数设置并应用于新图层";
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(347, 306);
+            this.btnOk.Location = new System.Drawing.Point(347, 282);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(95, 26);
+            this.btnOk.Size = new System.Drawing.Size(95, 24);
             this.btnOk.TabIndex = 6;
-            this.btnOk.Text = "Ok";
+            this.btnOk.Text = "确认";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -72,11 +72,11 @@ namespace VastGIS.Plugins.Symbology.Forms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(448, 306);
+            this.btnCancel.Location = new System.Drawing.Point(448, 282);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(95, 26);
+            this.btnCancel.Size = new System.Drawing.Size(95, 24);
             this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -84,21 +84,21 @@ namespace VastGIS.Plugins.Symbology.Forms
             // 
             this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDescription.Location = new System.Drawing.Point(12, 267);
+            this.lblDescription.Location = new System.Drawing.Point(12, 246);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(531, 30);
+            this.lblDescription.Size = new System.Drawing.Size(531, 28);
             this.lblDescription.TabIndex = 12;
-            this.lblDescription.Text = "Description: ";
+            this.lblDescription.Text = "说明: ";
             // 
             // chkDontShow
             // 
             this.chkDontShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkDontShow.AutoSize = true;
-            this.chkDontShow.Location = new System.Drawing.Point(15, 312);
+            this.chkDontShow.Location = new System.Drawing.Point(15, 288);
             this.chkDontShow.Name = "chkDontShow";
-            this.chkDontShow.Size = new System.Drawing.Size(181, 17);
+            this.chkDontShow.Size = new System.Drawing.Size(132, 16);
             this.chkDontShow.TabIndex = 14;
-            this.chkDontShow.Text = "Don\'t show this dialog on loading";
+            this.chkDontShow.Text = "加载时不显示该窗体";
             this.chkDontShow.UseVisualStyleBackColor = true;
             this.chkDontShow.CheckedChanged += new System.EventHandler(this.chkDontShow_CheckedChanged);
             // 
@@ -115,7 +115,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(167, 229);
+            this.listView1.Size = new System.Drawing.Size(167, 211);
             this.listView1.TabIndex = 29;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -131,7 +131,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(12, 33);
+            this.splitContainer1.Location = new System.Drawing.Point(12, 30);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -141,7 +141,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listView1);
-            this.splitContainer1.Size = new System.Drawing.Size(530, 231);
+            this.splitContainer1.Size = new System.Drawing.Size(530, 213);
             this.splitContainer1.SplitterDistance = 357;
             this.splitContainer1.TabIndex = 30;
             // 
@@ -150,7 +150,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.axMap1.AllowDrop = true;
             this.axMap1.AnimationOnZooming = VastGIS.Api.Enums.AutoToggle.Auto;
             this.axMap1.BackgroundColor = System.Drawing.Color.White;
-            this.axMap1.CurrentScale = 17.442230851087803D;
+            this.axMap1.CurrentScale = 20.453312703628921D;
             this.axMap1.CurrentZoom = -1;
             this.axMap1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.axMap1.ExpandLayersOnAdding = true;
@@ -179,7 +179,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.axMap1.ShowCoordinatesFormat = VastGIS.Api.Enums.AngleFormat.Degrees;
             this.axMap1.ShowRedrawTime = false;
             this.axMap1.ShowVersionNumber = false;
-            this.axMap1.Size = new System.Drawing.Size(355, 229);
+            this.axMap1.Size = new System.Drawing.Size(355, 211);
             this.axMap1.SystemCursor = VastGIS.Api.Enums.SystemCursor.MapDefault;
             this.axMap1.TabIndex = 1;
             this.axMap1.Tag = "";
@@ -192,11 +192,11 @@ namespace VastGIS.Plugins.Symbology.Forms
             // 
             // OptionsChooserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(551, 341);
+            this.ClientSize = new System.Drawing.Size(551, 315);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.chkDontShow);
             this.Controls.Add(this.lblDescription);
@@ -207,7 +207,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.Name = "OptionsChooserForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Symbology chooser";
+            this.Text = "符号选择";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOptionsChooser_FormClosing);
             this.Load += new System.EventHandler(this.OptionsChooserForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
