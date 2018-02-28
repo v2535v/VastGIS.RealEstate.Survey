@@ -105,7 +105,7 @@ namespace VastGIS.Controls
                         var group = Legend.Groups.ItemByHandle(_legendDockPanel.SelectedGroupHandle);
                         if (group != null)
                         {
-                            if (MessageService.Current.Ask("Do you want to remove group: " + group.Text + "?"))
+                            if (MessageService.Current.Ask("你确定要移除图层组: " + group.Text + "吗?"))
                             {
                                 Legend.Groups.Remove(group.Handle);
                             }
@@ -149,7 +149,7 @@ namespace VastGIS.Controls
                         {
                             if (!LayerSerializationHelper.CheckFilename(layer.Filename))
                             {
-                                MessageService.Current.Info("Can not save settings for a non-disk based layer.");
+                                MessageService.Current.Info("不能够对非独立保存图层保存设置");
                                 return;
                             }
 
@@ -165,7 +165,7 @@ namespace VastGIS.Controls
                         {
                             if (!LayerSerializationHelper.CheckFilename(layer.Filename))
                             {
-                                MessageService.Current.Info("Can not load settings for a non-disk based layer.");
+                                MessageService.Current.Info("不能够对非独立保存图层加载设置");
                                 return;
                             }
 
@@ -184,7 +184,7 @@ namespace VastGIS.Controls
                         }
                         else
                         {
-                            MessageService.Current.Warn("Failed to find file for the layer.");
+                            MessageService.Current.Warn("找不到该图层.");
                         }
                         break;
                     }

@@ -60,6 +60,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             {
                 ucSelectLayer1.SelectedClass = currentObjectclass;
             }
+            ucSelectLayer1.LimitedGeometryType = GeometryType.Point;
             distPoint1.TextChanged += distPoint_TextChanged;
             distPoint2.TextChanged += distPoint_TextChanged;
         }

@@ -195,7 +195,8 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             string sql = "SELECT MAX(ID) from " + tableName;
             using (SQLiteCommand command = new SQLiteCommand(sql, connection))
             {
-                long id = Convert.ToInt64(command.ExecuteScalar());
+                object retVal = command.ExecuteScalar();
+                long id = retVal==DBNull.Value? 0: Convert.ToInt64(retVal);
                 return id;
             }
         }
@@ -272,7 +273,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
         }
 
-        public List<IReFeature> FindFeatures(VgObjectclass objectClass, double x, double y)
+        public List<IReFeature> FindFeatures(VgObjectclass objectClass, double x, double y, double torenlance = 1.0)
         {
             string className = objectClass.Mc;
             string objectName = "VastGIS.RealEstate.Data.Entity." + StringUtil.GetEntityName(className);
@@ -281,7 +282,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             string selectSql = SQLHelper.Instance().GetQuerySql(objectClass.Mc);
             if (string.IsNullOrEmpty(selectSql)) return null;
             string sql =
-                SpatialHelper.SearchActualSQLBuilder(selectSql, (GeometryType)objectClass.Txlx, x, y, 2);
+                SpatialHelper.SearchActualSQLBuilder(selectSql, (GeometryType)objectClass.Txlx, x, y, torenlance);
             List<IReFeature> features = new List<IReFeature>();
             using (SQLiteCommand command = new SQLiteCommand(sql, connection))
             {
@@ -299,12 +300,12 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             return features;
         }
 
-        public List<IReFeature> FindFeatures(List<VgObjectclass> objectClasses, double x, double y)
+        public List<IReFeature> FindFeatures(List<VgObjectclass> objectClasses, double x, double y, double torenlance = 1.0)
         {
             List<IReFeature> features = new List<IReFeature>();
             foreach (VgObjectclass objectClass in objectClasses)
             {
-                List<IReFeature> oneResults = FindFeatures(objectClass, x, y);
+                List<IReFeature> oneResults = FindFeatures(objectClass, x, y, torenlance);
                 if (oneResults != null)
                 {
                     features.AddRange(oneResults);

@@ -32,10 +32,11 @@
             this.btnCancle = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.lblInfo = new System.Windows.Forms.Label();
-            this.ucSelectLayer1 = new VastGIS.Plugins.RealEstate.DataControls.ucSelectLayer();
             this.btnApply = new System.Windows.Forms.Button();
-            this.ucCoordinateList1 = new VastGIS.Plugins.RealEstate.DataControls.ucCoordinateList();
+            this.btnReorder = new System.Windows.Forms.Button();
             this.snapCheckbox1 = new VastGIS.Plugins.RealEstate.DataControls.SnapCheckbox(this.components);
+            this.ucCoordinateList1 = new VastGIS.Plugins.RealEstate.DataControls.ucCoordinateList();
+            this.ucSelectLayer1 = new VastGIS.Plugins.RealEstate.DataControls.ucSelectLayer();
             this.SuspendLayout();
             // 
             // btnCancle
@@ -69,20 +70,6 @@
             this.lblInfo.Size = new System.Drawing.Size(0, 12);
             this.lblInfo.TabIndex = 3;
             // 
-            // ucSelectLayer1
-            // 
-            this.ucSelectLayer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucSelectLayer1.GeometryType = VastGIS.Api.Enums.GeometryType.None;
-            this.ucSelectLayer1.Label = "目标图层";
-            this.ucSelectLayer1.Location = new System.Drawing.Point(5, 3);
-            this.ucSelectLayer1.Name = "ucSelectLayer1";
-            this.ucSelectLayer1.SelectedClass = null;
-            this.ucSelectLayer1.SelectedClasses = null;
-            this.ucSelectLayer1.SingleSelect = false;
-            this.ucSelectLayer1.Size = new System.Drawing.Size(271, 25);
-            this.ucSelectLayer1.TabIndex = 4;
-            // 
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -94,16 +81,15 @@
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
-            // ucCoordinateList1
+            // btnReorder
             // 
-            this.ucCoordinateList1.Editable = false;
-            this.ucCoordinateList1.GeometryType = VastGIS.Api.Enums.GeometryType.None;
-            this.ucCoordinateList1.IsDraw = true;
-            this.ucCoordinateList1.IsUpdate = false;
-            this.ucCoordinateList1.Location = new System.Drawing.Point(5, 35);
-            this.ucCoordinateList1.Name = "ucCoordinateList1";
-            this.ucCoordinateList1.Size = new System.Drawing.Size(271, 336);
-            this.ucCoordinateList1.TabIndex = 6;
+            this.btnReorder.Location = new System.Drawing.Point(74, 35);
+            this.btnReorder.Name = "btnReorder";
+            this.btnReorder.Size = new System.Drawing.Size(104, 23);
+            this.btnReorder.TabIndex = 10;
+            this.btnReorder.Text = "坐标排序";
+            this.btnReorder.UseVisualStyleBackColor = true;
+            this.btnReorder.Click += new System.EventHandler(this.btnReorder_Click);
             // 
             // snapCheckbox1
             // 
@@ -117,11 +103,38 @@
             this.snapCheckbox1.Text = "捕捉";
             this.snapCheckbox1.UseVisualStyleBackColor = true;
             // 
+            // ucCoordinateList1
+            // 
+            this.ucCoordinateList1.Editable = false;
+            this.ucCoordinateList1.GeometryType = VastGIS.Api.Enums.GeometryType.None;
+            this.ucCoordinateList1.IsDraw = true;
+            this.ucCoordinateList1.IsUpdate = false;
+            this.ucCoordinateList1.Location = new System.Drawing.Point(5, 35);
+            this.ucCoordinateList1.Name = "ucCoordinateList1";
+            this.ucCoordinateList1.Size = new System.Drawing.Size(271, 336);
+            this.ucCoordinateList1.TabIndex = 6;
+            // 
+            // ucSelectLayer1
+            // 
+            this.ucSelectLayer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucSelectLayer1.GeometryType = VastGIS.Api.Enums.GeometryType.None;
+            this.ucSelectLayer1.Label = "目标图层";
+            this.ucSelectLayer1.LimitedGeometryType = VastGIS.Api.Enums.GeometryType.None;
+            this.ucSelectLayer1.Location = new System.Drawing.Point(5, 3);
+            this.ucSelectLayer1.Name = "ucSelectLayer1";
+            this.ucSelectLayer1.SelectedClass = null;
+            this.ucSelectLayer1.SelectedClasses = null;
+            this.ucSelectLayer1.SingleSelect = false;
+            this.ucSelectLayer1.Size = new System.Drawing.Size(271, 25);
+            this.ucSelectLayer1.TabIndex = 4;
+            // 
             // frmEditGeometry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(280, 421);
+            this.Controls.Add(this.btnReorder);
             this.Controls.Add(this.snapCheckbox1);
             this.Controls.Add(this.ucCoordinateList1);
             this.Controls.Add(this.btnApply);
@@ -146,5 +159,6 @@
         private System.Windows.Forms.Button btnApply;
         private DataControls.ucCoordinateList ucCoordinateList1;
         private DataControls.SnapCheckbox snapCheckbox1;
+        private System.Windows.Forms.Button btnReorder;
     }
 }

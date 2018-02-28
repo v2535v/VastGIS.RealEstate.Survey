@@ -61,7 +61,8 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 ucSelectLayer1.GeometryType= GeometryType.Polygon;
                 if (currentObjectclass != null && currentObjectclass.Txlx == 3)
                     ucSelectLayer1.SelectedClass = currentObjectclass;
-            }            
+            }
+            ucSelectLayer1.LimitedGeometryType = GeometryType.Polygon;
             ucSelectLayer1.ucSelectedClassChanged += UcSelectLayer1_ucSelectedClassChanged;
             txtFeature.Enabled = false;
             chkSelFeature.Checked = true;

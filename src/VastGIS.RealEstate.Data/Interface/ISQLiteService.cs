@@ -20,8 +20,8 @@ namespace VastGIS.RealEstate.Data.Interface
         IEntity GetEntity(VgObjectclass currentClass, long id);
         List<IEntity> GetEntities(VgObjectclass currentClass, string queryFilter);
         bool ReorderAllPolygon(string tableName);
-        List<IReFeature> FindFeatures(VgObjectclass objectClass, double x, double y);
-        List<IReFeature> FindFeatures(List<VgObjectclass> objectClasses, double x, double y);
+        List<IReFeature> FindFeatures(VgObjectclass objectClass, double x, double y,double torenlance=1.0);
+        List<IReFeature> FindFeatures(List<VgObjectclass> objectClasses, double x, double y, double torenlance = 1.0);
 
         bool CopyEntities(
             VgObjectclass targetClass,

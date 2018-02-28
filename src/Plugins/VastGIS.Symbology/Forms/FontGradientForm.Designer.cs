@@ -46,31 +46,31 @@ namespace VastGIS.Plugins.Symbology.Forms
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(76, 71);
+            this.label8.Location = new System.Drawing.Point(76, 66);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 117;
-            this.label8.Text = "Colors";
+            this.label8.Text = "颜色";
             // 
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(118, 124);
+            this.btnOk.Location = new System.Drawing.Point(118, 114);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(90, 26);
+            this.btnOk.Size = new System.Drawing.Size(90, 24);
             this.btnOk.TabIndex = 122;
-            this.btnOk.Text = "Ok";
+            this.btnOk.Text = "确定";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(214, 124);
+            this.btnCancel.Location = new System.Drawing.Point(214, 114);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(90, 26);
+            this.btnCancel.Size = new System.Drawing.Size(90, 24);
             this.btnCancel.TabIndex = 123;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // groupBox1
@@ -82,18 +82,18 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Location = new System.Drawing.Point(10, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(294, 112);
+            this.groupBox1.Size = new System.Drawing.Size(294, 103);
             this.groupBox1.TabIndex = 124;
             this.groupBox1.TabStop = false;
             // 
             // chkUseGradient
             // 
             this.chkUseGradient.AutoSize = true;
-            this.chkUseGradient.Location = new System.Drawing.Point(53, 30);
+            this.chkUseGradient.Location = new System.Drawing.Point(53, 28);
             this.chkUseGradient.Name = "chkUseGradient";
-            this.chkUseGradient.Size = new System.Drawing.Size(59, 17);
+            this.chkUseGradient.Size = new System.Drawing.Size(48, 16);
             this.chkUseGradient.TabIndex = 121;
-            this.chkUseGradient.Text = "Enable";
+            this.chkUseGradient.Text = "可见";
             this.chkUseGradient.UseVisualStyleBackColor = true;
             this.chkUseGradient.CheckedChanged += new System.EventHandler(this.chkUseGradient_CheckedChanged);
             // 
@@ -107,9 +107,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.clpFont1.IntegralHeight = false;
             this.clpFont1.Items.AddRange(new object[] {
             "Color"});
-            this.clpFont1.Location = new System.Drawing.Point(124, 68);
+            this.clpFont1.Location = new System.Drawing.Point(124, 63);
             this.clpFont1.Name = "clpFont1";
-            this.clpFont1.Size = new System.Drawing.Size(74, 21);
+            this.clpFont1.Size = new System.Drawing.Size(74, 22);
             this.clpFont1.TabIndex = 118;
             this.clpFont1.SelectedColorChanged += new System.EventHandler(this.Ui2Settings);
             // 
@@ -123,9 +123,9 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.clpFont2.IntegralHeight = false;
             this.clpFont2.Items.AddRange(new object[] {
             "Color"});
-            this.clpFont2.Location = new System.Drawing.Point(204, 68);
+            this.clpFont2.Location = new System.Drawing.Point(204, 63);
             this.clpFont2.Name = "clpFont2";
-            this.clpFont2.Size = new System.Drawing.Size(74, 21);
+            this.clpFont2.Size = new System.Drawing.Size(74, 22);
             this.clpFont2.TabIndex = 119;
             this.clpFont2.SelectedColorChanged += new System.EventHandler(this.Ui2Settings);
             // 
@@ -137,20 +137,20 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.icbFontGradient.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.icbFontGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.icbFontGradient.FormattingEnabled = true;
-            this.icbFontGradient.Location = new System.Drawing.Point(124, 26);
+            this.icbFontGradient.Location = new System.Drawing.Point(124, 24);
             this.icbFontGradient.Name = "icbFontGradient";
             this.icbFontGradient.OutlineColor = System.Drawing.Color.Black;
-            this.icbFontGradient.Size = new System.Drawing.Size(154, 21);
+            this.icbFontGradient.Size = new System.Drawing.Size(154, 22);
             this.icbFontGradient.TabIndex = 120;
             this.icbFontGradient.SelectedIndexChanged += new System.EventHandler(this.Ui2Settings);
             // 
             // FontGradientForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(312, 156);
+            this.ClientSize = new System.Drawing.Size(312, 144);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
@@ -160,7 +160,7 @@ namespace VastGIS.Plugins.Symbology.Forms
             this.Name = "FontGradientForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Font gradient";
+            this.Text = "字体渐变";
             this.Load += new System.EventHandler(this.FontGradientForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

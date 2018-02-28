@@ -62,12 +62,12 @@
             this.groupBox5.Controls.Add(this.optPosition3);
             this.groupBox5.Controls.Add(this.optPosition2);
             this.groupBox5.Controls.Add(this.optPosition1);
-            this.groupBox5.Location = new System.Drawing.Point(12, 12);
+            this.groupBox5.Location = new System.Drawing.Point(12, 11);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(329, 150);
+            this.groupBox5.Size = new System.Drawing.Size(329, 138);
             this.groupBox5.TabIndex = 22;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Position";
+            this.groupBox5.Text = "定位";
             // 
             // panel1
             // 
@@ -80,18 +80,18 @@
             this.panel1.Controls.Add(this.optAlignCenterRight);
             this.panel1.Controls.Add(this.optAlignCenterLeft);
             this.panel1.Controls.Add(this.optAlignCenter);
-            this.panel1.Location = new System.Drawing.Point(170, 30);
+            this.panel1.Location = new System.Drawing.Point(170, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(116, 100);
+            this.panel1.Size = new System.Drawing.Size(116, 92);
             this.panel1.TabIndex = 158;
             // 
             // optAlignBottomRight
             // 
             this.optAlignBottomRight.Appearance = System.Windows.Forms.Appearance.Button;
             this.optAlignBottomRight.Image = ((System.Drawing.Image)(resources.GetObject("optAlignBottomRight.Image")));
-            this.optAlignBottomRight.Location = new System.Drawing.Point(80, 70);
+            this.optAlignBottomRight.Location = new System.Drawing.Point(80, 65);
             this.optAlignBottomRight.Name = "optAlignBottomRight";
-            this.optAlignBottomRight.Size = new System.Drawing.Size(30, 23);
+            this.optAlignBottomRight.Size = new System.Drawing.Size(30, 21);
             this.optAlignBottomRight.TabIndex = 157;
             this.optAlignBottomRight.TabStop = true;
             this.optAlignBottomRight.UseVisualStyleBackColor = true;
@@ -100,9 +100,9 @@
             // 
             this.optAlignTopLeft.Appearance = System.Windows.Forms.Appearance.Button;
             this.optAlignTopLeft.Image = ((System.Drawing.Image)(resources.GetObject("optAlignTopLeft.Image")));
-            this.optAlignTopLeft.Location = new System.Drawing.Point(9, 12);
+            this.optAlignTopLeft.Location = new System.Drawing.Point(9, 11);
             this.optAlignTopLeft.Name = "optAlignTopLeft";
-            this.optAlignTopLeft.Size = new System.Drawing.Size(30, 23);
+            this.optAlignTopLeft.Size = new System.Drawing.Size(30, 21);
             this.optAlignTopLeft.TabIndex = 149;
             this.optAlignTopLeft.TabStop = true;
             this.optAlignTopLeft.UseVisualStyleBackColor = true;
@@ -111,9 +111,9 @@
             // 
             this.optAlignBottomCenter.Appearance = System.Windows.Forms.Appearance.Button;
             this.optAlignBottomCenter.Image = ((System.Drawing.Image)(resources.GetObject("optAlignBottomCenter.Image")));
-            this.optAlignBottomCenter.Location = new System.Drawing.Point(44, 70);
+            this.optAlignBottomCenter.Location = new System.Drawing.Point(44, 65);
             this.optAlignBottomCenter.Name = "optAlignBottomCenter";
-            this.optAlignBottomCenter.Size = new System.Drawing.Size(30, 23);
+            this.optAlignBottomCenter.Size = new System.Drawing.Size(30, 21);
             this.optAlignBottomCenter.TabIndex = 156;
             this.optAlignBottomCenter.TabStop = true;
             this.optAlignBottomCenter.UseVisualStyleBackColor = true;
@@ -122,9 +122,9 @@
             // 
             this.optAlignTopCenter.Appearance = System.Windows.Forms.Appearance.Button;
             this.optAlignTopCenter.Image = ((System.Drawing.Image)(resources.GetObject("optAlignTopCenter.Image")));
-            this.optAlignTopCenter.Location = new System.Drawing.Point(45, 12);
+            this.optAlignTopCenter.Location = new System.Drawing.Point(45, 11);
             this.optAlignTopCenter.Name = "optAlignTopCenter";
-            this.optAlignTopCenter.Size = new System.Drawing.Size(30, 23);
+            this.optAlignTopCenter.Size = new System.Drawing.Size(30, 21);
             this.optAlignTopCenter.TabIndex = 150;
             this.optAlignTopCenter.TabStop = true;
             this.optAlignTopCenter.UseVisualStyleBackColor = true;
@@ -133,9 +133,9 @@
             // 
             this.optAlignBottomLeft.Appearance = System.Windows.Forms.Appearance.Button;
             this.optAlignBottomLeft.Image = ((System.Drawing.Image)(resources.GetObject("optAlignBottomLeft.Image")));
-            this.optAlignBottomLeft.Location = new System.Drawing.Point(8, 70);
+            this.optAlignBottomLeft.Location = new System.Drawing.Point(8, 65);
             this.optAlignBottomLeft.Name = "optAlignBottomLeft";
-            this.optAlignBottomLeft.Size = new System.Drawing.Size(30, 23);
+            this.optAlignBottomLeft.Size = new System.Drawing.Size(30, 21);
             this.optAlignBottomLeft.TabIndex = 155;
             this.optAlignBottomLeft.TabStop = true;
             this.optAlignBottomLeft.UseVisualStyleBackColor = true;
@@ -144,9 +144,9 @@
             // 
             this.optAlignTopRight.Appearance = System.Windows.Forms.Appearance.Button;
             this.optAlignTopRight.Image = ((System.Drawing.Image)(resources.GetObject("optAlignTopRight.Image")));
-            this.optAlignTopRight.Location = new System.Drawing.Point(81, 12);
+            this.optAlignTopRight.Location = new System.Drawing.Point(81, 11);
             this.optAlignTopRight.Name = "optAlignTopRight";
-            this.optAlignTopRight.Size = new System.Drawing.Size(30, 23);
+            this.optAlignTopRight.Size = new System.Drawing.Size(30, 21);
             this.optAlignTopRight.TabIndex = 151;
             this.optAlignTopRight.TabStop = true;
             this.optAlignTopRight.UseVisualStyleBackColor = true;
@@ -155,9 +155,9 @@
             // 
             this.optAlignCenterRight.Appearance = System.Windows.Forms.Appearance.Button;
             this.optAlignCenterRight.Image = ((System.Drawing.Image)(resources.GetObject("optAlignCenterRight.Image")));
-            this.optAlignCenterRight.Location = new System.Drawing.Point(81, 41);
+            this.optAlignCenterRight.Location = new System.Drawing.Point(81, 38);
             this.optAlignCenterRight.Name = "optAlignCenterRight";
-            this.optAlignCenterRight.Size = new System.Drawing.Size(30, 23);
+            this.optAlignCenterRight.Size = new System.Drawing.Size(30, 21);
             this.optAlignCenterRight.TabIndex = 154;
             this.optAlignCenterRight.TabStop = true;
             this.optAlignCenterRight.UseVisualStyleBackColor = true;
@@ -166,9 +166,9 @@
             // 
             this.optAlignCenterLeft.Appearance = System.Windows.Forms.Appearance.Button;
             this.optAlignCenterLeft.Image = ((System.Drawing.Image)(resources.GetObject("optAlignCenterLeft.Image")));
-            this.optAlignCenterLeft.Location = new System.Drawing.Point(9, 41);
+            this.optAlignCenterLeft.Location = new System.Drawing.Point(9, 38);
             this.optAlignCenterLeft.Name = "optAlignCenterLeft";
-            this.optAlignCenterLeft.Size = new System.Drawing.Size(30, 23);
+            this.optAlignCenterLeft.Size = new System.Drawing.Size(30, 21);
             this.optAlignCenterLeft.TabIndex = 152;
             this.optAlignCenterLeft.TabStop = true;
             this.optAlignCenterLeft.UseVisualStyleBackColor = true;
@@ -178,9 +178,9 @@
             this.optAlignCenter.Appearance = System.Windows.Forms.Appearance.Button;
             this.optAlignCenter.Enabled = false;
             this.optAlignCenter.Image = ((System.Drawing.Image)(resources.GetObject("optAlignCenter.Image")));
-            this.optAlignCenter.Location = new System.Drawing.Point(45, 41);
+            this.optAlignCenter.Location = new System.Drawing.Point(45, 38);
             this.optAlignCenter.Name = "optAlignCenter";
-            this.optAlignCenter.Size = new System.Drawing.Size(30, 23);
+            this.optAlignCenter.Size = new System.Drawing.Size(30, 21);
             this.optAlignCenter.TabIndex = 153;
             this.optAlignCenter.TabStop = true;
             this.optAlignCenter.UseVisualStyleBackColor = true;
@@ -188,43 +188,43 @@
             // optPosition4
             // 
             this.optPosition4.AutoSize = true;
-            this.optPosition4.Location = new System.Drawing.Point(32, 117);
+            this.optPosition4.Location = new System.Drawing.Point(32, 108);
             this.optPosition4.Name = "optPosition4";
-            this.optPosition4.Size = new System.Drawing.Size(83, 17);
+            this.optPosition4.Size = new System.Drawing.Size(59, 16);
             this.optPosition4.TabIndex = 3;
-            this.optPosition4.Text = "Interior point";
+            this.optPosition4.Text = "内部点";
             this.optPosition4.UseVisualStyleBackColor = true;
             // 
             // optPosition3
             // 
             this.optPosition3.AutoSize = true;
-            this.optPosition3.Location = new System.Drawing.Point(32, 88);
+            this.optPosition3.Location = new System.Drawing.Point(32, 81);
             this.optPosition3.Name = "optPosition3";
-            this.optPosition3.Size = new System.Drawing.Size(83, 17);
+            this.optPosition3.Size = new System.Drawing.Size(59, 16);
             this.optPosition3.TabIndex = 2;
-            this.optPosition3.Text = "Interior point";
+            this.optPosition3.Text = "内部点";
             this.optPosition3.UseVisualStyleBackColor = true;
             // 
             // optPosition2
             // 
             this.optPosition2.AutoSize = true;
-            this.optPosition2.Location = new System.Drawing.Point(32, 59);
+            this.optPosition2.Location = new System.Drawing.Point(32, 54);
             this.optPosition2.Name = "optPosition2";
-            this.optPosition2.Size = new System.Drawing.Size(64, 17);
+            this.optPosition2.Size = new System.Drawing.Size(47, 16);
             this.optPosition2.TabIndex = 1;
-            this.optPosition2.Text = "Centroid";
+            this.optPosition2.Text = "重心";
             this.optPosition2.UseVisualStyleBackColor = true;
             // 
             // optPosition1
             // 
             this.optPosition1.AutoSize = true;
             this.optPosition1.Checked = true;
-            this.optPosition1.Location = new System.Drawing.Point(32, 30);
+            this.optPosition1.Location = new System.Drawing.Point(32, 28);
             this.optPosition1.Name = "optPosition1";
-            this.optPosition1.Size = new System.Drawing.Size(56, 17);
+            this.optPosition1.Size = new System.Drawing.Size(47, 16);
             this.optPosition1.TabIndex = 0;
             this.optPosition1.TabStop = true;
-            this.optPosition1.Text = "Center";
+            this.optPosition1.Text = "中心";
             this.optPosition1.UseVisualStyleBackColor = true;
             // 
             // groupBox4
@@ -232,49 +232,49 @@
             this.groupBox4.Controls.Add(this.chkLabelEveryPart);
             this.groupBox4.Controls.Add(this.cboLineOrientation);
             this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Location = new System.Drawing.Point(15, 168);
+            this.groupBox4.Location = new System.Drawing.Point(15, 155);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(326, 98);
+            this.groupBox4.Size = new System.Drawing.Size(326, 90);
             this.groupBox4.TabIndex = 23;
             this.groupBox4.TabStop = false;
             // 
             // chkLabelEveryPart
             // 
             this.chkLabelEveryPart.AutoSize = true;
-            this.chkLabelEveryPart.Location = new System.Drawing.Point(23, 63);
+            this.chkLabelEveryPart.Location = new System.Drawing.Point(23, 58);
             this.chkLabelEveryPart.Name = "chkLabelEveryPart";
-            this.chkLabelEveryPart.Size = new System.Drawing.Size(91, 17);
+            this.chkLabelEveryPart.Size = new System.Drawing.Size(108, 16);
             this.chkLabelEveryPart.TabIndex = 21;
-            this.chkLabelEveryPart.Text = "Label all parts";
+            this.chkLabelEveryPart.Text = "在所有分支标注";
             this.chkLabelEveryPart.UseVisualStyleBackColor = true;
             // 
             // cboLineOrientation
             // 
             this.cboLineOrientation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLineOrientation.FormattingEnabled = true;
-            this.cboLineOrientation.Location = new System.Drawing.Point(157, 24);
+            this.cboLineOrientation.Location = new System.Drawing.Point(157, 22);
             this.cboLineOrientation.Name = "cboLineOrientation";
-            this.cboLineOrientation.Size = new System.Drawing.Size(152, 21);
+            this.cboLineOrientation.Size = new System.Drawing.Size(152, 20);
             this.cboLineOrientation.TabIndex = 20;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 27);
+            this.label9.Location = new System.Drawing.Point(20, 25);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(80, 13);
+            this.label9.Size = new System.Drawing.Size(83, 12);
             this.label9.TabIndex = 19;
-            this.label9.Text = "Relative to line:";
+            this.label9.Text = "与线要素关系:";
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(150, 272);
+            this.btnOk.Location = new System.Drawing.Point(150, 251);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(92, 26);
+            this.btnOk.Size = new System.Drawing.Size(92, 24);
             this.btnOk.TabIndex = 24;
-            this.btnOk.Text = "Ok";
+            this.btnOk.Text = "确定";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -282,20 +282,20 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(248, 272);
+            this.btnCancel.Location = new System.Drawing.Point(248, 251);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(92, 26);
+            this.btnCancel.Size = new System.Drawing.Size(92, 24);
             this.btnCancel.TabIndex = 25;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // AddLabelsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSize = new System.Drawing.Size(348, 304);
+            this.ClientSize = new System.Drawing.Size(348, 281);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupBox4);
@@ -304,7 +304,7 @@
             this.Name = "AddLabelsForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Label generation";
+            this.Text = "标注生成";
             this.Load += new System.EventHandler(this.AddLabelsForm_Load);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();

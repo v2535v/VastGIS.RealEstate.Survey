@@ -125,6 +125,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             {
                 _listClass.Clear();
                 _listClass.AddRange(_sourceClass);
+                RefreshList();
             }
             else
             {
