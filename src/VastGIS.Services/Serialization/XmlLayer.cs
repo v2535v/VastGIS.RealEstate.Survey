@@ -23,7 +23,7 @@ namespace VastGIS.Services.Serialization
     public class XmlLayer
     {
         private IBroadcasterService _broadcaster;
-        
+
         public bool ProjectStorage
         {
             get { return AppConfig.Instance.SymbolobyStorage == SymbologyStorage.Project; }
@@ -146,24 +146,35 @@ namespace VastGIS.Services.Serialization
 
         private XmlElement LayerToXmlElement(ILegendLayer layer)
         {
-           string layName = StringHelper.StringToUnicode(layer.Name);
+            string layName = StringHelper.StringToUnicode(layer.Name);
             layer.Name = layName;
             string xml = layer.Serialize();
+            layer.Name = StringHelper.UnicodeToString(layName);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
             return doc.DocumentElement;
         }
 
-        [DataMember] public List<XmlCustomObject> CustomObjects { get; set; }
-        [DataMember] public string Name { get; set; }
-        [DataMember] public Guid Guid { get; set; }
-        [DataMember] public bool Expanded { get; set; }
-        [DataMember] public bool HideFromLegend { get; set; }
-        [DataMember] public string ColorSchemeCaption { get; set; }
-        [DataMember] public XmlElement OcxLayer { get; set; }
-        [DataMember] public LayerIdentity Identity { get; set; }
-        [DataMember] public LayerType LayerType { get; set; }
-        [DataMember] public bool Selected { get; set; }
+        [DataMember]
+        public List<XmlCustomObject> CustomObjects { get; set; }
+        [DataMember]
+        public string Name { get; set; }
+        [DataMember]
+        public Guid Guid { get; set; }
+        [DataMember]
+        public bool Expanded { get; set; }
+        [DataMember]
+        public bool HideFromLegend { get; set; }
+        [DataMember]
+        public string ColorSchemeCaption { get; set; }
+        [DataMember]
+        public XmlElement OcxLayer { get; set; }
+        [DataMember]
+        public LayerIdentity Identity { get; set; }
+        [DataMember]
+        public LayerType LayerType { get; set; }
+        [DataMember]
+        public bool Selected { get; set; }
 
         public bool SkipLoading { get; set; }
     }

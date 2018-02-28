@@ -29,7 +29,7 @@
         <ShapefileData ShpType="5">
           <DefaultDrawingOptions FillColor="4368922" LineColor="9868950" />
           <ShapefileCategoriesClass ClassificationField="-1" />
-          <LabelsClass Generated="0" TextRenderingHint="3" />
+          <LabelsClass FrameBackColor="1971946" Generated="1" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" Positioning="1" TextRenderingHint="3" Expression="[Id]" />
           <ChartsClass />
           <TableClass>
             <Fields />

@@ -49,7 +49,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
                 }
                 //((ISecureContext) _context).VastProject = project;
                 IProjectService projectService = _context.Container.GetSingleton<IProjectService>();
-                projectService.TryClose();
+                //projectService.TryClose();
                 ((IRealEstateContext)_context).RealEstateDatabase = null;
                 projectService.Open(projectFile, false);
             }
