@@ -401,6 +401,7 @@
             this.MinimizeBox = false;
             this.Name = "frmCreateJZDByZD";
             this.Text = "宗地生成界址点、线";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCreateJZDByZD_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).EndInit();
             this.tabControlAdv1.ResumeLayout(false);
             this.pageJZD.ResumeLayout(false);

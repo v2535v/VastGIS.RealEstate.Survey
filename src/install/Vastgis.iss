@@ -84,7 +84,7 @@ Name: "SampleData"; Description: "≤‚ ‘ ˝æ›"; Types: full
 
 [Files]
 ;; MapWinGIS
-Source: "C:\dev\MapWinGIS\*.*"; DestDir: "{app}\MapWinGIS"; Flags: ignoreversion recursesubdirs createallsubdirs {#SystemFlag}; Components: VastGIS; Excludes: "libecwj2.dll, *.exe, *.pdb"
+Source: "H:\RealEstate\MapWinGIS\src\bin\*.*"; DestDir: "{app}\MapWinGIS"; Flags: ignoreversion recursesubdirs createallsubdirs {#SystemFlag}; Components: VastGIS; Excludes: "libecwj2.dll, *.exe, *.pdb"
 ;; MapWindow5 dlls
 Source: "{#ExeBinPath}\*.dll"; DestDir: "{app}"; Flags: ignoreversion {#SystemFlag}; Components: VastGIS
 Source: "{#ExeBinPath}\VastGIS.exe"; DestDir: "{app}"; Flags: ignoreversion {#SystemFlag}; Components: VastGIS
@@ -99,7 +99,7 @@ Source: "{#ExeBinPath}\Manuals\*"; DestDir: "{app}\Manuals"; Flags: ignoreversio
 ;; Manuals sub folder
 Source: "{#ExeBinPath}\Templates\*"; DestDir: "{app}\Templates"; Flags: ignoreversion recursesubdirs createallsubdirs {#SystemFlag}; Components: VastGIS
 ;; Plugins subfolder
-Source: "{#ExeBinPath}\Plugins\*.dll"; DestDir: "{app}\Plugins"; Flags: ignoreversion {#SystemFlag}; Components: VastGIS; Excludes: "Interop.MapWinGIS.dll,MW5.TemplatePlugin.dll,Syncfusion.*"
+Source: "{#ExeBinPath}\Plugins\*"; DestDir: "{app}\Plugins"; Flags: ignoreversion recursesubdirs createallsubdirs {#SystemFlag}; Components: VastGIS; Excludes: "Interop.MapWinGIS.dll,MW5.TemplatePlugin.dll,Syncfusion.*"
 ;; Styles subfolder
 Source: "{#ExeBinPath}\Styles\*"; DestDir: "{app}\Styles"; Flags: ignoreversion recursesubdirs createallsubdirs {#SystemFlag}; Components: VastGIS
 ;; SQLite interop:

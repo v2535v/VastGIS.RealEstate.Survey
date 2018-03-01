@@ -50,7 +50,10 @@ namespace VastGIS.Plugins.RealEstate.Forms
             ucFeatureLists1.BindContext(context);
             ucSelectLayer1.ucSelectedClassChanged += UcSelectLayer1_ucSelectedClassChanged;
         }
-
+        public void ClearDrawing()
+        {
+            _context.Map.Drawing.Clear();
+        }
         private void UcSelectLayer1_ucSelectedClassChanged(object sender, Events.ObjectClassEventArgs e)
         {
             ucFeatureLists1.ClearList();

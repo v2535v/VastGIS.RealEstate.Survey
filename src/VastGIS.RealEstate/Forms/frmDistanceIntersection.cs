@@ -93,6 +93,11 @@ namespace VastGIS.Plugins.RealEstate.Forms
             }
         }
 
+        public void ClearDrawing()
+        {
+           _context.Map.Drawing.Clear();
+        }
+
         private void LoadText()
         {
             _context.Map.Drawing.Clear();

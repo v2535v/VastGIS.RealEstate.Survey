@@ -558,6 +558,11 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private void picCurrent_MouseClick(object sender, MouseEventArgs e)
         {
             if (_isInputCorner == false) return;
+            if (_corners == null)
+            {
+                MessageBox.Show("请先进行角点识别!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _corners.RemoveAt(cmbPointNumber.SelectedIndex);
             _corners.Insert(cmbPointNumber.SelectedIndex, new Point(e.X, e.Y));
             DrawCorners();

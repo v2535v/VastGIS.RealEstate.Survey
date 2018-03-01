@@ -49,6 +49,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
         {
             if (_editForm != null && _editForm.Visible)
             {
+                _editForm.ClearDrawing();
                 _editForm.Visible = false;
                 _editForm = null;
             }
@@ -61,7 +62,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
             double dx = 0.0;
             double dy = 0.0;
             _context.Map.PixelToProj(e.X, e.Y, out dx, out dy);
-            _editForm.SetQueryPoint(dx, dy);
+            if (_editForm != null) _editForm.SetQueryPoint(dx, dy);
         }
     }
 }

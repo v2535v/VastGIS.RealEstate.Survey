@@ -190,6 +190,13 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             return null;
         }
 
+        public IEntity GetEntity(string tableName, long id)
+        {
+            List<IEntity> entities = GetEntities(tableName, " ID = " + id.ToString());
+            if (entities != null) return entities[0];
+            return null;
+        }
+
         public long GetMaxID(string tableName)
         {
             string sql = "SELECT MAX(ID) from " + tableName;
@@ -207,7 +214,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             return GetEntities(currentClass.Mc, queryFilter);
         }
 
-        private List<IEntity> GetEntities(string tableName, string queryFilter)
+        public List<IEntity> GetEntities(string tableName, string queryFilter)
         {
             List<IEntity> entities = new List<IEntity>();
             string objectName = "VastGIS.RealEstate.Data.Entity." + StringUtil.GetEntityName(tableName);

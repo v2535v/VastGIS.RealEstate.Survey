@@ -101,6 +101,11 @@ namespace VastGIS.Plugins.RealEstate.Forms
             ucFeatureLists1.ClearList();
             ucFeatureLists1.ClearDrawing();
         }
+
+        public void ClearDrawing()
+        {
+           _context.Map.Drawing.Clear();
+        }
     }
 
 }

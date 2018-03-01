@@ -41,6 +41,8 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private List<VgDictionary> _jzxlbDict;
         private List<VgDictionary> _jxxzDict;
         private List<VgDictionary> _jzxwzDict;
+        private int _layerHandle = -1;
+        private IMuteMap _map;
         #endregion
 
         public frmCreateJZDByZD(IAppContext context, RealEstateEditor plugin)
@@ -48,6 +50,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             InitializeComponent();
             _context = context;
             _plugin = plugin;
+            _map = _context.Map;
             if (_plugin == null)
             {
                 _plugin = _context.Container.GetInstance<RealEstateEditor>();
@@ -306,6 +309,130 @@ namespace VastGIS.Plugins.RealEstate.Forms
             }
         }
 
+        public void ClearDrawing()
+        {
+            if (_map != null && _layerHandle > -1)
+            {
+                _map.Drawing.RemoveLayer(_layerHandle);
+            }
+            else
+            {
+                _map.Drawing.Clear();
+            }
+        }
+
+        public void DrawData()
+        {
+            PrepareLayer();
+            IGeometry editGeometry = _feature.Geometry;
+            if (editGeometry == null) return;
+            Color color = _context.Config.RealEstateSelectedColor;
+            DrawGeometry(editGeometry, color);
+            DrawJzd();
+            DrawJzx();
+            //List<JzdInfo> vertexs = _jzdInfos.Where(c => c.Selected == true).ToList();
+            //foreach (JzdInfo vertex in vertexs)
+            //{
+            //    _map.Drawing.DrawLabel(_layerHandle, vertex.ID.ToString(), vertex.Xzbz, vertex.Yzbz, 0);
+            //    _map.Drawing.DrawPoint(_layerHandle, vertex.Xzbz, vertex.Yzbz, 12, color);
+            //}
+        }
+        private void PrepareLayer()
+        {
+            if (_layerHandle >= 0)
+            {
+                _map.Drawing.RemoveLayer(_layerHandle);
+            }
+            _layerHandle = _map.Drawing.AddLayer(DrawReferenceList.SpatiallyReferencedList);
+        }
+        public void DrawJzx()
+        {
+            if (_jzxInfos == null) return;
+            Color color2 = _context.Config.RealEstateActivedColor;
+            Color color = _context.Config.RealEstateSelectedColor;
+            Record record = gridJzxs.Table.CurrentRecord;
+            int sourceIndex = -1;
+            if (record != null) sourceIndex = record.GetSourceIndex();
+            int count = 0;
+            foreach (JzxInfo edge in _jzxInfos)
+            {
+                if (count == sourceIndex)
+                {
+                    _map.Drawing.DrawLine(_layerHandle, edge.StartX, edge.StartY, edge.EndX, edge.EndY, 4, color2);
+                }
+                else
+                {
+                    _map.Drawing.DrawLine(_layerHandle, edge.StartX, edge.StartY, edge.EndX, edge.EndY, 3, color);
+                }
+
+                _map.Drawing.DrawLabel(_layerHandle, edge.Zdnsxh.ToString(), edge.CenterX, edge.CenterY, 0);
+                count++;
+            }
+        }
+
+        private void DrawJzd()
+        {
+            Color color = _context.Config.RealEstateSelectedColor;
+            List<JzdInfo> vertexs = _jzdInfos.ToList();
+            foreach (JzdInfo vertex in vertexs)
+            {
+                _map.Drawing.DrawLabel(_layerHandle, vertex.Zdnsxh.ToString(), vertex.Xzbz, vertex.Yzbz, 0);
+                _map.Drawing.DrawPoint(_layerHandle, vertex.Xzbz, vertex.Yzbz, 12, color);
+            }
+        }
+
+        private void DrawGeometry(IGeometry geometry, Color color, string labelString = "", double rotation = 0)
+        {
+
+            double x1 = 0.0;
+            double y1 = 0.0;
+            double x2 = 0.0;
+            double y2 = 0.0;
+            if (geometry.GeometryType == GeometryType.Polyline)
+            {
+                for (int j = 0; j < geometry.Parts.Count; j++)
+                {
+                    for (int i = 0; i < geometry.Parts[j].Points.Count - 1; i++)
+                    {
+                        x1 = geometry.Parts[j].Points[i].X;
+                        y1 = geometry.Parts[j].Points[i].Y;
+                        x2 = geometry.Parts[j].Points[i + 1].X;
+                        y2 = geometry.Parts[j].Points[i + 1].Y;
+                        _map.Drawing.DrawLine(_layerHandle, x1, y1, x2, y2, 3, color);
+                    }
+                }
+                return;
+            }
+            else if (geometry.GeometryType == GeometryType.Polygon)
+            {
+                for (int j = 0; j < geometry.Parts.Count; j++)
+                {
+                    double[] xs = geometry.Parts[j].Points.Select(c => c.X).ToArray();
+                    double[] ys = geometry.Parts[j].Points.Select(c => c.Y).ToArray();
+                    object xsObject = xs as object;
+                    object ysObject = ys as object;
+                    _map.Drawing.DrawPolygon(_layerHandle, ref xsObject, ref ysObject, geometry.Parts[j].Points.Count, color,
+                        true, 1);
+                }
+                return;
+            }
+            else if (geometry.GeometryType == GeometryType.Point)
+            {
+                _map.Drawing.DrawPoint(_layerHandle, geometry.Points[0].X, geometry.Points[0].Y, 12, color);
+            }
+            else if (geometry.GeometryType == GeometryType.MultiPoint)
+            {
+                for (int i = 0; i < geometry.Points.Count; i++)
+                {
+                    _map.Drawing.DrawPoint(_layerHandle, geometry.Points[i].X, geometry.Points[i].Y, 12, color);
+                }
+            }
+            else if (geometry.GeometryType == GeometryType.TextPoint)
+            {
+                _map.Drawing.DrawLabel(_layerHandle, labelString, geometry.Points[0].X, geometry.Points[0].Y, rotation);
+            }
+        }
+
         private void LoadJzdAndJzx()
         {
             if (_feature == null) return;
@@ -355,8 +482,13 @@ namespace VastGIS.Plugins.RealEstate.Forms
             double px2, py2;
             for (i = 0; i < count - 1; i++)
             {
-                _feature.Geometry.GetPoint(i, out px, out py);
-                _feature.Geometry.GetPoint(i + 1, out px2, out py2);
+                ICoordinate startPnt = _feature.Geometry.Points[i];
+                px = startPnt.X;
+                py = startPnt.Y;
+                ICoordinate endPnt = _feature.Geometry.Points[i + 1];
+                px2 = endPnt.X;
+                py2 = endPnt.Y;
+                //_feature.Geometry.GetPoint(i + 1, out px2, out py2);
                 double xx = (px + px2) / 2.0;
                 double yy = (py + py2) / 2.0;
 
@@ -380,6 +512,8 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 jzx.EndY = py2;
                 _jzxInfos.Add(jzx);
             }
+
+            DrawData();
         }
 
         private void btnQueryDX_Click(object sender, EventArgs e)
@@ -568,6 +702,11 @@ namespace VastGIS.Plugins.RealEstate.Forms
             env.MoveCenterTo(jzxInfo.CenterX, jzxInfo.CenterY);
             _context.Map.ZoomToExtents(env);
 
+        }
+
+        private void frmCreateJZDByZD_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _context.Map.Drawing.Clear();
         }
     }
 }

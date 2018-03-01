@@ -60,13 +60,14 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         
         public void LoadEntity(string tableName, string entityName, long id)
         {
-            _linkedObject = _database.BasemapService.GetBasemapPoint(tableName,id) as IReFeature;
+            _linkedObject = _database.BasemapService.GetEntity(tableName,id) as IReFeature;
             LinkObject();
         }
         private  void LinkObject()
         {
             ((INotifyPropertyChanged)_linkedObject).PropertyChanged +=linkedObject_PropertyChanged;
             ucLinkObject.LinkObject(_database,(IEntity)_linkedObject);
+            this.Text = _linkedObject.LayerName;
             if(((IEntity)_linkedObject).ID<=0)
             {
                 btnSave.Text="新建";
@@ -82,7 +83,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _database.BasemapService.SaveBasemapPoint(_linkedObject as IBasemapPoint);
+            _database.BasemapService.Save(_linkedObject as IEntity);
             if(_linkedObject.ID > 0)
             {
                 DialogResult=DialogResult.OK;

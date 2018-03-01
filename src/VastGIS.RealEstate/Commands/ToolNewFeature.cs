@@ -54,6 +54,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
         {
             if (_editForm != null && _editForm.Visible)
             {
+                _editForm.ClearDrawing();
                 _editForm.Visible = false;
                 _editForm = null;
             }
@@ -70,8 +71,8 @@ namespace VastGIS.Plugins.RealEstate.Commands
                 _editForm = new frmNewFeature(_context, _plugin);
             }
             if (_context.Map.MapCursor != MapCursor.None) return;
-           // _context.Map.PixelToProj(e.X, e.Y, out dx, out dy);
-            _editForm.SetQueryPoint(e.X, e.Y);
+            // _context.Map.PixelToProj(e.X, e.Y, out dx, out dy);
+            if (_editForm != null) _editForm.SetQueryPoint(e.X, e.Y);
         }
     }
 }

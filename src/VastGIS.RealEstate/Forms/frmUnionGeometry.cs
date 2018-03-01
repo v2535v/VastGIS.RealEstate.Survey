@@ -70,7 +70,10 @@ namespace VastGIS.Plugins.RealEstate.Forms
             ucSelectLayer1.ucSelectedClassChanged += UcSelectLayer1_ucSelectedClassChanged;
 
         }
-
+        public void ClearDrawing()
+        {
+            _context.Map.Drawing.Clear();
+        }
         private void UcSelectLayer1_ucSelectedClassChanged(object sender, ObjectClassEventArgs e)
         {
             ucFeatureLists1.ClearList();

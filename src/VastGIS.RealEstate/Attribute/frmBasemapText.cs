@@ -60,14 +60,15 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         
         public void LoadEntity(string tableName, string entityName, long id)
         {
-            _linkedObject = _database.BasemapService.GetBasemapText(tableName,id);
+            _linkedObject = _database.BasemapService.GetEntity(tableName,id) as IBasemapText;
             LinkObject();
         }
         private  void LinkObject()
         {
             ((INotifyPropertyChanged)_linkedObject).PropertyChanged +=linkedObject_PropertyChanged;
             ucLinkObject.LinkObject(_database,(IEntity)_linkedObject);
-            if(((IEntity)_linkedObject).ID<=0)
+            this.Text =((IEntity)_linkedObject).LayerName;
+            if (((IEntity)_linkedObject).ID<=0)
             {
                 btnSave.Text="新建";
             }
@@ -82,7 +83,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _database.BasemapService.SaveBasemapText(_linkedObject as IBasemapText);
+            _database.BasemapService.Save(_linkedObject as IEntity);
             if (((IEntity)_linkedObject).ID > 0)
             {
                 DialogResult=DialogResult.OK;
