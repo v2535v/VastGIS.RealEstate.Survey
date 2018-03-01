@@ -91,7 +91,10 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 ucEdgeList1.Feature = findEntities[0];
             }
         }
-
+        public void ClearDrawing()
+        {
+          _context.Map.Drawing.Clear();
+        }
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (ucSelectLayer1.SelectedClass == null)

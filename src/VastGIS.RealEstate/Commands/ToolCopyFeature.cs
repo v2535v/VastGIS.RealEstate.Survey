@@ -61,6 +61,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
         {
             if (_editForm != null && _editForm.Visible)
             {
+                _editForm.ClearDrawing();
                 _editForm.Visible = false;
                 _editForm = null;
             }

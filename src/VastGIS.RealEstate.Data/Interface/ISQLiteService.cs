@@ -17,8 +17,10 @@ namespace VastGIS.RealEstate.Data.Interface
         void Delete(List<IEntity> entities);
 
         IEntity CreateEntity(VgObjectclass currentClass);
+        IEntity GetEntity(string tableName, long id);
         IEntity GetEntity(VgObjectclass currentClass, long id);
         List<IEntity> GetEntities(VgObjectclass currentClass, string queryFilter);
+        List<IEntity> GetEntities(string tableName, string queryFilter);
         bool ReorderAllPolygon(string tableName);
         List<IReFeature> FindFeatures(VgObjectclass objectClass, double x, double y,double torenlance=1.0);
         List<IReFeature> FindFeatures(List<VgObjectclass> objectClasses, double x, double y, double torenlance = 1.0);

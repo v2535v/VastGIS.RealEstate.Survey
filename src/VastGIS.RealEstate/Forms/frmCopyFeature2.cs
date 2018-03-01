@@ -28,7 +28,6 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private List<VgObjectclass> _editableclasses;
         private List<VgObjectclass> _sourceclasses;
 
-
         private MapSelectionMode _mapSelectionMode;
         private bool _isSingle;
 
@@ -161,6 +160,11 @@ namespace VastGIS.Plugins.RealEstate.Forms
         {
             this.Text = chkIsMoving.Checked ? "移动要素" : "拷贝要素";
             btnOK.Text = chkIsMoving.Checked ? "移动要素" : "拷贝要素";
+        }
+
+        public void ClearDrawing()
+        {
+                _context.Map.Drawing.Clear();
         }
     }
 

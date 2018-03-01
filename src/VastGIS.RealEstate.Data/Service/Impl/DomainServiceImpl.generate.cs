@@ -72,10 +72,19 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         {
             return _domainDao.GetEntity(currentClass, id);
         }
+        public IEntity GetEntity(string tableName, long id)
+        {
+            return _domainDao.GetEntity(tableName, id);
+        }
 
         public List<IEntity> GetEntities(VgObjectclass currentClass, string queryFilter)
         {
             return _domainDao.GetEntities(currentClass, queryFilter);
+        }
+        
+        public List<IEntity> GetEntities(string tableName, string queryFilter)
+        {
+            return _domainDao.GetEntities(tableName, queryFilter);
         }
 
         public bool ReorderAllPolygon(string tableName)

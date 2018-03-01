@@ -152,7 +152,10 @@ namespace VastGIS.Plugins.RealEstate.Forms
             _feature = null;
             this.Text = "图形编辑";
         }
-
+        public void ClearDrawing()
+        {
+          _context.Map.Drawing.Clear();
+        }
         private bool Validate()
         {
             if (ucSelectLayer1.SelectedClass == null)

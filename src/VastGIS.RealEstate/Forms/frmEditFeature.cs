@@ -71,7 +71,10 @@ namespace VastGIS.Plugins.RealEstate.Forms
             DialogResult = DialogResult.Cancel;
             _context.CurrentTool = null;
         }
-
+        public void ClearDrawing()
+        {
+            _context.Map.Drawing.Clear();
+        }
 
         public void SetQueryPoint(double x, double y)
         {
