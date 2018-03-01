@@ -2133,34 +2133,34 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Resources\editlayer.png" />
-    <None Include="Styles\Layers\TmpCadd.vglayer">
+    <None Include="Styles\Layers\DXTDLDWDVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Styles\Layers\TmpCaddView.vglayer">
+    <None Include="Styles\Layers\DXTDLSSXVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Styles\Layers\TmpCadm.vglayer">
+    <None Include="Styles\Layers\DXTDMTZXVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Styles\Layers\TmpCadmView.vglayer">
+    <None Include="Styles\Layers\DXTJMDXVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Styles\Layers\TmpCadx.vglayer">
+    <None Include="Styles\Layers\DXTQTDVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Styles\Layers\TmpCadxView.vglayer">
+    <None Include="Styles\Layers\DXTQTMVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Styles\Layers\TmpCadzj.vglayer">
+    <None Include="Styles\Layers\DXTQTXVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Styles\Layers\TmpCadzjView.vglayer">
+    <None Include="Styles\Layers\DXTQTZJVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Styles\Layers\XZQ.vglayer">
+    <None Include="Styles\Layers\DXTSXSSXVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Styles\Layers\DJZQVIEW.vglayer">
+    <None Include="Styles\Layers\DXTZJZJVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

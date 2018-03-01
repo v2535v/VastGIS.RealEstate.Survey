@@ -1,0 +1,40 @@
+<XmlLayer xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/VastGIS.Services.Serialization">
+  <ColorSchemeCaption />
+  <CustomObjects />
+  <Expanded>true</Expanded>
+  <Guid>f16bd7c2-7e79-4bd9-9e5f-bfe3adf97d2f</Guid>
+  <HideFromLegend>false</HideFromLegend>
+  <Identity xmlns:d2p1="http://schemas.datacontract.org/2004/07/VastGIS.Api.Concrete">
+    <d2p1:Connection>{ProjectPath}\Database\redatabase.db</d2p1:Connection>
+    <d2p1:Filename i:nil="true" />
+    <d2p1:GeometryType>Polyline</d2p1:GeometryType>
+    <d2p1:IdentityType>OgrDatasource</d2p1:IdentityType>
+    <d2p1:Query>dxtdmtzxview</d2p1:Query>
+    <d2p1:ZValueType>None</d2p1:ZValueType>
+  </Identity>
+  <LayerType>VectorLayer</LayerType>
+  <Name>地貌土质线</Name>
+  <OcxLayer>
+    <Layer LayerType="OgrLayer" LayerName="地貌土质线" LayerVisible="1" LayerKey="" xmlns="">
+      <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="dxtdmtzxview" SourceType="1" ForUpdate="0">
+        <ShapefileData ShpType="3">
+          <DefaultDrawingOptions FillColor="16777215" LineColor="4368922" UseLinePattern="1">
+            <LinePatternClass Key="" Transparency="255">
+              <LineSegments>
+                <LineSegmentClass LineType="0" Color="4368922" MarkerOutlineColor="7895160" LineWidth="1.000000" MarkerSize="12.000000" MarkerInterval="16.000000" MarkerOffset="0.000000" LineStyle="0" Marker="2" MarkerOrientation="1" MarkerFlipFirst="-1" />
+                <LineSegmentClass LineType="1" Color="4380310" MarkerOutlineColor="4368922" LineWidth="1.000000" MarkerSize="11.000000" MarkerInterval="30.000000" MarkerOffset="0.000000" LineStyle="0" Marker="7" MarkerOrientation="1" MarkerFlipFirst="-1" />
+              </LineSegments>
+            </LinePatternClass>
+          </DefaultDrawingOptions>
+          <ShapefileCategoriesClass ClassificationField="-1" />
+          <LabelsClass Generated="0" TextRenderingHint="3" />
+          <ChartsClass />
+          <TableClass>
+            <Fields />
+          </TableClass>
+        </ShapefileData>
+      </OgrLayerClass>
+    </Layer>
+  </OcxLayer>
+  <Selected>false</Selected>
+</XmlLayer>

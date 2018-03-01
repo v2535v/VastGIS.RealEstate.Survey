@@ -1,33 +1,24 @@
-﻿<XmlLayer xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/VastGIS.Services.Serialization">
+<XmlLayer xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/VastGIS.Services.Serialization">
   <ColorSchemeCaption />
-  <CustomObjects>
-    <XmlCustomObject>
-      <Guid>f05ccfaf-26bb-4656-bbe2-0f5e3c7ad0fb</Guid>
-      <Object>
-        <SymbologyMetadata xmlns="">
-          <Initialized>true</Initialized>
-        </SymbologyMetadata>
-      </Object>
-    </XmlCustomObject>
-  </CustomObjects>
+  <CustomObjects />
   <Expanded>true</Expanded>
-  <Guid>2b0da091-746a-4243-82a1-78879b9ea174</Guid>
+  <Guid>dd450fd1-16a9-449e-972b-42c364dd8190</Guid>
   <HideFromLegend>false</HideFromLegend>
   <Identity xmlns:d2p1="http://schemas.datacontract.org/2004/07/VastGIS.Api.Concrete">
     <d2p1:Connection>{ProjectPath}\Database\redatabase.db</d2p1:Connection>
     <d2p1:Filename i:nil="true" />
     <d2p1:GeometryType>Point</d2p1:GeometryType>
     <d2p1:IdentityType>OgrDatasource</d2p1:IdentityType>
-    <d2p1:Query>tmpcadzjview</d2p1:Query>
+    <d2p1:Query>dxtqtdview</d2p1:Query>
     <d2p1:ZValueType>None</d2p1:ZValueType>
   </Identity>
   <LayerType>VectorLayer</LayerType>
-  <Name>tmpcadzjview</Name>
+  <Name>其他图层点</Name>
   <OcxLayer>
-    <Layer LayerType="OgrLayer" LayerName="tmpcadzjview" LayerVisible="1" LayerKey="" xmlns="">
-      <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="tmpcadzjview" SourceType="1" ForUpdate="0">
+    <Layer LayerType="OgrLayer" LayerName="其他图层点" LayerVisible="1" LayerKey="" xmlns="">
+      <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="dxtqtdview" SourceType="1" ForUpdate="0">
         <ShapefileData ShpType="1">
-          <DefaultDrawingOptions FillColor="4409744" LineColor="9868950" />
+          <DefaultDrawingOptions FillColor="1971946" LineColor="9868950" LinesVisible="0" PointNumSides="2" PointShapeRatio="0.100000" PointShapeType="3" PointSize="6.000000" />
           <ShapefileCategoriesClass ClassificationField="-1" />
           <LabelsClass Alignment="5" Generated="0" TextRenderingHint="3" />
           <ChartsClass />

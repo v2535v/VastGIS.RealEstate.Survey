@@ -2,23 +2,23 @@
   <ColorSchemeCaption />
   <CustomObjects />
   <Expanded>true</Expanded>
-  <Guid>b1d84af6-be28-43ef-93c5-763992a7b030</Guid>
+  <Guid>5023fb8a-3604-4e44-b7e3-fe59a804f553</Guid>
   <HideFromLegend>false</HideFromLegend>
   <Identity xmlns:d2p1="http://schemas.datacontract.org/2004/07/VastGIS.Api.Concrete">
     <d2p1:Connection>{ProjectPath}\Database\redatabase.db</d2p1:Connection>
     <d2p1:Filename i:nil="true" />
     <d2p1:GeometryType>Point</d2p1:GeometryType>
     <d2p1:IdentityType>OgrDatasource</d2p1:IdentityType>
-    <d2p1:Query>tmpcaddview</d2p1:Query>
+    <d2p1:Query>dxtdldwdview</d2p1:Query>
     <d2p1:ZValueType>None</d2p1:ZValueType>
   </Identity>
   <LayerType>VectorLayer</LayerType>
-  <Name>tmpcaddview</Name>
+  <Name>独立地物点</Name>
   <OcxLayer>
-    <Layer LayerType="OgrLayer" LayerName="tmpcaddview" LayerVisible="1" LayerKey="" xmlns="">
-      <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="tmpcaddview" SourceType="1" ForUpdate="0">
+    <Layer LayerType="OgrLayer" LayerName="独立地物点" LayerVisible="1" LayerKey="" xmlns="">
+      <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="dxtdldwdview" SourceType="1" ForUpdate="0">
         <ShapefileData ShpType="1">
-          <DefaultDrawingOptions FillColor="1971946" LineColor="9868950" />
+          <DefaultDrawingOptions FillColor="8355839" FontName="郑州部件" LineColor="9868950" LinesVisible="0" PointCharcter="53" PointSize="12.000000" PointSymbolType="1" />
           <ShapefileCategoriesClass ClassificationField="-1" />
           <LabelsClass Alignment="5" Generated="0" TextRenderingHint="3" />
           <ChartsClass />
