@@ -1,0 +1,42 @@
+<XmlLayer xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/VastGIS.Services.Serialization">
+  <ColorSchemeCaption />
+  <CustomObjects>
+    <XmlCustomObject>
+      <Guid>f05ccfaf-26bb-4656-bbe2-0f5e3c7ad0fb</Guid>
+      <Object>
+        <SymbologyMetadata xmlns="">
+          <Initialized>true</Initialized>
+        </SymbologyMetadata>
+      </Object>
+    </XmlCustomObject>
+  </CustomObjects>
+  <Expanded>true</Expanded>
+  <Guid>cdf5e499-b681-4a50-8484-1af5886aedc7</Guid>
+  <HideFromLegend>false</HideFromLegend>
+  <Identity xmlns:d2p1="http://schemas.datacontract.org/2004/07/VastGIS.Api.Concrete">
+    <d2p1:Connection>{ProjectPath}\Database\redatabase.db</d2p1:Connection>
+    <d2p1:Filename i:nil="true" />
+    <d2p1:GeometryType>Polygon</d2p1:GeometryType>
+    <d2p1:IdentityType>OgrDatasource</d2p1:IdentityType>
+    <d2p1:Query>DXTJMDMVIEW</d2p1:Query>
+    <d2p1:ZValueType>None</d2p1:ZValueType>
+  </Identity>
+  <LayerType>VectorLayer</LayerType>
+  <Name>居民地面</Name>
+  <OcxLayer>
+    <Layer LayerType="OgrLayer" LayerName="居民地面" LayerVisible="1" LayerKey="" MaxVisibleZoom="100" xmlns="">
+      <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="DXTJMDMVIEW" SourceType="1" ForUpdate="1">
+        <ShapefileData CollisionMode="0" ShpType="5">
+          <DefaultDrawingOptions FillColor="13818055" FillVisible="0" LineColor="9868950" />
+          <ShapefileCategoriesClass ClassificationField="-1" />
+          <LabelsClass FontSize="11" FontStyle="1" FrameVisible="0" Generated="1" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" Positioning="2" TextRenderingHint="3" Expression="[FSXX2] +&quot; &quot;+[FSXX1] " />
+          <ChartsClass Visible="-1" />
+          <TableClass>
+            <Fields />
+          </TableClass>
+        </ShapefileData>
+      </OgrLayerClass>
+    </Layer>
+  </OcxLayer>
+  <Selected>false</Selected>
+</XmlLayer>

@@ -9,6 +9,14 @@
         </SymbologyMetadata>
       </Object>
     </XmlCustomObject>
+    <XmlCustomObject>
+      <Guid>f05ccfaf-26bb-4656-bbe2-0f5e3c7ad0fb</Guid>
+      <Object>
+        <SymbologyMetadata xmlns="">
+          <Initialized>true</Initialized>
+        </SymbologyMetadata>
+      </Object>
+    </XmlCustomObject>
   </CustomObjects>
   <Expanded>true</Expanded>
   <Guid>e40caf09-456f-4efb-b9e6-2b83f4edd0a4</Guid>
@@ -24,12 +32,12 @@
   <LayerType>VectorLayer</LayerType>
   <Name>其他图层注记</Name>
   <OcxLayer>
-    <Layer LayerType="OgrLayer" LayerName="其他图层注记" LayerVisible="1" LayerKey="" MinVisibleScale="1.000000" MaxVisibleScale="10000000000.000000" MinVisibleZoom="1" MaxVisibleZoom="24" xmlns="">
+    <Layer LayerType="OgrLayer" LayerName="其他图层注记" LayerVisible="0" LayerKey="" MinVisibleScale="1.000000" MaxVisibleScale="10000000000.000000" MinVisibleZoom="1" MaxVisibleZoom="24" xmlns="">
       <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="DXTQTZJVIEW" SourceType="1" ForUpdate="1">
         <ShapefileData ShpType="1">
           <DefaultDrawingOptions FillColor="6700691" FillTransparency="0.000000" LineColor="9868950" LineTransparency="0.000000" />
           <ShapefileCategoriesClass ClassificationField="-1" />
-          <LabelsClass Alignment="5" FontColor="1971946" FontName="等线 Light" FrameVisible="0" Generated="1" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" Positioning="1" TextRenderingHint="3" Expression="[WBNR]" />
+          <LabelsClass Alignment="5" FontColor="1971946" FontName="等线 Light" FrameVisible="0" Generated="0" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" Positioning="1" TextRenderingHint="3" />
           <ChartsClass Visible="-1" />
           <TableClass>
             <Fields />

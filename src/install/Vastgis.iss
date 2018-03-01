@@ -11,7 +11,7 @@
 #define SystemFlag "32bit"
 #define MyAppName "VastGIS"
 #define MyAppVersion "1.0"
-#define MyAppPublisher "浙江未见空间信息技术有限公司"
+#define MyAppPublisher "浙江未见空间科技有限公司"
 #define MyAppURL "http://www.vastgis.com"
 #define ReleaseNotes "..\SolutionItems\ReleaseNotes.rtf"
 #define LicenseFile "VastGISLicense.rtf"

@@ -27,7 +27,7 @@ namespace VastGIS.Plugins.Identifier.Views
             _context = context;
 
             InitializeComponent();
-
+            CheckForIllegalCrossThreadCalls = false;
             InitTreeView();
 
             InitModeCombo();

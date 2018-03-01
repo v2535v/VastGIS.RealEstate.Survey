@@ -27,7 +27,7 @@
     <Layer LayerType="OgrLayer" LayerName="其他图层面" LayerVisible="1" LayerKey="" xmlns="">
       <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="DXTQTMVIEW" SourceType="1" ForUpdate="1">
         <ShapefileData ShpType="5">
-          <DefaultDrawingOptions FillColor="12237498" LineColor="9868950" />
+          <DefaultDrawingOptions FillColor="12237498" FillVisible="0" LineColor="9868950" LineStipple="1" />
           <ShapefileCategoriesClass ClassificationField="-1" />
           <LabelsClass Generated="0" Positioning="1" TextRenderingHint="3" />
           <ChartsClass />

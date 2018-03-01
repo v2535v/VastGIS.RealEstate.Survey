@@ -27,6 +27,7 @@ namespace VastGIS.Plugins.Identifier.Controls
         {
             Resize += OnResize;
             HideSelection = false;
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         public IdentifierNodeMetadata SelectedNodeMetadata

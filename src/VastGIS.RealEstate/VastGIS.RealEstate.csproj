@@ -2142,6 +2142,9 @@
     <None Include="Styles\Layers\DXTDMTZXVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Styles\Layers\DXTJMDMVIEW.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Styles\Layers\DXTJMDXVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -2161,6 +2164,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Styles\Layers\DXTZJZJVIEW.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\JZDVIEW.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\ZDJBXXVIEW.vglayer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Styles\Layers\ZRZVIEW.vglayer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -1,0 +1,42 @@
+<XmlLayer xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/VastGIS.Services.Serialization">
+  <ColorSchemeCaption />
+  <CustomObjects>
+    <XmlCustomObject>
+      <Guid>f05ccfaf-26bb-4656-bbe2-0f5e3c7ad0fb</Guid>
+      <Object>
+        <SymbologyMetadata xmlns="">
+          <Initialized>true</Initialized>
+        </SymbologyMetadata>
+      </Object>
+    </XmlCustomObject>
+  </CustomObjects>
+  <Expanded>true</Expanded>
+  <Guid>85318852-2c3b-49f1-af07-11e6ba4011a0</Guid>
+  <HideFromLegend>false</HideFromLegend>
+  <Identity xmlns:d2p1="http://schemas.datacontract.org/2004/07/VastGIS.Api.Concrete">
+    <d2p1:Connection>{ProjectPath}\Database\redatabase.db</d2p1:Connection>
+    <d2p1:Filename i:nil="true" />
+    <d2p1:GeometryType>Point</d2p1:GeometryType>
+    <d2p1:IdentityType>OgrDatasource</d2p1:IdentityType>
+    <d2p1:Query>JZDVIEW</d2p1:Query>
+    <d2p1:ZValueType>None</d2p1:ZValueType>
+  </Identity>
+  <LayerType>VectorLayer</LayerType>
+  <Name>界址点</Name>
+  <OcxLayer>
+    <Layer LayerType="OgrLayer" LayerName="界址点" LayerVisible="1" LayerKey="" MaxVisibleZoom="100" xmlns="">
+      <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="JZDVIEW" SourceType="1" ForUpdate="1">
+        <ShapefileData ShpType="1">
+          <DefaultDrawingOptions FillColor="4368922" LineColor="9868950" PointShapeRatio="0.000000" Rotation="45.000000" />
+          <ShapefileCategoriesClass ClassificationField="-1" />
+          <LabelsClass Alignment="0" FontColor="1183410" FontSize="12" FontStyle="1" FrameVisible="0" Generated="1" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" Positioning="1" TextRenderingHint="3" Expression="[JZDH]" />
+          <ChartsClass Visible="-1" />
+          <TableClass>
+            <Fields />
+          </TableClass>
+        </ShapefileData>
+      </OgrLayerClass>
+    </Layer>
+  </OcxLayer>
+  <Selected>false</Selected>
+</XmlLayer>

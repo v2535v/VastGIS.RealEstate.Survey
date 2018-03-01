@@ -1,0 +1,42 @@
+<XmlLayer xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/VastGIS.Services.Serialization">
+  <ColorSchemeCaption />
+  <CustomObjects>
+    <XmlCustomObject>
+      <Guid>f05ccfaf-26bb-4656-bbe2-0f5e3c7ad0fb</Guid>
+      <Object>
+        <SymbologyMetadata xmlns="">
+          <Initialized>true</Initialized>
+        </SymbologyMetadata>
+      </Object>
+    </XmlCustomObject>
+  </CustomObjects>
+  <Expanded>true</Expanded>
+  <Guid>a4eac379-cf25-4a5b-b0e0-8fbc368d866c</Guid>
+  <HideFromLegend>false</HideFromLegend>
+  <Identity xmlns:d2p1="http://schemas.datacontract.org/2004/07/VastGIS.Api.Concrete">
+    <d2p1:Connection>{ProjectPath}\Database\redatabase.db</d2p1:Connection>
+    <d2p1:Filename i:nil="true" />
+    <d2p1:GeometryType>Polygon</d2p1:GeometryType>
+    <d2p1:IdentityType>OgrDatasource</d2p1:IdentityType>
+    <d2p1:Query>ZDJBXXVIEW</d2p1:Query>
+    <d2p1:ZValueType>None</d2p1:ZValueType>
+  </Identity>
+  <LayerType>VectorLayer</LayerType>
+  <Name>宗地</Name>
+  <OcxLayer>
+    <Layer LayerType="OgrLayer" LayerName="宗地" LayerVisible="1" LayerKey="" xmlns="">
+      <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="ZDJBXXVIEW" SourceType="1" ForUpdate="1">
+        <ShapefileData ShpType="5">
+          <DefaultDrawingOptions FillColor="13753823" FillHatchStyle="3" FillType="1" LineColor="9868950" />
+          <ShapefileCategoriesClass ClassificationField="-1" />
+          <LabelsClass Alignment="5" FontStyle="1" FrameVisible="0" OffsetY="10" Generated="1" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" Positioning="0" TextRenderingHint="3" Expression="[BZ] " />
+          <ChartsClass />
+          <TableClass>
+            <Fields />
+          </TableClass>
+        </ShapefileData>
+      </OgrLayerClass>
+    </Layer>
+  </OcxLayer>
+  <Selected>false</Selected>
+</XmlLayer>

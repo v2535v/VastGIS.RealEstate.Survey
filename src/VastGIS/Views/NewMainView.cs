@@ -35,6 +35,7 @@ namespace VastGIS.Views
         private bool _rendered;
         public NewMainView(IAppContext context)
         {
+            
             Logger.Current.Trace("启动主界面");
             _context = context;
 
