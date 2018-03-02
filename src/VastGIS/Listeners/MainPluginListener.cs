@@ -115,7 +115,7 @@ namespace VastGIS.Listeners
             var layer = _context.Legend.Layers.ItemByHandle(e.LayerHandle);
             if (layer != null)
             {
-                LayerSerializationHelper.LoadSettings(layer, _broadcaster, true);
+                //LayerSerializationHelper.LoadSettings(layer, _broadcaster, true);
             }
         }
 
