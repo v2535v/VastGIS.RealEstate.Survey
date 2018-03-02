@@ -13,6 +13,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+	<OutputPath>..\VastGIS\bin\$(Platform)\$(Configuration)\Plugins\</OutputPath>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -29,7 +30,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\VastGIS\bin\x64\Debug\Plugins\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -1498,47 +1499,47 @@
     <ProjectReference Include="..\VastGIS.Api\VastGIS.Api.csproj">
       <Project>{8aad34b3-8ef3-485f-a04d-ed2c07d8f1df}</Project>
       <Name>VastGIS.Api</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.Plugins\VastGIS.Plugins.csproj">
       <Project>{76644cdf-5165-428d-8419-93c1e978db1b}</Project>
       <Name>VastGIS.Plugins</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.Projections\VastGIS.Projections.csproj">
       <Project>{DD259453-611A-4AD5-878E-385CB2C89DF5}</Project>
       <Name>VastGIS.Projections</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.RealEastate.Api\VastGIS.RealEstate.Api.csproj">
       <Project>{9609A967-A37F-45A1-AD60-79E92BDBCE68}</Project>
       <Name>VastGIS.RealEstate.Api</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.RealEstate.Data\VastGIS.RealEstate.Data.csproj">
       <Project>{135434DE-E426-4D69-B1D7-DF45A1A3C5BC}</Project>
       <Name>VastGIS.RealEstate.Data</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.Services\VastGIS.Services.csproj">
       <Project>{54BB55DA-DBDC-47E5-8DEC-DE325F35F074}</Project>
       <Name>VastGIS.Services</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.Shared\VastGIS.Shared.csproj">
       <Project>{79400594-DE0D-4FFD-B115-AF2AEAC79CD9}</Project>
       <Name>VastGIS.Shared</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.Tools\VastGIS.Tools.csproj">
       <Project>{fb836bb0-2668-41e6-a4ad-7798b13c327f}</Project>
       <Name>VastGIS.Tools</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.UI\VastGIS.UI.csproj">
       <Project>{784A24F2-9A57-46EE-8945-D87869595216}</Project>
       <Name>VastGIS.UI</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

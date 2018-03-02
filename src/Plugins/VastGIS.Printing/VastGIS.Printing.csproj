@@ -22,7 +22,7 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
-    <OutputPath>..\..\..\bin\$(Platform)\$(Configuration)\Plugins\</OutputPath>
+    <OutputPath>..\..\VastGIS\bin\$(Platform)\$(Configuration)\Plugins\</OutputPath>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup>
@@ -71,7 +71,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
-    <OutputPath>..\..\..\bin\x64\Debug\Plugins\</OutputPath>
+    <OutputPath>..\..\VastGIS\bin\x64\Debug\Plugins\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <DefineConstants>TRACE</DefineConstants>
