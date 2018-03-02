@@ -24,12 +24,12 @@
   <LayerType>VectorLayer</LayerType>
   <Name>居民地面</Name>
   <OcxLayer>
-    <Layer LayerType="OgrLayer" LayerName="居民地面" LayerVisible="1" LayerKey="" MaxVisibleZoom="100" xmlns="">
+    <Layer LayerType="OgrLayer" LayerName="居民地面" LayerVisible="1" LayerKey="" MinVisibleScale="1.000000" MaxVisibleScale="10000000000.000000" MinVisibleZoom="1" MaxVisibleZoom="24" xmlns="">
       <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="DXTJMDMVIEW" SourceType="1" ForUpdate="1">
         <ShapefileData CollisionMode="0" ShpType="5">
-          <DefaultDrawingOptions FillColor="13818055" FillVisible="0" LineColor="9868950" />
+          <DefaultDrawingOptions FillColor="13818055" FillVisible="0" LineColor="1971946" LineWidth="2.000000" />
           <ShapefileCategoriesClass ClassificationField="-1" />
-          <LabelsClass FontSize="11" FontStyle="1" FrameVisible="0" Generated="1" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" Positioning="2" TextRenderingHint="3" Expression="[FSXX2] +&quot; &quot;+[FSXX1] " />
+          <LabelsClass FontSize="11" FontStyle="1" FrameVisible="0" Generated="1" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" AvoidCollisions="0" Positioning="2" TextRenderingHint="3" Expression="[FSXX2] +&quot; &quot;+[FSXX1] " />
           <ChartsClass Visible="-1" />
           <TableClass>
             <Fields />
