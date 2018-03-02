@@ -27,9 +27,9 @@
     <Layer LayerType="OgrLayer" LayerName="宗地" LayerVisible="1" LayerKey="" xmlns="">
       <OgrLayerClass ConnectionString="{ProjectPath}\Database\redatabase.db" SourceQuery="ZDJBXXVIEW" SourceType="1" ForUpdate="1">
         <ShapefileData ShpType="5">
-          <DefaultDrawingOptions FillColor="13753823" FillHatchStyle="3" FillType="1" LineColor="9868950" />
+          <DefaultDrawingOptions FillColor="13753823" FillHatchStyle="3" FillType="1" LineColor="9868950" LineWidth="2.000000" />
           <ShapefileCategoriesClass ClassificationField="-1" />
-          <LabelsClass Alignment="5" FontStyle="1" FrameVisible="0" OffsetY="10" Generated="1" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" Positioning="0" TextRenderingHint="3" Expression="[BZ] " />
+          <LabelsClass Alignment="8" FontStyle="1" FrameVisible="0" OffsetY="10" Generated="1" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" AvoidCollisions="0" Positioning="0" TextRenderingHint="3" Expression="[BZ]" />
           <ChartsClass />
           <TableClass>
             <Fields />

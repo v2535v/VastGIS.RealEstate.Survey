@@ -29,7 +29,7 @@
         <ShapefileData CollisionMode="0" ShpType="5">
           <DefaultDrawingOptions FillColor="7238346" FillHatchStyle="2" FillType="1" LineColor="7238346" LineStipple="1" LinesVisible="0" />
           <ShapefileCategoriesClass ClassificationField="-1" />
-          <LabelsClass FontColor="12349952" FontSize="12" FontStyle="1" FrameVisible="0" Generated="0" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" Positioning="2" TextRenderingHint="3" Expression="[DSCS] +&quot;(&quot;+[DXCS] +&quot;)&quot;" />
+          <LabelsClass Alignment="6" FontColor="12349952" FontSize="12" FontStyle="1" FrameVisible="0" Generated="1" MaxVisibleScale="10000000000.000000" MinVisibleScale="1.000000" MinVisibleZoom="1" MaxVisibleZoom="24" SavingMode="4" AvoidCollisions="0" Positioning="2" TextRenderingHint="3" Expression="[DSCS] +&quot;(&quot;+[DXCS] +&quot;)&quot;" />
           <ChartsClass Visible="-1" />
           <TableClass>
             <Fields />
