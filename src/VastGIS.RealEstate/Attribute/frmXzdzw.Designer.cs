@@ -31,17 +31,17 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         #region Component Designer generated code
         private void InitializeComponent()
         { 
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel(); 
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabAttribute = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.pageMain = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.ucLinkObject = new VastGIS.Plugins.RealEstate.DataControls.ucXzdzw();
             this.pageWXInfo = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.ucWXInfo1 = new VastGIS.Plugins.RealEstate.DataControls.ucWXInfo();
             this.pageAttachment = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.ucAttachmentList1 = new VastGIS.Plugins.RealEstate.DataControls.ucAttachmentList();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.ucLinkObject = new VastGIS.Plugins.RealEstate.DataControls.ucXzdzw();
-            this.ucWXInfo1 = new VastGIS.Plugins.RealEstate.DataControls.ucWXInfo();
-            this.ucAttachmentList1 = new VastGIS.Plugins.RealEstate.DataControls.ucAttachmentList();
-             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabAttribute)).BeginInit();
             this.tabAttribute.SuspendLayout();
             this.pageMain.SuspendLayout();
@@ -66,13 +66,95 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(520, 250);            
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(520, 274);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // tabAttribute
+            // 
+            this.tabAttribute.ActiveTabForeColor = System.Drawing.Color.Empty;
+            this.tabAttribute.BeforeTouchSize = new System.Drawing.Size(504, 228);
+            this.tabAttribute.CloseButtonForeColor = System.Drawing.Color.Empty;
+            this.tabAttribute.CloseButtonHoverForeColor = System.Drawing.Color.Empty;
+            this.tabAttribute.CloseButtonPressedForeColor = System.Drawing.Color.Empty;
+            this.tableLayoutPanel1.SetColumnSpan(this.tabAttribute, 3);
+            this.tabAttribute.Controls.Add(this.pageMain);
+            this.tabAttribute.Controls.Add(this.pageWXInfo);
+            this.tabAttribute.Controls.Add(this.pageAttachment);
+            this.tabAttribute.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabAttribute.InActiveTabForeColor = System.Drawing.Color.Empty;
+            this.tabAttribute.Location = new System.Drawing.Point(3, 3);
+            this.tabAttribute.Name = "tabAttribute";
+            this.tabAttribute.SeparatorColor = System.Drawing.SystemColors.ControlDark;
+            this.tabAttribute.ShowSeparator = false;
+            this.tabAttribute.Size = new System.Drawing.Size(504, 228);
+            this.tabAttribute.TabIndex = 4;
+            // 
+            // pageMain
+            // 
+            this.pageMain.Controls.Add(this.ucLinkObject);
+            this.pageMain.Image = null;
+            this.pageMain.ImageSize = new System.Drawing.Size(16, 16);
+            this.pageMain.Location = new System.Drawing.Point(1, 24);
+            this.pageMain.Name = "pageMain";
+            this.pageMain.ShowCloseButton = true;
+            this.pageMain.Size = new System.Drawing.Size(501, 178);
+            this.pageMain.TabIndex = 5;
+            this.pageMain.Text = "属性";
+            this.pageMain.ThemesEnabled = false;
+            // 
+            // ucLinkObject
+            // 
+            this.ucLinkObject.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucLinkObject.Location = new System.Drawing.Point(0, 0);
+            this.ucLinkObject.Name = "ucLinkObject";
+            this.ucLinkObject.Size = new System.Drawing.Size(501, 178);
+            this.ucLinkObject.TabIndex = 8;
+            // 
+            // pageWXInfo
+            // 
+            this.pageWXInfo.Controls.Add(this.ucWXInfo1);
+            this.pageWXInfo.Image = null;
+            this.pageWXInfo.ImageSize = new System.Drawing.Size(16, 16);
+            this.pageWXInfo.Location = new System.Drawing.Point(1, 24);
+            this.pageWXInfo.Name = "pageWXInfo";
+            this.pageWXInfo.ShowCloseButton = true;
+            this.pageWXInfo.Size = new System.Drawing.Size(501, 202);
+            this.pageWXInfo.TabIndex = 6;
+            this.pageWXInfo.Text = "作业信息";
+            this.pageWXInfo.ThemesEnabled = false;
+            // 
+            // ucWXInfo1
+            // 
+            this.ucWXInfo1.Location = new System.Drawing.Point(0, 0);
+            this.ucWXInfo1.Name = "ucWXInfo1";
+            this.ucWXInfo1.Size = new System.Drawing.Size(232, 214);
+            this.ucWXInfo1.TabIndex = 0;
+            // 
+            // pageAttachment
+            // 
+            this.pageAttachment.Controls.Add(this.ucAttachmentList1);
+            this.pageAttachment.Image = null;
+            this.pageAttachment.ImageSize = new System.Drawing.Size(16, 16);
+            this.pageAttachment.Location = new System.Drawing.Point(1, 24);
+            this.pageAttachment.Name = "pageAttachment";
+            this.pageAttachment.ShowCloseButton = true;
+            this.pageAttachment.Size = new System.Drawing.Size(501, 178);
+            this.pageAttachment.TabIndex = 7;
+            this.pageAttachment.Text = "附件";
+            this.pageAttachment.ThemesEnabled = false;
+            // 
+            // ucAttachmentList1
+            // 
+            this.ucAttachmentList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucAttachmentList1.Location = new System.Drawing.Point(0, 0);
+            this.ucAttachmentList1.Name = "ucAttachmentList1";
+            this.ucAttachmentList1.Size = new System.Drawing.Size(501, 178);
+            this.ucAttachmentList1.TabIndex = 0;
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(242, 353);
+            this.btnClose.Location = new System.Drawing.Point(432, 238);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 2;
@@ -84,7 +166,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(113, 353);
+            this.btnSave.Location = new System.Drawing.Point(332, 238);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 3;
@@ -92,93 +174,11 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // tabAttribute
-            // 
-            this.tabAttribute.ActiveTabForeColor = System.Drawing.Color.Empty;            
-            this.tabAttribute.BeforeTouchSize = new System.Drawing.Size(516, 210);
-            this.tabAttribute.CloseButtonForeColor = System.Drawing.Color.Empty;
-            this.tabAttribute.CloseButtonHoverForeColor = System.Drawing.Color.Empty;
-            this.tabAttribute.CloseButtonPressedForeColor = System.Drawing.Color.Empty;
-            this.tableLayoutPanel1.SetColumnSpan(this.tabAttribute, 3);
-            this.tabAttribute.Controls.Add(this.pageMain);
-            this.tabAttribute.Controls.Add(this.pageWXInfo);
-            this.tabAttribute.Controls.Add(this.pageAttachment);
-            this.tabAttribute.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabAttribute.InActiveTabForeColor = System.Drawing.Color.Empty;
-            this.tabAttribute.Location = new System.Drawing.Point(2, 2);
-            this.tabAttribute.Name = "tabAttribute";
-            this.tabAttribute.SeparatorColor = System.Drawing.SystemColors.ControlDark;
-            this.tabAttribute.ShowSeparator = false;
-            this.tabAttribute.Size = new System.Drawing.Size(516, 210);            
-            this.tabAttribute.TabIndex = 4;
-            // 
-            // pageMain
-            // 
-            this.pageMain.Controls.Add(this.ucLinkObject);
-            this.pageMain.Image = null;
-            this.pageMain.ImageSize = new System.Drawing.Size(16, 16);
-            this.pageMain.Location = new System.Drawing.Point(1, 20);
-            this.pageMain.Name = "pageMain";
-            this.pageMain.ShowCloseButton = true;
-            this.pageMain.Size = new System.Drawing.Size(500, 191);          
-            this.pageMain.TabIndex = 5;
-            this.pageMain.Text = "属性";
-            this.pageMain.ThemesEnabled = false;
-            // 
-            // pageWXInfo
-            // 
-            this.pageWXInfo.Controls.Add(this.ucWXInfo1);
-            this.pageWXInfo.Image = null;
-            this.pageWXInfo.ImageSize = new System.Drawing.Size(16, 16);
-            this.pageWXInfo.Location = new System.Drawing.Point(1, 24);
-            this.pageWXInfo.Name = "pageWXInfo";
-            this.pageWXInfo.ShowCloseButton = true;
-            this.pageWXInfo.Size = new System.Drawing.Size(429, 396);
-            this.pageWXInfo.TabIndex = 6;
-            this.pageWXInfo.Text = "作业信息";
-            this.pageWXInfo.ThemesEnabled = false;
-            // 
-            // pageAttachment
-            // 
-            this.pageAttachment.Controls.Add(this.ucAttachmentList1);
-            this.pageAttachment.Image = null;
-            this.pageAttachment.ImageSize = new System.Drawing.Size(16, 16);
-            this.pageAttachment.Location = new System.Drawing.Point(1, 24);
-            this.pageAttachment.Name = "pageAttachment";
-            this.pageAttachment.ShowCloseButton = true;
-            this.pageAttachment.Size = new System.Drawing.Size(329, 322);
-            this.pageAttachment.TabIndex = 7;
-            this.pageAttachment.Text = "附件";
-            this.pageAttachment.ThemesEnabled = false;
-            // 
-            // ucLinkObject
-            // 
-            this.ucLinkObject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucLinkObject.Location = new System.Drawing.Point(0, 0);
-            this.ucLinkObject.Name = "ucLinkObject";
-            this.ucLinkObject.Size = new System.Drawing.Size(500, 191);          
-            this.ucLinkObject.TabIndex = 8;
-            // 
-            // ucWXInfo1
-            // 
-            this.ucWXInfo1.Location = new System.Drawing.Point(0, 0);
-            this.ucWXInfo1.Name = "ucWXInfo1";
-            this.ucWXInfo1.Size = new System.Drawing.Size(232, 214);
-            this.ucWXInfo1.TabIndex = 0;
-            // 
-            // ucAttachmentList1
-            // 
-            this.ucAttachmentList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucAttachmentList1.Location = new System.Drawing.Point(0, 0);
-            this.ucAttachmentList1.Name = "ucAttachmentList1";
-            this.ucAttachmentList1.Size = new System.Drawing.Size(329, 322);
-            this.ucAttachmentList1.TabIndex = 0;
-            // 
-            // frmZDJBXX
+            // frmXzdzw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 250);          
+            this.ClientSize = new System.Drawing.Size(520, 274);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -191,6 +191,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.pageWXInfo.ResumeLayout(false);
             this.pageAttachment.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
         #endregion
         
