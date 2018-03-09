@@ -52,6 +52,7 @@ INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (51, 'QYZD', '∆‘¥◊÷µ
 INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (52, 'WJMHDYTZD', 'Œﬁæ”√Ò∫£µ∫”√Õæ◊÷µ‰±Ì');
 INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (53, 'FJLXZD', '∏Ωº˛¿‡–Õ◊÷µ‰±Ì');
 INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (54, 'CFWLXZD', '≤„∑øŒ›¿‡–Õ◊÷µ‰');
+INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (55, 'CJSBLZD', '≤„º∆À„±»¿˝◊÷µ‰');
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (1, 'ZDZHTZMZD', 'A', 'ºØÃÂÕ¡µÿÀ˘”–»®◊⁄µÿ', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (2, 'ZDZHTZMZD', 'B', 'Ω®…Ë”√µÿ π”√»®◊⁄µÿ£®µÿ±Ì£©', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (3, 'ZDZHTZMZD', 'S', 'Ω®…Ë”√µÿ π”√»®◊⁄µÿ£®µÿ…œ£©', 0, 0);
@@ -707,6 +708,16 @@ INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (653, 'FJLXZD', 'XCSP', 'œ÷≥° ”∆µ', 0, 5);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (654, 'FJLXZD', 'XCYP', 'œ÷≥°“Ù∆µ', 0, 6);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (655, 'FJLXZD', 'XCQTJL', 'œ÷≥°∆‰À˚º«¬º', 0, 7);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (656, 'CFWLXZD', '1', '∑øŒ›', 1, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (657, 'CFWLXZD', '2', '—ÙÃ®', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (658, 'CFWLXZD', '3', '√≈¿»', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (656, 'CFWLXZD', '1', 'ªß “', 1, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (657, 'CFWLXZD', '2', '—ÙÃ®(Œ¥∑‚±’)', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (658, 'CFWLXZD', '3', '—ÙÃ®(∑‚±’)', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (659, 'CFWLXZD', '4', '∆Æ¬•', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (660, 'CFWLXZD', '5', 'È‹¿»', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (661, 'CFWLXZD', '6', '÷˘¿»', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (662, 'CFWLXZD', '7', '◊ﬂ¿»', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (663, 'CFWLXZD', '8', '√≈∂∑', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (664, 'CFWLXZD', '9', '¬•Ã›', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (665, 'CFWLXZD', '10', 'ÃÙ¿»', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (666, 'CJSBLZD', '1', '1', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (667, 'CJSBLZD', '2', '0.5', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (668, 'CJSBLZD', '3', '0', 0, 0);

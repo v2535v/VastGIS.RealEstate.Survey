@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-	<OutputPath>..\VastGIS\bin\$(Platform)\$(Configuration)\Plugins\</OutputPath>
+    <OutputPath>..\VastGIS\bin\$(Platform)\$(Configuration)\Plugins\</OutputPath>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>

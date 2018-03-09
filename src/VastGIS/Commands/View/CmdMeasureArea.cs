@@ -14,6 +14,8 @@ namespace VastGIS.Commands.View
             base._text = "面积量测";
             base._key = MenuKeys.MeasureArea;
             base._icon = Resources.icon_measure_area;
+            base._headerName = "tabView";
+            base._toolStripExName = "toolStripViewTools";
             _context = context;
         }
 

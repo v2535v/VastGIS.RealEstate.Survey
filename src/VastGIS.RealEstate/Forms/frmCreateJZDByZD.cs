@@ -365,7 +365,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                     _map.Drawing.DrawLine(_layerHandle, edge.StartX, edge.StartY, edge.EndX, edge.EndY, 3, color);
                 }
 
-                _map.Drawing.DrawLabel(_layerHandle, edge.Zdnsxh.ToString(), edge.CenterX, edge.CenterY, 0);
+                _map.Drawing.DrawLabel(_layerHandle,"L"+ edge.Zdnsxh.ToString(), edge.CenterX, edge.CenterY, 0);
                 count++;
             }
         }
@@ -376,7 +376,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             List<JzdInfo> vertexs = _jzdInfos.ToList();
             foreach (JzdInfo vertex in vertexs)
             {
-                _map.Drawing.DrawLabel(_layerHandle, vertex.Zdnsxh.ToString(), vertex.Xzbz, vertex.Yzbz, 0);
+                _map.Drawing.DrawLabel(_layerHandle,"P"+ vertex.Zdnsxh.ToString(), vertex.Xzbz, vertex.Yzbz, 0);
                 _map.Drawing.DrawPoint(_layerHandle, vertex.Xzbz, vertex.Yzbz, 12, color);
             }
         }
@@ -405,14 +405,25 @@ namespace VastGIS.Plugins.RealEstate.Forms
             }
             else if (geometry.GeometryType == GeometryType.Polygon)
             {
+                //for (int j = 0; j < geometry.Parts.Count; j++)
+                //{
+                //    double[] xs = geometry.Parts[j].Points.Select(c => c.X).ToArray();
+                //    double[] ys = geometry.Parts[j].Points.Select(c => c.Y).ToArray();
+                //    object xsObject = xs as object;
+                //    object ysObject = ys as object;
+                //    _map.Drawing.DrawPolygon(_layerHandle, ref xsObject, ref ysObject, geometry.Parts[j].Points.Count, color, true, 1);
+                //}
+
                 for (int j = 0; j < geometry.Parts.Count; j++)
                 {
-                    double[] xs = geometry.Parts[j].Points.Select(c => c.X).ToArray();
-                    double[] ys = geometry.Parts[j].Points.Select(c => c.Y).ToArray();
-                    object xsObject = xs as object;
-                    object ysObject = ys as object;
-                    _map.Drawing.DrawPolygon(_layerHandle, ref xsObject, ref ysObject, geometry.Parts[j].Points.Count, color,
-                        true, 1);
+                    for (int i = 0; i < geometry.Parts[j].Points.Count - 1; i++)
+                    {
+                        x1 = geometry.Parts[j].Points[i].X;
+                        y1 = geometry.Parts[j].Points[i].Y;
+                        x2 = geometry.Parts[j].Points[i + 1].X;
+                        y2 = geometry.Parts[j].Points[i + 1].Y;
+                        _map.Drawing.DrawLine(_layerHandle, x1, y1, x2, y2, 3, color);
+                    }
                 }
                 return;
             }

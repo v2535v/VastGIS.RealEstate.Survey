@@ -48,7 +48,6 @@
             this.buttonAdv1 = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnClose2 = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnClickCorner = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.cmbPointNumber = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             this.btnRectify = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnRecamera = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnSave = new Syncfusion.Windows.Forms.ButtonAdv();
@@ -58,6 +57,7 @@
             this.txtDesc = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.picCurrent = new System.Windows.Forms.PictureBox();
             this.cmbType = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.cmbPointNumber = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.pageCamera.SuspendLayout();
@@ -66,11 +66,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxResolutionList)).BeginInit();
             this.pageProcess.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbPointNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCurrent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPointNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlAdv1
@@ -126,26 +126,26 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(675, 430);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // buttonUnZoom
             // 
+            this.buttonUnZoom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonUnZoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUnZoom.Image = ((System.Drawing.Image)(resources.GetObject("buttonUnZoom.Image")));
             this.buttonUnZoom.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonUnZoom.Location = new System.Drawing.Point(555, 300);
+            this.buttonUnZoom.Location = new System.Drawing.Point(555, 360);
             this.buttonUnZoom.Margin = new System.Windows.Forms.Padding(0);
             this.buttonUnZoom.Name = "buttonUnZoom";
-            this.buttonUnZoom.Size = new System.Drawing.Size(113, 24);
+            this.buttonUnZoom.Size = new System.Drawing.Size(120, 70);
             this.buttonUnZoom.TabIndex = 17;
             this.buttonUnZoom.Text = "还原";
             this.buttonUnZoom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -180,7 +180,7 @@
             this.comboBoxCameraList.BeforeTouchSize = new System.Drawing.Size(121, 20);
             this.comboBoxCameraList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxCameraList.EnableTouchMode = true;
-            this.comboBoxCameraList.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxCameraList.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBoxCameraList.Location = new System.Drawing.Point(558, 33);
             this.comboBoxCameraList.Name = "comboBoxCameraList";
             this.comboBoxCameraList.Size = new System.Drawing.Size(114, 26);
@@ -202,7 +202,7 @@
             this.comboBoxResolutionList.BeforeTouchSize = new System.Drawing.Size(121, 20);
             this.comboBoxResolutionList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxResolutionList.EnableTouchMode = true;
-            this.comboBoxResolutionList.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxResolutionList.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBoxResolutionList.Location = new System.Drawing.Point(558, 93);
             this.comboBoxResolutionList.Name = "comboBoxResolutionList";
             this.comboBoxResolutionList.Size = new System.Drawing.Size(114, 26);
@@ -212,12 +212,12 @@
             // buttonCameraSettings
             // 
             this.buttonCameraSettings.BeforeTouchSize = new System.Drawing.Size(75, 23);
-            this.buttonCameraSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonCameraSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonCameraSettings.EnableTouchMode = true;
             this.buttonCameraSettings.IsBackStageButton = false;
             this.buttonCameraSettings.Location = new System.Drawing.Point(558, 123);
             this.buttonCameraSettings.Name = "buttonCameraSettings";
-            this.buttonCameraSettings.Size = new System.Drawing.Size(114, 24);
+            this.buttonCameraSettings.Size = new System.Drawing.Size(114, 44);
             this.buttonCameraSettings.TabIndex = 9;
             this.buttonCameraSettings.Text = "摄像头设置";
             this.buttonCameraSettings.Click += new System.EventHandler(this.buttonCameraSettings_Click);
@@ -228,9 +228,9 @@
             this.btnStartCamera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnStartCamera.EnableTouchMode = true;
             this.btnStartCamera.IsBackStageButton = false;
-            this.btnStartCamera.Location = new System.Drawing.Point(558, 153);
+            this.btnStartCamera.Location = new System.Drawing.Point(558, 173);
             this.btnStartCamera.Name = "btnStartCamera";
-            this.btnStartCamera.Size = new System.Drawing.Size(114, 24);
+            this.btnStartCamera.Size = new System.Drawing.Size(114, 44);
             this.btnStartCamera.TabIndex = 10;
             this.btnStartCamera.Text = "拍照";
             this.btnStartCamera.Click += new System.EventHandler(this.btnStartCamera_Click);
@@ -241,9 +241,9 @@
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.EnableTouchMode = true;
             this.btnClose.IsBackStageButton = false;
-            this.btnClose.Location = new System.Drawing.Point(558, 183);
+            this.btnClose.Location = new System.Drawing.Point(558, 223);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(114, 24);
+            this.btnClose.Size = new System.Drawing.Size(114, 44);
             this.btnClose.TabIndex = 11;
             this.btnClose.Text = "取消";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -270,7 +270,6 @@
             this.tableLayoutPanel2.Controls.Add(this.buttonAdv1, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnClose2, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.btnClickCorner, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.cmbPointNumber, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnRectify, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.btnRecamera, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.btnSave, 1, 6);
@@ -280,31 +279,31 @@
             this.tableLayoutPanel2.Controls.Add(this.txtDesc, 1, 12);
             this.tableLayoutPanel2.Controls.Add(this.picCurrent, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.cmbType, 1, 10);
+            this.tableLayoutPanel2.Controls.Add(this.cmbPointNumber, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 13;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(675, 430);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(558, 337);
+            this.label2.Location = new System.Drawing.Point(558, 277);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 12);
@@ -319,7 +318,7 @@
             this.buttonAdv1.IsBackStageButton = false;
             this.buttonAdv1.Location = new System.Drawing.Point(558, 3);
             this.buttonAdv1.Name = "buttonAdv1";
-            this.buttonAdv1.Size = new System.Drawing.Size(114, 24);
+            this.buttonAdv1.Size = new System.Drawing.Size(114, 1);
             this.buttonAdv1.TabIndex = 20;
             this.buttonAdv1.Text = "角点识别";
             this.buttonAdv1.Click += new System.EventHandler(this.buttonAdv1_Click);
@@ -330,9 +329,9 @@
             this.btnClose2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose2.EnableTouchMode = true;
             this.btnClose2.IsBackStageButton = false;
-            this.btnClose2.Location = new System.Drawing.Point(558, 153);
+            this.btnClose2.Location = new System.Drawing.Point(558, 53);
             this.btnClose2.Name = "btnClose2";
-            this.btnClose2.Size = new System.Drawing.Size(114, 24);
+            this.btnClose2.Size = new System.Drawing.Size(114, 44);
             this.btnClose2.TabIndex = 18;
             this.btnClose2.Text = "取消";
             this.btnClose2.Click += new System.EventHandler(this.btnClose2_Click);
@@ -343,30 +342,12 @@
             this.btnClickCorner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClickCorner.EnableTouchMode = true;
             this.btnClickCorner.IsBackStageButton = false;
-            this.btnClickCorner.Location = new System.Drawing.Point(558, 63);
+            this.btnClickCorner.Location = new System.Drawing.Point(558, 3);
             this.btnClickCorner.Name = "btnClickCorner";
-            this.btnClickCorner.Size = new System.Drawing.Size(114, 24);
+            this.btnClickCorner.Size = new System.Drawing.Size(114, 1);
             this.btnClickCorner.TabIndex = 17;
             this.btnClickCorner.Text = "输入角点";
             this.btnClickCorner.Click += new System.EventHandler(this.btnClickCorner_Click);
-            // 
-            // cmbPointNumber
-            // 
-            this.cmbPointNumber.BeforeTouchSize = new System.Drawing.Size(121, 20);
-            this.cmbPointNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbPointNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPointNumber.EnableTouchMode = true;
-            this.cmbPointNumber.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbPointNumber.Items.AddRange(new object[] {
-            "左上角",
-            "右上角",
-            "右下角",
-            "左下角"});
-            this.cmbPointNumber.Location = new System.Drawing.Point(558, 33);
-            this.cmbPointNumber.Name = "cmbPointNumber";
-            this.cmbPointNumber.Size = new System.Drawing.Size(114, 26);
-            this.cmbPointNumber.TabIndex = 6;
-            this.cmbPointNumber.Text = "左上角";
             // 
             // btnRectify
             // 
@@ -374,9 +355,9 @@
             this.btnRectify.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnRectify.EnableTouchMode = true;
             this.btnRectify.IsBackStageButton = false;
-            this.btnRectify.Location = new System.Drawing.Point(558, 93);
+            this.btnRectify.Location = new System.Drawing.Point(558, 3);
             this.btnRectify.Name = "btnRectify";
-            this.btnRectify.Size = new System.Drawing.Size(114, 24);
+            this.btnRectify.Size = new System.Drawing.Size(114, 1);
             this.btnRectify.TabIndex = 9;
             this.btnRectify.Text = "纠正";
             this.btnRectify.Click += new System.EventHandler(this.btnRectify_Click);
@@ -387,9 +368,9 @@
             this.btnRecamera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRecamera.EnableTouchMode = true;
             this.btnRecamera.IsBackStageButton = false;
-            this.btnRecamera.Location = new System.Drawing.Point(558, 123);
+            this.btnRecamera.Location = new System.Drawing.Point(558, 3);
             this.btnRecamera.Name = "btnRecamera";
-            this.btnRecamera.Size = new System.Drawing.Size(114, 24);
+            this.btnRecamera.Size = new System.Drawing.Size(114, 44);
             this.btnRecamera.TabIndex = 10;
             this.btnRecamera.Text = "放弃，重新拍照";
             this.btnRecamera.Click += new System.EventHandler(this.btnRecamera_Click);
@@ -400,9 +381,9 @@
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSave.EnableTouchMode = true;
             this.btnSave.IsBackStageButton = false;
-            this.btnSave.Location = new System.Drawing.Point(558, 183);
+            this.btnSave.Location = new System.Drawing.Point(558, 103);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(114, 24);
+            this.btnSave.Size = new System.Drawing.Size(114, 44);
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "保存";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -410,7 +391,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(558, 217);
+            this.label6.Location = new System.Drawing.Point(558, 157);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 12);
@@ -420,7 +401,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(558, 277);
+            this.label7.Location = new System.Drawing.Point(558, 217);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 7, 3, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 12);
@@ -432,8 +413,8 @@
             this.txtName.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtName.EnableTouchMode = true;
-            this.txtName.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtName.Location = new System.Drawing.Point(558, 243);
+            this.txtName.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtName.Location = new System.Drawing.Point(558, 183);
             this.txtName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(114, 28);
@@ -445,12 +426,12 @@
             this.txtDesc.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtDesc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDesc.EnableTouchMode = true;
-            this.txtDesc.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDesc.Location = new System.Drawing.Point(558, 363);
+            this.txtDesc.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtDesc.Location = new System.Drawing.Point(558, 303);
             this.txtDesc.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(114, 64);
+            this.txtDesc.Size = new System.Drawing.Size(114, 124);
             this.txtDesc.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtDesc.TabIndex = 15;
             // 
@@ -469,11 +450,30 @@
             // 
             this.cmbType.BeforeTouchSize = new System.Drawing.Size(114, 20);
             this.cmbType.EnableTouchMode = true;
-            this.cmbType.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbType.Location = new System.Drawing.Point(558, 303);
+            this.cmbType.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbType.Location = new System.Drawing.Point(558, 243);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(114, 26);
             this.cmbType.TabIndex = 22;
+            // 
+            // cmbPointNumber
+            // 
+            this.cmbPointNumber.BeforeTouchSize = new System.Drawing.Size(121, 20);
+            this.cmbPointNumber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbPointNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPointNumber.EnableTouchMode = true;
+            this.cmbPointNumber.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbPointNumber.Items.AddRange(new object[] {
+            "左上角",
+            "右上角",
+            "右下角",
+            "左下角"});
+            this.cmbPointNumber.Location = new System.Drawing.Point(558, 3);
+            this.cmbPointNumber.Name = "cmbPointNumber";
+            this.cmbPointNumber.Size = new System.Drawing.Size(114, 26);
+            this.cmbPointNumber.TabIndex = 6;
+            this.cmbPointNumber.Text = "左上角";
+            this.cmbPointNumber.Visible = false;
             // 
             // frmCameraCapture
             // 
@@ -495,11 +495,11 @@
             this.pageProcess.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbPointNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCurrent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPointNumber)).EndInit();
             this.ResumeLayout(false);
 
         }

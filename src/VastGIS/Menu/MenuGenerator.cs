@@ -91,9 +91,12 @@ namespace VastGIS.Menu
             menu.AddButton(_commands[MenuKeys.ZoomCenter]);
             menu.AddButton(_commands[MenuKeys.ZoomPrev]);
             menu.AddButton(_commands[MenuKeys.ZoomNext]);
-
+            
             menu.AddButton(_commands[MenuKeys.ShowLegendControl]);
 
+
+            menu.AddButton(_commands[MenuKeys.MeasureDistance]);
+            menu.AddButton(_commands[MenuKeys.MeasureArea]);
             //menu.AddButton(_commands[MenuKeys.AddLayer]);
             //menu.AddButton(_commands[MenuKeys.AddVectorLayer]);
             //menu.AddButton(_commands[MenuKeys.AddRasterLayer]);

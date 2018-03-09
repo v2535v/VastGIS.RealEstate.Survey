@@ -14,6 +14,8 @@ namespace VastGIS.Commands.View
             base._text = "æ‡¿Î¡ø≤‚";
             base._key = MenuKeys.MeasureDistance;
             base._icon = Resources.icon_measure_distance;
+            base._headerName = "tabView";
+            base._toolStripExName = "toolStripViewTools";
             _context = context;
         }
 
