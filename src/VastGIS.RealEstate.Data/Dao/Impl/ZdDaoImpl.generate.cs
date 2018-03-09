@@ -478,11 +478,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         
         #region ZDBHQK SQL语句
-        private string CREATE_VIEW_ZDBHQK="CREATE VIEW ZDBHQKVIEW AS SELECT  Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS,XGR,XGSJ FROM ZDBHQK WHERE [FLAGS] < 3;";
-        private string INSERT_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_ins_ZDBHQKVIEW] INSTEAD OF INSERT ON [ZDBHQKVIEW] BEGIN INSERT OR REPLACE INTO [ZDBHQK] ([Id],[ZDDM],[BHYY],[BHNR],[DJSJ],[DBR],[FJ],[DatabaseId],[FLAGS],[XGR],[XGSJ])  VALUES (NEW.[Id],NEW.[ZDDM],NEW.[BHYY],NEW.[BHNR],NEW.[DJSJ],NEW.[DBR],NEW.[FJ],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ]);END";
-        private string UPDATE_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_upd_ZDBHQKVIEW] INSTEAD OF UPDATE OF [Id],[ZDDM],[BHYY],[BHNR],[DJSJ],[DBR],[FJ],[DatabaseId],[FLAGS],[XGR],[XGSJ] ON [ZDBHQKVIEW] BEGIN UPDATE [ZDBHQK] SET [Id]=NEW.[Id],[ZDDM]=NEW.[ZDDM],[BHYY]=NEW.[BHYY],[BHNR]=NEW.[BHNR],[DJSJ]=NEW.[DJSJ],[DBR]=NEW.[DBR],[FJ]=NEW.[FJ],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ] WHERE ROWID=OLD.ROWID; END";
+        private string CREATE_VIEW_ZDBHQK="CREATE VIEW ZDBHQKVIEW AS SELECT  Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS,XGR,XGSJ,WX_WYDM FROM ZDBHQK WHERE [FLAGS] < 3;";
+        private string INSERT_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_ins_ZDBHQKVIEW] INSTEAD OF INSERT ON [ZDBHQKVIEW] BEGIN INSERT OR REPLACE INTO [ZDBHQK] ([Id],[ZDDM],[BHYY],[BHNR],[DJSJ],[DBR],[FJ],[DatabaseId],[FLAGS],[XGR],[XGSJ],[WX_WYDM])  VALUES (NEW.[Id],NEW.[ZDDM],NEW.[BHYY],NEW.[BHNR],NEW.[DJSJ],NEW.[DBR],NEW.[FJ],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ],NEW.[WX_WYDM]);END";
+        private string UPDATE_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_upd_ZDBHQKVIEW] INSTEAD OF UPDATE OF [Id],[ZDDM],[BHYY],[BHNR],[DJSJ],[DBR],[FJ],[DatabaseId],[FLAGS],[XGR],[XGSJ],[WX_WYDM] ON [ZDBHQKVIEW] BEGIN UPDATE [ZDBHQK] SET [Id]=NEW.[Id],[ZDDM]=NEW.[ZDDM],[BHYY]=NEW.[BHYY],[BHNR]=NEW.[BHNR],[DJSJ]=NEW.[DJSJ],[DBR]=NEW.[DBR],[FJ]=NEW.[FJ],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ],[WX_WYDM]=NEW.[WX_WYDM] WHERE ROWID=OLD.ROWID; END";
         private string DELETE_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_del_ZDBHQKVIEW] INSTEAD OF DELETE ON [ZDBHQKVIEW] BEGIN DELETE FROM [ZDBHQK] WHERE ROWID=OLD.ROWID;END";
-        private string SELECT_ZDBHQK="SELECT  Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS,XGR,XGSJ FROM ZDBHQK WHERE [FLAGS] < 3;";  
+        private string SELECT_ZDBHQK="SELECT  Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS,XGR,XGSJ,WX_WYDM FROM ZDBHQK WHERE [FLAGS] < 3;";  
         private string REGISTER_GEOMETRY_ZDBHQKVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('zdbhqkview','geometry','rowid','zdbhqk','geometry',0)";
         #endregion        
         
@@ -528,11 +528,11 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         
         #region ZHBHQK SQL语句
-        private string CREATE_VIEW_ZHBHQK="CREATE VIEW ZHBHQKVIEW AS SELECT  Id,ZHDM,BHYY,BHNR,DJSJ,DBR,DatabaseId,FLAGS,XGR,XGSJ FROM ZHBHQK WHERE [FLAGS] < 3;";
-        private string INSERT_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_ins_ZHBHQKVIEW] INSTEAD OF INSERT ON [ZHBHQKVIEW] BEGIN INSERT OR REPLACE INTO [ZHBHQK] ([Id],[ZHDM],[BHYY],[BHNR],[DJSJ],[DBR],[DatabaseId],[FLAGS],[XGR],[XGSJ])  VALUES (NEW.[Id],NEW.[ZHDM],NEW.[BHYY],NEW.[BHNR],NEW.[DJSJ],NEW.[DBR],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ]);END";
-        private string UPDATE_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_upd_ZHBHQKVIEW] INSTEAD OF UPDATE OF [Id],[ZHDM],[BHYY],[BHNR],[DJSJ],[DBR],[DatabaseId],[FLAGS],[XGR],[XGSJ] ON [ZHBHQKVIEW] BEGIN UPDATE [ZHBHQK] SET [Id]=NEW.[Id],[ZHDM]=NEW.[ZHDM],[BHYY]=NEW.[BHYY],[BHNR]=NEW.[BHNR],[DJSJ]=NEW.[DJSJ],[DBR]=NEW.[DBR],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ] WHERE ROWID=OLD.ROWID; END";
+        private string CREATE_VIEW_ZHBHQK="CREATE VIEW ZHBHQKVIEW AS SELECT  Id,ZHDM,BHYY,BHNR,DJSJ,DBR,DatabaseId,FLAGS,XGR,XGSJ,WX_WYDM FROM ZHBHQK WHERE [FLAGS] < 3;";
+        private string INSERT_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_ins_ZHBHQKVIEW] INSTEAD OF INSERT ON [ZHBHQKVIEW] BEGIN INSERT OR REPLACE INTO [ZHBHQK] ([Id],[ZHDM],[BHYY],[BHNR],[DJSJ],[DBR],[DatabaseId],[FLAGS],[XGR],[XGSJ],[WX_WYDM])  VALUES (NEW.[Id],NEW.[ZHDM],NEW.[BHYY],NEW.[BHNR],NEW.[DJSJ],NEW.[DBR],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ],NEW.[WX_WYDM]);END";
+        private string UPDATE_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_upd_ZHBHQKVIEW] INSTEAD OF UPDATE OF [Id],[ZHDM],[BHYY],[BHNR],[DJSJ],[DBR],[DatabaseId],[FLAGS],[XGR],[XGSJ],[WX_WYDM] ON [ZHBHQKVIEW] BEGIN UPDATE [ZHBHQK] SET [Id]=NEW.[Id],[ZHDM]=NEW.[ZHDM],[BHYY]=NEW.[BHYY],[BHNR]=NEW.[BHNR],[DJSJ]=NEW.[DJSJ],[DBR]=NEW.[DBR],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ],[WX_WYDM]=NEW.[WX_WYDM] WHERE ROWID=OLD.ROWID; END";
         private string DELETE_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_del_ZHBHQKVIEW] INSTEAD OF DELETE ON [ZHBHQKVIEW] BEGIN DELETE FROM [ZHBHQK] WHERE ROWID=OLD.ROWID;END";
-        private string SELECT_ZHBHQK="SELECT  Id,ZHDM,BHYY,BHNR,DJSJ,DBR,DatabaseId,FLAGS,XGR,XGSJ FROM ZHBHQK WHERE [FLAGS] < 3;";  
+        private string SELECT_ZHBHQK="SELECT  Id,ZHDM,BHYY,BHNR,DJSJ,DBR,DatabaseId,FLAGS,XGR,XGSJ,WX_WYDM FROM ZHBHQK WHERE [FLAGS] < 3;";  
         private string REGISTER_GEOMETRY_ZHBHQKVIEW="insert into views_geometry_columns([view_name],[view_geometry],[view_rowid],[f_table_name], [f_geometry_column], [read_only]) values('zhbhqkview','geometry','rowid','zhbhqk','geometry',0)";
         #endregion        
         
@@ -3911,7 +3911,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         #region Zdbhqk方法
         public Zdbhqk GetZdbhqk(long id)
         {
-            string sql="SELECT  Id As ID,ZDDM As Zddm,BHYY As Bhyy,BHNR As Bhnr,DJSJ As Djsj,DBR As Dbr,FJ As Fj,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj FROM ZDBHQK " + " where id="+id.ToString();
+            string sql="SELECT  Id As ID,ZDDM As Zddm,BHYY As Bhyy,BHNR As Bhnr,DJSJ As Djsj,DBR As Dbr,FJ As Fj,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,WX_WYDM As WxWydm FROM ZDBHQK " + " where id="+id.ToString();
             IEnumerable<Zdbhqk> records=connection.Query<Zdbhqk>(sql);
             if(records != null && records.Count()>0)
             {
@@ -3922,7 +3922,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public IEnumerable<Zdbhqk> GetZdbhqks(string filter)
         {
-            string sql="SELECT  Id As ID,ZDDM As Zddm,BHYY As Bhyy,BHNR As Bhnr,DJSJ As Djsj,DBR As Dbr,FJ As Fj,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj FROM ZDBHQK " + " where "+filter;
+            string sql="SELECT  Id As ID,ZDDM As Zddm,BHYY As Bhyy,BHNR As Bhnr,DJSJ As Djsj,DBR As Dbr,FJ As Fj,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,WX_WYDM As WxWydm FROM ZDBHQK " + " where "+filter;
             var records=connection.Query<Zdbhqk>(sql);            
             return records;
         }
@@ -4266,7 +4266,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         #region Zhbhqk方法
         public Zhbhqk GetZhbhqk(long id)
         {
-            string sql="SELECT  Id As ID,ZHDM As Zhdm,BHYY As Bhyy,BHNR As Bhnr,DJSJ As Djsj,DBR As Dbr,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj FROM ZHBHQK " + " where id="+id.ToString();
+            string sql="SELECT  Id As ID,ZHDM As Zhdm,BHYY As Bhyy,BHNR As Bhnr,DJSJ As Djsj,DBR As Dbr,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,WX_WYDM As WxWydm FROM ZHBHQK " + " where id="+id.ToString();
             IEnumerable<Zhbhqk> records=connection.Query<Zhbhqk>(sql);
             if(records != null && records.Count()>0)
             {
@@ -4277,7 +4277,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         
         public IEnumerable<Zhbhqk> GetZhbhqks(string filter)
         {
-            string sql="SELECT  Id As ID,ZHDM As Zhdm,BHYY As Bhyy,BHNR As Bhnr,DJSJ As Djsj,DBR As Dbr,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj FROM ZHBHQK " + " where "+filter;
+            string sql="SELECT  Id As ID,ZHDM As Zhdm,BHYY As Bhyy,BHNR As Bhnr,DJSJ As Djsj,DBR As Dbr,DatabaseId As DatabaseID,FLAGS As Flags,XGR As Xgr,XGSJ As Xgsj,WX_WYDM As WxWydm FROM ZHBHQK " + " where "+filter;
             var records=connection.Query<Zhbhqk>(sql);            
             return records;
         }

@@ -16,7 +16,7 @@ using VastGIS.Shared;
 
 namespace VastGIS.RealEstate.Data.Entity
 {
-    public partial class Zdbhqk : INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity
+    public partial class Zdbhqk : INotifyPropertyChanging, INotifyPropertyChanged,IDatabaseEntity,IGlobalEntity
     {		
 		#region 表结构		
         public const string TABLE_NAME = "ZDBHQK";	
@@ -34,6 +34,7 @@ namespace VastGIS.RealEstate.Data.Entity
 		public const string COL_FLAGS = "FLAGS";
 		public const string COL_XGR = "XGR";
 		public const string COL_XGSJ = "XGSJ";
+		public const string COL_WX_WYDM = "WX_WYDM";
 		
         public const string PARAM_ID = "@Id";	
         public const string PARAM_ZDDM = "@ZDDM";	
@@ -46,15 +47,16 @@ namespace VastGIS.RealEstate.Data.Entity
         public const string PARAM_FLAGS = "@FLAGS";	
         public const string PARAM_XGR = "@XGR";	
         public const string PARAM_XGSJ = "@XGSJ";	
+        public const string PARAM_WX_WYDM = "@WX_WYDM";	
 		
         #endregion
 		
 		#region SQL语句
-		private const string SQL_QUERY_ZDBHQK ="SELECT  Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS,XGR,XGSJ FROM ZDBHQK WHERE [FLAGS]<3";
+		private const string SQL_QUERY_ZDBHQK ="SELECT  Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS,XGR,XGSJ,WX_WYDM FROM ZDBHQK WHERE [FLAGS]<3";
         
-		private const string SQL_INSERT_ZDBHQK = "INSERT INTO [ZDBHQK] (ZDDM, BHYY, BHNR, DJSJ, DBR, FJ, DatabaseId, FLAGS, XGR, XGSJ) VALUES ( @ZDDM, @BHYY, @BHNR, @DJSJ, @DBR, @FJ, @DatabaseId, @FLAGS, @XGR, @XGSJ);" + " SELECT last_insert_rowid();";
+		private const string SQL_INSERT_ZDBHQK = "INSERT INTO [ZDBHQK] (ZDDM, BHYY, BHNR, DJSJ, DBR, FJ, DatabaseId, FLAGS, XGR, XGSJ, WX_WYDM) VALUES ( @ZDDM, @BHYY, @BHNR, @DJSJ, @DBR, @FJ, @DatabaseId, @FLAGS, @XGR, @XGSJ, @WX_WYDM);" + " SELECT last_insert_rowid();";
 		
-		private const string SQL_UPDATE_ZDBHQK = "UPDATE [ZDBHQK] SET ZDDM = @ZDDM, BHYY = @BHYY, BHNR = @BHNR, DJSJ = @DJSJ, DBR = @DBR, FJ = @FJ, DatabaseId = @DatabaseId, FLAGS = @FLAGS, XGR = @XGR, XGSJ = @XGSJ WHERE Id = @Id";
+		private const string SQL_UPDATE_ZDBHQK = "UPDATE [ZDBHQK] SET ZDDM = @ZDDM, BHYY = @BHYY, BHNR = @BHNR, DJSJ = @DJSJ, DBR = @DBR, FJ = @FJ, DatabaseId = @DatabaseId, FLAGS = @FLAGS, XGR = @XGR, XGSJ = @XGSJ, WX_WYDM = @WX_WYDM WHERE Id = @Id";
 		
 		private const string SQL_DELETE_ZDBHQK = "DELETE FROM [ZDBHQK] WHERE  Id = @Id ";
 		
@@ -85,6 +87,8 @@ namespace VastGIS.RealEstate.Data.Entity
 		protected string xgr = default(string);
         ///修改时间
 		protected System.DateTime? xgsj = default(System.DateTime?);
+        ///全局唯一代码
+		protected string wxWydm = default(string);
         
         private event PropertyChangingEventHandler propertyChanging;
         
@@ -117,12 +121,12 @@ namespace VastGIS.RealEstate.Data.Entity
             get{return "宗地变化情况";}
         }
         public string EntityName{
-            get{return "IDatabaseEntity";}
+            get{return "IDatabaseEntity,IGlobalEntity";}
         }       
         public string TableName{get{return TABLE_NAME;}}
         public string[] NoCopyName{get{return new string[]{"ID","Geometry","DatabaseID","Flags","Xgr","Xgsj","WxWydm"};}}
         public bool HasFlag{get{return true;}}
-        public bool HasGlobal{get{return false;}}
+        public bool HasGlobal{get{return true;}}
         public bool HasYsdm{get{return false;}}
         public bool HasGeometry{get{return false;}}
         public bool HasSurvey{get{return false;}}
@@ -310,6 +314,21 @@ namespace VastGIS.RealEstate.Data.Entity
                 }
         }	
 		
+        ///全局唯一代码
+        ///[Column(COL_WX_WYDM, PARAM_WX_WYDM )]
+        public virtual string WxWydm 
+        {
+            get { return this.wxWydm; }
+			set	{ 
+                  if(this.wxWydm != value)
+                    {
+                        this.OnPropertyChanging("WxWydm"); 
+                        this.wxWydm = value;                        
+                        this.OnPropertyChanged("WxWydm");
+                    }   
+                }
+        }	
+		
       
        ///图形类型
         public GeometryType GeometryType
@@ -332,6 +351,7 @@ namespace VastGIS.RealEstate.Data.Entity
             this.flags=0;
             this.xgr=Environment.UserName;
             this.xgsj=DateTime.Now;
+            this.wxWydm=Guid.NewGuid().ToString();
         }
         #endregion
         
@@ -379,6 +399,7 @@ namespace VastGIS.RealEstate.Data.Entity
 				command.Parameters.AddWithValue(PARAM_FLAGS, this.Flags);
 				command.Parameters.AddWithValue(PARAM_XGR, this.Xgr);
 				command.Parameters.AddWithValue(PARAM_XGSJ, this.Xgsj);
+				command.Parameters.AddWithValue(PARAM_WX_WYDM, this.WxWydm);
                 this.ID = Convert.ToInt64(command.ExecuteScalar());
                 return this.ID;
             }
@@ -410,6 +431,7 @@ namespace VastGIS.RealEstate.Data.Entity
 				command.Parameters.AddWithValue(PARAM_FLAGS, this.Flags);
 				command.Parameters.AddWithValue(PARAM_XGR, this.Xgr);
 				command.Parameters.AddWithValue(PARAM_XGSJ, this.Xgsj);
+				command.Parameters.AddWithValue(PARAM_WX_WYDM, this.WxWydm);
 			   
                 return (command.ExecuteNonQuery() == 1);
             }
@@ -464,6 +486,7 @@ namespace VastGIS.RealEstate.Data.Entity
 			if (!reader.IsDBNull(8)) flags = reader.GetInt16(8);
 			if (!reader.IsDBNull(9)) xgr = reader.GetString(9);
 			if (!reader.IsDBNull(10)) xgsj = reader.GetDateTime(10);
+			if (!reader.IsDBNull(11)) wxWydm = reader.GetString(11);
         }
         
         #region 拷贝
@@ -481,6 +504,7 @@ namespace VastGIS.RealEstate.Data.Entity
             target.Flags=1;
             target.Xgr=Environment.UserName;
             target.Xgsj=DateTime.Now;
+            target.WxWydm=Guid.NewGuid().ToString();
             return target as IEntity;
            
         }

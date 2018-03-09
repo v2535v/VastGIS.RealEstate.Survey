@@ -975,16 +975,6 @@ public partial class SystemDaoImpl
     
     #endregion
     
-     #region ZDBHQK 表创建SQL
-    string SYS_CREATE_ZDBHQK="CREATE TABLE ZDBHQK([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[ZDDM] char(57),[BHYY] char(2147483645),[BHNR] char(2147483645),[DJSJ] datetime,[DBR] char(150),[FJ] char(2147483645),[DATABASEID] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1,[XGR] nchar(30),[XGSJ] DATETIME DEFAULT (datetime('now', 'localtime')));";  
-    string SYS_SELECT_ZDBHQK="SELECT  Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS,XGR,XGSJ FROM ZDBHQK WHERE [FLAGS]<3";
-    string SYS_CREATE_VIEW_ZDBHQK="CREATE VIEW ZDBHQKVIEW AS SELECT  Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS,XGR,XGSJ FROM ZDBHQK WHERE [FLAGS] < 3;";
-    string SYS_INSERT_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_ins_ZDBHQKVIEW] INSTEAD OF INSERT ON [ZDBHQKVIEW] BEGIN INSERT OR REPLACE INTO [ZDBHQK] ([Id],[ZDDM],[BHYY],[BHNR],[DJSJ],[DBR],[FJ],[DatabaseId],[FLAGS],[XGR],[XGSJ])  VALUES (NEW.[Id],NEW.[ZDDM],NEW.[BHYY],NEW.[BHNR],NEW.[DJSJ],NEW.[DBR],NEW.[FJ],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ]);END";
-    string SYS_UPDATE_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_upd_ZDBHQKVIEW] INSTEAD OF UPDATE OF [Id],[ZDDM],[BHYY],[BHNR],[DJSJ],[DBR],[FJ],[DatabaseId],[FLAGS],[XGR],[XGSJ] ON [ZDBHQKVIEW] BEGIN UPDATE [ZDBHQK] SET [Id]=NEW.[Id],[ZDDM]=NEW.[ZDDM],[BHYY]=NEW.[BHYY],[BHNR]=NEW.[BHNR],[DJSJ]=NEW.[DJSJ],[DBR]=NEW.[DBR],[FJ]=NEW.[FJ],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ] WHERE ROWID=OLD.ROWID; END";
-    string SYS_DELETE_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_del_ZDBHQKVIEW] INSTEAD OF DELETE ON [ZDBHQKVIEW] BEGIN DELETE FROM [ZDBHQK] WHERE ROWID=OLD.ROWID;END";     
-    
-    #endregion
-    
      #region ZDJBXX 表创建SQL
     string SYS_CREATE_ZDJBXX="CREATE TABLE ZDJBXX([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[YSDM] char(30),[ZDDM] char(57),[BDCDYH] char(84),[ZDTZM] char(6),[ZL] char(600),[ZDMJ] float,[MJDW] char(6),[YT] char(12),[DJ] char(6),[JG] float,[QLLX] char(6),[QLXZ] char(12),[QLSDFS] char(6),[RJL] float,[JZMD] float,[JZXG] float,[ZDSZD] char(600),[ZDSZN] char(600),[ZDSZX] char(600),[ZDSZB] char(600),[ZDT] blob,[TFH] char(150),[DJH] char(60),[DAH] char(2147483645),[BZ] char(2147483645),[ZT] char(6),[WX_DCY] char(90),[WX_DCSJ] datetime,[WX_CLY] char(90),[WX_CLSJ] datetime,[WX_ZTY] char(90),[WX_ZTSJ] datetime,[WX_ZJY] char(90),[WX_ZJSJ] datetime,[WX_WYDM] nvarchar,[DATABASEID] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1,[XGR] nchar(30),[XGSJ] DATETIME DEFAULT (datetime('now', 'localtime')));";  
     string SYS_SELECT_ZDJBXX="SELECT  Id,YSDM,ZDDM,BDCDYH,ZDTZM,ZL,ZDMJ,MJDW,YT,DJ,JG,QLLX,QLXZ,QLSDFS,RJL,JZMD,JZXG,ZDSZD,ZDSZN,ZDSZX,ZDSZB,ZDT,TFH,DJH,DAH,BZ,ZT,WX_DCY,WX_DCSJ,WX_CLY,WX_CLSJ,WX_ZTY,WX_ZTSJ,WX_ZJY,WX_ZJSJ,WX_WYDM,DatabaseId,FLAGS,XGR,XGSJ,AsText(geometry) as Wkt FROM ZDJBXX WHERE [FLAGS]<3";
@@ -1024,16 +1014,6 @@ public partial class SystemDaoImpl
     string SYS_INSERT_TRIGGER_ZDTOJZX="CREATE TRIGGER [vw_ins_ZDTOJZXVIEW] INSTEAD OF INSERT ON [ZDTOJZXVIEW] BEGIN INSERT OR REPLACE INTO [ZDTOJZX] ([Id],[ZD_WYDM],[JZX_WYDM],[SXH],[DatabaseId],[FLAGS],[XGR],[XGSJ])  VALUES (NEW.[Id],NEW.[ZD_WYDM],NEW.[JZX_WYDM],NEW.[SXH],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ]);END";
     string SYS_UPDATE_TRIGGER_ZDTOJZX="CREATE TRIGGER [vw_upd_ZDTOJZXVIEW] INSTEAD OF UPDATE OF [Id],[ZD_WYDM],[JZX_WYDM],[SXH],[DatabaseId],[FLAGS],[XGR],[XGSJ] ON [ZDTOJZXVIEW] BEGIN UPDATE [ZDTOJZX] SET [Id]=NEW.[Id],[ZD_WYDM]=NEW.[ZD_WYDM],[JZX_WYDM]=NEW.[JZX_WYDM],[SXH]=NEW.[SXH],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ] WHERE ROWID=OLD.ROWID; END";
     string SYS_DELETE_TRIGGER_ZDTOJZX="CREATE TRIGGER [vw_del_ZDTOJZXVIEW] INSTEAD OF DELETE ON [ZDTOJZXVIEW] BEGIN DELETE FROM [ZDTOJZX] WHERE ROWID=OLD.ROWID;END";     
-    
-    #endregion
-    
-     #region ZHBHQK 表创建SQL
-    string SYS_CREATE_ZHBHQK="CREATE TABLE ZHBHQK([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[ZHDM] char(57),[BHYY] char(2147483645),[BHNR] char(2147483645),[DJSJ] datetime,[DBR] char(150),[DATABASEID] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1,[XGR] nchar(30),[XGSJ] DATETIME DEFAULT (datetime('now', 'localtime')));";  
-    string SYS_SELECT_ZHBHQK="SELECT  Id,ZHDM,BHYY,BHNR,DJSJ,DBR,DatabaseId,FLAGS,XGR,XGSJ FROM ZHBHQK WHERE [FLAGS]<3";
-    string SYS_CREATE_VIEW_ZHBHQK="CREATE VIEW ZHBHQKVIEW AS SELECT  Id,ZHDM,BHYY,BHNR,DJSJ,DBR,DatabaseId,FLAGS,XGR,XGSJ FROM ZHBHQK WHERE [FLAGS] < 3;";
-    string SYS_INSERT_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_ins_ZHBHQKVIEW] INSTEAD OF INSERT ON [ZHBHQKVIEW] BEGIN INSERT OR REPLACE INTO [ZHBHQK] ([Id],[ZHDM],[BHYY],[BHNR],[DJSJ],[DBR],[DatabaseId],[FLAGS],[XGR],[XGSJ])  VALUES (NEW.[Id],NEW.[ZHDM],NEW.[BHYY],NEW.[BHNR],NEW.[DJSJ],NEW.[DBR],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ]);END";
-    string SYS_UPDATE_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_upd_ZHBHQKVIEW] INSTEAD OF UPDATE OF [Id],[ZHDM],[BHYY],[BHNR],[DJSJ],[DBR],[DatabaseId],[FLAGS],[XGR],[XGSJ] ON [ZHBHQKVIEW] BEGIN UPDATE [ZHBHQK] SET [Id]=NEW.[Id],[ZHDM]=NEW.[ZHDM],[BHYY]=NEW.[BHYY],[BHNR]=NEW.[BHNR],[DJSJ]=NEW.[DJSJ],[DBR]=NEW.[DBR],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ] WHERE ROWID=OLD.ROWID; END";
-    string SYS_DELETE_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_del_ZHBHQKVIEW] INSTEAD OF DELETE ON [ZHBHQKVIEW] BEGIN DELETE FROM [ZHBHQK] WHERE ROWID=OLD.ROWID;END";     
     
     #endregion
     
@@ -1089,6 +1069,26 @@ public partial class SystemDaoImpl
     string SYS_INSERT_TRIGGER_C="CREATE TRIGGER [vw_ins_CVIEW] INSTEAD OF INSERT ON [CVIEW] BEGIN INSERT OR REPLACE INTO [C] ([Id],[CFWLX],[JSBL],[CH],[ZRZH],[YSDM],[SJC],[MYC],[CJZMJ],[CTNJZMJ],[CYTMJ],[CGYJZMJ],[CFTJZMJ],[CBQMJ],[CG],[SPTYMJ],[WX_DCY],[WX_DCSJ],[WX_CLY],[WX_CLSJ],[WX_ZTY],[WX_ZTSJ],[WX_ZJY],[WX_ZJSJ],[WX_WYDM],[DatabaseId],[FLAGS],[XGR],[XGSJ])  VALUES (NEW.[Id],NEW.[CFWLX],NEW.[JSBL],NEW.[CH],NEW.[ZRZH],NEW.[YSDM],NEW.[SJC],NEW.[MYC],NEW.[CJZMJ],NEW.[CTNJZMJ],NEW.[CYTMJ],NEW.[CGYJZMJ],NEW.[CFTJZMJ],NEW.[CBQMJ],NEW.[CG],NEW.[SPTYMJ],NEW.[WX_DCY],NEW.[WX_DCSJ],NEW.[WX_CLY],NEW.[WX_CLSJ],NEW.[WX_ZTY],NEW.[WX_ZTSJ],NEW.[WX_ZJY],NEW.[WX_ZJSJ],NEW.[WX_WYDM],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ]);END";
     string SYS_UPDATE_TRIGGER_C="CREATE TRIGGER [vw_upd_CVIEW] INSTEAD OF UPDATE OF [Id],[CFWLX],[JSBL],[CH],[ZRZH],[YSDM],[SJC],[MYC],[CJZMJ],[CTNJZMJ],[CYTMJ],[CGYJZMJ],[CFTJZMJ],[CBQMJ],[CG],[SPTYMJ],[WX_DCY],[WX_DCSJ],[WX_CLY],[WX_CLSJ],[WX_ZTY],[WX_ZTSJ],[WX_ZJY],[WX_ZJSJ],[WX_WYDM],[DatabaseId],[FLAGS],[XGR],[XGSJ] ON [CVIEW] BEGIN UPDATE [C] SET [Id]=NEW.[Id],[CFWLX]=NEW.[CFWLX],[JSBL]=NEW.[JSBL],[CH]=NEW.[CH],[ZRZH]=NEW.[ZRZH],[YSDM]=NEW.[YSDM],[SJC]=NEW.[SJC],[MYC]=NEW.[MYC],[CJZMJ]=NEW.[CJZMJ],[CTNJZMJ]=NEW.[CTNJZMJ],[CYTMJ]=NEW.[CYTMJ],[CGYJZMJ]=NEW.[CGYJZMJ],[CFTJZMJ]=NEW.[CFTJZMJ],[CBQMJ]=NEW.[CBQMJ],[CG]=NEW.[CG],[SPTYMJ]=NEW.[SPTYMJ],[WX_DCY]=NEW.[WX_DCY],[WX_DCSJ]=NEW.[WX_DCSJ],[WX_CLY]=NEW.[WX_CLY],[WX_CLSJ]=NEW.[WX_CLSJ],[WX_ZTY]=NEW.[WX_ZTY],[WX_ZTSJ]=NEW.[WX_ZTSJ],[WX_ZJY]=NEW.[WX_ZJY],[WX_ZJSJ]=NEW.[WX_ZJSJ],[WX_WYDM]=NEW.[WX_WYDM],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ] WHERE ROWID=OLD.ROWID; END";
     string SYS_DELETE_TRIGGER_C="CREATE TRIGGER [vw_del_CVIEW] INSTEAD OF DELETE ON [CVIEW] BEGIN DELETE FROM [C] WHERE ROWID=OLD.ROWID;END";     
+    
+    #endregion
+    
+     #region ZDBHQK 表创建SQL
+    string SYS_CREATE_ZDBHQK="CREATE TABLE ZDBHQK([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[ZDDM] char(57),[BHYY] char(2147483645),[BHNR] char(2147483645),[DJSJ] datetime,[DBR] char(150),[FJ] char(2147483645),[DATABASEID] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1,[XGR] nchar(30),[XGSJ] DATETIME DEFAULT (datetime('now', 'localtime')),[WX_WYDM] nvarchar);";  
+    string SYS_SELECT_ZDBHQK="SELECT  Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS,XGR,XGSJ,WX_WYDM FROM ZDBHQK WHERE [FLAGS]<3";
+    string SYS_CREATE_VIEW_ZDBHQK="CREATE VIEW ZDBHQKVIEW AS SELECT  Id,ZDDM,BHYY,BHNR,DJSJ,DBR,FJ,DatabaseId,FLAGS,XGR,XGSJ,WX_WYDM FROM ZDBHQK WHERE [FLAGS] < 3;";
+    string SYS_INSERT_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_ins_ZDBHQKVIEW] INSTEAD OF INSERT ON [ZDBHQKVIEW] BEGIN INSERT OR REPLACE INTO [ZDBHQK] ([Id],[ZDDM],[BHYY],[BHNR],[DJSJ],[DBR],[FJ],[DatabaseId],[FLAGS],[XGR],[XGSJ],[WX_WYDM])  VALUES (NEW.[Id],NEW.[ZDDM],NEW.[BHYY],NEW.[BHNR],NEW.[DJSJ],NEW.[DBR],NEW.[FJ],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ],NEW.[WX_WYDM]);END";
+    string SYS_UPDATE_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_upd_ZDBHQKVIEW] INSTEAD OF UPDATE OF [Id],[ZDDM],[BHYY],[BHNR],[DJSJ],[DBR],[FJ],[DatabaseId],[FLAGS],[XGR],[XGSJ],[WX_WYDM] ON [ZDBHQKVIEW] BEGIN UPDATE [ZDBHQK] SET [Id]=NEW.[Id],[ZDDM]=NEW.[ZDDM],[BHYY]=NEW.[BHYY],[BHNR]=NEW.[BHNR],[DJSJ]=NEW.[DJSJ],[DBR]=NEW.[DBR],[FJ]=NEW.[FJ],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ],[WX_WYDM]=NEW.[WX_WYDM] WHERE ROWID=OLD.ROWID; END";
+    string SYS_DELETE_TRIGGER_ZDBHQK="CREATE TRIGGER [vw_del_ZDBHQKVIEW] INSTEAD OF DELETE ON [ZDBHQKVIEW] BEGIN DELETE FROM [ZDBHQK] WHERE ROWID=OLD.ROWID;END";     
+    
+    #endregion
+    
+     #region ZHBHQK 表创建SQL
+    string SYS_CREATE_ZHBHQK="CREATE TABLE ZHBHQK([Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,[ZHDM] char(57),[BHYY] char(2147483645),[BHNR] char(2147483645),[DJSJ] datetime,[DBR] char(150),[DATABASEID] INTEGER DEFAULT 0,[FLAGS] SMALLINT DEFAULT 1,[XGR] nchar(30),[XGSJ] DATETIME DEFAULT (datetime('now', 'localtime')),[WX_WYDM] nvarchar);";  
+    string SYS_SELECT_ZHBHQK="SELECT  Id,ZHDM,BHYY,BHNR,DJSJ,DBR,DatabaseId,FLAGS,XGR,XGSJ,WX_WYDM FROM ZHBHQK WHERE [FLAGS]<3";
+    string SYS_CREATE_VIEW_ZHBHQK="CREATE VIEW ZHBHQKVIEW AS SELECT  Id,ZHDM,BHYY,BHNR,DJSJ,DBR,DatabaseId,FLAGS,XGR,XGSJ,WX_WYDM FROM ZHBHQK WHERE [FLAGS] < 3;";
+    string SYS_INSERT_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_ins_ZHBHQKVIEW] INSTEAD OF INSERT ON [ZHBHQKVIEW] BEGIN INSERT OR REPLACE INTO [ZHBHQK] ([Id],[ZHDM],[BHYY],[BHNR],[DJSJ],[DBR],[DatabaseId],[FLAGS],[XGR],[XGSJ],[WX_WYDM])  VALUES (NEW.[Id],NEW.[ZHDM],NEW.[BHYY],NEW.[BHNR],NEW.[DJSJ],NEW.[DBR],NEW.[DatabaseId],NEW.[FLAGS],NEW.[XGR],NEW.[XGSJ],NEW.[WX_WYDM]);END";
+    string SYS_UPDATE_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_upd_ZHBHQKVIEW] INSTEAD OF UPDATE OF [Id],[ZHDM],[BHYY],[BHNR],[DJSJ],[DBR],[DatabaseId],[FLAGS],[XGR],[XGSJ],[WX_WYDM] ON [ZHBHQKVIEW] BEGIN UPDATE [ZHBHQK] SET [Id]=NEW.[Id],[ZHDM]=NEW.[ZHDM],[BHYY]=NEW.[BHYY],[BHNR]=NEW.[BHNR],[DJSJ]=NEW.[DJSJ],[DBR]=NEW.[DBR],[DatabaseId]=NEW.[DatabaseId],[FLAGS]=NEW.[FLAGS],[XGR]=NEW.[XGR],[XGSJ]=NEW.[XGSJ],[WX_WYDM]=NEW.[WX_WYDM] WHERE ROWID=OLD.ROWID; END";
+    string SYS_DELETE_TRIGGER_ZHBHQK="CREATE TRIGGER [vw_del_ZHBHQKVIEW] INSTEAD OF DELETE ON [ZHBHQKVIEW] BEGIN DELETE FROM [ZHBHQK] WHERE ROWID=OLD.ROWID;END";     
     
     #endregion
     
@@ -1293,8 +1293,6 @@ public partial class SystemDaoImpl
                 command.ExecuteNonQuery();
                 command.CommandText=SYS_CREATE_YYDJ;
                 command.ExecuteNonQuery();
-                command.CommandText=SYS_CREATE_ZDBHQK;
-                command.ExecuteNonQuery();
                 command.CommandText=SYS_CREATE_ZDJBXX;
                 command.ExecuteNonQuery();
                 command.CommandText=SYS_CREATE_ZDJBXXZJ;
@@ -1302,8 +1300,6 @@ public partial class SystemDaoImpl
                 command.CommandText=SYS_CREATE_ZDTOJZD;
                 command.ExecuteNonQuery();
                 command.CommandText=SYS_CREATE_ZDTOJZX;
-                command.ExecuteNonQuery();
-                command.CommandText=SYS_CREATE_ZHBHQK;
                 command.ExecuteNonQuery();
                 command.CommandText=SYS_CREATE_ZHJBXX;
                 command.ExecuteNonQuery();
@@ -1316,6 +1312,10 @@ public partial class SystemDaoImpl
                 command.CommandText=SYS_CREATE_VG_CLASSRELATION;
                 command.ExecuteNonQuery();
                 command.CommandText=SYS_CREATE_C;
+                command.ExecuteNonQuery();
+                command.CommandText=SYS_CREATE_ZDBHQK;
+                command.ExecuteNonQuery();
+                command.CommandText=SYS_CREATE_ZHBHQK;
                 command.ExecuteNonQuery();
                 command.CommandText="INSERT INTO [vg_objectclass] ([MC], [DXLX], [ZWMC], [FBMC], [XHZDMC], [TXZDMC], [TXLX], [IDENTIFY], [EDITABLE], [QUERYABLE], [SNAPABLE], [VISIBLE], [XSSX], [FILTER], [QSDM], [BJCT], [BHFJ]) VALUES ('其他图层', 0, '其他图层', '', '', '', 0, 1, 1, 1, 1, 1, 4, '', '', '', 1)";
                 command.ExecuteNonQuery();
@@ -1664,9 +1664,6 @@ public partial class SystemDaoImpl
                 //登记YYDJ信息
                 command.CommandText="INSERT INTO [vg_classdetail]  ([GroupName], [ObjectTableName], [CreateImpl], [InterfaceName]) VALUES ('Zd', 'YYDJ', 0, 'IDatabaseEntity');";
                 command.ExecuteNonQuery();
-                //登记ZDBHQK信息
-                command.CommandText="INSERT INTO [vg_classdetail]  ([GroupName], [ObjectTableName], [CreateImpl], [InterfaceName]) VALUES ('Zd', 'ZDBHQK', 0, 'IDatabaseEntity');";
-                command.ExecuteNonQuery();
                 //登记ZDJBXX信息
                 command.CommandText="INSERT INTO [vg_classdetail]  ([GroupName], [ObjectTableName], [CreateImpl], [InterfaceName]) VALUES ('Zd', 'ZDJBXX', 0, 'ISurveyFeature');";
                 command.ExecuteNonQuery();
@@ -1678,9 +1675,6 @@ public partial class SystemDaoImpl
                 command.ExecuteNonQuery();
                 //登记ZDTOJZX信息
                 command.CommandText="INSERT INTO [vg_classdetail]  ([GroupName], [ObjectTableName], [CreateImpl], [InterfaceName]) VALUES ('Zd', 'ZDTOJZX', 0, 'IEntity');";
-                command.ExecuteNonQuery();
-                //登记ZHBHQK信息
-                command.CommandText="INSERT INTO [vg_classdetail]  ([GroupName], [ObjectTableName], [CreateImpl], [InterfaceName]) VALUES ('Zd', 'ZHBHQK', 0, 'IDatabaseEntity');";
                 command.ExecuteNonQuery();
                 //登记ZHJBXX信息
                 command.CommandText="INSERT INTO [vg_classdetail]  ([GroupName], [ObjectTableName], [CreateImpl], [InterfaceName]) VALUES ('Zd', 'ZHJBXX', 0, 'IDatabaseEntity');";
@@ -1699,6 +1693,12 @@ public partial class SystemDaoImpl
                 command.ExecuteNonQuery();
                 //登记C信息
                 command.CommandText="INSERT INTO [vg_classdetail]  ([GroupName], [ObjectTableName], [CreateImpl], [InterfaceName]) VALUES ('Zd', 'C', 0, 'ISurveyEntity');";
+                command.ExecuteNonQuery();
+                //登记ZDBHQK信息
+                command.CommandText="INSERT INTO [vg_classdetail]  ([GroupName], [ObjectTableName], [CreateImpl], [InterfaceName]) VALUES ('Zd', 'ZDBHQK', 0, 'IDatabaseEntity');";
+                command.ExecuteNonQuery();
+                //登记ZHBHQK信息
+                command.CommandText="INSERT INTO [vg_classdetail]  ([GroupName], [ObjectTableName], [CreateImpl], [InterfaceName]) VALUES ('Zd', 'ZHBHQK', 0, 'IDatabaseEntity');";
                 command.ExecuteNonQuery();
                 command.CommandText="INSERT INTO [vg_setting] ( [CSMC], [CSZ]) VALUES ('SRID','"+srid.ToString()+"');";
                 command.ExecuteNonQuery();
@@ -2019,9 +2019,6 @@ public partial class SystemDaoImpl
                 //登记YYDJ信息
                 command.CommandText="INSERT INTO [vg_objectclass] ([MC], [DXLX], [ZWMC], [FBMC], [XHZDMC], [TXZDMC], [TXLX], [IDENTIFY], [EDITABLE], [QUERYABLE], [SNAPABLE], [VISIBLE], [XSSX], [FILTER], [QSDM], [BJCT], [BHFJ]) VALUES ('YYDJ', 2, '异议登记', '不动产权利', '', '', 0, 0, 1, 0, 0, 0, 20, 'YYDJVIEW', '', 'frmYydj', 1);";
                 command.ExecuteNonQuery();
-                //登记ZDBHQK信息
-                command.CommandText="INSERT INTO [vg_objectclass] ([MC], [DXLX], [ZWMC], [FBMC], [XHZDMC], [TXZDMC], [TXLX], [IDENTIFY], [EDITABLE], [QUERYABLE], [SNAPABLE], [VISIBLE], [XSSX], [FILTER], [QSDM], [BJCT], [BHFJ]) VALUES ('ZDBHQK', 2, '宗地变化情况', '不动产单元', '', '', 0, 0, 1, 0, 0, 0, 20, 'ZDBHQKVIEW', '', 'frmZdbhqk', 1);";
-                command.ExecuteNonQuery();
                 //登记ZDJBXX信息
                 command.CommandText="INSERT INTO [vg_objectclass] ([MC], [DXLX], [ZWMC], [FBMC], [XHZDMC], [TXZDMC], [TXLX], [IDENTIFY], [EDITABLE], [QUERYABLE], [SNAPABLE], [VISIBLE], [XSSX], [FILTER], [QSDM], [BJCT], [BHFJ]) VALUES ('ZDJBXX', 1, '宗地', '地籍数据', '', '', 3, 1, 1, 1, 1, 1, 3, 'ZDJBXXVIEW', '', 'frmZdjbxx', 1);";
                 command.ExecuteNonQuery();
@@ -2033,9 +2030,6 @@ public partial class SystemDaoImpl
                 command.ExecuteNonQuery();
                 //登记ZDTOJZX信息
                 command.CommandText="INSERT INTO [vg_objectclass] ([MC], [DXLX], [ZWMC], [FBMC], [XHZDMC], [TXZDMC], [TXLX], [IDENTIFY], [EDITABLE], [QUERYABLE], [SNAPABLE], [VISIBLE], [XSSX], [FILTER], [QSDM], [BJCT], [BHFJ]) VALUES ('ZDTOJZX', 2, '宗地界址线关系表', '地籍数据', '', '', 0, 0, 1, 0, 0, 0, 20, 'ZDTOJZXVIEW', '', 'frmZdtojzx', 1);";
-                command.ExecuteNonQuery();
-                //登记ZHBHQK信息
-                command.CommandText="INSERT INTO [vg_objectclass] ([MC], [DXLX], [ZWMC], [FBMC], [XHZDMC], [TXZDMC], [TXLX], [IDENTIFY], [EDITABLE], [QUERYABLE], [SNAPABLE], [VISIBLE], [XSSX], [FILTER], [QSDM], [BJCT], [BHFJ]) VALUES ('ZHBHQK', 2, '宗海变化情况', '', '', '', 0, 0, 1, 0, 0, 0, 20, 'ZHBHQKVIEW', '', 'frmZhbhqk', 1);";
                 command.ExecuteNonQuery();
                 //登记ZHJBXX信息
                 command.CommandText="INSERT INTO [vg_objectclass] ([MC], [DXLX], [ZWMC], [FBMC], [XHZDMC], [TXZDMC], [TXLX], [IDENTIFY], [EDITABLE], [QUERYABLE], [SNAPABLE], [VISIBLE], [XSSX], [FILTER], [QSDM], [BJCT], [BHFJ]) VALUES ('ZHJBXX', 1, '宗海（含无居民海岛）', '不动产单元', '', '', 3, 1, 1, 1, 1, 1, 20, 'ZHJBXXVIEW', '', 'frmZhjbxx', 1);";
@@ -2054,6 +2048,12 @@ public partial class SystemDaoImpl
                 command.ExecuteNonQuery();
                 //登记C信息
                 command.CommandText="INSERT INTO [vg_objectclass] ([MC], [DXLX], [ZWMC], [FBMC], [XHZDMC], [TXZDMC], [TXLX], [IDENTIFY], [EDITABLE], [QUERYABLE], [SNAPABLE], [VISIBLE], [XSSX], [FILTER], [QSDM], [BJCT], [BHFJ]) VALUES ('C', 2, '层', '不动产单元', '', '', 0, 0, 1, 0, 0, 0, 20, 'CVIEW', '', 'frmC', 1);";
+                command.ExecuteNonQuery();
+                //登记ZDBHQK信息
+                command.CommandText="INSERT INTO [vg_objectclass] ([MC], [DXLX], [ZWMC], [FBMC], [XHZDMC], [TXZDMC], [TXLX], [IDENTIFY], [EDITABLE], [QUERYABLE], [SNAPABLE], [VISIBLE], [XSSX], [FILTER], [QSDM], [BJCT], [BHFJ]) VALUES ('ZDBHQK', 2, '宗地变化情况', '不动产单元', '', '', 0, 0, 1, 0, 0, 0, 20, 'ZDBHQKVIEW', '', 'frmZdbhqk', 1);";
+                command.ExecuteNonQuery();
+                //登记ZHBHQK信息
+                command.CommandText="INSERT INTO [vg_objectclass] ([MC], [DXLX], [ZWMC], [FBMC], [XHZDMC], [TXZDMC], [TXLX], [IDENTIFY], [EDITABLE], [QUERYABLE], [SNAPABLE], [VISIBLE], [XSSX], [FILTER], [QSDM], [BJCT], [BHFJ]) VALUES ('ZHBHQK', 2, '宗海变化情况', '', '', '', 0, 0, 1, 0, 0, 0, 20, 'ZHBHQKVIEW', '', 'frmZhbhqk', 1);";
                 command.ExecuteNonQuery();
             }
             trans.Commit();
@@ -5562,31 +5562,6 @@ public partial class SystemDaoImpl
                 command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('YYDJ',20,'修改时间','XGSJ','DATETIME',8,0,'','M','');";
                 command.ExecuteNonQuery();
                 #endregion
-                #region 登记ZDBHQK字段信息                
-                //登记ZDBHQK字段信息                
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',1,'标识码','Id','INTEGER',8,19,'','M','');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 1, '宗地代码', 'ZDDM', 'Char', 19, 0, '', 'M', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 2, '变化原因', 'BHYY', 'Varchar', 0, 0, '', 'M', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 3, '变化内容', 'BHNR', 'Varchar', 0, 0, '', 'M', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 4, '登记时间', 'DJSJ', 'Date', 0, 0, '', 'M', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 5, '登簿人', 'DBR', 'Char', 50, 0, '', 'M', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 6, '附记', 'FJ', 'Varchar', 0, 0, '', 'O', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',8,'原数据库内序号','DatabaseId','INTEGER',8,19,'','M','');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',9,'修改标记','FLAGS','SMALLINT',2,5,'','M','');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',10,'修改人','XGR','NCHAR',30,0,'','M','');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',11,'修改时间','XGSJ','DATETIME',8,0,'','M','');";
-                command.ExecuteNonQuery();
-                #endregion
                 #region 登记ZDJBXX字段信息                
                 //登记ZDJBXX字段信息                
                 command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDJBXX',1,'标识码','Id','INTEGER',8,19,'','M','');";
@@ -5749,29 +5724,6 @@ public partial class SystemDaoImpl
                 command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDTOJZX',7,'修改人','XGR','NCHAR',30,0,'','M','');";
                 command.ExecuteNonQuery();
                 command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDTOJZX',8,'修改时间','XGSJ','DATETIME',8,0,'','M','');";
-                command.ExecuteNonQuery();
-                #endregion
-                #region 登记ZHBHQK字段信息                
-                //登记ZHBHQK字段信息                
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',1,'标识码','Id','INTEGER',8,19,'','M','');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK', 1, '宗海代码', 'ZHDM', 'Char', 19, 0, '', 'M', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK', 2, '变化原因', 'BHYY', 'Varchar', 0, 0, '', 'M', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK', 3, '变化内容', 'BHNR', 'Varchar', 0, 0, '', 'M', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK', 4, '登记时间', 'DJSJ', 'Date', 0, 0, '', 'M', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK', 5, '登簿人', 'DBR', 'Char', 50, 0, '', 'M', '');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',7,'原数据库内序号','DatabaseId','INTEGER',8,19,'','M','');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',8,'修改标记','FLAGS','SMALLINT',2,5,'','M','');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',9,'修改人','XGR','NCHAR',30,0,'','M','');";
-                command.ExecuteNonQuery();
-                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',10,'修改时间','XGSJ','DATETIME',8,0,'','M','');";
                 command.ExecuteNonQuery();
                 #endregion
                 #region 登记ZHJBXX字段信息                
@@ -6048,6 +6000,58 @@ public partial class SystemDaoImpl
                 command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('C',28,'修改人','XGR','NCHAR',30,0,'','M','');";
                 command.ExecuteNonQuery();
                 command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('C',29,'修改时间','XGSJ','DATETIME',8,0,'','M','');";
+                command.ExecuteNonQuery();
+                #endregion
+                #region 登记ZDBHQK字段信息                
+                //登记ZDBHQK字段信息                
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',1,'标识码','Id','INTEGER',8,19,'','M','');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 1, '宗地代码', 'ZDDM', 'Char', 19, 0, '', 'M', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 2, '变化原因', 'BHYY', 'Varchar', 0, 0, '', 'M', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 3, '变化内容', 'BHNR', 'Varchar', 0, 0, '', 'M', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 4, '登记时间', 'DJSJ', 'Date', 0, 0, '', 'M', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 5, '登簿人', 'DBR', 'Char', 50, 0, '', 'M', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK', 6, '附记', 'FJ', 'Varchar', 0, 0, '', 'O', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',8,'原数据库内序号','DatabaseId','INTEGER',8,19,'','M','');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',9,'修改标记','FLAGS','SMALLINT',2,5,'','M','');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',10,'修改人','XGR','NCHAR',30,0,'','M','');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',11,'修改时间','XGSJ','DATETIME',8,0,'','M','');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZDBHQK',12,'全局唯一代码','WX_WYDM','NVARCHAR',0,0,'','M','');";
+                command.ExecuteNonQuery();
+                #endregion
+                #region 登记ZHBHQK字段信息                
+                //登记ZHBHQK字段信息                
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',1,'标识码','Id','INTEGER',8,19,'','M','');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK', 1, '宗海代码', 'ZHDM', 'Char', 19, 0, '', 'M', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK', 2, '变化原因', 'BHYY', 'Varchar', 0, 0, '', 'M', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK', 3, '变化内容', 'BHNR', 'Varchar', 0, 0, '', 'M', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK', 4, '登记时间', 'DJSJ', 'Date', 0, 0, '', 'M', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK', 5, '登簿人', 'DBR', 'Char', 50, 0, '', 'M', '');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',7,'原数据库内序号','DatabaseId','INTEGER',8,19,'','M','');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',8,'修改标记','FLAGS','SMALLINT',2,5,'','M','');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',9,'修改人','XGR','NCHAR',30,0,'','M','');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',10,'修改时间','XGSJ','DATETIME',8,0,'','M','');";
+                command.ExecuteNonQuery();
+                command.CommandText="INSERT INTO [vg_fieldinfo]([BM], [BNSX], [ZDZWMC], [ZDMC], [ZDLX], [ZDCD], [ZDXSWS], [SYZD], [YS], [SYZDYW]) VALUES ('ZHBHQK',11,'全局唯一代码','WX_WYDM','NVARCHAR',0,0,'','M','');";
                 command.ExecuteNonQuery();
                 #endregion
             }

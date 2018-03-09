@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Spatial;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using GeoAPI.Geometries;
@@ -92,30 +93,79 @@ namespace VastGIS.RealEstate.Data.Helpers
             out ICoordinate interPnt1,
             out ICoordinate interPnt2)
         {
-            DbGeometry circle1 = CreateCircularString(pointA.X, pointA.Y, distA);
-            DbGeometry circle2 = CreateCircularString(pointB.X, pointB.Y, distB);
-            DbGeometry inters = circle1.Intersection(circle2);
-            if (inters == null)
+            double dist = Math.Sqrt((pointA.X - pointB.X) * (pointA.X - pointB.X) +
+                                    (pointA.Y - pointB.Y) * (pointA.Y - pointB.Y));
+
+            double cosA = (dist * dist + distA * distA - distB * distB) / (2 * distA * dist);
+            double u = distA * cosA;
+            double v2 = distA * distA - u * u;
+            if (v2 < 0)
             {
                 interPnt1 = null;
                 interPnt2 = null;
                 return -1;
             }
-            if (inters.PointCount == 1)
-            {
-                double xx1 = Convert.ToDouble(inters.PointAt(1).XCoordinate);
-                double yy1 = Convert.ToDouble(inters.PointAt(1).YCoordinate);
-                interPnt1 = new Coordinate(xx1,yy1);
-                interPnt2 = null;
-                return 1;
-            }
-            double x1 = Convert.ToDouble(inters.PointAt(1).XCoordinate);
-            double y1 = Convert.ToDouble(inters.PointAt(1).YCoordinate);
-            double x2 = Convert.ToDouble(inters.PointAt(2).XCoordinate);
-            double y2 = Convert.ToDouble(inters.PointAt(2).YCoordinate);
+            double v = Math.Sqrt(v2);
+            double cosAB = (-pointA.X + pointB.X) / dist;
+            double sinAB = (-pointA.Y+pointB.Y) / dist;
+            double x1 = pointA.X + u * cosAB + v * sinAB;
+            double y1 = pointA.Y + u * sinAB - v * cosAB;
+            double x2 = pointA.X + u * cosAB - v * sinAB;
+            double y2 = pointA.Y + u * sinAB+ v * cosAB;
+
+
+            //GeoAPI.Geometries.IGeometry circle1 = null;
+            //GeometryFactory gf = new GeometryFactory();
+            //WKTReader reader = new WKTReader(gf);
+            //circle1 = reader.Read(CreateCircularWkt(pointA.X, pointA.Y, distA));
+            //GeoAPI.Geometries.IGeometry circle2 = null;
+            //circle2 = reader.Read(CreateCircularWkt(pointB.X, pointB.Y, distB));
+            //GeoAPI.Geometries.IGeometry inters =circle1.Intersection(circle2);
+            //if (inters == null)
+            //{
+            //    interPnt1 = null;
+            //    interPnt2 = null;
+            //    return -1;
+            //}
+            //if (inters.NumPoints == 1)
+            //{
+            //    double xx1 = Convert.ToDouble(inters.Coordinates[0].X);
+            //    double yy1 = Convert.ToDouble(inters.Coordinates[0].Y);
+            //    interPnt1 = new Coordinate(xx1, yy1);
+            //    interPnt2 = null;
+            //    return 1;
+            //}
+            //double x1 = Convert.ToDouble(inters.Coordinates[0].X);
+            //double y1 = Convert.ToDouble(inters.Coordinates[0].Y);
+            //double x2 = Convert.ToDouble(inters.Coordinates[1].X);
+            //double y2 = Convert.ToDouble(inters.Coordinates[1].Y);
             interPnt1 = new Coordinate(x1, y1);
             interPnt2 = new Coordinate(x2, y2);
             return 2;
+            //DbGeometry circle1 = CreateCircularString(pointA.X, pointA.Y, distA);
+            //DbGeometry circle2 = CreateCircularString(pointB.X, pointB.Y, distB);
+            //DbGeometry inters = circle1.Intersection(circle2);
+            //if (inters == null)
+            //{
+            //    interPnt1 = null;
+            //    interPnt2 = null;
+            //    return -1;
+            //}
+            //if (inters.PointCount == 1)
+            //{
+            //    double xx1 = Convert.ToDouble(inters.PointAt(1).XCoordinate);
+            //    double yy1 = Convert.ToDouble(inters.PointAt(1).YCoordinate);
+            //    interPnt1 = new Coordinate(xx1,yy1);
+            //    interPnt2 = null;
+            //    return 1;
+            //}
+            //double x1 = Convert.ToDouble(inters.PointAt(1).XCoordinate);
+            //double y1 = Convert.ToDouble(inters.PointAt(1).YCoordinate);
+            //double x2 = Convert.ToDouble(inters.PointAt(2).XCoordinate);
+            //double y2 = Convert.ToDouble(inters.PointAt(2).YCoordinate);
+            //interPnt1 = new Coordinate(x1, y1);
+            //interPnt2 = new Coordinate(x2, y2);
+            //return 2;
         }
 
        
