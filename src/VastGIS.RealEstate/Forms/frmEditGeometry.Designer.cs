@@ -37,14 +37,15 @@
             this.snapCheckbox1 = new VastGIS.Plugins.RealEstate.DataControls.SnapCheckbox(this.components);
             this.ucCoordinateList1 = new VastGIS.Plugins.RealEstate.DataControls.ucCoordinateList();
             this.ucSelectLayer1 = new VastGIS.Plugins.RealEstate.DataControls.ucSelectLayer();
+            this.chkSelectFeature = new VastGIS.Plugins.RealEstate.DataControls.SnapCheckbox(this.components);
             this.SuspendLayout();
             // 
             // btnCancle
             // 
             this.btnCancle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancle.Location = new System.Drawing.Point(187, 390);
+            this.btnCancle.Location = new System.Drawing.Point(194, 390);
             this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(81, 23);
+            this.btnCancle.Size = new System.Drawing.Size(74, 23);
             this.btnCancle.TabIndex = 1;
             this.btnCancle.Text = "关闭";
             this.btnCancle.UseVisualStyleBackColor = true;
@@ -53,9 +54,9 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(97, 390);
+            this.btnOK.Location = new System.Drawing.Point(87, 390);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(81, 23);
+            this.btnOK.Size = new System.Drawing.Size(91, 23);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "确定";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -75,7 +76,7 @@
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnApply.Location = new System.Drawing.Point(5, 390);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(81, 23);
+            this.btnApply.Size = new System.Drawing.Size(61, 23);
             this.btnApply.TabIndex = 5;
             this.btnApply.Text = "预览";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -83,9 +84,9 @@
             // 
             // btnReorder
             // 
-            this.btnReorder.Location = new System.Drawing.Point(74, 35);
+            this.btnReorder.Location = new System.Drawing.Point(68, 35);
             this.btnReorder.Name = "btnReorder";
-            this.btnReorder.Size = new System.Drawing.Size(104, 23);
+            this.btnReorder.Size = new System.Drawing.Size(80, 23);
             this.btnReorder.TabIndex = 10;
             this.btnReorder.Text = "坐标排序";
             this.btnReorder.UseVisualStyleBackColor = true;
@@ -96,7 +97,7 @@
             this.snapCheckbox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.snapCheckbox1.AutoSize = true;
-            this.snapCheckbox1.Location = new System.Drawing.Point(220, 35);
+            this.snapCheckbox1.Location = new System.Drawing.Point(154, 39);
             this.snapCheckbox1.Name = "snapCheckbox1";
             this.snapCheckbox1.Size = new System.Drawing.Size(48, 16);
             this.snapCheckbox1.TabIndex = 9;
@@ -129,11 +130,24 @@
             this.ucSelectLayer1.Size = new System.Drawing.Size(271, 25);
             this.ucSelectLayer1.TabIndex = 4;
             // 
+            // chkSelectFeature
+            // 
+            this.chkSelectFeature.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkSelectFeature.AutoSize = true;
+            this.chkSelectFeature.Location = new System.Drawing.Point(208, 39);
+            this.chkSelectFeature.Name = "chkSelectFeature";
+            this.chkSelectFeature.Size = new System.Drawing.Size(72, 16);
+            this.chkSelectFeature.TabIndex = 11;
+            this.chkSelectFeature.Text = "选择图形";
+            this.chkSelectFeature.UseVisualStyleBackColor = true;
+            // 
             // frmEditGeometry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(280, 421);
+            this.Controls.Add(this.chkSelectFeature);
             this.Controls.Add(this.btnReorder);
             this.Controls.Add(this.snapCheckbox1);
             this.Controls.Add(this.ucCoordinateList1);
@@ -160,5 +174,6 @@
         private DataControls.ucCoordinateList ucCoordinateList1;
         private DataControls.SnapCheckbox snapCheckbox1;
         private System.Windows.Forms.Button btnReorder;
+        private DataControls.SnapCheckbox chkSelectFeature;
     }
 }

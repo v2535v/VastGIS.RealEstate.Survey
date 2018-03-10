@@ -68,6 +68,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             ucCoordinateList1.InitGrid();
             ucCoordinateList1.Editable = true;
             snapCheckbox1.BindPlugin(_plugin);
+            chkSelectFeature.Checked = true;
         }
 
         private void UcSelectLayer1_ucSelectedClassChanged(object sender, ObjectClassEventArgs e)
@@ -111,6 +112,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 ucCoordinateList1.AddPoint(x2,y2);
                 return;
             }
+            if (chkSelectFeature.Checked == false) return;
             List<IReFeature> features = _database.SystemService.FindFeatures(ucSelectLayer1.SelectedClasses, x2, y2);
             if (_feature != null)
             {
@@ -123,6 +125,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             if (features != null && features.Count==1)
             {
                 _feature = features[0];
+                chkSelectFeature.Checked = false;
                 this.Text = "图形编辑-" + _feature.FullLabelString;
                 ucCoordinateList1.AddGeometry(_feature.Geometry.Clone());
             }

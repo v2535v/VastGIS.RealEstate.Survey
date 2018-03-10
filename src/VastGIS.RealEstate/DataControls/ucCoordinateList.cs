@@ -142,6 +142,8 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.gridPoints.NestedTableGroupOptions.ShowAddNewRecordBeforeDetails = false;
 
             this.gridPoints.WantTabKey = false;
+            this.gridPoints.TableDescriptor.AllowNew = false;
+            this.gridPoints.TableDescriptor.AllowEdit = false;
             _editable = false;
             dblX.Enabled = _editable;
             dblY.Enabled = _editable;
@@ -441,7 +443,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                     object xsObject = xs as object;
                     object ysObject = ys as object;
                     _map.Drawing.DrawPolygon(_layerHandle, ref xsObject, ref ysObject, geometry.Parts[j].Points.Count, color,
-                        true, 1);
+                        false,4);
                 }
                 return;
             }
@@ -599,8 +601,8 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             {
                 _vertexs[i].ID = i + 1;
             }
-            gridPoints.Update();
-            gridPoints.Refresh();
+            //gridPoints.Update();
+            //gridPoints.Refresh();
         }
 
        
@@ -633,7 +635,11 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 return;
             }
             int id = gridPoints.Table.CurrentRecord.GetSourceIndex();
-            _vertexs.Insert(id,new ReVertex(id,dblX.DoubleValue,dblY.DoubleValue,true));
+            ReVertex currentVertex = _vertexs[id];
+            id = id + 1;
+            ReVertex newVertex = new ReVertex(id, dblX.DoubleValue, dblY.DoubleValue, true);
+            newVertex.Part = currentVertex.Part;
+            _vertexs.Insert(id, newVertex);
             ReCalculateID();
             DrawPoints();
         }
