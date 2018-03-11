@@ -84,6 +84,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
             menu.AddButton(_commands[MenuKeys.TwoDistanceConstructor]);
             menu.AddButton(_commands[MenuKeys.CreateJZDByZD]);
             menu.AddButton(_commands[MenuKeys.AssignZRZH]);
+            menu.AddButton(_commands[MenuKeys.AssignPhoto]);
 
             menu.AddToolStripEx("toolStripExZDTable", "属性表编辑", "tabZD");
             menu.AddButton(_commands[MenuKeys.OpenTable]);

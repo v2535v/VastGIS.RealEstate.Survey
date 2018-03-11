@@ -169,6 +169,7 @@
       <HintPath>..\packages\NetTopologySuite.1.14\lib\net45\PowerCollections.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="Syncfusion.Grid.Base, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
@@ -723,6 +724,7 @@
     <Compile Include="Commands\CmdNewJZD.cs" />
     <Compile Include="Commands\CmdTestOgrChinese.cs" />
     <Compile Include="Commands\CmdZoomToDbMax.cs" />
+    <Compile Include="Commands\ToolAssignPhoto.cs" />
     <Compile Include="Commands\ToolAssignZRZH.cs" />
     <Compile Include="Commands\ToolCopyFeature.cs" />
     <Compile Include="Commands\ToolCreateJZDByPolygon.cs" />
@@ -1284,6 +1286,12 @@
     <Compile Include="Forms\EditSettingForm.Designer.cs">
       <DependentUpon>EditSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmAssignPhoto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAssignPhoto.Designer.cs">
+      <DependentUpon>frmAssignPhoto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmAssignText.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1502,6 +1510,10 @@
     <ProjectReference Include="..\gdalwrapper\gdalwrapper.csproj">
       <Project>{845110c4-43e3-4e96-8588-731008ae502a}</Project>
       <Name>gdalwrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageListView\ImageListView.csproj">
+      <Project>{0C295FB8-C6C6-4A40-9F19-05A43F353A04}</Project>
+      <Name>ImageListView</Name>
     </ProjectReference>
     <ProjectReference Include="..\VastGIS.Api\VastGIS.Api.csproj">
       <Project>{8aad34b3-8ef3-485f-a04d-ed2c07d8f1df}</Project>
@@ -2048,6 +2060,9 @@
     <EmbeddedResource Include="EditSettings\EditingCreateJZDByPolygon.resx">
       <DependentUpon>EditingCreateJZDByPolygon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAssignPhoto.resx">
+      <DependentUpon>frmAssignPhoto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAssignText.resx">
       <DependentUpon>frmAssignText.cs</DependentUpon>
     </EmbeddedResource>
@@ -2336,6 +2351,7 @@
     <None Include="Resources\img_createall.png" />
     <None Include="Resources\img_createone.png" />
     <None Include="Resources\icon_zrzh.png" />
+    <None Include="Resources\icon_photo.png" />
     <Content Include="Sql\createretables.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
