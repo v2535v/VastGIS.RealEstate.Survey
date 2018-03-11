@@ -723,6 +723,7 @@
     <Compile Include="Commands\CmdNewJZD.cs" />
     <Compile Include="Commands\CmdTestOgrChinese.cs" />
     <Compile Include="Commands\CmdZoomToDbMax.cs" />
+    <Compile Include="Commands\ToolAssignZRZH.cs" />
     <Compile Include="Commands\ToolCopyFeature.cs" />
     <Compile Include="Commands\ToolCreateJZDByPolygon.cs" />
     <Compile Include="Commands\ToolCreateJZDByZD.cs" />
@@ -1288,6 +1289,12 @@
     </Compile>
     <Compile Include="Forms\frmAssignText.Designer.cs">
       <DependentUpon>frmAssignText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAssignZRZH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAssignZRZH.Designer.cs">
+      <DependentUpon>frmAssignZRZH.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAudioCapture.cs">
       <SubType>Form</SubType>
@@ -2044,6 +2051,9 @@
     <EmbeddedResource Include="Forms\frmAssignText.resx">
       <DependentUpon>frmAssignText.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAssignZRZH.resx">
+      <DependentUpon>frmAssignZRZH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAudioCapture.resx">
       <DependentUpon>frmAudioCapture.cs</DependentUpon>
     </EmbeddedResource>
@@ -2325,6 +2335,7 @@
     <None Include="Resources\img_opentable.png" />
     <None Include="Resources\img_createall.png" />
     <None Include="Resources\img_createone.png" />
+    <None Include="Resources\icon_zrzh.png" />
     <Content Include="Sql\createretables.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

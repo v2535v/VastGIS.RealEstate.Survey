@@ -36,6 +36,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public const string EditGeometry = "re_EditGeometry";
         public const string OpenTable = "re_OpenTable";
         public const string CreateJZDByZD = "re_CreateJZDByZD";
+        public const string AssignZRZH = "re_AssignZRZH";
 
         #region Constants
 

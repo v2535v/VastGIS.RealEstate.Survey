@@ -126,6 +126,8 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             _features.Clear();
         }
 
+        
+
         public void AddFeature(IReFeature pFeature,List<VgObjectclass> classes)
         {
             bool isFirst = false;
@@ -173,6 +175,24 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 btnSelectAll.Enabled = false;
                 btnSelectReserve.Enabled = false;
                 btnSelectUnAll.Enabled = false;
+            }
+        }
+
+        public void AddFeatures(List<IReFeature> pFeatureList, VgObjectclass oneclass)
+        {
+            bool isFirst = false;
+            if (_features == null)
+            {
+                _features = new BindingList<IEntity>();
+            }
+            if (_features.Count == 0) isFirst = true;
+            PrepareLayer();
+            string oldTableName = "";
+            VgObjectclass vgObjectclasses = null;
+            foreach (var pFeature in pFeatureList)
+            {
+                _features.Add(pFeature);
+                FlashGeometry(pFeature.Geometry);
             }
         }
         public void AddFeatures(List<IReFeature> pFeatureList, List<VgObjectclass> classes)
