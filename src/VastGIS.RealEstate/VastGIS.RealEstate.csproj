@@ -420,6 +420,12 @@
     <Compile Include="Attribute\frmNydsyq.Designer.cs">
       <DependentUpon>frmNydsyq.cs</DependentUpon>
     </Compile>
+    <Compile Include="Attribute\frmQlrSimple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Attribute\frmQlrSimple.Designer.cs">
+      <DependentUpon>frmQlrSimple.cs</DependentUpon>
+    </Compile>
     <Compile Include="Attribute\frmQlr.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -739,6 +745,12 @@
     <Compile Include="Commands\ToolSplitPolygon.cs" />
     <Compile Include="Commands\ToolUnionFeature.cs" />
     <Compile Include="Commands\ToolWYGZFeature.cs" />
+    <Compile Include="CommonControls\ucTempMapping.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommonControls\ucTempMapping.Designer.cs">
+      <DependentUpon>ucTempMapping.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Config\VGLayerConfig.cs" />
     <Compile Include="DataControls\IEntityControl.cs" />
@@ -747,6 +759,12 @@
     </Compile>
     <Compile Include="DataControls\SnapCheckbox.Designer.cs">
       <DependentUpon>SnapCheckbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucQlrList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucQlrList.Designer.cs">
+      <DependentUpon>ucQlrList.cs</DependentUpon>
     </Compile>
     <Compile Include="DataControls\ucC.cs">
       <SubType>UserControl</SubType>
@@ -945,6 +963,12 @@
     </Compile>
     <Compile Include="DataControls\ucNydsyq.Designer.cs">
       <DependentUpon>ucNydsyq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucQlrSimple.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucQlrSimple.Designer.cs">
+      <DependentUpon>ucQlrSimple.cs</DependentUpon>
     </Compile>
     <Compile Include="DataControls\ucQlr.cs">
       <SubType>UserControl</SubType>
@@ -1328,6 +1352,12 @@
     <Compile Include="Forms\frmEditTable.Designer.cs">
       <DependentUpon>frmEditTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmQuickInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmQuickInput.Designer.cs">
+      <DependentUpon>frmQuickInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmSplitPolygon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1652,6 +1682,9 @@
     <EmbeddedResource Include="Attribute\frmNydsyq.resx">
       <DependentUpon>frmNydsyq.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Attribute\frmQlrSimple.resx">
+      <DependentUpon>frmQlrSimple.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Attribute\frmQlr.resx">
       <DependentUpon>frmQlr.cs</DependentUpon>
     </EmbeddedResource>
@@ -1799,6 +1832,12 @@
     <EmbeddedResource Include="Attribute\frmZrz.resx">
       <DependentUpon>frmZrz.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CommonControls\ucTempMapping.resx">
+      <DependentUpon>ucTempMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucQlrList.resx">
+      <DependentUpon>ucQlrList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataControls\ucC.resx">
       <DependentUpon>ucC.cs</DependentUpon>
     </EmbeddedResource>
@@ -1897,6 +1936,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataControls\ucNydsyq.resx">
       <DependentUpon>ucNydsyq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucQlrSimple.resx">
+      <DependentUpon>ucQlrSimple.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataControls\ucQlr.resx">
       <DependentUpon>ucQlr.cs</DependentUpon>
@@ -2080,6 +2122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditTable.resx">
       <DependentUpon>frmEditTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmQuickInput.resx">
+      <DependentUpon>frmQuickInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSplitPolygon.resx">
       <DependentUpon>frmSplitPolygon.cs</DependentUpon>

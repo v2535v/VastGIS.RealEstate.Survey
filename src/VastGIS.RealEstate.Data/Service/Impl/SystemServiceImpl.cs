@@ -116,6 +116,11 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         {
             return _systemDao.GetTemporaryAttachmentName();
         }
+
+        public IEnumerable<Qlr> GetQlrsByBdcdyh(string bdcdhy)
+        {
+            return _systemDao.GetQlrsByBdcdyh(bdcdhy);
+        }
     }
 }
 

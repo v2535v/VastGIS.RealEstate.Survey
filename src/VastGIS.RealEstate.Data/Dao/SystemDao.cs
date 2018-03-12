@@ -109,5 +109,6 @@ namespace VastGIS.RealEstate.Data.Dao
         VgClassdetail GetVgClassdetailByTableName(string tbName);
         string GetTemporaryAttachmentName();
         void InitializeDatabase(int srid);
+        IEnumerable<Qlr> GetQlrsByBdcdyh(string bdcdhy);
     }
 }

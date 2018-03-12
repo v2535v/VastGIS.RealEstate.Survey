@@ -39,14 +39,19 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.ucWXInfo1 = new VastGIS.Plugins.RealEstate.DataControls.ucWXInfo();
             this.pageAttachment = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.ucAttachmentList1 = new VastGIS.Plugins.RealEstate.DataControls.ucAttachmentList();
+            this.pageQlr = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.cmbGyfs = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.ucQlrList1 = new VastGIS.Plugins.RealEstate.DataControls.ucQlrList();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabAttribute)).BeginInit();
             this.tabAttribute.SuspendLayout();
             this.pageMain.SuspendLayout();
             this.pageWXInfo.SuspendLayout();
             this.pageAttachment.SuspendLayout();
+            this.pageQlr.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGyfs)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -80,6 +85,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.tabAttribute.Controls.Add(this.pageMain);
             this.tabAttribute.Controls.Add(this.pageWXInfo);
             this.tabAttribute.Controls.Add(this.pageAttachment);
+            this.tabAttribute.Controls.Add(this.pageQlr);
             this.tabAttribute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabAttribute.InActiveTabForeColor = System.Drawing.Color.Empty;
             this.tabAttribute.Location = new System.Drawing.Point(3, 3);
@@ -151,6 +157,19 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.ucAttachmentList1.Size = new System.Drawing.Size(751, 318);
             this.ucAttachmentList1.TabIndex = 0;
             // 
+            // pageQlr
+            // 
+            this.pageQlr.Controls.Add(this.ucQlrList1);
+            this.pageQlr.Image = null;
+            this.pageQlr.ImageSize = new System.Drawing.Size(16, 16);
+            this.pageQlr.Location = new System.Drawing.Point(1, 24);
+            this.pageQlr.Name = "pageQlr";
+            this.pageQlr.ShowCloseButton = true;
+            this.pageQlr.Size = new System.Drawing.Size(751, 318);
+            this.pageQlr.TabIndex = 8;
+            this.pageQlr.Text = "权利人";
+            this.pageQlr.ThemesEnabled = false;
+            // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -174,6 +193,26 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // cmbGyfs
+            // 
+            this.cmbGyfs.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbGyfs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbGyfs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGyfs.EnableTouchMode = true;
+            this.cmbGyfs.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbGyfs.Location = new System.Drawing.Point(457, 3);
+            this.cmbGyfs.Name = "cmbGyfs";
+            this.cmbGyfs.Size = new System.Drawing.Size(283, 20);
+            this.cmbGyfs.TabIndex = 46;
+            // 
+            // ucQlrList1
+            // 
+            this.ucQlrList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucQlrList1.Location = new System.Drawing.Point(0, 0);
+            this.ucQlrList1.Name = "ucQlrList1";
+            this.ucQlrList1.Size = new System.Drawing.Size(751, 318);
+            this.ucQlrList1.TabIndex = 0;
+            // 
             // frmZdjbxx
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -190,6 +229,8 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.pageMain.ResumeLayout(false);
             this.pageWXInfo.ResumeLayout(false);
             this.pageAttachment.ResumeLayout(false);
+            this.pageQlr.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGyfs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,6 +246,8 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         private DataControls.ucWXInfo ucWXInfo1;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv pageAttachment;
         private DataControls.ucAttachmentList ucAttachmentList1;
-        
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv pageQlr;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbGyfs;
+        private DataControls.ucQlrList ucQlrList1;
     }
 }

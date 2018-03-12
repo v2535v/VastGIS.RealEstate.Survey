@@ -82,7 +82,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtGyqk = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.lblBz = new System.Windows.Forms.Label();
             this.txtBz = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();            
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.intID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYsdm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBdcdyh)).BeginInit();
@@ -110,606 +110,605 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             ((System.ComponentModel.ISupportInitialize)(this.txtBz)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            
             // 
             // lblID
             // 
             this.lblID.AutoSize = true;
             this.lblID.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblID.Location = new System.Drawing.Point(0,0);
+            this.lblID.Location = new System.Drawing.Point(36, 10);
             this.lblID.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(41, 20);
+            this.lblID.Size = new System.Drawing.Size(41, 25);
             this.lblID.TabIndex = 1;
             this.lblID.Text = "标识码";
             // 
             // intID
             // 
-            this.intID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
             this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intID.EnableTouchMode = true;
-            this.intID.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intID.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intID.IntegerValue = ((long)(0));
-            this.intID.Location = new System.Drawing.Point(0,0);
+            this.intID.Location = new System.Drawing.Point(83, 3);
             this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.intID.Name = "intID";
             this.intID.NullString = "";
-            this.intID.Size = new System.Drawing.Size(152, 28);
+            this.intID.Size = new System.Drawing.Size(158, 28);
             this.intID.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.intID.TabIndex = 2;
             this.intID.Text = "0";
             // 
-            // lblID
+            // lblYsdm
             // 
             this.lblYsdm.AutoSize = true;
             this.lblYsdm.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblYsdm.Location = new System.Drawing.Point(0,0);
+            this.lblYsdm.Location = new System.Drawing.Point(24, 45);
             this.lblYsdm.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblYsdm.Name = "lblYsdm";
-            this.lblYsdm.Size = new System.Drawing.Size(41, 20);
+            this.lblYsdm.Size = new System.Drawing.Size(53, 25);
             this.lblYsdm.TabIndex = 3;
             this.lblYsdm.Text = "要素代码";
             // 
             // txtYsdm
             // 
-            this.txtYsdm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtYsdm.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtYsdm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtYsdm.EnableTouchMode = true;
-            this.txtYsdm.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtYsdm.Location =  new System.Drawing.Point(0,0);
+            this.txtYsdm.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtYsdm.Location = new System.Drawing.Point(83, 38);
             this.txtYsdm.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtYsdm.Name = "txtYsdm";
-            this.txtYsdm.Size = new System.Drawing.Size(152, 28);
+            this.txtYsdm.Size = new System.Drawing.Size(158, 28);
             this.txtYsdm.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtYsdm.TabIndex = 4;
             // 
-            // lblID
+            // lblBdcdyh
             // 
             this.lblBdcdyh.AutoSize = true;
             this.lblBdcdyh.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblBdcdyh.Location = new System.Drawing.Point(0,0);
+            this.lblBdcdyh.Location = new System.Drawing.Point(12, 80);
             this.lblBdcdyh.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblBdcdyh.Name = "lblBdcdyh";
-            this.lblBdcdyh.Size = new System.Drawing.Size(41, 20);
+            this.lblBdcdyh.Size = new System.Drawing.Size(65, 25);
             this.lblBdcdyh.TabIndex = 5;
             this.lblBdcdyh.Text = "不动产单元号";
             // 
             // txtBdcdyh
             // 
-            this.txtBdcdyh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBdcdyh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtBdcdyh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBdcdyh.EnableTouchMode = true;
-            this.txtBdcdyh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtBdcdyh.Location =  new System.Drawing.Point(0,0);
+            this.txtBdcdyh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtBdcdyh.Location = new System.Drawing.Point(83, 73);
             this.txtBdcdyh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtBdcdyh.Name = "txtBdcdyh";
-            this.txtBdcdyh.Size = new System.Drawing.Size(152, 28);
+            this.txtBdcdyh.Size = new System.Drawing.Size(158, 28);
             this.txtBdcdyh.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtBdcdyh.TabIndex = 6;
             // 
-            // lblID
+            // lblSxh
             // 
             this.lblSxh.AutoSize = true;
             this.lblSxh.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblSxh.Location = new System.Drawing.Point(0,0);
+            this.lblSxh.Location = new System.Drawing.Point(36, 115);
             this.lblSxh.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblSxh.Name = "lblSxh";
-            this.lblSxh.Size = new System.Drawing.Size(41, 20);
+            this.lblSxh.Size = new System.Drawing.Size(41, 25);
             this.lblSxh.TabIndex = 7;
             this.lblSxh.Text = "顺序号";
             // 
             // intSxh
             // 
-            this.intSxh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intSxh.BackGroundColor = System.Drawing.SystemColors.Window;
             this.intSxh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intSxh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intSxh.EnableTouchMode = true;
-            this.intSxh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intSxh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intSxh.IntegerValue = ((long)(0));
-            this.intSxh.Location = new System.Drawing.Point(0,0);
+            this.intSxh.Location = new System.Drawing.Point(83, 108);
             this.intSxh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.intSxh.Name = "intSxh";
             this.intSxh.NullString = "";
-            this.intSxh.Size = new System.Drawing.Size(152, 28);
+            this.intSxh.Size = new System.Drawing.Size(158, 28);
             this.intSxh.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.intSxh.TabIndex = 8;
             this.intSxh.Text = "0";
             // 
-            // lblID
+            // lblQlrmc
             // 
             this.lblQlrmc.AutoSize = true;
             this.lblQlrmc.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblQlrmc.Location = new System.Drawing.Point(0,0);
+            this.lblQlrmc.Location = new System.Drawing.Point(12, 150);
             this.lblQlrmc.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblQlrmc.Name = "lblQlrmc";
-            this.lblQlrmc.Size = new System.Drawing.Size(41, 20);
+            this.lblQlrmc.Size = new System.Drawing.Size(65, 25);
             this.lblQlrmc.TabIndex = 9;
             this.lblQlrmc.Text = "权利人名称";
             // 
             // txtQlrmc
             // 
-            this.txtQlrmc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtQlrmc.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtQlrmc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtQlrmc.EnableTouchMode = true;
-            this.txtQlrmc.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtQlrmc.Location =  new System.Drawing.Point(0,0);
+            this.txtQlrmc.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQlrmc.Location = new System.Drawing.Point(83, 143);
             this.txtQlrmc.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtQlrmc.Name = "txtQlrmc";
-            this.txtQlrmc.Size = new System.Drawing.Size(152, 28);
+            this.txtQlrmc.Size = new System.Drawing.Size(158, 28);
             this.txtQlrmc.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtQlrmc.TabIndex = 10;
             // 
-            // lblID
+            // lblBdcqzh
             // 
             this.lblBdcqzh.AutoSize = true;
             this.lblBdcqzh.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblBdcqzh.Location = new System.Drawing.Point(0,0);
+            this.lblBdcqzh.Location = new System.Drawing.Point(12, 185);
             this.lblBdcqzh.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblBdcqzh.Name = "lblBdcqzh";
-            this.lblBdcqzh.Size = new System.Drawing.Size(41, 20);
+            this.lblBdcqzh.Size = new System.Drawing.Size(65, 25);
             this.lblBdcqzh.TabIndex = 11;
             this.lblBdcqzh.Text = "不动产权证号";
             // 
             // txtBdcqzh
             // 
-            this.txtBdcqzh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBdcqzh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtBdcqzh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBdcqzh.EnableTouchMode = true;
-            this.txtBdcqzh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtBdcqzh.Location =  new System.Drawing.Point(0,0);
+            this.txtBdcqzh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtBdcqzh.Location = new System.Drawing.Point(83, 178);
             this.txtBdcqzh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtBdcqzh.Name = "txtBdcqzh";
-            this.txtBdcqzh.Size = new System.Drawing.Size(152, 28);
+            this.txtBdcqzh.Size = new System.Drawing.Size(158, 28);
             this.txtBdcqzh.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtBdcqzh.TabIndex = 12;
             // 
-            // lblID
+            // lblQzysxlh
             // 
             this.lblQzysxlh.AutoSize = true;
             this.lblQzysxlh.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblQzysxlh.Location = new System.Drawing.Point(0,0);
+            this.lblQzysxlh.Location = new System.Drawing.Point(12, 220);
             this.lblQzysxlh.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblQzysxlh.Name = "lblQzysxlh";
-            this.lblQzysxlh.Size = new System.Drawing.Size(41, 20);
+            this.lblQzysxlh.Size = new System.Drawing.Size(65, 25);
             this.lblQzysxlh.TabIndex = 13;
             this.lblQzysxlh.Text = "权证印刷序列号";
             // 
             // txtQzysxlh
             // 
-            this.txtQzysxlh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtQzysxlh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtQzysxlh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtQzysxlh.EnableTouchMode = true;
-            this.txtQzysxlh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtQzysxlh.Location =  new System.Drawing.Point(0,0);
+            this.txtQzysxlh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQzysxlh.Location = new System.Drawing.Point(83, 213);
             this.txtQzysxlh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtQzysxlh.Name = "txtQzysxlh";
-            this.txtQzysxlh.Size = new System.Drawing.Size(152, 28);
+            this.txtQzysxlh.Size = new System.Drawing.Size(158, 28);
             this.txtQzysxlh.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtQzysxlh.TabIndex = 14;
             // 
-            // lblID
+            // lblSfczr
             // 
             this.lblSfczr.AutoSize = true;
             this.lblSfczr.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblSfczr.Location = new System.Drawing.Point(0,0);
+            this.lblSfczr.Location = new System.Drawing.Point(12, 255);
             this.lblSfczr.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblSfczr.Name = "lblSfczr";
-            this.lblSfczr.Size = new System.Drawing.Size(41, 20);
+            this.lblSfczr.Size = new System.Drawing.Size(65, 25);
             this.lblSfczr.TabIndex = 15;
             this.lblSfczr.Text = "是否持证人";
             // 
             // cmbSfczr
             // 
-            this.cmbSfczr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbSfczr.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbSfczr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbSfczr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSfczr.EnableTouchMode = true;
-            this.cmbSfczr.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbSfczr.Location =  new System.Drawing.Point(0,0);
+            this.cmbSfczr.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbSfczr.Location = new System.Drawing.Point(83, 248);
             this.cmbSfczr.Name = "cmbSfczr";
-            this.cmbSfczr.Size = new System.Drawing.Size(152, 20);
-            this.cmbSfczr.TabIndex =  16;            
+            this.cmbSfczr.Size = new System.Drawing.Size(158, 20);
+            this.cmbSfczr.TabIndex = 16;
             // 
-            // lblID
+            // lblZjzl
             // 
             this.lblZjzl.AutoSize = true;
             this.lblZjzl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblZjzl.Location = new System.Drawing.Point(0,0);
+            this.lblZjzl.Location = new System.Drawing.Point(24, 290);
             this.lblZjzl.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblZjzl.Name = "lblZjzl";
-            this.lblZjzl.Size = new System.Drawing.Size(41, 20);
+            this.lblZjzl.Size = new System.Drawing.Size(53, 41);
             this.lblZjzl.TabIndex = 17;
             this.lblZjzl.Text = "证件种类";
             // 
             // cmbZjzl
             // 
-            this.cmbZjzl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbZjzl.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbZjzl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbZjzl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbZjzl.EnableTouchMode = true;
-            this.cmbZjzl.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbZjzl.Location =  new System.Drawing.Point(0,0);
+            this.cmbZjzl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbZjzl.Location = new System.Drawing.Point(83, 283);
             this.cmbZjzl.Name = "cmbZjzl";
-            this.cmbZjzl.Size = new System.Drawing.Size(152, 20);
-            this.cmbZjzl.TabIndex =  18;            
+            this.cmbZjzl.Size = new System.Drawing.Size(158, 20);
+            this.cmbZjzl.TabIndex = 18;
             // 
-            // lblID
+            // lblZjh
             // 
             this.lblZjh.AutoSize = true;
             this.lblZjh.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblZjh.Location = new System.Drawing.Point(0,0);
+            this.lblZjh.Location = new System.Drawing.Point(285, 10);
             this.lblZjh.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblZjh.Name = "lblZjh";
-            this.lblZjh.Size = new System.Drawing.Size(41, 20);
+            this.lblZjh.Size = new System.Drawing.Size(41, 25);
             this.lblZjh.TabIndex = 19;
             this.lblZjh.Text = "证件号";
             // 
             // txtZjh
             // 
-            this.txtZjh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZjh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZjh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZjh.EnableTouchMode = true;
-            this.txtZjh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtZjh.Location =  new System.Drawing.Point(0,0);
+            this.txtZjh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtZjh.Location = new System.Drawing.Point(332, 3);
             this.txtZjh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtZjh.Name = "txtZjh";
-            this.txtZjh.Size = new System.Drawing.Size(152, 28);
+            this.txtZjh.Size = new System.Drawing.Size(158, 28);
             this.txtZjh.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtZjh.TabIndex = 20;
             // 
-            // lblID
+            // lblFzjg
             // 
             this.lblFzjg.AutoSize = true;
             this.lblFzjg.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblFzjg.Location = new System.Drawing.Point(0,0);
+            this.lblFzjg.Location = new System.Drawing.Point(273, 45);
             this.lblFzjg.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblFzjg.Name = "lblFzjg";
-            this.lblFzjg.Size = new System.Drawing.Size(41, 20);
+            this.lblFzjg.Size = new System.Drawing.Size(53, 25);
             this.lblFzjg.TabIndex = 21;
             this.lblFzjg.Text = "发证机关";
             // 
             // txtFzjg
             // 
-            this.txtFzjg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtFzjg.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtFzjg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtFzjg.EnableTouchMode = true;
-            this.txtFzjg.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtFzjg.Location =  new System.Drawing.Point(0,0);
+            this.txtFzjg.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtFzjg.Location = new System.Drawing.Point(332, 38);
             this.txtFzjg.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtFzjg.Name = "txtFzjg";
-            this.txtFzjg.Size = new System.Drawing.Size(152, 28);
+            this.txtFzjg.Size = new System.Drawing.Size(158, 28);
             this.txtFzjg.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtFzjg.TabIndex = 22;
             // 
-            // lblID
+            // lblSshy
             // 
             this.lblSshy.AutoSize = true;
             this.lblSshy.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblSshy.Location = new System.Drawing.Point(0,0);
+            this.lblSshy.Location = new System.Drawing.Point(273, 80);
             this.lblSshy.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblSshy.Name = "lblSshy";
-            this.lblSshy.Size = new System.Drawing.Size(41, 20);
+            this.lblSshy.Size = new System.Drawing.Size(53, 25);
             this.lblSshy.TabIndex = 23;
             this.lblSshy.Text = "所属行业";
             // 
             // txtSshy
             // 
-            this.txtSshy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSshy.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtSshy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSshy.EnableTouchMode = true;
-            this.txtSshy.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtSshy.Location =  new System.Drawing.Point(0,0);
+            this.txtSshy.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtSshy.Location = new System.Drawing.Point(332, 73);
             this.txtSshy.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtSshy.Name = "txtSshy";
-            this.txtSshy.Size = new System.Drawing.Size(152, 28);
+            this.txtSshy.Size = new System.Drawing.Size(158, 28);
             this.txtSshy.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtSshy.TabIndex = 24;
             // 
-            // lblID
+            // lblGj
             // 
             this.lblGj.AutoSize = true;
             this.lblGj.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblGj.Location = new System.Drawing.Point(0,0);
+            this.lblGj.Location = new System.Drawing.Point(267, 115);
             this.lblGj.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblGj.Name = "lblGj";
-            this.lblGj.Size = new System.Drawing.Size(41, 20);
+            this.lblGj.Size = new System.Drawing.Size(59, 25);
             this.lblGj.TabIndex = 25;
             this.lblGj.Text = "国家/地区";
             // 
             // cmbGj
             // 
-            this.cmbGj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbGj.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbGj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbGj.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGj.EnableTouchMode = true;
-            this.cmbGj.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbGj.Location =  new System.Drawing.Point(0,0);
+            this.cmbGj.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbGj.Location = new System.Drawing.Point(332, 108);
             this.cmbGj.Name = "cmbGj";
-            this.cmbGj.Size = new System.Drawing.Size(152, 20);
-            this.cmbGj.TabIndex =  26;            
+            this.cmbGj.Size = new System.Drawing.Size(158, 20);
+            this.cmbGj.TabIndex = 26;
             // 
-            // lblID
+            // lblHjszss
             // 
             this.lblHjszss.AutoSize = true;
             this.lblHjszss.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblHjszss.Location = new System.Drawing.Point(0,0);
+            this.lblHjszss.Location = new System.Drawing.Point(261, 150);
             this.lblHjszss.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblHjszss.Name = "lblHjszss";
-            this.lblHjszss.Size = new System.Drawing.Size(41, 20);
+            this.lblHjszss.Size = new System.Drawing.Size(65, 25);
             this.lblHjszss.TabIndex = 27;
             this.lblHjszss.Text = "户籍所在省市";
             // 
             // cmbHjszss
             // 
-            this.cmbHjszss.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbHjszss.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbHjszss.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbHjszss.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHjszss.EnableTouchMode = true;
-            this.cmbHjszss.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbHjszss.Location =  new System.Drawing.Point(0,0);
+            this.cmbHjszss.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbHjszss.Location = new System.Drawing.Point(332, 143);
             this.cmbHjszss.Name = "cmbHjszss";
-            this.cmbHjszss.Size = new System.Drawing.Size(152, 20);
-            this.cmbHjszss.TabIndex =  28;            
+            this.cmbHjszss.Size = new System.Drawing.Size(158, 20);
+            this.cmbHjszss.TabIndex = 28;
             // 
-            // lblID
+            // lblXb
             // 
             this.lblXb.AutoSize = true;
             this.lblXb.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblXb.Location = new System.Drawing.Point(0,0);
+            this.lblXb.Location = new System.Drawing.Point(297, 185);
             this.lblXb.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblXb.Name = "lblXb";
-            this.lblXb.Size = new System.Drawing.Size(41, 20);
+            this.lblXb.Size = new System.Drawing.Size(29, 25);
             this.lblXb.TabIndex = 29;
             this.lblXb.Text = "性别";
             // 
             // cmbXb
             // 
-            this.cmbXb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbXb.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbXb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbXb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbXb.EnableTouchMode = true;
-            this.cmbXb.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbXb.Location =  new System.Drawing.Point(0,0);
+            this.cmbXb.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbXb.Location = new System.Drawing.Point(332, 178);
             this.cmbXb.Name = "cmbXb";
-            this.cmbXb.Size = new System.Drawing.Size(152, 20);
-            this.cmbXb.TabIndex =  30;            
+            this.cmbXb.Size = new System.Drawing.Size(158, 20);
+            this.cmbXb.TabIndex = 30;
             // 
-            // lblID
+            // lblDh
             // 
             this.lblDh.AutoSize = true;
             this.lblDh.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblDh.Location = new System.Drawing.Point(0,0);
+            this.lblDh.Location = new System.Drawing.Point(297, 220);
             this.lblDh.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblDh.Name = "lblDh";
-            this.lblDh.Size = new System.Drawing.Size(41, 20);
+            this.lblDh.Size = new System.Drawing.Size(29, 25);
             this.lblDh.TabIndex = 31;
             this.lblDh.Text = "电话";
             // 
             // txtDh
             // 
-            this.txtDh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtDh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDh.EnableTouchMode = true;
-            this.txtDh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDh.Location =  new System.Drawing.Point(0,0);
+            this.txtDh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtDh.Location = new System.Drawing.Point(332, 213);
             this.txtDh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtDh.Name = "txtDh";
-            this.txtDh.Size = new System.Drawing.Size(152, 28);
+            this.txtDh.Size = new System.Drawing.Size(158, 28);
             this.txtDh.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtDh.TabIndex = 32;
             // 
-            // lblID
+            // lblDz
             // 
             this.lblDz.AutoSize = true;
             this.lblDz.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblDz.Location = new System.Drawing.Point(0,0);
+            this.lblDz.Location = new System.Drawing.Point(297, 255);
             this.lblDz.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblDz.Name = "lblDz";
-            this.lblDz.Size = new System.Drawing.Size(41, 20);
+            this.lblDz.Size = new System.Drawing.Size(29, 25);
             this.lblDz.TabIndex = 33;
             this.lblDz.Text = "地址";
             // 
             // txtDz
             // 
-            this.txtDz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDz.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtDz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDz.EnableTouchMode = true;
-            this.txtDz.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDz.Location =  new System.Drawing.Point(0,0);
+            this.txtDz.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtDz.Location = new System.Drawing.Point(332, 248);
             this.txtDz.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtDz.Name = "txtDz";
-            this.txtDz.Size = new System.Drawing.Size(152, 28);
+            this.txtDz.Size = new System.Drawing.Size(158, 28);
             this.txtDz.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtDz.TabIndex = 34;
             // 
-            // lblID
+            // lblYb
             // 
             this.lblYb.AutoSize = true;
             this.lblYb.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblYb.Location = new System.Drawing.Point(0,0);
+            this.lblYb.Location = new System.Drawing.Point(297, 290);
             this.lblYb.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblYb.Name = "lblYb";
-            this.lblYb.Size = new System.Drawing.Size(41, 20);
+            this.lblYb.Size = new System.Drawing.Size(29, 41);
             this.lblYb.TabIndex = 35;
             this.lblYb.Text = "邮编";
             // 
             // txtYb
             // 
-            this.txtYb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtYb.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtYb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtYb.EnableTouchMode = true;
-            this.txtYb.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtYb.Location =  new System.Drawing.Point(0,0);
+            this.txtYb.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtYb.Location = new System.Drawing.Point(332, 283);
             this.txtYb.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtYb.Name = "txtYb";
-            this.txtYb.Size = new System.Drawing.Size(152, 28);
+            this.txtYb.Size = new System.Drawing.Size(158, 28);
             this.txtYb.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtYb.TabIndex = 36;
             // 
-            // lblID
+            // lblGzdw
             // 
             this.lblGzdw.AutoSize = true;
             this.lblGzdw.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblGzdw.Location = new System.Drawing.Point(0,0);
+            this.lblGzdw.Location = new System.Drawing.Point(522, 10);
             this.lblGzdw.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblGzdw.Name = "lblGzdw";
-            this.lblGzdw.Size = new System.Drawing.Size(41, 20);
+            this.lblGzdw.Size = new System.Drawing.Size(53, 25);
             this.lblGzdw.TabIndex = 37;
             this.lblGzdw.Text = "工作单位";
             // 
             // txtGzdw
             // 
-            this.txtGzdw.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGzdw.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtGzdw.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGzdw.EnableTouchMode = true;
-            this.txtGzdw.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtGzdw.Location =  new System.Drawing.Point(0,0);
+            this.txtGzdw.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtGzdw.Location = new System.Drawing.Point(581, 3);
             this.txtGzdw.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtGzdw.Name = "txtGzdw";
-            this.txtGzdw.Size = new System.Drawing.Size(152, 28);
+            this.txtGzdw.Size = new System.Drawing.Size(158, 28);
             this.txtGzdw.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtGzdw.TabIndex = 38;
             // 
-            // lblID
+            // lblDzyj
             // 
             this.lblDzyj.AutoSize = true;
             this.lblDzyj.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblDzyj.Location = new System.Drawing.Point(0,0);
+            this.lblDzyj.Location = new System.Drawing.Point(522, 45);
             this.lblDzyj.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblDzyj.Name = "lblDzyj";
-            this.lblDzyj.Size = new System.Drawing.Size(41, 20);
+            this.lblDzyj.Size = new System.Drawing.Size(53, 25);
             this.lblDzyj.TabIndex = 39;
             this.lblDzyj.Text = "电子邮件";
             // 
             // txtDzyj
             // 
-            this.txtDzyj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDzyj.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtDzyj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDzyj.EnableTouchMode = true;
-            this.txtDzyj.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDzyj.Location =  new System.Drawing.Point(0,0);
+            this.txtDzyj.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtDzyj.Location = new System.Drawing.Point(581, 38);
             this.txtDzyj.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtDzyj.Name = "txtDzyj";
-            this.txtDzyj.Size = new System.Drawing.Size(152, 28);
+            this.txtDzyj.Size = new System.Drawing.Size(158, 28);
             this.txtDzyj.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtDzyj.TabIndex = 40;
             // 
-            // lblID
+            // lblQlrlx
             // 
             this.lblQlrlx.AutoSize = true;
             this.lblQlrlx.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblQlrlx.Location = new System.Drawing.Point(0,0);
+            this.lblQlrlx.Location = new System.Drawing.Point(510, 80);
             this.lblQlrlx.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblQlrlx.Name = "lblQlrlx";
-            this.lblQlrlx.Size = new System.Drawing.Size(41, 20);
+            this.lblQlrlx.Size = new System.Drawing.Size(65, 25);
             this.lblQlrlx.TabIndex = 41;
             this.lblQlrlx.Text = "权利人类型";
             // 
             // cmbQlrlx
             // 
-            this.cmbQlrlx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbQlrlx.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbQlrlx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbQlrlx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbQlrlx.EnableTouchMode = true;
-            this.cmbQlrlx.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbQlrlx.Location =  new System.Drawing.Point(0,0);
+            this.cmbQlrlx.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbQlrlx.Location = new System.Drawing.Point(581, 73);
             this.cmbQlrlx.Name = "cmbQlrlx";
-            this.cmbQlrlx.Size = new System.Drawing.Size(152, 20);
-            this.cmbQlrlx.TabIndex =  42;            
+            this.cmbQlrlx.Size = new System.Drawing.Size(158, 20);
+            this.cmbQlrlx.TabIndex = 42;
             // 
-            // lblID
+            // lblQlbl
             // 
             this.lblQlbl.AutoSize = true;
             this.lblQlbl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblQlbl.Location = new System.Drawing.Point(0,0);
+            this.lblQlbl.Location = new System.Drawing.Point(522, 115);
             this.lblQlbl.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblQlbl.Name = "lblQlbl";
-            this.lblQlbl.Size = new System.Drawing.Size(41, 20);
+            this.lblQlbl.Size = new System.Drawing.Size(53, 25);
             this.lblQlbl.TabIndex = 43;
             this.lblQlbl.Text = "权利比例";
             // 
             // txtQlbl
             // 
-            this.txtQlbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtQlbl.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtQlbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtQlbl.EnableTouchMode = true;
-            this.txtQlbl.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtQlbl.Location =  new System.Drawing.Point(0,0);
+            this.txtQlbl.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQlbl.Location = new System.Drawing.Point(581, 108);
             this.txtQlbl.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtQlbl.Name = "txtQlbl";
-            this.txtQlbl.Size = new System.Drawing.Size(152, 28);
+            this.txtQlbl.Size = new System.Drawing.Size(158, 28);
             this.txtQlbl.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtQlbl.TabIndex = 44;
             // 
-            // lblID
+            // lblGyfs
             // 
             this.lblGyfs.AutoSize = true;
             this.lblGyfs.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblGyfs.Location = new System.Drawing.Point(0,0);
+            this.lblGyfs.Location = new System.Drawing.Point(522, 150);
             this.lblGyfs.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblGyfs.Name = "lblGyfs";
-            this.lblGyfs.Size = new System.Drawing.Size(41, 20);
+            this.lblGyfs.Size = new System.Drawing.Size(53, 25);
             this.lblGyfs.TabIndex = 45;
             this.lblGyfs.Text = "共有方式";
             // 
             // cmbGyfs
             // 
-            this.cmbGyfs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbGyfs.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbGyfs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbGyfs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGyfs.EnableTouchMode = true;
-            this.cmbGyfs.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbGyfs.Location =  new System.Drawing.Point(0,0);
+            this.cmbGyfs.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbGyfs.Location = new System.Drawing.Point(581, 143);
             this.cmbGyfs.Name = "cmbGyfs";
-            this.cmbGyfs.Size = new System.Drawing.Size(152, 20);
-            this.cmbGyfs.TabIndex =  46;            
+            this.cmbGyfs.Size = new System.Drawing.Size(158, 20);
+            this.cmbGyfs.TabIndex = 46;
             // 
-            // lblID
+            // lblGyqk
             // 
             this.lblGyqk.AutoSize = true;
             this.lblGyqk.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblGyqk.Location = new System.Drawing.Point(0,0);
+            this.lblGyqk.Location = new System.Drawing.Point(522, 185);
             this.lblGyqk.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblGyqk.Name = "lblGyqk";
-            this.lblGyqk.Size = new System.Drawing.Size(41, 20);
+            this.lblGyqk.Size = new System.Drawing.Size(53, 25);
             this.lblGyqk.TabIndex = 47;
             this.lblGyqk.Text = "共有情况";
             // 
             // txtGyqk
             // 
-            this.txtGyqk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGyqk.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtGyqk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGyqk.EnableTouchMode = true;
-            this.txtGyqk.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtGyqk.Location =  new System.Drawing.Point(0,0);
+            this.txtGyqk.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtGyqk.Location = new System.Drawing.Point(581, 178);
             this.txtGyqk.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtGyqk.Name = "txtGyqk";
-            this.txtGyqk.Size = new System.Drawing.Size(152, 28);
+            this.txtGyqk.Size = new System.Drawing.Size(158, 28);
             this.txtGyqk.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtGyqk.TabIndex = 48;
             // 
-            // lblID
+            // lblBz
             // 
             this.lblBz.AutoSize = true;
             this.lblBz.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblBz.Location = new System.Drawing.Point(0,0);
+            this.lblBz.Location = new System.Drawing.Point(546, 220);
             this.lblBz.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.lblBz.Name = "lblBz";
-            this.lblBz.Size = new System.Drawing.Size(41, 20);
+            this.lblBz.Size = new System.Drawing.Size(29, 25);
             this.lblBz.TabIndex = 49;
             this.lblBz.Text = "备注";
             // 
             // txtBz
             // 
-            this.txtBz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBz.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtBz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBz.EnableTouchMode = true;
-            this.txtBz.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtBz.Location =  new System.Drawing.Point(0,0);
+            this.txtBz.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtBz.Location = new System.Drawing.Point(581, 213);
             this.txtBz.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtBz.Name = "txtBz";
-            this.txtBz.Size = new System.Drawing.Size(152, 28);
+            this.txtBz.Size = new System.Drawing.Size(158, 28);
             this.txtBz.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtBz.TabIndex = 50;
             // 
@@ -724,7 +723,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.intID, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblYsdm, 0, 1);
@@ -775,6 +774,9 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.tableLayoutPanel1.Controls.Add(this.txtGyqk, 7, 5);
             this.tableLayoutPanel1.Controls.Add(this.lblBz, 6, 6);
             this.tableLayoutPanel1.Controls.Add(this.txtBz, 7, 6);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -785,19 +787,16 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);            
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";            
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(317, 364);
-            this.tableLayoutPanel1.TabIndex = 51; 
-            //
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(750, 331);
+            this.tableLayoutPanel1.TabIndex = 51;
+            // 
             // ucQlr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ucQlr";
-            this.Size = new System.Drawing.Size(750, 331);            
+            this.Size = new System.Drawing.Size(750, 331);
             ((System.ComponentModel.ISupportInitialize)(this.intID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYsdm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBdcdyh)).EndInit();
@@ -826,7 +825,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
+
         }
         #endregion
         

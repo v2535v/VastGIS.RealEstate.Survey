@@ -330,6 +330,7 @@ INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (275, 'GYFSZD', '1', '共同共有', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (276, 'GYFSZD', '2', '按份共有', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (277, 'GYFSZD', '3', '其它共有', 0, 0);
+INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (277, 'GYFSZD', '4', '共同公用', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (278, 'GJHDQZD', '142', '中华人民共和国', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (279, 'GJHDQZD', '100', '亚洲', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (280, 'GJHDQZD', '101', '阿富汗', 0, 0);
