@@ -43,8 +43,8 @@
             this.lblInfo = new System.Windows.Forms.Label();
             this.ucSelectLayer1 = new VastGIS.Plugins.RealEstate.DataControls.ucSelectLayer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkCreate1 = new System.Windows.Forms.RadioButton();
             this.chkCreate2 = new System.Windows.Forms.RadioButton();
+            this.chkCreate1 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.distPoint1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.distPoint2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPoint1)).BeginInit();
@@ -76,6 +76,7 @@
             this.distPoint1.BackGroundColor = System.Drawing.SystemColors.Window;
             this.distPoint1.BeforeTouchSize = new System.Drawing.Size(167, 21);
             this.distPoint1.DoubleValue = 1D;
+            this.distPoint1.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.distPoint1.Location = new System.Drawing.Point(95, 86);
             this.distPoint1.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.distPoint1.Name = "distPoint1";
@@ -90,6 +91,7 @@
             this.distPoint2.BackGroundColor = System.Drawing.SystemColors.Window;
             this.distPoint2.BeforeTouchSize = new System.Drawing.Size(167, 21);
             this.distPoint2.DoubleValue = 1D;
+            this.distPoint2.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.distPoint2.Location = new System.Drawing.Point(95, 145);
             this.distPoint2.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.distPoint2.Name = "distPoint2";
@@ -203,6 +205,7 @@
             // 
             this.ucSelectLayer1.GeometryType = VastGIS.Api.Enums.GeometryType.Point;
             this.ucSelectLayer1.Label = "目标图层";
+            this.ucSelectLayer1.LimitedGeometryType = VastGIS.Api.Enums.GeometryType.None;
             this.ucSelectLayer1.Location = new System.Drawing.Point(13, 13);
             this.ucSelectLayer1.Name = "ucSelectLayer1";
             this.ucSelectLayer1.SelectedClass = null;
@@ -222,6 +225,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "选择交点";
             // 
+            // chkCreate2
+            // 
+            this.chkCreate2.AutoSize = true;
+            this.chkCreate2.Location = new System.Drawing.Point(123, 20);
+            this.chkCreate2.Name = "chkCreate2";
+            this.chkCreate2.Size = new System.Drawing.Size(59, 16);
+            this.chkCreate2.TabIndex = 1;
+            this.chkCreate2.TabStop = true;
+            this.chkCreate2.Text = "交点二";
+            this.chkCreate2.UseVisualStyleBackColor = true;
+            // 
             // chkCreate1
             // 
             this.chkCreate1.AutoSize = true;
@@ -233,17 +247,6 @@
             this.chkCreate1.Text = "交点一";
             this.chkCreate1.UseVisualStyleBackColor = true;
             this.chkCreate1.CheckedChanged += new System.EventHandler(this.chkCreate1_CheckedChanged);
-            // 
-            // chkCreate2
-            // 
-            this.chkCreate2.AutoSize = true;
-            this.chkCreate2.Location = new System.Drawing.Point(123, 20);
-            this.chkCreate2.Name = "chkCreate2";
-            this.chkCreate2.Size = new System.Drawing.Size(59, 16);
-            this.chkCreate2.TabIndex = 1;
-            this.chkCreate2.TabStop = true;
-            this.chkCreate2.Text = "交点二";
-            this.chkCreate2.UseVisualStyleBackColor = true;
             // 
             // frmDistanceIntersection
             // 
