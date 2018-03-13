@@ -29,22 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtJS = new System.Windows.Forms.RichTextBox();
             this.btnQLR = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnZJ = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnGKJ = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnMJSZ = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnCancel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnOK = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnClear = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnCreate = new Syncfusion.Windows.Forms.ButtonAdv();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // txtJS
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(13, 13);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(389, 264);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.txtJS.Location = new System.Drawing.Point(13, 13);
+            this.txtJS.Name = "txtJS";
+            this.txtJS.Size = new System.Drawing.Size(389, 264);
+            this.txtJS.TabIndex = 0;
+            this.txtJS.Text = "";
             // 
             // btnQLR
             // 
@@ -56,6 +58,7 @@
             this.btnQLR.Size = new System.Drawing.Size(88, 34);
             this.btnQLR.TabIndex = 1;
             this.btnQLR.Text = "权利人";
+            this.btnQLR.Click += new System.EventHandler(this.btnQLR_Click);
             // 
             // btnZJ
             // 
@@ -67,6 +70,7 @@
             this.btnZJ.Size = new System.Drawing.Size(88, 34);
             this.btnZJ.TabIndex = 2;
             this.btnZJ.Text = "证件";
+            this.btnZJ.Click += new System.EventHandler(this.btnZJ_Click);
             // 
             // btnGKJ
             // 
@@ -112,18 +116,42 @@
             this.btnOK.TabIndex = 5;
             this.btnOK.Text = "确定";
             // 
+            // btnClear
+            // 
+            this.btnClear.BeforeTouchSize = new System.Drawing.Size(75, 23);
+            this.btnClear.EnableTouchMode = true;
+            this.btnClear.IsBackStageButton = false;
+            this.btnClear.Location = new System.Drawing.Point(13, 331);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(88, 34);
+            this.btnClear.TabIndex = 7;
+            this.btnClear.Text = "清空";
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.BeforeTouchSize = new System.Drawing.Size(75, 23);
+            this.btnCreate.EnableTouchMode = true;
+            this.btnCreate.IsBackStageButton = false;
+            this.btnCreate.Location = new System.Drawing.Point(113, 331);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(88, 34);
+            this.btnCreate.TabIndex = 8;
+            this.btnCreate.Text = "生成";
+            // 
             // frmDCJS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(414, 377);
+            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnMJSZ);
             this.Controls.Add(this.btnGKJ);
             this.Controls.Add(this.btnZJ);
             this.Controls.Add(this.btnQLR);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.txtJS);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDCJS";
@@ -134,12 +162,14 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txtJS;
         private Syncfusion.Windows.Forms.ButtonAdv btnQLR;
         private Syncfusion.Windows.Forms.ButtonAdv btnZJ;
         private Syncfusion.Windows.Forms.ButtonAdv btnGKJ;
         private Syncfusion.Windows.Forms.ButtonAdv btnMJSZ;
         private Syncfusion.Windows.Forms.ButtonAdv btnCancel;
         private Syncfusion.Windows.Forms.ButtonAdv btnOK;
+        private Syncfusion.Windows.Forms.ButtonAdv btnClear;
+        private Syncfusion.Windows.Forms.ButtonAdv btnCreate;
     }
 }

@@ -1358,6 +1358,18 @@
     <Compile Include="Forms\frmEditTable.Designer.cs">
       <DependentUpon>frmEditTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmZJXZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmZJXZ.Designer.cs">
+      <DependentUpon>frmZJXZ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmQLRXZ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmQLRXZ.Designer.cs">
+      <DependentUpon>frmQLRXZ.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmQuickInput.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2131,6 +2143,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditTable.resx">
       <DependentUpon>frmEditTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmZJXZ.resx">
+      <DependentUpon>frmZJXZ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmQLRXZ.resx">
+      <DependentUpon>frmQLRXZ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmQuickInput.resx">
       <DependentUpon>frmQuickInput.cs</DependentUpon>
