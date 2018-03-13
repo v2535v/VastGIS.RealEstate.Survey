@@ -34,15 +34,17 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabAttribute = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.pageMain = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.ucLinkObject = new VastGIS.Plugins.RealEstate.DataControls.ucZdjbxx();
             this.pageWXInfo = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.ucWXInfo1 = new VastGIS.Plugins.RealEstate.DataControls.ucWXInfo();
             this.pageAttachment = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.ucAttachmentList1 = new VastGIS.Plugins.RealEstate.DataControls.ucAttachmentList();
             this.pageQlr = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.cmbGyfs = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.txtDCJS = new System.Windows.Forms.RichTextBox();
+            this.btnDCJS = new System.Windows.Forms.Button();
+            this.ucLinkObject = new VastGIS.Plugins.RealEstate.DataControls.ucZdjbxx();
+            this.ucWXInfo1 = new VastGIS.Plugins.RealEstate.DataControls.ucWXInfo();
+            this.ucAttachmentList1 = new VastGIS.Plugins.RealEstate.DataControls.ucAttachmentList();
             this.ucQlrList1 = new VastGIS.Plugins.RealEstate.DataControls.ucQlrList();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabAttribute)).BeginInit();
@@ -64,6 +66,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.tableLayoutPanel1.Controls.Add(this.tabAttribute, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnClose, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnSave, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnDCJS, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -108,16 +111,9 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.pageMain.Text = "属性";
             this.pageMain.ThemesEnabled = false;
             // 
-            // ucLinkObject
-            // 
-            this.ucLinkObject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucLinkObject.Location = new System.Drawing.Point(0, 0);
-            this.ucLinkObject.Name = "ucLinkObject";
-            this.ucLinkObject.Size = new System.Drawing.Size(751, 318);
-            this.ucLinkObject.TabIndex = 8;
-            // 
             // pageWXInfo
             // 
+            this.pageWXInfo.Controls.Add(this.txtDCJS);
             this.pageWXInfo.Controls.Add(this.ucWXInfo1);
             this.pageWXInfo.Image = null;
             this.pageWXInfo.ImageSize = new System.Drawing.Size(16, 16);
@@ -128,13 +124,6 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.pageWXInfo.TabIndex = 6;
             this.pageWXInfo.Text = "作业信息";
             this.pageWXInfo.ThemesEnabled = false;
-            // 
-            // ucWXInfo1
-            // 
-            this.ucWXInfo1.Location = new System.Drawing.Point(0, 0);
-            this.ucWXInfo1.Name = "ucWXInfo1";
-            this.ucWXInfo1.Size = new System.Drawing.Size(232, 214);
-            this.ucWXInfo1.TabIndex = 0;
             // 
             // pageAttachment
             // 
@@ -148,14 +137,6 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.pageAttachment.TabIndex = 7;
             this.pageAttachment.Text = "附件";
             this.pageAttachment.ThemesEnabled = false;
-            // 
-            // ucAttachmentList1
-            // 
-            this.ucAttachmentList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucAttachmentList1.Location = new System.Drawing.Point(0, 0);
-            this.ucAttachmentList1.Name = "ucAttachmentList1";
-            this.ucAttachmentList1.Size = new System.Drawing.Size(751, 318);
-            this.ucAttachmentList1.TabIndex = 0;
             // 
             // pageQlr
             // 
@@ -199,11 +180,53 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.cmbGyfs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbGyfs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGyfs.EnableTouchMode = true;
-            this.cmbGyfs.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbGyfs.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbGyfs.Location = new System.Drawing.Point(457, 3);
             this.cmbGyfs.Name = "cmbGyfs";
             this.cmbGyfs.Size = new System.Drawing.Size(283, 20);
             this.cmbGyfs.TabIndex = 46;
+            // 
+            // txtDCJS
+            // 
+            this.txtDCJS.Location = new System.Drawing.Point(239, 4);
+            this.txtDCJS.Name = "txtDCJS";
+            this.txtDCJS.Size = new System.Drawing.Size(509, 311);
+            this.txtDCJS.TabIndex = 1;
+            this.txtDCJS.Text = "";
+            // 
+            // btnDCJS
+            // 
+            this.btnDCJS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDCJS.Location = new System.Drawing.Point(482, 354);
+            this.btnDCJS.Name = "btnDCJS";
+            this.btnDCJS.Size = new System.Drawing.Size(75, 23);
+            this.btnDCJS.TabIndex = 5;
+            this.btnDCJS.Text = "调查记事";
+            this.btnDCJS.UseVisualStyleBackColor = true;
+            this.btnDCJS.Click += new System.EventHandler(this.btnDCJS_Click);
+            // 
+            // ucLinkObject
+            // 
+            this.ucLinkObject.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucLinkObject.Location = new System.Drawing.Point(0, 0);
+            this.ucLinkObject.Name = "ucLinkObject";
+            this.ucLinkObject.Size = new System.Drawing.Size(751, 318);
+            this.ucLinkObject.TabIndex = 8;
+            // 
+            // ucWXInfo1
+            // 
+            this.ucWXInfo1.Location = new System.Drawing.Point(0, 0);
+            this.ucWXInfo1.Name = "ucWXInfo1";
+            this.ucWXInfo1.Size = new System.Drawing.Size(232, 214);
+            this.ucWXInfo1.TabIndex = 0;
+            // 
+            // ucAttachmentList1
+            // 
+            this.ucAttachmentList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucAttachmentList1.Location = new System.Drawing.Point(0, 0);
+            this.ucAttachmentList1.Name = "ucAttachmentList1";
+            this.ucAttachmentList1.Size = new System.Drawing.Size(751, 318);
+            this.ucAttachmentList1.TabIndex = 0;
             // 
             // ucQlrList1
             // 
@@ -249,5 +272,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         private Syncfusion.Windows.Forms.Tools.TabPageAdv pageQlr;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbGyfs;
         private DataControls.ucQlrList ucQlrList1;
+        private System.Windows.Forms.RichTextBox txtDCJS;
+        private System.Windows.Forms.Button btnDCJS;
     }
 }

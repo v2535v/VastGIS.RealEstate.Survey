@@ -33,7 +33,6 @@
             this.btnQLR = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnZJ = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnGKJ = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.btnMJSZ = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnCancel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnOK = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnClear = new Syncfusion.Windows.Forms.ButtonAdv();
@@ -79,20 +78,10 @@
             this.btnGKJ.IsBackStageButton = false;
             this.btnGKJ.Location = new System.Drawing.Point(213, 284);
             this.btnGKJ.Name = "btnGKJ";
-            this.btnGKJ.Size = new System.Drawing.Size(88, 34);
+            this.btnGKJ.Size = new System.Drawing.Size(188, 34);
             this.btnGKJ.TabIndex = 3;
-            this.btnGKJ.Text = "改扩建";
-            // 
-            // btnMJSZ
-            // 
-            this.btnMJSZ.BeforeTouchSize = new System.Drawing.Size(75, 23);
-            this.btnMJSZ.EnableTouchMode = true;
-            this.btnMJSZ.IsBackStageButton = false;
-            this.btnMJSZ.Location = new System.Drawing.Point(313, 284);
-            this.btnMJSZ.Name = "btnMJSZ";
-            this.btnMJSZ.Size = new System.Drawing.Size(88, 34);
-            this.btnMJSZ.TabIndex = 4;
-            this.btnMJSZ.Text = "面积四至";
+            this.btnGKJ.Text = "改扩建、面积四至";
+            this.btnGKJ.Click += new System.EventHandler(this.btnGKJ_Click);
             // 
             // btnCancel
             // 
@@ -104,6 +93,7 @@
             this.btnCancel.Size = new System.Drawing.Size(88, 34);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "取消";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
@@ -115,6 +105,7 @@
             this.btnOK.Size = new System.Drawing.Size(88, 34);
             this.btnOK.TabIndex = 5;
             this.btnOK.Text = "确定";
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnClear
             // 
@@ -126,6 +117,7 @@
             this.btnClear.Size = new System.Drawing.Size(88, 34);
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "清空";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnCreate
             // 
@@ -147,7 +139,6 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.btnMJSZ);
             this.Controls.Add(this.btnGKJ);
             this.Controls.Add(this.btnZJ);
             this.Controls.Add(this.btnQLR);
@@ -166,7 +157,6 @@
         private Syncfusion.Windows.Forms.ButtonAdv btnQLR;
         private Syncfusion.Windows.Forms.ButtonAdv btnZJ;
         private Syncfusion.Windows.Forms.ButtonAdv btnGKJ;
-        private Syncfusion.Windows.Forms.ButtonAdv btnMJSZ;
         private Syncfusion.Windows.Forms.ButtonAdv btnCancel;
         private Syncfusion.Windows.Forms.ButtonAdv btnOK;
         private Syncfusion.Windows.Forms.ButtonAdv btnClear;

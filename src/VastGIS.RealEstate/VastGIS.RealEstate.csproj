@@ -1358,6 +1358,12 @@
     <Compile Include="Forms\frmEditTable.Designer.cs">
       <DependentUpon>frmEditTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmGKJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGKJ.Designer.cs">
+      <DependentUpon>frmGKJ.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmZJXZ.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2143,6 +2149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditTable.resx">
       <DependentUpon>frmEditTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGKJ.resx">
+      <DependentUpon>frmGKJ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmZJXZ.resx">
       <DependentUpon>frmZJXZ.cs</DependentUpon>

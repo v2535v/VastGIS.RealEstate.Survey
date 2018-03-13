@@ -135,7 +135,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ucQlrList";
             this.Size = new System.Drawing.Size(604, 279);
-            this.Resize += new System.EventHandler(this.ucAttachmentList_Resize);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridQlrs)).EndInit();

@@ -7,6 +7,7 @@ using VastGIS.Plugins.Interfaces;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.Plugins.RealEstate.DataControls;
+using VastGIS.Plugins.RealEstate.Forms;
 using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.Attribute
@@ -62,6 +63,8 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         {
             _linkedObject = _database.ZdService.GetZdjbxx(id);
             LinkObject();
+            txtDCJS.DataBindings.Clear();
+            txtDCJS.DataBindings.Add("Text", _linkedObject, "Bz", true, DataSourceUpdateMode.OnPropertyChanged);
         }
         private  void LinkObject()
         {
@@ -107,6 +110,18 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         }
         
         public bool HasPropertyChanged { get { return ucLinkObject.HasChanged; }}
-        
+
+        private void btnDCJS_Click(object sender, EventArgs e)
+        {
+            if (tabAttribute.SelectedIndex != 1)
+            {
+                tabAttribute.SelectedIndex = 1;
+            }
+            frmDCJS frm=new frmDCJS();
+            frm.Context = _context;
+            frm.LoadEntity(_linkedObject,_linkedObject.Bz);
+            if (frm.ShowDialog() != DialogResult.OK) return;
+            txtDCJS.Text = frm.GetMemo();
+        }
     }
 }

@@ -88,6 +88,8 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnSelectAll);
             this.Controls.Add(this.lstQLR);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmQLRXZ";
             this.Text = "权利人";
             this.ResumeLayout(false);

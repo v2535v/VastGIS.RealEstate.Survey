@@ -42,7 +42,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             InitGrid();
         }
 
-        private void ucAttachmentList_Resize(object sender, EventArgs e)
+        private void ucucQlrList_Resize(object sender, EventArgs e)
         {
         }
 
@@ -238,7 +238,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 return;
             }
             //List<VgAttachment> attachments = _database.SystemService.GetVgAttachmentsByWydm(((IGlobalEntity)_entity).WxWydm.ToString()).ToList();
-            List<Qlr> qlrs = _database.SystemService.GetQlrsByBdcdyh(_zdjbxx.Bdcdyh).ToList();
+            List<Qlr> qlrs = _database.ZdService.GetQlrs("WX_WYDM='" + _zdjbxx.WxWydm+"'").ToList();
             foreach (var attachment in qlrs)
             {
                 _qlrs.Add(attachment);
@@ -271,6 +271,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             if (result != DialogResult.OK) return;
             Qlr qlr = frm.LinkedObject as Qlr;
             qlr.Bdcdyh = _zdjbxx.Bdcdyh;
+            qlr.WxWydm = _zdjbxx.WxWydm;
             _database.SystemService.Save(qlr);
             _qlrs.Add(qlr);
         }

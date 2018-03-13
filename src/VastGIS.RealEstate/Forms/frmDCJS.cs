@@ -22,14 +22,14 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private string _names;
         private string _zjs;
         private string _gkj;
-        private string _zdsz;
+       
         public frmDCJS()
         {
             InitializeComponent();
             _names = "";
             _zjs = "";
             _gkj = "";
-            _zdsz = "";
+          
         }
 
         public IAppContext Context
@@ -72,7 +72,14 @@ namespace VastGIS.Plugins.RealEstate.Forms
             builder.Append("使用人提供了");
             builder.Append(_zjs);
             builder.Append("。");
+            builder.Append(_gkj);
 
+            if (txtJS.SelectionLength > 0)
+            {
+                //如果有选中的内容，则将光标移动到被选中内容之后
+                txtJS.SelectionStart = txtJS.SelectionStart + txtJS.SelectionLength;
+            }
+            txtJS.SelectedText = builder.ToString();
 
         }
 
@@ -81,6 +88,33 @@ namespace VastGIS.Plugins.RealEstate.Forms
             frmZJXZ frm=new frmZJXZ();
             if(frm.ShowDialog() == DialogResult.OK)
             _zjs = frm.GetMemo();
+        }
+
+        private void btnGKJ_Click(object sender, EventArgs e)
+        {
+            frmGKJ frm = new frmGKJ();
+            if (frm.ShowDialog() == DialogResult.OK)
+                _gkj = frm.GetMemo();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtJS.Text = "";
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult=DialogResult.Cancel;
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        public string GetMemo()
+        {
+            return txtJS.Text;
         }
     }
 }
