@@ -34,8 +34,9 @@
             this.btnOK = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnCancel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.chkQlrwbh = new System.Windows.Forms.CheckBox();
-            this.cmbBhyy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmbBhyy = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBhyy)).BeginInit();
             this.SuspendLayout();
             // 
             // lstQLR
@@ -95,20 +96,6 @@
             this.chkQlrwbh.UseVisualStyleBackColor = true;
             this.chkQlrwbh.CheckedChanged += new System.EventHandler(this.chkQlrwbh_CheckedChanged);
             // 
-            // cmbBhyy
-            // 
-            this.cmbBhyy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBhyy.Enabled = false;
-            this.cmbBhyy.FormattingEnabled = true;
-            this.cmbBhyy.Items.AddRange(new object[] {
-            "原权利人已故",
-            "分家析产，房屋买卖、交换、抵押、权利人名字登记错误",
-            "赠与"});
-            this.cmbBhyy.Location = new System.Drawing.Point(82, 224);
-            this.cmbBhyy.Name = "cmbBhyy";
-            this.cmbBhyy.Size = new System.Drawing.Size(190, 20);
-            this.cmbBhyy.TabIndex = 0;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -118,13 +105,32 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "变化原因：";
             // 
+            // cmbBhyy
+            // 
+            this.cmbBhyy.BeforeTouchSize = new System.Drawing.Size(205, 20);
+            this.cmbBhyy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBhyy.EnableTouchMode = true;
+            this.cmbBhyy.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbBhyy.Items.AddRange(new object[] {
+            "原权利人已故",
+            "分家析产",
+            "房屋买卖",
+            "房屋交换",
+            "房屋抵押",
+            "权利人名字登记错误",
+            "赠与"});
+            this.cmbBhyy.Location = new System.Drawing.Point(67, 221);
+            this.cmbBhyy.Name = "cmbBhyy";
+            this.cmbBhyy.Size = new System.Drawing.Size(205, 26);
+            this.cmbBhyy.TabIndex = 5;
+            // 
             // frmQLRXZ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 301);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbBhyy);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.chkQlrwbh);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -134,6 +140,7 @@
             this.MinimizeBox = false;
             this.Name = "frmQLRXZ";
             this.Text = "权利人";
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBhyy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,7 +153,7 @@
         private Syncfusion.Windows.Forms.ButtonAdv btnOK;
         private Syncfusion.Windows.Forms.ButtonAdv btnCancel;
         private System.Windows.Forms.CheckBox chkQlrwbh;
-        private System.Windows.Forms.ComboBox cmbBhyy;
         private System.Windows.Forms.Label label1;
+        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbBhyy;
     }
 }
