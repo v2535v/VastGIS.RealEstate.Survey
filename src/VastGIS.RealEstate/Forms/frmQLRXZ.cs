@@ -23,6 +23,9 @@ namespace VastGIS.Plugins.RealEstate.Forms
             {
                 lstQLR.Items.Add(qlr.Qlrmc, true);
             }
+            chkQlrwbh.Checked = true;
+            cmbBhyy.Enabled = false;
+            cmbBhyy.SelectedIndex = 0;
         }
 
         private void btnSelectAll_Click(object sender, EventArgs e)
@@ -67,10 +70,11 @@ namespace VastGIS.Plugins.RealEstate.Forms
         public string GetMemo3()
         {
             if (chkQlrwbh.Checked) return "该宗地权利人未发生变化";
+
             if (cmbBhyy.SelectedIndex == 0) return $"权利人变化：权利人已故，现使用人{GetMemo()}";
-            if (cmbBhyy.SelectedIndex == 1) return $"权利人变化：经调查，因（分家析产，房屋买卖、交换、抵押、权利人名字登记错误），现房屋使用人{GetMemo()}";
-            if (cmbBhyy.SelectedIndex == 2) return $"权利人变化：权利人赠与{GetMemo()}";
-            return "";
+            else if (cmbBhyy.SelectedIndex == cmbBhyy.Items.Count - 1) return $"权利人变化：权利人赠与{GetMemo()}";
+            else return"权利人变化：经调查，因"+cmbBhyy.Text + $"，现房屋使用人{GetMemo()}";
+           
         }
     }
 }

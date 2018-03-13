@@ -35,8 +35,7 @@
             this.btnCancel = new Syncfusion.Windows.Forms.ButtonAdv();
             this.chkQlrwbh = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbBhyy = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBhyy)).BeginInit();
+            this.cmbBhyy = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lstQLR
@@ -52,7 +51,7 @@
             this.btnSelectAll.BeforeTouchSize = new System.Drawing.Size(75, 23);
             this.btnSelectAll.EnableTouchMode = true;
             this.btnSelectAll.IsBackStageButton = false;
-            this.btnSelectAll.Location = new System.Drawing.Point(13, 260);
+            this.btnSelectAll.Location = new System.Drawing.Point(13, 263);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(78, 34);
             this.btnSelectAll.TabIndex = 1;
@@ -64,7 +63,7 @@
             this.btnOK.BeforeTouchSize = new System.Drawing.Size(75, 23);
             this.btnOK.EnableTouchMode = true;
             this.btnOK.IsBackStageButton = false;
-            this.btnOK.Location = new System.Drawing.Point(110, 260);
+            this.btnOK.Location = new System.Drawing.Point(110, 263);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(78, 34);
             this.btnOK.TabIndex = 2;
@@ -76,7 +75,7 @@
             this.btnCancel.BeforeTouchSize = new System.Drawing.Size(75, 23);
             this.btnCancel.EnableTouchMode = true;
             this.btnCancel.IsBackStageButton = false;
-            this.btnCancel.Location = new System.Drawing.Point(194, 259);
+            this.btnCancel.Location = new System.Drawing.Point(194, 262);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(78, 34);
             this.btnCancel.TabIndex = 3;
@@ -107,10 +106,8 @@
             // 
             // cmbBhyy
             // 
-            this.cmbBhyy.BeforeTouchSize = new System.Drawing.Size(205, 20);
             this.cmbBhyy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBhyy.EnableTouchMode = true;
-            this.cmbBhyy.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbBhyy.FormattingEnabled = true;
             this.cmbBhyy.Items.AddRange(new object[] {
             "原权利人已故",
             "分家析产",
@@ -121,14 +118,14 @@
             "赠与"});
             this.cmbBhyy.Location = new System.Drawing.Point(67, 221);
             this.cmbBhyy.Name = "cmbBhyy";
-            this.cmbBhyy.Size = new System.Drawing.Size(205, 26);
-            this.cmbBhyy.TabIndex = 5;
+            this.cmbBhyy.Size = new System.Drawing.Size(205, 20);
+            this.cmbBhyy.TabIndex = 7;
             // 
             // frmQLRXZ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 301);
+            this.ClientSize = new System.Drawing.Size(284, 306);
             this.Controls.Add(this.cmbBhyy);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkQlrwbh);
@@ -140,7 +137,6 @@
             this.MinimizeBox = false;
             this.Name = "frmQLRXZ";
             this.Text = "权利人";
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBhyy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,6 +150,6 @@
         private Syncfusion.Windows.Forms.ButtonAdv btnCancel;
         private System.Windows.Forms.CheckBox chkQlrwbh;
         private System.Windows.Forms.Label label1;
-        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbBhyy;
+        private System.Windows.Forms.ComboBox cmbBhyy;
     }
 }
