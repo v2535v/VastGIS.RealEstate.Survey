@@ -1340,6 +1340,12 @@
     <Compile Include="Forms\frmCreateJZDByZD.Designer.cs">
       <DependentUpon>frmCreateJZDByZD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmDCJS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDCJS.Designer.cs">
+      <DependentUpon>frmDCJS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmEditGeometry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2116,6 +2122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCreateJZDByZD.resx">
       <DependentUpon>frmCreateJZDByZD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDCJS.resx">
+      <DependentUpon>frmDCJS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditGeometry.resx">
       <DependentUpon>frmEditGeometry.cs</DependentUpon>
