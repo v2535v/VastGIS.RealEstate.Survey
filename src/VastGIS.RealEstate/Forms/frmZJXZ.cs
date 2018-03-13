@@ -49,7 +49,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             if (chkZJ5.Checked) zjList.Add(chkZJ5.Text);
             if (zjList.Count > 0)
             {
-                zjBuilder.AppendFormat("使用人提供了({0})", string.Join("、", zjList));
+                zjBuilder.AppendFormat("使用人提供了（{0}）", string.Join("、", zjList));
             }
             StringBuilder djBuilder = new StringBuilder();
             if (chkDJSX.Checked)
@@ -62,7 +62,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             }
 
             if (zjBuilder.Length <= 0) return djBuilder.ToString();
-            return zjBuilder.AppendFormat(",{0}", djBuilder).ToString();
+            return zjBuilder.AppendFormat("，{0}", djBuilder).ToString();
 
             //builder.Append("(");
             //if (chkZJ1.Checked) builder.Append(chkZJ1.Text + ",");

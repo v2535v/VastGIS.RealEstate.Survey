@@ -59,7 +59,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
 
             if (cmbXJFS.SelectedIndex >= 0)
             {
-                gkj.XJFS = $"该宗地已进行{cmbXJFS.Text},房屋{cmbXJFS.Text}时间{intXJNF.IntegerValue}年";
+                gkj.XJFS = $"该宗地已进行{cmbXJFS.Text}，房屋{cmbXJFS.Text}时间{intXJNF.IntegerValue}年";
                 if (chkZJ1.Checked) gkj.XJSS = $"已办理了{cmbXJFS.Text}手续";
                 else gkj.XJSS = $"未办理{cmbXJFS.Text}手续";
             }

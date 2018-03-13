@@ -91,21 +91,21 @@ namespace VastGIS.Plugins.RealEstate.Forms
             StringBuilder builder = new StringBuilder();
             builder.Append("经调查：");
             if (!string.IsNullOrEmpty(_qlr)) builder.Append(_qlr);
-            if (!string.IsNullOrEmpty(_zjs)) builder.AppendFormat(",{0}", _zjs);
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.YYZDMJ)) builder.AppendFormat(",{0}", _gkj.YYZDMJ);
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.TDZH)) builder.AppendFormat(",{0}", _gkj.TDZH);
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.PZWH)) builder.AppendFormat(",{0}", _gkj.PZWH);
+            if (!string.IsNullOrEmpty(_zjs)) builder.AppendFormat("，{0}", _zjs);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.YYZDMJ)) builder.AppendFormat("，{0}", _gkj.YYZDMJ);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.TDZH)) builder.AppendFormat("，{0}", _gkj.TDZH);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.PZWH)) builder.AppendFormat("，{0}", _gkj.PZWH);
 
-            if (!string.IsNullOrEmpty(_qlrbh)) builder.AppendFormat(",{0}", _qlrbh);
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.ZL)) builder.AppendFormat(",{0}", _gkj.ZL);
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.JZ)) builder.AppendFormat(",{0}", _gkj.JZ);
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.SZJZ)) builder.AppendFormat(",{0}", _gkj.SZJZ);
+            if (!string.IsNullOrEmpty(_qlrbh)) builder.AppendFormat("，{0}", _qlrbh);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.ZL)) builder.AppendFormat("，{0}", _gkj.ZL);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.JZ)) builder.AppendFormat("，{0}", _gkj.JZ);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.SZJZ)) builder.AppendFormat("，{0}", _gkj.SZJZ);
 
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.XJFS)) builder.AppendFormat(",{0}", _gkj.XJFS);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.XJFS)) builder.AppendFormat("，{0}", _gkj.XJFS);
 
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.XZZDMJ)) builder.AppendFormat(",{0}", _gkj.XZZDMJ);
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.LSYDMJ)) builder.AppendFormat(",{0}", _gkj.LSYDMJ);
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.FCJZMJ)) builder.AppendFormat(",{0}", _gkj.FCJZMJ);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.XZZDMJ)) builder.AppendFormat("，{0}", _gkj.XZZDMJ);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.LSYDMJ)) builder.AppendFormat("，{0}", _gkj.LSYDMJ);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.FCJZMJ)) builder.AppendFormat("，{0}", _gkj.FCJZMJ);
             builder.Append("。");
             txtJS.AppendText(builder.ToString());
         }
