@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using Syncfusion.Windows.Forms.Tools;
+using VastGIS.Plugins.Interfaces;
 using VastGIS.Plugins.RealEstate.Forms;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
@@ -14,6 +15,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         #region 变量
         private Dictionary<string, string> _dictionaryNames;
         private Qlr _qlr;
+        private IAppContext _context;
         private IREDatabase _database;
         private bool _hasChanged = false;
         #endregion
@@ -63,9 +65,10 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             return null;
         }
 
-        public void LinkObject(IREDatabase database, IEntity entity)
+        public void LinkObject(IAppContext context, IEntity entity)
         {
-            _database = database;
+            _context = context;
+            _database = ((IRealEstateContext)_context).RealEstateDatabase;
             if (_dictionaryNames != null && _dictionaryNames.Count > 0)
             {
                 InitDictionaries();
@@ -79,10 +82,6 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             txtDz.DataBindings.Add("Text", _qlr, "Dz", true, DataSourceUpdateMode.OnPropertyChanged);
             cmbGyfs.DataBindings.Clear();
             cmbGyfs.DataBindings.Add("SelectedValue", _qlr, "Gyfs", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtGyqk.DataBindings.Clear();
-            txtGyqk.DataBindings.Add("Text", _qlr, "Gyqk", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtBz.DataBindings.Clear();
-            txtBz.DataBindings.Add("Text", _qlr, "Bz", true, DataSourceUpdateMode.OnPropertyChanged);
 
             ((INotifyPropertyChanged)_qlr).PropertyChanged += Entity_PropertyChanged;
             _hasChanged = false;
@@ -105,14 +104,6 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         }
 
         #endregion
-
-        private void txtGyqk_DoubleClick(object sender, System.EventArgs e)
-        {
-            frmQuickInput frm = new frmQuickInput(_database, txtGyqk.Text);
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                txtGyqk.Text = frm.Content;
-            }
-        }
+        
     }
 }

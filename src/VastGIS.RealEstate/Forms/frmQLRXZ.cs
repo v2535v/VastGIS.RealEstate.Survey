@@ -53,5 +53,24 @@ namespace VastGIS.Plugins.RealEstate.Forms
             names = names.Substring(0, names.Length - 1);
             return names;
         }
+
+        public string GetMemo2()
+        {
+            return $"该宗地权利人{GetMemo()}";
+        }
+
+        private void chkQlrwbh_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbBhyy.Enabled = !chkQlrwbh.Checked;
+        }
+
+        public string GetMemo3()
+        {
+            if (chkQlrwbh.Checked) return "该宗地权利人未发生变化";
+            if (cmbBhyy.SelectedIndex == 0) return $"权利人变化：权利人已故，现使用人{GetMemo()}";
+            if (cmbBhyy.SelectedIndex == 1) return $"权利人变化：经调查，因（分家析产，房屋买卖、交换、抵押、权利人名字登记错误），现房屋使用人{GetMemo()}";
+            if (cmbBhyy.SelectedIndex == 2) return $"权利人变化：权利人赠与{GetMemo()}";
+            return "";
+        }
     }
 }

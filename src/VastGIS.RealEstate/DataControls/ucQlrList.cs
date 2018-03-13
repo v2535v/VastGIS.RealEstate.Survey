@@ -270,7 +270,6 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             DialogResult result = frm.ShowDialog();
             if (result != DialogResult.OK) return;
             Qlr qlr = frm.LinkedObject as Qlr;
-            qlr.Bdcdyh = _zdjbxx.Bdcdyh;
             qlr.WxWydm = _zdjbxx.WxWydm;
             _database.SystemService.Save(qlr);
             _qlrs.Add(qlr);

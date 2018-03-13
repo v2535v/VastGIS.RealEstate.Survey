@@ -129,6 +129,7 @@
             this.btnCreate.Size = new System.Drawing.Size(88, 34);
             this.btnCreate.TabIndex = 8;
             this.btnCreate.Text = "生成";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // frmDCJS
             // 

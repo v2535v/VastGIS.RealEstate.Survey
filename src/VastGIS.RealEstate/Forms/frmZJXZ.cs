@@ -30,41 +30,64 @@ namespace VastGIS.Plugins.RealEstate.Forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult=DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            DialogResult=DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
         public string GetMemo()
         {
-            StringBuilder builder=new StringBuilder();
-            builder.Append("(");
-            if (chkZJ1.Checked) builder.Append(chkZJ1.Text + ",");
-            if (chkZJ2.Checked) builder.Append(chkZJ2.Text + ",");
-            if (chkZJ3.Checked) builder.Append(chkZJ3.Text + ",");
-            if (chkZJ4.Checked) builder.Append(chkZJ4.Text + ",");
-            if (chkZJ5.Checked) builder.Append(chkZJ5.Text + ",");
-            string memo = builder.ToString();
-            if (memo.Length == 1)
+            StringBuilder zjBuilder = new StringBuilder();
+            List<string> zjList = new List<string>();
+            if (chkZJ1.Checked) zjList.Add(chkZJ1.Text);
+            if (chkZJ2.Checked) zjList.Add(chkZJ2.Text);
+            if (chkZJ3.Checked) zjList.Add(chkZJ3.Text);
+            if (chkZJ4.Checked) zjList.Add(chkZJ4.Text);
+            if (chkZJ5.Checked) zjList.Add(chkZJ5.Text);
+            if (zjList.Count > 0)
             {
-                memo = "(无)";
+                zjBuilder.AppendFormat("使用人提供了({0})", string.Join("、", zjList));
             }
-            else
-            {
-                memo = memo.Substring(0, memo.Length - 1) + ")";
-            }
+            StringBuilder djBuilder = new StringBuilder();
             if (chkDJSX.Checked)
             {
-                memo += ",已办理登记手续";
+                djBuilder.Append("已进行土地登记");
             }
             else
             {
-                memo += ",未办理登记手续";
+                djBuilder.Append("未办理登记手续");
             }
-            return memo;
+
+            if (zjBuilder.Length <= 0) return djBuilder.ToString();
+            return zjBuilder.AppendFormat(",{0}", djBuilder).ToString();
+
+            //builder.Append("(");
+            //if (chkZJ1.Checked) builder.Append(chkZJ1.Text + ",");
+            //if (chkZJ2.Checked) builder.Append(chkZJ2.Text + ",");
+            //if (chkZJ3.Checked) builder.Append(chkZJ3.Text + ",");
+            //if (chkZJ4.Checked) builder.Append(chkZJ4.Text + ",");
+            //if (chkZJ5.Checked) builder.Append(chkZJ5.Text + ",");
+            //string memo = builder.ToString();
+            //if (memo.Length == 1)
+            //{
+            //    memo = "(无)";
+            //}
+            //else
+            //{
+            //    memo = memo.Substring(0, memo.Length - 1) + ")";
+            //}
+            //if (chkDJSX.Checked)
+            //{
+            //    memo += ",已办理登记手续";
+            //}
+            //else
+            //{
+            //    memo += ",未办理登记手续";
+            //}
+            //return memo;
         }
     }
 }

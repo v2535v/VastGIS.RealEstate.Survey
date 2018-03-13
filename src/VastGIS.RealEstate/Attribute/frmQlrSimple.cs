@@ -75,7 +75,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         public  void LinkObject()
         {
             ((INotifyPropertyChanged)_linkedObject).PropertyChanged +=linkedObject_PropertyChanged;
-            ucLinkObject.LinkObject(_database,(IEntity)_linkedObject);
+            ucLinkObject.LinkObject(_context,(IEntity)_linkedObject);
             if (_linkedObject.ID <= 0 || _isNew)
             {
                 btnSave.Text = "新建";

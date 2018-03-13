@@ -48,6 +48,10 @@
             this.btnOK = new Syncfusion.Windows.Forms.ButtonAdv();
             this.label8 = new System.Windows.Forms.Label();
             this.cmbSZ = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.dblLSYDMJ = new Syncfusion.Windows.Forms.Tools.DoubleTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.chkZL = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkJZ = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             ((System.ComponentModel.ISupportInitialize)(this.cmbXJFS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intXJNF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkZJ1)).BeginInit();
@@ -57,13 +61,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dblYYMJ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dblFCJZMJ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblLSYDMJ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkZL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkJZ)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbXJFS
             // 
             this.cmbXJFS.BeforeTouchSize = new System.Drawing.Size(121, 20);
             this.cmbXJFS.EnableTouchMode = true;
-            this.cmbXJFS.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbXJFS.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbXJFS.Items.AddRange(new object[] {
             "翻建",
             "改建",
@@ -96,12 +103,10 @@
             this.intXJNF.BackGroundColor = System.Drawing.SystemColors.Window;
             this.intXJNF.BeforeTouchSize = new System.Drawing.Size(100, 21);
             this.intXJNF.EnableTouchMode = true;
-            this.intXJNF.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intXJNF.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intXJNF.IntegerValue = ((long)(1900));
             this.intXJNF.Location = new System.Drawing.Point(75, 45);
-            this.intXJNF.MaxValue = ((long)(3000));
             this.intXJNF.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.intXJNF.MinValue = ((long)(1900));
             this.intXJNF.Name = "intXJNF";
             this.intXJNF.NullString = "";
             this.intXJNF.Size = new System.Drawing.Size(150, 28);
@@ -135,7 +140,7 @@
             // 
             this.txtTDZH.BeforeTouchSize = new System.Drawing.Size(100, 21);
             this.txtTDZH.EnableTouchMode = true;
-            this.txtTDZH.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtTDZH.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtTDZH.Location = new System.Drawing.Point(78, 115);
             this.txtTDZH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtTDZH.Name = "txtTDZH";
@@ -147,7 +152,7 @@
             // 
             this.txtPZWH.BeforeTouchSize = new System.Drawing.Size(100, 21);
             this.txtPZWH.EnableTouchMode = true;
-            this.txtPZWH.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtPZWH.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtPZWH.Location = new System.Drawing.Point(78, 149);
             this.txtPZWH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtPZWH.Name = "txtPZWH";
@@ -168,9 +173,9 @@
             // 
             this.dblXZZDMJ.BackGroundColor = System.Drawing.SystemColors.Window;
             this.dblXZZDMJ.BeforeTouchSize = new System.Drawing.Size(100, 21);
-            this.dblXZZDMJ.DoubleValue = 1D;
+            this.dblXZZDMJ.DoubleValue = 0D;
             this.dblXZZDMJ.EnableTouchMode = true;
-            this.dblXZZDMJ.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblXZZDMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblXZZDMJ.Location = new System.Drawing.Point(102, 191);
             this.dblXZZDMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblXZZDMJ.Name = "dblXZZDMJ";
@@ -178,7 +183,7 @@
             this.dblXZZDMJ.Size = new System.Drawing.Size(125, 28);
             this.dblXZZDMJ.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.dblXZZDMJ.TabIndex = 10;
-            this.dblXZZDMJ.Text = "1.00";
+            this.dblXZZDMJ.Text = "0.00";
             // 
             // label5
             // 
@@ -192,7 +197,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 233);
+            this.label6.Location = new System.Drawing.Point(13, 267);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 12);
             this.label6.TabIndex = 13;
@@ -202,22 +207,22 @@
             // 
             this.dblYYMJ.BackGroundColor = System.Drawing.SystemColors.Window;
             this.dblYYMJ.BeforeTouchSize = new System.Drawing.Size(100, 21);
-            this.dblYYMJ.DoubleValue = 1D;
+            this.dblYYMJ.DoubleValue = 0D;
             this.dblYYMJ.EnableTouchMode = true;
-            this.dblYYMJ.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dblYYMJ.Location = new System.Drawing.Point(102, 225);
+            this.dblYYMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblYYMJ.Location = new System.Drawing.Point(103, 259);
             this.dblYYMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblYYMJ.Name = "dblYYMJ";
             this.dblYYMJ.NullString = "";
             this.dblYYMJ.Size = new System.Drawing.Size(125, 28);
             this.dblYYMJ.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.dblYYMJ.TabIndex = 12;
-            this.dblYYMJ.Text = "1.00";
+            this.dblYYMJ.Text = "0.00";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 267);
+            this.label7.Location = new System.Drawing.Point(14, 301);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 12);
             this.label7.TabIndex = 15;
@@ -227,17 +232,17 @@
             // 
             this.dblFCJZMJ.BackGroundColor = System.Drawing.SystemColors.Window;
             this.dblFCJZMJ.BeforeTouchSize = new System.Drawing.Size(100, 21);
-            this.dblFCJZMJ.DoubleValue = 1D;
+            this.dblFCJZMJ.DoubleValue = 0D;
             this.dblFCJZMJ.EnableTouchMode = true;
-            this.dblFCJZMJ.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dblFCJZMJ.Location = new System.Drawing.Point(103, 259);
+            this.dblFCJZMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblFCJZMJ.Location = new System.Drawing.Point(104, 293);
             this.dblFCJZMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblFCJZMJ.Name = "dblFCJZMJ";
             this.dblFCJZMJ.NullString = "";
             this.dblFCJZMJ.Size = new System.Drawing.Size(125, 28);
             this.dblFCJZMJ.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.dblFCJZMJ.TabIndex = 14;
-            this.dblFCJZMJ.Text = "1.00";
+            this.dblFCJZMJ.Text = "0.00";
             // 
             // btnCancel
             // 
@@ -245,7 +250,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.EnableTouchMode = true;
             this.btnCancel.IsBackStageButton = false;
-            this.btnCancel.Location = new System.Drawing.Point(177, 351);
+            this.btnCancel.Location = new System.Drawing.Point(174, 468);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(78, 34);
             this.btnCancel.TabIndex = 17;
@@ -257,7 +262,7 @@
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.EnableTouchMode = true;
             this.btnOK.IsBackStageButton = false;
-            this.btnOK.Location = new System.Drawing.Point(93, 351);
+            this.btnOK.Location = new System.Drawing.Point(90, 468);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(78, 34);
             this.btnOK.TabIndex = 16;
@@ -266,7 +271,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 300);
+            this.label8.Location = new System.Drawing.Point(17, 334);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 19;
@@ -276,27 +281,82 @@
             // 
             this.cmbSZ.BeforeTouchSize = new System.Drawing.Size(121, 20);
             this.cmbSZ.EnableTouchMode = true;
-            this.cmbSZ.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbSZ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbSZ.Items.AddRange(new object[] {
             "清楚",
             "有争议"});
-            this.cmbSZ.Location = new System.Drawing.Point(87, 293);
+            this.cmbSZ.Location = new System.Drawing.Point(88, 327);
             this.cmbSZ.Name = "cmbSZ";
             this.cmbSZ.Size = new System.Drawing.Size(141, 26);
             this.cmbSZ.TabIndex = 18;
+            // 
+            // dblLSYDMJ
+            // 
+            this.dblLSYDMJ.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.dblLSYDMJ.BeforeTouchSize = new System.Drawing.Size(100, 21);
+            this.dblLSYDMJ.DoubleValue = 0D;
+            this.dblLSYDMJ.EnableTouchMode = true;
+            this.dblLSYDMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblLSYDMJ.Location = new System.Drawing.Point(102, 225);
+            this.dblLSYDMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.dblLSYDMJ.Name = "dblLSYDMJ";
+            this.dblLSYDMJ.NullString = "";
+            this.dblLSYDMJ.Size = new System.Drawing.Size(125, 28);
+            this.dblLSYDMJ.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.dblLSYDMJ.TabIndex = 12;
+            this.dblLSYDMJ.Text = "0.00";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 233);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 12);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "临时用地面积：";
+            // 
+            // chkZL
+            // 
+            this.chkZL.BeforeTouchSize = new System.Drawing.Size(150, 21);
+            this.chkZL.EnableTouchMode = true;
+            this.chkZL.ImageCheckBoxSize = new System.Drawing.Size(19, 19);
+            this.chkZL.Location = new System.Drawing.Point(75, 359);
+            this.chkZL.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.chkZL.Name = "chkZL";
+            this.chkZL.Size = new System.Drawing.Size(225, 31);
+            this.chkZL.TabIndex = 20;
+            this.chkZL.Text = "坐落发生变化";
+            this.chkZL.ThemesEnabled = false;
+            // 
+            // chkJZ
+            // 
+            this.chkJZ.BeforeTouchSize = new System.Drawing.Size(150, 21);
+            this.chkJZ.EnableTouchMode = true;
+            this.chkJZ.ImageCheckBoxSize = new System.Drawing.Size(19, 19);
+            this.chkJZ.Location = new System.Drawing.Point(75, 396);
+            this.chkJZ.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.chkJZ.Name = "chkJZ";
+            this.chkJZ.Size = new System.Drawing.Size(225, 31);
+            this.chkJZ.TabIndex = 20;
+            this.chkJZ.Text = "界址发生变化";
+            this.chkJZ.ThemesEnabled = false;
             // 
             // frmGKJ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 397);
+            this.ClientSize = new System.Drawing.Size(264, 535);
+            this.Controls.Add(this.chkJZ);
+            this.Controls.Add(this.chkZL);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbSZ);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dblFCJZMJ);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.dblLSYDMJ);
             this.Controls.Add(this.dblYYMJ);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dblXZZDMJ);
@@ -322,6 +382,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dblYYMJ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dblFCJZMJ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dblLSYDMJ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkZL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkJZ)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,5 +411,9 @@
         private Syncfusion.Windows.Forms.ButtonAdv btnOK;
         private System.Windows.Forms.Label label8;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbSZ;
+        private Syncfusion.Windows.Forms.Tools.DoubleTextBox dblLSYDMJ;
+        private System.Windows.Forms.Label label9;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkZL;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkJZ;
     }
 }

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using Syncfusion.Windows.Forms.Tools;
+using VastGIS.Plugins.RealEstate.Forms;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Interface;
@@ -148,9 +149,8 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         public void Delete()
         {
             _database.SystemService.Delete((IEntity)_zdjbxx);
-        }        
+        }
+
         #endregion
-        
-        
     }
 }

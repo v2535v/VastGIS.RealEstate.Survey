@@ -33,6 +33,9 @@
             this.btnSelectAll = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnOK = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnCancel = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.chkQlrwbh = new System.Windows.Forms.CheckBox();
+            this.cmbBhyy = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lstQLR
@@ -48,7 +51,7 @@
             this.btnSelectAll.BeforeTouchSize = new System.Drawing.Size(75, 23);
             this.btnSelectAll.EnableTouchMode = true;
             this.btnSelectAll.IsBackStageButton = false;
-            this.btnSelectAll.Location = new System.Drawing.Point(13, 200);
+            this.btnSelectAll.Location = new System.Drawing.Point(13, 260);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(78, 34);
             this.btnSelectAll.TabIndex = 1;
@@ -60,7 +63,7 @@
             this.btnOK.BeforeTouchSize = new System.Drawing.Size(75, 23);
             this.btnOK.EnableTouchMode = true;
             this.btnOK.IsBackStageButton = false;
-            this.btnOK.Location = new System.Drawing.Point(110, 200);
+            this.btnOK.Location = new System.Drawing.Point(110, 260);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(78, 34);
             this.btnOK.TabIndex = 2;
@@ -72,18 +75,57 @@
             this.btnCancel.BeforeTouchSize = new System.Drawing.Size(75, 23);
             this.btnCancel.EnableTouchMode = true;
             this.btnCancel.IsBackStageButton = false;
-            this.btnCancel.Location = new System.Drawing.Point(194, 199);
+            this.btnCancel.Location = new System.Drawing.Point(194, 259);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(78, 34);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "取消";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // chkQlrwbh
+            // 
+            this.chkQlrwbh.AutoSize = true;
+            this.chkQlrwbh.Checked = true;
+            this.chkQlrwbh.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkQlrwbh.Location = new System.Drawing.Point(13, 199);
+            this.chkQlrwbh.Name = "chkQlrwbh";
+            this.chkQlrwbh.Size = new System.Drawing.Size(120, 16);
+            this.chkQlrwbh.TabIndex = 4;
+            this.chkQlrwbh.Text = "权利人未发生变化";
+            this.chkQlrwbh.UseVisualStyleBackColor = true;
+            this.chkQlrwbh.CheckedChanged += new System.EventHandler(this.chkQlrwbh_CheckedChanged);
+            // 
+            // cmbBhyy
+            // 
+            this.cmbBhyy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBhyy.Enabled = false;
+            this.cmbBhyy.FormattingEnabled = true;
+            this.cmbBhyy.Items.AddRange(new object[] {
+            "原权利人已故",
+            "分家析产，房屋买卖、交换、抵押、权利人名字登记错误",
+            "赠与"});
+            this.cmbBhyy.Location = new System.Drawing.Point(82, 224);
+            this.cmbBhyy.Name = "cmbBhyy";
+            this.cmbBhyy.Size = new System.Drawing.Size(190, 20);
+            this.cmbBhyy.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 227);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "变化原因：";
+            // 
             // frmQLRXZ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 248);
+            this.ClientSize = new System.Drawing.Size(284, 301);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbBhyy);
+            this.Controls.Add(this.chkQlrwbh);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnSelectAll);
@@ -93,6 +135,7 @@
             this.Name = "frmQLRXZ";
             this.Text = "权利人";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -102,5 +145,8 @@
         private Syncfusion.Windows.Forms.ButtonAdv btnSelectAll;
         private Syncfusion.Windows.Forms.ButtonAdv btnOK;
         private Syncfusion.Windows.Forms.ButtonAdv btnCancel;
+        private System.Windows.Forms.CheckBox chkQlrwbh;
+        private System.Windows.Forms.ComboBox cmbBhyy;
+        private System.Windows.Forms.Label label1;
     }
 }
