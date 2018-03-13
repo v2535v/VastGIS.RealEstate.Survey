@@ -53,7 +53,6 @@ INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (52, 'WJMHDYTZD', '无
 INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (53, 'FJLXZD', '附件类型字典表');
 INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (54, 'CFWLXZD', '层房屋类型字典');
 INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (55, 'CJSBLZD', '层计算比例字典');
-INSERT INTO [vg_dictoryname] ([Id], [ZDMC], [ZDSM]) VALUES (56, 'KSLRZD', '快速录入字典');
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (1, 'ZDZHTZMZD', 'A', '集体土地所有权宗地', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (2, 'ZDZHTZMZD', 'B', '建设用地使用权宗地（地表）', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (3, 'ZDZHTZMZD', 'S', '建设用地使用权宗地（地上）', 0, 0);
@@ -723,15 +722,3 @@ INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (666, 'CJSBLZD', '1', '1', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (667, 'CJSBLZD', '2', '0.5', 0, 0);
 INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (668, 'CJSBLZD', '3', '0', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (669, 'KSLRZD', '权利人且面积均无变化', '权利人{QLR}，已进行土地登记，发证宗地面积{X}平方米，证号{X}集{X}（{X}）字第{X}号。经调查，该宗地权利人、界址、坐落未发生变化，四至清楚。现状宗地面积{X}平方米，房产建筑面积{X}平方米。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (670, 'KSLRZD', '权利人变化1', '权利人已故，现使用人{QLR}。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (671, 'KSLRZD', '权利人变化2', '经调查，因（分家析产，房屋买卖、交换、抵押、权利人名字登记错误），现房屋使用人{QLR}。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (672, 'KSLRZD', '权利人变化3', '权利人赠与{QLR}。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (673, 'KSLRZD', '权利人变化', '权利人{QLR}，宗地面积{X}平方米，已进行土地登记，发证宗地面积{X}平方米，证号{X}集{X}（{X}）字第{X}号。经调查，因（分家析产，房屋买卖、交换、抵押、权利人名字登记错误、权利人已故...），现房屋使用人{QLR}，该宗地界址、坐落未发生变化,四至清楚。现状宗地面积{X}平方米，房产建筑面积{X}平方米。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (674, 'KSLRZD', '界线变化', '权利人{QLR}，发证宗地面积{X}平方米，证号{X}集{X}（{X}）字第{X}号。经调查，该宗地权利人、坐落未发生变化，界址发生变化，四至清楚。现状宗地面积{X}平方米，比原登记减少(增加){X}平方米。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (675, 'KSLRZD', '宗地、房屋变化：精度误差说明', '权利人{QLR}，已进行土地登记，发证宗地面积{X}平方米，证号{X}集{X}（{X}）字第{X}号。经调查，该宗地权利人、界址、坐落未发生变化，四至清楚。因精度误差，现状宗地面积{X}平方米，比原登记减少（增加）{X}平方米。房产建筑面积{X}平方米。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (676, 'KSLRZD', '宗地、房屋变化：勘丈错误说明', '权利人{QLR}，已进行土地登记，发证宗地面积{X}平方米，证号{X}集{X}（{X}）字第{X}号。经调查：该宗地权利人、界址、坐落未发生变化，四至清楚。因丈量错误（面积登记错误），界址线{X}原登记边长为{X}米，本次实测为{X}米，现状宗地面积为{X}平方米，比原登记增加（减少）{X}平方米。（有可能存在角度误差导致的错误）。房产建筑面积{X}平方米。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (677, 'KSLRZD', '宗地、房屋变化：未审批翻改扩建说明', '权利人{QLR}，已进行土地登记，发证宗地面积{X}平方米，证号{X}集{X}（{X}）字第{X}号。经调查，该宗地权利人未发生变化。该宗地房屋已进行翻（改、扩）建，房屋翻（改、扩）建时间{X}年，现状宗地面积为{X}平方米，比原登记增加{X}平方米。房产建筑面积{X}平方米。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (678, 'KSLRZD', '宗地、房屋变化：已审批翻改扩建说明', '权利人{QLR}，已进行土地登记，发证宗地面积{X}平方米，证号{X}号；经调查，该宗地权利人未发生变化，四至清楚。该宗地进行翻（改、扩）建，房屋翻（改、扩）建时间{X}年，已办理了翻（改、扩）建手续，（如果已发改建后的土地证，填上改建后的土地证号，如果有规划的批准文件，填规划批准文号）现状宗地面积为{X}平方米，比原登记增加{X}平方米。房产建筑面积{X}平方米。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (679, 'KSLRZD', '未登记宗地有部分权源的', '经调查：该宗地使用人{QLR}，使用人提供了（《建设用地批准书》、宅基地使用证、清查证、建筑许可执照、土地所有权证、）但未办理登记手续。现状宗地面积{X}平方米，四至界址清楚。', 0, 0);
-INSERT INTO [vg_dictionary] ([Id], [ZDMC], [ZDZ], [ZDSM], [SFQS], [PX]) VALUES (680, 'KSLRZD', '未登记宗地无权源的', '经调查：该宗地使用人{QLR}，使用人未提供权源资料，未办理登记手续。现状宗地面积{X}平方米，四至界址清楚。', 0, 0);
