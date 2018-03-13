@@ -212,7 +212,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
         {
             connection.Close();
         }
-        
+
         /// <summary>
         /// The CreateEmptyDatabase
         /// </summary>
@@ -228,7 +228,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 command.ExecuteNonQuery();
             }
         }
-        
+
 
         /// <summary>
         /// The FindChildClasses
@@ -251,7 +251,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             return list;
         }
 
-        
+
 
         /// <summary>
         /// The GetAreaCodesByJB
@@ -657,7 +657,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
         }
 
-      
+
         /// <summary>
         /// The SaveVgSettings2
         /// </summary>
@@ -689,7 +689,7 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             }
             return true;
         }
-        
+
         #endregion
 
         #region 附件方法
@@ -732,10 +732,10 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             return ProjectHelper.GetAttachmentFileName(connection.DataSource);
         }
 
-        
+
         #endregion
 
-      
+
         #region CAD数据视图初始化，从CADDaoImpl转过来
         public void CreateAndRegisterCadView()
         {
@@ -780,6 +780,19 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
                 trans.Commit();
             }
         }
+        #endregion
+
+
+        #region 权利人方法
+
+        public IEnumerable<Qlr> GetQlrsByBdcdyh(string bdcdhy)
+        {
+            string sql =
+                "SELECT Id, YSDM, BDCDYH, SXH, QLRMC, BDCQZH, QZYSXLH, SFCZR, ZJZL, ZJH, FZJG, SSHY, GJ, HJSZSS, XB, DH, DZ, YB, GZDW, DZYJ, QLRLX, QLBL, GYFS, GYQK, BZ, DATABASEID, FLAGS, XGR, XGSJ FROM QLR WHERE BDCDYH = '" + bdcdhy + "' ORDER BY SXH";
+            var qlr = connection.Query<Qlr>(sql);
+            return qlr;
+        }
+
         #endregion
     }
 }

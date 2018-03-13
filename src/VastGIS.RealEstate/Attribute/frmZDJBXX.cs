@@ -76,6 +76,9 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             }
             else
                 btnSave.Text="保存";
+
+            ucQlrList1.BindContext(_context);
+            ucQlrList1.LinkObject(_linkedObject as IEntity);
         }
 
         private void linkedObject_PropertyChanged(object sender, PropertyChangedEventArgs e)

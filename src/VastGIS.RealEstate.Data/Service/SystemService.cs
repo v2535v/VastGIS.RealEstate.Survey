@@ -125,6 +125,7 @@ namespace VastGIS.RealEstate.Data.Service
         IEnumerable<VgAttachment> GetVgAttachmentsByWydm(Guid wydm);
         VgClassdetail GetVgClassdetailByTableName(string tbName);
         string GetTemporaryAttachmentName();
-        
+
+        IEnumerable<Qlr> GetQlrsByBdcdyh(string bdcdhy);
     }
 }
