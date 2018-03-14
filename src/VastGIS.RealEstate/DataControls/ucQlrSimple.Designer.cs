@@ -65,7 +65,6 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtQlrmc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtQlrmc.EnableTouchMode = true;
             this.txtQlrmc.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtQlrmc.ImeMode = System.Windows.Forms.ImeMode.On;
             this.txtQlrmc.Location = new System.Drawing.Point(83, 3);
             this.txtQlrmc.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtQlrmc.Name = "txtQlrmc";
@@ -115,7 +114,6 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtDz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDz.EnableTouchMode = true;
             this.txtDz.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDz.ImeMode = System.Windows.Forms.ImeMode.On;
             this.txtDz.Location = new System.Drawing.Point(395, 38);
             this.txtDz.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtDz.Name = "txtDz";
