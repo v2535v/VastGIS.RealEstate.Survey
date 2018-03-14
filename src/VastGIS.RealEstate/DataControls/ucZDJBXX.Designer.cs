@@ -131,7 +131,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // intID
             // 
             this.intID.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intID.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.intID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intID.EnableTouchMode = true;
             this.intID.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -158,7 +158,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtYsdm
             // 
-            this.txtYsdm.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtYsdm.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtYsdm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtYsdm.EnableTouchMode = true;
             this.txtYsdm.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -182,7 +182,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtZddm
             // 
-            this.txtZddm.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZddm.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtZddm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZddm.EnableTouchMode = true;
             this.txtZddm.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -206,7 +206,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtBdcdyh
             // 
-            this.txtBdcdyh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtBdcdyh.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtBdcdyh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBdcdyh.EnableTouchMode = true;
             this.txtBdcdyh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -230,14 +230,14 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // cmbZdtzm
             // 
-            this.cmbZdtzm.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbZdtzm.BeforeTouchSize = new System.Drawing.Size(158, 20);
             this.cmbZdtzm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbZdtzm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbZdtzm.EnableTouchMode = true;
-            this.cmbZdtzm.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbZdtzm.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbZdtzm.Location = new System.Drawing.Point(83, 143);
             this.cmbZdtzm.Name = "cmbZdtzm";
-            this.cmbZdtzm.Size = new System.Drawing.Size(158, 20);
+            this.cmbZdtzm.Size = new System.Drawing.Size(158, 26);
             this.cmbZdtzm.TabIndex = 10;
             // 
             // lblZl
@@ -253,7 +253,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtZl
             // 
-            this.txtZl.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZl.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtZl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZl.EnableTouchMode = true;
             this.txtZl.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -278,7 +278,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // dblZdmj
             // 
             this.dblZdmj.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblZdmj.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblZdmj.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.dblZdmj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblZdmj.DoubleValue = 1D;
             this.dblZdmj.EnableTouchMode = true;
@@ -305,14 +305,14 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // cmbMjdw
             // 
-            this.cmbMjdw.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbMjdw.BeforeTouchSize = new System.Drawing.Size(158, 20);
             this.cmbMjdw.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbMjdw.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMjdw.EnableTouchMode = true;
-            this.cmbMjdw.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbMjdw.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbMjdw.Location = new System.Drawing.Point(83, 248);
             this.cmbMjdw.Name = "cmbMjdw";
-            this.cmbMjdw.Size = new System.Drawing.Size(158, 20);
+            this.cmbMjdw.Size = new System.Drawing.Size(158, 26);
             this.cmbMjdw.TabIndex = 16;
             // 
             // lblYt
@@ -328,7 +328,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtYt
             // 
-            this.txtYt.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtYt.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtYt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtYt.EnableTouchMode = true;
             this.txtYt.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -352,14 +352,14 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // cmbDj
             // 
-            this.cmbDj.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbDj.BeforeTouchSize = new System.Drawing.Size(158, 20);
             this.cmbDj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbDj.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDj.EnableTouchMode = true;
-            this.cmbDj.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbDj.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbDj.Location = new System.Drawing.Point(332, 3);
             this.cmbDj.Name = "cmbDj";
-            this.cmbDj.Size = new System.Drawing.Size(158, 20);
+            this.cmbDj.Size = new System.Drawing.Size(158, 26);
             this.cmbDj.TabIndex = 20;
             // 
             // lblJg
@@ -376,7 +376,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // dblJg
             // 
             this.dblJg.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblJg.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblJg.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.dblJg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblJg.DoubleValue = 1D;
             this.dblJg.EnableTouchMode = true;
@@ -403,14 +403,14 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // cmbQllx
             // 
-            this.cmbQllx.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbQllx.BeforeTouchSize = new System.Drawing.Size(158, 20);
             this.cmbQllx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbQllx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbQllx.EnableTouchMode = true;
-            this.cmbQllx.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbQllx.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbQllx.Location = new System.Drawing.Point(332, 73);
             this.cmbQllx.Name = "cmbQllx";
-            this.cmbQllx.Size = new System.Drawing.Size(158, 20);
+            this.cmbQllx.Size = new System.Drawing.Size(158, 26);
             this.cmbQllx.TabIndex = 24;
             // 
             // lblQlxz
@@ -426,14 +426,14 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // cmbQlxz
             // 
-            this.cmbQlxz.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbQlxz.BeforeTouchSize = new System.Drawing.Size(158, 20);
             this.cmbQlxz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbQlxz.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbQlxz.EnableTouchMode = true;
-            this.cmbQlxz.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbQlxz.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbQlxz.Location = new System.Drawing.Point(332, 108);
             this.cmbQlxz.Name = "cmbQlxz";
-            this.cmbQlxz.Size = new System.Drawing.Size(158, 20);
+            this.cmbQlxz.Size = new System.Drawing.Size(158, 26);
             this.cmbQlxz.TabIndex = 26;
             // 
             // lblQlsdfs
@@ -449,14 +449,14 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // cmbQlsdfs
             // 
-            this.cmbQlsdfs.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbQlsdfs.BeforeTouchSize = new System.Drawing.Size(158, 20);
             this.cmbQlsdfs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbQlsdfs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbQlsdfs.EnableTouchMode = true;
-            this.cmbQlsdfs.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbQlsdfs.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbQlsdfs.Location = new System.Drawing.Point(332, 143);
             this.cmbQlsdfs.Name = "cmbQlsdfs";
-            this.cmbQlsdfs.Size = new System.Drawing.Size(158, 20);
+            this.cmbQlsdfs.Size = new System.Drawing.Size(158, 26);
             this.cmbQlsdfs.TabIndex = 28;
             // 
             // lblRjl
@@ -473,7 +473,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // dblRjl
             // 
             this.dblRjl.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblRjl.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblRjl.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.dblRjl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblRjl.DoubleValue = 1D;
             this.dblRjl.EnableTouchMode = true;
@@ -501,7 +501,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // dblJzmd
             // 
             this.dblJzmd.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblJzmd.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblJzmd.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.dblJzmd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblJzmd.DoubleValue = 1D;
             this.dblJzmd.EnableTouchMode = true;
@@ -529,7 +529,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // dblJzxg
             // 
             this.dblJzxg.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblJzxg.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblJzxg.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.dblJzxg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblJzxg.DoubleValue = 1D;
             this.dblJzxg.EnableTouchMode = true;
@@ -556,7 +556,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtZdszd
             // 
-            this.txtZdszd.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZdszd.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtZdszd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZdszd.EnableTouchMode = true;
             this.txtZdszd.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -580,7 +580,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtZdszn
             // 
-            this.txtZdszn.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZdszn.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtZdszn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZdszn.EnableTouchMode = true;
             this.txtZdszn.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -604,7 +604,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtZdszx
             // 
-            this.txtZdszx.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZdszx.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtZdszx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZdszx.EnableTouchMode = true;
             this.txtZdszx.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -628,7 +628,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtZdszb
             // 
-            this.txtZdszb.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZdszb.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtZdszb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZdszb.EnableTouchMode = true;
             this.txtZdszb.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -652,7 +652,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtZdt
             // 
-            this.txtZdt.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtZdt.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtZdt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZdt.EnableTouchMode = true;
             this.txtZdt.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -676,7 +676,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtTfh
             // 
-            this.txtTfh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtTfh.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtTfh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTfh.EnableTouchMode = true;
             this.txtTfh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -700,7 +700,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtDjh
             // 
-            this.txtDjh.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtDjh.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtDjh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDjh.EnableTouchMode = true;
             this.txtDjh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -724,7 +724,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtDah
             // 
-            this.txtDah.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtDah.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtDah.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDah.EnableTouchMode = true;
             this.txtDah.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -748,7 +748,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // txtBz
             // 
-            this.txtBz.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtBz.BeforeTouchSize = new System.Drawing.Size(146, 21);
             this.txtBz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBz.EnableTouchMode = true;
             this.txtBz.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -772,14 +772,14 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             // 
             // cmbZt
             // 
-            this.cmbZt.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.cmbZt.BeforeTouchSize = new System.Drawing.Size(158, 20);
             this.cmbZt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbZt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbZt.EnableTouchMode = true;
-            this.cmbZt.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbZt.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbZt.Location = new System.Drawing.Point(581, 283);
             this.cmbZt.Name = "cmbZt";
-            this.cmbZt.Size = new System.Drawing.Size(158, 20);
+            this.cmbZt.Size = new System.Drawing.Size(158, 26);
             this.cmbZt.TabIndex = 54;
             // 
             // tableLayoutPanel1

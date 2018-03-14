@@ -34,9 +34,9 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabAttribute = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.pageMain = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.ucLinkObject = new VastGIS.Plugins.RealEstate.DataControls.ucQlrSimple();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.ucLinkObject = new VastGIS.Plugins.RealEstate.DataControls.ucQlrSimple();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabAttribute)).BeginInit();
             this.tabAttribute.SuspendLayout();
@@ -65,13 +65,13 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(770, 219);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(770, 157);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tabAttribute
             // 
             this.tabAttribute.ActiveTabForeColor = System.Drawing.Color.Empty;
-            this.tabAttribute.BeforeTouchSize = new System.Drawing.Size(764, 173);
+            this.tabAttribute.BeforeTouchSize = new System.Drawing.Size(764, 111);
             this.tabAttribute.CloseButtonForeColor = System.Drawing.Color.Empty;
             this.tabAttribute.CloseButtonHoverForeColor = System.Drawing.Color.Empty;
             this.tabAttribute.CloseButtonPressedForeColor = System.Drawing.Color.Empty;
@@ -83,7 +83,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.tabAttribute.Name = "tabAttribute";
             this.tabAttribute.SeparatorColor = System.Drawing.SystemColors.ControlDark;
             this.tabAttribute.ShowSeparator = false;
-            this.tabAttribute.Size = new System.Drawing.Size(764, 173);
+            this.tabAttribute.Size = new System.Drawing.Size(764, 111);
             this.tabAttribute.TabIndex = 4;
             // 
             // pageMain
@@ -94,23 +94,16 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.pageMain.Location = new System.Drawing.Point(1, 24);
             this.pageMain.Name = "pageMain";
             this.pageMain.ShowCloseButton = true;
-            this.pageMain.Size = new System.Drawing.Size(761, 147);
+            this.pageMain.Size = new System.Drawing.Size(761, 85);
             this.pageMain.TabIndex = 5;
             this.pageMain.Text = "属性";
             this.pageMain.ThemesEnabled = false;
             // 
-            // ucLinkObject
-            // 
-            this.ucLinkObject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucLinkObject.Location = new System.Drawing.Point(0, 0);
-            this.ucLinkObject.Name = "ucLinkObject";
-            this.ucLinkObject.Size = new System.Drawing.Size(761, 147);
-            this.ucLinkObject.TabIndex = 8;
-            // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(683, 183);
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(683, 121);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(74, 23);
             this.btnClose.TabIndex = 2;
@@ -122,7 +115,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(603, 183);
+            this.btnSave.Location = new System.Drawing.Point(603, 121);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(74, 23);
             this.btnSave.TabIndex = 3;
@@ -130,14 +123,23 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // ucLinkObject
+            // 
+            this.ucLinkObject.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucLinkObject.Location = new System.Drawing.Point(0, 0);
+            this.ucLinkObject.Name = "ucLinkObject";
+            this.ucLinkObject.Size = new System.Drawing.Size(761, 85);
+            this.ucLinkObject.TabIndex = 8;
+            // 
             // frmQlrSimple
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(770, 219);
+            this.ClientSize = new System.Drawing.Size(770, 157);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmQlrSimple";

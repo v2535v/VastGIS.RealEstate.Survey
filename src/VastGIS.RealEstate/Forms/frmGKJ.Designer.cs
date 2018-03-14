@@ -70,7 +70,7 @@
             // 
             this.cmbXJFS.BeforeTouchSize = new System.Drawing.Size(121, 20);
             this.cmbXJFS.EnableTouchMode = true;
-            this.cmbXJFS.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbXJFS.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbXJFS.Items.AddRange(new object[] {
             "翻建",
             "改建",
@@ -101,9 +101,9 @@
             // intXJNF
             // 
             this.intXJNF.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.intXJNF.BeforeTouchSize = new System.Drawing.Size(100, 21);
+            this.intXJNF.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.intXJNF.EnableTouchMode = true;
-            this.intXJNF.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intXJNF.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intXJNF.IntegerValue = ((long)(1900));
             this.intXJNF.Location = new System.Drawing.Point(75, 45);
             this.intXJNF.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -138,9 +138,9 @@
             // 
             // txtTDZH
             // 
-            this.txtTDZH.BeforeTouchSize = new System.Drawing.Size(100, 21);
+            this.txtTDZH.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtTDZH.EnableTouchMode = true;
-            this.txtTDZH.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtTDZH.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtTDZH.Location = new System.Drawing.Point(78, 115);
             this.txtTDZH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtTDZH.Name = "txtTDZH";
@@ -150,9 +150,9 @@
             // 
             // txtPZWH
             // 
-            this.txtPZWH.BeforeTouchSize = new System.Drawing.Size(100, 21);
+            this.txtPZWH.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtPZWH.EnableTouchMode = true;
-            this.txtPZWH.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtPZWH.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtPZWH.Location = new System.Drawing.Point(78, 149);
             this.txtPZWH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtPZWH.Name = "txtPZWH";
@@ -172,10 +172,10 @@
             // dblXZZDMJ
             // 
             this.dblXZZDMJ.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblXZZDMJ.BeforeTouchSize = new System.Drawing.Size(100, 21);
+            this.dblXZZDMJ.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.dblXZZDMJ.DoubleValue = 0D;
             this.dblXZZDMJ.EnableTouchMode = true;
-            this.dblXZZDMJ.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblXZZDMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblXZZDMJ.Location = new System.Drawing.Point(102, 191);
             this.dblXZZDMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblXZZDMJ.Name = "dblXZZDMJ";
@@ -206,10 +206,10 @@
             // dblYYMJ
             // 
             this.dblYYMJ.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblYYMJ.BeforeTouchSize = new System.Drawing.Size(100, 21);
+            this.dblYYMJ.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.dblYYMJ.DoubleValue = 0D;
             this.dblYYMJ.EnableTouchMode = true;
-            this.dblYYMJ.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblYYMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblYYMJ.Location = new System.Drawing.Point(103, 259);
             this.dblYYMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblYYMJ.Name = "dblYYMJ";
@@ -231,10 +231,10 @@
             // dblFCJZMJ
             // 
             this.dblFCJZMJ.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblFCJZMJ.BeforeTouchSize = new System.Drawing.Size(100, 21);
+            this.dblFCJZMJ.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.dblFCJZMJ.DoubleValue = 0D;
             this.dblFCJZMJ.EnableTouchMode = true;
-            this.dblFCJZMJ.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblFCJZMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblFCJZMJ.Location = new System.Drawing.Point(104, 293);
             this.dblFCJZMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblFCJZMJ.Name = "dblFCJZMJ";
@@ -280,8 +280,9 @@
             // cmbSZ
             // 
             this.cmbSZ.BeforeTouchSize = new System.Drawing.Size(121, 20);
+            this.cmbSZ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSZ.EnableTouchMode = true;
-            this.cmbSZ.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbSZ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbSZ.Items.AddRange(new object[] {
             "清楚",
             "有争议"});
@@ -293,10 +294,10 @@
             // dblLSYDMJ
             // 
             this.dblLSYDMJ.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblLSYDMJ.BeforeTouchSize = new System.Drawing.Size(100, 21);
+            this.dblLSYDMJ.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.dblLSYDMJ.DoubleValue = 0D;
             this.dblLSYDMJ.EnableTouchMode = true;
-            this.dblLSYDMJ.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblLSYDMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblLSYDMJ.Location = new System.Drawing.Point(102, 225);
             this.dblLSYDMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblLSYDMJ.Name = "dblLSYDMJ";
@@ -369,6 +370,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbXJFS);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmGKJ";
