@@ -51,6 +51,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
         {
             IMap map = _context.Map as IMap;
             map.MouseUp -= Map_MouseUp;
+            ((IMap)_context.Map).MapCursor = MapCursor.Pan;
         }
 
         private void Map_MouseUp(object sender, MouseEventArgs e)

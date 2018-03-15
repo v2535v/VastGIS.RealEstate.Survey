@@ -52,6 +52,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.chkZL = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.chkJZ = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.intGKJNF = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.cmbXJFS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intXJNF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkZJ1)).BeginInit();
@@ -64,52 +67,62 @@
             ((System.ComponentModel.ISupportInitialize)(this.dblLSYDMJ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkZL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkJZ)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.intGKJNF)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbXJFS
             // 
             this.cmbXJFS.BeforeTouchSize = new System.Drawing.Size(121, 20);
+            this.tableLayoutPanel1.SetColumnSpan(this.cmbXJFS, 3);
+            this.cmbXJFS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbXJFS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbXJFS.EnableTouchMode = true;
             this.cmbXJFS.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbXJFS.Items.AddRange(new object[] {
             "翻建",
             "改建",
             "扩建"});
-            this.cmbXJFS.Location = new System.Drawing.Point(74, 13);
+            this.cmbXJFS.Location = new System.Drawing.Point(103, 8);
             this.cmbXJFS.Name = "cmbXJFS";
-            this.cmbXJFS.Size = new System.Drawing.Size(154, 26);
+            this.cmbXJFS.Size = new System.Drawing.Size(413, 26);
             this.cmbXJFS.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(94, 30);
             this.label1.TabIndex = 1;
             this.label1.Text = "方式：";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 53);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(3, 35);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(94, 30);
             this.label2.TabIndex = 2;
-            this.label2.Text = "时间：";
+            this.label2.Text = "建房年份：";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // intXJNF
             // 
             this.intXJNF.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.intXJNF.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.intXJNF.BeforeTouchSize = new System.Drawing.Size(154, 21);
+            this.intXJNF.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intXJNF.EnableTouchMode = true;
             this.intXJNF.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intXJNF.IntegerValue = ((long)(1900));
-            this.intXJNF.Location = new System.Drawing.Point(75, 45);
+            this.intXJNF.Location = new System.Drawing.Point(103, 38);
             this.intXJNF.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.intXJNF.Name = "intXJNF";
             this.intXJNF.NullString = "";
-            this.intXJNF.Size = new System.Drawing.Size(150, 28);
+            this.intXJNF.Size = new System.Drawing.Size(153, 28);
             this.intXJNF.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.intXJNF.TabIndex = 3;
             this.intXJNF.Text = "1,900";
@@ -117,12 +130,14 @@
             // chkZJ1
             // 
             this.chkZJ1.BeforeTouchSize = new System.Drawing.Size(150, 21);
+            this.tableLayoutPanel1.SetColumnSpan(this.chkZJ1, 3);
+            this.chkZJ1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkZJ1.EnableTouchMode = true;
             this.chkZJ1.ImageCheckBoxSize = new System.Drawing.Size(19, 19);
-            this.chkZJ1.Location = new System.Drawing.Point(75, 85);
+            this.chkZJ1.Location = new System.Drawing.Point(103, 68);
             this.chkZJ1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
             this.chkZJ1.Name = "chkZJ1";
-            this.chkZJ1.Size = new System.Drawing.Size(225, 31);
+            this.chkZJ1.Size = new System.Drawing.Size(413, 24);
             this.chkZJ1.TabIndex = 5;
             this.chkZJ1.Text = "已办理修建手续";
             this.chkZJ1.ThemesEnabled = false;
@@ -130,57 +145,64 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 123);
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(3, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.Size = new System.Drawing.Size(94, 30);
             this.label3.TabIndex = 6;
             this.label3.Text = "土地证号：";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtTDZH
             // 
-            this.txtTDZH.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtTDZH.BeforeTouchSize = new System.Drawing.Size(154, 21);
+            this.txtTDZH.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTDZH.EnableTouchMode = true;
             this.txtTDZH.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtTDZH.Location = new System.Drawing.Point(78, 115);
+            this.txtTDZH.Location = new System.Drawing.Point(103, 98);
             this.txtTDZH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtTDZH.Name = "txtTDZH";
-            this.txtTDZH.Size = new System.Drawing.Size(150, 28);
+            this.txtTDZH.Size = new System.Drawing.Size(153, 28);
             this.txtTDZH.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtTDZH.TabIndex = 7;
             // 
             // txtPZWH
             // 
-            this.txtPZWH.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.txtPZWH.BeforeTouchSize = new System.Drawing.Size(154, 21);
+            this.txtPZWH.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPZWH.EnableTouchMode = true;
             this.txtPZWH.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtPZWH.Location = new System.Drawing.Point(78, 149);
+            this.txtPZWH.Location = new System.Drawing.Point(362, 98);
             this.txtPZWH.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtPZWH.Name = "txtPZWH";
-            this.txtPZWH.Size = new System.Drawing.Size(150, 28);
+            this.txtPZWH.Size = new System.Drawing.Size(154, 28);
             this.txtPZWH.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtPZWH.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 157);
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(262, 95);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.Size = new System.Drawing.Size(94, 30);
             this.label4.TabIndex = 8;
             this.label4.Text = "批准文号：";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dblXZZDMJ
             // 
             this.dblXZZDMJ.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblXZZDMJ.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblXZZDMJ.BeforeTouchSize = new System.Drawing.Size(154, 21);
+            this.dblXZZDMJ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblXZZDMJ.DoubleValue = 0D;
             this.dblXZZDMJ.EnableTouchMode = true;
             this.dblXZZDMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dblXZZDMJ.Location = new System.Drawing.Point(102, 191);
+            this.dblXZZDMJ.Location = new System.Drawing.Point(103, 133);
             this.dblXZZDMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblXZZDMJ.Name = "dblXZZDMJ";
             this.dblXZZDMJ.NullString = "";
-            this.dblXZZDMJ.Size = new System.Drawing.Size(125, 28);
+            this.dblXZZDMJ.Size = new System.Drawing.Size(153, 28);
             this.dblXZZDMJ.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.dblXZZDMJ.TabIndex = 10;
             this.dblXZZDMJ.Text = "0.00";
@@ -188,33 +210,38 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 199);
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(3, 130);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 12);
+            this.label5.Size = new System.Drawing.Size(94, 30);
             this.label5.TabIndex = 11;
             this.label5.Text = "现状宗地面积：";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 267);
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(262, 130);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 12);
+            this.label6.Size = new System.Drawing.Size(94, 30);
             this.label6.TabIndex = 13;
             this.label6.Text = "原有宗地面积：";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dblYYMJ
             // 
             this.dblYYMJ.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblYYMJ.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblYYMJ.BeforeTouchSize = new System.Drawing.Size(154, 21);
+            this.dblYYMJ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblYYMJ.DoubleValue = 0D;
             this.dblYYMJ.EnableTouchMode = true;
             this.dblYYMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dblYYMJ.Location = new System.Drawing.Point(103, 259);
+            this.dblYYMJ.Location = new System.Drawing.Point(362, 133);
             this.dblYYMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblYYMJ.Name = "dblYYMJ";
             this.dblYYMJ.NullString = "";
-            this.dblYYMJ.Size = new System.Drawing.Size(125, 28);
+            this.dblYYMJ.Size = new System.Drawing.Size(154, 28);
             this.dblYYMJ.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.dblYYMJ.TabIndex = 12;
             this.dblYYMJ.Text = "0.00";
@@ -222,24 +249,27 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 301);
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(262, 160);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 12);
+            this.label7.Size = new System.Drawing.Size(94, 30);
             this.label7.TabIndex = 15;
             this.label7.Text = "房产建筑面积：";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dblFCJZMJ
             // 
             this.dblFCJZMJ.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblFCJZMJ.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblFCJZMJ.BeforeTouchSize = new System.Drawing.Size(154, 21);
+            this.dblFCJZMJ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblFCJZMJ.DoubleValue = 0D;
             this.dblFCJZMJ.EnableTouchMode = true;
             this.dblFCJZMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dblFCJZMJ.Location = new System.Drawing.Point(104, 293);
+            this.dblFCJZMJ.Location = new System.Drawing.Point(362, 163);
             this.dblFCJZMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblFCJZMJ.Name = "dblFCJZMJ";
             this.dblFCJZMJ.NullString = "";
-            this.dblFCJZMJ.Size = new System.Drawing.Size(125, 28);
+            this.dblFCJZMJ.Size = new System.Drawing.Size(154, 28);
             this.dblFCJZMJ.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.dblFCJZMJ.TabIndex = 14;
             this.dblFCJZMJ.Text = "0.00";
@@ -250,7 +280,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.EnableTouchMode = true;
             this.btnCancel.IsBackStageButton = false;
-            this.btnCancel.Location = new System.Drawing.Point(151, 396);
+            this.btnCancel.Location = new System.Drawing.Point(362, 253);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(78, 34);
             this.btnCancel.TabIndex = 17;
@@ -262,7 +292,7 @@
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.EnableTouchMode = true;
             this.btnOK.IsBackStageButton = false;
-            this.btnOK.Location = new System.Drawing.Point(67, 396);
+            this.btnOK.Location = new System.Drawing.Point(262, 253);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(78, 34);
             this.btnOK.TabIndex = 16;
@@ -271,38 +301,43 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 334);
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(3, 190);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.Size = new System.Drawing.Size(94, 30);
             this.label8.TabIndex = 19;
             this.label8.Text = "四至界址：";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cmbSZ
             // 
             this.cmbSZ.BeforeTouchSize = new System.Drawing.Size(121, 20);
+            this.cmbSZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbSZ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSZ.EnableTouchMode = true;
             this.cmbSZ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbSZ.Items.AddRange(new object[] {
             "清楚",
             "有争议"});
-            this.cmbSZ.Location = new System.Drawing.Point(88, 327);
+            this.cmbSZ.Location = new System.Drawing.Point(103, 193);
             this.cmbSZ.Name = "cmbSZ";
-            this.cmbSZ.Size = new System.Drawing.Size(141, 26);
+            this.cmbSZ.Size = new System.Drawing.Size(153, 26);
             this.cmbSZ.TabIndex = 18;
+            this.cmbSZ.Text = "清楚";
             // 
             // dblLSYDMJ
             // 
             this.dblLSYDMJ.BackGroundColor = System.Drawing.SystemColors.Window;
-            this.dblLSYDMJ.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.dblLSYDMJ.BeforeTouchSize = new System.Drawing.Size(154, 21);
+            this.dblLSYDMJ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblLSYDMJ.DoubleValue = 0D;
             this.dblLSYDMJ.EnableTouchMode = true;
             this.dblLSYDMJ.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dblLSYDMJ.Location = new System.Drawing.Point(102, 225);
+            this.dblLSYDMJ.Location = new System.Drawing.Point(103, 163);
             this.dblLSYDMJ.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblLSYDMJ.Name = "dblLSYDMJ";
             this.dblLSYDMJ.NullString = "";
-            this.dblLSYDMJ.Size = new System.Drawing.Size(125, 28);
+            this.dblLSYDMJ.Size = new System.Drawing.Size(153, 28);
             this.dblLSYDMJ.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.dblLSYDMJ.TabIndex = 12;
             this.dblLSYDMJ.Text = "0.00";
@@ -310,21 +345,24 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 233);
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Location = new System.Drawing.Point(3, 160);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 12);
+            this.label9.Size = new System.Drawing.Size(94, 30);
             this.label9.TabIndex = 13;
             this.label9.Text = "临时用地面积：";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // chkZL
             // 
             this.chkZL.BeforeTouchSize = new System.Drawing.Size(150, 21);
+            this.chkZL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkZL.EnableTouchMode = true;
             this.chkZL.ImageCheckBoxSize = new System.Drawing.Size(19, 19);
-            this.chkZL.Location = new System.Drawing.Point(16, 359);
+            this.chkZL.Location = new System.Drawing.Point(103, 223);
             this.chkZL.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
             this.chkZL.Name = "chkZL";
-            this.chkZL.Size = new System.Drawing.Size(104, 31);
+            this.chkZL.Size = new System.Drawing.Size(153, 24);
             this.chkZL.TabIndex = 20;
             this.chkZL.Text = "坐落发生变化";
             this.chkZL.ThemesEnabled = false;
@@ -332,44 +370,105 @@
             // chkJZ
             // 
             this.chkJZ.BeforeTouchSize = new System.Drawing.Size(150, 21);
+            this.tableLayoutPanel1.SetColumnSpan(this.chkJZ, 2);
+            this.chkJZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chkJZ.EnableTouchMode = true;
             this.chkJZ.ImageCheckBoxSize = new System.Drawing.Size(19, 19);
-            this.chkJZ.Location = new System.Drawing.Point(122, 359);
+            this.chkJZ.Location = new System.Drawing.Point(262, 223);
             this.chkJZ.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
             this.chkJZ.Name = "chkJZ";
-            this.chkJZ.Size = new System.Drawing.Size(107, 31);
+            this.chkJZ.Size = new System.Drawing.Size(254, 24);
             this.chkJZ.TabIndex = 20;
             this.chkJZ.Text = "界址发生变化";
             this.chkJZ.ThemesEnabled = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cmbXJFS, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.intXJNF, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label10, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.intGKJNF, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.chkZJ1, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtTDZH, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.dblLSYDMJ, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.dblXZZDMJ, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.txtPZWH, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.dblYYMJ, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 2, 7);
+            this.tableLayoutPanel1.Controls.Add(this.dblFCJZMJ, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label8, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.cmbSZ, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.chkZL, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.chkJZ, 2, 9);
+            this.tableLayoutPanel1.Controls.Add(this.btnOK, 2, 10);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancel, 3, 10);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 11;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(519, 300);
+            this.tableLayoutPanel1.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Location = new System.Drawing.Point(262, 35);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 30);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "改扩建年份：";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // intGKJNF
+            // 
+            this.intGKJNF.BackGroundColor = System.Drawing.SystemColors.Window;
+            this.intGKJNF.BeforeTouchSize = new System.Drawing.Size(154, 21);
+            this.intGKJNF.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.intGKJNF.EnableTouchMode = true;
+            this.intGKJNF.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intGKJNF.IntegerValue = ((long)(1900));
+            this.intGKJNF.Location = new System.Drawing.Point(362, 38);
+            this.intGKJNF.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.intGKJNF.Name = "intGKJNF";
+            this.intGKJNF.NullString = "";
+            this.intGKJNF.Size = new System.Drawing.Size(154, 28);
+            this.intGKJNF.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.intGKJNF.TabIndex = 5;
+            this.intGKJNF.Text = "1,900";
             // 
             // frmGKJ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(235, 443);
-            this.Controls.Add(this.chkJZ);
-            this.Controls.Add(this.chkZL);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.cmbSZ);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.dblFCJZMJ);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.dblLSYDMJ);
-            this.Controls.Add(this.dblYYMJ);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.dblXZZDMJ);
-            this.Controls.Add(this.txtPZWH);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtTDZH);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.chkZJ1);
-            this.Controls.Add(this.intXJNF);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmbXJFS);
+            this.ClientSize = new System.Drawing.Size(519, 300);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -387,8 +486,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dblLSYDMJ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkZL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkJZ)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.intGKJNF)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -417,5 +518,8 @@
         private System.Windows.Forms.Label label9;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkZL;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkJZ;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label10;
+        private Syncfusion.Windows.Forms.Tools.IntegerTextBox intGKJNF;
     }
 }

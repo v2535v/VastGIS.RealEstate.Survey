@@ -38,6 +38,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public const string CreateJZDByZD = "re_CreateJZDByZD";
         public const string AssignZRZH = "re_AssignZRZH";
         public const string AssignPhoto = "re_AssignPhoto";
+        public const string Measure = "re_Measure";
 
         #region Constants
 

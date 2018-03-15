@@ -739,6 +739,7 @@
     <Compile Include="Commands\ToolDistanceToDistanceConstructor.cs" />
     <Compile Include="Commands\ToolEditFeature.cs" />
     <Compile Include="Commands\ToolEditGeometry.cs" />
+    <Compile Include="Commands\ToolMeasure.cs" />
     <Compile Include="Commands\ToolMoveFeature.cs" />
     <Compile Include="Commands\ToolNewFeature.cs" />
     <Compile Include="Commands\ToolSelectFeatureByPoint.cs" />
@@ -1364,6 +1365,12 @@
     <Compile Include="Forms\frmGKJ.Designer.cs">
       <DependentUpon>frmGKJ.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmMeasure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMeasure.Designer.cs">
+      <DependentUpon>frmMeasure.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmZJXZ.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1391,6 +1398,8 @@
     <Compile Include="Forms\JzdInfo.cs" />
     <Compile Include="Forms\JzxInfo.cs" />
     <Compile Include="Helpers\LayerHelper.cs" />
+    <Compile Include="Model\ReLine.cs" />
+    <Compile Include="Model\RePoint.cs" />
     <Compile Include="Viewer\frmAudioViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2153,6 +2162,9 @@
     <EmbeddedResource Include="Forms\frmGKJ.resx">
       <DependentUpon>frmGKJ.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMeasure.resx">
+      <DependentUpon>frmMeasure.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmZJXZ.resx">
       <DependentUpon>frmZJXZ.cs</DependentUpon>
     </EmbeddedResource>
@@ -2433,6 +2445,7 @@
     <None Include="Resources\img_createone.png" />
     <None Include="Resources\icon_zrzh.png" />
     <None Include="Resources\icon_photo.png" />
+    <None Include="Resources\icon_measure_distance.png" />
     <Content Include="Sql\createretables.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

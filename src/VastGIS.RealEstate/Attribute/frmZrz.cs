@@ -137,7 +137,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         {
             long qsC = intQSCS.IntegerValue;
             long jsC = intJSCS.IntegerValue;
-            if (jsC <= qsC)
+            if (jsC < qsC)
             {
                 MessageBox.Show("起始层数必须小于结束层数!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

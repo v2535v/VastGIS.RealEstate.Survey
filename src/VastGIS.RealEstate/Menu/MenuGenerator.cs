@@ -89,7 +89,8 @@ namespace VastGIS.Plugins.RealEstate.Menu
             menu.AddToolStripEx("toolStripExZDTable", "属性表编辑", "tabZD");
             menu.AddButton(_commands[MenuKeys.OpenTable]);
 
-
+            menu.AddToolStripEx("toolStripExZDTool", "工具", "tabZD");
+            menu.AddButton(_commands[MenuKeys.Measure]);
         }
 
         public MenuCommands MenuCommands { get { return _commands; } }

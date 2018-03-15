@@ -153,7 +153,7 @@
             this.dblDist2.BeforeTouchSize = new System.Drawing.Size(181, 21);
             this.dblDist2.DoubleValue = 1D;
             this.dblDist2.EnableTouchMode = true;
-            this.dblDist2.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblDist2.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblDist2.Location = new System.Drawing.Point(203, 73);
             this.dblDist2.MaxValue = 1000D;
             this.dblDist2.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -171,7 +171,7 @@
             this.cmbPoint2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbPoint2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPoint2.EnableTouchMode = true;
-            this.cmbPoint2.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbPoint2.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbPoint2.Items.AddRange(new object[] {
             "起点",
             "终点"});
@@ -187,7 +187,7 @@
             this.cmbLine2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbLine2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLine2.EnableTouchMode = true;
-            this.cmbLine2.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbLine2.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbLine2.Location = new System.Drawing.Point(53, 73);
             this.cmbLine2.Name = "cmbLine2";
             this.cmbLine2.Size = new System.Drawing.Size(74, 26);
@@ -199,7 +199,7 @@
             this.cmbPoint1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbPoint1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPoint1.EnableTouchMode = true;
-            this.cmbPoint1.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbPoint1.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbPoint1.Items.AddRange(new object[] {
             "起点",
             "终点"});
@@ -215,7 +215,7 @@
             this.cmbLine1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbLine1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLine1.EnableTouchMode = true;
-            this.cmbLine1.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbLine1.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbLine1.Location = new System.Drawing.Point(53, 38);
             this.cmbLine1.Name = "cmbLine1";
             this.cmbLine1.Size = new System.Drawing.Size(74, 26);
@@ -287,7 +287,7 @@
             this.dblDist1.BeforeTouchSize = new System.Drawing.Size(181, 21);
             this.dblDist1.DoubleValue = 1D;
             this.dblDist1.EnableTouchMode = true;
-            this.dblDist1.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblDist1.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblDist1.Location = new System.Drawing.Point(203, 38);
             this.dblDist1.MaxValue = 1000D;
             this.dblDist1.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -316,7 +316,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFeature.BeforeTouchSize = new System.Drawing.Size(181, 21);
             this.txtFeature.EnableTouchMode = true;
-            this.txtFeature.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtFeature.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtFeature.Location = new System.Drawing.Point(90, 32);
             this.txtFeature.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtFeature.Name = "txtFeature";

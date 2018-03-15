@@ -16,6 +16,7 @@ using VastGIS.Plugins.RealEstate.Attribute;
 using VastGIS.Plugins.RealEstate.DataControls;
 using VastGIS.Plugins.RealEstate.Events;
 using VastGIS.Plugins.RealEstate.Helpers;
+using VastGIS.Plugins.RealEstate.Model;
 using VastGIS.Plugins.Services;
 using VastGIS.RealEstate.Api.Interface;
 using VastGIS.RealEstate.Data.Entity;
@@ -330,6 +331,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             DrawGeometry(editGeometry, color);
             DrawJzd();
             DrawJzx();
+            _map.Drawing.DrawLabel(_layerHandle, $"{editGeometry.Area:N}m", editGeometry.Center.X, editGeometry.Center.Y, 0);
             //List<JzdInfo> vertexs = _jzdInfos.Where(c => c.Selected == true).ToList();
             //foreach (JzdInfo vertex in vertexs)
             //{
@@ -364,8 +366,8 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 {
                     _map.Drawing.DrawLine(_layerHandle, edge.StartX, edge.StartY, edge.EndX, edge.EndY, 3, color);
                 }
-
-                _map.Drawing.DrawLabel(_layerHandle,"L"+ edge.Zdnsxh.ToString(), edge.CenterX, edge.CenterY, 0);
+                ReLine line = new ReLine(edge.StartX, edge.StartY, edge.EndX, edge.EndY);
+                _map.Drawing.DrawLabel(_layerHandle,$"L{edge.Zdnsxh} ({line.Length:N}m)", edge.CenterX, edge.CenterY, 0);
                 count++;
             }
         }

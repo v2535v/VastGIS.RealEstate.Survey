@@ -60,6 +60,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
             {
                 _plugin.MouseDown -= OnMouseDown;
             }
+            ((IMap)_context.Map).MapCursor = MapCursor.Pan;
         }
 
         

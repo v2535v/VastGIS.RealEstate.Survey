@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity.Spatial;
+using VastGIS.Plugins.RealEstate.Model;
 using VastGIS.Plugins.RealEstate.Properties;
 using VastGIS.RealEstate.Data.Helpers;
 
@@ -93,7 +94,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             set
             {
                 _isUpdate = value;
-                
+
             }
         }
 
@@ -130,7 +131,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.gridPoints.TableOptions.ListBoxSelectionMode = SelectionMode.One;
             //to set proportional column resizing to grid.
             this.gridPoints.AllowProportionalColumnSizing = true;
-            
+
             //to hide Caption.
             this.gridPoints.TopLevelGroupOptions.ShowCaption = false;
             this.gridPoints.ChildGroupOptions.ShowCaption = false;
@@ -172,7 +173,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 if (_vertexs.Count > 0)
                 {
                     _maxid = _vertexs.Select(c => c.ID).Max();
-                    _maxpart = _vertexs.Select(c => c.Part).Max() ;
+                    _maxpart = _vertexs.Select(c => c.Part).Max();
                 }
                 else
                 {
@@ -198,7 +199,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                         foreach (var partPoint in geometryPart.Points)
                         {
                             _maxid++;
-                            ReVertex oneVertex=new ReVertex(_maxpart,_maxid,partPoint.X,partPoint.Y,true);
+                            ReVertex oneVertex = new ReVertex(_maxpart, _maxid, partPoint.X, partPoint.Y, true);
                             _vertexs.Add(oneVertex);
                         }
                         _maxpart++;
@@ -266,7 +267,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         public void AddPoint(ReVertex pPoint)
         {
             CheckVertexList();
-            pPoint.ID=_maxid+1;
+            pPoint.ID = _maxid + 1;
             pPoint.Part = _maxpart;
             _maxid++;
             pPoint.Checked = true;
@@ -290,7 +291,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 _maxid++;
                 _vertexs.Add(rePoint);
             }
-           // ReCalculateID();
+            // ReCalculateID();
         }
 
         /// <summary>
@@ -443,8 +444,22 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                     object xsObject = xs as object;
                     object ysObject = ys as object;
                     _map.Drawing.DrawPolygon(_layerHandle, ref xsObject, ref ysObject, geometry.Parts[j].Points.Count, color,
-                        false,4);
+                        false, 4);
                 }
+
+                for (int j = 0; j < geometry.Parts.Count; j++)
+                {
+                    for (int i = 0; i < geometry.Parts[j].Points.Count - 1; i++)
+                    {
+                        x1 = geometry.Parts[j].Points[i].X;
+                        y1 = geometry.Parts[j].Points[i].Y;
+                        x2 = geometry.Parts[j].Points[i + 1].X;
+                        y2 = geometry.Parts[j].Points[i + 1].Y;
+                        ReLine line = new ReLine(x1, y1, x2, y2);
+                        _map.Drawing.DrawLabel(_layerHandle, $"{line.Length:N}m", line.CenterPoint.X, line.CenterPoint.Y, 0);
+                    }
+                }
+                _map.Drawing.DrawLabel(_layerHandle, $"{geometry.Area:N}㎡", geometry.Center.X, geometry.Center.Y, 0);
                 return;
             }
             else if (geometry.GeometryType == GeometryType.Point)
@@ -479,7 +494,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             //if (gridPoints.Table.SelectedRecords == null || gridPoints.Table.SelectedRecords.Count==0) return;
             //int id = gridPoints.Table.SelectedRecords[0].Record.GetSourceIndex();
             //ReVertex vertex = _vertexs[id];
-            
+
         }
 
         /// <summary>
@@ -492,9 +507,9 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             DrawGeometry(point.GetGeometry(), color);
         }
 
-        
 
-     
+
+
         /// <summary>
         /// The GetGeometry
         /// </summary>
@@ -605,7 +620,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             //gridPoints.Refresh();
         }
 
-       
+
 
         #endregion
 
@@ -618,11 +633,11 @@ namespace VastGIS.Plugins.RealEstate.DataControls
 
         private void btnVertexUpdate_Click(object sender, EventArgs e)
         {
-            if (gridPoints.Table.SelectedRecords.Count !=1)
+            if (gridPoints.Table.SelectedRecords.Count != 1)
             {
                 return;
             }
-            int id=gridPoints.Table.CurrentRecord.GetSourceIndex();
+            int id = gridPoints.Table.CurrentRecord.GetSourceIndex();
             _vertexs[id].X = dblX.DoubleValue;
             _vertexs[id].Y = dblY.DoubleValue;
 
@@ -658,7 +673,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             DrawPoints();
         }
 
-      
+
         private void btnVertexUp_Click(object sender, EventArgs e)
         {
             if (gridPoints.Table.SelectedRecords.Count != 1)
@@ -667,12 +682,12 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             }
             int id = gridPoints.Table.CurrentRecord.GetSourceIndex();
             if (id == 0) return;
-            double xx = _vertexs[id-1].X;
-            double yy = _vertexs[id-1].Y;
-            _vertexs[id-1].X = _vertexs[id].X;
-            _vertexs[id-1].Y = _vertexs[id].Y;
-            _vertexs[id ].X = xx;
-            _vertexs[id ].Y = yy;
+            double xx = _vertexs[id - 1].X;
+            double yy = _vertexs[id - 1].Y;
+            _vertexs[id - 1].X = _vertexs[id].X;
+            _vertexs[id - 1].Y = _vertexs[id].Y;
+            _vertexs[id].X = xx;
+            _vertexs[id].Y = yy;
             ReCalculateID();
             DrawPoints();
         }
@@ -684,9 +699,9 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 return;
             }
             int id = gridPoints.Table.CurrentRecord.GetSourceIndex();
-            if (id >= _vertexs.Count-1) return;
-            double xx = _vertexs[id +1].X;
-            double yy = _vertexs[id+1 ].Y;
+            if (id >= _vertexs.Count - 1) return;
+            double xx = _vertexs[id + 1].X;
+            double yy = _vertexs[id + 1].Y;
             _vertexs[id + 1].X = _vertexs[id].X;
             _vertexs[id + 1].Y = _vertexs[id].Y;
             _vertexs[id].X = xx;

@@ -163,7 +163,9 @@ namespace VastGIS.Plugins.RealEstate.Menu
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
-
+            command = new ToolMeasure(_context, _plugin);
+            command.PluginIdentity = _identity;
+            _commands.Add(command);
 
             return _commands;
         }

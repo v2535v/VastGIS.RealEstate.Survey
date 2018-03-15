@@ -280,7 +280,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                     _map.Drawing.DrawLine(_layerHandle, edge.X1, edge.Y1, edge.X2, edge.Y2, 3, color);
                 }
 
-                _map.Drawing.DrawLabel(_layerHandle, edge.Id.ToString(), edge.CenterX, edge.CenterY, 0);
+                _map.Drawing.DrawLabel(_layerHandle, $"{edge.Id} ({edge.Length:N}m)", edge.CenterX, edge.CenterY, 0);
                 _map.Drawing.DrawPoint(_layerHandle, edge.X1, edge.Y1, 12, color);
                 count++;
                 if (count == _edges.Count)
@@ -288,6 +288,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                     _map.Drawing.DrawPoint(_layerHandle, edge.X2, edge.Y2, 12, color);
                 }
             }
+            _map.Drawing.DrawLabel(_layerHandle, $"{_geometry.Area:N}㎡", _geometry.Center.X, _geometry.Center.Y, 0);
         }
 
         public IGeometry GetGeometry()
@@ -328,13 +329,14 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 if (count == sourceIndex)
                 {
                     _map.Drawing.DrawLine(_layerHandle, edge.X1, edge.Y1, edge.X2, edge.Y2, 4, color2);
-                    _map.Drawing.DrawLabel(_layerHandle, edge.Id.ToString(), edge.CenterX, edge.CenterY, 0);
+
+                    _map.Drawing.DrawLabel(_layerHandle, $"{edge.Id}({edge.Length:N}m)", edge.CenterX, edge.CenterY, 0);
                     _map.Drawing.DrawPoint(_layerHandle, edge.X1, edge.Y1, 12, color2);
                 }
                 else
                 {
                     _map.Drawing.DrawLine(_layerHandle, edge.X1, edge.Y1, edge.X2, edge.Y2, 3, color);
-                    _map.Drawing.DrawLabel(_layerHandle, edge.Id.ToString(), edge.CenterX, edge.CenterY, 0);
+                    _map.Drawing.DrawLabel(_layerHandle, $"{edge.Id}({edge.Length:N}m)", edge.CenterX, edge.CenterY, 0);
                     _map.Drawing.DrawPoint(_layerHandle, edge.X1, edge.Y1, 12, color);
                 }
 
@@ -345,6 +347,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                     _map.Drawing.DrawPoint(_layerHandle, edge.X2, edge.Y2, 12, color);
                 }
             }
+            _map.Drawing.DrawLabel(_layerHandle, $"{_geometry.Area:N}㎡", _geometry.Center.X, _geometry.Center.Y, 0);
         }
 
         public IGeometry UpdateCurrentPart(List<ReEdge> edges)
