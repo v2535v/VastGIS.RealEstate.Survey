@@ -124,15 +124,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             map.MouseUp -= Map_MouseUp;
             map.MapCursor = MapCursor.Pan;
         }
-
-        private void frmMeasure_VisibleChanged(object sender, EventArgs e)
-        {
-            if (this.Visible)
-                btnStart_Click(null, null);
-            else
-                btnStop_Click(null, null);
-        }
-
+        
         private IGeometry CreatePolygon(List<RePoint> points)
         {
             List<GeoAPI.Geometries.Coordinate> coordinates = new List<Coordinate>();
@@ -145,6 +137,17 @@ namespace VastGIS.Plugins.RealEstate.Forms
             IGeometry newGeometry = new Api.Concrete.Geometry(GeometryType.MultiPoint, ZValueType.None);
             newGeometry.ImportFromWkt(editGeometry.AsText());
             return newGeometry;
+        }
+
+        private void frmMeasure_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ClearDrawing();
+            btnStop_Click(null, null);
+        }
+
+        private void frmMeasure_Load(object sender, EventArgs e)
+        {
+            btnStart_Click(null, null);
         }
     }
 }

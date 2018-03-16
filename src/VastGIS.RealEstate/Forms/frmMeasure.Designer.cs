@@ -145,7 +145,8 @@
             this.MinimizeBox = false;
             this.Name = "frmMeasure";
             this.Text = "量测信息";
-            this.VisibleChanged += new System.EventHandler(this.frmMeasure_VisibleChanged);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMeasure_FormClosed);
+            this.Load += new System.EventHandler(this.frmMeasure_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
