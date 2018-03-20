@@ -328,7 +328,7 @@ namespace VastGIS.RealEstate.Data.Helpers
             string wherePre = containWhere ? "AND" : " WHERE ";
             if (geometryType == GeometryType.Polygon)
             {
-                lineSql = string.Format("{0} {2}  Intersects( GeomFromText('{1}'),geometry);", sql, GeometryHelper.CreatePolygonWkt(geometry), wherePre);
+                lineSql = string.Format("{0} {2}  Contains( GeomFromText('{1}'),geometry);", sql, GeometryHelper.CreatePolygonWkt(geometry), wherePre);
             }
             else if (geometryType == GeometryType.Polyline)
             {
