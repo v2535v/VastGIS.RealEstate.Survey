@@ -19,11 +19,9 @@ namespace VastGIS.Plugins.RealEstate.Forms
             InitializeComponent();
             _qlrs = qlrs;
             lstQLR.Items.Clear();
-            lstXQLR.Items.Clear();
             foreach (Qlr qlr in _qlrs)
             {
                 lstQLR.Items.Add(qlr.Qlrmc, true);
-                lstXQLR.Items.Add(qlr.Qlrmc, false);
             }
             cmbBhyy.SelectedIndex = 0;
         }
@@ -66,16 +64,16 @@ namespace VastGIS.Plugins.RealEstate.Forms
         {
             if (chkQlrbh.Checked == false) return "该宗地权利人未发生变化";
 
-            if (cmbBhyy.SelectedIndex == 0) return $"权利人变化：权利人已故，现使用人{GetMemo(lstXQLR)}";
-            else if (cmbBhyy.SelectedIndex == cmbBhyy.Items.Count - 1) return $"权利人变化：权利人赠与{GetMemo(lstXQLR)}";
-            else return"权利人变化：经调查，因"+cmbBhyy.Text + $"，现房屋使用人{GetMemo(lstXQLR)}";
+            if (cmbBhyy.SelectedIndex == 0) return $"权利人变化：权利人已故，现使用人{txtSyr.Text.Trim()}";
+            else if (cmbBhyy.SelectedIndex == cmbBhyy.Items.Count - 1) return $"权利人变化：权利人赠与{txtSyr.Text.Trim()}";
+            else return"权利人变化：经调查，因"+cmbBhyy.Text + $"，现房屋使用人{txtSyr.Text.Trim()}";
            
         }
 
         private void chkQlrbh_CheckedChanged(object sender, EventArgs e)
         {
             cmbBhyy.Enabled = chkQlrbh.Checked;
-            lstXQLR.Enabled = chkQlrbh.Checked;
+            txtSyr.Enabled = chkQlrbh.Checked;
         }
     }
 }

@@ -725,6 +725,7 @@
     <Compile Include="Commands\CmdLayerManagement.cs" />
     <Compile Include="Commands\CmdOpenTable.cs" />
     <Compile Include="Commands\CmdResetLayers.cs" />
+    <Compile Include="Commands\CmdSetWXInfo.cs" />
     <Compile Include="Commands\CmdSplitCAD.cs" />
     <Compile Include="Commands\CmdImportDXF.cs" />
     <Compile Include="Commands\CmdNewJZD.cs" />
@@ -733,6 +734,7 @@
     <Compile Include="Commands\ToolAssignPhoto.cs" />
     <Compile Include="Commands\ToolAssignZRZH.cs" />
     <Compile Include="Commands\ToolCopyFeature.cs" />
+    <Compile Include="Commands\ToolCopyZrzByZd.cs" />
     <Compile Include="Commands\ToolCreateJZDByPolygon.cs" />
     <Compile Include="Commands\ToolCreateJZDByZD.cs" />
     <Compile Include="Commands\ToolDeleteFeature.cs" />
@@ -1335,6 +1337,12 @@
     <Compile Include="Forms\frmAudioCapture.Designer.cs">
       <DependentUpon>frmAudioCapture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCopyZrzByZd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCopyZrzByZd.Designer.cs">
+      <DependentUpon>frmCopyZrzByZd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCreateJZDByZD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1370,6 +1378,12 @@
     </Compile>
     <Compile Include="Forms\frmMeasure.Designer.cs">
       <DependentUpon>frmMeasure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWXInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWXInfo.Designer.cs">
+      <DependentUpon>frmWXInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmZJXZ.cs">
       <SubType>Form</SubType>
@@ -2147,6 +2161,9 @@
     <EmbeddedResource Include="Forms\frmAudioCapture.resx">
       <DependentUpon>frmAudioCapture.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCopyZrzByZd.resx">
+      <DependentUpon>frmCopyZrzByZd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCreateJZDByZD.resx">
       <DependentUpon>frmCreateJZDByZD.cs</DependentUpon>
     </EmbeddedResource>
@@ -2164,6 +2181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMeasure.resx">
       <DependentUpon>frmMeasure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWXInfo.resx">
+      <DependentUpon>frmWXInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmZJXZ.resx">
       <DependentUpon>frmZJXZ.cs</DependentUpon>
@@ -2446,6 +2466,7 @@
     <None Include="Resources\icon_zrzh.png" />
     <None Include="Resources\icon_photo.png" />
     <None Include="Resources\icon_measure_distance.png" />
+    <None Include="Resources\icon_wxinfo.png" />
     <Content Include="Sql\createretables.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

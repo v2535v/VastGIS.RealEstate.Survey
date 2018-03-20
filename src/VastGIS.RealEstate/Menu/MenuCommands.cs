@@ -77,11 +77,11 @@ namespace VastGIS.Plugins.RealEstate.Menu
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
-            command = new CmdImportDXF(_context,_plugin);
+            command = new CmdImportDXF(_context, _plugin);
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
-            command = new CmdOpenTable(_context,_plugin);
+            command = new CmdOpenTable(_context, _plugin);
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
@@ -119,7 +119,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
-            command = new ToolSplitPolygon(_context,_plugin);
+            command = new ToolSplitPolygon(_context, _plugin);
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
@@ -139,7 +139,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
-            command = new ToolCreateJZDByZD(_context,_plugin);
+            command = new ToolCreateJZDByZD(_context, _plugin);
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
@@ -159,11 +159,19 @@ namespace VastGIS.Plugins.RealEstate.Menu
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
-            command = new CmdZoomToDbMax(_context,_plugin);
+            command = new CmdZoomToDbMax(_context, _plugin);
             command.PluginIdentity = _identity;
             _commands.Add(command);
 
             command = new ToolMeasure(_context, _plugin);
+            command.PluginIdentity = _identity;
+            _commands.Add(command);
+
+            command = new CmdSetWXInfo(_context, _plugin);
+            command.PluginIdentity = _identity;
+            _commands.Add(command);
+
+            command = new ToolCopyZrzByZd(_context, _plugin);
             command.PluginIdentity = _identity;
             _commands.Add(command);
 

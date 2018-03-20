@@ -169,13 +169,13 @@ namespace VastGIS.Menu
                 command.PluginIdentity = _identity;
                 _commands.Add(command);
 
-                command = new CmdMeasureDistance(_context);
-                command.PluginIdentity = _identity;
-                _commands.Add(command);
+                //command = new CmdMeasureDistance(_context);
+                //command.PluginIdentity = _identity;
+                //_commands.Add(command);
 
-                command = new CmdMeasureArea(_context);
-                command.PluginIdentity = _identity;
-                _commands.Add(command);
+                //command = new CmdMeasureArea(_context);
+                //command.PluginIdentity = _identity;
+                //_commands.Add(command);
 
                 command = new CmdSelectByRectangle(_context);
                 command.PluginIdentity = _identity;

@@ -8,6 +8,7 @@ using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 using VastGIS.RealEstate.Data.Events;
 using VastGIS.RealEstate.Data.Interface;
+using IGeometry = VastGIS.Api.Interfaces.IGeometry;
 
 namespace VastGIS.RealEstate.Data.Service.Impl
 {
@@ -120,6 +121,11 @@ namespace VastGIS.RealEstate.Data.Service.Impl
         public IEnumerable<Qlr> GetQlrsByBdcdyh(string bdcdhy)
         {
             return _systemDao.GetQlrsByBdcdyh(bdcdhy);
+        }
+
+        public List<IReFeature> FindFeatures(VgObjectclass objectClass, IGeometry geometry)
+        {
+            return _systemDao.FindFeatures(objectClass, geometry);
         }
     }
 }

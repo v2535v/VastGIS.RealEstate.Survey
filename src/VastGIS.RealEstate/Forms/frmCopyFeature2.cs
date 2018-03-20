@@ -54,9 +54,9 @@ namespace VastGIS.Plugins.RealEstate.Forms
             else
             {
                 selTargetLayer.GeometryType = (GeometryType)_plugin.Config.EditingClass.Txlx;
-               selTargetLayer.SelectedClass = _plugin.Config.EditingClass;
+                selTargetLayer.SelectedClass = _plugin.Config.EditingClass;
             }
-            selTargetLayer.LimitedGeometryType= GeometryType.None;
+            selTargetLayer.LimitedGeometryType = GeometryType.None;
             _editableclasses = classes;
 
             List<VgObjectclass> sourceclasses = _database.SystemService.GetVgObjectclasses(" IDENTIFY = 1 And DXLX=1").ToList();
@@ -84,7 +84,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
 
             selTargetLayer.ucSelectedClassChanged += SelTargetLayer_ucSelectedClassChanged;
             selSourceLayer.ucSelectedClassChanged += SelSourceLayer_ucSelectedClassChanged;
-            
+
             chkIsMoving.DataBindings.Add("Checked", _plugin.Config, "CopyIsMoving");
             ucFeatureLists1.BindContext(_context);
             ucFeatureLists1.CanMultiSelect = true;
@@ -150,12 +150,12 @@ namespace VastGIS.Plugins.RealEstate.Forms
                                    ? string.Format("你确认拷贝选中要素到{0}并删除原有要素?", selTargetLayer.SelectedClass.Zwmc)
                                    : string.Format("你确认拷贝选中要素到{0}?", selTargetLayer.SelectedClass.Zwmc);
             if (MessageService.Current.Ask(actionMsg) == false) return;
-           _database.SystemService.CopyEntities(selTargetLayer.SelectedClass, ucFeatureLists1.GetSelectedFeatures().ToList<IEntity>(),
-                chkIsMoving.Checked);
+            _database.SystemService.CopyEntities(selTargetLayer.SelectedClass, ucFeatureLists1.GetSelectedFeatures().ToList<IEntity>(),
+                 chkIsMoving.Checked);
             ucFeatureLists1.ClearList();
             //_context.Map.Redraw(RedrawType.All);
         }
-        
+
         private void chkIsMoving_CheckedChanged(object sender, EventArgs e)
         {
             this.Text = chkIsMoving.Checked ? "移动要素" : "拷贝要素";
@@ -164,7 +164,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
 
         public void ClearDrawing()
         {
-                _context.Map.Drawing.Clear();
+            _context.Map.Drawing.Clear();
         }
     }
 

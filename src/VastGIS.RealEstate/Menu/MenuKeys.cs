@@ -39,6 +39,8 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public const string AssignZRZH = "re_AssignZRZH";
         public const string AssignPhoto = "re_AssignPhoto";
         public const string Measure = "re_Measure";
+        public const string SetWXInfo = "re_SetWXInfo";
+        public const string CopyZrzByZd = "re_CopyZrzByZd";
 
         #region Constants
 

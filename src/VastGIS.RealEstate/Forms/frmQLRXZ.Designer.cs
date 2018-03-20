@@ -36,8 +36,9 @@
             this.chkQlrbh = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbBhyy = new System.Windows.Forms.ComboBox();
-            this.lstXQLR = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtSyr = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSyr)).BeginInit();
             this.SuspendLayout();
             // 
             // lstQLR
@@ -53,7 +54,7 @@
             this.btnSelectAll.BeforeTouchSize = new System.Drawing.Size(75, 23);
             this.btnSelectAll.EnableTouchMode = true;
             this.btnSelectAll.IsBackStageButton = false;
-            this.btnSelectAll.Location = new System.Drawing.Point(13, 312);
+            this.btnSelectAll.Location = new System.Drawing.Point(13, 263);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(78, 34);
             this.btnSelectAll.TabIndex = 1;
@@ -65,7 +66,7 @@
             this.btnOK.BeforeTouchSize = new System.Drawing.Size(75, 23);
             this.btnOK.EnableTouchMode = true;
             this.btnOK.IsBackStageButton = false;
-            this.btnOK.Location = new System.Drawing.Point(110, 312);
+            this.btnOK.Location = new System.Drawing.Point(110, 263);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(78, 34);
             this.btnOK.TabIndex = 2;
@@ -77,7 +78,7 @@
             this.btnCancel.BeforeTouchSize = new System.Drawing.Size(75, 23);
             this.btnCancel.EnableTouchMode = true;
             this.btnCancel.IsBackStageButton = false;
-            this.btnCancel.Location = new System.Drawing.Point(194, 311);
+            this.btnCancel.Location = new System.Drawing.Point(194, 262);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(78, 34);
             this.btnCancel.TabIndex = 3;
@@ -122,15 +123,6 @@
             this.cmbBhyy.Size = new System.Drawing.Size(190, 20);
             this.cmbBhyy.TabIndex = 7;
             // 
-            // lstXQLR
-            // 
-            this.lstXQLR.Enabled = false;
-            this.lstXQLR.FormattingEnabled = true;
-            this.lstXQLR.Location = new System.Drawing.Point(12, 205);
-            this.lstXQLR.Name = "lstXQLR";
-            this.lstXQLR.Size = new System.Drawing.Size(259, 100);
-            this.lstXQLR.TabIndex = 8;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -138,14 +130,27 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 1;
-            this.label2.Text = "现权利人：";
+            this.label2.Text = "现使用人：";
+            // 
+            // txtSyr
+            // 
+            this.txtSyr.BeforeTouchSize = new System.Drawing.Size(258, 21);
+            this.txtSyr.Enabled = false;
+            this.txtSyr.EnableTouchMode = true;
+            this.txtSyr.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtSyr.Location = new System.Drawing.Point(14, 205);
+            this.txtSyr.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.txtSyr.Name = "txtSyr";
+            this.txtSyr.Size = new System.Drawing.Size(258, 28);
+            this.txtSyr.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
+            this.txtSyr.TabIndex = 8;
             // 
             // frmQLRXZ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 355);
-            this.Controls.Add(this.lstXQLR);
+            this.ClientSize = new System.Drawing.Size(284, 304);
+            this.Controls.Add(this.txtSyr);
             this.Controls.Add(this.cmbBhyy);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -158,6 +163,7 @@
             this.MinimizeBox = false;
             this.Name = "frmQLRXZ";
             this.Text = "权利人";
+            ((System.ComponentModel.ISupportInitialize)(this.txtSyr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,7 +178,7 @@
         private System.Windows.Forms.CheckBox chkQlrbh;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbBhyy;
-        private System.Windows.Forms.CheckedListBox lstXQLR;
         private System.Windows.Forms.Label label2;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSyr;
     }
 }

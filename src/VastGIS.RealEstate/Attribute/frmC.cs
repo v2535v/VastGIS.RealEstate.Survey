@@ -11,8 +11,8 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.Attribute
 {
-    public partial class frmC:Form,IAttributeForm
-    {	
+    public partial class frmC : Form, IAttributeForm
+    {
         #region 变量
         protected string _objectKey;
         protected string _formName;
@@ -28,11 +28,11 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         public frmC()
         {
             InitializeComponent();
-             _objectKey = "C";
+            _objectKey = "C";
             _formName = "frmC";
         }
-        
-        public void BindContext(IAppContext context,VgObjectclass currentObjectclass)
+
+        public void BindContext(IAppContext context, VgObjectclass currentObjectclass)
         {
             _context = context;
             _database = ((IRealEstateContext)_context).RealEstateDatabase;
@@ -42,14 +42,14 @@ namespace VastGIS.Plugins.RealEstate.Attribute
                 LoadEntity(0);
             }
         }
-        
-        public void BindContext(IAppContext context,IEntity entity)
+
+        public void BindContext(IAppContext context, IEntity entity)
         {
-            _context=context;
+            _context = context;
             _database = ((IRealEstateContext)_context).RealEstateDatabase;
-            _index=-1;
-            btnPrev.Visible=btnNext.Visible=btnQuery.Visible=btnDelete.Visible=false;
-            _linkedObject=entity as C;
+            _index = -1;
+            btnPrev.Visible = btnNext.Visible = btnQuery.Visible = btnDelete.Visible = false;
+            _linkedObject = entity as C;
         }
 
         public void LoadEntities(List<IEntity> entities)
@@ -67,10 +67,11 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         public IEntity LinkedObject
         {
             get { return _linkedObject as IEntity; }
-            set{
-                _linkedObject=value as C;
+            set
+            {
+                _linkedObject = value as C;
                 LinkObject();
-            }            
+            }
         }
 
         public string FormName
@@ -78,18 +79,18 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             get { return _formName; }
             set { _formName = value; }
         }
-        
+
         public void LoadEntity(int index)
         {
             _linkedObject = _list[index] as C;
             LinkObject();
         }
 
-        public int Current { get { return _index; } set { _index = value;LoadEntity(_index); } }
+        public int Current { get { return _index; } set { _index = value; LoadEntity(_index); } }
 
         public void GoToPrev()
         {
-            if (_index >0)
+            if (_index > 0)
             {
                 Current = _index - 1;
             }
@@ -106,7 +107,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         public void CreateNew()
         {
             _isNew = true;
-            _linkedObject=new C();
+            _linkedObject = new C();
             LinkObject();
         }
 
@@ -124,7 +125,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
                 DialogResult.Cancel) return;
             _database.SystemService.Delete(_linkedObject);
             _list.RemoveAt(_index);
-            if (_list.Count ==_index+1)
+            if (_list.Count == _index + 1)
             {
                 Current = _index;
             }
@@ -140,7 +141,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             _database.SystemService.Save(_linkedObject);
             if (_linkedObject.ID > 0)
             {
-                if (_isNew && _list !=null)
+                if (_isNew && _list != null)
                 {
                     _list.Add(_linkedObject);
                     Current = _list.Count - 1;
@@ -157,14 +158,15 @@ namespace VastGIS.Plugins.RealEstate.Attribute
 
         public void FormClose()
         {
-            DialogResult=DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
-        public  void LinkObject()
+        public void LinkObject()
         {
-            ((INotifyPropertyChanged)_linkedObject).PropertyChanged +=linkedObject_PropertyChanged;
-            ucLinkObject.LinkObject(_database,(IEntity)_linkedObject);
-            ucWXInfo1.LinkObject(_linkedObject as ISurveyEntity);
+            ((INotifyPropertyChanged)_linkedObject).PropertyChanged += linkedObject_PropertyChanged;
+            ucLinkObject.LinkObject(_database, (IEntity)_linkedObject);
+            //ucWXInfo1.LinkObject(_linkedObject as ISurveyEntity);
+            ucWXInfo1.LinkObject(_context.Config, _linkedObject as ISurveyEntity);
             ucAttachmentList1.BindContext(_context);
             ucAttachmentList1.LinkObject(_linkedObject as IGlobalEntity);
             if (_linkedObject.ID <= 0 || _isNew)
@@ -178,29 +180,29 @@ namespace VastGIS.Plugins.RealEstate.Attribute
                 btnSave.Text = "保存";
                 btnDelete.Text = "删除";
                 btnPrev.Enabled = _index > 0;
-                btnNext.Enabled =_list != null && _index < _list.Count - 1;
+                btnNext.Enabled = _list != null && _index < _list.Count - 1;
                 btnQuery.Enabled = _list != null;
-              
+
             }
 
         }
 
         private void linkedObject_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            btnSave.Enabled = true;           
-        }        
+            btnSave.Enabled = true;
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
         }
-        
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             FormClose();
         }
-        
-        public bool HasPropertyChanged { get { return ucLinkObject.HasChanged; }}
+
+        public bool HasPropertyChanged { get { return ucLinkObject.HasChanged; } }
 
         private void btnQuery_Click(object sender, EventArgs e)
         {

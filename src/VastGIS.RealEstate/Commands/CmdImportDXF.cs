@@ -29,7 +29,6 @@ namespace VastGIS.Commands.File
         {
             frmImportDXF frm = new frmImportDXF(_context, _plugin);
             frm.ShowDialog();
-
         }
     }
 }

@@ -101,7 +101,8 @@ namespace VastGIS.Plugins.RealEstate.Forms
             if (_gkj != null && !string.IsNullOrEmpty(_gkj.JZ)) builder.AppendFormat("，{0}", _gkj.JZ);
             if (_gkj != null && !string.IsNullOrEmpty(_gkj.SZJZ)) builder.AppendFormat("，{0}", _gkj.SZJZ);
 
-            if (_gkj != null && !string.IsNullOrEmpty(_gkj.XJFS)) builder.AppendFormat("，{0}", _gkj.XJFS);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.XJNF)) builder.AppendFormat("，{0}", _gkj.XJNF);
+            if (_gkj != null && !string.IsNullOrEmpty(_gkj.GKJNF)) builder.AppendFormat("，{0}", _gkj.GKJNF);
 
             if (_gkj != null && !string.IsNullOrEmpty(_gkj.XZZDMJ)) builder.AppendFormat("，{0}", _gkj.XZZDMJ);
             if (_gkj != null && !string.IsNullOrEmpty(_gkj.LSYDMJ)) builder.AppendFormat("，{0}", _gkj.LSYDMJ);

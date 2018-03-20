@@ -19,13 +19,15 @@ using VastGIS.RealEstate.Data.Interface;
 
 namespace VastGIS.Plugins.RealEstate.Forms
 {
-    public partial class frmEditFeature:Form,IEditForm
+    public partial class frmEditFeature : Form, IEditForm
     {
         private IAppContext _context;
         private RealEstateEditor _plugin;
         private IREDatabase _database;
         private List<VgObjectclass> _classes;
-        
+        private VgObjectclass _jmdObjectclass;
+        private IDictionary<long, IReFeature> _jmdReFeatures;
+
         public frmEditFeature(IAppContext context, RealEstateEditor plugin)
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 _plugin = _context.Container.GetInstance<RealEstateEditor>();
             }
             _database = ((IRealEstateContext)_context).RealEstateDatabase;
-            List<VgObjectclass> classes = _database.SystemService.GetVgObjectclasses(" Editable = 1 And DXLX=1").ToList();            
+            List<VgObjectclass> classes = _database.SystemService.GetVgObjectclasses(" Editable = 1 And DXLX=1").ToList();
             _classes = classes;
             ucSelectLayer1.SetClasses(classes);
             _classes = classes;
@@ -57,11 +59,14 @@ namespace VastGIS.Plugins.RealEstate.Forms
             ucFeatureLists1.CanMultiSelect = false;
             ucFeatureLists1.BindContext(context);
             ucSelectLayer1.ucSelectedClassChanged += UcSelectLayer1_ucSelectedClassChanged;
+            _jmdObjectclass = _classes.FirstOrDefault(c => c.Mc == "DXTJMDM");
+            _jmdReFeatures = new Dictionary<long, IReFeature>();
         }
         private void UcSelectLayer1_ucSelectedClassChanged(object sender, Events.ObjectClassEventArgs e)
         {
             _plugin.Config.EditingClass = ucSelectLayer1.SelectedClass;
             ucFeatureLists1.ClearList();
+            _jmdReFeatures.Clear();
         }
 
 
@@ -70,6 +75,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             ucFeatureLists1.ClearDrawing();
             DialogResult = DialogResult.Cancel;
             _context.CurrentTool = null;
+            _jmdReFeatures.Clear();
         }
         public void ClearDrawing()
         {
@@ -86,14 +92,24 @@ namespace VastGIS.Plugins.RealEstate.Forms
 
             List<IReFeature> features = _database.SystemService.FindFeatures(ucSelectLayer1.SelectedClasses, x, y);
             if (features != null && features.Count > 0)
-            { ucFeatureLists1.AddFeatures(features, ucSelectLayer1.SelectedClasses); }
+            {
+                ucFeatureLists1.AddFeatures(features, ucSelectLayer1.SelectedClasses);
 
+                if (ucSelectLayer1.SelectedClass.Mc == "ZRZ")
+                {
+                    List<IReFeature> jmdFeatures = _database.SystemService.FindFeatures(_jmdObjectclass, x, y);
+                    foreach (IReFeature reFeature in features)
+                    {
+                        _jmdReFeatures.Add(reFeature.ID, jmdFeatures.First());
+                    }
+                }
+            }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             List<IReFeature> features = ucFeatureLists1.GetSelectedFeatures();
-            if (features == null || features.Count == 0 || features.Count >1)
+            if (features == null || features.Count == 0 || features.Count > 1)
             {
                 lblInfo.Text = "请先选择准备编辑的一个要素!";
                 return;
@@ -113,7 +129,21 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 lblInfo.Text = "未能找到该对象的属性编辑窗口!";
                 return;
             }
-            _plugin.LoadAttributeForm(features[0].ObjectName,objectclass.Bjct,features[0].ID);
+
+            if (_jmdReFeatures.ContainsKey(id))
+            {
+                IReFeature jmdFeature = _jmdReFeatures[id];
+                Dxtjmdm dxtjmdm = jmdFeature as Dxtjmdm;
+                Zrz zrz = features[0] as Zrz;
+                long fsxx;
+                bool isLong = long.TryParse(dxtjmdm.Fsxx1, out fsxx);
+                if (zrz.Zcs == 0)
+                    zrz.Zcs = isLong ? fsxx : 0;
+                if (zrz.Dscs == 0)
+                    zrz.Dscs = isLong ? fsxx : 0;
+                _database.ZdService.SaveZrz(zrz);
+            }
+            _plugin.LoadAttributeForm(features[0].ObjectName, objectclass.Bjct, features[0].ID);
         }
     }
 

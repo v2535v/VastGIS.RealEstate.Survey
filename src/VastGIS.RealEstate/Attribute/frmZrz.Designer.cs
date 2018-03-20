@@ -40,12 +40,10 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.ucWXInfo1 = new VastGIS.Plugins.RealEstate.DataControls.ucWXInfo();
             this.pageAttachment = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.ucAttachmentList1 = new VastGIS.Plugins.RealEstate.DataControls.ucAttachmentList();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.pageC = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.intQSCS = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.intJSCS = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.btnDeleteC = new Syncfusion.Windows.Forms.ButtonAdv();
@@ -55,6 +53,8 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.ucC1 = new VastGIS.Plugins.RealEstate.DataControls.ucC();
             this.btnSaveC = new Syncfusion.Windows.Forms.ButtonAdv();
             this.btnOpenCForm = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabAttribute)).BeginInit();
             this.tabAttribute.SuspendLayout();
@@ -170,29 +170,6 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.ucAttachmentList1.Size = new System.Drawing.Size(721, 322);
             this.ucAttachmentList1.TabIndex = 0;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(652, 358);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "关闭";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(552, 358);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "保存";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // pageC
             // 
             this.pageC.Controls.Add(this.tableLayoutPanel2);
@@ -236,16 +213,6 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.tableLayoutPanel2.Size = new System.Drawing.Size(721, 322);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 10);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "起始层数";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -256,13 +223,23 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.label2.TabIndex = 1;
             this.label2.Text = "结束层数";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "起始层数";
+            // 
             // intQSCS
             // 
             this.intQSCS.BackGroundColor = System.Drawing.SystemColors.Window;
             this.intQSCS.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.intQSCS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intQSCS.EnableTouchMode = true;
-            this.intQSCS.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intQSCS.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intQSCS.IntegerValue = ((long)(1));
             this.intQSCS.Location = new System.Drawing.Point(3, 33);
             this.intQSCS.MaxValue = ((long)(200));
@@ -281,7 +258,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.intJSCS.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.intJSCS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intJSCS.EnableTouchMode = true;
-            this.intJSCS.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intJSCS.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intJSCS.IntegerValue = ((long)(1));
             this.intJSCS.Location = new System.Drawing.Point(73, 33);
             this.intJSCS.MaxValue = ((long)(200));
@@ -341,6 +318,7 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.lstC.Size = new System.Drawing.Size(214, 211);
             this.lstC.TabIndex = 8;
             this.lstC.SelectedIndexChanged += new System.EventHandler(this.lstC_SelectedIndexChanged);
+            this.lstC.SelectedValueChanged += new System.EventHandler(this.lstC_SelectedValueChanged);
             // 
             // ucC1
             // 
@@ -374,6 +352,29 @@ namespace VastGIS.Plugins.RealEstate.Attribute
             this.btnOpenCForm.TabIndex = 11;
             this.btnOpenCForm.Text = "打开层窗体";
             this.btnOpenCForm.Click += new System.EventHandler(this.btnOpenCForm_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(652, 358);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "关闭";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Enabled = false;
+            this.btnSave.Location = new System.Drawing.Point(552, 358);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "保存";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmZrz
             // 

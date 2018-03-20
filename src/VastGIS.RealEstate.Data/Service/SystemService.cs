@@ -1,4 +1,5 @@
 ﻿using System;
+using VastGIS.Api.Interfaces;
 
 namespace VastGIS.RealEstate.Data.Service
 {
@@ -127,5 +128,7 @@ namespace VastGIS.RealEstate.Data.Service
         string GetTemporaryAttachmentName();
 
         IEnumerable<Qlr> GetQlrsByBdcdyh(string bdcdhy);
+
+        List<IReFeature> FindFeatures(VgObjectclass objectClass, IGeometry geometry);
     }
 }

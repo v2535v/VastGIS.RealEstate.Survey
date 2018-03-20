@@ -228,8 +228,23 @@ namespace VastGIS.RealEstate.Data.Helpers
             string wkt = string.Format("POLYGON(({0} {1},{2} {3},{4} {5},{6} {7},{0} {1}))", xx1, yy1, xx2, yy2,
                 xx3, yy3, xx4, yy4);
             DbGeometry geometry = DbGeometry.FromText(wkt);
+            
             return geometry;
         }
+
+        public static string CreatePolygonWkt(IGeometry geometry)
+        {
+            StringBuilder wkt = new StringBuilder("POLYGON((");
+            for (int i = 0; i < geometry.Parts[0].Points.Count; i++)
+            {
+                double x = geometry.Parts[0].Points[i].X;
+                double y = geometry.Parts[0].Points[i].Y;
+                wkt.AppendFormat("{0} {1},", x, y);
+            }
+            wkt.AppendFormat("{0} {1}))", geometry.Parts[0].Points[0].X, geometry.Parts[0].Points[0].Y);
+            return wkt.ToString();
+        }
+        
         public static DbGeometry CreateCircularString(double centerX, double centerY, double distance)
         {
             double xx1 = centerX - distance;

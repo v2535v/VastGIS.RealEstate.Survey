@@ -149,8 +149,28 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         {
             _database.SystemService.Delete((IEntity)_c);
         }
+
         #endregion
 
-
+        private void cmbCfwlx_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbCfwlx.SelectedValue == null)
+                return;
+            if (_c == null)
+                return;
+            switch (cmbCfwlx.SelectedValue.ToString())
+            {
+                case "1":
+                case "3":
+                case "4":
+                    _c.Jsbl = 1;
+                    break;
+                case "2":
+                    _c.Jsbl = 0.5;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

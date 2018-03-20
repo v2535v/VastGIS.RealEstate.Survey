@@ -71,10 +71,12 @@ namespace VastGIS.Plugins.RealEstate.Menu
 
             menu.AddButton(_commands[MenuKeys.NewREProject]);
             menu.AddButton(_commands[MenuKeys.ImportDXF]);
+            menu.AddButton(_commands[MenuKeys.SetWXInfo]);
 
             menu.AddButton(_commands[MenuKeys.ZoomToDbMax]);
             menu.AddButton(_commands[MenuKeys.NewFeature]);
             menu.AddButton(_commands[MenuKeys.CopyFeature]);
+            menu.AddButton(_commands[MenuKeys.CopyZrzByZd]);
             menu.AddButton(_commands[MenuKeys.DeleteFeature]);
             menu.AddButton(_commands[MenuKeys.EditFeature]);
             menu.AddButton(_commands[MenuKeys.EditGeometry]);

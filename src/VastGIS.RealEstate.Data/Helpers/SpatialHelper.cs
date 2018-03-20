@@ -162,14 +162,14 @@ namespace VastGIS.RealEstate.Data.Helpers
         /// <returns></returns>
         public static IGeometry ReorderPolygonVertex(IGeometry geometry)
         {
-            if (geometry.PartIsClockWise(0)==false)
+            if (geometry.PartIsClockWise(0) == false)
             {
                 geometry.PartReserveOrder(0);
             }
             double xMin = geometry.Extents.MinX;
             double yMax = geometry.Extents.MaxY;
             int startIndex = -1;
-           
+
             double dist = 9999999.00;
             for (int i = 0; i < geometry.Points.Count; i++)
             {
@@ -188,13 +188,13 @@ namespace VastGIS.RealEstate.Data.Helpers
             for (int i = startIndex; i < geometry.Points.Count; i++)
             {
                 ICoordinate coord = geometry.Points[i];
-                newPoly.Points.Add(new Coordinate(coord.X,coord.Y));
+                newPoly.Points.Add(new Coordinate(coord.X, coord.Y));
             }
-           
-             for (int i = 1; i <=startIndex; i++)
-             {
+
+            for (int i = 1; i <= startIndex; i++)
+            {
                 ICoordinate coord = geometry.Points[i];
-                 newPoly.Points.Add(new Coordinate(coord.X, coord.Y));
+                newPoly.Points.Add(new Coordinate(coord.X, coord.Y));
             }
             return newPoly;
         }
@@ -225,7 +225,7 @@ namespace VastGIS.RealEstate.Data.Helpers
                 string.Format(
                     "select ID,AsText(geometry),{0} from {1} where Within(GeomFromText('Point({2} {3})'),geometry);",
                     fieldName, table, centerPoint.X, centerPoint.Y);
-            using (SQLiteCommand command = new SQLiteCommand(sql,connection))
+            using (SQLiteCommand command = new SQLiteCommand(sql, connection))
             {
                 SQLiteDataReader reader = command.ExecuteReader();
                 if (!reader.Read())
@@ -275,12 +275,12 @@ namespace VastGIS.RealEstate.Data.Helpers
             string wherePre = containWhere ? "AND" : " WHERE ";
             if (geometryType == GeometryType.Polygon)
             {
-                lineSql = string.Format("{0} {3}  Within( GeomFromText('POINT({1} {2})'),geometry);", sql,dx, dy,wherePre);
+                lineSql = string.Format("{0} {3}  Within( GeomFromText('POINT({1} {2})'),geometry);", sql, dx, dy, wherePre);
             }
             else if (geometryType == GeometryType.Polyline)
             {
-                lineSql = string.Format("{0} {2}  Intersects( GeomFromText('{1}'),geometry)=1;", sql, GeometryHelper.CreateRectangleWkt(dx, dy, radius),wherePre);
-               
+                lineSql = string.Format("{0} {2}  Intersects( GeomFromText('{1}'),geometry)=1;", sql, GeometryHelper.CreateRectangleWkt(dx, dy, radius), wherePre);
+
             }
             else if (geometryType == GeometryType.Point || geometryType == GeometryType.TextPoint)
             {
@@ -289,6 +289,7 @@ namespace VastGIS.RealEstate.Data.Helpers
             return lineSql;
 
         }
+
         public static string SearchSQLBuilder(
             string tableName,
             GeometryType geometryType,
@@ -299,15 +300,15 @@ namespace VastGIS.RealEstate.Data.Helpers
             string sql = "";
             if (geometryType == GeometryType.Polygon)
             {
-                sql= string.Format(
-                    "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Within( GeomFromText('POINT({1} {2})'),geometry);",tableName,
+                sql = string.Format(
+                    "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Within( GeomFromText('POINT({1} {2})'),geometry);", tableName,
                     dx, dy);
             }
             else if (geometryType == GeometryType.Polyline)
             {
                 sql = string.Format(
                     "Select Id,AsText(geometry) as Wkt,Ysdm,'{0}' as TableName from {0} Where Flags<3 AND Intersects( GeomFromText('{1}'),geometry)=1;", tableName,
-                    GeometryHelper.CreateRectangleWkt(dx,dy,radius));
+                    GeometryHelper.CreateRectangleWkt(dx, dy, radius));
             }
             else if (geometryType == GeometryType.Point || geometryType == GeometryType.TextPoint)
             {
@@ -316,6 +317,29 @@ namespace VastGIS.RealEstate.Data.Helpers
                     GeometryHelper.CreateRectangleWkt(dx, dy, radius));
             }
             return sql;
+        }
+
+        public static string SearchActualSQLBuilder(string sql, GeometryType geometryType, IGeometry geometry)
+        {
+
+            string lineSql = "";
+            bool containWhere = sql.Contains(" WHERE ");
+
+            string wherePre = containWhere ? "AND" : " WHERE ";
+            if (geometryType == GeometryType.Polygon)
+            {
+                lineSql = string.Format("{0} {2}  Intersects( GeomFromText('{1}'),geometry);", sql, GeometryHelper.CreatePolygonWkt(geometry), wherePre);
+            }
+            else if (geometryType == GeometryType.Polyline)
+            {
+                lineSql = string.Format("{0} {2}  Intersects( GeomFromText('{1}'),geometry)=1;", sql, GeometryHelper.CreatePolygonWkt(geometry), wherePre);
+
+            }
+            else if (geometryType == GeometryType.Point || geometryType == GeometryType.TextPoint)
+            {
+                lineSql = string.Format("{0} {2}  Within(geometry,GeomFromText('{1}'))=1;", sql, GeometryHelper.CreatePolygonWkt(geometry), wherePre);
+            }
+            return lineSql;
         }
 
         public static string SearchActualSQLBuilder(string sqlSource, string queryFilter)

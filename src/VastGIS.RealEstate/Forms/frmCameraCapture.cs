@@ -69,7 +69,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             // Select the first one
             if (comboBoxCameraList.Items.Count > 0)
             {
-                comboBoxCameraList.SelectedIndex = 0;
+                comboBoxCameraList.SelectedIndex = comboBoxCameraList.Items.Count - 1;
             }
 
             // Fill camera list combobox with available resolutions
@@ -140,7 +140,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 _plugin = _context.Container.GetInstance<RealEstateEditor>();
             }
             _database = ((IRealEstateContext)_context).RealEstateDatabase;
-            _typeDict= _database.DomainService.GetDictionaryByName("FJLXZD");
+            _typeDict = _database.DomainService.GetDictionaryByName("FJLXZD");
             cmbType.DataSource = _typeDict;
             cmbType.DisplayMember = "Zdsm";
             cmbType.ValueMember = "Zdz";
@@ -149,8 +149,8 @@ namespace VastGIS.Plugins.RealEstate.Forms
 
         public VgAttachment GetAttachment()
         {
-            _attachment=new VgAttachment();
-            _attachment.Fjmc = string.IsNullOrEmpty(txtName.Text.Trim()) ? Path.GetFileName(_currentImage):txtName.Text;
+            _attachment = new VgAttachment();
+            _attachment.Fjmc = string.IsNullOrEmpty(txtName.Text.Trim()) ? Path.GetFileName(_currentImage) : txtName.Text;
             _attachment.Fjsm = txtDesc.Text;
             _attachment.Fjlj = _database.GetRelativePath(_currentImage);
             _attachment.Hqsj = DateTime.Now;
@@ -451,7 +451,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             }
             MessageBox.Show("无法提取角点", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             _corners = new List<OpenCvSharp.Point>();
-            _corners.Add(new OpenCvSharp.Point(0,0));
+            _corners.Add(new OpenCvSharp.Point(0, 0));
             _corners.Add(new OpenCvSharp.Point(src.Width, 0));
             _corners.Add(new OpenCvSharp.Point(src.Width, src.Height));
             _corners.Add(new OpenCvSharp.Point(0, src.Height));
@@ -910,9 +910,9 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private void DrawCorners()
         {
             // Create RGB bitmap
-            picCurrent.Image=new Bitmap(_currentImage);
+            picCurrent.Image = new Bitmap(_currentImage);
             picCurrent.Refresh();
-            
+
             Graphics g = picCurrent.CreateGraphics();
             Pen newPen = new Pen(Color.Yellow);
             List<System.Drawing.Point> points = ConvertCornerToPoint();
@@ -983,7 +983,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             picCurrent.Image = null;
             string newName = _database.CreateAttachmentName() + ".jpg";
             Cv2.ImWrite(newName, quad);
-            picCurrent.Image=new Bitmap(newName);
+            picCurrent.Image = new Bitmap(newName);
             _currentImage = newName;
             picCurrent.Refresh();
             CalculateCorners();

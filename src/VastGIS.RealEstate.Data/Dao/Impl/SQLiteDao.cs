@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using VastGIS.Api.Enums;
+using VastGIS.Api.Interfaces;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 using VastGIS.RealEstate.Data.Events;
@@ -321,7 +322,31 @@ namespace VastGIS.RealEstate.Data.Dao.Impl
             return features;
         }
 
-
+        public List<IReFeature> FindFeatures(VgObjectclass objectClass, IGeometry geometry)
+        {
+            string className = objectClass.Mc;
+            string objectName = "VastGIS.RealEstate.Data.Entity." + StringUtil.GetEntityName(className);
+            Type entityType = Type.GetType(objectName);
+            //获取查询变量
+            string selectSql = SQLHelper.Instance().GetQuerySql(objectClass.Mc);
+            if (string.IsNullOrEmpty(selectSql)) return null;
+            string sql = SpatialHelper.SearchActualSQLBuilder(selectSql, (GeometryType)objectClass.Txlx, geometry);
+            List<IReFeature> features = new List<IReFeature>();
+            using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+            {
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        IEntity pEntity = Activator.CreateInstance(entityType) as IEntity;
+                        pEntity.LoadFromReader(reader);
+                        features.Add((IReFeature)pEntity);
+                    }
+                    reader.Close();
+                }
+            }
+            return features;
+        }
 
         public bool ReorderAllPolygon(string tableName)
         {

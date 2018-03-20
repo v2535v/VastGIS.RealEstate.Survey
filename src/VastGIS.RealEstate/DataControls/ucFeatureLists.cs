@@ -191,6 +191,9 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             VgObjectclass vgObjectclasses = null;
             foreach (var pFeature in pFeatureList)
             {
+                IReFeature tempFeature = _features.FirstOrDefault(c => c.ID == pFeature.ID) as IReFeature;
+                if (tempFeature != null)
+                    continue;
                 _features.Add(pFeature);
                 FlashGeometry(pFeature.Geometry);
             }
@@ -265,7 +268,8 @@ namespace VastGIS.Plugins.RealEstate.DataControls
 
         private void FlashGeometry(IGeometry pGeometry)
         {
-            Color color = Color.Yellow;
+            Color color = _context.Config.RealEstateSelectedColor;
+
             DrawGeometry(pGeometry, color);
         }
         private void PrepareLayer()
@@ -318,7 +322,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                     object xsObject = xs as object;
                     object ysObject = ys as object;
                     _map.Drawing.DrawPolygon(_layerHandle, ref xsObject, ref ysObject, geometry.Parts[j].Points.Count, color,
-                        true, 1);
+                        false, 4);
                 }
                 return;
             }

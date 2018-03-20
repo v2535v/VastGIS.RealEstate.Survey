@@ -82,7 +82,7 @@ namespace VastGIS.Plugins.Concrete
 
         [DataMember]
         public bool CreateSpatialIndexOnOpening { get; set; }
-        
+
         public List<Guid> DefaultApplicationPlugins
         {
             [SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1500:CurlyBracketsForMultiLineStatementsMustNotShareLine", Justification = "Reviewed. Suppression is OK here.")]
@@ -327,12 +327,12 @@ namespace VastGIS.Plugins.Concrete
 
         [DataMember]
         public bool ShapeEditorShowBearing { get; set; }
-        
+
         [DataMember]
         public BearingType ShapeEditorBearingType { get; set; }
 
         [DataMember]
-        public int ShapeEditorBearingPrecision {get; set; }
+        public int ShapeEditorBearingPrecision { get; set; }
 
         [DataMember]
         public AngleFormat ShapeEditorAngleFormat { get; set; }
@@ -490,6 +490,15 @@ namespace VastGIS.Plugins.Concrete
         [DataMember]
         public Color RealEstateActivedColor { get; set; }
 
+        [DataMember]
+        public string WxDcy { get; set; }
+
+        [DataMember]
+        public string WxCly { get; set; }
+
+        [DataMember]
+        public string WxZty { get; set; }
+
         public void AddRecentProject(string path)
         {
             path = path.ToLower();
@@ -633,7 +642,7 @@ namespace VastGIS.Plugins.Concrete
             ZoomBarVerbosity = ZoomBarVerbosity.Full;
             ZoomBehavior = ZoomBehavior.UseTileLevels;
             ZoomBoxStyle = ZoomBoxStyle.Blue;
-            DefaultProjectPath   = @".\Projects";
+            DefaultProjectPath = @".\Projects";
             RealEstateTolerance = 1.0;
             RealEstateSelectedColor = Color.IndianRed;
             RealEstateActivedColor = Color.DodgerBlue;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.SQLite;
+using VastGIS.Api.Interfaces;
 using VastGIS.RealEstate.Data.Entity;
 using VastGIS.RealEstate.Data.Enums;
 using VastGIS.RealEstate.Data.Events;
@@ -24,7 +25,6 @@ namespace VastGIS.RealEstate.Data.Interface
         bool ReorderAllPolygon(string tableName);
         List<IReFeature> FindFeatures(VgObjectclass objectClass, double x, double y,double torenlance=1.0);
         List<IReFeature> FindFeatures(List<VgObjectclass> objectClasses, double x, double y, double torenlance = 1.0);
-
         bool CopyEntities(
             VgObjectclass targetClass,
             List<IEntity> sourceEntities,

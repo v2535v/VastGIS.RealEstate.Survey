@@ -67,7 +67,8 @@ namespace VastGIS.Plugins.RealEstate.Attribute
         {
             ((INotifyPropertyChanged)_linkedObject).PropertyChanged +=linkedObject_PropertyChanged;
             ucLinkObject.LinkObject(_database,(IEntity)_linkedObject);
-            ucWXInfo1.LinkObject(_linkedObject as ISurveyEntity);
+            //ucWXInfo1.LinkObject(_linkedObject as ISurveyEntity);
+            ucWXInfo1.LinkObject(_context.Config, _linkedObject as ISurveyEntity);
             ucAttachmentList1.BindContext(_context);
             ucAttachmentList1.LinkObject(_linkedObject as IGlobalEntity);
             if(_linkedObject.ID<=0)

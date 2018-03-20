@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.cmbXJFS = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.intXJNF = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.chkZJ1 = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,8 +51,9 @@
             this.chkZL = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.chkJZ = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label10 = new System.Windows.Forms.Label();
             this.intGKJNF = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.rdoXJNF = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.rdoGKJNF = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             ((System.ComponentModel.ISupportInitialize)(this.cmbXJFS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intXJNF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkZJ1)).BeginInit();
@@ -69,46 +68,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkJZ)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.intGKJNF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdoXJNF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdoGKJNF)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbXJFS
             // 
-            this.cmbXJFS.BeforeTouchSize = new System.Drawing.Size(121, 20);
-            this.tableLayoutPanel1.SetColumnSpan(this.cmbXJFS, 3);
+            this.cmbXJFS.BeforeTouchSize = new System.Drawing.Size(154, 20);
             this.cmbXJFS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbXJFS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbXJFS.Enabled = false;
             this.cmbXJFS.EnableTouchMode = true;
             this.cmbXJFS.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbXJFS.Items.AddRange(new object[] {
             "翻建",
             "改建",
             "扩建"});
-            this.cmbXJFS.Location = new System.Drawing.Point(103, 8);
+            this.cmbXJFS.Location = new System.Drawing.Point(362, 38);
             this.cmbXJFS.Name = "cmbXJFS";
-            this.cmbXJFS.Size = new System.Drawing.Size(413, 26);
+            this.cmbXJFS.Size = new System.Drawing.Size(154, 26);
             this.cmbXJFS.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 30);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "方式：";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 30);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "建房年份：";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmbXJFS.Text = "翻建";
             // 
             // intXJNF
             // 
@@ -118,11 +98,11 @@
             this.intXJNF.EnableTouchMode = true;
             this.intXJNF.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intXJNF.IntegerValue = ((long)(1900));
-            this.intXJNF.Location = new System.Drawing.Point(103, 38);
+            this.intXJNF.Location = new System.Drawing.Point(262, 8);
             this.intXJNF.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.intXJNF.Name = "intXJNF";
             this.intXJNF.NullString = "";
-            this.intXJNF.Size = new System.Drawing.Size(153, 28);
+            this.intXJNF.Size = new System.Drawing.Size(94, 28);
             this.intXJNF.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.intXJNF.TabIndex = 3;
             this.intXJNF.Text = "1,900";
@@ -132,6 +112,7 @@
             this.chkZJ1.BeforeTouchSize = new System.Drawing.Size(150, 21);
             this.tableLayoutPanel1.SetColumnSpan(this.chkZJ1, 3);
             this.chkZJ1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkZJ1.Enabled = false;
             this.chkZJ1.EnableTouchMode = true;
             this.chkZJ1.ImageCheckBoxSize = new System.Drawing.Size(19, 19);
             this.chkZJ1.Location = new System.Drawing.Point(103, 68);
@@ -389,12 +370,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.cmbXJFS, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.intXJNF, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.intGKJNF, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cmbXJFS, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.intXJNF, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.intGKJNF, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.chkZJ1, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtTDZH, 1, 4);
@@ -414,6 +392,8 @@
             this.tableLayoutPanel1.Controls.Add(this.chkJZ, 2, 9);
             this.tableLayoutPanel1.Controls.Add(this.btnOK, 2, 10);
             this.tableLayoutPanel1.Controls.Add(this.btnCancel, 3, 10);
+            this.tableLayoutPanel1.Controls.Add(this.rdoXJNF, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.rdoGKJNF, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -428,46 +408,64 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(519, 300);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(519, 299);
             this.tableLayoutPanel1.TabIndex = 21;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(262, 35);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 30);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "改扩建年份：";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // intGKJNF
             // 
             this.intGKJNF.BackGroundColor = System.Drawing.SystemColors.Window;
             this.intGKJNF.BeforeTouchSize = new System.Drawing.Size(154, 21);
             this.intGKJNF.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.intGKJNF.Enabled = false;
             this.intGKJNF.EnableTouchMode = true;
             this.intGKJNF.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intGKJNF.IntegerValue = ((long)(1900));
-            this.intGKJNF.Location = new System.Drawing.Point(362, 38);
+            this.intGKJNF.Location = new System.Drawing.Point(262, 38);
             this.intGKJNF.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.intGKJNF.Name = "intGKJNF";
             this.intGKJNF.NullString = "";
-            this.intGKJNF.Size = new System.Drawing.Size(154, 28);
+            this.intGKJNF.Size = new System.Drawing.Size(94, 28);
             this.intGKJNF.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.intGKJNF.TabIndex = 5;
             this.intGKJNF.Text = "1,900";
+            // 
+            // rdoXJNF
+            // 
+            this.rdoXJNF.BeforeTouchSize = new System.Drawing.Size(150, 21);
+            this.rdoXJNF.Checked = true;
+            this.rdoXJNF.EnableTouchMode = true;
+            this.rdoXJNF.ImageCheckBoxSize = new System.Drawing.Size(19, 19);
+            this.rdoXJNF.Location = new System.Drawing.Point(103, 8);
+            this.rdoXJNF.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.rdoXJNF.Name = "rdoXJNF";
+            this.rdoXJNF.Size = new System.Drawing.Size(153, 24);
+            this.rdoXJNF.TabIndex = 21;
+            this.rdoXJNF.Text = "建房年份";
+            this.rdoXJNF.ThemesEnabled = false;
+            this.rdoXJNF.CheckChanged += new System.EventHandler(this.rdoXJNF_CheckChanged);
+            // 
+            // rdoGKJNF
+            // 
+            this.rdoGKJNF.BeforeTouchSize = new System.Drawing.Size(150, 21);
+            this.rdoGKJNF.EnableTouchMode = true;
+            this.rdoGKJNF.ImageCheckBoxSize = new System.Drawing.Size(19, 19);
+            this.rdoGKJNF.Location = new System.Drawing.Point(103, 38);
+            this.rdoGKJNF.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.rdoGKJNF.Name = "rdoGKJNF";
+            this.rdoGKJNF.Size = new System.Drawing.Size(153, 24);
+            this.rdoGKJNF.TabIndex = 22;
+            this.rdoGKJNF.TabStop = false;
+            this.rdoGKJNF.Text = "改扩建年份";
+            this.rdoGKJNF.ThemesEnabled = false;
             // 
             // frmGKJ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 300);
+            this.ClientSize = new System.Drawing.Size(519, 299);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -489,6 +487,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.intGKJNF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdoXJNF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdoGKJNF)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -496,8 +496,6 @@
         #endregion
 
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv cmbXJFS;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private Syncfusion.Windows.Forms.Tools.IntegerTextBox intXJNF;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkZJ1;
         private System.Windows.Forms.Label label3;
@@ -519,7 +517,8 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkZL;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkJZ;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label10;
         private Syncfusion.Windows.Forms.Tools.IntegerTextBox intGKJNF;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv rdoXJNF;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv rdoGKJNF;
     }
 }

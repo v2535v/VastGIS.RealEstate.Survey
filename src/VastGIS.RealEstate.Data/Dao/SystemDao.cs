@@ -1,4 +1,5 @@
 ﻿using System;
+using VastGIS.Api.Interfaces;
 
 namespace VastGIS.RealEstate.Data.Dao
 {
@@ -110,5 +111,7 @@ namespace VastGIS.RealEstate.Data.Dao
         string GetTemporaryAttachmentName();
         void InitializeDatabase(int srid);
         IEnumerable<Qlr> GetQlrsByBdcdyh(string bdcdhy);
+
+        List<IReFeature> FindFeatures(VgObjectclass objectClass, IGeometry geometry);
     }
 }

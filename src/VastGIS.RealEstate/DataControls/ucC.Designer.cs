@@ -134,6 +134,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.cmbCfwlx.Name = "cmbCfwlx";
             this.cmbCfwlx.Size = new System.Drawing.Size(158, 26);
             this.cmbCfwlx.TabIndex = 4;
+            this.cmbCfwlx.SelectedValueChanged += new System.EventHandler(this.cmbCfwlx_SelectedValueChanged);
             // 
             // lblJsbl
             // 

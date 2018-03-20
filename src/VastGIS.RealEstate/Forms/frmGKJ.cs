@@ -57,14 +57,23 @@ namespace VastGIS.Plugins.RealEstate.Forms
         {
             GKJ gkj = new GKJ();
 
-            if (cmbXJFS.SelectedIndex >= 0)
+
+            if (rdoXJNF.Checked)
             {
-                gkj.XJFS = $"该宗地已进行{cmbXJFS.Text}，房屋{cmbXJFS.Text}时间{intGKJNF.IntegerValue}年，房屋建于{intXJNF.IntegerValue}";
-                if (chkZJ1.Checked) gkj.XJSS = $"已办理了{cmbXJFS.Text}手续";
-                else gkj.XJSS = $"未办理{cmbXJFS.Text}手续";
+                gkj.XJNF = $"房屋建于{intXJNF.IntegerValue}年";
+                gkj.GKJNF = "";
             }
-            gkj.XJNF = intXJNF.IntegerValue.ToString();
-            gkj.GKJNF = intGKJNF.IntegerValue.ToString();
+            else
+            {
+                if (cmbXJFS.SelectedIndex >= 0)
+                {
+                    gkj.GKJNF = $"该宗地已进行{cmbXJFS.Text}，房屋{cmbXJFS.Text}时间{intGKJNF.IntegerValue}年";
+                    if (chkZJ1.Checked) gkj.GKJNF += $"，已办理了{cmbXJFS.Text}手续";
+                    else gkj.GKJNF += $"，未办理{cmbXJFS.Text}手续";
+                }
+                gkj.XJNF = "";
+            }
+
             if (!string.IsNullOrEmpty(txtTDZH.Text.Trim())) gkj.TDZH = $"土地证号:{txtTDZH.Text.Trim()}";
             if (!string.IsNullOrEmpty(txtPZWH.Text.Trim())) gkj.PZWH = $"批准文号:{txtPZWH.Text.Trim()}";
 
@@ -94,17 +103,21 @@ namespace VastGIS.Plugins.RealEstate.Forms
 
             return gkj;
         }
+
+        private void rdoXJNF_CheckChanged(object sender, EventArgs e)
+        {
+            intXJNF.Enabled = rdoXJNF.Checked;
+            intGKJNF.Enabled = rdoGKJNF.Checked;
+            cmbXJFS.Enabled = rdoGKJNF.Checked;
+            chkZJ1.Enabled = rdoGKJNF.Checked;
+        }
     }
 
     public class GKJ
     {
-        public string XJFS { get; set; }
-
         public string XJNF { get; set; }
         public string GKJNF { get; set; }
-
-        public string XJSS { get; set; }
-
+        
         public string TDZH { get; set; }
 
         public string PZWH { get; set; }

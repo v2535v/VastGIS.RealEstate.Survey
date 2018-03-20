@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AxMapWinGIS;
 using EnvDTE;
 using NetTopologySuite.Geometries;
 using VastGIS.Api.Concrete;
@@ -67,6 +68,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
             map.Drawing.DrawPoint(_layer, cPoint.X, cPoint.Y, 5, _context.Config.MeasuringFillColor);
             map.Drawing.DrawLabel(_layer, $"{_reVertices.Count}", cPoint.X, cPoint.Y, 0);
 
+
             if (_reVertices.Count <= 1)
                 return;
 
@@ -97,6 +99,9 @@ namespace VastGIS.Plugins.RealEstate.Forms
             IMap map = _context.Map as IMap;
             ClearDrawing();
             _layer = map.Drawing.AddLayer(DrawReferenceList.SpatiallyReferencedList);
+            LabelsLayer labelsLayer = map.Drawing.GetLabels(_layer);
+            labelsLayer.AutoOffset = true;
+            labelsLayer.OffsetY = 15;
             _reVertices = new List<ReVertex>();
             _reLines = new List<ReLine>();
             map.MouseUp -= Map_MouseUp;

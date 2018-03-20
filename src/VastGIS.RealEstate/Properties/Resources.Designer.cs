@@ -593,6 +593,16 @@ namespace VastGIS.Plugins.RealEstate.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_wxinfo {
+            get {
+                object obj = ResourceManager.GetObject("icon_wxinfo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_zrzh {
             get {
                 object obj = ResourceManager.GetObject("icon_zrzh", resourceCulture);

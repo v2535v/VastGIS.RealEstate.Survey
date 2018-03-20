@@ -56,7 +56,8 @@ namespace VastGIS.Menu
             RibbonMenu menu = _context.RibbonMenu as RibbonMenu;
             menu.AddHeaderTab("tabFile", "文件");
             menu.AddToolStripEx("toolStripExFile", "文件", "tabFile");
-          //  menu.AddToolStripEx("toolStripExLayer", "图层", "tabFile");
+            menu.AddToolStripEx("toolStripSet", "设置", "tabFile");
+            //  menu.AddToolStripEx("toolStripExLayer", "图层", "tabFile");
 
 
             menu.AddHeaderTab("tabView", "视图");
@@ -95,8 +96,8 @@ namespace VastGIS.Menu
             menu.AddButton(_commands[MenuKeys.ShowLegendControl]);
 
 
-            menu.AddButton(_commands[MenuKeys.MeasureDistance]);
-            menu.AddButton(_commands[MenuKeys.MeasureArea]);
+            //menu.AddButton(_commands[MenuKeys.MeasureDistance]);
+            //menu.AddButton(_commands[MenuKeys.MeasureArea]);
             //menu.AddButton(_commands[MenuKeys.AddLayer]);
             //menu.AddButton(_commands[MenuKeys.AddVectorLayer]);
             //menu.AddButton(_commands[MenuKeys.AddRasterLayer]);
