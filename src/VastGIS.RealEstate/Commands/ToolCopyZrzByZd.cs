@@ -19,7 +19,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
         private IAppContext _context;
         private IEditForm _editForm;
         private RealEstateEditor _plugin;
-
+           
         public ToolCopyZrzByZd(IAppContext context, RealEstateEditor plugin)
         {
             _plugin = plugin;
