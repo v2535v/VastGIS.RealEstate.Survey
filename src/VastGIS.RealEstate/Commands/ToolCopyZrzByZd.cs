@@ -53,7 +53,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
             if (_editForm.Visible == false)
                 _context.View.ShowChildView(_editForm as Form, false);
 
-        }
+        }  
 
         public override void Deactiviate()
         {
