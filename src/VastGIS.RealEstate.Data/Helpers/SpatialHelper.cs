@@ -63,6 +63,8 @@ namespace VastGIS.RealEstate.Data.Helpers
                         int polyId = reader.GetInt32(1);
                         if (assignType == AssignTextType.String)
                         {
+                            if (IsNumberic(textContext))
+                                continue;
                             if (conValues.Contains(textContext))
                             {
                                 updateSQL = String.Format("update {0} set {1}='{2}' where Id={3}", polyTable,
@@ -75,7 +77,9 @@ namespace VastGIS.RealEstate.Data.Helpers
                         }
                         if (assignType == AssignTextType.Integer || assignType == AssignTextType.Float)
                         {
-                            if (!string.IsNullOrEmpty(textContext) && IsNumberic(textContext))
+                            if (!IsNumberic(textContext))
+                                continue;
+                            if (!string.IsNullOrEmpty(textContext))
                             {
                                 updateSQL = String.Format("update {0} set {1}='{2}' where Id={3}", polyTable,
                                     polyFieldName, textContext, polyId);

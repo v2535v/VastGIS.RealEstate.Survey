@@ -30,7 +30,7 @@ namespace VastGIS.Plugins.RealEstate.Forms
         private void InitAssins()
         {
             configures=new List<TextAssignConfigure>();
-            configures.Add(new TextAssignConfigure("CAD建筑物材质识别","DXTJMDM","FSXX2",AssignTextType.String, new string[] {"混","砖","砼","破","建"}));
+            configures.Add(new TextAssignConfigure("CAD建筑物材质识别","DXTJMDM","FSXX2",AssignTextType.String, new string[] {"混","砖","砼","破","建", "土","木", "牲", "简", "石", "雨" }));
             configures.Add(new TextAssignConfigure("CAD建筑物楼层识别", "DXTJMDM", "FSXX1", AssignTextType.Integer, null));
             chkAssigns.DataSource = configures;
             chkAssigns.DisplayMember = "Name";

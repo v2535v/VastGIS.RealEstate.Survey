@@ -104,7 +104,7 @@ namespace VastGIS.RealEstate.Data.Service.Impl.Tests
             config.TextWhereClause = "[a].TC='ZJ'";
             configs.Add(config);
 
-            config = new TextAssignConfig("居民地材质识别", "DXTJMDM", "FSXX2", AssignTextType.String, new List<string>() { "混", "砖", "砼", "破", "建" });
+            config = new TextAssignConfig("居民地材质识别", "DXTJMDM", "FSXX2", AssignTextType.String, new List<string>() { "混", "砖", "砼", "破", "建", "土", "木", "牲", "简", "石", "雨" });
             config.TextField = "Wbnr";
             config.TextTable = "DXTZJZJ";
             config.TextWhereClause = "[a].TC='ZJ'";
