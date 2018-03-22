@@ -34,7 +34,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
         public override void OnClick()
         {
             _context.CurrentTool = this;
-
+             
         }
 
         public override void Activiate()

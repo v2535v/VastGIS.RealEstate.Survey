@@ -1405,6 +1405,12 @@
     <Compile Include="Forms\frmSetEditLayers.Designer.cs">
       <DependentUpon>frmSetEditLayers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmQuickLayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmQuickLayer.Designer.cs">
+      <DependentUpon>frmQuickLayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmWXInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2219,6 +2225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSetEditLayers.resx">
       <DependentUpon>frmSetEditLayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmQuickLayer.resx">
+      <DependentUpon>frmQuickLayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmWXInfo.resx">
       <DependentUpon>frmWXInfo.cs</DependentUpon>
