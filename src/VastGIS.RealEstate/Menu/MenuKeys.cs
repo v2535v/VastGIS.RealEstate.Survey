@@ -28,6 +28,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public const string CopyFeature = "re_CopyFeature";
         public const string MoveFeature = "re_MoveFeature";
         public const string EditFeature = "re_EditFeature";
+        public const string AssignEditFeature = "re_AssignEditFeature";
         public const string DeleteFeature = "re_DeleteFeature";
         public const string UnionFeature = "re_UnionFeature";
         public const string WYGZFeature = "re_WYGZFeature";
@@ -41,6 +42,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
         public const string Measure = "re_Measure";
         public const string SetWXInfo = "re_SetWXInfo";
         public const string CopyZrzByZd = "re_CopyZrzByZd";
+        public const string SetEditLayers = "re_SetEditLayers";
 
         #region Constants
 

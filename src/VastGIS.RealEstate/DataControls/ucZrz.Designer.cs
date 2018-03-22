@@ -125,7 +125,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.intID.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.intID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intID.EnableTouchMode = true;
-            this.intID.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intID.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intID.IntegerValue = ((long)(0));
             this.intID.Location = new System.Drawing.Point(83, 3);
             this.intID.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -152,7 +152,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtYsdm.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtYsdm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtYsdm.EnableTouchMode = true;
-            this.txtYsdm.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtYsdm.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtYsdm.Location = new System.Drawing.Point(83, 38);
             this.txtYsdm.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtYsdm.Name = "txtYsdm";
@@ -176,7 +176,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtBdcdyh.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtBdcdyh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBdcdyh.EnableTouchMode = true;
-            this.txtBdcdyh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtBdcdyh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtBdcdyh.Location = new System.Drawing.Point(83, 73);
             this.txtBdcdyh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtBdcdyh.Name = "txtBdcdyh";
@@ -200,7 +200,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtZddm.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtZddm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZddm.EnableTouchMode = true;
-            this.txtZddm.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtZddm.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtZddm.Location = new System.Drawing.Point(83, 108);
             this.txtZddm.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtZddm.Name = "txtZddm";
@@ -224,7 +224,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtZrzh.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtZrzh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtZrzh.EnableTouchMode = true;
-            this.txtZrzh.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtZrzh.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtZrzh.Location = new System.Drawing.Point(83, 143);
             this.txtZrzh.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtZrzh.Name = "txtZrzh";
@@ -248,7 +248,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtXmmc.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtXmmc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtXmmc.EnableTouchMode = true;
-            this.txtXmmc.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtXmmc.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtXmmc.Location = new System.Drawing.Point(83, 178);
             this.txtXmmc.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtXmmc.Name = "txtXmmc";
@@ -272,7 +272,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtJzwmc.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtJzwmc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtJzwmc.EnableTouchMode = true;
-            this.txtJzwmc.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtJzwmc.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtJzwmc.Location = new System.Drawing.Point(83, 213);
             this.txtJzwmc.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtJzwmc.Name = "txtJzwmc";
@@ -300,7 +300,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.datJgrq.DropDownImage = null;
             this.datJgrq.DropDownNormalColor = System.Drawing.SystemColors.Control;
             this.datJgrq.EnableTouchMode = true;
-            this.datJgrq.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.datJgrq.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.datJgrq.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datJgrq.Location = new System.Drawing.Point(83, 248);
             this.datJgrq.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
@@ -329,7 +329,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.dblJzwgd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblJzwgd.DoubleValue = 1D;
             this.dblJzwgd.EnableTouchMode = true;
-            this.dblJzwgd.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblJzwgd.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblJzwgd.Location = new System.Drawing.Point(332, 3);
             this.dblJzwgd.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblJzwgd.Name = "dblJzwgd";
@@ -357,7 +357,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.dblZzdmj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblZzdmj.DoubleValue = 1D;
             this.dblZzdmj.EnableTouchMode = true;
-            this.dblZzdmj.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblZzdmj.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblZzdmj.Location = new System.Drawing.Point(332, 38);
             this.dblZzdmj.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblZzdmj.Name = "dblZzdmj";
@@ -385,7 +385,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.dblZydmj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblZydmj.DoubleValue = 1D;
             this.dblZydmj.EnableTouchMode = true;
-            this.dblZydmj.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblZydmj.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblZydmj.Location = new System.Drawing.Point(332, 73);
             this.dblZydmj.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblZydmj.Name = "dblZydmj";
@@ -413,7 +413,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.dblYcjzmj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblYcjzmj.DoubleValue = 1D;
             this.dblYcjzmj.EnableTouchMode = true;
-            this.dblYcjzmj.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblYcjzmj.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblYcjzmj.Location = new System.Drawing.Point(332, 108);
             this.dblYcjzmj.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblYcjzmj.Name = "dblYcjzmj";
@@ -441,7 +441,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.dblScjzmj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblScjzmj.DoubleValue = 1D;
             this.dblScjzmj.EnableTouchMode = true;
-            this.dblScjzmj.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblScjzmj.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblScjzmj.Location = new System.Drawing.Point(332, 143);
             this.dblScjzmj.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblScjzmj.Name = "dblScjzmj";
@@ -468,7 +468,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.intZcs.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.intZcs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intZcs.EnableTouchMode = true;
-            this.intZcs.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intZcs.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intZcs.IntegerValue = ((long)(0));
             this.intZcs.Location = new System.Drawing.Point(332, 178);
             this.intZcs.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -496,7 +496,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.intDscs.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.intDscs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intDscs.EnableTouchMode = true;
-            this.intDscs.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intDscs.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intDscs.IntegerValue = ((long)(0));
             this.intDscs.Location = new System.Drawing.Point(332, 213);
             this.intDscs.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -524,7 +524,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.intDxcs.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.intDxcs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intDxcs.EnableTouchMode = true;
-            this.intDxcs.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intDxcs.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intDxcs.IntegerValue = ((long)(0));
             this.intDxcs.Location = new System.Drawing.Point(332, 248);
             this.intDxcs.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -553,7 +553,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.dblDxsd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dblDxsd.DoubleValue = 1D;
             this.dblDxsd.EnableTouchMode = true;
-            this.dblDxsd.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dblDxsd.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dblDxsd.Location = new System.Drawing.Point(581, 3);
             this.dblDxsd.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.dblDxsd.Name = "dblDxsd";
@@ -580,7 +580,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.cmbGhyt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbGhyt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGhyt.EnableTouchMode = true;
-            this.cmbGhyt.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbGhyt.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbGhyt.Location = new System.Drawing.Point(581, 38);
             this.cmbGhyt.Name = "cmbGhyt";
             this.cmbGhyt.Size = new System.Drawing.Size(158, 20);
@@ -603,7 +603,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.cmbFwjg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbFwjg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFwjg.EnableTouchMode = true;
-            this.cmbFwjg.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbFwjg.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbFwjg.Location = new System.Drawing.Point(581, 73);
             this.cmbFwjg.Name = "cmbFwjg";
             this.cmbFwjg.Size = new System.Drawing.Size(158, 20);
@@ -626,7 +626,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.intZts.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.intZts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intZts.EnableTouchMode = true;
-            this.intZts.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.intZts.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.intZts.IntegerValue = ((long)(0));
             this.intZts.Location = new System.Drawing.Point(581, 108);
             this.intZts.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -653,7 +653,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtJzwjbyt.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtJzwjbyt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtJzwjbyt.EnableTouchMode = true;
-            this.txtJzwjbyt.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtJzwjbyt.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtJzwjbyt.Location = new System.Drawing.Point(581, 143);
             this.txtJzwjbyt.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtJzwjbyt.Name = "txtJzwjbyt";
@@ -677,7 +677,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtDah.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtDah.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDah.EnableTouchMode = true;
-            this.txtDah.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtDah.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtDah.Location = new System.Drawing.Point(581, 178);
             this.txtDah.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtDah.Name = "txtDah";
@@ -701,7 +701,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.txtBz.BeforeTouchSize = new System.Drawing.Size(152, 21);
             this.txtBz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBz.EnableTouchMode = true;
-            this.txtBz.Font = new System.Drawing.Font("SimSun", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtBz.Font = new System.Drawing.Font("宋体", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtBz.Location = new System.Drawing.Point(581, 213);
             this.txtBz.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtBz.Name = "txtBz";
@@ -726,7 +726,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.cmbZt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbZt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbZt.EnableTouchMode = true;
-            this.cmbZt.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbZt.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmbZt.Location = new System.Drawing.Point(581, 248);
             this.cmbZt.Name = "cmbZt";
             this.cmbZt.Size = new System.Drawing.Size(158, 20);
@@ -743,7 +743,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 7F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.intID, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblYsdm, 0, 1);

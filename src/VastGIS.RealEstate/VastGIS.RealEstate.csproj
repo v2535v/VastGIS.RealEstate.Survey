@@ -725,12 +725,14 @@
     <Compile Include="Commands\CmdLayerManagement.cs" />
     <Compile Include="Commands\CmdOpenTable.cs" />
     <Compile Include="Commands\CmdResetLayers.cs" />
+    <Compile Include="Commands\CmdSetEditLayers.cs" />
     <Compile Include="Commands\CmdSetWXInfo.cs" />
     <Compile Include="Commands\CmdSplitCAD.cs" />
     <Compile Include="Commands\CmdImportDXF.cs" />
     <Compile Include="Commands\CmdNewJZD.cs" />
     <Compile Include="Commands\CmdTestOgrChinese.cs" />
     <Compile Include="Commands\CmdZoomToDbMax.cs" />
+    <Compile Include="Commands\ToolAssignEditFeature.cs" />
     <Compile Include="Commands\ToolAssignPhoto.cs" />
     <Compile Include="Commands\ToolAssignZRZH.cs" />
     <Compile Include="Commands\ToolCopyFeature.cs" />
@@ -762,6 +764,12 @@
     </Compile>
     <Compile Include="DataControls\SnapCheckbox.Designer.cs">
       <DependentUpon>SnapCheckbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataControls\ucFeatureListSingle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataControls\ucFeatureListSingle.Designer.cs">
+      <DependentUpon>ucFeatureListSingle.cs</DependentUpon>
     </Compile>
     <Compile Include="DataControls\ucQlrList.cs">
       <SubType>UserControl</SubType>
@@ -1313,6 +1321,12 @@
     <Compile Include="Forms\EditSettingForm.Designer.cs">
       <DependentUpon>EditSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmAssignEditFeature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAssignEditFeature.Designer.cs">
+      <DependentUpon>frmAssignEditFeature.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmAssignPhoto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1336,6 +1350,12 @@
     </Compile>
     <Compile Include="Forms\frmAudioCapture.Designer.cs">
       <DependentUpon>frmAudioCapture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCameraCapture2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCameraCapture2.Designer.cs">
+      <DependentUpon>frmCameraCapture2.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmCopyZrzByZd.cs">
       <SubType>Form</SubType>
@@ -1378,6 +1398,12 @@
     </Compile>
     <Compile Include="Forms\frmMeasure.Designer.cs">
       <DependentUpon>frmMeasure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSetEditLayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSetEditLayers.Designer.cs">
+      <DependentUpon>frmSetEditLayers.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmWXInfo.cs">
       <SubType>Form</SubType>
@@ -1882,6 +1908,9 @@
     <EmbeddedResource Include="CommonControls\ucTempMapping.resx">
       <DependentUpon>ucTempMapping.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataControls\ucFeatureListSingle.resx">
+      <DependentUpon>ucFeatureListSingle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataControls\ucQlrList.resx">
       <DependentUpon>ucQlrList.cs</DependentUpon>
     </EmbeddedResource>
@@ -2149,6 +2178,9 @@
     <EmbeddedResource Include="EditSettings\EditingCreateJZDByPolygon.resx">
       <DependentUpon>EditingCreateJZDByPolygon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAssignEditFeature.resx">
+      <DependentUpon>frmAssignEditFeature.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAssignPhoto.resx">
       <DependentUpon>frmAssignPhoto.cs</DependentUpon>
     </EmbeddedResource>
@@ -2160,6 +2192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAudioCapture.resx">
       <DependentUpon>frmAudioCapture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCameraCapture2.resx">
+      <DependentUpon>frmCameraCapture2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCopyZrzByZd.resx">
       <DependentUpon>frmCopyZrzByZd.cs</DependentUpon>
@@ -2181,6 +2216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMeasure.resx">
       <DependentUpon>frmMeasure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSetEditLayers.resx">
+      <DependentUpon>frmSetEditLayers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmWXInfo.resx">
       <DependentUpon>frmWXInfo.cs</DependentUpon>
@@ -2467,6 +2505,7 @@
     <None Include="Resources\icon_photo.png" />
     <None Include="Resources\icon_measure_distance.png" />
     <None Include="Resources\icon_wxinfo.png" />
+    <None Include="Resources\icon_EditLayer.png" />
     <Content Include="Sql\createretables.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -63,7 +63,7 @@ namespace VastGIS.Menu
             menu.AddHeaderTab("tabView", "视图");
             menu.AddToolStripEx("toolStripView", "视图", "tabView");
             menu.AddToolStripEx("toolStripViewTools", "工具", "tabView");
-            menu.AddToolStripEx("toolStripViewSelection", "选择", "tabView");
+            //menu.AddToolStripEx("toolStripViewSelection", "选择", "tabView");
 
             //menu.AddHeaderTab("tabReady", "准备");
             //menu.AddToolStripEx("toolStripReadies", "准备", "tabReady");

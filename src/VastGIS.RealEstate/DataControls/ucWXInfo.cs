@@ -22,17 +22,22 @@ namespace VastGIS.Plugins.RealEstate.DataControls
         public void LinkObject(ISurveyEntity entity)
         {
             txtWXDCY.DataBindings.Clear();
-            //datWXDCSJ.DataBindings.Clear();
+            datWXDCSJ.DataBindings.Clear();
             txtWXCLY.DataBindings.Clear();
-            //datWXCLSJ.DataBindings.Clear();
+            datWXCLSJ.DataBindings.Clear();
             txtWXZTY.DataBindings.Clear();
-            //datWXZTSJ.DataBindings.Clear();
+            datWXZTSJ.DataBindings.Clear();
             txtWXDCY.DataBindings.Add("Text", entity, "WxDcy", true, DataSourceUpdateMode.OnPropertyChanged);
-            //datWXDCSJ.DataBindings.Add("Value", entity, "WxDcsj");
+            datWXDCSJ.DataBindings.Add("Value", entity, "WxDcsj");
             txtWXCLY.DataBindings.Add("Text", entity, "WxCly", true, DataSourceUpdateMode.OnPropertyChanged);
-            //datWXCLSJ.DataBindings.Add("Value", entity, "WxClsj");
+            datWXCLSJ.DataBindings.Add("Value", entity, "WxClsj");
             txtWXZTY.DataBindings.Add("Text", entity, "WxZty", true, DataSourceUpdateMode.OnPropertyChanged);
-            //datWXZTSJ.DataBindings.Add("Value", entity, "WxZtsj");
+            datWXZTSJ.DataBindings.Add("Value", entity, "WxZtsj");
+
+            entity.WxDcsj = DateTime.Today;
+            entity.WxClsj = DateTime.Today;
+            entity.WxZtsj = DateTime.Today;
+
         }
 
         public void LinkObject(AppConfig config, ISurveyEntity entity)
@@ -43,6 +48,9 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             txtWXDCY.DataBindings.Add("Text", entity, "WxDcy", true, DataSourceUpdateMode.OnPropertyChanged);
             txtWXCLY.DataBindings.Add("Text", entity, "WxCly", true, DataSourceUpdateMode.OnPropertyChanged);
             txtWXZTY.DataBindings.Add("Text", entity, "WxZty", true, DataSourceUpdateMode.OnPropertyChanged);
+            datWXDCSJ.DataBindings.Add("Value", entity, "WxDcsj", true, DataSourceUpdateMode.OnPropertyChanged);
+            datWXCLSJ.DataBindings.Add("Value", entity, "WxClsj", true, DataSourceUpdateMode.OnPropertyChanged);
+            datWXZTSJ.DataBindings.Add("Value", entity, "WxZtsj", true, DataSourceUpdateMode.OnPropertyChanged);
 
             if (string.IsNullOrEmpty(entity.WxDcy))
                 entity.WxDcy = config.WxDcy;
@@ -50,6 +58,11 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 entity.WxCly = config.WxCly;
             if (string.IsNullOrEmpty(entity.WxZty))
                 entity.WxZty = config.WxZty;
+
+
+            entity.WxDcsj = DateTime.Today;
+            entity.WxClsj = DateTime.Today;
+            entity.WxZtsj = DateTime.Today;
         }
     }
 }

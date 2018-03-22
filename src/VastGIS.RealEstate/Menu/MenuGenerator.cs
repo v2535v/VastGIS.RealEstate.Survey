@@ -79,6 +79,7 @@ namespace VastGIS.Plugins.RealEstate.Menu
             menu.AddButton(_commands[MenuKeys.CopyZrzByZd]);
             menu.AddButton(_commands[MenuKeys.DeleteFeature]);
             menu.AddButton(_commands[MenuKeys.EditFeature]);
+            menu.AddButton(_commands[MenuKeys.AssignEditFeature]);
             menu.AddButton(_commands[MenuKeys.EditGeometry]);
             menu.AddButton(_commands[MenuKeys.UnionFeature]);
             menu.AddButton(_commands[MenuKeys.SplitPolygon]);
@@ -87,11 +88,12 @@ namespace VastGIS.Plugins.RealEstate.Menu
             menu.AddButton(_commands[MenuKeys.CreateJZDByZD]);
             menu.AddButton(_commands[MenuKeys.AssignZRZH]);
             menu.AddButton(_commands[MenuKeys.AssignPhoto]);
+            menu.AddButton(_commands[MenuKeys.SetEditLayers]);
 
             menu.AddToolStripEx("toolStripExZDTable", "属性表编辑", "tabZD");
             menu.AddButton(_commands[MenuKeys.OpenTable]);
 
-            menu.AddToolStripEx("toolStripExZDTool", "工具", "tabZD");
+            //menu.AddToolStripEx("toolStripExZDTool", "工具", "tabZD");
             menu.AddButton(_commands[MenuKeys.Measure]);
         }
 

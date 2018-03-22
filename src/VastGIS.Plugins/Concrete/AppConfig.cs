@@ -499,6 +499,9 @@ namespace VastGIS.Plugins.Concrete
         [DataMember]
         public string WxZty { get; set; }
 
+        [DataMember]
+        public List<string> EditLayers { get; set; }
+
         public void AddRecentProject(string path)
         {
             path = path.ToLower();

@@ -121,15 +121,27 @@ namespace VastGIS.Plugins.RealEstate.Forms
                 return;
             }
 
-            frmCameraCapture frm = new frmCameraCapture(_context, null);
-            DialogResult result = frm.ShowDialog();
-            if (result != DialogResult.OK) return;
-            VgAttachment attachment = frm.GetAttachment();
-            attachment.WxWydm = ((IGlobalEntity)_feature).WxWydm;
-            _database.SystemService.SaveVgAttachment(attachment);
-            _attachments.Add(attachment);
-            string fileName = _database.GetAbsolutePath(attachment.Fjlj);
-            imageListView1.Items.Add(fileName);
+            //frmCameraCapture frm = new frmCameraCapture(_context, null);
+            //DialogResult result = frm.ShowDialog();
+            //if (result != DialogResult.OK) return;
+            //VgAttachment attachment = frm.GetAttachment();
+            //attachment.WxWydm = ((IGlobalEntity)_feature).WxWydm;
+            //_database.SystemService.SaveVgAttachment(attachment);
+            //_attachments.Add(attachment);
+            //string fileName = _database.GetAbsolutePath(attachment.Fjlj);
+            //imageListView1.Items.Add(fileName);
+
+
+            frmCameraCapture2 frm = new frmCameraCapture2(_context, null);
+            frm.SaveComplateEvent += delegate (VgAttachment attachment)
+            {
+                attachment.WxWydm = ((IGlobalEntity)_feature).WxWydm;
+                _database.SystemService.SaveVgAttachment(attachment);
+                _attachments.Add(attachment);
+                string fileName = _database.GetAbsolutePath(attachment.Fjlj);
+                imageListView1.Items.Add(fileName);
+            };
+            frm.ShowDialog();
         }
 
         private void btnApply_Click(object sender, EventArgs e)

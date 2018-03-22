@@ -3,6 +3,9 @@
 //  MapWindow OSS Team - 2018
 // </copyright>
 // -------------------------------------------------------------------------------------------
+
+using System;
+
 namespace VastGIS.Plugins.RealEstate.Forms
 {
     public interface IEditForm
@@ -11,5 +14,10 @@ namespace VastGIS.Plugins.RealEstate.Forms
         bool Visible { get;set; }
         bool IsDisposed { get; }
         void ClearDrawing();
+    }
+
+    public interface IEditForm2 : IEditForm
+    {
+        event EventHandler ShowEvent;
     }
 }

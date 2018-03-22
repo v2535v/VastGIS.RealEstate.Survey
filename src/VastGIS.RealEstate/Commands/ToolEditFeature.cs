@@ -39,6 +39,7 @@ namespace VastGIS.Plugins.RealEstate.Commands
             map.MapCursor = MapCursor.None;
             if ((_editForm == null) || _editForm.IsDisposed)
             {
+                map.MouseUp -= Map_MouseUp;
                 _editForm = new frmEditFeature(_context, _plugin);
                 map.MouseUp += Map_MouseUp;
             }

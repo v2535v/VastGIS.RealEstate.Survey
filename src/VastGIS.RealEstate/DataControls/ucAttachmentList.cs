@@ -38,7 +38,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             InitializeComponent();
             _entity = null;
             InitStatus();
-            _attachments=new BindingList<VgAttachment>();
+            _attachments = new BindingList<VgAttachment>();
             InitGrid();
         }
 
@@ -62,7 +62,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             //btnSaveAs.Width = btnWidth;
 
             //gridAttachments.Height =this.Height - 57;
-            
+
         }
 
         public void InitGrid()
@@ -74,7 +74,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             }
             if (_attachments == null)
             {
-                _attachments=new BindingList<VgAttachment>();
+                _attachments = new BindingList<VgAttachment>();
             }
             _typeDict = _database.DomainService.GetDictionaryByName("FJLXZD");
             DataTable typeTable = new DataTable();
@@ -120,18 +120,18 @@ namespace VastGIS.Plugins.RealEstate.DataControls
 
 
             //To change the HeaderText.
-           mainTd.Columns["ID"].HeaderText = "序号";
-           mainTd.Columns["ID"].Width = 40;
-           mainTd.Columns["Fjmc"].HeaderText = "名称";
-           mainTd.Columns["Fjmc"].Width = 120;
-           mainTd.Columns["Fjlx_Zdsm"].HeaderText = "类型";
-           mainTd.Columns["Fjlx_Zdsm"].Width = 80;
-           mainTd.Columns["Hqsj"].HeaderText = "获取时间";
-           mainTd.Columns["Hqsj"].Width = 80;
-           mainTd.Columns["Fjlj"].HeaderText = "路径";
-           mainTd.Columns["Fjlj"].Width = 0;
-           mainTd.Columns["Fjsm"].HeaderText = "说明";
-           mainTd.Columns["Fjsm"].Width = 0;
+            mainTd.Columns["ID"].HeaderText = "序号";
+            mainTd.Columns["ID"].Width = 40;
+            mainTd.Columns["Fjmc"].HeaderText = "名称";
+            mainTd.Columns["Fjmc"].Width = 120;
+            mainTd.Columns["Fjlx_Zdsm"].HeaderText = "类型";
+            mainTd.Columns["Fjlx_Zdsm"].Width = 80;
+            mainTd.Columns["Hqsj"].HeaderText = "获取时间";
+            mainTd.Columns["Hqsj"].Width = 80;
+            mainTd.Columns["Fjlj"].HeaderText = "路径";
+            mainTd.Columns["Fjlj"].Width = 0;
+            mainTd.Columns["Fjsm"].HeaderText = "说明";
+            mainTd.Columns["Fjsm"].Width = 0;
             mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["TableName"]);
             mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["ObjectName"]);
             mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["EntityName"]);
@@ -151,7 +151,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["FileType"]);
             mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["NoCopyName_Length"]);
             mainTd.VisibleColumns.Remove(mainTd.VisibleColumns["LayerName"]);
-           
+
 
             this.gridAttachments.TopLevelGroupOptions.ShowAddNewRecordBeforeDetails = false;
             //Used for disabling Caption
@@ -255,17 +255,26 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             InitStatus();
         }
 
-       
+
 
         private void btnNewPhoto_Click(object sender, EventArgs e)
         {
-            frmCameraCapture frm=new frmCameraCapture(_context,null);
-            DialogResult result=frm.ShowDialog();
-            if (result != DialogResult.OK) return;
-            VgAttachment attachment= frm.GetAttachment();
-            attachment.WxWydm = ((IGlobalEntity)_entity).WxWydm;
-            _database.SystemService.SaveVgAttachment(attachment);
-            _attachments.Add(attachment);
+            //frmCameraCapture frm=new frmCameraCapture(_context,null);
+            //DialogResult result=frm.ShowDialog();
+            //if (result != DialogResult.OK) return;
+            //VgAttachment attachment= frm.GetAttachment();
+            //attachment.WxWydm = ((IGlobalEntity)_entity).WxWydm;
+            //_database.SystemService.SaveVgAttachment(attachment);
+            //_attachments.Add(attachment);
+
+            frmCameraCapture2 frm = new frmCameraCapture2(_context, null);
+            frm.SaveComplateEvent += delegate (VgAttachment attachment)
+                 {
+                     attachment.WxWydm = ((IGlobalEntity)_entity).WxWydm;
+                     _database.SystemService.SaveVgAttachment(attachment);
+                     _attachments.Add(attachment);
+                 };
+            frm.ShowDialog();
         }
 
         private void btnNewVideo_Click(object sender, EventArgs e)
@@ -286,7 +295,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 MessageBox.Show("请选择准备删除的附件!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int recIndex=gridAttachments.Table.SelectedRecords[0].GetSourcePosition();
+            int recIndex = gridAttachments.Table.SelectedRecords[0].GetSourcePosition();
             VgAttachment attachment = _attachments[recIndex];
             if (MessageBox.Show(string.Format("你确认删除{0}吗?", attachment.Fjlj), "询问", MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Question) != DialogResult.OK)
@@ -313,7 +322,7 @@ namespace VastGIS.Plugins.RealEstate.DataControls
                 MessageBox.Show("无法找到该附件!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            SaveFileDialog dialog=new SaveFileDialog();
+            SaveFileDialog dialog = new SaveFileDialog();
             dialog.FileName = newInfo.Name;
             dialog.Title = "附件另存为";
             if (dialog.ShowDialog() != DialogResult.OK) return;
@@ -333,35 +342,35 @@ namespace VastGIS.Plugins.RealEstate.DataControls
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog=new OpenFileDialog()
-                                      {
-                                          Title = "选择加载文件",
-                                          CheckFileExists = true,
-                                          Multiselect = false
-                                      };
+            OpenFileDialog dialog = new OpenFileDialog()
+            {
+                Title = "选择加载文件",
+                CheckFileExists = true,
+                Multiselect = false
+            };
             DialogResult result = dialog.ShowDialog();
             if (result != DialogResult.OK) return;
             FileInfo fileInfo = new FileInfo(dialog.FileName);
-            string copyFile = Path.Combine(_database.GetAttachmentPath() , fileInfo.Name);
+            string copyFile = Path.Combine(_database.GetAttachmentPath(), fileInfo.Name);
             if (File.Exists(copyFile))
             {
-                result =MessageBox.Show("数据库内已经已经存在该附件!继续覆盖吗？", "警告", MessageBoxButtons.YesNo,
+                result = MessageBox.Show("数据库内已经已经存在该附件!继续覆盖吗？", "警告", MessageBoxButtons.YesNo,
                                  MessageBoxIcon.Question);
-                if(result!=DialogResult.Yes)
-                return;
+                if (result != DialogResult.Yes)
+                    return;
             }
-            fileInfo.CopyTo(copyFile,true);
-            VgAttachment attachment=new VgAttachment()
-                                        {
-                                            Fjlj = _database.GetRelativePath(copyFile),
-                                            Fjmc = fileInfo.Name,
-                                            Fjsm = string.Format( "{0}在{1}加载该文件",Environment.UserName,DateTime.Now.ToString("yyyy年MM月dd日hh时mm分"))
-                                        };
-            frmVgAttachment frm=new frmVgAttachment();
+            fileInfo.CopyTo(copyFile, true);
+            VgAttachment attachment = new VgAttachment()
+            {
+                Fjlj = _database.GetRelativePath(copyFile),
+                Fjmc = fileInfo.Name,
+                Fjsm = string.Format("{0}在{1}加载该文件", Environment.UserName, DateTime.Now.ToString("yyyy年MM月dd日hh时mm分"))
+            };
+            frmVgAttachment frm = new frmVgAttachment();
             frm.BindContext(_context, attachment);
             result = frm.ShowDialog();
             if (result != DialogResult.OK) return;
-            attachment=frm.LinkedObject as VgAttachment;
+            attachment = frm.LinkedObject as VgAttachment;
             _attachments.Add(attachment);
         }
 
@@ -391,16 +400,18 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             VgAttachment curAttachment = _attachments[recIndex];
             AttachmentFileType curFileType = curAttachment.FileType;
             string fileName = _database.GetAbsolutePath(curAttachment.Fjlj);
-            List<string> files=new List<string>();
+            List<string> files = new List<string>();
             int findIndex = 0;
-            for(int i=0; i< _attachments.Count;i++)
+            for (int i = 0; i < _attachments.Count; i++)
             {
-                if(i==recIndex) { files.Add(fileName);
+                if (i == recIndex)
+                {
+                    files.Add(fileName);
                     findIndex = files.Count - 1;
                     continue;
                 }
                 VgAttachment attachment = _attachments[i];
-                if (attachment.FileType== curFileType)
+                if (attachment.FileType == curFileType)
                 {
                     string fName = _database.GetAbsolutePath(attachment.Fjlj);
                     files.Add(fName);
@@ -410,18 +421,18 @@ namespace VastGIS.Plugins.RealEstate.DataControls
             {
                 if (curFileType == AttachmentFileType.Image)
                 {
-                    Viewer.frmImageViewer frm=new Viewer.frmImageViewer(files,fileName);
+                    Viewer.frmImageViewer frm = new Viewer.frmImageViewer(files, fileName);
                     frm.ShowDialog();
                 }
                 else if (curFileType == AttachmentFileType.Audio)
                 {
                     List<VgAttachment> attachments = _attachments.Where(c => c.FileType == AttachmentFileType.Audio)
                         .ToList();
-                    Viewer.frmAudioViewer frm=new frmAudioViewer(_database);
+                    Viewer.frmAudioViewer frm = new frmAudioViewer(_database);
                     frm.LoadAttachments(attachments, findIndex);
                     frm.ShowDialog();
                 }
-                else if (curFileType == AttachmentFileType.Video || curFileType==AttachmentFileType.Audio)
+                else if (curFileType == AttachmentFileType.Video || curFileType == AttachmentFileType.Audio)
                 {
 
                     Viewer.frmVideoViewer frm = new frmVideoViewer();

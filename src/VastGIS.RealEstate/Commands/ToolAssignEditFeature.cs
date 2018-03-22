@@ -14,39 +14,45 @@ using VastGIS.Plugins.RealEstate.Properties;
 
 namespace VastGIS.Plugins.RealEstate.Commands
 {
-    public class ToolMeasure : BaseTool
+    public class ToolAssignEditFeature : BaseTool
     {
         private IAppContext _context;
-        private IEditForm _editForm;
+        private IEditForm2 _editForm;
         private RealEstateEditor _plugin;
 
-        public ToolMeasure(IAppContext context, RealEstateEditor plugin)
+        public ToolAssignEditFeature(IAppContext context, RealEstateEditor plugin)
         {
             _plugin = plugin;
             _context = context;
-            base._text = "量测工具";
-            base._key = MenuKeys.Measure;
-            base._icon = Resources.icon_measure_distance;
-            base._headerName = "tabView";
-            base._toolStripExName = "toolStripViewTools";
+            base._text = "快速要素编辑";
+            base._key = MenuKeys.AssignEditFeature;
+            base._icon = Resources.FeatureSX;
+            base._headerName = "tabZD";
+            base._toolStripExName = "toolStripExZDCommon";
         }
+
         public override void OnClick()
         {
             _context.CurrentTool = this;
+
         }
 
         public override void Activiate()
         {
-            //IMap map = _context.Map as IMap;
-            //map.MapCursor = MapCursor.Measure;
+            IMap map = _context.Map as IMap;
+            map.MapCursor = MapCursor.None;
             if ((_editForm == null) || _editForm.IsDisposed)
             {
-                _editForm = new frmMeasure(_context, _plugin);
-                //map.MouseUp += Map_MouseUp;
+                map.MouseUp -= Map_MouseUp;
+                _editForm = new frmAssignEditFeature(_context, _plugin);
+
+                map.MouseUp += Map_MouseUp;
             }
             if (_editForm.Visible == false)
-                _context.View.ShowChildView(_editForm as Form, false);
-
+            {
+                _editForm.ShowEvent += (sender, args) =>
+                        { _context.View.ShowChildView(_editForm as Form, false); };
+            }
         }
 
         public override void Deactiviate()
@@ -60,19 +66,14 @@ namespace VastGIS.Plugins.RealEstate.Commands
             IMap map = _context.Map as IMap;
             map.MouseUp -= Map_MouseUp;
             ((IMap)_context.Map).MapCursor = MapCursor.Pan;
-            
         }
 
         private void Map_MouseUp(object sender, MouseEventArgs e)
         {
-            //double dx = 0.0;
-            //double dy = 0.0;
-            //if ((_editForm == null) || _editForm.IsDisposed)
-            //{
-            //    _editForm = new frmMeasure(_context, _plugin);
-            //}
-            //_context.Map.PixelToProj(e.X, e.Y, out dx, out dy);
-            //_editForm.SetQueryPoint(dx, dy);
+            double dx = 0.0;
+            double dy = 0.0;
+            _context.Map.PixelToProj(e.X, e.Y, out dx, out dy);
+            _editForm.SetQueryPoint(dx, dy);
         }
     }
 }
