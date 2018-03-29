@@ -195,7 +195,7 @@
             this._mapControl1.Legend = null;
             this._mapControl1.Location = new System.Drawing.Point(252, 174);
             this._mapControl1.Longitude = 0F;
-            this._mapControl1.MapCursor = VastGIS.Api.Enums.MapCursor.ZoomIn;
+            this._mapControl1.MapCursor = VastGIS.Api.Enums.MapCursor.Pan;
             this._mapControl1.MapProjection = VastGIS.Api.Enums.MapProjection.None;
             this._mapControl1.MapUnits = VastGIS.Api.Enums.LengthUnits.Meters;
             this._mapControl1.MouseWheelSpeed = 0.5D;

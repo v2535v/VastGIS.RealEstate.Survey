@@ -85,7 +85,7 @@ namespace VastGIS.Helpers
         public static void Initialize(this IMap map)
         {
             map.GrabProjectionFromData = true;
-            map.MapCursor = MapCursor.ZoomIn;
+            map.MapCursor = MapCursor.Pan;
             map.InertiaOnPanning = AutoToggle.Auto;
             map.ShowRedrawTime = false;
             map.Identifier.Mode = IdentifierMode.CurrentLayer;
