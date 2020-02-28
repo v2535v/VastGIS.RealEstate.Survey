@@ -68,6 +68,8 @@ namespace VastGIS
 
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("@31372e342e30TJoQd81XOsh1c3EVz7jI/VEUZZ2gDgAtfCTaE4D8w5Q=");
+
             ExceptionHandler.Attach();
 
             //DumpFormats();
